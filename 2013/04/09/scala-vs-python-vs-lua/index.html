@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Scala vs. Python vs. Lua | Hace bastante tiempo que ando comentando cosas de estos tres lenguajes: Scala, Python y Lua. Hasta el momento no he hecho...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.82b4bc13.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, python, scala, lua, programming-languages">
+
+  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
+
+  <title>
+Scala vs. Python vs. Lua | Hyperreals *R  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://plus.google.com/+ChemaCortés" title="google+"><i class="fa fa-google-plus fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+      
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2013/04/09/scala-vs-python-vs-lua/" class="nohover">Scala vs. Python vs.&nbsp;Lua</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Posted <time data-timeago datetime="2013-04-09T20:55:00+02:00">mar 09 abril 2013</time>
+     by Chema Cortés    </p>
+    <p>
+    Category: <a href="https://blog.ch3m4.org/category/pensamientos/">Pensamientos</a>
+&ndash;&ndash;    Tags:
+      <a href="https://blog.ch3m4.org/tag/python/">python</a>,      <a href="https://blog.ch3m4.org/tag/scala/">scala</a>,      <a href="https://blog.ch3m4.org/tag/lua/">lua</a>,      <a href="https://blog.ch3m4.org/tag/programming-languages/">programming-languages</a>    </p>
+  </div>
+  <div class="article_text">
+    <p>Hace bastante tiempo que ando comentando cosas de estos tres lenguajes: Scala, Python y Lua. Hasta el momento no he hecho una comparativa entre ellos y creo que es el momento de hacerlo, siempre desde el punto de vista de un programador. Más que llegar a la conclusión de cuál es mejor o peor, quisiera dar una idea de porqué los recomiendo, a los tres, sin decantarme por sólo uno de ellos. Si buscabas razones para quedarte con uno de ellos, tampoco deberías desestimar otros similares como Ruby, Groovy, Haskel, Clojure o Erlang. De todos hay cosas qué&nbsp;aprender.</p>
+<h2>Python</h2>
+<p>Quizás Python sea el lenguaje más asequible para un programador que empieza o que busca un segundo lenguaje. Su aprendizaje es sencillo, mientras que su potencia y ubicuidad lo hace ideal desde los pequeños scripts que podamos necesitar en nuestro día a día, hasta escalar a servidores empresariales de tipo&nbsp;medio.</p>
+<p>Puede que a muchos disguste python por su identación forzada o por su particular modelo de datos, por citar dos de las características más criticadas. Sin embargo, confía en mí si te digo que python es uno de los mayores compendios de sabiduría que puedes tener al alcance de tus manos. Cualquier cosa que creas extraña o fuera de lugar, seguramente tenga su buena explicación. El sistema colaborativo que hace evolucionar a python (conocido como <span class="caps">PEP</span>-<em>Python Enhancement Proposals</em>) consigue que todo el saber de la comunidad python termine decantándose hace un modelo de evolución del lenguaje que lo hace único, con el que mejora calmadamente con cada versión. Operaciones con números grandes, algoritmo <span class="caps">MRO</span> para herencia múltiple, estructuras de datos optimizadas (heapq, deque,&#8230;), ordenaciones por clave, operaciones sobre secuencias (sum, any, all,&#8230;)&#8230; son sólo algunos ejemplos de optimizaciones que el usuario usa sin ser realmente consciente de la cantidad de trabajo que le está ahorrando. En python casi siempre hay una forma de hacer las cosas correctamente, y además suele ser la&nbsp;mejor.</p>
+<h2>Lua</h2>
+<p>Desde mi punto de vista, considero Lua como un <em>python minimalista</em>. Sin objetos, sin posibilidad de construir tus propios tipos de datos, pero se apaña con un sólo tipo de estrutura <code>table</code> para montar un sistema de herencia y emular algunos tipos de datos. Si lenguajes como python te parece complicados, no comprendes conceptos como la herencia, la creación de tipos o para qué sirven las metaclases, la simplicidad de lua hará que entiendas mejor estos&nbsp;conceptos.</p>
+<p>El reducido tamaño del intérprete de Lua lo hace apropiado para ser empotrado en otras aplicaciones. Lo tenemos en gestores de paquetes (<span class="caps">RPM</span>), bases de datos (mysql-lua), e IDEs (Scite), aunque quizás sea más famoso por ser el motor de script de juegos como <em>World of Warcraft</em>.</p>
+<p>En cuanto a sintáxis, también goza de un minimalismo que, a veces, desearías tuviera python. Posee cierta relajación en la llamada a funciones que permite usarlo para crear DSLs (<em>Lenguajes Específicos del Dominio</em>), aunque quizás su mejor uso sea como lenguaje de descripción de datos en sustitución de xml, yaml o ficheros&nbsp;ini.</p>
+<h2>Scala</h2>
+<p>Reconozco que soy un ferviente partidario de la <em>Programación Funcional</em>. Python tiene algún aspecto de este paradigma, pero cada vez parece más diluido dentro del sistema de Clases Abstractas (<code>ABC</code>-Abstract Base Classes) que empiezan a generalizarse en python. La estrategia de python es optimizar el uso de estas clases abstractas, independientemente de las clases que deriven luego de ellas. Aunque es un buen enfoque de optimización, siempre estará limitado a tiempo de&nbsp;ejecución.</p>
+<p>Scala posee un potente sistema de tipado estático de datos que posibilita la inferencia del tipo de una operación, lo que permite cierta relajación en el tipado que lo hace muy similar al tipado dinámico. Pero la posibilidad de crear nuevos tipos, ya no sólo de objetos, si no también a partir de funciones o de <em>patrones de código</em>, consigue interfaces más robustos y que sea el compilador quien optimize el código, antes de su&nbsp;ejecución.</p>
+<p>Así que tenemos que scala es funcional, con un potente sistema de tipos y, además, 100% compatible con Java. ¿Se puede pedir algo&nbsp;más?</p>
+<p>Pues sí. Incorpora el llamado modelo <em>Actor</em> para programación concurrente. Con los actores, en lugar de compartir un espacio común de memoria entre los distintos procesos concurrentes, se establece un sistema de mensajes que son enviados y recibidos. Este modelo se ha mostrado bastante eficaz en sistemas de alta demanda como son algunas webs como twitter o&nbsp;linkedin.</p>
+<p>En cuanto a la sintáxis, scala también posee algunas normas relajadas para la creación de DSLs muy similar a lo que se ve en Groovy. Algunos lenguajes <span class="caps">DSL</span> se usan en <em>frameworks</em> de creación webs, como Play2, o para crear conjuntos de pruebas&nbsp;(ScalaUnit).</p>
+<h2>Conclusión</h2>
+<p>Espero que te haya convencido para que eches un vistazo a algunos de estos lenguajes, aunque los tres sean altamente recomendables. Si tuviera que resumir en pocas líneas lo dicho hasta ahora, sería&nbsp;así:</p>
+<ul>
+<li>
+<p>Python: navaja suiza de los lenguajes. Sirve para todo y está presente en cualquier sitio. Es un compendio de sabiduría para hacer las cosas de la mejor forma, aún sin&nbsp;proponértelo.</p>
+</li>
+<li>
+<p>Lua: lenguaje minimalista. Ayuda a comprender mejor algunos conceptos de programación. Es el lenguaje que me gustaría que tuviera todo navegador en lugar de&nbsp;javascript.</p>
+</li>
+<li>
+<p>Scala: funcional y con potente sistema de tipos. Su implementación del modelo actor lo hace idóneo para la creación de sistemas de alta demanda de&nbsp;accesos.</p>
+</li>
+</ul>
+  </div>
+  <hr>
+  
+  <ul class="pager">
+          <li class="previous">
+               <a href="https://blog.ch3m4.org/2013/03/31/de-generaciones-perdidas/" title="Anterior">
+                    <i class="fa fa-arrow-circle-left"></i>
+                   De Generaciones&nbsp;Perdidas
+               </a>
+           </li>
+           <li class="next">
+              <a href="https://blog.ch3m4.org/2013/06/22/balance-y-cierre-de-ejercicio/" title="Siguiente">
+                   Balance y cierre de&nbsp;ejercicio
+                   <i class="fa fa-arrow-circle-right"></i>
+               </a>
+           </li>
+   </ul>
+   With category <a href="https://blog.ch3m4.org/category/pensamientos/">Pensamientos</a>:
+   <ul class="pager">
+          <li class="previous">
+             <a href="https://blog.ch3m4.org/2013/03/31/de-generaciones-perdidas/" title="Anterior en misma categoría">
+                <i class="fa fa-arrow-circle-o-left"></i>
+                De Generaciones&nbsp;Perdidas
+             </a>
+          </li>
+        <li class="next">
+             <a href="https://blog.ch3m4.org/2013/06/22/balance-y-cierre-de-ejercicio/" title="Siguiente en misma categoría">
+                 Balance y cierre de&nbsp;ejercicio
+                 <i class="fa fa-arrow-circle-o-right"></i>
+             </a>
+        </li>
+
+   </ul>
+
+    
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var disqus_identifier = "2013/04/09/scala-vs-python-vs-lua/";
+    loadDisqus = function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//hyperreals.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
+      window.scroll(0, document.getElementById('main').offsetTop);
+    }})
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

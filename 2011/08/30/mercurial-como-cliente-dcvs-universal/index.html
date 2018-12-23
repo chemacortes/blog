@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Mercurial como cliente DCVS universal | Introducción Con la llegada de los DCVS (Distributed Concurrent Versions System),...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.82b4bc13.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, bitbucket, git, github, mercurial">
+
+  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
+
+  <title>
+Mercurial como cliente DCVS universal | Hyperreals *R  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://plus.google.com/+ChemaCortés" title="google+"><i class="fa fa-google-plus fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+      
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/08/30/mercurial-como-cliente-dcvs-universal/" class="nohover">Mercurial como cliente <span class="caps">DCVS</span>&nbsp;universal</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Posted <time data-timeago datetime="2011-08-30T13:14:00+02:00">mar 30 agosto 2011</time>
+     by Chema Cortés    </p>
+    <p>
+    Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+&ndash;&ndash;    Tags:
+      <a href="https://blog.ch3m4.org/tag/bitbucket/">bitbucket</a>,      <a href="https://blog.ch3m4.org/tag/git/">git</a>,      <a href="https://blog.ch3m4.org/tag/github/">github</a>,      <a href="https://blog.ch3m4.org/tag/mercurial/">mercurial</a>    </p>
+  </div>
+  <div class="article_text">
+    <h2>Introducción</h2>
+<p>Con la llegada de los <a href="http://en.wikipedia.org/wiki/Distributed_Concurrent_Versions_System" title="Distributed Concurrent Versions System"><span class="caps">DCVS</span></a> (<em>Distributed Concurrent Versions System</em>), se ha convertido en habitual el uso de un sistema de control de versiones en todo desarrollo. La popularización de sitios webs basados en estos sistemas como <a href="http://github.com">github</a>, <a href="http://gitorious.org/">gitorious</a>, <a href="http://bitbucket.org">bitbucket</a> o <a href="http://code.google.com/">googlecode</a> como foros públicos donde compartir código entre programadores hasta el punto de convertirse en auténticas <em>redes sociales</em>, ha hecho de estos sistemas una necesidad para todo desarrollador que se precio, con el consabido dilema de cuál de los sistemas&nbsp;elegir.</p>
+<p>Gracias a las extensiones que podemos añadir, cada día es menos transcendente la elección de un <span class="caps">DCVS</span>, pudiendo usar cualquier cliente con cualquier otro&nbsp;servidor.</p>
+<h2>Comparando git y&nbsp;mercurial</h2>
+<p>Sin entrar en mucho detalle, podemos comparar estos dos sistemas <span class="caps">DCVS</span> populares para hacernos una&nbsp;idea:</p>
+<h3>git</h3>
+<ul>
+<li>Desarrollado en perl y pensado para linux (mal soporte en&nbsp;windows)</li>
+<li>Velocidad: muy&nbsp;rápido</li>
+<li>Comandos: algo&nbsp;complejo</li>
+<li>Interface gráfico: no&nbsp;tiene</li>
+<li>Popularidad muy&nbsp;alta</li>
+<li>Repositorio público <em>estrella</em>: <a href="http://github.com">github</a></li>
+</ul>
+<h3>mercurial&nbsp;(hg)</h3>
+<ul>
+<li>Desarrollado en python, con versiones para linux, windows y&nbsp;mac</li>
+<li>Velocidad:&nbsp;rápido</li>
+<li>Comandos: sencillo (similar a&nbsp;subversion)</li>
+<li>Interface gráfico: <a href="http://tortoisehg.bitbucket.org/">tortoiseHG</a> para gnome y&nbsp;windows</li>
+<li>Popularidad&nbsp;alta</li>
+<li>Repositorio público <em>estrella</em>: <a href="http://bitbucket.org">bitbucket</a></li>
+</ul>
+<p>Éstos son algunos apuntes rápidos. Evidentemente, hay algunos interfaces gráficos para git y es posible emplear git en windows, pero en mi opinión tiene algunos problemas que necesitan pulirse. Por otro lado, existen varios IDEs como netbeans o eclipse que pueden usar cualquiera de estos <span class="caps">DCVS</span>, abstrayendo su uso interno a través de un interface&nbsp;común.</p>
+<p>Para un programador de <strong>python</strong>, la elección debería ser clara: <strong>mercurial</strong>. Realizado en python y con numerosas extensiones, también desarrolladas en python, parece sin duda la mejor elección. Además, es el sistema de control de versiones más utilizado en proyectos python, incluyendo el desarrollo del lenguaje en si, por lo que se uso es casi obligado si queremos colaborar con otros desarrolladores&nbsp;python.</p>
+<p>Pero no hace falta renunciar a nada: desde mercurial también se puede usar repositorios git o subversion. Basta con añadir la extensión&nbsp;adecuada.</p>
+<p>En el resto del articulo, me centreré sólo en la extensión <a href="http://hg-git.github.com/">hg-git</a>, con la que se posibilita el uso de repositorios git desde mercurial, sin necesidad de instalar ningún cliente de git adicional (no existen dependecias con ningún ejecutable <code>git</code>).</p>
+<h2>hg-git</h2>
+<h3>Instalación</h3>
+<p>La última versión de mercurial a la hora de escribir este artículo es la 1.9. Como la versión <em>&#8220;estable</em>&#8221; de hg-git tiene problemas con esta versión en concreto de mercurial, voy a explicar aquí lo que sería el método <em>manual</em> de instalación, bastante más&nbsp;seguro.</p>
+<p>Suponemos que tenemos ya instalado <code>mercurial</code> por lo medios habituales (autoinstalador en windows/instalador de paquetes en linux). Nos será de gran ayuda tener instalado <a href="http://tortoisehg.bitbucket.org/">tortoiseHG</a> como interface gráfico para manejar los repositorios. Para windows, la instalación de <a href="http://tortoisehg.bitbucket.org/">tortoiseHG</a> incluye todo lo necesario al empotrar un intérprete de python, mercurial y varias extensiones, algunas de ellas necesarias para transformar rutas y nombres de ficheros codificados en <span class="caps">MBCS</span>. Los siguientes pasos a ejecutar con mercurial serán más fáciles de aplicar desde la interface de&nbsp;tortoiseHG.</p>
+<p>En el emplazamiento que queramos, empezamos por clonar un repositorio con <strong>hg-git</strong> desde&nbsp;mercurial:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ hg clone http://bitbucket.org/durin42/hg-git hg-git
+</pre></div>
+</td></tr></table>
+
+<p>Normalmente, yo suelo usar un mismo directorio para agrupas todos los repositorios clonados. Ése podría ser el lugar adecuado para guardar este&nbsp;repositorio.</p>
+<p>Añadimos esta extensión a la configuración de mercurial. Normalmente, se hace en el fichero <code>mercurial.ini</code> (windows) o en <code>~/.hgrc</code> (linux). Si usamos tortoiseHG, desde las <code>"opciones globales"</code> podemos editar directamente este&nbsp;fichero.</p>
+<p>Para añadir la&nbsp;extensión:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>[extensions]
+hggit = &lt;ruta-al-repositorio&gt;\hg-git\hggit
+</pre></div>
+</td></tr></table>
+
+<p>Como anotación, en alguna documentación se recomienda añadir también la extensión <em>opcional</em> <code>bookmarks</code> a la configuración; pero a partir de la versión 1.8 de mercurial, el comando <code>bookmark</code> es parte propia de los comandos de mercurial, por lo tanto este paso ya no es&nbsp;necesario.</p>
+<p>Como dependencia, hace falta instalar el módulo de python <code>dulwich</code> para manejo de repositorios git con python. En windows ya viene incluído en tortoiseHG, por lo que no hay que hacer nada más. En linux, viene como paquete instalable (<code>python-dulwich</code> en ubuntu), pero también se podría haber instalado mediante <code>easy_install</code> sin mayor problema. Lo que sí hay que tener cuidado es en asegurarnos que no tenemos instalado el paquete <code>python-git</code> para que no interfiera con el módulo <code>hg-git</code> que estamos&nbsp;configurando.</p>
+<p>Como lista final, estas serían las versiones&nbsp;probadas:</p>
+<ul>
+<li>mercurial (hg) <code>1.9</code></li>
+<li>hg-git <code>0.2.4</code></li>
+<li>dulwich <code>0.6.1</code></li>
+</ul>
+<h2>Utilización</h2>
+<p>Con hg-git instalado ya podemos acceder, por ejemplo, a los repositorios de github directamente desde mercurial. Basta con especificar que se trata de un repositorio&nbsp;git:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ hg clone git://github.com/django/django.git django.git
+</pre></div>
+</td></tr></table>
+
+<p>Para realizar un <code>push</code> a github con conexión codificada con <span class="caps">SSH</span>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ hg push git+ssh://user@github.com/user/myrep.git
+</pre></div>
+</td></tr></table>
+
+<p>Así mismo, si partimos de un repositorio mercurial también podemos <em>&#8220;convertirlo&#8221;</em> para su uso en git con el siguiente&nbsp;proceso:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> myrep <span class="c1"># (dentro del repositorio mercurial)</span>
+$ hg bookmark -r default master <span class="c1"># marcamos &#39;default&#39; como &#39;master&#39;</span>
+$ hg push git+ssh://user@github.com/user/myrep.git
+$ hg push
+</pre></div>
+</td></tr></table>
+
+<p>Al marcar con el nombre <code>master</code> a <code>default</code> facilitamos la conversión de los datos de mercurial a objetos git. Este proceso sólo es necesario hacerlo la primera&nbsp;vez.</p>
+<h2>github o&nbsp;bitbucket</h2>
+<p>En cuanto a elegir entre github o bitbucket, es más una cuestión de gustos. <strong>github</strong> se ha posicionado como el sistema predilecto para darse a conocer, sobre todo como referencia en los <em>curriculo</em> a la hora de solicitar empleo. En cambio, <strong>bitbucket</strong> permite el uso de repositorios privados, muy útil para pequeños grupos de trabajo y para colaboraciones en la <em>&#8220;nube&#8221;</em> (dispositivos&nbsp;móviles).</p>
+<p>Ambos son gratuitos, por lo que no debes dejar de probarlos tan sólo por lo que haya podido decir aquí. Es una nueva forma de conocer y darse a conocer entre programadores, algo que sin duda hace de nuestro pequeño mundo algo mucho más&nbsp;grande.</p>
+  </div>
+  <hr>
+  
+  <ul class="pager">
+          <li class="previous">
+               <a href="https://blog.ch3m4.org/2011/08/04/iconv-en-python/" title="Anterior">
+                    <i class="fa fa-arrow-circle-left"></i>
+                   iconv en&nbsp;python
+               </a>
+           </li>
+           <li class="next">
+              <a href="https://blog.ch3m4.org/2011/10/04/bitbucket-soporta-tambien-git/" title="Siguiente">
+                   Bitbucket soporta también&nbsp;git
+                   <i class="fa fa-arrow-circle-right"></i>
+               </a>
+           </li>
+   </ul>
+   With category <a href="https://blog.ch3m4.org/category/python/">Python</a>:
+   <ul class="pager">
+          <li class="previous">
+             <a href="https://blog.ch3m4.org/2011/08/04/iconv-en-python/" title="Anterior en misma categoría">
+                <i class="fa fa-arrow-circle-o-left"></i>
+                iconv en&nbsp;python
+             </a>
+          </li>
+        <li class="next">
+             <a href="https://blog.ch3m4.org/2011/12/01/web2py-con-pilas-incluidas/" title="Siguiente en misma categoría">
+                 web2py, con pilas&nbsp;incluidas
+                 <i class="fa fa-arrow-circle-o-right"></i>
+             </a>
+        </li>
+
+   </ul>
+
+    
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var disqus_identifier = "2011/08/30/mercurial-como-cliente-dcvs-universal/";
+    loadDisqus = function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//hyperreals.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
+      window.scroll(0, document.getElementById('main').offsetTop);
+    }})
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

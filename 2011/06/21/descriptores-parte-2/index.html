@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Descriptores - Parte 2 | ¿Cómo funciona un descriptor? Todos los objetos y todas las clases que derivan de object1 adquieren de él un método llamado...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.82b4bc13.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, descriptor, técnicas dinámicas">
+
+  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
+
+  <title>
+Descriptores - Parte 2 | Hyperreals *R  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://plus.google.com/+ChemaCortés" title="google+"><i class="fa fa-google-plus fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+      
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/06/21/descriptores-parte-2/" class="nohover">Descriptores - Parte&nbsp;2</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Posted <time data-timeago datetime="2011-06-21T01:26:00+02:00">mar 21 junio 2011</time>
+     by Chema Cortés    </p>
+    <p>
+    Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+&ndash;&ndash;    Tags:
+      <a href="https://blog.ch3m4.org/tag/descriptor/">descriptor</a>,      <a href="https://blog.ch3m4.org/tag/tecnicas-dinamicas/">técnicas dinámicas</a>    </p>
+  </div>
+  <div class="article_text">
+    <h1>¿Cómo funciona un&nbsp;descriptor?</h1>
+<p>Todos los objetos y todas las clases que derivan de <code>object</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> adquieren de él un método llamado <code>__getattribute__</code>. Siempre a través de este método se accede a los atributos, y es en este método donde se hace toda la <em>magia</em> de los descriptores, de modo que un acceso al atributo <code>obj.x</code> se transformará en una llamada a <code>type(obj).__dict__['x'].__get__(obj, type(obj))</code> si el atributo se trate de un descriptor. Una expresión casi ininteligible que va a requerir alguna que otra explicación. Lo importante es saber que al sobrecargar el método <code>__getattribute__</code> deberemos cuidarnos de invocar al método de la clase padre si queremos que los descriptores sigan funcionando con&nbsp;normalidad.</p>
+<h1>Atributos de un&nbsp;objeto</h1>
+<p>De todos los atributos que tiene un objeto python, algunos son <strong>&#8220;Atributos especiales&#8221;</strong> que aporta python para su funcionamiento interno como son <code>__class__</code> o <code>__bases__</code>. Estos atributos son bastante antipáticos de manejar ya que, o bien no son reportados por la función <code>dir()</code>, o bien tienen restricciones para ser&nbsp;modificados.</p>
+<p>Por otro lado, están los atributos definidos <em>dinámicamente</em> por el programa que forman lo que se conoce como <strong>&#8220;diccionario del objeto&#8221;</strong>. Estos atributos se guandan en el (<em>también</em>) atributo <code>__dict__</code>.</p>
+<p>Los <strong>&#8220;atributos de tipo&#8221;</strong> son los atributos asociados a un objeto por pertenencia a una clase. Estos atributos pueden estar enmascarados por los atributos del diccionario del objeto, algo muy útil cuando se aplican <em>&#8220;técnicas dinámicas&#8221;</em> de&nbsp;parcheo.</p>
+<p>Hay que tener en cuenta que algunos de los <em>tipos estándar</em> como <code>list</code>,<code>tuple</code>,<code>dict</code>,&#8230; no tienen atributo <code>__dict__</code> con lo que no tienen diccionario donde añadir o suplantar atributos dinámicamente. La única opción pasa por derivar clases a partir de ellos para añadir allí los atributos&nbsp;deseados.</p>
+<h1>Búsqueda de&nbsp;atributos</h1>
+<p>Al buscar un atributo <code>obj.attr</code>, se sigue un orden determinado de prioridad según el tipo de atributo que se esté&nbsp;buscando:</p>
+<ol>
+<li>
+<p><strong>Atributos especiales</strong>: son los que tienen mayor&nbsp;prioridad.</p>
+</li>
+<li>
+<p><strong>Descriptores de datos</strong>: se buscan en el diccionario de la clase (<code>obj.__class__.__dict__</code>) y en todos los diccionarios de las clases padre. Si se encuentra, se retorna el resultado del descriptor (la expresión tan chula que puse al principio del artículo). Si no es un descriptor de datos, entonces se ignora y se sigue&nbsp;buscando.</p>
+</li>
+<li>
+<p>Atributos del <strong>diccionario del objeto</strong>: se busca el atributo en el diccionario del objeto (<code>obj.__dict__</code>). Si <code>obj</code> fuera una clase (<code>==isinstance(obj,type)</code>), entonces también se buscaría en los diccionarios de las clases padre (<code>obj.__bases__</code>) y, de ser un descriptor de datos, se devolverá el resultado del descriptor en su&nbsp;lugar.</p>
+</li>
+<li>
+<p><strong>Descriptores de no-datos</strong>: se repite el paso 2, pero esta vez se buscan descriptores de&nbsp;no-datos.</p>
+</li>
+<li>
+<p><strong>Método <code>__getattr__</code></strong>: por último, si no ha habido éxito en la búsqueda del atributo, se intenta invocar el método <code>__getattr__</code>, de existir, para delegar en&nbsp;él.</p>
+</li>
+<li>
+<p>Si todo ha fallado, se termina la búsqueda retornando un error <code>AttributeError</code>.</p>
+</li>
+</ol>
+<p>En resumidas cuentas, se priorizan los descriptores de datos a las variables de instancia, las variables de instancia a los descriptores de no-datos y, con la más baja prioridad, se invocaría el método <code>__getattr__</code>.</p>
+<p>Remarcar la diferencia que hay entre un descriptor de datos y uno de no-datos en el orden de búsqueda. Por el simple hecho de añadir un método <code>__get__</code>, un descriptor se pondría por delante de los atributos del diccionario del objeto en el orden de búsqueda. También apuntar que sólo se buscan descriptores entre los atributos de clase, por lo que no tendrá sentido asignar descriptores en otro&nbsp;atributos.</p>
+<p>En el caso de la asignación de atributos, se seguirían estos&nbsp;pasos:</p>
+<ol>
+<li>
+<p>Se busca descriptores de datos en el diccionario de la clase (<code>obj.__class__.__dict__</code>) y todos los diccionarios de las clases padre. Si se encuentra un descriptor de datos, entonces se invoca el método <code>__set__</code> del&nbsp;descriptor.</p>
+</li>
+<li>
+<p>Se invoca el método <code>__setattr__</code>, si existe, para delegar en&nbsp;él.</p>
+</li>
+<li>
+<p>Como última prioridad, se inserta el atributo en el diccionario del&nbsp;objeto.</p>
+</li>
+</ol>
+<p>En estos pasos no aparecen los descriptores de no-datos. Si realizamos una asignación sobre un descriptor de no-datos, acabaría siendo reemplazado como cualquier atributo&nbsp;normal.</p>
+<h1>¿Se puede saltar un descriptor de&nbsp;datos?</h1>
+<p>La prioridad de los descriptores de datos frente al resto de atributos hace prácticamente imposible <em>saltárselos</em> para acceder directamente a un atributo. Todo acceso al atributo pasa por sus manos, regla que se aplica también con el propio descriptor y que da origen a bastantes recursividades sin fin. Por ello es habitual que el descriptor mantenga un atributo auxiliar <em>&#8220;privado&#8221;</em>, ya que de otro modo no tendrá otra forma de acceso&nbsp;directo.</p>
+<p>Algo que sí podemos hacer es cambiar las prioridades con la definición de un método <code>__getattribute__</code> propio. Como ejemplo, se podría priorizar los atributos del diccionario frente a los descriptores de esta&nbsp;manera:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Descrip</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mul</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span>
+    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">value</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">mul</span>
+    <span class="k">def</span> <span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span>
+    <span class="k">def</span> <span class="fm">__delete__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">del</span> <span class="bp">self</span>
+
+<span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">a12</span><span class="o">=</span><span class="n">Descrip</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">a200</span><span class="o">=</span><span class="n">Descrip</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">=</span><span class="n">value</span>
+
+    <span class="k">def</span> <span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+        <span class="n">dic</span><span class="o">=</span><span class="nb">super</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="s2">&quot;__dict__&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">dic</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dic</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+
+<span class="n">c</span><span class="o">=</span><span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">c</span><span class="o">.</span><span class="n">a12</span>  <span class="c1">#--&gt; 24  (valor del descriptor)</span>
+<span class="n">c</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;a12&quot;</span><span class="p">]</span><span class="o">=</span><span class="mi">100</span>
+<span class="k">print</span> <span class="n">c</span><span class="o">.</span><span class="n">a12</span>  <span class="c1">#--&gt; 100 (valor del diccionario)</span>
+</pre></div>
+</td></tr></table>
+
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>En python 2.x, a las clases que derivan de <code>object</code> se las denomina <em>&#8220;nuevas clases&#8221;</em> por contraste con las clases que había hasta ese momento. En python 3.x, todas las clases derivarán por defecto de <code>object</code>.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+  </div>
+  <hr>
+  
+  <ul class="pager">
+          <li class="previous">
+               <a href="https://blog.ch3m4.org/2011/06/19/descriptores-parte-1/" title="Anterior">
+                    <i class="fa fa-arrow-circle-left"></i>
+                   Descriptores - Parte&nbsp;1
+               </a>
+           </li>
+           <li class="next">
+              <a href="https://blog.ch3m4.org/2011/06/24/optimizaciones-con-los-metodos-especiales/" title="Siguiente">
+                   Optimizaciones con los Métodos&nbsp;Especiales
+                   <i class="fa fa-arrow-circle-right"></i>
+               </a>
+           </li>
+   </ul>
+   With category <a href="https://blog.ch3m4.org/category/python/">Python</a>:
+   <ul class="pager">
+          <li class="previous">
+             <a href="https://blog.ch3m4.org/2011/06/19/descriptores-parte-1/" title="Anterior en misma categoría">
+                <i class="fa fa-arrow-circle-o-left"></i>
+                Descriptores - Parte&nbsp;1
+             </a>
+          </li>
+        <li class="next">
+             <a href="https://blog.ch3m4.org/2011/06/24/optimizaciones-con-los-metodos-especiales/" title="Siguiente en misma categoría">
+                 Optimizaciones con los Métodos&nbsp;Especiales
+                 <i class="fa fa-arrow-circle-o-right"></i>
+             </a>
+        </li>
+
+   </ul>
+
+    
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var disqus_identifier = "2011/06/21/descriptores-parte-2/";
+    loadDisqus = function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//hyperreals.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
+      window.scroll(0, document.getElementById('main').offsetTop);
+    }})
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

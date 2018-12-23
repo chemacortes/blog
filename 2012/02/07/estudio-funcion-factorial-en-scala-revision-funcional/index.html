@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Estudio función factorial en scala - Revisión funcional | Como programador de python que todavía anda algo despistado estudiando scala, ahora...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.82b4bc13.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, algorithm, factorial">
+
+  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
+
+  <title>
+Estudio función factorial en scala - Revisión funcional | Hyperreals *R  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://plus.google.com/+ChemaCortés" title="google+"><i class="fa fa-google-plus fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+      
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2012/02/07/estudio-funcion-factorial-en-scala-revision-funcional/" class="nohover">Estudio función factorial en scala - Revisión&nbsp;funcional</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Posted <time data-timeago datetime="2012-02-07T13:41:00+01:00">mar 07 febrero 2012</time>
+     by Chema Cortés    </p>
+    <p>
+    Category: <a href="https://blog.ch3m4.org/category/scala/">Scala</a>
+&ndash;&ndash;    Tags:
+      <a href="https://blog.ch3m4.org/tag/algorithm/">algorithm</a>,      <a href="https://blog.ch3m4.org/tag/factorial/">factorial</a>    </p>
+  </div>
+  <div class="article_text">
+    <p>Como programador de python que todavía anda algo despistado estudiando scala, ahora empiezo a captar la filosófía que hay detrás de este lenguaje de programación. Mientras que python empienza a erradicar poco a poco la programación funcional, en scala su influencia es cada vez mayor hasta el extremo de considerar precindibles la mayoría de los bucles. Aún asi, ambos lenguajes soportan la <em>&#8220;compresión de listas&#8221;</em> como técnica a medio camino entre funcional y bucle estándar, aunque esta técnica está más orientada a obtener listas a partir de otras listas, y no para realizar cálculos sobre un conjunto de&nbsp;números.</p>
+<p>Voy a completar el anterior artículo que trataba del <a href="https://blog.ch3m4.org/2011/10/17/estudio-funcion-factorial-en-scala/">&#8220;Estudio función factorial en scala&#8221;</a> con algunas formas más <em>&#8220;funcionales&#8221;</em> de definir el&nbsp;factorial:</p>
+<p>La forma más simple de definir la función&nbsp;factorial:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="n">fact</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">(</span><span class="mi">1</span> <span class="n">to</span> <span class="n">n</span><span class="o">).</span><span class="n">product</span>
+</pre></div>
+</td></tr></table>
+
+<p>En realidad, <code>1 to n</code> no es un elemento sintáctico del lenguaje, si no más bien la forma <em>alternativa</em> de escribir la invocación del método <code>1.to(n)</code>. Este método nos genera una secuencia de números desde el 1 al n (equivalente en python a&nbsp;range(1,n+1)).</p>
+<p>Curiosamente, también está definido <code>fact(0)</code> gracias a que <code>product</code> da como resultado el elemento neutro <code>1</code> en secuencias vacías <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>.</p>
+<p>Esta forma concisa de calcular el producto es común a todas las secuencias en scala. Faltaría, tan sólo, que operara con BigInts para que fuera&nbsp;perfecta:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="n">fact</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">(</span><span class="nc">BigInt</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="n">to</span> <span class="n">n</span><span class="o">).</span><span class="n">product</span>
+</pre></div>
+</td></tr></table>
+
+<p>No es necesario indicar el tipo devuelto por la función puesto que el compilador es capaz de inferirlo de la&nbsp;expresión.</p>
+<p>Otra forma funcional sería usando el método <code>reduce</code>, donde se indica <em>explícitamente</em> la operación binaria a realizar entre pares de&nbsp;elementos:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="n">fact</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">(</span><span class="nc">BigInt</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="n">to</span> <span class="n">n</span><span class="o">).</span><span class="n">reduce</span><span class="o">(</span><span class="k">_</span><span class="o">*</span><span class="k">_</span><span class="o">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Como operación se pone una especie de <em>plantilla</em> (<em>pattern</em>) que representa la operación binaria de multiplicación. Por comparar, en python se puede hacer algo&nbsp;así:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="fm">__mul__</span>
+
+<span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+   <span class="k">return</span> <span class="nb">reduce</span><span class="p">(</span><span class="fm">__mul__</span><span class="p">,</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>Lamentablemente, el operador funcional <code>'reduce'</code> está desapareciendo de python por considerarlo complejo de entender en su funcionamiento <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>.</p>
+<p>Por último, aún existe otra forma funcional de expresar el factorial en scala. Son los <em>&#8220;plegados&#8221;</em> (<em>folds</em>), similar en funcionamiento a <code>reduce</code>, pero con control sobre la dirección del recorrido y la posibilidad de dar un valor&nbsp;inicial:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="n">fact</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">(</span><span class="mi">1</span> <span class="n">to</span> <span class="n">n</span><span class="o">).</span><span class="n">foldLeft</span><span class="o">(</span><span class="nc">BigInt</span><span class="o">(</span><span class="mi">1</span><span class="o">))(</span><span class="k">_</span><span class="o">*</span><span class="k">_</span><span class="o">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Seguro que pronto se me ocurrirán más&nbsp;formas.</p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>En el caso del método <code>sum</code> daría el elemento neutro para la suma, o sea, el <code>0</code>.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Personalmente, considero que la desaparición de la programación funcional se debe más a la corta visión de quién sólo ve un encadenamiento de sentencias, en lugar de ver <em>&#8220;actores&#8221;</em> interaccionando en libre concurrencia.&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+  </div>
+  <hr>
+  
+  <ul class="pager">
+          <li class="previous">
+               <a href="https://blog.ch3m4.org/2012/01/26/condificando-en-binario/" title="Anterior">
+                    <i class="fa fa-arrow-circle-left"></i>
+                   Codificando en&nbsp;binario
+               </a>
+           </li>
+           <li class="next">
+              <a href="https://blog.ch3m4.org/2012/03/09/programacion-ciencia-o-ingenieria-2/" title="Siguiente">
+                   Programación. ¿Ciencia o&nbsp;Ingeniería?
+                   <i class="fa fa-arrow-circle-right"></i>
+               </a>
+           </li>
+   </ul>
+   With category <a href="https://blog.ch3m4.org/category/scala/">Scala</a>:
+   <ul class="pager">
+          <li class="previous">
+             <a href="https://blog.ch3m4.org/2011/10/17/estudio-funcion-factorial-en-scala/" title="Anterior en misma categoría">
+                <i class="fa fa-arrow-circle-o-left"></i>
+                Estudio función factorial en&nbsp;scala
+             </a>
+          </li>
+        <li class="next">
+             <a href="https://blog.ch3m4.org/2012/08/15/estudio-funcion-factorial-en-scala-operador-sufix/" title="Siguiente en misma categoría">
+                 Estudio función factorial en scala - operador&nbsp;sufix
+                 <i class="fa fa-arrow-circle-o-right"></i>
+             </a>
+        </li>
+
+   </ul>
+
+    
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var disqus_identifier = "2012/02/07/estudio-funcion-factorial-en-scala-revision-funcional/";
+    loadDisqus = function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//hyperreals.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
+      window.scroll(0, document.getElementById('main').offsetTop);
+    }})
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

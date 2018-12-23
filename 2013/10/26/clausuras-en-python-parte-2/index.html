@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Clausuras en python - Parte 2 | Ámbitos anidados La importancia de disponer de clausuras va más allá de saber dónde se evalúa la función. Si fuera...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.82b4bc13.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, closures">
+
+  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
+
+  <title>
+Clausuras en python - Parte 2 | Hyperreals *R  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://plus.google.com/+ChemaCortés" title="google+"><i class="fa fa-google-plus fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+      
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2013/10/26/clausuras-en-python-parte-2/" class="nohover">Clausuras en python - Parte&nbsp;2</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Posted <time data-timeago datetime="2013-10-26T04:15:00+02:00">sáb 26 octubre 2013</time>
+     by Chema Cortés    </p>
+    <p>
+    Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+&ndash;&ndash;    Tags:
+      <a href="https://blog.ch3m4.org/tag/closures/">closures</a>    </p>
+  </div>
+  <div class="article_text">
+    <h2>Ámbitos&nbsp;anidados</h2>
+<p>La importancia de disponer de <em>clausuras</em> va más allá de
+saber dónde se evalúa la función. Si fuera posible encapsular una función
+junto con su propio entorno de ejecución, podríamos conseguir que la función tenga
+<em>&#8220;memoria&#8221;</em> o, dicho de otro modo, que sea capaz de conservar sus propios
+estados entre llamadas a la función. Este <em>empaquetado</em> de función y
+entorno de ejecución se denomina a veces <strong>clausuras verdaderas</strong> y
+suele ser la principal característica de los llamados <em>Lenguajes Funcionales</em>.</p>
+<p>En python podemos crear estas <em>clausuras verdaderas</em> con *<em>funciones
+anidadas</em>, donde una función está definida dentro del ámbito de la&nbsp;otra.</p>
+<p>Un ejemplo&nbsp;sencillo:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">incr</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">aux</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">n</span>
+    <span class="k">return</span> <span class="n">aux</span>
+
+<span class="n">inc5</span><span class="o">=</span><span class="n">incr</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">inc5</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#--&gt;15</span>
+</pre></div>
+</td></tr></table>
+
+<p>Como resultado se devuelve la función <code>aux</code>, definida dentro del
+ámbito de <code>incr</code> y que emplea de éste la variable <code>n</code>. Internamente,
+se conserva la referencia a la variable <code>n</code>, pero no será accesible
+desde fuera de la función <code>aux</code>. Hemos podido
+empaquetar la función junto con el entorno donde se&nbsp;definió.</p>
+<p>Pongamos otro&nbsp;ejemplo:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count</span><span class="p">():</span>
+    <span class="n">num</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">aux</span><span class="p">():</span>
+        <span class="n">num</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="k">return</span> <span class="n">num</span>
+    <span class="k">return</span> <span class="n">aux</span>
+
+<span class="n">c1</span><span class="o">=</span><span class="n">count</span><span class="p">()</span>
+
+<span class="n">c1</span><span class="p">()</span>  <span class="c1">#--&gt; 1</span>
+<span class="n">c1</span><span class="p">()</span>  <span class="c1">#--&gt; 2</span>
+<span class="n">c1</span><span class="p">()</span>  <span class="c1">#--&gt; 3</span>
+</pre></div>
+</td></tr></table>
+
+<p>Si pruebas este código te dará error. La función anidada <code>aux</code>
+intenta modificar la variable <code>num</code>. Para este caso, la variable se
+crea dentro del ámbito más interno, en lugar de usar la variable
+disponible. Y como se intenta modificar la variable antes de asignarle
+un valor, entonces se produce el&nbsp;error.</p>
+<p>Como solución, podríamos hacer la variable <code>num</code> global para que fuera
+accesible por todos los ámbitos. Pero esta solución no es buena ya que
+nos abriría el empaquetado. Para python3 podríamos declarar la
+variable como <code>nonlocal</code> para que se busque en los ámbitos&nbsp;superiores:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count</span><span class="p">():</span>
+    <span class="n">num</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">aux</span><span class="p">():</span>
+        <span class="n">nonlocal</span> <span class="n">num</span>
+        <span class="n">num</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="k">return</span> <span class="n">num</span>
+    <span class="k">return</span> <span class="n">aux</span>
+</pre></div>
+</td></tr></table>
+
+<p>Como solución para salir del paso, se puede evitar la reasignación de
+variables. Por ejemplo, usando una&nbsp;lista:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count</span><span class="p">():</span>
+    <span class="n">num</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">aux</span><span class="p">():</span>
+        <span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="k">return</span> <span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">aux</span>
+</pre></div>
+</td></tr></table>
+
+<p>Ya sé que no es muy elegante, pero hay otras formas de hacerlo&nbsp;mejor.</p>
+<h2>Generadores</h2>
+<p>Una de las formas más comunes de usar clausuras es a través de
+<strong>generadores</strong>. Básicamente, son funciones que en lugar de usar <code>return</code>
+utilizan <code>yield</code> para devolver un valor. Entre invocaciones, se conserva
+el entorno de ejecución y continúan desde el
+punto desde donde estaba. Para el ejemplo&nbsp;anterior:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count</span><span class="p">():</span>
+    <span class="n">num</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">num</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="k">yield</span> <span class="n">num</span>
+
+<span class="n">c1</span><span class="o">=</span><span class="n">count</span><span class="p">()</span>
+<span class="nb">next</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="c1">#--&gt;1</span>
+<span class="nb">next</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="c1">#--&gt;2</span>
+</pre></div>
+</td></tr></table>
+
+<h2>Objetos&nbsp;funciones</h2>
+<p>En los ejemplos que hemos visto, podríamos tener varias clausuras de
+una misma función. Si hemos hecho bien las tareas, la ejecución de estas clausuras
+son&nbsp;independientes:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">c1</span><span class="o">=</span><span class="n">count</span><span class="p">()</span>
+<span class="n">c2</span><span class="o">=</span><span class="n">count</span><span class="p">()</span>
+
+<span class="nb">next</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="c1">#--&gt;1</span>
+<span class="nb">next</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="c1">#--&gt;2</span>
+<span class="nb">next</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span> <span class="c1">#--&gt;1</span>
+<span class="nb">next</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span> <span class="c1">#--&gt;2</span>
+<span class="nb">next</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="c1">#--&gt;3</span>
+</pre></div>
+</td></tr></table>
+
+<p>Con ello es posible establecer una analogía con clases y objetos. La definición
+de la función sería la <em>clase</em> y la clausura la <em>instancia</em> de la&nbsp;clase.</p>
+<p>¿Y si lo hacemos posible? En python se denominan <em>callables</em> a todo objeto que
+tenga un método <code>__call__</code>, comportándose como si fueran
+funciones (<em>Functores</em>). Contruyamos una <em>callable</em> que funcione como una función
+con&nbsp;clausura:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Count</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">num</span>
+
+<span class="n">c1</span><span class="o">=</span><span class="n">Count</span><span class="p">()</span>
+<span class="n">c1</span><span class="p">()</span> <span class="c1">#--&gt;1</span>
+<span class="n">c1</span><span class="p">()</span> <span class="c1">#--&gt;2</span>
+<span class="n">c1</span><span class="p">()</span> <span class="c1">#--&gt;3</span>
+</pre></div>
+</td></tr></table>
+
+<p>Sin duda es la manera más elegante de usar clausuras que tenemos en
+python. Evita muchos problemas y nos da una gran potencia a la hora de
+resolver algunos&nbsp;problemas.</p>
+<p>Por ejemplo: imagina que queremos recorrer una lista de números,
+excluyendo los que sean pares, y siempre que la suma total de los
+números que ya hemos visitado no supere cierto&nbsp;límite.</p>
+<p>En una primera aproximación se podría crear un&nbsp;generador:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recorr</span><span class="p">(</span><span class="n">lista</span><span class="p">,</span> <span class="n">maximo</span><span class="p">):</span>
+    <span class="n">total</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="mi">2</span><span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">total</span><span class="o">+</span><span class="n">i</span><span class="o">&lt;</span><span class="n">maximo</span><span class="p">:</span>
+                <span class="n">total</span><span class="o">+=</span><span class="n">i</span>
+                <span class="k">yield</span> <span class="n">i</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">break</span>
+
+<span class="n">recorr</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">23</span><span class="p">],</span><span class="mi">30</span><span class="p">)</span> <span class="c1">#--&gt;[3,7,11]</span>
+</pre></div>
+</td></tr></table>
+
+<p>Está bien, pero no es fácil de usar. Aunque sólo necesitemos algunos
+elementos, seguramente estemos obligados a crear una lista completa
+con todos los valores<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. Encima, no tenemos acceso a la variable <code>total</code>
+para saber cuánto han sumado el&nbsp;resultado.</p>
+<p>Una alternativa con objetos funciones, mucho más&nbsp;elegante:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RecorrFunc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maximo</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maximo</span><span class="o">=</span><span class="n">maximo</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+    <span class="n">res</span><span class="o">=</span> <span class="n">item</span><span class="o">%</span><span class="mi">2</span><span class="o">!=</span><span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="o">+</span><span class="n">item</span><span class="o">&lt;</span><span class="bp">self</span><span class="o">.</span><span class="n">maximo</span>
+    <span class="k">if</span> <span class="n">res</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="o">+=</span><span class="n">item</span>
+    <span class="k">return</span> <span class="n">res</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lista</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lista</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span>
+
+<span class="n">recorr</span><span class="o">=</span><span class="n">RecorrFunc</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">recorr</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">23</span><span class="p">])</span> <span class="c1">#--&gt;[3,7,11]</span>
+<span class="k">print</span> <span class="n">recorr</span><span class="o">.</span><span class="n">total</span> <span class="c1">#--&gt;21</span>
+</pre></div>
+</td></tr></table>
+
+<p>Las posibilidades de los objetos función son muchas. Del mismo modo que se devuelve una lista, 
+sería posible devolver un iterador. Empleando las funciones del módulo
+ <code>itertools</code>, y algunos trucos más, podríamos aplicar los principios de
+ la programación funcional en python sin&nbsp;problemas.</p>
+<p>Pero éso lo veremos en próximos&nbsp;artículos.</p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>No sabemos de antemano cuántos items vamos a obtener. Si, por ejemplo,
+necesitamos sólo los tres primeros, tendremos que iterar elemento a
+elemento hasta llegar a los tres que necesitamos o, bien, hasta que
+quede exhausto el iterador. Con la solución con funtores el proceso es
+mucho más directo y eficiente.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+  </div>
+  <hr>
+  
+  <ul class="pager">
+          <li class="previous">
+               <a href="https://blog.ch3m4.org/2013/10/25/clausuras-en-python-parte-1/" title="Anterior">
+                    <i class="fa fa-arrow-circle-left"></i>
+                   Clausuras en python - Parte&nbsp;1
+               </a>
+           </li>
+           <li class="next">
+              <a href="https://blog.ch3m4.org/2013/10/26/python-eficiente-hacia-la-programacion-funcional/" title="Siguiente">
+                   Python Eficiente - Hacia la programación&nbsp;funcional
+                   <i class="fa fa-arrow-circle-right"></i>
+               </a>
+           </li>
+   </ul>
+   With category <a href="https://blog.ch3m4.org/category/python/">Python</a>:
+   <ul class="pager">
+          <li class="previous">
+             <a href="https://blog.ch3m4.org/2013/10/25/clausuras-en-python-parte-1/" title="Anterior en misma categoría">
+                <i class="fa fa-arrow-circle-o-left"></i>
+                Clausuras en python - Parte&nbsp;1
+             </a>
+          </li>
+        <li class="next">
+             <a href="https://blog.ch3m4.org/2013/10/26/python-eficiente-hacia-la-programacion-funcional/" title="Siguiente en misma categoría">
+                 Python Eficiente - Hacia la programación&nbsp;funcional
+                 <i class="fa fa-arrow-circle-o-right"></i>
+             </a>
+        </li>
+
+   </ul>
+
+    
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var disqus_identifier = "2013/10/26/clausuras-en-python-parte-2/";
+    loadDisqus = function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//hyperreals.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
+      window.scroll(0, document.getElementById('main').offsetTop);
+    }})
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

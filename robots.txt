@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://blog.ch3m4.org/sitemap.xml

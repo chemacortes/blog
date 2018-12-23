@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Optimizaciones con los Métodos Especiales | Métodos Especiales Dentro del llamado “modelo de datos” de python, la sobrecarga de operadores, tan...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.82b4bc13.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, técnicas dinámicas">
+
+  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
+
+  <title>
+Optimizaciones con los Métodos Especiales | Hyperreals *R  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://plus.google.com/+ChemaCortés" title="google+"><i class="fa fa-google-plus fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+      
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/06/24/optimizaciones-con-los-metodos-especiales/" class="nohover">Optimizaciones con los Métodos&nbsp;Especiales</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Posted <time data-timeago datetime="2011-06-24T00:51:00+02:00">vie 24 junio 2011</time>
+     by Chema Cortés    </p>
+    <p>
+    Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+&ndash;&ndash;    Tags:
+      <a href="https://blog.ch3m4.org/tag/tecnicas-dinamicas/">técnicas dinámicas</a>    </p>
+  </div>
+  <div class="article_text">
+    <h1>Métodos&nbsp;Especiales</h1>
+<p>Dentro del llamado <a href="http://www.python.org/doc//current/reference/datamodel.html" title="Modelo de datos">&#8220;modelo de datos&#8221;</a> de python, la <a href="http://es.wikipedia.org/wiki/Sobrecarga" title="Sobrecarga de operadores"><em>sobrecarga de operadores</em></a>, tan característica de la programación orientada a objetos, se realiza mediante la definición de algunos métodos de <a href="http://www.python.org/doc//current/reference/datamodel.html#special-method-names" title="Nombres especiales de métodos">nombre especial</a>. A través de esta técnica se define cómo se comportará una clase frente a los operadores del&nbsp;lenguaje.</p>
+<p>Estos métodos especiales son invocados <em>implícitamente</em> por el intérprete para realizar la operación, decidiendo en tiempo de ejecución cuáles de los  métodos serán más adecuados para realizar la&nbsp;operación.</p>
+<p>Por ejemplo, el método especial <code>__nonzero__</code> determina el valor <code>True</code> o <code>False</code> de la instancia, útil para expresiones condicionales. De no estar definido este método, se considera el método <code>__len__</code> (usado por la función <code>len()</code>) para determinar como <code>False</code> si tiene tamaño cero. En caso de que tampoco cuente con este método, se considera siempre como <code>True</code>.</p>
+<p>Al ser parte intrínseca del lengueje, estos <em>métodos especiales</em> inciden seriamente en redimiento del intérprete. Con sólo definir el método especial <code>__getattribute__</code>, por ejemplo, encargado de controlar todo acceso a los atributos de un objeto, la sobrecarga del intérprete se volvería pesada y lenta sin posibilidad de mejorar mucho mediante rutinas en lenguaje C. Para evitar este impacto negativo, se toman algunas <em>&#8220;optimizaciones&#8221;</em> que sólo son aplicables a los métodos&nbsp;especiales.</p>
+<h1>Optimizaciones de Métodos&nbsp;Especiales</h1>
+<p>Con los <em>&#8220;Métodos Especiales&#8221;</em> se dan dos optimizaciones en la invocación &#8220;implícita&#8221; de un método&nbsp;especial:</p>
+<ol>
+<li>
+<p>Implícitamente, sólo se buscará métodos especiales en la clase, <strong><em>nunca</em></strong> en el diccionario del&nbsp;objeto.</p>
+</li>
+<li>
+<p>Implícitamente, <strong><em>nunca</em></strong> se accederá a un método especial a través de <code>__getattribute__</code></p>
+</li>
+</ol>
+<p>Estas dos optimizaciones (más bien <em>&#8220;atajos</em>&#8220;) son origen de muchos errores y malas interpretaciones, responsable en primera instancia de que determinado código no funcione como se esperaba en&nbsp;teoría.</p>
+<p>Recalcar que estas optimizaciones sólo ocurren en las invocaciones <em>&#8220;implícitas&#8221;</em>. Si hacemos la invocación explícita a través del nombre especial del método entonces se sigue el procedimiento estándar de búsqueda de&nbsp;atributos.</p>
+<p>Veamos algunos ejemplos y&nbsp;contraejemplos:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&gt;&gt;&gt; class C(object):
+...     def __len__(self):
+...         return 5
+... 
+&gt;&gt;&gt; obj=C()
+&gt;&gt;&gt; len(obj)
+5
+&gt;&gt;&gt; 
+&gt;&gt;&gt; obj.__len__=lambda:100
+&gt;&gt;&gt; len(obj)
+5
+&gt;&gt;&gt; obj.__len__()
+100
+</pre></div>
+</td></tr></table>
+
+<p>La clase responde a la función estándar <code>len()</code> a través del método <code>__len__</code>. Como se ve, aunque cambiemos el método en el diccionario del objeto, la función <code>len()</code> sigue usando el método especial de la clase. Si se invoca el método <em>explícitamente</em> (<code>obj.__len__()</code>), entonces sí que se usará el método del diccionario del&nbsp;objeto.</p>
+<p>Primera&nbsp;conclusión:</p>
+<blockquote>
+<p>Para que funcione correctamente, toda <em>técnica dinámica</em> que involucre métodos especiales ha de actuar sobre la&nbsp;clase.</p>
+</blockquote>
+<p>Estudiemos otro&nbsp;ejemplo:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="n">a</span><span class="o">=</span><span class="mi">100</span>
+
+    <span class="k">def</span> <span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+        <span class="n">value</span><span class="o">=</span><span class="nb">super</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s2">&quot;Desde C # &#39;</span><span class="si">%r</span><span class="s2">&#39;.&#39;</span><span class="si">%s</span><span class="s2">&#39;==</span><span class="si">%r</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">attr</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+</pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&gt;&gt;&gt; obj=C()
+&gt;&gt;&gt; obj.a
+Desde C # &#39;&lt;__main__.C object at 0xb77d4b2c&gt;&#39;.&#39;a&#39;==100
+100
+&gt;&gt;&gt; C.a
+100
+</pre></div>
+</td></tr></table>
+
+<p>En la prueba, accedemos al atributo <code>a</code> a través de la instancia <code>obj</code> y a través de la clase <code>C</code>. En el primer caso, se llama a <code>__getattribute__</code> para acceder al atributo; mientras que en el segundo no lo hace. Muy a menudo se piensa errónemente que la clase usa implícitamente sus propios métodos especiales y no es&nbsp;así.</p>
+<p>Como objeto que es, una clase también es una instancia. A la clase de una clase la denominaremos <strong>&#8220;metaclase&#8221;</strong><sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup> y tendrá como ancestro superior la clase <code>type</code> (del mismo modo que toda clase tenía como ancestro la clase <code>object</code>)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. Es a esta metaclase donde se buscan los métodos especiales de la propia&nbsp;clase:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Meta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+        <span class="n">value</span><span class="o">=</span><span class="nb">super</span><span class="p">(</span><span class="n">Meta</span><span class="p">,</span><span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s2">&quot;Desde Meta# &#39;</span><span class="si">%r</span><span class="s2">&#39;.&#39;</span><span class="si">%s</span><span class="s2">&#39;==</span><span class="si">%r</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="n">attr</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+<span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="vm">__metaclass__</span><span class="o">=</span><span class="n">Meta</span>
+
+    <span class="n">a</span><span class="o">=</span><span class="mi">100</span>
+
+    <span class="k">def</span> <span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+        <span class="n">value</span><span class="o">=</span><span class="nb">super</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s2">&quot;Desde C # &#39;</span><span class="si">%r</span><span class="s2">&#39;.&#39;</span><span class="si">%s</span><span class="s2">&#39;==</span><span class="si">%r</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">attr</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+</pre></div>
+</td></tr></table>
+
+<p>De donde podemos sacar la segunda&nbsp;conclusión:</p>
+<blockquote>
+<p>Los métodos especiales que operen con clases deberán ir en la&nbsp;metaclase.</p>
+</blockquote>
+<p>Haciendo un fundido de los ejemplos&nbsp;anteriores:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Meta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+        <span class="n">value</span><span class="o">=</span><span class="nb">super</span><span class="p">(</span><span class="n">Meta</span><span class="p">,</span><span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s2">&quot;Desde Meta# &#39;</span><span class="si">%r</span><span class="s2">&#39;.&#39;</span><span class="si">%s</span><span class="s2">&#39;==</span><span class="si">%r</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="n">attr</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">999</span>
+
+<span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="vm">__metaclass__</span><span class="o">=</span><span class="n">Meta</span>
+
+    <span class="k">def</span> <span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+        <span class="n">value</span><span class="o">=</span><span class="nb">super</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s2">&quot;Desde C # &#39;</span><span class="si">%r</span><span class="s2">&#39;.&#39;</span><span class="si">%s</span><span class="s2">&#39;==</span><span class="si">%r</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">attr</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">100</span>
+</pre></div>
+</td></tr></table>
+
+<p>Con este código, se puede comprobar las siguientes formas de invocar <code>__len__</code> para la&nbsp;instancia:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&gt;&gt;&gt; obj=C()
+&gt;&gt;&gt; len(obj)
+100
+&gt;&gt;&gt; len(C)
+999
+</pre></div>
+</td></tr></table>
+
+<p>Aquí observamos que la llamada <em>implícita</em> a <code>__len__</code> se salta el <code>__getattribute__</code> tanto de la clase como de la metaclase como ya estaba&nbsp;anunciado. </p>
+<p>Analicemos algunas llamadas <em>explícitas</em> (recomiendo ir&nbsp;probándolas):</p>
+<ul>
+<li>vía la instancia <code>obj.__len__()</code>:  se usará el <code>__getattribute__</code> de la clase para buscar el método <code>__len__</code></li>
+<li>vía el tipo <code>type(obj).__len__(obj)</code>:   se usará el <code>__getattribute__</code> de la metaclase para buscar el método <code>__len__</code>. Por orden de prioridad, se usará el <code>__len__</code> de la&nbsp;clase.</li>
+<li>vía la metaclase <code>type(C).__len__(C)</code> se usará el <code>__getattribute__</code> de <code>type</code>, invocando finalmente el <code>__len__</code> de la&nbsp;metaclase</li>
+</ul>
+<p>En el orden de búsqueda, tiene prioridad el método <code>__len__</code> definido en la clase frente al definido en la metaclase. Por ese motivo no puede emplearse la llamada explícita <code>C.__len__()</code> ya que no corresponde con un método de&nbsp;clase.</p>
+<h1>Conclusión</h1>
+<p>Entendiendo cómo funcionan estas optimizaciones vistas con los <em>métodos especiales</em>, y con bastante cuidado, será posible hacer que nuestras clases se comporten según lo esperado en las operaciones normales. Una buena planificación de nuestro modelo de datos según lo que espera el intérprete conseguirá que nuestro código sea más legible y fácil de&nbsp;mantener.</p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Siguiendo con la relaciones entre clases y objetos, la clase <code>type</code> es a la vez instancia de <code>type</code> y subclase de <code>object</code>.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>En próximos artículos veremos el funcionamiento de las <em>metaclases</em>&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+  </div>
+  <hr>
+  
+  <ul class="pager">
+          <li class="previous">
+               <a href="https://blog.ch3m4.org/2011/06/21/descriptores-parte-2/" title="Anterior">
+                    <i class="fa fa-arrow-circle-left"></i>
+                   Descriptores - Parte&nbsp;2
+               </a>
+           </li>
+           <li class="next">
+              <a href="https://blog.ch3m4.org/2011/06/26/metodo-__getattribute__/" title="Siguiente">
+                   Método&nbsp;__getattribute__
+                   <i class="fa fa-arrow-circle-right"></i>
+               </a>
+           </li>
+   </ul>
+   With category <a href="https://blog.ch3m4.org/category/python/">Python</a>:
+   <ul class="pager">
+          <li class="previous">
+             <a href="https://blog.ch3m4.org/2011/06/21/descriptores-parte-2/" title="Anterior en misma categoría">
+                <i class="fa fa-arrow-circle-o-left"></i>
+                Descriptores - Parte&nbsp;2
+             </a>
+          </li>
+        <li class="next">
+             <a href="https://blog.ch3m4.org/2011/06/26/metodo-__getattribute__/" title="Siguiente en misma categoría">
+                 Método&nbsp;__getattribute__
+                 <i class="fa fa-arrow-circle-o-right"></i>
+             </a>
+        </li>
+
+   </ul>
+
+    
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var disqus_identifier = "2011/06/24/optimizaciones-con-los-metodos-especiales/";
+    loadDisqus = function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//hyperreals.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
+      window.scroll(0, document.getElementById('main').offsetTop);
+    }})
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

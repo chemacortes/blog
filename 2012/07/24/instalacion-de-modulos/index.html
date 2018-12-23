@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Instalación de módulos | Resulta habitual la instalación de nuevos módulos o paquetes en nuestra instalación de python, para lo que basta con...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.82b4bc13.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math">
+
+  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
+
+  <title>
+Instalación de módulos | Hyperreals *R  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://plus.google.com/+ChemaCortés" title="google+"><i class="fa fa-google-plus fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+      
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2012/07/24/instalacion-de-modulos/" class="nohover">Instalación de&nbsp;módulos</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Posted <time data-timeago datetime="2012-07-24T22:02:00+02:00">mar 24 julio 2012</time>
+     by Chema Cortés    </p>
+    <p>
+    Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+  </div>
+  <div class="article_text">
+    <p>Resulta habitual la instalación de nuevos módulos o paquetes en nuestra instalación de python, para lo que basta con introducir en el directorio <code>site-packages</code> el fichero del módulo o, en caso de paquetes, el directorio con el paquete. Algunas veces, la instalación requiere compilar e instalar librerías en el sistema, por lo que la instalación se complica&nbsp;bastante.</p>
+<p>Para hacer más sencillo la búsqueda e instalación de módulos, podemos elegir entre varias utilidades que, frecuentemente, se ven mezcladas en las documentaciones que podamos consultar, sin quedar claro cuál deberíamos utilizar en nuestro día a&nbsp;día.</p>
+<p>En este artículo voy a aclarar estas utilidades, así como algunos trucos que podemos usar para crear entornos de trabajo aislados del&nbsp;resto.</p>
+<h2>Instaladores de&nbsp;paquetes</h2>
+<ul>
+<li>
+<p><strong>Distutils</strong> era la herramienta estándar para empaquetar paquetes&nbsp;python.</p>
+<p><code>python setup.py install</code></p>
+<p>Funciona bien, pero con algunas limitaciones que no eran fácil de arreglar. Viene de serie con la instalación de python y se puede reconocer por existir un fichero llamado <code>setup.py</code> que configura la creación del paquete listo para su distribución, pudiendo generar ficheros <code>.deb</code>  o <code>.rpm</code> para las distribuciones linux más populares, o los habituales instaladores para windows o mac a través de complementos. La&nbsp;instalación </p>
+</li>
+<li>
+<p><a href="http://pypi.python.org/pypi/setuptools" title="Setuptools (con instrucciones de instalación)"><strong>Setuptools</strong></a> era un proyecto que pretendía mejorar <code>distutils</code> añadiendo más&nbsp;funcionalidades.</p>
+<p><code>easy_install &lt;module&gt;</code></p>
+<p>En muchos sentidos, se considera un <em>&#8220;estándar de facto&#8221;</em> gracias al comando <a href="http://packages.python.org/distribute/easy_install.html" title="Easy_install"><code>easy_install</code></a>; pero deja de funcionar en python3. Introdujeron el <strong>egg</strong> (huevo) como formato de los ficheros para distribuir módulos, así como un repositorio central llamado <em>&#8220;CheeseShop&#8221;</em> donde buscar los módulos a instalar que fue el germen de lo que ahora es el directorio <a href="http://pypi.python.org/pypi" title="the Python Package Index">PyPi</a>. Estos ficheros <em>eggs</em> suelen ser ficheros comprimidos que se instalan simplemente al ejecutarlos python como si fueran un&nbsp;programa.</p>
+</li>
+<li>
+<p><a href="http://pypi.python.org/pypi/distribute" title="Distribute (con instrucciones de instalación)"><strong>Distribute</strong></a> es un <em>fork</em> de <em>setuptools</em> que pretendía acelerar su desarrollo y que lo ha suplantado en muchos casos. Su desarrollo ha quedado algo parado al salir <em>distutils2</em>.</p>
+</li>
+<li>
+<p>Instalador <a href="http://www.pip-installer.org/en/latest/index.html" title="Instalador pip"><strong>pip</strong></a>: es un popular instalador de uso similar a los instaladores de paquetes de las distribuciones&nbsp;linux.</p>
+<p><code>pip install &lt;paquete&gt;</code></p>
+<p>Añade muchas funcionalidades como son las búsquedas de paquetes o la descarga de dependencias. Puede funcionar sobre setuptools, aunque lo normal es usarlo con&nbsp;distribute.</p>
+</li>
+<li>
+<p><strong>Distutils2</strong> (renombrado como <strong><code>packaging</code></strong> en python3.3+) es un fork de <em>distutils</em> que incorpora ideas traídas de <em>setuptools</em> y <em>distribute</em> y que se discuten mediante los PEPs habituales. Su instalador está inspirado por &#8220;pip&#8221; y será estándar para&nbsp;python3.</p>
+</li>
+</ul>
+<h2>Instalador <span class="caps">PIP</span></h2>
+<p>Centrémonos en la utilidad de instalación <a href="http://www.pip-installer.org/en/latest/index.html" title="Instalador pip"><code>pip</code></a>. Se trata de una herramienta que puede buscar, instalar/desinstalar, reempaquetar,&#8230; y muchas más cosas que nos va a facilitar la vida a la hora de realizar instalaciones distribuidas como veremos a&nbsp;continuación.</p>
+<p>Características de&nbsp;pip:</p>
+<ul>
+<li>
+<p>Búsquedas en el repositorio <a href="http://pypi.python.org/pypi" title="the Python Package Index">PyPi</a></p>
+</li>
+<li>
+<p>Descarga de todas las dependencias antes de la instalación. Muy importante para mantener la fidelidad de la instalación en despliegues&nbsp;remotos.</p>
+</li>
+<li>
+<p>Puede instalar directamente de una dirección de internet, o directamente desde sistemas de control de versiones como git, mercurial, subversion o&nbsp;bazaar.</p>
+</li>
+<li>
+<p>Con el comando <code>freeze</code> podemos crear un fichero de requisitos con la lista de los paquetes y su versión exacta que actualmente tenemos&nbsp;instalados.</p>
+</li>
+<li>
+<p>Con el comando <code>bundle</code> podemos crear <em>pybundles</em>, archivos que contienen múltiples&nbsp;paquetes.</p>
+</li>
+</ul>
+<h2>Virtualenv</h2>
+<p>Otra gran característica de <strong>pip</strong> es que funciona tremendamente bien con <a href="http://www.virtualenv.org" title="Virtuaenv">virtualenv</a>. No en vano, son del mismo autor, <a href="http://blog.ianbicking.org/" title="blog de Ian Bicking">Ian Bicking</a>. Virtualenv nos permitirá crear entornos de desarrollo aislados del resto de instalaciones python, controlando tanto las versiones de los módulos instalados como la versión de python que usaremos en&nbsp;él.</p>
+<p>Pero creo que será mejor poner algunos ejemplos de las aplicaciones de&nbsp;virtualenv:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ virtualenv --no-site-packages --python<span class="o">=</span>/usr/bin/python3 py3
+$ <span class="nb">cd</span> py3
+$ <span class="nb">source</span> bin/activate
+<span class="o">(</span>py3<span class="o">)</span>$ pip install markdown
+</pre></div>
+</td></tr></table>
+
+<p>Con estas líneas hemos conseguido instalar el módulo <code>markdown</code> en un entorno python3. El intérprete de python3 que ejecutaremos desde aquí estará instalado en la ruta <code>py3/bin/python</code> y el módulo márkdown en <code>py3/lib/python-3.2/site-packages</code>. También se ha instalado en <code>py3/bin/python</code> el script <code>markdown_py</code> que ejecutará el comando. En resumen, de una manera simple tenemos un entorno con lo mínimo donde hacer nuestras pruebas sin trastocar nada del&nbsp;sistema.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ virtualenv --python<span class="o">=</span>/usr/local/bin/jython jydjango
+$ <span class="nb">cd</span> jydjango
+$ <span class="nb">source</span> bin/activate
+<span class="o">(</span>jydjango<span class="o">)</span>$ pip install django
+<span class="o">(</span>jydjango<span class="o">)</span>$ django-admin.py startproject djython
+<span class="o">(</span>jydjango<span class="o">)</span>$ <span class="nb">cd</span> djython/
+<span class="o">(</span>jydjango<span class="o">)</span>$ jython manage.py runserver
+Validating models...
+
+<span class="m">0</span> errors found
+Django version <span class="m">1</span>.4, using settings <span class="s1">&#39;djython.settings&#39;</span>
+Development server is running at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+</pre></div>
+</td></tr></table>
+
+<p>En este caso, a partir de una instalación local de jython hemos creado un entorno virtual, en el que hemos instalado <code>django</code> y lo hemos ejecutado con jython. De este modo podemos experimentar con django y jython sin que afecte a cualquier otra instalación de django que&nbsp;tengamos.</p>
+<p>A partir de aquí, la imaginación es el&nbsp;límite.</p>
+<p>Como recomendación, instala <a href="http://www.doughellmann.com/projects/virtualenvwrapper/">virtualenvwrapper</a>, una colección de comandos para bash que hace más sencillo el uso de virtualenv, además de gestionar todos los entornos virtuales  desde un único directorio (<code>$HOME/.virtualenv</code>). También existe una <a href="https://bitbucket.org/guillermooo/virtualenvwrapper-powershell">versión para PowerShell</a> para&nbsp;windows.</p>
+  </div>
+  <hr>
+  
+  <ul class="pager">
+          <li class="previous">
+               <a href="https://blog.ch3m4.org/2012/07/10/bom-marcas-de-orden-de-bytes/" title="Anterior">
+                    <i class="fa fa-arrow-circle-left"></i>
+                   <span class="caps">BOM</span> - marcas de orden de&nbsp;bytes
+               </a>
+           </li>
+           <li class="next">
+              <a href="https://blog.ch3m4.org/2012/08/15/estudio-funcion-factorial-en-scala-operador-sufix/" title="Siguiente">
+                   Estudio función factorial en scala - operador&nbsp;sufix
+                   <i class="fa fa-arrow-circle-right"></i>
+               </a>
+           </li>
+   </ul>
+   With category <a href="https://blog.ch3m4.org/category/python/">Python</a>:
+   <ul class="pager">
+          <li class="previous">
+             <a href="https://blog.ch3m4.org/2012/07/10/bom-marcas-de-orden-de-bytes/" title="Anterior en misma categoría">
+                <i class="fa fa-arrow-circle-o-left"></i>
+                <span class="caps">BOM</span> - marcas de orden de&nbsp;bytes
+             </a>
+          </li>
+        <li class="next">
+             <a href="https://blog.ch3m4.org/2012/10/17/como-contratar-un-programador-de-python/" title="Siguiente en misma categoría">
+                 Cómo contratar un programador de&nbsp;python
+                 <i class="fa fa-arrow-circle-o-right"></i>
+             </a>
+        </li>
+
+   </ul>
+
+    
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var disqus_identifier = "2012/07/24/instalacion-de-modulos/";
+    loadDisqus = function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//hyperreals.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
+      window.scroll(0, document.getElementById('main').offsetTop);
+    }})
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

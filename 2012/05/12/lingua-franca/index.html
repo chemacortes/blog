@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Lingua Franca | Este mes de mayo, el conocido y muchas veces criticado índice tiobe comenta que, tras 8 años, las posiciones en este índice de los...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.82b4bc13.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, CompSci, computing science">
+
+  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
+
+  <title>
+Lingua Franca | Hyperreals *R  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://plus.google.com/+ChemaCortés" title="google+"><i class="fa fa-google-plus fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+      
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2012/05/12/lingua-franca/" class="nohover">Lingua&nbsp;Franca</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Posted <time data-timeago datetime="2012-05-12T17:11:00+02:00">sáb 12 mayo 2012</time>
+     by Chema Cortés    </p>
+    <p>
+    Category: <a href="https://blog.ch3m4.org/category/pensamientos/">Pensamientos</a>
+&ndash;&ndash;    Tags:
+      <a href="https://blog.ch3m4.org/tag/compsci/">CompSci</a>,      <a href="https://blog.ch3m4.org/tag/computing-science/">computing science</a>    </p>
+  </div>
+  <div class="article_text">
+    <p>Este mes de mayo, el conocido y muchas veces criticado <a href="http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html" title="TIOBE Programming Community Index">índice tiobe</a> comenta que, tras 8 años, las posiciones en este índice de los lenguajes de programación no han sufrido demasiado altibajos, con excepciones notables como el <em>&#8220;Objective C&#8221;</em> empleado por el <em>ecosistema Apple</em> (<em>iPhone/iPad/MacOS</em>).  Achaca esta inmovilidad a lo costoso de trasladar todo el código base que hemos acumulado de un lenguaje a otro, optando por mantenerse fiel a lenguaje que está&nbsp;utilizando.</p>
+<p>Desde mi punto de vista, ésta no es una razón de peso hoy en día. Los distintos lenguajes de programación pueden compartir librerías sin demasiados problemas. Tecnologías como <code>.Net</code> o <code>JVM</code> facilitan bastante esta tarea, de modo que la mezcla de lenguajes es posible, sin obligar a elegir un único lenguaje al inicio de un&nbsp;desarrollo.</p>
+<p>Pienso, por ejemplo, en todos los lenguajes de programación existentes para <span class="caps">JVM</span> (groovy, scala, clojure, jython, jruby,&#8230;). Todos ellos pueden usar las mismas librerías que usa java, aportando a su vez opciones con las que no cuenta java. Tal vez en esa proliferación de lenguajes alternativos se encuentre la explicación de porqué java ha perdido posiciones con respecto a C++. La evolución de Java se ha quedado algo estancada, tardando demasiado en incorporar características tan demandadas como las <em>&#8220;clausuras&#8221;</em> o <em>tipos dinámicos</em> que ofrecen los otros lenguajes.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></p>
+<p>Porque es la evolución de los lenguajes de programación lo que realmente es interesante. No hace muchos años, creo que en la revista DrDobb&#8217;s, existía una sección fija dedicada al <em>&#8220;lenguaje exótico del mes&#8221;</em> que pretendía mostrar lenguajes más expresivos, muchos de dominio específico orientados a resolver problemas concretos, pero donde a veces se veían pequeñas joyas como el <span class="caps">APL</span>. Los lenguajes de uso habitual se consideraban limitados, y muchas veces la evolución en los algoritmos fallaba en el preciso momento de tener que codificarlo en un programa de ordenador. El lenguaje máquina dejó paso a otros modo de entenderse con la&nbsp;máquina.</p>
+<p>Con el tiempo, cuando la programación se convirtió en ciencia, aparecieron los <strong>&#8220;paradigmas&#8221;</strong> y las <strong>&#8220;metodologías&#8221;</strong>. La programación se volvió bastante más abstracta y la ingeniería impuso sus reglas de eficiencia que terminó por relegar los lenguajes de programación a un segundo plano. La <em>&#8220;expresividad&#8221;</em> se conseguía ahora mediante herramientas <span class="caps">CASE</span> e IDEs inteligentes que imponían sus lenguajes de&nbsp;programación.</p>
+<p>Estamos en una época que poco va a cambiar en cuanto a lenguajes, tal como afirma <a href="http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html" title="TIOBE Programming Community Index">Tiobe</a>. La razón de peso son las herramientas que usamos, que no las librerías. Los lenguajes más populares (los que aparecen en el índice tiobe) poseen un proceso evolutivo por el que adaptan los aciertos de los otros y se desprenden de lo obsoleto. No aumenta el número de lenguajes, pero las versiones de los lenguajes aumentan sin parar. Una estrategia evolutiva en el más amplio sentido que hace que los lenguajes se parezcan cada vez más entre sí, con formas muy similares para resolver los mismo problemas que llamamos &#8220;patrones de diseño&#8221; y concepciones&nbsp;similares.</p>
+<p>¿El inicio de una <em>&#8220;Lingua Franca&#8221;</em>?</p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>En la literatura, se suele mencionar al lenguaje Scala como &#8220;lo que debería haber sido la evolución de Java&#8221;.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+  </div>
+  <hr>
+  
+  <ul class="pager">
+          <li class="previous">
+               <a href="https://blog.ch3m4.org/2012/04/04/problemas-con-los-nombres-largos-en-ntfs/" title="Anterior">
+                    <i class="fa fa-arrow-circle-left"></i>
+                   Problemas con los nombres largos en <span class="caps">NTFS</span>
+               </a>
+           </li>
+           <li class="next">
+              <a href="https://blog.ch3m4.org/2012/06/05/descriptores-parte-3/" title="Siguiente">
+                   Descriptores - Parte&nbsp;3
+                   <i class="fa fa-arrow-circle-right"></i>
+               </a>
+           </li>
+   </ul>
+   With category <a href="https://blog.ch3m4.org/category/pensamientos/">Pensamientos</a>:
+   <ul class="pager">
+          <li class="previous">
+             <a href="https://blog.ch3m4.org/2012/03/09/programacion-ciencia-o-ingenieria-2/" title="Anterior en misma categoría">
+                <i class="fa fa-arrow-circle-o-left"></i>
+                Programación. ¿Ciencia o&nbsp;Ingeniería?
+             </a>
+          </li>
+        <li class="next">
+             <a href="https://blog.ch3m4.org/2013/02/19/estado-de-situacion/" title="Siguiente en misma categoría">
+                 Estado de&nbsp;situación
+                 <i class="fa fa-arrow-circle-o-right"></i>
+             </a>
+        </li>
+
+   </ul>
+
+    
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var disqus_identifier = "2012/05/12/lingua-franca/";
+    loadDisqus = function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//hyperreals.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
+      window.scroll(0, document.getElementById('main').offsetTop);
+    }})
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Python Eficiente - Sobre la vida de los objetos | Antes de seguir adelante, necesitamos aclarar qué les pasa a los objetos que creamos en una...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.82b4bc13.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, oop">
+
+  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
+
+  <title>
+Python Eficiente - Sobre la vida de los objetos | Hyperreals *R  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://plus.google.com/+ChemaCortés" title="google+"><i class="fa fa-google-plus fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+      
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2013/11/09/python-eficiente-sobre-la-vida-de-los-objetos/" class="nohover">Python Eficiente - Sobre la vida de los&nbsp;objetos</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Posted <time data-timeago datetime="2013-11-09T09:56:00+01:00">sáb 09 noviembre 2013</time>
+     by Chema Cortés    </p>
+    <p>
+    Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+&ndash;&ndash;    Tags:
+      <a href="https://blog.ch3m4.org/tag/oop/">oop</a>    </p>
+  </div>
+  <div class="article_text">
+    <p>Antes de seguir adelante, necesitamos aclarar qué les pasa a los objetos que creamos en una aplicación. Cuándo se crean, dónde se almacenan y cómo se destruyen. En definitiva, necesitamos conocer mejor la <em>vida de los objetos</em>.</p>
+<p>El término de <strong>variable</strong> que usamos en programación tiene su origen en el Álgebra Matemática. Una variable representa cada uno de los <em>grados de libertad</em> que tenemos, de forma que cambiando su valor obtendríamos diferentes resultados de una&nbsp;expresión.</p>
+<p>Los primeros <em>lenguajes imperativos</em>, sobre todo <span class="caps">BASIC</span>, definieron las <em>variables</em> como espacios de memoria donde almacenar los distintos valores que necesitaba la <em><span class="caps">CPU</span></em> en sus operaciones. Cada variable se <em>marcaba</em> con un nombre único y se le asignaba un espacio en memoria. Con el fin de reducir el consumo de memoria, estas variables eran reutilizadas una y otra vez a lo largo del&nbsp;programa.</p>
+<p><img alt="Variables de memoria" src="https://blog.ch3m4.org/pictures/memvar.jpg"></p>
+<p>Con los lenguajes procedurales y lenguajes orientados a objetos se cambió este concepto. Los nombres de variables ya no eran únicos. Dos variables podían tener el mismo nombre en distintos ámbitos (<em>scopes</em>), así como dos variables podían representar el mismo dato. El nombre de la variable dejó de representar el espacio físico en memoria para convertirse en un alias con el que nombrar a la variable. El proceso de enlazar un nombre con un valor se llamó <em>binding</em> (<em>enlace</em>) y se hizo fundamental para el funcionamiento de las <em>clausuras</em>.</p>
+<p>Se puede definir una variable como la <strong><em>&#8220;unión de un nombre y un valor a través de un enlace&#8221;</em></strong>.</p>
+<p><img alt="Enlaces de nombres y objetos" src="https://blog.ch3m4.org/pictures/etiquetas.jpg"></p>
+<p>Con este punto de vista, cuando hablamos de <em>&#8220;modificar&#8221;</em> una variable tenemos dos modos de&nbsp;hacerlo:</p>
+<ul>
+<li>Modificando el <em>valor</em> al que&nbsp;apunta</li>
+<li>Modificando el <em>enlace</em> para apunte a otro&nbsp;valor</li>
+</ul>
+<p>Nosotros no sabemos, en realidad, cómo se modifican las variables. Lo único que nos tiene que importar es que nuestra variable modificada apuntará al nuevo valor. Así pues, cuando tenemos un&nbsp;código:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+</pre></div>
+</td></tr></table>
+
+<p>Seguimos diciendo que <em>&#8220;a la variable X le asignamos el valor entero 12&#8221;</em>, pero lo correcto sería decir que <em>&#8220;al entero 12 lo llamaremos X&#8221;</em>. Y en lugar de decir que <em>&#8220;a la variable Y le asignamos la variable X&#8221;</em>, lo correcto sería decir que <em>&#8220;la variable X también se va a llamar Y&#8221;</em>. Pero la costumbre pesa más que la&nbsp;corrección.</p>
+<p>Pensando en un lenguaje de programación como Python, donde todo son objetos, podemos ver nuestro entorno como un gran <em>ecosistema</em> poblado de objetos de todo tipo, que se crean, interaccionan y se destruyen. Al principio de una aplicación, sólo contamos con acceso a unos pocos objetos y nos las tenemos que apañar para acceder al resto de objetos a través de operaciones y llamadas a los distintos módulos disponibles. Nuestro espacio de nombres inicial se irá expandiendo progresivamente con las referencias de los objetos de nuestro mundo&nbsp;conocido.</p>
+<h2>Ciclo de la vida de un&nbsp;objeto</h2>
+<p>Lo primero que hay que tener claro es que en python no tenemos verdadero control sobre la <strong>creación</strong> y <strong>destrucción</strong> de los objetos. Sólo podemos asegurar que un objeto <strong>existe mientras haya una referencia que lo enlace</strong>. Para saber qué pasa, tendremos que indagar en el funcionamiento del intérprete&nbsp;python.</p>
+<h3>Objetos&nbsp;básicos</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
+</pre></div>
+</td></tr></table>
+
+<p>En esta expresión, el intérprete emplea dos objetos existentes, &#8216;<code>2</code><span class="quo">&#8216;</span> y &#8216;<code>3</code><span class="quo">&#8216;</span>, y obtiene un tercer objeto, &#8216;<code>5</code><span class="quo">&#8216;</span>, al que asigna el nombre de &#8216;<code>x</code><span class="quo">&#8216;</span>. El objeto &#8216;<code>5</code><span class="quo">&#8216;</span> no sabemos si lo ha creado en el momento de evaluar la expresión o si ya&nbsp;existía.</p>
+<p>Como optimización del intérprete, siempre están creados un conjunto de los objetos más comunes. Estos objetos son los números enteros desde -5 a 256 (incluido el 0), los booleanos <code>True</code> y <code>False</code>, <code>None</code> y los conjuntos vacíos inmutables <code>()</code>, <code>frozenset()</code> y <code>""</code>.</p>
+<p>Para saber si dos objetos son el mismo, podemos usar la función <code>id</code>. Podemos decir que dos objetos son el mismo si la función <code>id</code> devuelve el mismo valor. Así, podríamos obtener fácilmente la lista de los números enteros que siempre tiene creados el&nbsp;intérprete:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">),</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">))</span> <span class="k">if</span> <span class="nb">id</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">j</span><span class="p">)]</span>
+</pre></div>
+</td></tr></table>
+
+<h3>Internalización de&nbsp;cadenas</h3>
+<p>Más curiosas resultan las <em>&#8220;internalizaciones&#8221;</em> de las cadenas de caracteres. Para acelerar las búsquedas, el intérprete mantiene una tabla global interna con las palabras usadas en nombres de variables, funciones, módulos, etc. Adicionalmente, toda cadena de caracteres que usemos que cumpla con las reglas sintácticas para ser nombres de variables acabarán automácamente dentro de esta tabla&nbsp;interna.</p>
+<p>Además de este funcionamiento automático, podemos forzar a que una cadena entre en esta tabla con la función <code>intern</code> (<code>sys.intern</code> en&nbsp;python3).</p>
+<p>Pues bien, todas las cadenas de caracteres de la tabla interna sólo son creadas una vez durante toda la ejecución del programa y permacerán ahí hasta el&nbsp;final.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">=</span><span class="s2">&quot;hola&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="o">=</span><span class="s2">&quot;hola&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">==</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="bp">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">=</span><span class="s2">&quot;hola mundo&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="o">=</span><span class="s2">&quot;hola mundo&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">==</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="bp">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">=</span><span class="nb">intern</span><span class="p">(</span><span class="s2">&quot;hola mundo&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="o">=</span><span class="nb">intern</span><span class="p">(</span><span class="s2">&quot;hola mundo&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">==</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="bp">True</span>
+</pre></div>
+</td></tr></table>
+
+<p>No siempre funciona el mecanismo de <em>internalización</em> y el intérprete crea una nueva cadena de&nbsp;caracteres:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">=</span><span class="s2">&quot;hola&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;HOLA&quot;</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">==</span><span class="nb">id</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="bp">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">=</span><span class="nb">intern</span><span class="p">(</span><span class="s2">&quot;HOLA&quot;</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">==</span><span class="nb">id</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="bp">True</span>
+</pre></div>
+</td></tr></table>
+
+<p>Por culpa de la <em>internalización</em> nunca podremos estar seguros de cuándo se crea una cadena de caracteres. Más allá de este hecho, nunca nos debería preocupar el internalizar o no las cadenas de caracteres que usemos. Al menos, yo no he encontrado ninguna ventaja concreta de&nbsp;hacerlo.</p>
+<h3>Asignaciones</h3>
+<p>Ya hemos comentado que una asignación directa no crea un objeto nuevo, si no que enlaza una nueva etiqueta con el objeto&nbsp;existente:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+</pre></div>
+</td></tr></table>
+
+<p>En este caso, el mismo objeto al que apunta &#8216;<code>y</code><span class="quo">&#8216;</span> también será al que apunte &#8216;<code>x</code><span class="quo">&#8216;</span>. Muchas veces no querremos que esto ocurra, sobre todo en el caso de listas. El truco consiste en convertir la asignación directa en una expresión que cree un nuevo objeto, pero de igual valor. Para ello usaremos las operaciones <strong>idempotentes</strong> para cada tipo de&nbsp;dato:</p>
+<p>Para números en general, podemos usar los elementos neutros de las operaciones <code>y*1</code> ó <code>y+0</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="o">=</span><span class="mf">2.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span><span class="o">=</span><span class="n">x</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">==</span><span class="nb">id</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="bp">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span><span class="o">=</span><span class="n">x</span><span class="o">*</span><span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">==</span><span class="nb">id</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="bp">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span><span class="o">==</span><span class="n">x</span>
+<span class="bp">True</span>
+</pre></div>
+</td></tr></table>
+
+<p>En el caso de listas, por convenio se suele usar el operador <em>split</em> <code>lista[:]</code>, pero podríamos usar cualquier otro como <code>lista*1</code> o <code>lista+[]</code>.</p>
+<h3>Destrucción de un&nbsp;objeto</h3>
+<p>Saber cuándo acaba la vida de un objeto suele ser la parte que más despista a quienes vienen a python desde otros lenguajes donde se acostumbra a hacer desaparecer un objeto por la&nbsp;fuerza.</p>
+<p>Una vez más: en python, <strong>un objeto existe mientras esté referenciado</strong>.</p>
+<p>Sólo cuando desaparezca la última referencia al objeto se llamará a su <em>destructor</em> (método <code>__del__</code>) y será eliminado de&nbsp;memoria.</p>
+<p>No nos preocupamos de ello, pero cuando finaliza la ejecución de una función o de un método, desaparecen todas las referencias que habíamos creado. No hace falta que lo hagamos explícitamente. Todos los objetos creados durante la ejecución dejan de estar referenciados y serán destruidos, con excepción de aquellos que se retornen como&nbsp;resultado.</p>
+<p>Pero hay veces que guardamos referencias a objetos que ya no nos hacen falta, y no somos muy conscientes de que por culpa de estas referencias estos objetos no son destruídos. Por ejemplo, es frecuente ver aplicaciones que mantienen una lista de ventanas abiertas. Por culpa de esta lista, las ventanas siempre estarán referencias. Si en el destructor estaba el código para eliminar la ventana y sus componentes, resulta que nunca será llamado. Hace falta eliminar la referencia de la lista de ventanas para que la ventana sea destruida&nbsp;finalmente.</p>
+<p>En próximos artículos veremos técnicas mejores, como son usar <em>&#8220;referencias débiles&#8221;</em> (<em>weakrefs</em>). Las <em>weakrefs</em> vienen a ser referencias a objetos que no obligan a que el objeto esté siempre vivo. Si todas las referencias un objeto son <em>weakrefs</em>, entonces el objeto podrá ser&nbsp;destruído.</p>
+<h3>Referencias&nbsp;circulares</h3>
+<p>Algunas veces, los objetos mantienen referencias entre ellos conocidas por <em>&#8220;referencias circulares&#8221;</em>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">=</span><span class="p">[]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="n">a</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="p">[[[</span><span class="o">...</span><span class="p">]]]</span>
+</pre></div>
+</td></tr></table>
+
+<p>De querer eliminar ambos objetos, no podríamos hacer nada al estar referenciados mutuamente. Para estos casos, el intérprete de python tiene un proceso propio que se dedica a detectar estas referencias circulares llamado <strong>&#8220;Recolector de Basura&#8221;</strong>, más conocido por sus siglas <em><span class="caps">GC</span></em> (<em>Garbage Collector</em>). <span class="caps">GC</span> es un proceso que está permanentemente explorando la memoria para mantenerla limpia de objetos innecesarios, siendo parte vital para el correcto funcionamiento del intérprete. (Más información, en la documentación del <a href="http://docs.python.org/2.7/library/gc.html" title="Módulo gc">módulo <code>gc</code></a>).</p>
+  </div>
+  <hr>
+  
+  <ul class="pager">
+          <li class="previous">
+               <a href="https://blog.ch3m4.org/2013/10/26/python-eficiente-hacia-la-programacion-funcional/" title="Anterior">
+                    <i class="fa fa-arrow-circle-left"></i>
+                   Python Eficiente - Hacia la programación&nbsp;funcional
+               </a>
+           </li>
+           <li class="next">
+              <a href="https://blog.ch3m4.org/2016/01/10/renacimiento/" title="Siguiente">
+                   Renacimiento
+                   <i class="fa fa-arrow-circle-right"></i>
+               </a>
+           </li>
+   </ul>
+   With category <a href="https://blog.ch3m4.org/category/python/">Python</a>:
+   <ul class="pager">
+          <li class="previous">
+             <a href="https://blog.ch3m4.org/2013/10/26/python-eficiente-hacia-la-programacion-funcional/" title="Anterior en misma categoría">
+                <i class="fa fa-arrow-circle-o-left"></i>
+                Python Eficiente - Hacia la programación&nbsp;funcional
+             </a>
+          </li>
+
+   </ul>
+
+    
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var disqus_identifier = "2013/11/09/python-eficiente-sobre-la-vida-de-los-objetos/";
+    loadDisqus = function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//hyperreals.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
+      window.scroll(0, document.getElementById('main').offsetTop);
+    }})
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

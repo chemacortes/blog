@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R - Técnicas</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/tecnicas.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2011-05-23T00:00:00+02:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>qtm con markdown_extra</title><link href="https://blog.ch3m4.org/2011/05/23/qtm-con-markdown_extra/" rel="alternate"></link><published>2011-05-23T00:00:00+02:00</published><updated>2011-05-23T00:00:00+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2011-05-23:/2011/05/23/qtm-con-markdown_extra/</id><summary type="html">&lt;p&gt;Por defecto, &lt;strong&gt;&lt;a href="http://qtm.blogistan.co.uk/" title="QTM The open-source blogging client"&gt;qtm&lt;/a&gt;&lt;/strong&gt; usa el comando &lt;code&gt;markdown&lt;/code&gt; que se instala en linux en la ruta &lt;code&gt;/usr/bin/markdown&lt;/code&gt;. Este comando acepta la sintáxis básica de &lt;em&gt;markdown&lt;/em&gt;, insuficiente cuando estamos acostumbrados a usar la extensión &lt;em&gt;markdown extra&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Con un pequeño truco, es posible usar &lt;em&gt;markdown_extra&lt;/em&gt; con &lt;em&gt;qtm&lt;/em&gt;. Instalando el módulo &lt;a href="http://www.freewisdom.org/projects/python-markdown/"&gt;markdown …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;Por defecto, &lt;strong&gt;&lt;a href="http://qtm.blogistan.co.uk/" title="QTM The open-source blogging client"&gt;qtm&lt;/a&gt;&lt;/strong&gt; usa el comando &lt;code&gt;markdown&lt;/code&gt; que se instala en linux en la ruta &lt;code&gt;/usr/bin/markdown&lt;/code&gt;. Este comando acepta la sintáxis básica de &lt;em&gt;markdown&lt;/em&gt;, insuficiente cuando estamos acostumbrados a usar la extensión &lt;em&gt;markdown extra&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Con un pequeño truco, es posible usar &lt;em&gt;markdown_extra&lt;/em&gt; con &lt;em&gt;qtm&lt;/em&gt;. Instalando el módulo &lt;a href="http://www.freewisdom.org/projects/python-markdown/"&gt;markdown para python&lt;/a&gt; (paquete &lt;code&gt;python-markdown&lt;/code&gt; en &lt;em&gt;ubuntu&lt;/em&gt;) obtenemos un comando alternativo llamado &lt;code&gt;markdown_py&lt;/code&gt; que acepta numerosas extensiones para &lt;em&gt;markdown&lt;/em&gt;, entre las que se incluye &lt;code&gt;markdown_extra&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Para usar &lt;em&gt;markdown_py&lt;/em&gt; en &lt;em&gt;qtm&lt;/em&gt;, creamos el pequeño script que active la extensión &lt;code&gt;extra&lt;/code&gt; en el&amp;nbsp;parseo:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class="nb"&gt;exec&lt;/span&gt; markdown_py -x extra &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Llamamos a este script &lt;code&gt;markdown_extra&lt;/code&gt;, le asignamos permisos de ejecución y lo metemos en algún lugar apropiado como la carpeta &lt;code&gt;bin&lt;/code&gt; de nuestro usuario linux. En la configuración de &lt;em&gt;qtm&lt;/em&gt;, introducimos como ruta al comando&amp;nbsp;markdown&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;/home/usuario/bin/markdown_extra
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;A partir de aquí podremos previsualizar nuestro código con &lt;code&gt;markdown extra&lt;/code&gt;. También podríamos añadir otras extensiones como, por ejemplo, &lt;code&gt;toc&lt;/code&gt; con la que podemos crear tablas de&amp;nbsp;contenidos:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class="nb"&gt;exec&lt;/span&gt; markdown_py -x extra -x toc &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Debemos asegurarnos que nuestro blog posea también esta extensión. Si no la tuviera, siempre tenemos la posibilidad de indicarle a &lt;em&gt;qtm&lt;/em&gt; que convierta nuestra entrada a html antes de enviarla al&amp;nbsp;blog.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Actualización&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Para windows es necesario otro tipo de configuración. Una vez instalado el módulo &lt;code&gt;python-markdown&lt;/code&gt; se debe crear un fichero &lt;em&gt;.bat&lt;/em&gt; en &lt;code&gt;C:\Python2.7\Scripts&lt;/code&gt; con el siguiente&amp;nbsp;contenido:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;c:\python27\python.exe&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;%1&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; -x extra -x toc &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;%2&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Si llamamos a este fichero &lt;code&gt;markdown_extra.bat&lt;/code&gt;, la configuración de &lt;em&gt;qtm&lt;/em&gt; quedaría de esta&amp;nbsp;manera:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Preferencias de QTM" src="/blog/wp-content/uploads/2011/05/Preferencias-qtm.png"&gt;&lt;/p&gt;</content><category term="markdown"></category><category term="tip"></category></entry><entry><title>qtm: un editor para markdown y wordpress</title><link href="https://blog.ch3m4.org/2011/05/22/qtm-editor-markdown-y-wordpress/" rel="alternate"></link><published>2011-05-22T20:34:00+02:00</published><updated>2011-05-22T20:34:00+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2011-05-22:/2011/05/22/qtm-editor-markdown-y-wordpress/</id><summary type="html">&lt;p&gt;Buscando una aplicación para hacer más cómodas mis publicaciones en wordpress que, además, aceptara markdown, he estado a apunto de abandonar. Nigún cliente acepta &lt;em&gt;markdown&lt;/em&gt; y, el único editor de &lt;em&gt;markdown&lt;/em&gt; que he encontrado, &lt;a href="http://sourceforge.net/p/retext/home/"&gt;retext&lt;/a&gt;&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;, no tiene opción para publicar en&amp;nbsp;blogs.&lt;/p&gt;
+&lt;p&gt;Finalmente me he encontrado con esta joya …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Buscando una aplicación para hacer más cómodas mis publicaciones en wordpress que, además, aceptara markdown, he estado a apunto de abandonar. Nigún cliente acepta &lt;em&gt;markdown&lt;/em&gt; y, el único editor de &lt;em&gt;markdown&lt;/em&gt; que he encontrado, &lt;a href="http://sourceforge.net/p/retext/home/"&gt;retext&lt;/a&gt;&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;, no tiene opción para publicar en&amp;nbsp;blogs.&lt;/p&gt;
+&lt;p&gt;Finalmente me he encontrado con esta joya llamada &lt;strong&gt;&lt;a href="http://qtm.blogistan.co.uk/" title="QTM The open-source blogging client"&gt;qtm&lt;/a&gt;&lt;/strong&gt; desde la que estoy escribiendo este &lt;em&gt;post&lt;/em&gt;. Es un cliente basado en Qt que permite editar el artículo &lt;em&gt;fuera de línea&lt;/em&gt;. Puede usar &lt;em&gt;markdown&lt;/em&gt; tanto para la previsualización como para la conversión a html antes de enviar a wordpress. En mi caso, como ya tengo activado un plugin en wordpress para markdown, envío el artículo direstamente en markdown sin procesar a&amp;nbsp;html.&lt;/p&gt;
+&lt;p&gt;Es necesario actualizarse a la última versión de &lt;strong&gt;qtm&lt;/strong&gt; ya que con la versión que instala por defecto ubuntu me daba algunos problemas con las categorías y etiquetas. Para instalar la última versión, basta con añadir el repositorio &lt;span class="caps"&gt;PPA&lt;/span&gt;&amp;nbsp;siguiente:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-add-repository ppa:indigojo/ppa
+$ sudo apt-get update
+$ sudo install qtm
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;&lt;strong&gt;retext&lt;/strong&gt; es una utilidad para &lt;em&gt;markdown&lt;/em&gt; que debería añadir a las que puse en mi anterior artículo. Puede previsualizar el resultado final a la vez que se va escribiendo. También tiene opciones para convertir un texto &lt;em&gt;markdown&lt;/em&gt; a otros formatos como odt y pdf.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content><category term="markdown"></category></entry><entry><title>Lenguajes de marcas ligeras</title><link href="https://blog.ch3m4.org/2011/05/17/lenguajes-de-marcas-ligeras/" rel="alternate"></link><published>2011-05-17T02:13:00+02:00</published><updated>2011-05-17T02:13:00+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2011-05-17:/2011/05/17/lenguajes-de-marcas-ligeras/</id><summary type="html">&lt;h1&gt;¿Para qué usar Lenguajes de Marcas&amp;nbsp;Ligeras?&lt;/h1&gt;
+&lt;p&gt;Últimamente he estado estudiando el uso &lt;a href="http://daringfireball.net/projects/markdown"&gt;markdown&lt;/a&gt; en diferentes niveles. Por el tipo de actividad que realizo, tengo que generar mucha documentación para acompañar código de programación y no resulta práctico tener que generar a mano los diversos formatos de documentos que se …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;¿Para qué usar Lenguajes de Marcas&amp;nbsp;Ligeras?&lt;/h1&gt;
+&lt;p&gt;Últimamente he estado estudiando el uso &lt;a href="http://daringfireball.net/projects/markdown"&gt;markdown&lt;/a&gt; en diferentes niveles. Por el tipo de actividad que realizo, tengo que generar mucha documentación para acompañar código de programación y no resulta práctico tener que generar a mano los diversos formatos de documentos que se puedan necesitar. Es fundamental poder escribir un sólo documento y generar a partir de él todos los demás&amp;nbsp;formatos.&lt;/p&gt;
+&lt;p&gt;Los &lt;a href="http://es.wikipedia.org/wiki/Lenguaje_de_marcas_ligero"&gt;&lt;em&gt;Lenguajes de Marcas Ligeros&lt;/em&gt;&lt;/a&gt; como markdown permiten tener un documento en texto plano suficientemente &lt;em&gt;&amp;#8220;legible&amp;#8221;&lt;/em&gt; para su uso como documentación interna en un proyecto y convertir después a otros formatos para presentaciones, publicación web o, simplemente, para su archivo. Estos lenguajes de marcas hacen muy cómodo el incorporar pequeños fragmentos de código durante el proceso de redacción, que aparecerán en el documento final con sintaxis coloreada gracias a varios &lt;em&gt;plugins&lt;/em&gt;. Además, al ser documentos en texto plano, encajan perfectamente con el sistema de control de versiones de código que se use en el&amp;nbsp;desarrollo.&lt;/p&gt;
+&lt;h1&gt;markdown, markdown extra y&amp;nbsp;reStructuredText&lt;/h1&gt;
+&lt;p&gt;&lt;a href="http://daringfireball.net/projects/markdown"&gt;&lt;strong&gt;Markdown&lt;/strong&gt;&lt;/a&gt; se centra en la generación de documentos &lt;abbr title="Hyper Text Markup Language"&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt;&lt;/abbr&gt;, algo bastante apropiado para su uso en blogs y wiki &lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;. La principal virtud de markdown es su &lt;em&gt;&amp;#8220;legibilidad&amp;#8221;&lt;/em&gt; a pesar de tener contenida toda la información necesaria para generar la estructura del documento &lt;abbr title="Hyper Text Markup Language"&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt;&lt;/abbr&gt;, aunque resultará demasiado simple para crear documentación avanzada con tablas, notas bibliográficas, tablas de&amp;nbsp;contenidos,&amp;#8230;&lt;/p&gt;
+&lt;p&gt;Son muchas las propuestas para añadir a markdown nuevos elementos. Estas extensiones del lenguaje hacen que tengamos que indagar si una herramienta nos es útil o no según si acepta la extensión que estemos utilizando. De entre todas las extensiones, la más aceptada es la &lt;a href="http://michelf.com/projects/php-markdown/extra/" title="PHP Markdown Extra"&gt;&amp;#8220;&lt;span class="caps"&gt;PHP&lt;/span&gt; Markdown Extra&amp;#8221;&lt;/a&gt;, o simplemente &lt;strong&gt;&amp;#8220;markdown extra&amp;#8221;&lt;/strong&gt;. Casi se puede asegurar que toda herramienta que procese &lt;em&gt;markdown&lt;/em&gt; acepta también &lt;em&gt;markdown extra&lt;/em&gt; (&lt;a href="http://mitcho.com/code/"&gt;markdown para wordpress&lt;/a&gt;, &lt;a href="http://www.freewisdom.org/projects/python-markdown/"&gt;python-markdown&lt;/a&gt;, &lt;a href="http://johnmacfarlane.net/pandoc/"&gt;pandoc&lt;/a&gt;,&amp;nbsp;&amp;#8230;).&lt;/p&gt;
+&lt;p&gt;Pero si nuestro objetivo es crear documentación más &amp;#8220;profesional&amp;#8221;, &lt;em&gt;markdown&lt;/em&gt; se nos quedará corto enseguida. Antiguamente, toda la documentación se realizaba en &lt;a href="http://www.latex-project.org/" title="LaTeX"&gt;&lt;span class="math"&gt;\(\LaTeX\)&lt;/span&gt;&lt;/a&gt;, a partir del cual se podía generar documentos de cualquier formato y siempre con una calidad tipográfica profesional. Hoy en día, &lt;span class="math"&gt;\(\LaTeX\)&lt;/span&gt; sigue siendo usado en la generación de los documentos finales, pero en la redacción de la documentación se están usando herramientas que simplifiquen la labor y, sobre todo, que consiga mejor legibilidad que un documento en formato &lt;span class="math"&gt;\(\LaTeX\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Como alternativa a &lt;span class="math"&gt;\(\LaTeX\)&lt;/span&gt;, sin duda destaca el languaje de marcas &lt;a href="http://docutils.sourceforge.net/rst.html" title="reStructuredText"&gt;&lt;strong&gt;reStructuredText&lt;/strong&gt;&lt;/a&gt;. Ligero, muy completo y legible. Posee cualquier elemento que necesite nuestro documento, con conversores de formato a casi cualquier cosa (incluido &lt;span class="math"&gt;\(\LaTeX\)&lt;/span&gt;). La documentación de python es un buen ejemplo de lo que se puede hacer con reStructuredText junto con &lt;a href="http://sphinx.pocoo.org/"&gt;sphinx&lt;/a&gt; (Tema que abordaré en un próximo&amp;nbsp;artículo).&lt;/p&gt;
+&lt;h1&gt;Herramientas&amp;nbsp;markdown&lt;/h1&gt;
+&lt;p&gt;De momento, dejo &lt;em&gt;reStructuredText&lt;/em&gt; para otro momento y me voy a centrar en &lt;em&gt;markdown&lt;/em&gt; (y &lt;em&gt;markdown extra&lt;/em&gt;). Como he dicho, el destino final de &lt;em&gt;markdown&lt;/em&gt; es generar ficheros &lt;abbr title="Hyper Text Markup Language"&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt;&lt;/abbr&gt;; pero existen dos maneras sencillas de generar otros&amp;nbsp;formatos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="http://johnmacfarlane.net/pandoc/"&gt;Pandoc&lt;/a&gt;&lt;/strong&gt;: es una herramienta que se puede usar para convertir entre &lt;em&gt;markdown&lt;/em&gt; y &lt;em&gt;reStructuredText&lt;/em&gt;, así como para generar otros muchos formatos como &lt;code&gt;html, s5, docbook, opendocument, latex, context, texinfo, man, mediawiki&lt;/code&gt; y &lt;code&gt;rtf&lt;/code&gt;. La calidad de los documentos generados dejan mucho qué desear, pero como conversor entre &lt;em&gt;markdown&lt;/em&gt; y &lt;em&gt;reStructuredText&lt;/em&gt; hace un buen&amp;nbsp;papel.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="http://calibre-ebook.com"&gt;calibre&lt;/a&gt;&lt;/strong&gt;: se trata de uno de los más conocidos gestores de ebooks, una de las aplicaciones en &lt;a href="http://python.org"&gt;python&lt;/a&gt; más destacadas. Lo que muchos desconocen es que entre los distintos formatos de libros electrónicos que es capaz de convertir admite &lt;em&gt;markdown&lt;/em&gt; como formato de los ficheros de texto. Es la forma más rápida y sencilla de generar &lt;em&gt;ebooks&lt;/em&gt; que tenemos a nuestro alcance. Basta configurar que use para la detección de capítulos la expresión &lt;code&gt;//h:h1&lt;/code&gt; para que nos cree automáticamente una &lt;em&gt;tabla de contenidos&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Selección de capítulos" src="/pictures/Pantallazo.png"&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span class="caps"&gt;NOTAS&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;Sin ir más lejos, toda esta entrada del blog está escrita en markdown gracias al plugin &lt;a href="http://mitcho.com/code/"&gt;markdown&lt;/a&gt; para &lt;em&gt;WordPress&lt;/em&gt;. Esta nota al pie es una característica extra aportada por &lt;em&gt;markdown extra&lt;/em&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="calibre"></category><category term="markdown"></category><category term="pandoc"></category><category term="restructuredtext"></category></entry></feed>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="BOM - marcas de orden de bytes | Los BOM‘s son marcas que aparecen en ficheros y transmisiones de datos para indicar el...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.82b4bc13.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, code, unicode">
+
+  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
+
+  <title>
+BOM - marcas de orden de bytes | Hyperreals *R  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://plus.google.com/+ChemaCortés" title="google+"><i class="fa fa-google-plus fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+      
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2012/07/10/bom-marcas-de-orden-de-bytes/" class="nohover"><span class="caps">BOM</span> - marcas de orden de&nbsp;bytes</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Posted <time data-timeago datetime="2012-07-10T13:32:00+02:00">mar 10 julio 2012</time>
+     by Chema Cortés    </p>
+    <p>
+    Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+&ndash;&ndash;    Tags:
+      <a href="https://blog.ch3m4.org/tag/code/">code</a>,      <a href="https://blog.ch3m4.org/tag/unicode/">unicode</a>    </p>
+  </div>
+  <div class="article_text">
+    <p>Los <abbr title="Marca de orden de bytes"><span class="caps">BOM</span></abbr>&#8216;s son marcas que aparecen en ficheros y transmisiones de datos para indicar el <em>&#8220;orden de los bytes&#8221;</em> de la codificación empleada. Si pensamos que el tamaño de cada dato transmitido puede ser 2, 4 u 8 bytes (16bits, 32 bits ó 64 bits), el orden de los bytes nos indica cómo se están empaquetando los bytes en cada&nbsp;dato.</p>
+<p>Sin entrar en detalle, cuando usamos las codificaciones para unicode en ficheros, se suele convenir en el uso de una marca <abbr title="Marca de orden de bytes"><span class="caps">BOM</span></abbr> al inicio del fichero para indicar el orden de los bytes del fichero, pero que sirve asimismo para saber la codificación&nbsp;empleada.</p>
+<p>En unicode, el carácter <abbr title="Marca de orden de bytes"><span class="caps">BOM</span></abbr> se representa por <strong>U+<span class="caps">FEFF</span></strong>. Codificado en los distintos UTFs&nbsp;tenemos:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># UTF-8</span>
+<span class="n">BOM_UTF8</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\xef\xbb\xbf</span><span class="s1">&#39;</span>
+
+<span class="c1"># UTF-16, little endian</span>
+<span class="n">BOM_LE</span> <span class="o">=</span> <span class="n">BOM_UTF16_LE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\xff\xfe</span><span class="s1">&#39;</span>
+
+<span class="c1"># UTF-16, big endian</span>
+<span class="n">BOM_BE</span> <span class="o">=</span> <span class="n">BOM_UTF16_BE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\xfe\xff</span><span class="s1">&#39;</span>
+
+<span class="c1"># UTF-32, little endian</span>
+<span class="n">BOM_UTF32_LE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\xff\xfe\x00\x00</span><span class="s1">&#39;</span>
+
+<span class="c1"># UTF-32, big endian</span>
+<span class="n">BOM_UTF32_BE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\x00\x00\xfe\xff</span><span class="s1">&#39;</span>
+</pre></div>
+</td></tr></table>
+
+<p><sub>Extraído del fichero <code>codecs.py</code> de la librería estándar de python</sub></p>
+<p>Como la marca <abbr title="Marca de orden de bytes"><span class="caps">BOM</span></abbr> se codifica de manera diferente según el sistema de codificación, podemos deducir qué codificación esta usando el fichero a partir de los 4 primeros bytes. De esta manera, muchos editores son capaces de emplear la codificación&nbsp;correcta.</p>
+<p>Por otro lado, puede que sepamos qué codificación usan nuestros ficheros, pero en cambio nos molesta esos caracteres de más al inicio del fichero. En este caso, el módulo <code>codecs</code> de python nos facilita mucho la tarea. Basta emplear las siguiente codificaciones&nbsp;genéricas:</p>
+<ul>
+<li><code>'utf-8-sig'</code> para <span class="caps">UTF</span>-8</li>
+<li><code>'utf-16'</code> para <span class="caps">UTF</span>-<span class="caps">16LE</span> y <span class="caps">UTF</span>-<span class="caps">16BE</span></li>
+<li><code>'utf-32'</code> para <span class="caps">UTF</span>-<span class="caps">32LE</span> y <span class="caps">UTF</span>-<span class="caps">32BE</span></li>
+</ul>
+<p>Se introdujo <code>'utf-8-sig</code><span class="quo">&#8216;</span> para no provocar incompatibilidades con el código existente que ya usaba <code>'utf-8</code><span class="quo">&#8216;</span>. Usando estas codificaciones, el módulo <code>'codecs'</code> es suficientemente inteligente para quitar el <abbr title="Marca de orden de bytes"><span class="caps">BOM</span></abbr> al leer el fichero, y para añadir el <abbr title="Marca de orden de bytes"><span class="caps">BOM</span></abbr> al escribir, de modo completamente&nbsp;transparente.</p>
+<p>Por ejemplo, estos días necesitaba pasar un fichero en <code>UTF-16LE</code> a <code>UTF-8</code>. Lo conseguí con el siguiente&nbsp;script:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">codecs</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="o">=</span><span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;fichero-utf16le.txt&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-16&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">o</span><span class="o">=</span><span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;fichero-utf8.txt&quot;</span><span class="p">,</span><span class="s2">&quot;wb&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8-sig&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">o</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">o</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<p>O, completando <a href="https://blog.ch3m4.org/2011/08/04/iconv-en-python/">otro articulo</a>, se podría hacer todo en una sóla&nbsp;línea:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ python -c <span class="s2">&quot;import sys,codecs;codecs.EncodedFile(sys.stdout,&#39;utf-16&#39;,&#39;utf-8-sig&#39;).writelines(sys.stdin)&quot;</span> &lt;fichero_entrada.txt &gt;fichero_salida.txt
+</pre></div>
+</td></tr></table>
+
+<p>Hay que tener en cuenta que el comando <code>iconv</code>, normalmente usado para convertir codificaciones de ficheros, no tiene en consideración el <abbr title="Marca de orden de bytes"><span class="caps">BOM</span></abbr>. Con python tenemos una solución&nbsp;perfecta.</p>
+  </div>
+  <hr>
+  
+  <ul class="pager">
+          <li class="previous">
+               <a href="https://blog.ch3m4.org/2012/06/05/descriptores-parte-3/" title="Anterior">
+                    <i class="fa fa-arrow-circle-left"></i>
+                   Descriptores - Parte&nbsp;3
+               </a>
+           </li>
+           <li class="next">
+              <a href="https://blog.ch3m4.org/2012/07/24/instalacion-de-modulos/" title="Siguiente">
+                   Instalación de&nbsp;módulos
+                   <i class="fa fa-arrow-circle-right"></i>
+               </a>
+           </li>
+   </ul>
+   With category <a href="https://blog.ch3m4.org/category/python/">Python</a>:
+   <ul class="pager">
+          <li class="previous">
+             <a href="https://blog.ch3m4.org/2012/06/05/descriptores-parte-3/" title="Anterior en misma categoría">
+                <i class="fa fa-arrow-circle-o-left"></i>
+                Descriptores - Parte&nbsp;3
+             </a>
+          </li>
+        <li class="next">
+             <a href="https://blog.ch3m4.org/2012/07/24/instalacion-de-modulos/" title="Siguiente en misma categoría">
+                 Instalación de&nbsp;módulos
+                 <i class="fa fa-arrow-circle-o-right"></i>
+             </a>
+        </li>
+
+   </ul>
+
+    
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var disqus_identifier = "2012/07/10/bom-marcas-de-orden-de-bytes/";
+    loadDisqus = function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//hyperreals.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
+      window.scroll(0, document.getElementById('main').offsetTop);
+    }})
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

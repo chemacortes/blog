@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Posts tagged with 'tip' on this site">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.82b4bc13.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+
+  <title>
+Tag: tip | Hyperreals *R  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://plus.google.com/+ChemaCortés" title="google+"><i class="fa fa-google-plus fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+      
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>Tag: tip
+</p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2012/01/26/condificando-en-binario/">Codificando en&nbsp;binario</a></h1>
+  </div>
+  <div class="article_text">
+    <p>A raiz de la consulta de un colega, me ha llamado la atención el módulo <code>binascii</code>. Este módulo se encarga de la codificación y decodificación de cadenas binarias para su transmisión en mensajes de texto. Lo habitual es que sea usado por otros módulos como <code>uu</code>, <code>base64</code> o <code>binhex</code>, por …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/08/04/iconv-en-python/">iconv en&nbsp;python</a></h1>
+  </div>
+  <div class="article_text">
+    <p>Últimamente he necesitado pasar algunos ficheros de una web a codificación <code>utf-8</code>, codificación de caracteres más acorde con lo que se lleva hoy en día. En sistemas linux es una labor que se puede hacer fácilmente con la utilidad <code>iconv</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ iconv -f cp850 -t utf8 &lt;fichero_entrada.txt &gt;fichero_salida.txt …</pre></div></td></tr></table>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/06/06/ultimo-item-de-un-iterable/">Último item de un&nbsp;iterable</a></h1>
+  </div>
+  <div class="article_text">
+    <p>Algunas veces necesitamos obtener el último item de un iterador. Para
+ello se suele iterar hasta agotar el&nbsp;iterador:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">iterador</span><span class="p">:</span>
+     <span class="k">pass</span>
+
+<span class="n">last_item</span> <span class="o">=</span> <span class="n">it</span>  
+</pre></div>
+</td></tr></table>
+
+<p>Una alternativa que se ve bastante es convertir previamente el iterable
+en una&nbsp;lista:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">last_item</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">iterador</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</td></tr></table>
+
+<p>Tiene …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/06/04/instalacion-cx_oracle-para-ia64/">Instalación cx_Oracle para&nbsp;ia64</a></h1>
+  </div>
+  <div class="article_text">
+    <h1>Itanium, un sistema&nbsp;¿obsoleto?</h1>
+<p>Últimamente, algunos <em>grandes</em> de la informática como Microsoft, Oracle y RedHat han determinado que los sistemas Itanium han quedado obsoletos con lo que dejarán de darles soporte, aunque hace sólo unos pocos años estos sistemas de 64bits se ofertaban al mercado como el futuro de los …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/05/24/qtm-con-restructuredtext/">qtm con&nbsp;reStructuredText</a></h1>
+  </div>
+  <div class="article_text">
+    <p>Puestos a explotar todas las posibilidades de la utilidad <a href="http://qtm.blogistan.co.uk/" title="QTM The open-source blogging client">qtm</a>, también es posible emplear esta utilidad para previsualizar y subir al blog artículos escritos en <strong><a href="http://docutils.sourceforge.net/rst.html" title="reStructuredText">reStructuredText</a></strong> (abreviadamente <abbr title="reStructuredText">ReST</abbr>) en lugar de <em>markdown</em> que viene por&nbsp;defecto.</p>
+<p>De la instalación de <strong><a href="http://docutils.sourceforge.net" title="docutils">docutils</a></strong> obtendremos las herramientas básicas con la que crear documentación …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/05/23/qtm-con-markdown_extra/">qtm con&nbsp;markdown_extra</a></h1>
+  </div>
+  <div class="article_text">
+    <p>Por defecto, <strong><a href="http://qtm.blogistan.co.uk/" title="QTM The open-source blogging client">qtm</a></strong> usa el comando <code>markdown</code> que se instala en linux en la ruta <code>/usr/bin/markdown</code>. Este comando acepta la sintáxis básica de <em>markdown</em>, insuficiente cuando estamos acostumbrados a usar la extensión <em>markdown extra</em>.</p>
+<p>Con un pequeño truco, es posible usar <em>markdown_extra</em> con <em>qtm</em>. Instalando el módulo <a href="http://www.freewisdom.org/projects/python-markdown/">markdown …</a></p>
+  </div>
+</article>
+
+<footer>
+<div id="paginator">
+  <span id="left">
+  </span>
+  <span id="right">
+  </span>
+  <div>
+      <a href="https://blog.ch3m4.org/tag/tip/.html">[1]</a>
+  </div>
+</div>
+</footer>
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
+      window.scroll(0, document.getElementById('main').offsetTop);
+    }})
+  </script>
+
+</body>
+</html>

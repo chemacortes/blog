@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Lenguajes de marcas ligeras | ¿Para qué usar Lenguajes de Marcas Ligeras? Últimamente he estado estudiando el uso markdown en diferentes niveles....">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.82b4bc13.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, calibre, markdown, pandoc, restructuredtext">
+
+  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
+
+  <title>
+Lenguajes de marcas ligeras | Hyperreals *R  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://plus.google.com/+ChemaCortés" title="google+"><i class="fa fa-google-plus fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+      
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/05/17/lenguajes-de-marcas-ligeras/" class="nohover">Lenguajes de marcas&nbsp;ligeras</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Posted <time data-timeago datetime="2011-05-17T02:13:00+02:00">mar 17 mayo 2011</time>
+     by Chema Cortés    </p>
+    <p>
+    Category: <a href="https://blog.ch3m4.org/category/tecnicas/">Técnicas</a>
+&ndash;&ndash;    Tags:
+      <a href="https://blog.ch3m4.org/tag/calibre/">calibre</a>,      <a href="https://blog.ch3m4.org/tag/markdown/">markdown</a>,      <a href="https://blog.ch3m4.org/tag/pandoc/">pandoc</a>,      <a href="https://blog.ch3m4.org/tag/restructuredtext/">restructuredtext</a>    </p>
+  </div>
+  <div class="article_text">
+    <h1>¿Para qué usar Lenguajes de Marcas&nbsp;Ligeras?</h1>
+<p>Últimamente he estado estudiando el uso <a href="http://daringfireball.net/projects/markdown">markdown</a> en diferentes niveles. Por el tipo de actividad que realizo, tengo que generar mucha documentación para acompañar código de programación y no resulta práctico tener que generar a mano los diversos formatos de documentos que se puedan necesitar. Es fundamental poder escribir un sólo documento y generar a partir de él todos los demás&nbsp;formatos.</p>
+<p>Los <a href="http://es.wikipedia.org/wiki/Lenguaje_de_marcas_ligero"><em>Lenguajes de Marcas Ligeros</em></a> como markdown permiten tener un documento en texto plano suficientemente <em>&#8220;legible&#8221;</em> para su uso como documentación interna en un proyecto y convertir después a otros formatos para presentaciones, publicación web o, simplemente, para su archivo. Estos lenguajes de marcas hacen muy cómodo el incorporar pequeños fragmentos de código durante el proceso de redacción, que aparecerán en el documento final con sintaxis coloreada gracias a varios <em>plugins</em>. Además, al ser documentos en texto plano, encajan perfectamente con el sistema de control de versiones de código que se use en el&nbsp;desarrollo.</p>
+<h1>markdown, markdown extra y&nbsp;reStructuredText</h1>
+<p><a href="http://daringfireball.net/projects/markdown"><strong>Markdown</strong></a> se centra en la generación de documentos <abbr title="Hyper Text Markup Language"><span class="caps">HTML</span></abbr>, algo bastante apropiado para su uso en blogs y wiki <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. La principal virtud de markdown es su <em>&#8220;legibilidad&#8221;</em> a pesar de tener contenida toda la información necesaria para generar la estructura del documento <abbr title="Hyper Text Markup Language"><span class="caps">HTML</span></abbr>, aunque resultará demasiado simple para crear documentación avanzada con tablas, notas bibliográficas, tablas de&nbsp;contenidos,&#8230;</p>
+<p>Son muchas las propuestas para añadir a markdown nuevos elementos. Estas extensiones del lenguaje hacen que tengamos que indagar si una herramienta nos es útil o no según si acepta la extensión que estemos utilizando. De entre todas las extensiones, la más aceptada es la <a href="http://michelf.com/projects/php-markdown/extra/" title="PHP Markdown Extra">&#8220;<span class="caps">PHP</span> Markdown Extra&#8221;</a>, o simplemente <strong>&#8220;markdown extra&#8221;</strong>. Casi se puede asegurar que toda herramienta que procese <em>markdown</em> acepta también <em>markdown extra</em> (<a href="http://mitcho.com/code/">markdown para wordpress</a>, <a href="http://www.freewisdom.org/projects/python-markdown/">python-markdown</a>, <a href="http://johnmacfarlane.net/pandoc/">pandoc</a>,&nbsp;&#8230;).</p>
+<p>Pero si nuestro objetivo es crear documentación más &#8220;profesional&#8221;, <em>markdown</em> se nos quedará corto enseguida. Antiguamente, toda la documentación se realizaba en <a href="http://www.latex-project.org/" title="LaTeX"><span class="math">\(\LaTeX\)</span></a>, a partir del cual se podía generar documentos de cualquier formato y siempre con una calidad tipográfica profesional. Hoy en día, <span class="math">\(\LaTeX\)</span> sigue siendo usado en la generación de los documentos finales, pero en la redacción de la documentación se están usando herramientas que simplifiquen la labor y, sobre todo, que consiga mejor legibilidad que un documento en formato <span class="math">\(\LaTeX\)</span>.</p>
+<p>Como alternativa a <span class="math">\(\LaTeX\)</span>, sin duda destaca el languaje de marcas <a href="http://docutils.sourceforge.net/rst.html" title="reStructuredText"><strong>reStructuredText</strong></a>. Ligero, muy completo y legible. Posee cualquier elemento que necesite nuestro documento, con conversores de formato a casi cualquier cosa (incluido <span class="math">\(\LaTeX\)</span>). La documentación de python es un buen ejemplo de lo que se puede hacer con reStructuredText junto con <a href="http://sphinx.pocoo.org/">sphinx</a> (Tema que abordaré en un próximo&nbsp;artículo).</p>
+<h1>Herramientas&nbsp;markdown</h1>
+<p>De momento, dejo <em>reStructuredText</em> para otro momento y me voy a centrar en <em>markdown</em> (y <em>markdown extra</em>). Como he dicho, el destino final de <em>markdown</em> es generar ficheros <abbr title="Hyper Text Markup Language"><span class="caps">HTML</span></abbr>; pero existen dos maneras sencillas de generar otros&nbsp;formatos:</p>
+<ul>
+<li>
+<p><strong><a href="http://johnmacfarlane.net/pandoc/">Pandoc</a></strong>: es una herramienta que se puede usar para convertir entre <em>markdown</em> y <em>reStructuredText</em>, así como para generar otros muchos formatos como <code>html, s5, docbook, opendocument, latex, context, texinfo, man, mediawiki</code> y <code>rtf</code>. La calidad de los documentos generados dejan mucho qué desear, pero como conversor entre <em>markdown</em> y <em>reStructuredText</em> hace un buen&nbsp;papel.</p>
+</li>
+<li>
+<p><strong><a href="http://calibre-ebook.com">calibre</a></strong>: se trata de uno de los más conocidos gestores de ebooks, una de las aplicaciones en <a href="http://python.org">python</a> más destacadas. Lo que muchos desconocen es que entre los distintos formatos de libros electrónicos que es capaz de convertir admite <em>markdown</em> como formato de los ficheros de texto. Es la forma más rápida y sencilla de generar <em>ebooks</em> que tenemos a nuestro alcance. Basta configurar que use para la detección de capítulos la expresión <code>//h:h1</code> para que nos cree automáticamente una <em>tabla de contenidos</em>.</p>
+<p><img alt="Selección de capítulos" src="/pictures/Pantallazo.png"></p>
+</li>
+</ul>
+<p><span class="caps">NOTAS</span>:</p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Sin ir más lejos, toda esta entrada del blog está escrita en markdown gracias al plugin <a href="http://mitcho.com/code/">markdown</a> para <em>WordPress</em>. Esta nota al pie es una característica extra aportada por <em>markdown extra</em>.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+  <hr>
+  
+  <ul class="pager">
+          <li class="previous">
+               <a href="https://blog.ch3m4.org/2011/03/24/podcast-z-2-animalario-con-lenguajes-dinamicos/" title="Anterior">
+                    <i class="fa fa-arrow-circle-left"></i>
+                   Podcast Z #2: Animalario con lenguajes&nbsp;dinámicos
+               </a>
+           </li>
+           <li class="next">
+              <a href="https://blog.ch3m4.org/2011/05/22/qtm-editor-markdown-y-wordpress/" title="Siguiente">
+                   qtm: un editor para markdown y&nbsp;wordpress
+                   <i class="fa fa-arrow-circle-right"></i>
+               </a>
+           </li>
+   </ul>
+   With category <a href="https://blog.ch3m4.org/category/tecnicas/">Técnicas</a>:
+   <ul class="pager">
+        <li class="next">
+             <a href="https://blog.ch3m4.org/2011/05/22/qtm-editor-markdown-y-wordpress/" title="Siguiente en misma categoría">
+                 qtm: un editor para markdown y&nbsp;wordpress
+                 <i class="fa fa-arrow-circle-o-right"></i>
+             </a>
+        </li>
+
+   </ul>
+
+    
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var disqus_identifier = "2011/05/17/lenguajes-de-marcas-ligeras/";
+    loadDisqus = function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//hyperreals.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
+      window.scroll(0, document.getElementById('main').offsetTop);
+    }})
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

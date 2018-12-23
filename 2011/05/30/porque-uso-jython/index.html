@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Porqué uso jython | Python de sabores Cuando hablamos de python, normalmente nos referimos a su versión canónica implementada en lenguaje C, también...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.82b4bc13.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, glassfish, h2, jdbc, jython, zxjdbc">
+
+  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
+
+  <title>
+Porqué uso jython | Hyperreals *R  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://plus.google.com/+ChemaCortés" title="google+"><i class="fa fa-google-plus fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+      
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/05/30/porque-uso-jython/" class="nohover">Porqué uso&nbsp;jython</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Posted <time data-timeago datetime="2011-05-30T19:04:00+02:00">lun 30 mayo 2011</time>
+     by Chema Cortés    </p>
+    <p>
+    Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+&ndash;&ndash;    Tags:
+      <a href="https://blog.ch3m4.org/tag/glassfish/">glassfish</a>,      <a href="https://blog.ch3m4.org/tag/h2/">h2</a>,      <a href="https://blog.ch3m4.org/tag/jdbc/">jdbc</a>,      <a href="https://blog.ch3m4.org/tag/jython/">jython</a>,      <a href="https://blog.ch3m4.org/tag/zxjdbc/">zxjdbc</a>    </p>
+  </div>
+  <div class="article_text">
+    <h1>Python de&nbsp;sabores</h1>
+<p>Cuando hablamos de <strong>python</strong>, normalmente nos referimos a su versión <em>canónica</em> implementada en lenguaje C, también conocida por <em>&#8220;CPython&#8221;</em>. Toda la evolución del lenguaje se realiza alrededor de esta implementación y pocas veces se piensa en otras implementaciones. Pero una de las características de python es ser multiplaforma, y lo demuestra con implementaciones para varias plataformas. Algunas de las implementaciones más interesantes&nbsp;serían:</p>
+<ul>
+<li>
+<p><a href="http://jython.org">Jython</a>:
+    Implementación para <span class="caps">JVM</span> que se integra y hace uso de la numerosísismas
+    librerías Java y entornos <span class="caps">J2EE</span>. Combina un entorno robusto que rodea a Java con la programación dinámica de&nbsp;python.</p>
+</li>
+<li>
+<p><a href="http://www.codeplex.com/Wiki/View.aspx?ProjectName=IronPython">IronPython</a>:
+    Una de las implementaciones para la plataforma .Net y mono. Se integra
+    con el <em>framework</em> .Net de Microsoft, llegando a una eficiencia bastante 
+    cercana al lenguaje&nbsp;C#.</p>
+</li>
+<li>
+<p><a href="http://www.python.org/dev/peps/pep-3146/#pypy">PyPy</a>:
+    Un python escrito en python. Su objetivo es librar a python de las
+    limitaciones impuestas por el lenguaje C, dando lugar a una implementación
+    puramente&nbsp;python.</p>
+</li>
+</ul>
+<p>Cada una de estas implementaciones lleva su propio ritmo de desarrollo, siguiendo la estela de <em>CPython</em>. En estos momentos, el lenguaje python (CPython) está parado debido a la moratoria <a href="http://www.python.org/dev/peps/pep-3003/"><span class="caps">PEP</span>-3003</a> de dos años, a punto de terminar, que se está aprovechando para acercar a CPython el resto de implementaciones y así unir las distintas comunidades de desarrolladores en el siguiente avance de Python hacia la versión&nbsp;3.</p>
+<h1>Python con sabor&nbsp;Java</h1>
+<p>De entre todas la implementaciones de python, la que uso habitualmente en mi trabajo es <a href="http://jython.org">jython</a>. Sin entrar en polémicas sobre si un lenguaje es mejor que otro, cuando uno se decide por un lenguaje <em>híbrido</em> como jython lo hace desde el convencimiento de que la mejor solución consiste en usar lo bueno de ambos mundos. Por un lado, los entornos java ofrecen robustez y librerías bien probadas para cualquier aplicación empresarial; por otro lado, jython ofrece técnicas de programación dinámica que mejoran la&nbsp;productividad.</p>
+<p>Entrando en detalle, este sería un listado de ventajas e incovenientes de usar jython sobre python y/o&nbsp;java:</p>
+<h2>Multiplataforma</h2>
+<p>Aunque python ya venga instalado en prácticamente todo sistema linux o macintosh, o incluso aparezca empotrado en aplicaciones como openoffice/libreoffice, no siempre es posible controlar qué versiones, módulos y librerías hay instalados en el sistema. La disparidad de sistemas y configuraciones hace inviable contar con un entorno homogéno para ejecutar nuestro programa python. Por lo general se desarrolla con una configuración fijada, con la esperanza de que el sistema de producción cuente con la misma&nbsp;configuración.</p>
+<p>Jython se aprovecha la difusión de la máquina virtual <span class="caps">JVM</span> en casi todos los sistemas. Esta máquina virtual nos crea una capa de abstracción que facilita el traslado de la misma configuración de nuestro entorno de desarrollo al sistema de producción, tan fácil como copiar un fichero de un sistema a&nbsp;otro.</p>
+<p>Además resulta sencillo crear un entorno jython <em>portable</em><sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> en un pendrive o un disco duro externo, con lo que podemos llevarnos nuestro entorno de desarrollo con&nbsp;nosotros.</p>
+<h2>Velocidad y&nbsp;memoria</h2>
+<p>Existe cierta idea equivocada que los programas java son lentos y consumen mucha memoria. En realidad, java se inventó para sistemas empotrados, como demostraría las aplicaciones y juegos para existen para teléfonos móviles. Hoy en día, una aplicación para java es bastante rápida una vez arrancada la máquina virtual, y el consumo de memoria puede delimitarse para no agobiar al resto del&nbsp;sistema.</p>
+<p>Así mismo, el aspecto gráfico de las aplicaciones java es muy similar a las aplicaciones nativas, disponiendo de interfaces de bajo nivel para control gráficos y dispositivos de entrada y&nbsp;salida.</p>
+<h2>Sincronismo&nbsp;multihilo</h2>
+<p>Con el tiempo, la gestión de los hilos de ejecución en una máquina virtual <span class="caps">JVM</span> ha llegado a superar cualquier otra implementación gracias a la capa de abstracción que impone. En C, es una labor del programador realizar esta gestión a mano o, con algo de suerte, disponga de alguna librería que facilite el sistema operativo donde se vaya a ejecutar la aplicación, no consiguiendo toda la estabilidad que sería deseable (un ejemplo sería la inestabilidad de algunas extensiones de apache frente a la robustez de los servidores de aplicaciones web para&nbsp;java).</p>
+<p>Por ello jython delega esta gestión de hilos delegando en el <span class="caps">JVM</span> e, incluso, delega en él la <em><a href="http://es.wikipedia.org/wiki/Recolecci%C3%B3n_de_basura">recolección de basura</a></em> (<em>garbage collection</em>). Como consecuencia directa, en jython no existe el odioso <strong><a href="http://en.wikipedia.org/wiki/Global_Interpreter_Lock"><span class="caps">GIL</span></a></strong> de CPython que impide que dos hilos se ejecuten&nbsp;simultáneamente.</p>
+<h2>Base de&nbsp;datos</h2>
+<p>La conectividad con bases de datos en Jython se realiza mediante los conectores <a href="http://es.wikipedia.org/wiki/JDBC"><span class="caps">JDBC</span></a> de java, que es una especie de estándar en java que toda base de datos ofrece. En jython, gracias al grandioso módulo <code>zxJDBC</code> podemos usar conexiones <code>jdbc</code> del modo habitual en python, o sea, mediante la <span class="caps">DB</span>-<span class="caps">API2</span>. La ventaja es que sólo necesitamos añadir el conector <code>jdbc</code> (un fichero <code>.jar</code>) a la ruta de clases del <span class="caps">JVM</span>, sin tener que instalar la librería o todo el cliente completo como exigen algunas bases de datos en&nbsp;CPython.</p>
+<p>En mi caso concreto, necesito conectarme a varios tipos de bases de datos diferentes para interoperar entre ellos. Me resultaba complejo tener que ir instalando las librerías de conexión para el sistema, con algunos pidiendo que te instales el cliente completo con licencia. Además, tenía que instalar los módulos de python, que no siempre estaban actualizados o, simplemente, no existían. Con jython, tengo todos los conectores <code>jdbc</code> en un directorio y con sólo un módulo, <code>zxJDBC</code>, tengo todo lo&nbsp;necesario.</p>
+<p>¿Y sqlite? Python incluye sqlite como base de datos sencilla. Al estar programada en C no aparece con jython. Como alternativa, podríamos usar la <code>javadb</code> (aka <code>derbydb</code>) que se suele instalar junto con el java, aunque es algo de lo que no podemos fiarnos. Mi recomendación es usar <a href="http://h2database.com">h2</a>. En un fichero de poco más de 1 Mb tenemos una implementación completa de base de datos relacional (<span class="caps">SQL</span>-92), tremendamente rápida en comparación con otras, que tiene acceso a través del sistema de ficheros al estilo sqlite o acceder en compartido como servidor <span class="caps">TCP</span>/<span class="caps">IP</span>, con interface de línea de comandos, con su administrador web,&#8230; Es ideal para hacer de intermediario entre bases de datos, aceptando enlaces <span class="caps">JDBC</span> a otras bases de datos e importaciones/exportaciones en formato <span class="caps">CSV</span>.</p>
+<h2>Contendores&nbsp;Java</h2>
+<p>Otro aspecto interesante son los contendores para aplicaciones java (<span class="caps">J2EE</span>). Una aplicación jython puede, del mismo modo que hace java, desplegarse en estos contenedores para aprovechar sus servicios j2ee como sería un pool de conexiones para una base de datos. Impresionante, resulta ver que con la versión 3 de <a href="http://glassfish.java.net/">glassfish</a> ya se incluye un contenedor específico para jython, lo que permite desplegar en él aplicaciones desarrolladas en <a href="https://www.djangoproject.com/">django</a> ó <a href="http://pylonsproject.org/">pylons</a> (éste último todavía en fase de pruebas) sin cambiar una sóla línea de&nbsp;código.</p>
+<hr>
+<p><em>(CONTINUARÁ)</em></p>
+<p>Espero haber conseguido interesarte con este artículo. Mi intención es continuar hablando de jython en próximos artículos y mostrar su uso en desarrollos de todo tipo.
+Nos veremos&nbsp;pronto.</p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>En próximos artículos veremos cómo usar <code>virtualenv</code> para crear estos entornos portables.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+  </div>
+  <hr>
+  
+  <ul class="pager">
+          <li class="previous">
+               <a href="https://blog.ch3m4.org/2011/05/24/python-in-tasca/" title="Anterior">
+                    <i class="fa fa-arrow-circle-left"></i>
+                   Python in&nbsp;tasca
+               </a>
+           </li>
+           <li class="next">
+              <a href="https://blog.ch3m4.org/2011/06/04/instalacion-cx_oracle-para-ia64/" title="Siguiente">
+                   Instalación cx_Oracle para&nbsp;ia64
+                   <i class="fa fa-arrow-circle-right"></i>
+               </a>
+           </li>
+   </ul>
+   With category <a href="https://blog.ch3m4.org/category/python/">Python</a>:
+   <ul class="pager">
+          <li class="previous">
+             <a href="https://blog.ch3m4.org/2011/05/24/python-in-tasca/" title="Anterior en misma categoría">
+                <i class="fa fa-arrow-circle-o-left"></i>
+                Python in&nbsp;tasca
+             </a>
+          </li>
+        <li class="next">
+             <a href="https://blog.ch3m4.org/2011/06/04/instalacion-cx_oracle-para-ia64/" title="Siguiente en misma categoría">
+                 Instalación cx_Oracle para&nbsp;ia64
+                 <i class="fa fa-arrow-circle-o-right"></i>
+             </a>
+        </li>
+
+   </ul>
+
+    
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var disqus_identifier = "2011/05/30/porque-uso-jython/";
+    loadDisqus = function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//hyperreals.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
+      window.scroll(0, document.getElementById('main').offsetTop);
+    }})
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

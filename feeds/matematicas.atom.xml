@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R - Matemáticas</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/matematicas.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2011-03-21T18:31:00+01:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>La paradoja de Monty Hall</title><link href="https://blog.ch3m4.org/2011/03/21/la-paradoja-de-monty-hall/" rel="alternate"></link><published>2011-03-21T18:31:00+01:00</published><updated>2011-03-21T18:31:00+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2011-03-21:/2011/03/21/la-paradoja-de-monty-hall/</id><summary type="html">&lt;p&gt;Este fin de semana me plantearon el conocido como &lt;a href="http://es.wikipedia.org/wiki/Problema_de_Monty_Hall"&gt;Problema de &amp;#8220;Monty Hall&amp;#8221;&lt;/a&gt;. Que me
+perdonen los matemáticos y estadísticos, pero no estoy de acuerdo con su
+planteamiento ni con sus conclusiones (antes de seguir, recomiendo una
+lectura del&amp;nbsp;problema).&lt;/p&gt;
+&lt;p&gt;Supongamos que el presentador actúa de la siguiente forma: cuando …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Este fin de semana me plantearon el conocido como &lt;a href="http://es.wikipedia.org/wiki/Problema_de_Monty_Hall"&gt;Problema de &amp;#8220;Monty Hall&amp;#8221;&lt;/a&gt;. Que me
+perdonen los matemáticos y estadísticos, pero no estoy de acuerdo con su
+planteamiento ni con sus conclusiones (antes de seguir, recomiendo una
+lectura del&amp;nbsp;problema).&lt;/p&gt;
+&lt;p&gt;Supongamos que el presentador actúa de la siguiente forma: cuando el
+concursante elige una puerta, se le permite optar entre quedarte con esa
+puerta o quedarse con el resto de puertas. Evidentemente, el concursante
+debería cambiar ya que la probabilidad aumenta cuanta más puertas
+tengas. Justamente, coincide con la solución probabilística que se da a
+este problema (2/3 de conseguir el coche) y es la razón por la que se
+debería cambiar&amp;nbsp;siempre.&lt;/p&gt;
+&lt;p&gt;El error está en desconsiderar que cuando el presentador va abriendo
+(conscientemente) las puertas con cabra, la puerta elegida inicialmente
+también aumenta su probabilidad de tener un coche simplemente por el
+hecho de estar eliminando &lt;em&gt;elecciones&lt;/em&gt; del planteamiento inicial,
+alcanzando el 50% cuando sólo quedan dos puertas (tal como nos indica
+nuestra intuición). Al eliminar puertas, estamos eliminando posibles
+fallos, lo que equivale a aumentar la posibilidad de que hayamos
+acertado en primera instancia. La decisión consciente del presentador
+está actuando sobre las condiciones iniciales del concurso y debe ser
+tenido en&amp;nbsp;cuenta.&lt;/p&gt;
+&lt;p&gt;Pienso que este problema es confuso por el hecho de intentar aplicar
+métodos probabilísticos a un problema que no se rige enteramente por el
+azar. Si crees que estoy confundido, espero tus comentarios al&amp;nbsp;respecto&lt;/p&gt;</content></entry></feed>

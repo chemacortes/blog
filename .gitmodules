@@ -1,0 +1,6 @@
+[submodule "pelican-plugins"]
+	path = pelican-plugins
+	url = https://github.com/getpelican/pelican-plugins
+[submodule "pelican-subtle-mod"]
+	path = pelican-subtle-mod
+	url = https://github.com/chemacortes/pelican-subtle-mod

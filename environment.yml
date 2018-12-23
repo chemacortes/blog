@@ -1,0 +1,14 @@
+name: pelican
+dependencies:
+  - python=3
+  - pelican
+  - markdown
+  - typogrify
+  - invoke
+  - webassets
+  - cssmin
+  - libsass
+  - pip:
+    - slimit
+    - pyscss
+    - ply==3.4

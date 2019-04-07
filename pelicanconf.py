@@ -56,6 +56,7 @@ TYPOGRIFY = True
 STATIC_PATHS = [
     "extra",
     "pictures",
+    "code"
 ]
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
@@ -106,6 +107,12 @@ PLUGINS = [
     "render_math",
     "sitemap",
     "neighbors",
+    'liquid_tags.img',
+    'liquid_tags.audio',
+    'liquid_tags.video',
+    'liquid_tags.youtube',
+    'liquid_tags.vimeo',
+    'liquid_tags.include_code',
 ]
 # DIRECT_TEMPLATES = ('index', 'tags', 'categories','archives')
 

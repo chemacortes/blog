@@ -1,9 +1,11 @@
+---
 Title: Mutabilidad de Listas
 Date: 2013-03-16 15:53
-Modified: 2018-07-25 01:15:35
+Modified: 2019-04-07 21:14:30
 Author: Chema Cortés
 Category: Python
 Slug: mutabilidad-de-listas
+---
 
 !!! INFO
     Puedes visionar este artículo y descargártelo como notebook ipython en [http://nbviewer.jupyter.org/5177340](http://nbviewer.jupyter.org/5177340)
@@ -88,7 +90,7 @@ Siempre añade `4` al argumento, que es el valor de `i` al acabar el bucle, inde
 
 Por último, otro efecto funesto de la mutabilidad de las listas aparece en la creación de *listas multidimensionales* (aka *matrices*). Una forma rápida de crear una matriz de 2x2 es: `[[0]*2]*2`. El problema aquí está en que cuando clonamos listas, en lugar de copiar los elementos, los enlaza entre sí. Quizás se vea mejor si hacemos alguna operación:
 
-~~~plain
+~~~
 >>> l = [[0]*2]*2
 [[0, 0], [0, 0]]
 >>> l[0][0]
@@ -132,18 +134,18 @@ def add(a, lista=None):
 
 En cuanto a evitar las operaciones que mutan listas, siempre hay alternativas inmutables de todas estas operaciones. El siguiente cuadro puede servir como referencia:
 
-Mutable      | Inmutable
----- | ----
-`L.append(item)` | `L+[item]`
-`L.extend(sequence)` | `L + list(sequence)`
-`L.insert(index, item)` | `L[:index] + [item] + L[index:]`
-`L.reverse()` | `L[::-1]`
-`L.sort()` | `sorted(L)`
-`item = L.pop()` | `item,L = L[-1],L[:-1]`
-`item = L.pop(0)` | `item,L = L[0],L[1:]`
-`item = L.pop(index)` | `item, L = L[item], L[:item]+L[item+1:]`
-`L.remove(item)` | `L=L[:item]+L[item+1:]`
-`L[i:j] = K` | `L[:i] + K + L[j:]`
+| Mutable                 | Inmutable                                |
+|-------------------------|------------------------------------------|
+| `L.append(item)`        | `L+[item]`                               |
+| `L.extend(sequence)`    | `L + list(sequence)`                     |
+| `L.insert(index, item)` | `L[:index] + [item] + L[index:]`         |
+| `L.reverse()`           | `L[::-1]`                                |
+| `L.sort()`              | `sorted(L)`                              |
+| `item = L.pop()`        | `item,L = L[-1],L[:-1]`                  |
+| `item = L.pop(0)`       | `item,L = L[0],L[1:]`                    |
+| `item = L.pop(index)`   | `item, L = L[item], L[:item]+L[item+1:]` |
+| `L.remove(item)`        | `L=L[:item]+L[item+1:]`                  |
+| `L[i:j] = K`            | `L[:i] + K + L[j:]`                      |
 
 A la hora de decidir qué versión usar, la versión inmutable es más apropiada para programación funcional y resulta incluos más intuitiva de interpretar. No es extraño ver errores de código donde se espera resultados de las operaciones `.sort()` o `.reverse()`, que siempre devuelven `None`. Para el intérprete de python no hay error, pero a veces nos será difícil darnos cuenta de estos errores:
 

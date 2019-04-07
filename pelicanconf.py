@@ -39,7 +39,7 @@ SOCIAL = (
     ('bitbucket', 'https://bitbucket.org/chemacortes/'),
     ('stackoverflow', 'http://stackoverflow.com/users/1243400/chemacortes'),
     # ('delicious', 'https://delicious.com/chemacortes'),
-    ('google+', 'https://plus.google.com/+ChemaCortés'),
+    # ('google+', 'https://plus.google.com/+ChemaCortés'),
     ('linkedin', 'https://linkedin.com/in/chemacortes'),
     # ('facebook', 'https://facebook.com/pych3m4'),
     # ('flickr', 'https://www.flickr.com/photos/chemacortes'),
@@ -73,6 +73,8 @@ ARCHIVES_URL = "archives.html"
 ARCHIVES_SAVE_AS = 'archives.html'
 ARTICLE_URL = '{date:%Y}/{date:%m}/{date:%d}/{slug}/'
 ARTICLE_SAVE_AS = '{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
+DRAFT_URL = 'drafts/{date:%Y}-{date:%m}-{date:%d}-{slug}.html'
+DRAFT_SAVE_AS = 'drafts/{date:%Y}-{date:%m}-{date:%d}-{slug}.html'
 PAGE_URL = 'pages/{slug}/'
 PAGE_SAVE_AS = 'pages/{slug}/index.html'
 

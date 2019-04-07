@@ -1,4 +1,7 @@
 name: pelican
+channels:
+  - conda-forge
+  - defaults
 dependencies:
   - python=3
   - pelican
@@ -8,7 +11,8 @@ dependencies:
   - webassets
   - cssmin
   - libsass
+  - pyscss
+  - ply
+  - coconut
   - pip:
-    - slimit
-    - pyscss
-    - ply==3.4
+      - slimit

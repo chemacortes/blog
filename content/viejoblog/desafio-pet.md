@@ -1,7 +1,7 @@
 ---
 Title: Desafío PET1
 Date: 2011-03-14 22:33
-Modified: 2018-12-10 02:26:15
+Modified: 2019-04-08 02:03:01
 Author: Chema Cortés
 Category: Python
 Tags: code
@@ -18,21 +18,22 @@ En ese primer número se proponía el siguiente desafío PET:
 > imprima por pantalla la factorización del número. Los siguientes
 > ejemplos muestran posibles entradas y cómo se espera que sean las
 > salidas.
->
-```
-	> entrada: 11
-	>  salida: 11
-	>
-	> entrada: 8
-	>  salida: 2^3
-	>
-	> entrada: 24
-	>  salida: 2^3 x 3
-	>
-	> entrada: 168
-	>  salida: 2^3 x 3 x 7
-```
->  Notar que los factores se ordenan en orden creciente y si un factor
+
+~~~.none
+entrada: 11
+ salida: 11
+
+entrada: 8
+ salida: 2^3
+
+entrada: 24
+ salida: 2^3 x 3
+
+entrada: 168
+ salida: 2^3 x 3 x 7
+~~~
+
+> Notar que los factores se ordenan en orden creciente y si un factor
 > aparece más de una vez, se debe expresar en forma de potencia. Los
 > participantes deben enviar su solución como un archivo .py y esta será
 > ejecutado con python 2.7. El ganador del desafío será aquel que logre
@@ -46,7 +47,7 @@ donde (*¡Oh, sorpresa!*) estoy en cabeza.
 Para todos los que estén aún esperando la solución de *111 caracteres*,
 aquí va la mía:
 
-~~~python
+~~~.python
 n=input();d=1;r=""
 while d<n:
  d+=1;s=0
@@ -62,4 +63,4 @@ fijas, el *or* de la última línea está pegado con el primer argumento.
 Es un truco muy sucio que no debería haberlo permitido el intérprete.
 
 Aquí tienes el fichero para descargar:
-[pet1-pych3m4.py]({static}/extra/pet1-pych3m4.py)
+[pet1-pych3m4.py]({attach}/code/pet1/pet1-pych3m4.py)

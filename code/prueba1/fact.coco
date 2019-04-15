@@ -1,0 +1,1 @@
+fact = n -> range(2,n) |> reduce(*)

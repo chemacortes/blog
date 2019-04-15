@@ -7,7 +7,7 @@
   <meta name="author" content="Chema Cortés">
   <meta name="description" content="Borrado de un descriptor (corrección de errores) | Tengo que hacer algunas correcciones a la serie de artículos sobre descriptores, en concreto...">
 
-  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.82b4bc13.min.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.7098921b.min.css">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
@@ -34,7 +34,6 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
           <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
           <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
           <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
-          <a href="https://plus.google.com/+ChemaCortés" title="google+"><i class="fa fa-google-plus fa-lg"></i></a>
           <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
       </div>
       <ul>
@@ -110,7 +109,7 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
 <p>De su ejecución, podemos comprobar que el método <code>__del__</code> no se invoca justo en el momento de hacer <code>del a</code>, si no cuando se pierde la última referencia al asignar otro valor a la variable <code>b</code>. La sentencia <code>del a</code> no <em>destruye</em> el objeto, tan sólo desliga el objeto de la etiqueta <code>a</code> que lo referenciaba. Por ese motivo, es inexacto hablar en python de &#8220;variable de memoria&#8221;, como se entiende en otro lenguajes. Tan sólo cambiamos de una referencia de un objeto a otro, sin destruir su valor&nbsp;anterior.</p>
 <h2>Revisión del protocolo&nbsp;descriptor</h2>
 <p>En un <a href="https://blog.ch3m4.org/2011/06/19/descriptores-parte-1/">anterior artículo</a> distinguía entre descriptores de datos y de no-datos. Hay que aclarar que un descriptor de datos &#8220;es también el que sólo tiene definido un método <code>__delete__</code>, aunque no tenga método <code>__set__</code><span class="dquo">&#8220;</span>. ¿Para qué puede sernos útil tener uno sin el&nbsp;otro?</p>
-<p>Un descriptor de datos sin método <code>__set__</code> no tiene forma de impedir que el atributo/método que implementa sea sustituído por otro objeto (por ejemplo, por otro descriptor). El método <code>__delete__</code> nos daría la última opción de liberar recursos que ya no vayamos a usar antes de desaparecer el descriptor. Pero, independiemente de lo que haga, el método <code>__delete__</code> indicaría que el descriptor puede ser sustituido. En definitiva, se comportaría como un <em>descriptor de no-datos</em>, pero con las diferencias en la invocación entre estos dos tipos de descriptor<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>.</p>
+<p>Un descriptor de datos sin método <code>__set__</code> no tiene forma de impedir que el atributo/método que implementa sea sustituído por otro objeto (por ejemplo, por otro descriptor). El método <code>__delete__</code> nos daría la última opción de liberar recursos que ya no vayamos a usar antes de desaparecer el descriptor. Pero, independiemente de lo que haga, el método <code>__delete__</code> indicaría que el descriptor puede ser sustituido. En definitiva, se comportaría como un <em>descriptor de no-datos</em>, pero con las diferencias en la invocación entre estos dos tipos de descriptor<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup>.</p>
 <p>Para aclarar las cosas, veamos qué estaba mal en el <a href="https://blog.ch3m4.org/2011/06/19/descriptores-parte-1/">ejemplo</a> que puse en su momento  sobre el uso de <code>__delete__</code> (he cambiado algunos nombres para que se vea más&nbsp;claro):</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -181,7 +180,7 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
 </td></tr></table>
 
 <p>La idea era que se pudiera borrar el descriptor de datos para sustuirlo por otro valor. Tal como señalaba Cristian en un comentario al respecto, este ejemplo parece funcionar con o sin el método <code>__delete__</code> en el&nbsp;descriptor.</p>
-<p>Funciona siempre debido a que con <code>'del Miclase.a12'</code> estamos borrando la referencia al descriptor que tiene la clase, sin pasar por el protocolo descriptor. La particularidad de los descriptores es que <em>viven</em> en la clase, pero se invocan desde la instancia. Con <code>'del Miclase.a12'</code> estamos saltándonos el protocolo descriptor para acceder directamente al atributo de la clase<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>.</p>
+<p>Funciona siempre debido a que con <code>'del Miclase.a12'</code> estamos borrando la referencia al descriptor que tiene la clase, sin pasar por el protocolo descriptor. La particularidad de los descriptores es que <em>viven</em> en la clase, pero se invocan desde la instancia. Con <code>'del Miclase.a12'</code> estamos saltándonos el protocolo descriptor para acceder directamente al atributo de la clase<sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup>.</p>
 <p>Además, este código no funcionaría&nbsp;nunca:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="fm">__delete__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
@@ -299,11 +298,11 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
 <div class="footnote">
 <hr>
 <ol>
-<li id="fn:1">
-<p>Comentado en los anteriores <a href="https://blog.ch3m4.org/tag/descriptor/">artículos sobre descriptores</a>.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<li id="fn-1">
+<p>Comentado en los anteriores <a href="https://blog.ch3m4.org/tag/descriptor/">artículos sobre descriptores</a>.&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
-<li id="fn:2">
-<p>Un modo de impedir el borrado de atributos de una clase sería aplicando el protocolo descriptor con metaclases, pero pienso que estaríamos complicándolo todo demasiado para el beneficio que pudiera obtenerse a cambio.&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<li id="fn-2">
+<p>Un modo de impedir el borrado de atributos de una clase sería aplicando el protocolo descriptor con metaclases, pero pienso que estaríamos complicándolo todo demasiado para el beneficio que pudiera obtenerse a cambio.&#160;<a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

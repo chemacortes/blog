@@ -7,7 +7,7 @@
   <meta name="author" content="Chema Cortés">
   <meta name="description" content="Mutabilidad de Listas | Info Puedes visionar este artículo y descargártelo como notebook ipython en http://nbviewer.jupyter.org/5177340 Mucha gente,...">
 
-  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.82b4bc13.min.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.7098921b.min.css">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
@@ -34,7 +34,6 @@ Mutabilidad de Listas | Hyperreals *R  </title>
           <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
           <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
           <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
-          <a href="https://plus.google.com/+ChemaCortés" title="google+"><i class="fa fa-google-plus fa-lg"></i></a>
           <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
       </div>
       <ul>
@@ -69,7 +68,7 @@ Mutabilidad de Listas | Hyperreals *R  </title>
   <div class="article_meta">
     <p>Posted <time data-timeago datetime="2013-03-16T15:53:00+01:00">sáb 16 marzo 2013</time>
      by Chema Cortés    </p>
-    <p>Last updated <time data-timeago datetime="2018-07-25T01:15:35+02:00">mié 25 julio 2018</time></p>
+    <p>Last updated <time data-timeago datetime="2019-04-07T21:14:30+02:00">dom 07 abril 2019</time></p>
     <p>
     Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
   </div>
@@ -213,7 +212,7 @@ True
 <h2>Recomendaciones para hacer código&nbsp;funcional</h2>
 <h3>Copia de&nbsp;listas</h3>
 <p>En funciones y métodos, si recibimos una lista como argumento, la primera acción defensiva que deberíamos hacer es copiar la lista en una variable local y trabajar solo con la variable local desde ese momento. Con una asignación directa no se realiza una copia, más bien estaríamos <em>enlazando</em> una nueva referenciasin solucionar&nbsp;nada.</p>
-<p>La forma consensuada entre programadores python de copiar una lista es con la operación de <em>spliting</em> <code>L[:]</code>, aunque sirven otras operaciones idempotentes como <code>L*1</code> ó <code>L+[]</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. Para listas de elementos entrelazados tendremos que acudir a otros mecanismos de copia como los que ofrece el <a href="http://docs.python.org/3.3/library/copy.html" title="Módulo copy">módulo <code>copy</code></a>, aunque no será frecuente que lo&nbsp;necesitemos.</p>
+<p>La forma consensuada entre programadores python de copiar una lista es con la operación de <em>spliting</em> <code>L[:]</code>, aunque sirven otras operaciones idempotentes como <code>L*1</code> ó <code>L+[]</code><sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup>. Para listas de elementos entrelazados tendremos que acudir a otros mecanismos de copia como los que ofrece el <a href="http://docs.python.org/3.3/library/copy.html" title="Módulo copy">módulo <code>copy</code></a>, aunque no será frecuente que lo&nbsp;necesitemos.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -319,8 +318,8 @@ True
 <div class="footnote">
 <hr>
 <ol>
-<li id="fn:1">
-<p>De hecho, la operación <code>L*1</code> es más eficiente que <code>L[:]</code>.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<li id="fn-1">
+<p>De hecho, la operación <code>L*1</code> es más eficiente que <code>L[:]</code>.&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

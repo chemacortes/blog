@@ -5,19 +5,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Chema Cortés">
-  <meta name="description" content="Prueba de Advertencias | El formato general: 1 2 3 4!!! type &#34;optional explicit title within double quotes&#34; Any number of other indented markdown...">
+  <meta name="description" content="Instalando coconut | 1conda create -c conda-forge -n coco coconut[all] jupyter jupyterlab pyparsing==2.2.0 !!! Note: En un entorno virtual, coconut...">
 
-  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.82b4bc13.min.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.7098921b.min.css">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
 
-<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, markdown">
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, coconut">
 
   <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
 
   <title>
-Prueba de Advertencias | Hyperreals *R  </title>
+Instalando coconut | Hyperreals *R  </title>
 
 </head>
 
@@ -34,7 +34,6 @@ Prueba de Advertencias | Hyperreals *R  </title>
           <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
           <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
           <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
-          <a href="https://plus.google.com/+ChemaCortés" title="google+"><i class="fa fa-google-plus fa-lg"></i></a>
           <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
       </div>
       <ul>
@@ -64,67 +63,59 @@ Prueba de Advertencias | Hyperreals *R  </title>
 
 <article>
   <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/drafts/prueba-de-advertencias.html" class="nohover">Prueba de&nbsp;Advertencias</a></h1>
+    <h1><a href="https://blog.ch3m4.org/drafts/2019-04-16-instalando-coconut.html" class="nohover">Instalando&nbsp;coconut</a></h1>
   </div>
   <div class="article_meta">
-    <p>Posted <time data-timeago datetime="2018-07-24T23:55:53+02:00">mar 24 julio 2018</time>
+    <p>Posted <time data-timeago datetime="2019-04-16T00:18:46+02:00">mar 16 abril 2019</time>
      by Chema Cortés    </p>
-    <p>Last updated <time data-timeago datetime="2018-07-25T20:46:04+02:00">mié 25 julio 2018</time></p>
+    <p>Last updated <time data-timeago datetime="2019-04-16T00:34:52+02:00">mar 16 abril 2019</time></p>
     <p>
-    Category: <a href="https://blog.ch3m4.org/category/tecnicas/">Técnicas</a>
+    Category: <a href="https://blog.ch3m4.org/category/coconut/">Coconut</a>
 &ndash;&ndash;    Tags:
-      <a href="https://blog.ch3m4.org/tag/markdown/">markdown</a>    </p>
+      <a href="https://blog.ch3m4.org/tag/coconut/">coconut</a>    </p>
   </div>
   <div class="article_text">
-    <p>El formato&nbsp;general:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>!!! type &quot;optional explicit title within double quotes&quot;
-    Any number of other indented markdown elements.
-
-    This is the second paragraph.
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>conda create -c conda-forge -n coco coconut<span class="o">[</span>all<span class="o">]</span> jupyter jupyterlab <span class="nv">pyparsing</span><span class="o">==</span><span class="m">2</span>.2.0
 </pre></div>
 </td></tr></table>
 
-<p>Por ejemplo, una advertencia sin tipo&nbsp;definido:</p>
+<p>!!! Note:
+    En un entorno virtual, coconut no funciona del todo bién con jupyter. Mejor hacer la instalación directamente sobre el  entorno <code>base</code>.</p>
+<p>Acceso a la&nbsp;documentación:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>!!! Advertencia
-    Ejemplo de una advertencia sin tipo.
-
-    Segundo párrafo.
-
-    Tercer párrafo.
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>conda activate coco
+coconut --doc
 </pre></div>
 </td></tr></table>
 
-<p>Quedaría&nbsp;así:</p>
-<div class="admonition advertencia">
-<p class="admonition-title">Advertencia</p>
-<p>Ejemplo de una advertencia sin&nbsp;tipo.</p>
-<p>Segundo&nbsp;párrafo.</p>
-<p>Tercer&nbsp;párrafo.</p>
-</div>
-<p>Advertencias de tipo: <code>update</code>, <code>hint</code>. <code>important</code> y <code>note</code>:</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Un&nbsp;truco&#8230;</p>
-</div>
-<p>Advertencias de tipo: <code>warning</code>, <code>attention</code>, <code>caution</code> y <code>danger</code></p>
-<div class="admonition danger">
-<p class="admonition-title">Peligro</p>
-<p>Una advertencia de tipo <code>danger</code> con título&nbsp;personalizado.</p>
-</div>
+<ul>
+<li>Eliminación de&nbsp;google+</li>
+<li>Inclusión de typescript y&nbsp;angular</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">dubsums</span> <span class="o">=</span> <span class="nb">map</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">dubsums</span> <span class="o">|&gt;</span> <span class="nb">list</span> <span class="o">|&gt;</span> <span class="nb">print</span>
+</pre></div>
+</td></tr></table>
+
+<figure class='code'>
+<figcaption><span>Un ejemplo de fichero .coco</span> <a href='/code/prueba1/fact.coco'>download</a></figcaption>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">fact</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="nb">reduce</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+</figure>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Router</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;../node_packages/@angular/cli&#39;</span>
+</pre></div>
+</td></tr></table>
   </div>
   <hr>
   
   <ul class="pager">
    </ul>
-   With category <a href="https://blog.ch3m4.org/category/tecnicas/">Técnicas</a>:
+   With category <a href="https://blog.ch3m4.org/category/coconut/">Coconut</a>:
    <ul class="pager">
 
    </ul>
@@ -136,7 +127,7 @@ Prueba de Advertencias | Hyperreals *R  </title>
   </div>
 
   <script type="text/javascript">
-    var disqus_identifier = "drafts/prueba-de-advertencias.html";
+    var disqus_identifier = "drafts/2019-04-16-instalando-coconut.html";
     loadDisqus = function() {
       var dsq = document.createElement('script');
       dsq.type = 'text/javascript';

@@ -7,7 +7,7 @@
   <meta name="author" content="Chema Cortés">
   <meta name="description" content="Dobleces en python | En el último artículo del blog contaba en qué consistía doblar código1: “…un código que se pliega sobre sí mismo. Un código que...">
 
-  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.82b4bc13.min.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.7098921b.min.css">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
@@ -34,7 +34,6 @@ Dobleces en python | Hyperreals *R  </title>
           <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
           <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
           <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
-          <a href="https://plus.google.com/+ChemaCortés" title="google+"><i class="fa fa-google-plus fa-lg"></i></a>
           <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
       </div>
       <ul>
@@ -73,7 +72,7 @@ Dobleces en python | Hyperreals *R  </title>
     Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
   </div>
   <div class="article_text">
-    <p>En el <a href="https://blog.ch3m4.org/2013/02/21/collage-vs-origami/" title="Collage vs. Origami">último artículo</a> del blog contaba en qué consistía <em>doblar código</em><sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>:</p>
+    <p>En el <a href="https://blog.ch3m4.org/2013/02/21/collage-vs-origami/" title="Collage vs. Origami">último artículo</a> del blog contaba en qué consistía <em>doblar código</em><sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup>:</p>
 <blockquote>
 <p><span class="dquo">&#8220;</span>&#8230;un código que se pliega sobre sí mismo. Un código que te
 lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
@@ -176,15 +175,15 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
 </td></tr></table>
 
 <p>La función <code>listar</code> ha pasado a ser el iterador <code>lineas</code> que retorna las líneas ya formateadas. Asimismo, se ha cambiado la función <code>format</code> por el método <code>format</code> de los <code>strings</code> con el que se pueden formatear mejor varios valores a la vez. La impresión de las líneas en pantalla se deja para el último momento, cuando se necesita ver el resultado. Es en este momento cuando se decide cuántas líneas se van a imprimir, que es lo que hace el <code>islice</code> acortando el iterador <code>lineas</code> a 5 iteraciones. También se usa el iterador <code>enumerate</code> para ir enumerando las líneas a medida que las&nbsp;obtenemos.</p>
-<p>Como se ve, una orientación funcional permite encadenar varias operaciones sin necesidad de mantener estados intermedios<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>. Además de lo que supone de ahorro de recursos, no tener que mantener un contexto con los estados intermedios hará más sencillo migrar la ejecución de un proceso a otro en programación concurrente (eg: <em>multihilo</em>). Hoy en día, tal como evolucionan los ordenadores, quien no programe pensando en la ejecución concurrente terminará programando dos&nbsp;veces.</p>
+<p>Como se ve, una orientación funcional permite encadenar varias operaciones sin necesidad de mantener estados intermedios<sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup>. Además de lo que supone de ahorro de recursos, no tener que mantener un contexto con los estados intermedios hará más sencillo migrar la ejecución de un proceso a otro en programación concurrente (eg: <em>multihilo</em>). Hoy en día, tal como evolucionan los ordenadores, quien no programe pensando en la ejecución concurrente terminará programando dos&nbsp;veces.</p>
 <div class="footnote">
 <hr>
 <ol>
-<li id="fn:1">
-<p>Puede que prefieras usar el término <a href="http://es.wikipedia.org/wiki/Refactorización" title="Refactorización"><em>&#8220;refactorizar&#8221;</em></a>, pero he pensado que es mejor dejar este término para la programación orientada a objeto y usar <em>&#8220;doblez&#8221;</em> para dar una idea más afín a la programación funcional.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<li id="fn-1">
+<p>Puede que prefieras usar el término <a href="http://es.wikipedia.org/wiki/Refactorización" title="Refactorización"><em>&#8220;refactorizar&#8221;</em></a>, pero he pensado que es mejor dejar este término para la programación orientada a objeto y usar <em>&#8220;doblez&#8221;</em> para dar una idea más afín a la programación funcional.&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
-<li id="fn:2">
-<p>En realidad, no es del todo cierto que la función no dependa de estados externos ya que el iterador <code>it</code> que hemos pasado como argumento podría cambiar externamente entre iteraciones.&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<li id="fn-2">
+<p>En realidad, no es del todo cierto que la función no dependa de estados externos ya que el iterador <code>it</code> que hemos pasado como argumento podría cambiar externamente entre iteraciones.&#160;<a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

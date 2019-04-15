@@ -7,7 +7,7 @@
   <meta name="author" content="Chema Cortés">
   <meta name="description" content="Estudio función factorial en scala - Revisión funcional | Como programador de python que todavía anda algo despistado estudiando scala, ahora...">
 
-  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.82b4bc13.min.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.7098921b.min.css">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
@@ -34,7 +34,6 @@ Estudio función factorial en scala - Revisión funcional | Hyperreals *R  </ti
           <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
           <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
           <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
-          <a href="https://plus.google.com/+ChemaCortés" title="google+"><i class="fa fa-google-plus fa-lg"></i></a>
           <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
       </div>
       <ul>
@@ -83,7 +82,7 @@ Estudio función factorial en scala - Revisión funcional | Hyperreals *R  </ti
 </td></tr></table>
 
 <p>En realidad, <code>1 to n</code> no es un elemento sintáctico del lenguaje, si no más bien la forma <em>alternativa</em> de escribir la invocación del método <code>1.to(n)</code>. Este método nos genera una secuencia de números desde el 1 al n (equivalente en python a&nbsp;range(1,n+1)).</p>
-<p>Curiosamente, también está definido <code>fact(0)</code> gracias a que <code>product</code> da como resultado el elemento neutro <code>1</code> en secuencias vacías <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>.</p>
+<p>Curiosamente, también está definido <code>fact(0)</code> gracias a que <code>product</code> da como resultado el elemento neutro <code>1</code> en secuencias vacías <sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup>.</p>
 <p>Esta forma concisa de calcular el producto es común a todas las secuencias en scala. Faltaría, tan sólo, que operara con BigInts para que fuera&nbsp;perfecta:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="n">fact</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">(</span><span class="nc">BigInt</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="n">to</span> <span class="n">n</span><span class="o">).</span><span class="n">product</span>
 </pre></div>
@@ -106,7 +105,7 @@ Estudio función factorial en scala - Revisión funcional | Hyperreals *R  </ti
 </pre></div>
 </td></tr></table>
 
-<p>Lamentablemente, el operador funcional <code>'reduce'</code> está desapareciendo de python por considerarlo complejo de entender en su funcionamiento <sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>.</p>
+<p>Lamentablemente, el operador funcional <code>'reduce'</code> está desapareciendo de python por considerarlo complejo de entender en su funcionamiento <sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup>.</p>
 <p>Por último, aún existe otra forma funcional de expresar el factorial en scala. Son los <em>&#8220;plegados&#8221;</em> (<em>folds</em>), similar en funcionamiento a <code>reduce</code>, pero con control sobre la dirección del recorrido y la posibilidad de dar un valor&nbsp;inicial:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="n">fact</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="o">(</span><span class="mi">1</span> <span class="n">to</span> <span class="n">n</span><span class="o">).</span><span class="n">foldLeft</span><span class="o">(</span><span class="nc">BigInt</span><span class="o">(</span><span class="mi">1</span><span class="o">))(</span><span class="k">_</span><span class="o">*</span><span class="k">_</span><span class="o">)</span>
 </pre></div>
@@ -116,11 +115,11 @@ Estudio función factorial en scala - Revisión funcional | Hyperreals *R  </ti
 <div class="footnote">
 <hr>
 <ol>
-<li id="fn:1">
-<p>En el caso del método <code>sum</code> daría el elemento neutro para la suma, o sea, el <code>0</code>.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<li id="fn-1">
+<p>En el caso del método <code>sum</code> daría el elemento neutro para la suma, o sea, el <code>0</code>.&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
-<li id="fn:2">
-<p>Personalmente, considero que la desaparición de la programación funcional se debe más a la corta visión de quién sólo ve un encadenamiento de sentencias, en lugar de ver <em>&#8220;actores&#8221;</em> interaccionando en libre concurrencia.&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<li id="fn-2">
+<p>Personalmente, considero que la desaparición de la programación funcional se debe más a la corta visión de quién sólo ve un encadenamiento de sentencias, en lugar de ver <em>&#8220;actores&#8221;</em> interaccionando en libre concurrencia.&#160;<a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

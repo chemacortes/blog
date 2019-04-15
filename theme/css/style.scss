@@ -13,7 +13,7 @@ $code-linebg: #dddddd;
 $blue: #0e94ec;
 $accent: $blue;
 
-@import url("//fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Mono");
+@import url('//fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Mono');
 $sans: 'Ubuntu', sans-serif;
 $mono: 'Ubuntu Mono', monospace;
 
@@ -43,7 +43,7 @@ a {
 }
 
 a[href]:not(.nohover) {
-  &:hover{
+  &:hover {
     color: $accent;
   }
 }
@@ -64,9 +64,9 @@ aside {
     text-align: center;
 
     img#logo {
-        width: $logo_size;
-        height: $logo_size;
-        border-radius: 50%;
+      width: $logo_size;
+      height: $logo_size;
+      border-radius: 50%;
     }
 
     h2 {
@@ -85,7 +85,7 @@ aside {
     }
 
     div.social {
-      margin-top:15px;
+      margin-top: 15px;
 
       a {
         display: inline-block;
@@ -104,7 +104,7 @@ aside {
 
         a {
           i {
-              padding-left: 5px;
+            padding-left: 5px;
           }
         }
       }
@@ -134,10 +134,10 @@ main {
       color: $black;
     }
 
-    p:not(#header){
+    p:not(#header) {
       a {
         color: $med-grey;
-        &:hover{
+        &:hover {
           color: $accent;
         }
       }
@@ -209,7 +209,7 @@ main {
           border-left: 3px solid $accent;
           border-right: 1px solid $code-border;
           background: $code-linebg;
-          vertical-align:top;
+          vertical-align: top;
 
           div.linenodiv pre {
             padding-right: 4px;
@@ -219,7 +219,6 @@ main {
       }
 
       div.admonition {
-
         border-width: 1px 1px 1px 7px;
         border-radius: 10px;
         border-style: solid;
@@ -227,11 +226,18 @@ main {
         border-left-color: $dark-grey;
         background-color: $code-background;
 
-        &.update, &.hint, &.important, &.note, &.tip {
+        &.update,
+        &.hint,
+        &.important,
+        &.note,
+        &.tip {
           border-left-color: $accent;
         }
 
-        &.warning, &.attention, &.caution, &.danger {
+        &.warning,
+        &.attention,
+        &.caution,
+        &.danger {
           border-left-color: red;
         }
 
@@ -240,7 +246,7 @@ main {
           padding: 10px 15px;
         }
 
-        p.admonition-title{
+        p.admonition-title {
           text-transform: uppercase;
           font-weight: bold;
           padding: 5px 15px;
@@ -253,6 +259,7 @@ main {
         padding-left: $horiz_pad;
         color: $med-grey;
         font-style: italic;
+        border-left: 0.5em solid #dfe2e5;
       }
     }
 
@@ -261,7 +268,7 @@ main {
       color: $med-grey;
     }
 
-    div#article_comments{
+    div#article_comments {
       padding-top: 10px;
       padding-bottom: 10px;
 
@@ -282,7 +289,7 @@ main {
       overflow: auto;
       text-align: center;
 
-      div{
+      div {
         display: inline-block;
       }
 
@@ -350,7 +357,7 @@ main {
       margin: 0;
     }
 
-    footer{
+    footer {
       div#paginator {
         width: $content_size;
       }
@@ -366,7 +373,7 @@ main {
 }
 .pager:before,
 .pager:after {
-  content: " ";
+  content: ' ';
   display: table;
 }
 .pager:after {
@@ -374,7 +381,7 @@ main {
 }
 .pager:before,
 .pager:after {
-  content: " ";
+  content: ' ';
   display: table;
 }
 .pager:after {
@@ -412,4 +419,3 @@ main {
   background-color: #ffffff;
   cursor: not-allowed;
 }
-

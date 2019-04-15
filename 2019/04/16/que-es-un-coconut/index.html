@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="¿Qué es un coconut? | …and now for something completely different Python multiparadigma La primera vez que oí hablar de python allí por finales del...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.7098921b.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, coconut, functional-programming">
+
+  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
+
+  <title>
+¿Qué es un coconut? | Hyperreals *R  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+      
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2019/04/16/que-es-un-coconut/" class="nohover">¿Qué es un&nbsp;coconut?</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Posted <time data-timeago datetime="2019-04-16T00:00:00+02:00">mar 16 abril 2019</time>
+     by Chema Cortés    </p>
+    <p>Last updated <time data-timeago datetime="2019-04-16T00:51:57+02:00">mar 16 abril 2019</time></p>
+    <p>
+    Category: <a href="https://blog.ch3m4.org/category/coconut/">Coconut</a>
+&ndash;&ndash;    Tags:
+      <a href="https://blog.ch3m4.org/tag/coconut/">coconut</a>,      <a href="https://blog.ch3m4.org/tag/functional-programming/">functional-programming</a>    </p>
+  </div>
+  <div class="article_text">
+    <div class="admonition type">
+<p class="admonition-title">&#8230;and now for something completely&nbsp;different</p>
+</div>
+<h2>Python&nbsp;multiparadigma</h2>
+<p>La primera vez que oí hablar de python allí por finales del siglo pasado, una cosa que me encantó es que se definía como <em>lenguaje multiparadigma</em> combinandao el clasicismo de los lenguajes imperativos con la novedosa (entonces) <em>orientación a objetos</em> y con algunas características <em>funcionales</em> añadidas que lo hacían único. El tiempo ha ido puliendo el lenguaje y la programación funcional se ha ido arrinconando hacia algunos módulos o, directamente, han desaparecido. El propio creador del lenguaje, Guido von Rossum, llegó a pensar en <a href="https://www.artima.com/weblogs/viewpost.jsp?thread=98196" title="The fate of reduce() in Python 3000">eliminar todo rastro</a>, aunque finalmente sólo desterró la función <code>reduce</code> al módulo <code>functools</code> alegando que no era una característica que entendiera ni usar un programador&nbsp;python.</p>
+<p>Es una pena. La <em>Programación Imperativa</em> impuesta como único modo de aprender a programar, sin base para cambiar luego hacia los otros dos paradigmas. Cuando se introdujo la <em>Programación Orientada a Objetos</em> con los interfaces gráficos, se empleó mal. Los objetos fueron tamizados por la programación imperativa para verse como sacos de procedimientos que compartían unas mismas variables de estado. La <em>Programación Funcional</em>, a pesar de estar presente desde el principio de la historia de la informática, a pesar de ser la que más próxima al pensamiento matemático, quedó fuera del entendimiento de los&nbsp;programadores.</p>
+<p>Pero la tendencia se está inviertiendo. Hoy en día es imprescidible la ejecución concurrente, ya sea para aprovechar las CPUs multinúcleo de nuestros dispositivos, ya sea porque necesitamos atender un alto número de peticiones concurrentes. La programación imperativa ya no es apropiada cuando varios hilos de ejecución se acoplan e interfieren entre sí por los mismos recursos. La programación imperativa se hace menos determinista en estos casos y los fallos son imposibles de repetir de una ejecución a&nbsp;otra.</p>
+<p>La programación funcional, dentro de lo complejo que sea de entender sus premisas a un programador tradicional, es la única que permite razonar lógicamente sobre la ejecución de un programa&nbsp;concurrente.</p>
+<h2>¿Qué es un&nbsp;coconut?</h2>
+<p>Python ha avanzando mucho estos años. Es el principal lenguaje usado en ciencia y enseñanza. Los <em>makers</em> lo tienen en sus sistemas empotrados como microbit, raspberries pi y similares. Y pronto completará el hito de abandonar la versión 2 para pasar definitivamente a la versión 3, incluyendo entre sus novedades las instrucciones nuevas para la concurrencia y el&nbsp;multiproceso.</p>
+<p>Para mi gusto, a python le falta un sistema de tipos más potente y tener características funcionales. Para lo primero, hay avances con el <em>&#8220;tipado gradual&#8221;</em>, soportado por varios IDEs que ayuda mucho en la codificación. Para la programación funcional, python cuenta con algunos módulos como <code>itertools</code> y <code>functools</code>, pero no deja de ser algo&nbsp;testimonial.</p>
+<p>Pero he descubierto un nuevo lenguaje funcional <em>pythonico</em>: <a href="http://coconut-lang.org/" title="Coconut Language">coconut</a>. Aunque sigo recomendando empezar a programar con un verdadero lenguaje funcional como haskell para evitar adquirir vicios, con coconut se puede tener lo mejor de los dos mundos sin renunciar a usar&nbsp;python.</p>
+<p>Me he animado a aprender coconut e ir creando pequeños artículos a medida que vaya aprendiendo. Intentaré hacer comparaciones con otros lenguajes como haskell, scala o typescript, ya que son los otros lenguajes que estoy empleando frecuentemente, además de&nbsp;python.</p>
+<p>Sobre el nombre de <em>coconut</em> para un lenguaje <em>pythónico</em>, hay que recordar que todo lo relativo a <em>python</em> proviene de las comedias del grupo humorístico &#8220;Monty&nbsp;Python&#8221;:</p>
+<p><span class="videobox">
+                <iframe width="640" height="390"
+                    src='https://www.youtube.com/embed/Fhnjqy8JvEs'
+                    frameborder='0' webkitAllowFullScreen mozallowfullscreen
+                    allowFullScreen>
+                </iframe>
+            </span></p>
+<p>Pero para los que tenemos ya una edad, <em>coconut</em> siempre <em>serás tú</em>:</p>
+<p><span class="videobox">
+                <iframe width="640" height="390"
+                    src='https://www.youtube.com/embed/xwFp6THEddE'
+                    frameborder='0' webkitAllowFullScreen mozallowfullscreen
+                    allowFullScreen>
+                </iframe>
+            </span></p>
+  </div>
+  <hr>
+  
+  <ul class="pager">
+          <li class="previous">
+               <a href="https://blog.ch3m4.org/2018/07/25/factorial-en-scala-en-paralelo/" title="Anterior">
+                    <i class="fa fa-arrow-circle-left"></i>
+                   Factorial en scala en&nbsp;paralelo
+               </a>
+           </li>
+   </ul>
+   With category <a href="https://blog.ch3m4.org/category/coconut/">Coconut</a>:
+   <ul class="pager">
+
+   </ul>
+
+    
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var disqus_identifier = "2019/04/16/que-es-un-coconut/";
+    loadDisqus = function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//hyperreals.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
+      window.scroll(0, document.getElementById('main').offsetTop);
+    }})
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

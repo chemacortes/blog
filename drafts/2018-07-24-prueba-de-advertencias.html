@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Prueba de Advertencias | El formato general: 1 2 3 4!!! type &#34;optional explicit title within double quotes&#34; Any number of other indented markdown...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.7098921b.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, markdown">
+
+  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
+
+  <title>
+Prueba de Advertencias | Hyperreals *R  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+      
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/drafts/2018-07-24-prueba-de-advertencias.html" class="nohover">Prueba de&nbsp;Advertencias</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Posted <time data-timeago datetime="2018-07-24T23:55:53+02:00">mar 24 julio 2018</time>
+     by Chema Cortés    </p>
+    <p>Last updated <time data-timeago datetime="2019-04-07T21:06:04+02:00">dom 07 abril 2019</time></p>
+    <p>
+    Category: <a href="https://blog.ch3m4.org/category/tecnicas/">Técnicas</a>
+&ndash;&ndash;    Tags:
+      <a href="https://blog.ch3m4.org/tag/markdown/">markdown</a>    </p>
+  </div>
+  <div class="article_text">
+    <p>El formato&nbsp;general:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>!!! type &quot;optional explicit title within double quotes&quot;
+    Any number of other indented markdown elements.
+
+    This is the second paragraph.
+</pre></div>
+</td></tr></table>
+
+<p>Por ejemplo, una advertencia sin tipo&nbsp;definido:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>!!! Advertencia
+    Ejemplo de una advertencia sin tipo.
+
+    Segundo párrafo.
+
+    Tercer párrafo.
+</pre></div>
+</td></tr></table>
+
+<p>Quedaría&nbsp;así:</p>
+<div class="admonition advertencia">
+<p class="admonition-title">Advertencia</p>
+<p>Ejemplo de una advertencia sin&nbsp;tipo.</p>
+<p>Segundo&nbsp;párrafo.</p>
+<p>Tercer&nbsp;párrafo.</p>
+</div>
+<p>Advertencias de tipo: <code>update</code>, <code>hint</code>. <code>important</code> y <code>note</code>:</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Un&nbsp;truco&#8230;</p>
+</div>
+<p>Advertencias de tipo: <code>warning</code>, <code>attention</code>, <code>caution</code> y <code>danger</code></p>
+<div class="admonition danger">
+<p class="admonition-title">Peligro</p>
+<p>Una advertencia de tipo <code>danger</code> con título&nbsp;personalizado.</p>
+</div>
+  </div>
+  <hr>
+  
+  <ul class="pager">
+   </ul>
+   With category <a href="https://blog.ch3m4.org/category/tecnicas/">Técnicas</a>:
+   <ul class="pager">
+
+   </ul>
+
+    
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var disqus_identifier = "drafts/2018-07-24-prueba-de-advertencias.html";
+    loadDisqus = function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//hyperreals.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
+      window.scroll(0, document.getElementById('main').offsetTop);
+    }})
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

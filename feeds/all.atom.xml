@@ -1,5 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/all.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2019-04-16T00:51:57+02:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>¿Qué es un coconut?</title><link href="https://blog.ch3m4.org/2019/04/16/que-es-un-coconut/" rel="alternate"></link><published>2019-04-16T00:00:00+02:00</published><updated>2019-04-16T00:51:57+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2019-04-16:/2019/04/16/que-es-un-coconut/</id><summary type="html">&lt;p&gt;Inicio de unos artículos dedicados al lenguaje coconut, un lenguaje funcional totalmente &lt;em&gt;pythónico&lt;/em&gt;, y otras novedades para este nuevo reinicio del&amp;nbsp;blog.&lt;/p&gt;</summary><content type="html">&lt;div class="admonition type"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/all.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2019-05-02T23:58:10+02:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Coconut - Primeros pasos</title><link href="https://blog.ch3m4.org/2019/05/02/coconut-primeros-pasos/" rel="alternate"></link><published>2019-05-02T01:20:16+02:00</published><updated>2019-05-02T23:58:10+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2019-05-02:/2019/05/02/coconut-primeros-pasos/</id><summary type="html">&lt;p&gt;Primera toma de contacto con el lenguaje coconut, su instalación y detalles a tener en cuenta con la compatibilidad con las versiones de python&amp;nbsp;utilizadas.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://coconut-lang.org/" title="Coconut language"&gt;Coconut&lt;/a&gt; es un lenguaje funcional completamente &lt;em&gt;pythónico&lt;/em&gt;. Otro modo de hacer las cosas en python. Al principio puede parecer muy distinto, pero a medida que se conoce te das cuenta de lo útil que es a veces abordar ciertos problemas desde un punto de vista &lt;em&gt;puramente funcional&lt;/em&gt;.&lt;/p&gt;
+&lt;h2&gt;Qué versión de python&amp;nbsp;utilizar&lt;/h2&gt;
+&lt;p&gt;Antes de empezar con &lt;em&gt;coconut&lt;/em&gt;, una advertencia sobre las versiones de python. Para su ejecución, el código &lt;em&gt;coconut&lt;/em&gt; se traduce en código python, pudiendo elegir qué versión de python ejecutará el código final. Se puede elegir &lt;a href="https://coconut.readthedocs.io/en/master/DOCS.html#allowable-targets"&gt;varias versiones de python&lt;/a&gt; objetivo, independientemente de la versión de python con la que estemos trabajando. Por defecto, se genera &lt;em&gt;&amp;#8220;código universal&amp;#8221;&lt;/em&gt;, válido para todas las versiones de python. Emplear este &lt;em&gt;código universal&lt;/em&gt; requiere renunciar a algunas características de &lt;em&gt;python 3&lt;/em&gt; que no tienen equivalencia en &lt;em&gt;python 2&lt;/em&gt; como es la notación de tipos, el operador &lt;code&gt;'@'&lt;/code&gt; para multiplicación de matrices o las sentencias &lt;code&gt;async&lt;/code&gt; y &lt;code&gt;await&lt;/code&gt; para programación&amp;nbsp;asíncrona.&lt;/p&gt;
+&lt;p&gt;En esta serie de artículos sobre &lt;em&gt;coconut&lt;/em&gt; voy a trabajar siempre con una instalación de &lt;em&gt;python 3&lt;/em&gt;, lo recomendado para nuevos proyectos. Así mismo, el código generado se ejecutará en &lt;em&gt;python 3&lt;/em&gt;. Pero transpilar a &lt;em&gt;código universal&lt;/em&gt; debería ser igualmente válido en la mayoría de casos. Es más, ya que todo código &lt;em&gt;python 3&lt;/em&gt; es código válido en &lt;em&gt;coconut&lt;/em&gt;, se podría emplear para convertir código de &lt;em&gt;python 3&lt;/em&gt; a &lt;em&gt;python 2&lt;/em&gt;, aunque no lo&amp;nbsp;recomiendo.&lt;/p&gt;
+&lt;p&gt;En la documentación tienes &lt;a href="https://coconut.readthedocs.io/en/master/DOCS.html#compatible-python-versions"&gt;información sobre compatibilidad&lt;/a&gt; de &lt;em&gt;coconut&lt;/em&gt; con algunas versiones de&amp;nbsp;python.&lt;/p&gt;
+&lt;h2&gt;Instalación de&amp;nbsp;coconut&lt;/h2&gt;
+&lt;p&gt;Para instalar &lt;em&gt;coconut&lt;/em&gt; mi forma preferida es usar &lt;code&gt;conda&lt;/code&gt; empleando el canal &lt;code&gt;conda-forge&lt;/code&gt;. Siempre es recomendable crear un entorno virtual donde aislar las dependencias del resto de nuestra instalación. En concreto, la instalación de &lt;em&gt;coconut&lt;/em&gt; incluye varios kernels de jupyter y una configuración de pygments para el coloreado de&amp;nbsp;sintáxis.&lt;/p&gt;
+&lt;p&gt;En particular, prefiero crear un fichero de entorno (&lt;code&gt;environment.yml&lt;/code&gt;) que determine las dependencias, tanto las que instala conda, como las que se necesite instalar con pip. Podríamos concretar con precisión las versiones que vamos a usar; pero me voy a limitar a las dependencias mínimas para la versión que estoy usando ahora, &lt;em&gt;coconut 1.4.0&lt;/em&gt;.&lt;/p&gt;
+&lt;figure class='code'&gt;
+&lt;figcaption&gt;&lt;span&gt;Entorno virtual &amp;#8216;coco&amp;#8217;&lt;/span&gt; &lt;a href='/code/2019Q2/environment.yml'&gt;download&lt;/a&gt;&lt;/figcaption&gt;
+
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;coco&lt;/span&gt;
+&lt;span class="nt"&gt;channels&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;defaults&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;conda-forge&lt;/span&gt;
+&lt;span class="nt"&gt;dependencies&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;python=3.6&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;pip&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;coconut&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;mypy&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;pygments&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;jupyter&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;jupyter_console&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;watchdog&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;pyparsing=2.2.0&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;pip&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+      &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;cpyparsing&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;Se fija la versión de &lt;code&gt;python=3.6&lt;/code&gt; ya que ésta es la versión superior recomendada para &lt;em&gt;coconut&lt;/em&gt;. Posiblemente también funcione correctamente con &lt;code&gt;python=3.7&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Entre las dependencias&amp;nbsp;encontramos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;pygments&lt;/strong&gt;: facilitará el coloreado de sintáxis de código &lt;em&gt;coconut&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;watchdog&lt;/strong&gt;: chequea de cambios en ficheros para automatizar&amp;nbsp;recompilaciones&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;pyparsing&lt;/strong&gt;/&lt;strong&gt;cpyparsing&lt;/strong&gt;: &lt;em&gt;parseo&lt;/em&gt; de texto, utilizado por el traspilador y el interface de línea de comandos. Se fija la versión de &lt;code&gt;pyparsing=2.2.0&lt;/code&gt; ya que daba algunos fallos dentro de &lt;code&gt;jupyter console&lt;/code&gt; con versiones superiores&lt;sup id="fnref-1"&gt;&lt;a class="footnote-ref" href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;cPyparsing&lt;/code&gt; es una versión optimizada de &lt;code&gt;pyparsing&lt;/code&gt;. Su instalación necesita los compiladores de C apropiados para la creación módulos python para el sistema. Con linux, el entorno que uso, no hay problema; pero es posible que en windows dé errores por no encontrar el compilador &lt;span class="caps"&gt;MS&lt;/span&gt; C++. Si no sabes cómo se instala, siempre puedes quitar &lt;code&gt;cpyparsing&lt;/code&gt; del fichero &lt;code&gt;environment.yml&lt;/code&gt; para que siga usando &lt;code&gt;pyparsing&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Dado que &lt;em&gt;coconut&lt;/em&gt; es un desarrollo muy activo, también recomiendo la instalación de una versión de desarrollo de &lt;em&gt;coconut&lt;/em&gt;. Muchas veces, los problemas encontrados pueden estar resueltos en desarrollo. Pero siempre es interesante probar las novedades que se van a añadiendo y nunca está de más animarse a contribuir en posibles&amp;nbsp;mejoras.&lt;/p&gt;
+&lt;p&gt;El entorno de desarrollo estará definio&amp;nbsp;así:&lt;/p&gt;
+&lt;figure class='code'&gt;
+&lt;figcaption&gt;&lt;span&gt;Entorno virtual &amp;#8216;cocodev&amp;#8217;&lt;/span&gt; &lt;a href='/code/2019Q2/environment-dev.yml'&gt;download&lt;/a&gt;&lt;/figcaption&gt;
+
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8
+9&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;cocodev&lt;/span&gt;
+&lt;span class="nt"&gt;channels&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;defaults&lt;/span&gt;
+&lt;span class="nt"&gt;dependencies&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;python=3&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;pip&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;pip&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+      &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;coconut-develop[dev]&lt;/span&gt;
+      &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;coconut-prelude&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;La instalación de &lt;em&gt;coconut&lt;/em&gt; y sus dependencias para este entorno se delega totalmente en pip. Se añade el módulo &lt;code&gt;coconut-prelude&lt;/code&gt; que nos facilita un mecanismo similar al &lt;code&gt;Prelude&lt;/code&gt; de haskell para tener un entorno configurado con las funciones más habituales en programación&amp;nbsp;funcional.&lt;/p&gt;
+&lt;p&gt;Con estos dos ficheros, se crean los entornos&amp;nbsp;virtuales:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ conda env create -f environment.yml
+...
+$ conda env create -f environment-dev.yml
+...
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h2&gt;Primer contacto: Hola&amp;nbsp;Mundo&lt;/h2&gt;
+&lt;p&gt;Para ejecutar coconut, se debe activar primero el&amp;nbsp;entorno:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ conda activate coco
+$ coconut
+Coconut Interpreter:
+(type &amp;#39;exit()&amp;#39; or press Ctrl-D to end)
+&amp;gt;&amp;gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Sale una interface de línea de comando similar a la que tiene python, incluso se puede introducir código python&amp;nbsp;normal:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;¡Hola, Mundo!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="err"&gt;¡&lt;/span&gt;&lt;span class="n"&gt;Hola&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Mundo&lt;/span&gt;&lt;span class="err"&gt;!&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;En &lt;em&gt;coconut&lt;/em&gt;, éste sería nuestro &lt;em&gt;&amp;#8220;Hola Mundo&amp;#8221;&lt;/em&gt;:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;¡Hola, Mundo!&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;|&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;print&lt;/span&gt;
+&lt;span class="err"&gt;¡&lt;/span&gt;&lt;span class="n"&gt;Hola&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Mundo&lt;/span&gt;&lt;span class="err"&gt;!&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;El operador &lt;code&gt;|&amp;gt;&lt;/code&gt; puede verse como un &lt;em&gt;pipe&lt;/em&gt; que encadena operaciones, una tras otra, que será de uso común. Se puede describir como una &lt;em&gt;&amp;#8220;aplicación del resultado de la izquierda en la expresión de la derecha&amp;#8221;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Por poner ejemplos de aplicaciones en&amp;nbsp;cadena:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;¡Hola, Mundo!&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;|&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt; &lt;span class="o"&gt;|&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;print&lt;/span&gt;
+&lt;span class="mi"&gt;13&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;¡Hola, Mundo!&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;|&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt; &lt;span class="o"&gt;|&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;print&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;¡&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;H&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;o&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;l&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;M&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;u&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;n&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;o&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;¡Hola, Mundo!&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;|&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="o"&gt;|&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;print&lt;/span&gt;
+&lt;span class="err"&gt;¡&lt;/span&gt;&lt;span class="n"&gt;Hola&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Mundo&lt;/span&gt;&lt;span class="err"&gt;!&lt;/span&gt;
+&lt;span class="kc"&gt;None&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Probemos la ejecución de ficheros. Los ficheros de &lt;em&gt;coconut&lt;/em&gt; tienen por extensión &lt;code&gt;.coco&lt;/code&gt;. Creemos un fichero &lt;code&gt;hola.coco&lt;/code&gt; con una única&amp;nbsp;línea:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;¡Hola, Mundo!&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;|&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;print&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Para&amp;nbsp;ejecutarlo:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ coconut --run hola.coco
+Compiling         hola.coco ...
+Compiled to       hola.py .
+¡Hola, Mundo!
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;De la &lt;em&gt;transpilación&lt;/em&gt; se obtiene el fichero &lt;code&gt;hola.py&lt;/code&gt;, que es el que se usa en la ejecución. Se podría volver a ejecutar sin intervención de &lt;em&gt;coconut&lt;/em&gt;:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python hola.py
+¡Hola, Mundo!
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h2&gt;Factorial en&amp;nbsp;coconut&lt;/h2&gt;
+&lt;p&gt;Como obsesión de este blog está la comparación de formas de hacer el cálculo del factorial. Recomiendo seguir el &lt;a href="https://coconut.readthedocs.io/en/master/HELP.html" title="Tutorial de coconut"&gt;tutorial de coconut&lt;/a&gt; donde se detalla, paso a paso, cómo ir cambiando la formulación de factorial desde estructuras imperativas a&amp;nbsp;funcionales.&lt;/p&gt;
+&lt;p&gt;Una formulación simple podría ser&amp;nbsp;esta:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;product&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;[])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;|&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;product&lt;/span&gt;
+
+&lt;span class="mi"&gt;10000&lt;/span&gt; &lt;span class="o"&gt;|&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;factorial&lt;/span&gt; &lt;span class="o"&gt;|&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;print&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Aunque las veremos con detalle más adelante, aquí adelantamos varias características de &lt;em&gt;coconut&lt;/em&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Una función puede devolver una expresión, similar a las funciones &lt;em&gt;lambda&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;La función &lt;code&gt;reduce&lt;/code&gt; está disponible por defecto (importante en programación&amp;nbsp;funcional)&lt;/li&gt;
+&lt;li&gt;Se usa el operador multiplicación como &lt;code&gt;(*)&lt;/code&gt; (&lt;em&gt;al estilo haskell&lt;/em&gt;) sin necesidar de importarlo del módulo &lt;code&gt;operator&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Se usa una notación de tipos extendida con &lt;code&gt;int[]&lt;/code&gt; para hacer referencia a una &lt;em&gt;lista de enteros&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;La &lt;em&gt;notación de tipos&lt;/em&gt; es en realidad parte de &lt;em&gt;python 3&lt;/em&gt;, lo único que hace &lt;em&gt;coconut&lt;/em&gt; es facilitar su uso con una notación&amp;nbsp;extendida.&lt;/p&gt;
+&lt;p&gt;Si es la primera vez que ves &lt;em&gt;programación funcional&lt;/em&gt;, seguramente no entiendas nada. Pronto tendrá todo sentido y te empezarás a preguntar porqué no la conocistes&amp;nbsp;antes.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn-1"&gt;
+&lt;p&gt;Este problema también lo tiene la instalación de coconut para &lt;strong&gt;python 2&lt;/strong&gt;. En este caso, la simple ejecución del interface de línea de comando sobra para entrar en un bucle sin fin que agote rápidamente la memoria y bloquee todo el equipo. Forzar la versión a &lt;code&gt;pyparsing=2.2.0&lt;/code&gt; solventa el problema.&amp;#160;&lt;a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content><category term="coconut"></category><category term="functional-programming"></category><category term="python"></category></entry><entry><title>¿Qué es un coconut?</title><link href="https://blog.ch3m4.org/2019/04/16/que-es-un-coconut/" rel="alternate"></link><published>2019-04-16T00:00:00+02:00</published><updated>2019-04-16T00:51:57+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2019-04-16:/2019/04/16/que-es-un-coconut/</id><summary type="html">&lt;p&gt;Inicio de unos artículos dedicados al lenguaje coconut, un lenguaje funcional totalmente &lt;em&gt;pythónico&lt;/em&gt;, y otras novedades para este nuevo reinicio del&amp;nbsp;blog.&lt;/p&gt;</summary><content type="html">&lt;div class="admonition type"&gt;
 &lt;p class="admonition-title"&gt;&amp;#8230;and now for something completely&amp;nbsp;different&lt;/p&gt;
 &lt;/div&gt;
 &lt;h2&gt;Python&amp;nbsp;multiparadigma&lt;/h2&gt;
@@ -2489,30 +2681,4 @@ Quit the server with CONTROL-C.
 
 &lt;span class="n"&gt;fOut&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content><category term="ntfs"></category><category term="windows"></category></entry><entry><title>Programación. ¿Ciencia o Ingeniería?</title><link href="https://blog.ch3m4.org/2012/03/09/programacion-ciencia-o-ingenieria-2/" rel="alternate"></link><published>2012-03-09T22:21:00+01:00</published><updated>2012-03-09T22:21:00+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2012-03-09:/2012/03/09/programacion-ciencia-o-ingenieria-2/</id><summary type="html">&lt;p&gt;Cuando inicié este blog, además de servir de soporte a algunos artículos técnicos sobre programación que fueran más o menos novedosos, también me movió la idea de aportar reflexiones sobre algunos temas &lt;em&gt;interdisciplinares&lt;/em&gt; que constantemente me hacía debido a mi formación científica y que he ido acumulando durante todos estos …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Cuando inicié este blog, además de servir de soporte a algunos artículos técnicos sobre programación que fueran más o menos novedosos, también me movió la idea de aportar reflexiones sobre algunos temas &lt;em&gt;interdisciplinares&lt;/em&gt; que constantemente me hacía debido a mi formación científica y que he ido acumulando durante todos estos últimos años. Creo que es momento de empezar con&amp;nbsp;ellos&amp;#8230;&lt;/p&gt;
-&lt;h2&gt;En busca de la materia&amp;nbsp;gris&lt;/h2&gt;
-&lt;p&gt;Todavía persiste el mito de considerar que un informático es una especie de chamán que con unos cuantos pases mágicos delante de una pantalla es capaz de hacer que un ordenador tome vida. Muy pocos asumen que un informático pueda tener una formación científica o técnica seria que se encuentre al mismo nivel que un médico o un ingeniero. Y así nos van las&amp;nbsp;cosas.&lt;/p&gt;
-&lt;p&gt;No tomarse en serio la formación de un informático está llevando a que muchas empresas del sector no valoren suficientemente la destreza de sus empleados. Asumen que siempre podrán encontrar nuevos empleados a los que poder darles una pequeña formación suficiente para encargarse de cualquier proyecto que tengan en marcha. Si supieran un mínimo de ingeniería, sabrían que siempre hay un límite en todo proyecto en el que añadiendo más recursos nunca se consigue acelerar el desarrollo, si no más bien lo contrario. Momentos de dificultad que desemboca en una crisis&lt;sup id="fnref-1"&gt;&lt;a class="footnote-ref" href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;, donde prima más la experiencia que la cantidad de manos&amp;nbsp;disponibles.&lt;/p&gt;
-&lt;p&gt;La actual crisis económica ha venido a agravar más el panorama al minusvalorar aún más a los profesionales de informática. Los buenos profesionales optan por emigrar a otros países donde sean mejor considerados, mientras que aquí las empresas compiten bajando más y más los precios, sin tener en consideración ni la calidad ni la idoneidad del producto que&amp;nbsp;desarrollan.&lt;/p&gt;
-&lt;p&gt;Estamos inmersos entre sistemas informáticos y de telecomunicaciones que se están colapsando debido a malos diseños y falta de mantenimiento, con usuarios que asumen por normal que un sistema pueda fallar, que los virus puedan entrar hasta las entrañas del ordenador, o que un &lt;em&gt;hacker&lt;/em&gt; pueda bloquear cualquier sistema gubernamental y robar identidades,&amp;#8230; y lo único que importa a los responsables es que alguna empresa sin escrúpulos asuma la culpa por el menor precio&amp;nbsp;posible.&lt;/p&gt;
-&lt;h2&gt;El fin de la ley de&amp;nbsp;Moore&lt;/h2&gt;
-&lt;p&gt;Es sabido que por la &lt;a href="http://es.wikipedia.org/wiki/Ley_de_moore" title="Ley de Moore"&gt;Ley de Moore&lt;/a&gt; en estos 50 años pasados, se estaba cumpliendo que cada dos años los ordenadores doblaban su velocidad, mientras se hacían cada vez más y más baratos. Como consecuencia, las aplicaciones mal diseñadas aún se podían sobrellevar gracias a la reducción de costes y mejoras de velocidad que ofrecían los nuevos&amp;nbsp;sistemas.&lt;/p&gt;
-&lt;p&gt;Lamentablemente, la ley de Moore llega a su final. Se intenta prorrogar su vigencia metiendo más &lt;em&gt;cores&lt;/em&gt; en cada cpu, pero si bien se sigue contando con procesadores más baratos y más rápidos, un sistema multicore no es aprovechable por una aplicación mal diseñada. Para aprovechar una cpu multicore, se requiere de nuevas aplicaciones diseñadas específicamente para ellos. Hoy en día, muchos sistemas operativos sólo son capaces de aprovechar un core de todos los disponibles, lo que no deja de ser un engaño para el usuario que piensa que debería ir todo más rápido. Estamos muy cerca de una nueva crisis similar a la crisis del software, pero con hardware esta&amp;nbsp;vez.&lt;/p&gt;
-&lt;p&gt;Es una burbuja que pronto va a estallar como tantas otras&amp;nbsp;antes.&lt;/p&gt;
-&lt;h2&gt;Poner en valor al&amp;nbsp;programador&lt;/h2&gt;
-&lt;p&gt;Hace tiempo que se perdió el significado de ser un &lt;strong&gt;&amp;#8220;programador&amp;#8221;&lt;/strong&gt;. Con ese nombre se ha pasado a denominar un puesto técnico de trabajo que está por debajo de analista y un poco por encima de reparador de hardware. Nada que tenga qué ver con un trabajo metodológico y, en cierta medida,&amp;nbsp;creativo.&lt;/p&gt;
-&lt;p&gt;Y, sin embargo, contar con buenos programadores debería ser parte del activo de una empresa que la ponga en valor. No es entendible que haya empresas que busquen programadores después de haberse comprometido con un proyecto de desarrollo. Debería ser más bien al revés, que para conseguir un proyecto se haya valorado antes qué programadores dispone la empresa en&amp;nbsp;nómina. &lt;/p&gt;
-&lt;p&gt;Puedo asegurar que hay alguna empresa que cuenta con un núcleo de buenos programadores, normalmente gente joven que montan su propia empresa, que nunca les falta trabajo. Pero son mucho más numerosas las empresas vacías que se dedican a quemar sistemáticamente a toda su plantilla en proyectos difíciles de asumir sin la gente y los medios&amp;nbsp;adecuados.&lt;/p&gt;
-&lt;p&gt;Contar con programadores experimentados no es tarea fácil. Toda empresa debería asegurar a sus programadores más valiosos, nunca deberían considerarlos inferiores a analistas, ya que asumen roles distintos. Un buen programador puede ser un pésimo analista y viceversa. Un buen programador debería estar bien pagado simplemente como programador, y no verse presionado para ser analista si quiere ascender y cobrar&amp;nbsp;más.&lt;/p&gt;
-&lt;h2&gt;Programación. ¿Ciencia o&amp;nbsp;Ingeniería?&lt;/h2&gt;
-&lt;p&gt;Según donde busques, la programación es parte de la &lt;em&gt;Ciencia de la Computación&lt;/em&gt; o es parte de la &lt;em&gt;Ingeniería del Software&lt;/em&gt;. Personalmente, me inclino más por que sea una ciencia.  Un buen programador siempre intenta comprender el funcionamiento de un programa con el fin de crear nuevos y mejores programas. Usa un ciclo de análisis, desarrollo, prueba y refactorización que tanto se parece al &lt;em&gt;&amp;#8220;método científico&amp;#8221;&lt;/em&gt;, experimentando hipótesis hasta dar con una solución. La ingeniería entraría cuando se requiere que la aplicación se ajuste a determinados requisitos, donde a veces no importa tanto la optimización del programa como el que se ajuste su funcionamiento a los parámetros&amp;nbsp;requeridos.&lt;/p&gt;
-&lt;p&gt;¿Es posible buscar la belleza entre líneas de código? ¿Evolucionamos hacia mejores lenguajes de&amp;nbsp;programación?&lt;/p&gt;
-&lt;p&gt;Temas para próximos&amp;nbsp;artículos.&lt;/p&gt;
-&lt;div class="footnote"&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li id="fn-1"&gt;
-&lt;p&gt;véase &lt;a href="http://es.wikipedia.org/wiki/Crisis_del_software"&gt;Crisis del Software&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</content><category term="science"></category><category term="engineering"></category><category term="programming"></category></entry></feed>
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content><category term="ntfs"></category><category term="windows"></category></entry></feed>

@@ -1,0 +1,16 @@
+name: coco
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.6
+  - pip
+  - coconut
+  - mypy
+  - pygments
+  - jupyter
+  - jupyter_console
+  - watchdog
+  - pyparsing=2.2.0
+  - pip:
+      - cpyparsing

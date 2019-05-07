@@ -1,12 +1,12 @@
 ---
 Title: Monadas con coco
 Date: 2019-05-07 19:33:19
-Modified: 2019-05-07 19:33:52
+Modified: 2019-05-07 19:47:56
 Category: Coconut
 Tags: coconut, functional-programming, python
 Slug:
 Authors: Chema Cortés
-Summary:
+Summary: Los iterables han dejado la programación funcional para ser parte de los lenguajes de programación modernos. Veremos cuáles son las implementaciones en python y coconut, y las diferencias entre ellos.
 Lang: es
 Translation: false
 Status:

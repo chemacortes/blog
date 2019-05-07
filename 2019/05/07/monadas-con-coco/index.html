@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Monadas con coco | 🥥=🐍+🐒 Iterables Si duda los Iterables es la característica de programación funcional que más se usa en python. Se emplean en las...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.7098921b.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, coconut, functional-programming, python">
+
+  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
+
+  <title>
+Monadas con coco | Hyperreals *R  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+      
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2019/05/07/monadas-con-coco/" class="nohover">Monadas con&nbsp;coco</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Posted <time data-timeago datetime="2019-05-07T19:33:19+02:00">mar 07 mayo 2019</time>
+     by Chema Cortés    </p>
+    <p>Last updated <time data-timeago datetime="2019-05-07T19:33:52+02:00">mar 07 mayo 2019</time></p>
+    <p>
+    Category: <a href="https://blog.ch3m4.org/category/coconut/">Coconut</a>
+&ndash;&ndash;    Tags:
+      <a href="https://blog.ch3m4.org/tag/coconut/">coconut</a>,      <a href="https://blog.ch3m4.org/tag/functional-programming/">functional-programming</a>,      <a href="https://blog.ch3m4.org/tag/python/">python</a>    </p>
+  </div>
+  <div class="article_text">
+    <div class="admonition hint">
+<p class="admonition-title">🥥=🐍+🐒</p>
+</div>
+<h2>Iterables</h2>
+<p>Si duda los <strong>Iterables</strong> es la característica de programación funcional que más se usa en python. Se emplean en las <em>compresiones de listas</em> y las <em>expresiones generadoras</em>.</p>
+<p>Pero veamos algunas&nbsp;definiciones:</p>
+<ul>
+<li><strong>Iterable</strong>: objeto del que se puede recorrer sus elementos en orden, uno a uno. Como ejemplos, están los tipos <code>list</code>, <code>str</code>, <code>tuple</code> y <code>dict</code>. Lo común es recorrer sus elementos con un bucle <code>for</code>.</li>
+<li><strong>Iterador</strong>: objeto que representa un flujo de datos. Con cada uso, o bien entrega un dato, o bien produce una excepción por quedarse vacío. Por diseño, un <code>Iterador</code> deriva de <code>Iterable</code>.</li>
+<li><strong>Secuencia</strong>: <em>iterable</em> con acceso a la posición de cualquiera de sus elementos y con un tamaño conocido. Como ejemplos están los tipos <code>list</code>, <code>str</code> y <code>tuple</code>. El tipo <code>dict</code> también funciona como secuencia, pero no se considera como tal al no accederse a sus elementos por posición numérica. (Es más considerado como <em>mapping</em>).</li>
+<li><strong>Generador</strong>: objeto que crea iteradores. Hay <em>funciones generadoras</em>, que crean un iterador cada vez que se llaman, y <em>expresiones generadoras</em>, que crean un sólo&nbsp;iterador.</li>
+</ul>
+<p><em>Iteradores</em> y <em>secuencias</em> forman el conjunto de los <em>iterables</em>, y podemos identificarlos estructuralmente de la siguiente&nbsp;manera:</p>
+<ul>
+<li>Un <strong>Iterable</strong> suele tener un método <code>__iter__</code> que devuelve un iterador para recorrer en orden todos los&nbsp;elementos.</li>
+<li>Un <strong>Iterador</strong> tiene un método <code>__next__</code> para entregar el siguiente&nbsp;dato.</li>
+<li>Una <strong>Secuencia</strong> tiene un método <code>__getitem__</code>, para acceso a cualquier elemento, y un método <code>__len__</code>, para conocer su tamaño. Además, pueden tener otros métodos como <code>count()</code>, <code>index()</code>, <code>__contains__()</code> y <code>__reversed__()</code> con los que completar la <em>clase base abstracta</em> <a href="https://docs.python.org/3.7/library/collections.abc.html#collections.abc.Sequence">collections.abc.Sequence</a>.</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Aunque un <em>Iterable</em> se suele caracterizar por tener un método <code>__iter__</code>, también las <em>secuencias</em> se consideran <em>iterables</em> aunque no tengan este&nbsp;método.</p>
+</div>
+<p>Caso práctico: analicemos un objeto <code>range</code> (eg: <code>dir(range(10))</code>):</p>
+<ul>
+<li>tiene el métodos <code>__iter__</code> &#8212;&gt; es un <code>Iterable</code></li>
+<li>tiene los métodos <code>__getitem__</code> y <code>__len__</code> &#8212;&gt; es una <code>Secuencia</code></li>
+<li>tiene el resto de métodos de <code>collections.abc.Sequence</code></li>
+<li>no tiene método <code>__next__</code></li>
+</ul>
+<p>Los objeto <code>Range</code> son <em>secuencias</em>, no <em>iteradores</em>. Como secuencia, algunas de la operaciones que permite&nbsp;son:</p>
+<ul>
+<li>troceo: <code>range(100)[4:20] == range(4,20)</code></li>
+<li>obtener el tamaño: <code>len(range(100)) == 100</code></li>
+<li>chequeos de pertenencia: <code>200 in range(100) == False</code></li>
+<li>inversión: <code>range(100)[::-1] == range(99, -1, -1)</code></li>
+</ul>
+<h2>Composición de&nbsp;Iteradores</h2>
+<p>Una ventaja de usar iteradores en lugar de listas es que sólo necesitan memoria para procesar el elemento que están trabajado, por lo que los hace muy eficientes para procesar grandes cantidades de datos o ficheros enormes que no caben enteros en&nbsp;memoria.</p>
+<p>Por ejemplo, esta expresión&nbsp;generadora:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>Como curiosidad, el número <code>10**100</code> se llama <a href="https://es.wikipedia.org/wiki/Gúgol">gúgol</a> y es un número enormemente grande. Crear esto mismo como una lista es imposible con la memoria de los ordenadores actuales y no habría tiempo en este Universo para procesar tal cantidad de&nbsp;elementos.</p>
+<p>Y sin embargo, podemos trabajar con esta expresión sin mayores problemas. Por ejemplo, para obtener los 10 primeros&nbsp;elementos:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">100</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>Incluso podemos usarla como base para crear nuevos&nbsp;iteradores:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">100</span><span class="p">)))</span>
+</pre></div>
+</td></tr></table>
+
+<p>Equivalente a&nbsp;hacer:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>Componer iteradores es bastante eficiente. Se van recorriendo a medida que sea necesario, sin mantener en memoria nada más que los elementos estrictamente necesarios para devolver el siguiente&nbsp;elemento.</p>
+<h2>map y&nbsp;filter</h2>
+<p>¿Sabes cuál es la diferencia entre estas dos&nbsp;expresiones?</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+
+<span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>Para python, ambas expresiones son equivalentes: iteradores. Pero se considera que tiene más <em>estilo pythónico</em> el uso de expresiones generadoras, desaconsejándose completamene el uso de las funciones <code>map</code> y <code>filter</code> siempre que se&nbsp;pueda.</p>
+<p>Y sin embargo, para <em>coconut</em> las funciones <code>map</code> y <code>filter</code> son fundamentales como también lo son en <em>programación funcional</em>.</p>
+<p>El iterador que se obtiene con la expresión generadora <code>(x**2 for x in range(10*100))</code> actúa como si fuera una <em>caja negra</em>. Se pueden obtener los elemntos uno a uno, pero no ofrece información sobre su estructura interna, ni de su tamaño, ni nada que permita su&nbsp;transfomación.</p>
+<p>En cambio, el <em>iterador map</em> en coconut (extensión de la función <code>map</code> de python) almacena información tanto de la función como de los iterables a los que se aplica, cosa que hace en los atributos <code>func</code> y <code>iters</code>, respectivamente. De este modo, <em>coconut</em> puede encadenar transformaciones de manera más&nbsp;óptima.</p>
+<p>Por ejemplo, para obtener el último elemento del iterador&nbsp;anterior:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">map</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="mi">100</span><span class="p">))[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</td></tr></table>
+
+<p>Como iterador, debería haber pasado por todos los <code>10**100</code> elementos hasta llegar al último, cosa que es imposible de hacer en la práctica. Sin embargo, si se prueba en <em>coconut</em>, se obtiene el último elemento casi al instante. En realidad, <em>coconut</em> cortocircuita todo el proceso y salta directamente al último elemento de <code>range(10**100)</code>, que es el único que le hace falta. Es como si hubiera aplicado primero el <code>[-1]</code> al <code>range(10**100)</code> y luego hubiera aplicado el <code>map</code>.</p>
+<p>Este tipo de encapsulado, tanto de un conjunto de datos como de la función que lo transforma, se conocen por <strong>aplicativo</strong> (<em>Applicative</em> en inglés). Y a las transformaciones que podemos encadenar, una tras otra, para diferir el cálculo al final del todo se conoce por <strong>mónadas</strong> (<em>Monad</em> en&nbsp;inglés).</p>
+<p>Más adelante veremos una definición matemática formal, pero podemos considerar <strong>monad</strong> como la <em>herramienta matemática</em> más poderosa de un programador funcional y, algunas veces, también la más&nbsp;incomprensible.</p>
+  </div>
+  <hr>
+  
+  <ul class="pager">
+          <li class="previous">
+               <a href="https://blog.ch3m4.org/2019/05/02/coconut-primeros-pasos/" title="Anterior">
+                    <i class="fa fa-arrow-circle-left"></i>
+                   Coconut - Primeros&nbsp;pasos
+               </a>
+           </li>
+   </ul>
+   With category <a href="https://blog.ch3m4.org/category/coconut/">Coconut</a>:
+   <ul class="pager">
+          <li class="previous">
+             <a href="https://blog.ch3m4.org/2019/05/02/coconut-primeros-pasos/" title="Anterior en misma categoría">
+                <i class="fa fa-arrow-circle-o-left"></i>
+                Coconut - Primeros&nbsp;pasos
+             </a>
+          </li>
+
+   </ul>
+
+    
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var disqus_identifier = "2019/05/07/monadas-con-coco/";
+    loadDisqus = function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//hyperreals.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
+      window.scroll(0, document.getElementById('main').offsetTop);
+    }})
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

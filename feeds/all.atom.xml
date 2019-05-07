@@ -1,5 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/all.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2019-05-02T23:58:10+02:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Coconut - Primeros pasos</title><link href="https://blog.ch3m4.org/2019/05/02/coconut-primeros-pasos/" rel="alternate"></link><published>2019-05-02T01:20:16+02:00</published><updated>2019-05-02T23:58:10+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2019-05-02:/2019/05/02/coconut-primeros-pasos/</id><summary type="html">&lt;p&gt;Primera toma de contacto con el lenguaje coconut, su instalación y detalles a tener en cuenta con la compatibilidad con las versiones de python&amp;nbsp;utilizadas.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://coconut-lang.org/" title="Coconut language"&gt;Coconut&lt;/a&gt; es un lenguaje funcional completamente &lt;em&gt;pythónico&lt;/em&gt;. Otro modo de hacer las cosas en python. Al principio puede parecer muy distinto, pero a medida que se conoce te das cuenta de lo útil que es a veces abordar ciertos problemas desde un punto de vista &lt;em&gt;puramente funcional&lt;/em&gt;.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/all.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2019-05-07T19:33:52+02:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Monadas con coco</title><link href="https://blog.ch3m4.org/2019/05/07/monadas-con-coco/" rel="alternate"></link><published>2019-05-07T19:33:19+02:00</published><updated>2019-05-07T19:33:52+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2019-05-07:/2019/05/07/monadas-con-coco/</id><summary type="html"></summary><content type="html">&lt;div class="admonition hint"&gt;
+&lt;p class="admonition-title"&gt;🥥=🐍+🐒&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2&gt;Iterables&lt;/h2&gt;
+&lt;p&gt;Si duda los &lt;strong&gt;Iterables&lt;/strong&gt; es la característica de programación funcional que más se usa en python. Se emplean en las &lt;em&gt;compresiones de listas&lt;/em&gt; y las &lt;em&gt;expresiones generadoras&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Pero veamos algunas&amp;nbsp;definiciones:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Iterable&lt;/strong&gt;: objeto del que se puede recorrer sus elementos en orden, uno a uno. Como ejemplos, están los tipos &lt;code&gt;list&lt;/code&gt;, &lt;code&gt;str&lt;/code&gt;, &lt;code&gt;tuple&lt;/code&gt; y &lt;code&gt;dict&lt;/code&gt;. Lo común es recorrer sus elementos con un bucle &lt;code&gt;for&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Iterador&lt;/strong&gt;: objeto que representa un flujo de datos. Con cada uso, o bien entrega un dato, o bien produce una excepción por quedarse vacío. Por diseño, un &lt;code&gt;Iterador&lt;/code&gt; deriva de &lt;code&gt;Iterable&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Secuencia&lt;/strong&gt;: &lt;em&gt;iterable&lt;/em&gt; con acceso a la posición de cualquiera de sus elementos y con un tamaño conocido. Como ejemplos están los tipos &lt;code&gt;list&lt;/code&gt;, &lt;code&gt;str&lt;/code&gt; y &lt;code&gt;tuple&lt;/code&gt;. El tipo &lt;code&gt;dict&lt;/code&gt; también funciona como secuencia, pero no se considera como tal al no accederse a sus elementos por posición numérica. (Es más considerado como &lt;em&gt;mapping&lt;/em&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Generador&lt;/strong&gt;: objeto que crea iteradores. Hay &lt;em&gt;funciones generadoras&lt;/em&gt;, que crean un iterador cada vez que se llaman, y &lt;em&gt;expresiones generadoras&lt;/em&gt;, que crean un sólo&amp;nbsp;iterador.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Iteradores&lt;/em&gt; y &lt;em&gt;secuencias&lt;/em&gt; forman el conjunto de los &lt;em&gt;iterables&lt;/em&gt;, y podemos identificarlos estructuralmente de la siguiente&amp;nbsp;manera:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Un &lt;strong&gt;Iterable&lt;/strong&gt; suele tener un método &lt;code&gt;__iter__&lt;/code&gt; que devuelve un iterador para recorrer en orden todos los&amp;nbsp;elementos.&lt;/li&gt;
+&lt;li&gt;Un &lt;strong&gt;Iterador&lt;/strong&gt; tiene un método &lt;code&gt;__next__&lt;/code&gt; para entregar el siguiente&amp;nbsp;dato.&lt;/li&gt;
+&lt;li&gt;Una &lt;strong&gt;Secuencia&lt;/strong&gt; tiene un método &lt;code&gt;__getitem__&lt;/code&gt;, para acceso a cualquier elemento, y un método &lt;code&gt;__len__&lt;/code&gt;, para conocer su tamaño. Además, pueden tener otros métodos como &lt;code&gt;count()&lt;/code&gt;, &lt;code&gt;index()&lt;/code&gt;, &lt;code&gt;__contains__()&lt;/code&gt; y &lt;code&gt;__reversed__()&lt;/code&gt; con los que completar la &lt;em&gt;clase base abstracta&lt;/em&gt; &lt;a href="https://docs.python.org/3.7/library/collections.abc.html#collections.abc.Sequence"&gt;collections.abc.Sequence&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="admonition important"&gt;
+&lt;p class="admonition-title"&gt;Importante&lt;/p&gt;
+&lt;p&gt;Aunque un &lt;em&gt;Iterable&lt;/em&gt; se suele caracterizar por tener un método &lt;code&gt;__iter__&lt;/code&gt;, también las &lt;em&gt;secuencias&lt;/em&gt; se consideran &lt;em&gt;iterables&lt;/em&gt; aunque no tengan este&amp;nbsp;método.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Caso práctico: analicemos un objeto &lt;code&gt;range&lt;/code&gt; (eg: &lt;code&gt;dir(range(10))&lt;/code&gt;):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;tiene el métodos &lt;code&gt;__iter__&lt;/code&gt; &amp;#8212;&amp;gt; es un &lt;code&gt;Iterable&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;tiene los métodos &lt;code&gt;__getitem__&lt;/code&gt; y &lt;code&gt;__len__&lt;/code&gt; &amp;#8212;&amp;gt; es una &lt;code&gt;Secuencia&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;tiene el resto de métodos de &lt;code&gt;collections.abc.Sequence&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;no tiene método &lt;code&gt;__next__&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Los objeto &lt;code&gt;Range&lt;/code&gt; son &lt;em&gt;secuencias&lt;/em&gt;, no &lt;em&gt;iteradores&lt;/em&gt;. Como secuencia, algunas de la operaciones que permite&amp;nbsp;son:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;troceo: &lt;code&gt;range(100)[4:20] == range(4,20)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;obtener el tamaño: &lt;code&gt;len(range(100)) == 100&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;chequeos de pertenencia: &lt;code&gt;200 in range(100) == False&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;inversión: &lt;code&gt;range(100)[::-1] == range(99, -1, -1)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Composición de&amp;nbsp;Iteradores&lt;/h2&gt;
+&lt;p&gt;Una ventaja de usar iteradores en lugar de listas es que sólo necesitan memoria para procesar el elemento que están trabajado, por lo que los hace muy eficientes para procesar grandes cantidades de datos o ficheros enormes que no caben enteros en&amp;nbsp;memoria.&lt;/p&gt;
+&lt;p&gt;Por ejemplo, esta expresión&amp;nbsp;generadora:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Como curiosidad, el número &lt;code&gt;10**100&lt;/code&gt; se llama &lt;a href="https://es.wikipedia.org/wiki/Gúgol"&gt;gúgol&lt;/a&gt; y es un número enormemente grande. Crear esto mismo como una lista es imposible con la memoria de los ordenadores actuales y no habría tiempo en este Universo para procesar tal cantidad de&amp;nbsp;elementos.&lt;/p&gt;
+&lt;p&gt;Y sin embargo, podemos trabajar con esta expresión sin mayores problemas. Por ejemplo, para obtener los 10 primeros&amp;nbsp;elementos:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Incluso podemos usarla como base para crear nuevos&amp;nbsp;iteradores:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Equivalente a&amp;nbsp;hacer:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Componer iteradores es bastante eficiente. Se van recorriendo a medida que sea necesario, sin mantener en memoria nada más que los elementos estrictamente necesarios para devolver el siguiente&amp;nbsp;elemento.&lt;/p&gt;
+&lt;h2&gt;map y&amp;nbsp;filter&lt;/h2&gt;
+&lt;p&gt;¿Sabes cuál es la diferencia entre estas dos&amp;nbsp;expresiones?&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Para python, ambas expresiones son equivalentes: iteradores. Pero se considera que tiene más &lt;em&gt;estilo pythónico&lt;/em&gt; el uso de expresiones generadoras, desaconsejándose completamene el uso de las funciones &lt;code&gt;map&lt;/code&gt; y &lt;code&gt;filter&lt;/code&gt; siempre que se&amp;nbsp;pueda.&lt;/p&gt;
+&lt;p&gt;Y sin embargo, para &lt;em&gt;coconut&lt;/em&gt; las funciones &lt;code&gt;map&lt;/code&gt; y &lt;code&gt;filter&lt;/code&gt; son fundamentales como también lo son en &lt;em&gt;programación funcional&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;El iterador que se obtiene con la expresión generadora &lt;code&gt;(x**2 for x in range(10*100))&lt;/code&gt; actúa como si fuera una &lt;em&gt;caja negra&lt;/em&gt;. Se pueden obtener los elemntos uno a uno, pero no ofrece información sobre su estructura interna, ni de su tamaño, ni nada que permita su&amp;nbsp;transfomación.&lt;/p&gt;
+&lt;p&gt;En cambio, el &lt;em&gt;iterador map&lt;/em&gt; en coconut (extensión de la función &lt;code&gt;map&lt;/code&gt; de python) almacena información tanto de la función como de los iterables a los que se aplica, cosa que hace en los atributos &lt;code&gt;func&lt;/code&gt; y &lt;code&gt;iters&lt;/code&gt;, respectivamente. De este modo, &lt;em&gt;coconut&lt;/em&gt; puede encadenar transformaciones de manera más&amp;nbsp;óptima.&lt;/p&gt;
+&lt;p&gt;Por ejemplo, para obtener el último elemento del iterador&amp;nbsp;anterior:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;))[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Como iterador, debería haber pasado por todos los &lt;code&gt;10**100&lt;/code&gt; elementos hasta llegar al último, cosa que es imposible de hacer en la práctica. Sin embargo, si se prueba en &lt;em&gt;coconut&lt;/em&gt;, se obtiene el último elemento casi al instante. En realidad, &lt;em&gt;coconut&lt;/em&gt; cortocircuita todo el proceso y salta directamente al último elemento de &lt;code&gt;range(10**100)&lt;/code&gt;, que es el único que le hace falta. Es como si hubiera aplicado primero el &lt;code&gt;[-1]&lt;/code&gt; al &lt;code&gt;range(10**100)&lt;/code&gt; y luego hubiera aplicado el &lt;code&gt;map&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Este tipo de encapsulado, tanto de un conjunto de datos como de la función que lo transforma, se conocen por &lt;strong&gt;aplicativo&lt;/strong&gt; (&lt;em&gt;Applicative&lt;/em&gt; en inglés). Y a las transformaciones que podemos encadenar, una tras otra, para diferir el cálculo al final del todo se conoce por &lt;strong&gt;mónadas&lt;/strong&gt; (&lt;em&gt;Monad&lt;/em&gt; en&amp;nbsp;inglés).&lt;/p&gt;
+&lt;p&gt;Más adelante veremos una definición matemática formal, pero podemos considerar &lt;strong&gt;monad&lt;/strong&gt; como la &lt;em&gt;herramienta matemática&lt;/em&gt; más poderosa de un programador funcional y, algunas veces, también la más&amp;nbsp;incomprensible.&lt;/p&gt;</content><category term="coconut"></category><category term="functional-programming"></category><category term="python"></category></entry><entry><title>Coconut - Primeros pasos</title><link href="https://blog.ch3m4.org/2019/05/02/coconut-primeros-pasos/" rel="alternate"></link><published>2019-05-02T01:20:16+02:00</published><updated>2019-05-02T23:58:10+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2019-05-02:/2019/05/02/coconut-primeros-pasos/</id><summary type="html">&lt;p&gt;Primera toma de contacto con el lenguaje coconut, su instalación y detalles a tener en cuenta con la compatibilidad con las versiones de python&amp;nbsp;utilizadas.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://coconut-lang.org/" title="Coconut language"&gt;Coconut&lt;/a&gt; es un lenguaje funcional completamente &lt;em&gt;pythónico&lt;/em&gt;. Otro modo de hacer las cosas en python. Al principio puede parecer muy distinto, pero a medida que se conoce te das cuenta de lo útil que es a veces abordar ciertos problemas desde un punto de vista &lt;em&gt;puramente funcional&lt;/em&gt;.&lt;/p&gt;
 &lt;h2&gt;Qué versión de python&amp;nbsp;utilizar&lt;/h2&gt;
 &lt;p&gt;Antes de empezar con &lt;em&gt;coconut&lt;/em&gt;, una advertencia sobre las versiones de python. Para su ejecución, el código &lt;em&gt;coconut&lt;/em&gt; se traduce en código python, pudiendo elegir qué versión de python ejecutará el código final. Se puede elegir &lt;a href="https://coconut.readthedocs.io/en/master/DOCS.html#allowable-targets"&gt;varias versiones de python&lt;/a&gt; objetivo, independientemente de la versión de python con la que estemos trabajando. Por defecto, se genera &lt;em&gt;&amp;#8220;código universal&amp;#8221;&lt;/em&gt;, válido para todas las versiones de python. Emplear este &lt;em&gt;código universal&lt;/em&gt; requiere renunciar a algunas características de &lt;em&gt;python 3&lt;/em&gt; que no tienen equivalencia en &lt;em&gt;python 2&lt;/em&gt; como es la notación de tipos, el operador &lt;code&gt;'@'&lt;/code&gt; para multiplicación de matrices o las sentencias &lt;code&gt;async&lt;/code&gt; y &lt;code&gt;await&lt;/code&gt; para programación&amp;nbsp;asíncrona.&lt;/p&gt;
 &lt;p&gt;En esta serie de artículos sobre &lt;em&gt;coconut&lt;/em&gt; voy a trabajar siempre con una instalación de &lt;em&gt;python 3&lt;/em&gt;, lo recomendado para nuevos proyectos. Así mismo, el código generado se ejecutará en &lt;em&gt;python 3&lt;/em&gt;. Pero transpilar a &lt;em&gt;código universal&lt;/em&gt; debería ser igualmente válido en la mayoría de casos. Es más, ya que todo código &lt;em&gt;python 3&lt;/em&gt; es código válido en &lt;em&gt;coconut&lt;/em&gt;, se podría emplear para convertir código de &lt;em&gt;python 3&lt;/em&gt; a &lt;em&gt;python 2&lt;/em&gt;, aunque no lo&amp;nbsp;recomiendo.&lt;/p&gt;
@@ -2550,135 +2635,4 @@ Quit the server with CONTROL-C.
 &lt;p&gt;En la literatura, se suele mencionar al lenguaje Scala como &amp;#8220;lo que debería haber sido la evolución de Java&amp;#8221;.&amp;#160;&lt;a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</content><category term="CompSci"></category><category term="computing science"></category></entry><entry><title>Problemas con los nombres largos en NTFS</title><link href="https://blog.ch3m4.org/2012/04/04/problemas-con-los-nombres-largos-en-ntfs/" rel="alternate"></link><published>2012-04-04T13:07:00+02:00</published><updated>2012-04-04T13:07:00+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2012-04-04:/2012/04/04/problemas-con-los-nombres-largos-en-ntfs/</id><summary type="html">&lt;p&gt;Un buen día comenté a un compañero de trabajo que en su carpeta compartida del servidor de ficheros pronto iba a tener problemas al usar nombres de carpetas demasiado largos. El explorador de ficheros ya se negaba a listas algunas carpetas y el problema iba a más con algunas herramientas …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Un buen día comenté a un compañero de trabajo que en su carpeta compartida del servidor de ficheros pronto iba a tener problemas al usar nombres de carpetas demasiado largos. El explorador de ficheros ya se negaba a listas algunas carpetas y el problema iba a más con algunas herramientas (backups,&amp;nbsp;antivirus,&amp;#8230;).&lt;/p&gt;
-&lt;p&gt;La respuesta fue una pregunta: &lt;em&gt;¿Sería posible sacar un listado de todos los ficheros con ruta absoluta demasiado&amp;nbsp;larga?&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Después de dudar un rato (y comprobar que el comando &lt;code&gt;dir&lt;/code&gt; no era válido para esta labor) , me decidí a averiguar si python sería capaza de realizar dicha tarea. Éste es el resultado de ése&amp;nbsp;estudio.&lt;/p&gt;
-&lt;h2&gt;Problema con los nombres&amp;nbsp;largos&lt;/h2&gt;
-&lt;p&gt;Resulta bastante chocante que la &lt;span class="caps"&gt;API&lt;/span&gt; de windows limite la máxima longitud para una ruta al valor de &lt;strong&gt;MAX_PATH&lt;/strong&gt;, definido como 260 caracteres. Se trata únicamente de una limitación en la &lt;span class="caps"&gt;API&lt;/span&gt;, ya que el kernel de windows está preparado para manejar rutas muchísimo más largas. Como consecuencia, muchas aplicaciones fallan con rutas largas, desde los comandos de terminal hasta las utilidades gráficas del&amp;nbsp;sistema.&lt;/p&gt;
-&lt;p&gt;Para evitar en parte este problema, podemos usar en nuestras aplicaciones las versiones &lt;em&gt;unicode&lt;/em&gt; de las funciones &lt;em&gt;&lt;span class="caps"&gt;ANSI&lt;/span&gt;&lt;/em&gt; de la &lt;span class="caps"&gt;API&lt;/span&gt;. Estas versiones unicode admiten como parámetros rutas de hasta 32.767 caracteres, suficientemente largas para un uso&amp;nbsp;normal.&lt;/p&gt;
-&lt;p&gt;En en caso de la librería estándar de python, el módulo &lt;code&gt;os.path&lt;/code&gt; (sinónimo de &lt;code&gt;os.ntpath&lt;/code&gt; en windows) tiene buena cuenta de qué &lt;span class="caps"&gt;API&lt;/span&gt; invocar, según sea el caso. De un modo transparente, &lt;strong&gt;con sólo codificar las rutas en unicode evitaremos la limitación &lt;code&gt;MAX_PATH&lt;/code&gt; en la longitud de las rutas&lt;/strong&gt;.&lt;/p&gt;
-&lt;h2&gt;Codificación de rutas&amp;nbsp;extendida&lt;/h2&gt;
-&lt;p&gt;Además de codificar las rutas en unicode, tenemos que indicar que se trata de una &lt;em&gt;ruta extendida&lt;/em&gt; añadiendo el prefijo &lt;code&gt;'\\?\'&lt;/code&gt; a una ruta absoluta. Por ejemplo, &lt;code&gt;"\\?\D:\ruta\muy\muy\larga"&lt;/code&gt;. Como gran limitación, no se puede usar esta nomenclatura con rutas relativas, por lo que las rutas relativas siempre estarán limitadas a &lt;code&gt;MAX_PATH&lt;/code&gt; como máxima&amp;nbsp;longitud.&lt;/p&gt;
-&lt;p&gt;Es posible, también, indicar una ruta &lt;abbr title="Universal Naming Convention"&gt;&lt;span class="caps"&gt;UNC&lt;/span&gt;&lt;/abbr&gt; (&lt;em&gt;Universal Naming Convention&lt;/em&gt;) como &lt;em&gt;ruta extendida&lt;/em&gt; como &lt;code&gt;\\?\server\share&lt;/code&gt;, donde &lt;code&gt;server&lt;/code&gt; sería el nombre del servidor y &lt;code&gt;share&lt;/code&gt; el nombre de la carpeta&amp;nbsp;compartida.&lt;/p&gt;
-&lt;p&gt;Para más información sobre las rutas extendidas, visitar la página web &lt;a href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx" title="Naming Files, Paths, and Namespaces"&gt;Naming Files, Paths, and Namespaces&lt;/a&gt; de &lt;span class="caps"&gt;MSDN&lt;/span&gt;.&lt;/p&gt;
-&lt;h2&gt;Script para listar ficheros de nombres muy&amp;nbsp;largos&lt;/h2&gt;
-&lt;p&gt;Por último, sólo queda lo más fácil: codificar el script&amp;nbsp;;-)&lt;/p&gt;
-&lt;p&gt;Es común que la codificación que lleva por defecto la cónsola de comandos falle con las cadenas unicode. Si pensamos sacar por cónsola los nombres de ficheros, lo recomendable es cambiar la codificación por una más apropiada, como la &lt;code&gt;cp1252&lt;/code&gt;, lo más aproximado a &lt;code&gt;utf-8&lt;/code&gt; que podemos&amp;nbsp;encontrar:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    C:\&amp;gt; chcp 1252
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
-&lt;p&gt;Para hacer nuestro script, podríamos haber usado cualquiera de las funciones &lt;code&gt;os.walk&lt;/code&gt; de la librería estándar; pero, no sé porqué, fallan a crear la lista de directorios. Ésto nos obliga a crear nuestro propio método para recorrer la jerarquía de&amp;nbsp;directorios.&lt;/p&gt;
-&lt;p&gt;Por comodidad, voy a lanzar el script en una máquina distinta de la que hace de servidor de ficheros ya que no dispongo de python en los servidores. Usaré la nomenclatura &lt;abbr title="Universal Naming Convention"&gt;&lt;span class="caps"&gt;UNC&lt;/span&gt;&lt;/abbr&gt; para identificar los recursos&amp;nbsp;compartidos.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#-*- coding: utf-8 -*-&lt;/span&gt;
-
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
-
-&lt;span class="n"&gt;MAX_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;260&lt;/span&gt;
-
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;longnames&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dirpath&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Iterador que devuelve las rutas largas (&amp;gt;=MAX_PATH)&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-
-    &lt;span class="c1"&gt;#Hay que forzar unicode para evitar el límite MAX_PATH&lt;/span&gt;
-    &lt;span class="n"&gt;dirpath&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;unicode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dirpath&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;dirpath&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;endswith&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="n"&gt;dirpath&lt;/span&gt;&lt;span class="o"&gt;+=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-
-    &lt;span class="n"&gt;dirs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt;
-
-    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;listdir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dirpath&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-
-        &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;dirpath&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;
-
-        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;=&lt;/span&gt;&lt;span class="n"&gt;MAX_PATH&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;
-
-        &lt;span class="c1"&gt;#poblar la lista de directorios&lt;/span&gt;
-        &lt;span class="c1"&gt;#para recorrer en orden&lt;/span&gt;
-        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isdir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-            &lt;span class="n"&gt;dirs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dirs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;longnames&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-            &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;
-
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;listshare&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Crea un UNC para el recurso compartido.&lt;/span&gt;
-&lt;span class="sd"&gt;       Devuelve un iterador para las rutas largas (&amp;gt;=MAX_PATH)&lt;/span&gt;
-&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;    
-    &lt;span class="n"&gt;dirpath&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s2"&gt;?\UNC\&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;\&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;longnames&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dirpath&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
-&lt;p&gt;Su uso simple podía&amp;nbsp;ser:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#-*- coding: utf-8 -*-&lt;/span&gt;
-
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;codecs&lt;/span&gt;
-
-&lt;span class="c1"&gt;#PARÁMETROS&lt;/span&gt;
-&lt;span class="n"&gt;SERVER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;MiServidor&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;SHARE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Usuario\dir1&amp;quot;&lt;/span&gt;
-
-&lt;span class="n"&gt;fOut&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;codecs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;longnames.txt&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;w&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;utf-8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;listshare&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SERVER&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;SHARE&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-
-    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;
-    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;fOut&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;DIRPATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;.&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;fOut&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content><category term="ntfs"></category><category term="windows"></category></entry></feed>
+&lt;/div&gt;</content><category term="CompSci"></category><category term="computing science"></category></entry></feed>

@@ -14,5 +14,7 @@ dependencies:
   - pyscss
   - ply
   - coconut
+  - beautifulsoup4
   - pip:
       - slimit
+      - HTMLParser

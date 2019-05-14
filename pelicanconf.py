@@ -145,6 +145,9 @@ SITEMAP = {
     }
 }
 
+MATH_JAX = {
+    'equation_numbering': "AMS",
+}
 
 # Theme specific
 DISPLAY_META_ABOVE_ARTICLE = True

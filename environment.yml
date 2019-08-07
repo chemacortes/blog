@@ -4,6 +4,7 @@ channels:
   - defaults
 dependencies:
   - python=3
+  - pip
   - pelican
   - markdown<3
   - typogrify
@@ -15,6 +16,7 @@ dependencies:
   - ply
   - coconut
   - beautifulsoup4
+  - pyparsing==2.2.0
   - pip:
       - slimit
       - HTMLParser

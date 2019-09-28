@@ -14,9 +14,10 @@ dependencies:
   - libsass
   - pyscss
   - ply
-  - coconut
+  - ghp-import
   - beautifulsoup4
   - pyparsing==2.2.0
+  - coconut
   - pip:
       - slimit
       - HTMLParser

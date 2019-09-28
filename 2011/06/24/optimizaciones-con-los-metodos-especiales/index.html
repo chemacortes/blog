@@ -159,7 +159,7 @@ Desde C # &#39;&lt;__main__.C object at 0xb77d4b2c&gt;&#39;.&#39;a&#39;==100
 </td></tr></table>
 
 <p>En la prueba, accedemos al atributo <code>a</code> a través de la instancia <code>obj</code> y a través de la clase <code>C</code>. En el primer caso, se llama a <code>__getattribute__</code> para acceder al atributo; mientras que en el segundo no lo hace. Muy a menudo se piensa errónemente que la clase usa implícitamente sus propios métodos especiales y no es&nbsp;así.</p>
-<p>Como objeto que es, una clase también es una instancia. A la clase de una clase la denominaremos <strong>&#8220;metaclase&#8221;</strong><sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup> y tendrá como ancestro superior la clase <code>type</code> (del mismo modo que toda clase tenía como ancestro la clase <code>object</code>)<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup>. Es a esta metaclase donde se buscan los métodos especiales de la propia&nbsp;clase:</p>
+<p>Como objeto que es, una clase también es una instancia. A la clase de una clase la denominaremos <strong>&#8220;metaclase&#8221;</strong><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> y tendrá como ancestro superior la clase <code>type</code> (del mismo modo que toda clase tenía como ancestro la clase <code>object</code>)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. Es a esta metaclase donde se buscan los métodos especiales de la propia&nbsp;clase:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -267,11 +267,11 @@ Desde C # &#39;&lt;__main__.C object at 0xb77d4b2c&gt;&#39;.&#39;a&#39;==100
 <div class="footnote">
 <hr>
 <ol>
-<li id="fn-1">
-<p>Siguiendo con la relaciones entre clases y objetos, la clase <code>type</code> es a la vez instancia de <code>type</code> y subclase de <code>object</code>.&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<li id="fn:1">
+<p>Siguiendo con la relaciones entre clases y objetos, la clase <code>type</code> es a la vez instancia de <code>type</code> y subclase de <code>object</code>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
-<li id="fn-2">
-<p>En próximos artículos veremos el funcionamiento de las <em>metaclases</em>&#160;<a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<li id="fn:2">
+<p>En próximos artículos veremos el funcionamiento de las <em>metaclases</em>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

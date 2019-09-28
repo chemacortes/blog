@@ -118,7 +118,7 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 </pre></div>
 </td></tr></table>
 
-<p>Concretamente, las funciones son <em>&#8220;descriptores de no-datos&#8221;</em> y como tales se aplicarán las reglas comentadas en artículos previos. En concreto, se buscarán antes los métodos en el diccionario del objeto que entre los atributos de su clase<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup>, lo que nos va a permitir suplantar métodos en tiempo de&nbsp;ejecución.</p>
+<p>Concretamente, las funciones son <em>&#8220;descriptores de no-datos&#8221;</em> y como tales se aplicarán las reglas comentadas en artículos previos. En concreto, se buscarán antes los métodos en el diccionario del objeto que entre los atributos de su clase<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, lo que nos va a permitir suplantar métodos en tiempo de&nbsp;ejecución.</p>
 <p>Con añadir funciones a los atributos de clase será suficiente para la mayoría de casos que nos podamos enfrentar. El resto de este artículo va orientado para algunos casos de <em>&#8220;técnicas dinámicas&#8221;</em> que requieren diferenciar el comportamiento de un objeto respecto al resto de las instancias de la misma&nbsp;clase.</p>
 <h2>Invocación de descriptores y sus&nbsp;enlaces</h2>
 <p>Hasta ahora no nos habíamos preocupado por el segundo argumento que se pasa al método <code>__get__</code> en el interface &#8220;descriptor&#8221;, al que se denomina &#8220;propietario&#8221; (<em>&#8220;owner&#8221;</em>) y que siempre coincide con la clase de la instancia. A través de la instancia o del propietario, <code>__get__</code> devolverá el atributo enlazado con la instancia y/o clase según sea el comportamiento&nbsp;buscado.</p>
@@ -255,8 +255,8 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 <div class="footnote">
 <hr>
 <ol>
-<li id="fn-1">
-<p>Este orden no se respeta con los <em>&#8220;métodos especiales&#8221;</em> y cuando estamos trabajando con <em>&#8220;descriptores de datos&#8221;</em>. Revisar el resto de artículos sobre descriptores.&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<li id="fn:1">
+<p>Este orden no se respeta con los <em>&#8220;métodos especiales&#8221;</em> y cuando estamos trabajando con <em>&#8220;descriptores de datos&#8221;</em>. Revisar el resto de artículos sobre descriptores.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

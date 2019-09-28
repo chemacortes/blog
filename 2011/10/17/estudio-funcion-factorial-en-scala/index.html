@@ -93,7 +93,7 @@ Estudio función factorial en scala | Hyperreals *R  </title>
 
 <p>Es una clara señal de la orientación funcional que tiene&nbsp;scala.</p>
 <p>Al igual que python, esta función recursiva se corta cuando se sobrepasa un cierto límite de llamadas recursivas para proteger la memoria del&nbsp;sistema.</p>
-<p>El compilador de Scala posee una optimización especial denominda de <em>&#8220;LLamada Terminal&#8221;</em> (<a href="http://en.wikipedia.org/wiki/Tail_call" title="Tail Call">Tail Call</a>)<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup> (optimización que no existe en <span class="caps">JVM</span>). Este tipo de optimizaciones son posibles cuando la última línea a ejecutar de la función es únicamente la llamada recursiva a sí misma, con lo cuál hace innecesario guardar el stack de ejecución puesto que no quedarían más líneas para&nbsp;ejecutar.</p>
+<p>El compilador de Scala posee una optimización especial denominda de <em>&#8220;LLamada Terminal&#8221;</em> (<a href="http://en.wikipedia.org/wiki/Tail_call" title="Tail Call">Tail Call</a>)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> (optimización que no existe en <span class="caps">JVM</span>). Este tipo de optimizaciones son posibles cuando la última línea a ejecutar de la función es únicamente la llamada recursiva a sí misma, con lo cuál hace innecesario guardar el stack de ejecución puesto que no quedarían más líneas para&nbsp;ejecutar.</p>
 <p>Para que sea posible aplicar esta optimización de &#8220;llamada terminal&#8221;, tenemos que reescribir nuestra función de modo que la última línea sea una llamada a sí misma. Para ello usaremos una función acumuladora que se encargue de realizar la multiplicación previamente a la llamada. Casi mejor si vemos el&nbsp;código:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -161,8 +161,8 @@ Estudio función factorial en scala | Hyperreals *R  </title>
 <div class="footnote">
 <hr>
 <ol>
-<li id="fn-1">
-<p>Existe algún intento para implementar esta optimización de &#8220;Tail Call&#8221; en python, con algunos decoradores más o menos funcionales. Si quieres ver motivos en contra, visita el artículo que escribió Guido sobre el tema: <a href="http://neopythonic.blogspot.com/2009/04/tail-recursion-elimination.html">http://neopythonic.blogspot.com/2009/04/tail-recursion-elimination.html</a>&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<li id="fn:1">
+<p>Existe algún intento para implementar esta optimización de &#8220;Tail Call&#8221; en python, con algunos decoradores más o menos funcionales. Si quieres ver motivos en contra, visita el artículo que escribió Guido sobre el tema: <a href="http://neopythonic.blogspot.com/2009/04/tail-recursion-elimination.html">http://neopythonic.blogspot.com/2009/04/tail-recursion-elimination.html</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

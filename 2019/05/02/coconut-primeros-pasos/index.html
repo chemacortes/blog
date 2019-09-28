@@ -127,7 +127,7 @@ Coconut - Primeros pasos | Hyperreals *R  </title>
 <ul>
 <li><strong>pygments</strong>: facilitará el coloreado de sintáxis de código <em>coconut</em></li>
 <li><strong>watchdog</strong>: chequea de cambios en ficheros para automatizar&nbsp;recompilaciones</li>
-<li><strong>pyparsing</strong>/<strong>cpyparsing</strong>: <em>parseo</em> de texto, utilizado por el traspilador y el interface de línea de comandos. Se fija la versión de <code>pyparsing=2.2.0</code> ya que daba algunos fallos dentro de <code>jupyter console</code> con versiones superiores<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup>.</li>
+<li><strong>pyparsing</strong>/<strong>cpyparsing</strong>: <em>parseo</em> de texto, utilizado por el traspilador y el interface de línea de comandos. Se fija la versión de <code>pyparsing=2.2.0</code> ya que daba algunos fallos dentro de <code>jupyter console</code> con versiones superiores<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</li>
 </ul>
 <p><code>cPyparsing</code> es una versión optimizada de <code>pyparsing</code>. Su instalación necesita los compiladores de C apropiados para la creación módulos python para el sistema. Con linux, el entorno que uso, no hay problema; pero es posible que en windows dé errores por no encontrar el compilador <span class="caps">MS</span> C++. Si no sabes cómo se instala, siempre puedes quitar <code>cpyparsing</code> del fichero <code>environment.yml</code> para que siga usando <code>pyparsing</code>.</p>
 <p>Dado que <em>coconut</em> es un desarrollo muy activo, también recomiendo la instalación de una versión de desarrollo de <em>coconut</em>. Muchas veces, los problemas encontrados pueden estar resueltos en desarrollo. Pero siempre es interesante probar las novedades que se van a añadiendo y nunca está de más animarse a contribuir en posibles&nbsp;mejoras.</p>
@@ -263,8 +263,8 @@ Compiled to       hola.py .
 <div class="footnote">
 <hr>
 <ol>
-<li id="fn-1">
-<p>Este problema también lo tiene la instalación de coconut para <strong>python 2</strong>. En este caso, la simple ejecución del interface de línea de comando sobra para entrar en un bucle sin fin que agote rápidamente la memoria y bloquee todo el equipo. Forzar la versión a <code>pyparsing=2.2.0</code> solventa el problema.&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<li id="fn:1">
+<p>Este problema también lo tiene la instalación de coconut para <strong>python 2</strong>. En este caso, la simple ejecución del interface de línea de comando sobra para entrar en un bucle sin fin que agote rápidamente la memoria y bloquee todo el equipo. Forzar la versión a <code>pyparsing=2.2.0</code> solventa el problema.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Manejo de rutas con pathlib | Es difícil escribir un script de python que no interaccione con el sistema de ficheros de un modo u otro, por lo que...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.7098921b.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, python, pathlib">
+
+  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
+
+  <title>
+Manejo de rutas con pathlib | Hyperreals *R  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+      
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2019/09/28/manejo-de-rutas-pathlib/" class="nohover">Manejo de rutas con&nbsp;pathlib</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Posted <time data-timeago datetime="2019-09-28T17:53:57+02:00">sáb 28 septiembre 2019</time>
+     by Chema Cortés    </p>
+    <p>Last updated <time data-timeago datetime="2019-09-28T17:56:08+02:00">sáb 28 septiembre 2019</time></p>
+    <p>
+    Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+&ndash;&ndash;    Tags:
+      <a href="https://blog.ch3m4.org/tag/python/">python</a>,      <a href="https://blog.ch3m4.org/tag/pathlib/">pathlib</a>    </p>
+  </div>
+  <div class="article_text">
+    <p>Es difícil escribir un script de python que no interaccione con el sistema de ficheros de un modo u otro, por lo que python dispone de varios módulos para tal fin: <code>os</code>, <code>os.path</code> (<em>submódulo de os</em>), <code>shutil</code>, <code>stats</code>, <code>glob</code>,&#8230;En la intención estaba ser multiplataforma, lo que ha sido fuente de muchos mayores quebraderos de cabeza con las distintas codificaciones de caracteres y distintas formas de expresar rutas de ficheros que&nbsp;existen.</p>
+<p>El objeto <code>Path</code> viene a poner orden entre tantos módulos y funciones para manejo de ficheros. La librería estándar se ha reescrito para aceptar estos objetos <code>Path</code>. Se puede decir sin duda que usar <code>Path</code> se ha convertido en la forma más <em>pythónica</em> de manipular ficheros y&nbsp;directorios.</p>
+<p>Empecemos por un ejemplo traído de la <a href="https://docs.python.org/3.7/library/pathlib.html" title="Documentación del módulo pathlib">documentación oficial</a>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/etc&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="n">p</span> <span class="o">/</span> <span class="s1">&#39;init.d&#39;</span> <span class="o">/</span> <span class="s1">&#39;reboot&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">q</span>
+<span class="n">PosixPath</span><span class="p">(</span><span class="s1">&#39;/etc/init.d/reboot&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">q</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+<span class="n">PosixPath</span><span class="p">(</span><span class="s1">&#39;/etc/rc.d/init.d/halt&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Paso por paso: importa el constructor <code>Path</code> del módulo <code>pathlib</code>. Con él construye un objeto con la ruta <code>/etc</code> y, usando el operador <code>/</code>, genera otro objeto que representa la ruta <code>/etc/init.d/reboot</code>. Automáticamente, estos objetos se construyen como instancias de <code>PosixPath</code>, que es una subclase especializada de <code>Path</code> para manejos de ficheros en sistemas Posix. La ruta <code>/etc/init.d/reboot</code> apunta a un <em>enlace simbólico</em>, por lo que se usa el método <code>resolve</code> para obtener la ruta absoluta del fichero al que&nbsp;apunta.</p>
+<div class="admonition nota">
+<p class="admonition-title">Nota</p>
+<p>Observa que las operaciones con objetos <em>Path</em> generan objetos <em>Path</em> con lo que podemos encadenar operaciones para navegar a través de una jerarquía de&nbsp;directorios.</p>
+</div>
+<h2>Módulos a los que sustituye o no&nbsp;sustituye</h2>
+<p>Obviamtente, el módulo clásico <code>os.path</code>, utilizado para manipulación de rutas, es reemplazado totalmente por <code>pathlib</code>.</p>
+<p>Del módulo <code>os</code> reemplaza muchas de sus funciones para manipular ficheros y directorios. Aún así, el módulo <code>os</code> contiene otras muchas funciones para el manejo de entornos o lanzamiento de procesos que no cambian. Así mismo, hay algunas operaciones especializadas con ficheros y directorios (eg: <code>os.walk</code>) que no han sido reempladas. De hecho son más eficientes que si se hicieran con objetos <code>Path</code>.</p>
+<p>Otro módulo que ya no es necesario es <code>glob</code>, utilizado para buscar ficheros mediante patrones de&nbsp;búsqueda.</p>
+<h2>Rutas puras y&nbsp;concretas</h2>
+<p>Según si tienen acceso al sistema de ficheros, podemos distingure&nbsp;entre:</p>
+<ul>
+<li>Ruta pura: rutas que no requieren acceso al sistema de ficheros (<code>PurePath</code>, <code>PurePosixPath</code>, <code>PureWindowsPath</code>)</li>
+<li>Ruta concreta: rutas con acceso al sistema de ficheros (<code>Path</code>, <code>PosixPath</code>, <code>WindowsPath</code>)</li>
+</ul>
+<p>Las <em>rutas puras</em> son superclases de las <em>rutas concretas</em>. Mejor verlo gráficamente como jerarquía de&nbsp;clases:</p>
+<p><img alt="Jerarquía de clases Path" src="/pictures/pathlib-inheritance.png"></p>
+<h2>Ejemplos</h2>
+<p>Voy a poner algunos ejemplos de uso de <code>pathlib</code> para que compares con el modo como lo estabas haciendo hasta ahora. Recomiendo revisar la documentación del módulo <a href="https://docs.python.org/3.7/library/pathlib.html" title="Documentación del módulo pathlib">pathlib</a> ante cualquier&nbsp;duda.</p>
+<p>Para escribir en un fichero, usamos el método <code>open</code> de modo similar a como se hacía con la función <code>open</code> del mismo&nbsp;nombre:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.config&#39;</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">config</span><span class="p">:</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;# config goes here&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Si sólo vamos a escribir una línea, también se podría hacer de un modo más&nbsp;directo:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.config&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="s1">&#39;# config goes here&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Pongamos un ejemplo más complejo: queremos localizar los scripts de python dentro de la carpeta <code>proyectos</code> que tengan una frase. Lo habitual para recorrer un directorio era usar alguna función como <code>os.walk</code> o <code>os.scandir</code> para ir navegando a través de la jerarquía de directorios e ir leyendo los ficheros python hasta localizar los que&nbsp;buscamos.</p>
+<p>Veamos cómo se hace con <code>Path</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">proyectos</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;proyectos&#39;</span>  <span class="c1"># carpeta en el directorio HOME</span>
+<span class="n">palabra</span> <span class="o">=</span> <span class="s2">&quot;pathlib&quot;</span>
+
+<span class="n">ficheros</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">proyectos</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.py&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">palabra</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">read_text</span><span class="p">()]</span>
+</pre></div>
+</td></tr></table>
+
+<p>Partimos del <code>Path.home()</code>, el directorio de usuario, y creamos la ruta del directorio <code>proyectos</code>. Invocando el método <code>.rglob()</code> obtenemos, recursivamente, todos los ficheros que cumplan con el patrón dado. Bastante&nbsp;simple.</p>
+<p>La lista resultante es una lista de objetos <em>Path</em>, lo que nos facilita cualquier manipulación posterior que deseemos hacer sobre estos ficheros. Por ejemplo, vamos a calcular el tamaño total que&nbsp;ocupan:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">size</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_size</span> <span class="k">for</span> <span class="n">p</span> <span class="n">ficheros</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Si se prefiere, se puede seguir usando el viejo <code>os.path.getsize</code>. Ahora también acepta objetos <code>Path</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="n">size</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="n">ficheros</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+  </div>
+  <hr>
+  
+  <ul class="pager">
+          <li class="previous">
+               <a href="https://blog.ch3m4.org/2019/05/07/monadas-con-coco/" title="Anterior">
+                    <i class="fa fa-arrow-circle-left"></i>
+                   Monadas con&nbsp;coco
+               </a>
+           </li>
+   </ul>
+   With category <a href="https://blog.ch3m4.org/category/python/">Python</a>:
+   <ul class="pager">
+          <li class="previous">
+             <a href="https://blog.ch3m4.org/2013/11/09/python-eficiente-sobre-la-vida-de-los-objetos/" title="Anterior en misma categoría">
+                <i class="fa fa-arrow-circle-o-left"></i>
+                Python Eficiente - Sobre la vida de los&nbsp;objetos
+             </a>
+          </li>
+
+   </ul>
+
+    
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var disqus_identifier = "2019/09/28/manejo-de-rutas-pathlib/";
+    loadDisqus = function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//hyperreals.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
+      window.scroll(0, document.getElementById('main').offsetTop);
+    }})
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

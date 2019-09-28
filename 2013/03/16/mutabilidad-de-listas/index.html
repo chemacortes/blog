@@ -212,7 +212,7 @@ True
 <h2>Recomendaciones para hacer código&nbsp;funcional</h2>
 <h3>Copia de&nbsp;listas</h3>
 <p>En funciones y métodos, si recibimos una lista como argumento, la primera acción defensiva que deberíamos hacer es copiar la lista en una variable local y trabajar solo con la variable local desde ese momento. Con una asignación directa no se realiza una copia, más bien estaríamos <em>enlazando</em> una nueva referenciasin solucionar&nbsp;nada.</p>
-<p>La forma consensuada entre programadores python de copiar una lista es con la operación de <em>spliting</em> <code>L[:]</code>, aunque sirven otras operaciones idempotentes como <code>L*1</code> ó <code>L+[]</code><sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup>. Para listas de elementos entrelazados tendremos que acudir a otros mecanismos de copia como los que ofrece el <a href="http://docs.python.org/3.3/library/copy.html" title="Módulo copy">módulo <code>copy</code></a>, aunque no será frecuente que lo&nbsp;necesitemos.</p>
+<p>La forma consensuada entre programadores python de copiar una lista es con la operación de <em>spliting</em> <code>L[:]</code>, aunque sirven otras operaciones idempotentes como <code>L*1</code> ó <code>L+[]</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. Para listas de elementos entrelazados tendremos que acudir a otros mecanismos de copia como los que ofrece el <a href="http://docs.python.org/3.3/library/copy.html" title="Módulo copy">módulo <code>copy</code></a>, aunque no será frecuente que lo&nbsp;necesitemos.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -318,8 +318,8 @@ True
 <div class="footnote">
 <hr>
 <ol>
-<li id="fn-1">
-<p>De hecho, la operación <code>L*1</code> es más eficiente que <code>L[:]</code>.&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<li id="fn:1">
+<p>De hecho, la operación <code>L*1</code> es más eficiente que <code>L[:]</code>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

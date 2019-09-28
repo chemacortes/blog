@@ -75,7 +75,7 @@ Descriptores - Parte 2 | Hyperreals *R  </title>
   </div>
   <div class="article_text">
     <h1>¿Cómo funciona un&nbsp;descriptor?</h1>
-<p>Todos los objetos y todas las clases que derivan de <code>object</code><sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup> adquieren de él un método llamado <code>__getattribute__</code>. Siempre a través de este método se accede a los atributos, y es en este método donde se hace toda la <em>magia</em> de los descriptores, de modo que un acceso al atributo <code>obj.x</code> se transformará en una llamada a <code>type(obj).__dict__['x'].__get__(obj, type(obj))</code> si el atributo se trate de un descriptor. Una expresión casi ininteligible que va a requerir alguna que otra explicación. Lo importante es saber que al sobrecargar el método <code>__getattribute__</code> deberemos cuidarnos de invocar al método de la clase padre si queremos que los descriptores sigan funcionando con&nbsp;normalidad.</p>
+<p>Todos los objetos y todas las clases que derivan de <code>object</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> adquieren de él un método llamado <code>__getattribute__</code>. Siempre a través de este método se accede a los atributos, y es en este método donde se hace toda la <em>magia</em> de los descriptores, de modo que un acceso al atributo <code>obj.x</code> se transformará en una llamada a <code>type(obj).__dict__['x'].__get__(obj, type(obj))</code> si el atributo se trate de un descriptor. Una expresión casi ininteligible que va a requerir alguna que otra explicación. Lo importante es saber que al sobrecargar el método <code>__getattribute__</code> deberemos cuidarnos de invocar al método de la clase padre si queremos que los descriptores sigan funcionando con&nbsp;normalidad.</p>
 <h1>Atributos de un&nbsp;objeto</h1>
 <p>De todos los atributos que tiene un objeto python, algunos son <strong>&#8220;Atributos especiales&#8221;</strong> que aporta python para su funcionamiento interno como son <code>__class__</code> o <code>__bases__</code>. Estos atributos son bastante antipáticos de manejar ya que, o bien no son reportados por la función <code>dir()</code>, o bien tienen restricciones para ser&nbsp;modificados.</p>
 <p>Por otro lado, están los atributos definidos <em>dinámicamente</em> por el programa que forman lo que se conoce como <strong>&#8220;diccionario del objeto&#8221;</strong>. Estos atributos se guandan en el (<em>también</em>) atributo <code>__dict__</code>.</p>
@@ -184,8 +184,8 @@ Descriptores - Parte 2 | Hyperreals *R  </title>
 <div class="footnote">
 <hr>
 <ol>
-<li id="fn-1">
-<p>En python 2.x, a las clases que derivan de <code>object</code> se las denomina <em>&#8220;nuevas clases&#8221;</em> por contraste con las clases que había hasta ese momento. En python 3.x, todas las clases derivarán por defecto de <code>object</code>.&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<li id="fn:1">
+<p>En python 2.x, a las clases que derivan de <code>object</code> se las denomina <em>&#8220;nuevas clases&#8221;</em> por contraste con las clases que había hasta ese momento. En python 3.x, todas las clases derivarán por defecto de <code>object</code>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

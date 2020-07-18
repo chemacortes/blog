@@ -1,11 +1,11 @@
 [tool.poetry]
 name = "blog"
-version = "0.1.0"
+version = "0.2.0"
 description = "Hyperreals *R"
 authors = ["chemacortes <devxtrem@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.8"
 pelican = "^4.2.0"
 webassets = "^2.0"
 markdown = "^3.2.2"

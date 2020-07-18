@@ -78,8 +78,8 @@ Método __getattribute__ | Hyperreals *R  </title>
 <p>En el último artículo, donde hablaba de las <a href="https://blog.ch3m4.org/2011/06/24/optimizaciones-con-los-metodos-especiales/" title="Optimizaciones con los Métodos Especiales">optimizaciones de los métodos especiales</a>, también comentaba algunas optimizaciones que tenían qué ver con el método <code>__getattribute__</code> y proponía un&nbsp;ejercicio:</p>
 <blockquote>
 <p>¿Sabrías qué es lo que pasa en el siguiente caso? ¿Se invoca el método <strong>getattribute</strong> en algún momento? ¿Sería una llamada implícita o&nbsp;explícita?</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   obj.__getattribute__(&quot;__getattribute__&quot;)
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>   obj.__getattribute__(&quot;__getattribute__&quot;)
+</code></pre></div>
 </td></tr></table>
 
 </blockquote>

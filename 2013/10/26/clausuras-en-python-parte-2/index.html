@@ -92,15 +92,15 @@ anidadas</em>, donde una función está definida dentro del ámbito de la&nbsp;o
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">incr</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">incr</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">aux</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">n</span>
     <span class="k">return</span> <span class="n">aux</span>
 
 <span class="n">inc5</span><span class="o">=</span><span class="n">incr</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="n">inc5</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#--&gt;15</span>
-</pre></div>
+<span class="nb">print</span> <span class="n">inc5</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#--&gt;15</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Como resultado se devuelve la función <code>aux</code>, definida dentro del
@@ -120,7 +120,7 @@ empaquetar la función junto con el entorno donde se&nbsp;definió.</p>
  9
 10
 11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count</span><span class="p">():</span>
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">count</span><span class="p">():</span>
     <span class="n">num</span><span class="o">=</span><span class="mi">0</span>
     <span class="k">def</span> <span class="nf">aux</span><span class="p">():</span>
         <span class="n">num</span><span class="o">+=</span><span class="mi">1</span>
@@ -132,7 +132,7 @@ empaquetar la función junto con el entorno donde se&nbsp;definió.</p>
 <span class="n">c1</span><span class="p">()</span>  <span class="c1">#--&gt; 1</span>
 <span class="n">c1</span><span class="p">()</span>  <span class="c1">#--&gt; 2</span>
 <span class="n">c1</span><span class="p">()</span>  <span class="c1">#--&gt; 3</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Si pruebas este código te dará error. La función anidada <code>aux</code>
@@ -150,14 +150,14 @@ variable como <code>nonlocal</code> para que se busque en los ámbitos&nbsp;supe
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count</span><span class="p">():</span>
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">count</span><span class="p">():</span>
     <span class="n">num</span><span class="o">=</span><span class="mi">0</span>
     <span class="k">def</span> <span class="nf">aux</span><span class="p">():</span>
-        <span class="n">nonlocal</span> <span class="n">num</span>
+        <span class="k">nonlocal</span> <span class="n">num</span>
         <span class="n">num</span><span class="o">+=</span><span class="mi">1</span>
         <span class="k">return</span> <span class="n">num</span>
     <span class="k">return</span> <span class="n">aux</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Como solución para salir del paso, se puede evitar la reasignación de
@@ -167,13 +167,13 @@ variables. Por ejemplo, usando una&nbsp;lista:</p>
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count</span><span class="p">():</span>
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">count</span><span class="p">():</span>
     <span class="n">num</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">def</span> <span class="nf">aux</span><span class="p">():</span>
         <span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+=</span><span class="mi">1</span>
         <span class="k">return</span> <span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">aux</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Ya sé que no es muy elegante, pero hay otras formas de hacerlo&nbsp;mejor.</p>
@@ -191,16 +191,16 @@ punto desde donde estaba. Para el ejemplo&nbsp;anterior:</p>
 6
 7
 8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count</span><span class="p">():</span>
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">count</span><span class="p">():</span>
     <span class="n">num</span><span class="o">=</span><span class="mi">0</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">num</span><span class="o">+=</span><span class="mi">1</span>
         <span class="k">yield</span> <span class="n">num</span>
 
 <span class="n">c1</span><span class="o">=</span><span class="n">count</span><span class="p">()</span>
 <span class="nb">next</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="c1">#--&gt;1</span>
 <span class="nb">next</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="c1">#--&gt;2</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h2>Objetos&nbsp;funciones</h2>
@@ -214,7 +214,7 @@ son&nbsp;independientes:</p>
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">c1</span><span class="o">=</span><span class="n">count</span><span class="p">()</span>
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">c1</span><span class="o">=</span><span class="n">count</span><span class="p">()</span>
 <span class="n">c2</span><span class="o">=</span><span class="n">count</span><span class="p">()</span>
 
 <span class="nb">next</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="c1">#--&gt;1</span>
@@ -222,7 +222,7 @@ son&nbsp;independientes:</p>
 <span class="nb">next</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span> <span class="c1">#--&gt;1</span>
 <span class="nb">next</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span> <span class="c1">#--&gt;2</span>
 <span class="nb">next</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="c1">#--&gt;3</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Con ello es posible establecer una analogía con clases y objetos. La definición
@@ -241,7 +241,7 @@ con&nbsp;clausura:</p>
  8
  9
 10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Count</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Count</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="o">=</span><span class="mi">0</span>
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -252,7 +252,7 @@ con&nbsp;clausura:</p>
 <span class="n">c1</span><span class="p">()</span> <span class="c1">#--&gt;1</span>
 <span class="n">c1</span><span class="p">()</span> <span class="c1">#--&gt;2</span>
 <span class="n">c1</span><span class="p">()</span> <span class="c1">#--&gt;3</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Sin duda es la manera más elegante de usar clausuras que tenemos en
@@ -272,7 +272,7 @@ números que ya hemos visitado no supere cierto&nbsp;límite.</p>
  8
  9
 10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recorr</span><span class="p">(</span><span class="n">lista</span><span class="p">,</span> <span class="n">maximo</span><span class="p">):</span>
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">recorr</span><span class="p">(</span><span class="n">lista</span><span class="p">,</span> <span class="n">maximo</span><span class="p">):</span>
     <span class="n">total</span><span class="o">=</span><span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="mi">2</span><span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
@@ -283,7 +283,7 @@ números que ya hemos visitado no supere cierto&nbsp;límite.</p>
                 <span class="k">break</span>
 
 <span class="n">recorr</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">23</span><span class="p">],</span><span class="mi">30</span><span class="p">)</span> <span class="c1">#--&gt;[3,7,11]</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Está bien, pero no es fácil de usar. Aunque sólo necesitemos algunos
@@ -305,7 +305,7 @@ para saber cuánto han sumado el&nbsp;resultado.</p>
 12
 13
 14
-15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RecorrFunc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">RecorrFunc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maximo</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">maximo</span><span class="o">=</span><span class="n">maximo</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="o">=</span><span class="mi">0</span>
@@ -319,8 +319,8 @@ para saber cuánto han sumado el&nbsp;resultado.</p>
 
 <span class="n">recorr</span><span class="o">=</span><span class="n">RecorrFunc</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
 <span class="n">recorr</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">23</span><span class="p">])</span> <span class="c1">#--&gt;[3,7,11]</span>
-<span class="k">print</span> <span class="n">recorr</span><span class="o">.</span><span class="n">total</span> <span class="c1">#--&gt;21</span>
-</pre></div>
+<span class="nb">print</span> <span class="n">recorr</span><span class="o">.</span><span class="n">total</span> <span class="c1">#--&gt;21</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Las posibilidades de los objetos función son muchas. Del mismo modo que se devuelve una lista, 

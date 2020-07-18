@@ -82,12 +82,12 @@ Descriptores - Parte 1 | Hyperreals *R  </title>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">descr</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">value</span>
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">descr</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">value</span>
 
-<span class="n">descr</span><span class="o">.</span><span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="bp">None</span>
+<span class="n">descr</span><span class="o">.</span><span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="kc">None</span>
 
-<span class="n">descr</span><span class="o">.</span><span class="fm">__delete__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="bp">None</span>
-</pre></div>
+<span class="n">descr</span><span class="o">.</span><span class="fm">__delete__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="kc">None</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Respectivamente, serían los métodos para obtener, asignar y borrar un atributo del objeto <code>obj</code>.</p>
@@ -113,10 +113,10 @@ Descriptores - Parte 1 | Hyperreals *R  </title>
 12
 13
 14
-15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Desc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Desc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mul</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span>
-    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">value</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">mul</span>
 
 <span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -127,19 +127,19 @@ Descriptores - Parte 1 | Hyperreals *R  </title>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">=</span><span class="n">value</span>
 
 <span class="n">c</span><span class="o">=</span><span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">c</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">a12</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">a200</span>  <span class="c1">#--&gt; 2 24 400</span>
-</pre></div>
+<span class="nb">print</span> <span class="n">c</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">a12</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">a200</span>  <span class="c1">#--&gt; 2 24 400</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Los atributos <code>a12</code> y <code>a200</code> están definidos por instancias del descriptor <code>Desc()</code>. Cuando accedemos a estos atributos, en lugar de devolvernos el descriptor, nos devuelve el valor resultante del método <code>__get__</code> del&nbsp;descriptor.</p>
 <p>De modo más explícito,&nbsp;sería:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">a12</span> <span class="o">--&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">a12</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">c</span><span class="o">.</span><span class="n">a12</span> <span class="o">--&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">a12</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Al no estar definido el método <code>__set__</code>, se pueden reasignar estos atributos sin mayor problema, aunque dejarían así de estar controlado por el&nbsp;descriptor:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">a12</span><span class="o">=</span><span class="mi">12</span>
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">c</span><span class="o">.</span><span class="n">a12</span><span class="o">=</span><span class="mi">12</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Para completar el protocolo de <em>descriptor de datos</em> basta añadir un método <code>__set__</code>:</p>
@@ -149,19 +149,19 @@ Descriptores - Parte 1 | Hyperreals *R  </title>
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Descrip</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Descrip</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mul</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span>
-    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">value</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">mul</span>
     <span class="k">def</span> <span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="n">obj</span><span class="o">.</span><span class="n">value</span><span class="o">=</span><span class="n">value</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>La asignación anterior, se nos convertiría&nbsp;en:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">a12</span><span class="o">=</span><span class="mi">12</span> <span class="o">--&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">a12</span><span class="o">.</span><span class="fm">__set__</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">c</span><span class="o">.</span><span class="n">a12</span><span class="o">=</span><span class="mi">12</span> <span class="o">--&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">a12</span><span class="o">.</span><span class="fm">__set__</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Como se intuye, el descriptor tiene aquí total control sobre el valor final que se guardará como atributo. Como posible utilización, se pueden crear atributos de sólo lectura, para lo que bastaría con que el método <code>__set__</code> genere un error <code>AttributeError</code> si se intenta modificar el&nbsp;atributo:</p>
@@ -171,14 +171,14 @@ Descriptores - Parte 1 | Hyperreals *R  </title>
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Descrip</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Descrip</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mul</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span>
-    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">value</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">mul</span>
     <span class="k">def</span> <span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">AttributeError</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Tan sólo falta añadir el método <code>__delete__</code> para completar el protocolo. No hay que olvidarse de este método si queremos que un atributo de sólo lectura aún pueda ser modificado mediante un borrado previo a su&nbsp;reasignación:</p>
@@ -201,10 +201,10 @@ Descriptores - Parte 1 | Hyperreals *R  </title>
 17
 18
 19
-20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Descrip</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Descrip</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mul</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span>
-    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">value</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">mul</span>
     <span class="k">def</span> <span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">AttributeError</span>
@@ -213,22 +213,22 @@ Descriptores - Parte 1 | Hyperreals *R  </title>
 
 <span class="n">c</span><span class="o">=</span><span class="n">C</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="n">c</span><span class="o">.</span><span class="n">a12</span> <span class="c1">#--&gt; 24</span>
+<span class="nb">print</span> <span class="n">c</span><span class="o">.</span><span class="n">a12</span> <span class="c1">#--&gt; 24</span>
 
 <span class="n">c</span><span class="o">.</span><span class="n">a12</span><span class="o">=</span><span class="mi">100</span> <span class="c1">#ERROR: AttributeError</span>
 
 <span class="k">del</span> <span class="n">C</span><span class="o">.</span><span class="n">a12</span>
 <span class="n">c</span><span class="o">.</span><span class="n">a12</span><span class="o">=</span><span class="mi">100</span>
 
-<span class="k">print</span> <span class="n">c</span><span class="o">.</span><span class="n">a12</span>  <span class="c1">#--&gt; 100 (no descriptor)</span>
-</pre></div>
+<span class="nb">print</span> <span class="n">c</span><span class="o">.</span><span class="n">a12</span>  <span class="c1">#--&gt; 100 (no descriptor)</span>
+</code></pre></div>
 </td></tr></table>
 
 <h1>Saltarse al&nbsp;descriptor</h1>
 <p>Llegados aquí, se nos plantea una pregunta: ¿hay algún modo de acceder a los atributos sin pasar por su&nbsp;descriptor?</p>
 <p>Y no es para nada una pregunta caprichosa. El descriptor necesita algún modo de acceder a los atributos que está gestionando sin tener que pasar por sí mismo. Tal vez, se podría hacer a través del diccionario del objeto, accesible como <code>__dict__</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;a12&quot;</span><span class="p">]</span><span class="o">=</span><span class="mi">100</span>  <span class="c1">#equivalente a c.a12=100</span>
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">c</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;a12&quot;</span><span class="p">]</span><span class="o">=</span><span class="mi">100</span>  <span class="c1">#equivalente a c.a12=100</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Si lo pruebas, verás que no funciona. Cuando se busca un atributo, primero se busca entre los atributos de la clase antes de mirar en el diccionario de la instancia. Este orden de prioridades lo veremos en el próximo artículo cuando veamos el funcionamiento interno de un&nbsp;descriptor.</p>

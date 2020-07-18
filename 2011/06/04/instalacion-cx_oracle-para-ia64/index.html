@@ -85,48 +85,48 @@ Instalación cx_Oracle para ia64 | Hyperreals *R  </title>
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>basic-10.2.0.4.0-linux-ia64.zip
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>basic-10.2.0.4.0-linux-ia64.zip
 sdk-10.2.0.4.0-linux-ia64.zip
 sqlplus-10.2.0.4.0-linux-ia64.zip
 
 jdbc-10.2.0.4.0-linux-ia64.zip
 odbc-10.2.0.4.0-linux-ia64.zip
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Los dos últimos son opcionales, pero siempre pueden venir bien guardarlos por si hacen falta en el futuro con alguna aplicación (el conector jdbc nos vendrá bien para usarlo con&nbsp;jython).</p>
 <p>Se decomprimen estos paquetes en el mismo directorio y obtendremos un único directorio&nbsp;llamado:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>instantclient_10_2
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>instantclient_10_2
+</code></pre></div>
 </td></tr></table>
 
 <p>Movemos este directorio a un lugar adecuado, por ejemplo&nbsp;a:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>/opt/oracle/instantclient_10_2
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>/opt/oracle/instantclient_10_2
+</code></pre></div>
 </td></tr></table>
 
 <p>No olvidar darle permisos adecuados, sobre todo si queremos que el servidor apache (<code>mod_wsgi</code>) pueda acceder a él (puedo asegurar que se pierde mucho tiempo hasta que averiguas este fallo tan&nbsp;tonto):</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span># chmod +rx /opt/oracle/instantclient_10_2/
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># chmod +rx /opt/oracle/instantclient_10_2/
+</code></pre></div>
 </td></tr></table>
 
 <p>Cuando pasemos a compilar <code>cx_Oracle</code>, veremos algunos fallos por no ser capaz de encontrar algunas librerías compatidas. Para evitarlo, debemos crear algunos&nbsp;enlaces:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span># cd /opt/oracle
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># cd /opt/oracle
 # ln -s libclntsh.so.10.1 libclntsh.so
 # ln -s libclntsh.so.10.1 libclntsh.dylib
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Ahora tenemos que actualizar las referencias a la libreras compartidas. Creamos el fichero <code>/etc/ld.so.conf.d/oracle.conf</code> con la siguiente&nbsp;línea:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>/opt/oracle/instantclient_10_2
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>/opt/oracle/instantclient_10_2
+</code></pre></div>
 </td></tr></table>
 
 <p>Y&nbsp;actualizamos:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span># ldconfig
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># ldconfig
+</code></pre></div>
 </td></tr></table>
 
 <p>Para comprobar que funciona bien, podemos probar la utilidad <code>sqlplus</code> a ver si conectamos. Esta utilidad viene dentro del&nbsp;directorio.</p>
@@ -135,19 +135,19 @@ odbc-10.2.0.4.0-linux-ia64.zip
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ORACLE_HOME</span><span class="o">=</span><span class="s2">&quot;/opt/oracle/instantclient_10_2&quot;</span>
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">ORACLE_HOME</span><span class="o">=</span><span class="s2">&quot;/opt/oracle/instantclient_10_2&quot;</span>
 <span class="nb">export</span> <span class="nv">DYLD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$ORACLE_HOME</span><span class="s2">&quot;</span>
 <span class="nb">export</span> <span class="nv">SQLPATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$ORACLE_HOME</span><span class="s2">&quot;</span>
 
 <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PATH</span><span class="s2">:</span><span class="nv">$ORACLE_HOME</span><span class="s2">&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Para instalar el paquete <code>cx_Oracle</code>, podemos instalar antes el paquete <code>python-pip</code> que nos ofrece la utilidad <code>pip</code> que nos hará más fácil la&nbsp;instalación:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span># apt-get install python-pip
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># apt-get install python-pip
 # pip install cx_Oracle
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Con ésto se debería descargar, compilar e instalar <code>cx_Oracle</code>. Saldrán algunas advertencias que podemos ignorar. Si todo ha salido bien, podemos pasar a probar si podemos importar el&nbsp;módulo:</p>
@@ -156,13 +156,13 @@ odbc-10.2.0.4.0-linux-ia64.zip
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span># python
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># python
 Python 2.6.6 (r266:84292, Dec 27 2010, 21:05:55)
 [GCC 4.4.5] on linux2
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
 &gt;&gt;&gt; import cx_Oracle
 &gt;&gt;&gt;
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Con el módulo instalado, lo he probado desde el <em>&#8220;backend&#8221;</em> de oracle para django y todo funciona a la&nbsp;perfección.</p>

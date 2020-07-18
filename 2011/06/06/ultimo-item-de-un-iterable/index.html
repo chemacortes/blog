@@ -79,17 +79,17 @@ ello se suele iterar hasta agotar el&nbsp;iterador:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">iterador</span><span class="p">:</span>
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">iterador</span><span class="p">:</span>
      <span class="k">pass</span>
 
 <span class="n">last_item</span> <span class="o">=</span> <span class="n">it</span>  
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Una alternativa que se ve bastante es convertir previamente el iterable
 en una&nbsp;lista:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">last_item</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">iterador</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">last_item</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">iterador</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Tiene el incoveniente de gastar recursos inultilmente al crear una lista
@@ -97,8 +97,8 @@ de la que sólo nos interesa su último&nbsp;elemento.</p>
 <p>En <em><a href="http://stackoverflow.com">stackoverflow</a></em> se pueden ver algunas <a href="http://stackoverflow.com/questions/2138873/cleanest-way-to-get-last-item-from-python-iterator" title="Cleanest way to get last item from Python iterator">respuestas</a> a este
 problema, pero ninguna me convence lo&nbsp;suficiente.</p>
 <p>Aquí pongo mi solución, simple y elegante donde las&nbsp;haya:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">last_item</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">iterador</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">last_item</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">iterador</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
 </td></tr></table>
   </div>
   <hr>

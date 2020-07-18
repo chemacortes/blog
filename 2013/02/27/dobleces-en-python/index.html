@@ -89,18 +89,18 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
  8
  9
 10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">listar</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">listar</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">num</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
     <span class="n">i</span><span class="o">=</span><span class="mi">0</span>
     <span class="k">while</span><span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="n">num</span><span class="p">):</span>
         <span class="n">x</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot; 5d&quot;</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot; 5d&quot;</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
         <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
 
 <span class="n">fich</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fichero.txt&quot;</span><span class="p">)</span>
 <span class="n">lineas</span><span class="o">=</span><span class="n">fich</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 <span class="n">listar</span><span class="p">(</span><span class="n">lineas</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Resumen: se define una función para imprimir en pantalla la lista de líneas leídas de un fichero, precedidas con el número de caracteres que tiene la&nbsp;línea.</p>
@@ -110,12 +110,12 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">listar</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">listar</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">num</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">num</span><span class="p">):</span>
         <span class="n">x</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot; 5d&quot;</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot; 5d&quot;</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Un bucle <code>for</code> se caracteriza por concentrar en una sentencia todo el control del bucle, una gran ayuda visual para quien vaya a leer este código. La variable de control solo se modifica en la sentencia <code>for</code>, lo que evita&nbsp;errores.</p>
@@ -123,10 +123,10 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
 <p>Pero esta visión ha evolucionado con el tiempo hasta llegar al concepto de <em>&#8220;Colección&#8221;</em> que ya poseen casi todos los lenguajes, bien en su sintaxis, bien como librería estándar. Una <em>&#8220;Colección&#8221;</em> consiste en un grupo de objetos sobre los que puede iterar. <code>range(0,num)</code> sería una colección ordenada de números. El siguiente paso a dar sería iterar directamente sobre la&nbsp;lista:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">listar</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">listar</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot; 5d&quot;</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot; 5d&quot;</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Con este código hemos conseguido un doble objetivo, mejorar la legibilidad y darle más robustez al despreocuparnos por los índices de acceso. Los índices de acceso fuera de límites suelen ser origen de multitud de&nbsp;errores.</p>
@@ -135,12 +135,12 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">listar</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">listar</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot; 5d&quot;</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot; 5d&quot;</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
 
 <span class="n">listar</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fichero.txt&quot;</span><span class="p">))</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Con este último doblez hemos ganado concisión. Pero sobre hemos ahorrado recursos ya que no necesitamos leer todo el fichero en memoria. La lectura del fichero se hará progresivamente en el momento que se solicite la siguiente línea, por lo que este código debería funcionar incluso con ficheros enormes, independiente de la cantidad de memoria disponible. Sólo se empleará la memoria suficiente para cachear una pocas líneas para ir renovándolas a medida que se prosiga la lectura del&nbsp;fichero.</p>
@@ -161,17 +161,17 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
  7
  8
  9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">islice</span>
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">islice</span>
 
 <span class="k">def</span> <span class="nf">lineas</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
-        <span class="k">yield</span> <span class="p">(</span><span class="s2">&quot;{: 5d} {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">))</span>
+        <span class="k">yield</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">{: 5d}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">))</span>
 
 <span class="n">it</span><span class="o">=</span><span class="n">lineas</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;pr.py&quot;</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">it</span><span class="p">,</span><span class="mi">5</span><span class="p">)):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
-</pre></div>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>La función <code>listar</code> ha pasado a ser el iterador <code>lineas</code> que retorna las líneas ya formateadas. Asimismo, se ha cambiado la función <code>format</code> por el método <code>format</code> de los <code>strings</code> con el que se pueden formatear mejor varios valores a la vez. La impresión de las líneas en pantalla se deja para el último momento, cuando se necesita ver el resultado. Es en este momento cuando se decide cuántas líneas se van a imprimir, que es lo que hace el <code>islice</code> acortando el iterador <code>lineas</code> a 5 iteraciones. También se usa el iterador <code>enumerate</code> para ir enumerando las líneas a medida que las&nbsp;obtenemos.</p>

@@ -90,11 +90,11 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 11
 12
 13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">pass</span>
 
 <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-    <span class="k">print</span> <span class="s2">&quot;obj is </span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="n">obj</span>
+    <span class="nb">print</span> <span class="s2">&quot;obj is </span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="n">obj</span>
 
 <span class="n">C</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">func</span>
 
@@ -104,18 +104,18 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 <span class="n">c</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>    <span class="c1"># cualquiera de...</span>
 <span class="n">C</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>   <span class="c1"># ...estas invocaciones...</span>
 <span class="n">func</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>       <span class="c1"># ...dan el mismo resultado</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Esta <em>dualidad</em> entre funciones y métodos va más allá si observamos que, en realidad, las funciones son <em>&#8220;descriptores&#8221;</em>, tal como podemos comprobar mirando su&nbsp;diccionario:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s2">&quot;__get__&quot;</span><span class="p">)</span>
-<span class="bp">True</span>
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s2">&quot;__get__&quot;</span><span class="p">)</span>
+<span class="kc">True</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="s2">&quot;__set__&quot;</span><span class="p">)</span>
-<span class="bp">False</span>
-</pre></div>
+<span class="kc">False</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Concretamente, las funciones son <em>&#8220;descriptores de no-datos&#8221;</em> y como tales se aplicarán las reglas comentadas en artículos previos. En concreto, se buscarán antes los métodos en el diccionario del objeto que entre los atributos de su clase<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, lo que nos va a permitir suplantar métodos en tiempo de&nbsp;ejecución.</p>
@@ -141,20 +141,20 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 <h2>Técnicas&nbsp;dinámicas</h2>
 <p>Para realizar nuestros experimentos, supongamos que tenemos el siguiente&nbsp;descriptor:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">desc</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">print</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
-</pre></div>
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">desc</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="nb">print</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Es una simple función que imprime los argumentos que recibe con el fin de poder analizarlos. Con una clase y una instancia intentaremos ver cómo añadirles métodos&nbsp;dinámicos:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Cls</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Cls</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">pass</span>
 
 <span class="n">obj</span><span class="o">=</span><span class="n">Cls</span><span class="p">()</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>El caso trivial es añadir el descriptor como atributo de la&nbsp;clase:</p>
@@ -162,12 +162,12 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">Cls</span><span class="o">.</span><span class="n">meth</span><span class="o">=</span><span class="n">desc</span>
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">Cls</span><span class="o">.</span><span class="n">meth</span><span class="o">=</span><span class="n">desc</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span>
 <span class="o">&lt;</span><span class="n">bound</span> <span class="n">method</span> <span class="n">Cls</span><span class="o">.</span><span class="n">desc</span> <span class="n">of</span> <span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Cls</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x8ffd3ac</span><span class="o">&gt;&gt;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="p">()</span>
 <span class="p">(</span><span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Cls</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x8ffd3ac</span><span class="o">&gt;</span><span class="p">,)</span> <span class="p">{}</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Encaja con el funcionamiento estándar de los descriptores, que pasa por establecer primero un enlace del descriptor con la instancia o con la clase para obtener después el método&nbsp;ejecutable.</p>
@@ -182,12 +182,12 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="o">=</span><span class="n">desc</span>
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="o">=</span><span class="n">desc</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="p">()</span>
 <span class="p">()</span> <span class="p">{}</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span>
 <span class="o">&lt;</span><span class="n">function</span> <span class="n">desc</span> <span class="n">at</span> <span class="mh">0xb76776bc</span><span class="o">&gt;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Vemos que el funcionamiento es similar a si hubiéramos ejecutado directamente la función. En realidad, actúa como <strong>&#8220;métodos estáticos&#8221;</strong>, descriptores que no están enlazados con&nbsp;nada.</p>
@@ -196,22 +196,22 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="o">=</span><span class="n">desc</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">Cls</span><span class="p">)</span>
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="o">=</span><span class="n">desc</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">Cls</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="p">()</span>
 <span class="p">(</span><span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Cls</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb767adec</span><span class="o">&gt;</span><span class="p">,)</span> <span class="p">{}</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span>
 <span class="o">&lt;</span><span class="n">bound</span> <span class="n">method</span> <span class="n">Cls</span><span class="o">.</span><span class="n">desc</span> <span class="n">of</span> <span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Cls</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb767adec</span><span class="o">&gt;&gt;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Aquí ya vemos que el método se identifica como un <strong>&#8220;método normal&#8221;</strong> más de la clase <code>Cls</code>.</p>
 <p>De forma parecida, podríamos enlazar el descriptor con la clase, pero vista como instancia, no como clase, con lo que obtenemos un <strong>&#8220;método de clase&#8221;</strong>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="o">=</span><span class="n">desc</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">Cls</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">Cls</span><span class="p">))</span>
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="o">=</span><span class="n">desc</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">Cls</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">Cls</span><span class="p">))</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="p">()</span>
-<span class="p">(</span><span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">__main__</span><span class="o">.</span><span class="n">Cls</span><span class="s1">&#39;&gt;,) {}</span>
-</pre></div>
+<span class="p">(</span><span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">__main__</span><span class="o">.</span><span class="n">Cls</span><span class="s1">&#39;&gt;,) </span><span class="si">{}</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Hemos visto las opciones posibles para realizar diversas técnicas dinámicas. No es habitual verlas en el código que usamos normalmente. Casi puedo asegurar que si necesitas alguna de estas técnicas, es que te has pasado por alto alguna otra forma más sencilla de hacer lo&nbsp;mismo.</p>
@@ -226,17 +226,17 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
  7
  8
  9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Cls</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Cls</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="o">...</span>  <span class="nd">@property</span>
 <span class="o">...</span>  <span class="k">def</span> <span class="nf">meth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="o">...</span>    <span class="k">print</span> <span class="s2">&quot;Desde clase&quot;</span>
+<span class="o">...</span>    <span class="nb">print</span> <span class="s2">&quot;Desde clase&quot;</span>
 <span class="o">...</span> 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">=</span><span class="n">Cls</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="o">=</span><span class="n">desc</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span><span class="n">Cls</span><span class="p">)</span>
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">AttributeError</span><span class="p">:</span> <span class="n">can</span><span class="s1">&#39;t set attribute</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h2>Resto de artículos de la&nbsp;serie</h2>

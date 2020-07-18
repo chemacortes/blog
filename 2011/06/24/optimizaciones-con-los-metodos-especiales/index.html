@@ -104,7 +104,7 @@ Optimizaciones con los Métodos Especiales | Hyperreals *R  </title>
 10
 11
 12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&gt;&gt;&gt; class C(object):
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&gt;&gt;&gt; class C(object):
 ...     def __len__(self):
 ...         return 5
 ... 
@@ -117,7 +117,7 @@ Optimizaciones con los Métodos Especiales | Hyperreals *R  </title>
 5
 &gt;&gt;&gt; obj.__len__()
 100
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>La clase responde a la función estándar <code>len()</code> a través del método <code>__len__</code>. Como se ve, aunque cambiemos el método en el diccionario del objeto, la función <code>len()</code> sigue usando el método especial de la clase. Si se invoca el método <em>explícitamente</em> (<code>obj.__len__()</code>), entonces sí que se usará el método del diccionario del&nbsp;objeto.</p>
@@ -133,15 +133,15 @@ Optimizaciones con los Métodos Especiales | Hyperreals *R  </title>
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="n">a</span><span class="o">=</span><span class="mi">100</span>
 
     <span class="k">def</span> <span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
         <span class="n">value</span><span class="o">=</span><span class="nb">super</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
-        <span class="k">print</span> <span class="s2">&quot;Desde C # &#39;</span><span class="si">%r</span><span class="s2">&#39;.&#39;</span><span class="si">%s</span><span class="s2">&#39;==</span><span class="si">%r</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">attr</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;Desde C # &#39;</span><span class="si">%r</span><span class="s2">&#39;.&#39;</span><span class="si">%s</span><span class="s2">&#39;==</span><span class="si">%r</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">attr</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">value</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -149,13 +149,13 @@ Optimizaciones con los Métodos Especiales | Hyperreals *R  </title>
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&gt;&gt;&gt; obj=C()
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&gt;&gt;&gt; obj=C()
 &gt;&gt;&gt; obj.a
 Desde C # &#39;&lt;__main__.C object at 0xb77d4b2c&gt;&#39;.&#39;a&#39;==100
 100
 &gt;&gt;&gt; C.a
 100
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>En la prueba, accedemos al atributo <code>a</code> a través de la instancia <code>obj</code> y a través de la clase <code>C</code>. En el primer caso, se llama a <code>__getattribute__</code> para acceder al atributo; mientras que en el segundo no lo hace. Muy a menudo se piensa errónemente que la clase usa implícitamente sus propios métodos especiales y no es&nbsp;así.</p>
@@ -175,23 +175,23 @@ Desde C # &#39;&lt;__main__.C object at 0xb77d4b2c&gt;&#39;.&#39;a&#39;==100
 13
 14
 15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Meta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Meta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
         <span class="n">value</span><span class="o">=</span><span class="nb">super</span><span class="p">(</span><span class="n">Meta</span><span class="p">,</span><span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
-        <span class="k">print</span> <span class="s2">&quot;Desde Meta# &#39;</span><span class="si">%r</span><span class="s2">&#39;.&#39;</span><span class="si">%s</span><span class="s2">&#39;==</span><span class="si">%r</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="n">attr</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;Desde Meta# &#39;</span><span class="si">%r</span><span class="s2">&#39;.&#39;</span><span class="si">%s</span><span class="s2">&#39;==</span><span class="si">%r</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="n">attr</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">value</span>
 
 <span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="vm">__metaclass__</span><span class="o">=</span><span class="n">Meta</span>
+    <span class="n">__metaclass__</span><span class="o">=</span><span class="n">Meta</span>
 
     <span class="n">a</span><span class="o">=</span><span class="mi">100</span>
 
     <span class="k">def</span> <span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
         <span class="n">value</span><span class="o">=</span><span class="nb">super</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
-        <span class="k">print</span> <span class="s2">&quot;Desde C # &#39;</span><span class="si">%r</span><span class="s2">&#39;.&#39;</span><span class="si">%s</span><span class="s2">&#39;==</span><span class="si">%r</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">attr</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;Desde C # &#39;</span><span class="si">%r</span><span class="s2">&#39;.&#39;</span><span class="si">%s</span><span class="s2">&#39;==</span><span class="si">%r</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">attr</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">value</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>De donde podemos sacar la segunda&nbsp;conclusión:</p>
@@ -218,10 +218,10 @@ Desde C # &#39;&lt;__main__.C object at 0xb77d4b2c&gt;&#39;.&#39;a&#39;==100
 17
 18
 19
-20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Meta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Meta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
         <span class="n">value</span><span class="o">=</span><span class="nb">super</span><span class="p">(</span><span class="n">Meta</span><span class="p">,</span><span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
-        <span class="k">print</span> <span class="s2">&quot;Desde Meta# &#39;</span><span class="si">%r</span><span class="s2">&#39;.&#39;</span><span class="si">%s</span><span class="s2">&#39;==</span><span class="si">%r</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="n">attr</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;Desde Meta# &#39;</span><span class="si">%r</span><span class="s2">&#39;.&#39;</span><span class="si">%s</span><span class="s2">&#39;==</span><span class="si">%r</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="n">attr</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">value</span>
 
     <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
@@ -229,16 +229,16 @@ Desde C # &#39;&lt;__main__.C object at 0xb77d4b2c&gt;&#39;.&#39;a&#39;==100
 
 <span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="vm">__metaclass__</span><span class="o">=</span><span class="n">Meta</span>
+    <span class="n">__metaclass__</span><span class="o">=</span><span class="n">Meta</span>
 
     <span class="k">def</span> <span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
         <span class="n">value</span><span class="o">=</span><span class="nb">super</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
-        <span class="k">print</span> <span class="s2">&quot;Desde C # &#39;</span><span class="si">%r</span><span class="s2">&#39;.&#39;</span><span class="si">%s</span><span class="s2">&#39;==</span><span class="si">%r</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">attr</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;Desde C # &#39;</span><span class="si">%r</span><span class="s2">&#39;.&#39;</span><span class="si">%s</span><span class="s2">&#39;==</span><span class="si">%r</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">attr</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">value</span>
 
     <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="mi">100</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Con este código, se puede comprobar las siguientes formas de invocar <code>__len__</code> para la&nbsp;instancia:</p>
@@ -246,12 +246,12 @@ Desde C # &#39;&lt;__main__.C object at 0xb77d4b2c&gt;&#39;.&#39;a&#39;==100
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&gt;&gt;&gt; obj=C()
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&gt;&gt;&gt; obj=C()
 &gt;&gt;&gt; len(obj)
 100
 &gt;&gt;&gt; len(C)
 999
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Aquí observamos que la llamada <em>implícita</em> a <code>__len__</code> se salta el <code>__getattribute__</code> tanto de la clase como de la metaclase como ya estaba&nbsp;anunciado. </p>

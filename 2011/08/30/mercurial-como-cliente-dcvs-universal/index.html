@@ -106,17 +106,17 @@ Mercurial como cliente DCVS universal | Hyperreals *R  </title>
 <p>La última versión de mercurial a la hora de escribir este artículo es la 1.9. Como la versión <em>&#8220;estable</em>&#8221; de hg-git tiene problemas con esta versión en concreto de mercurial, voy a explicar aquí lo que sería el método <em>manual</em> de instalación, bastante más&nbsp;seguro.</p>
 <p>Suponemos que tenemos ya instalado <code>mercurial</code> por lo medios habituales (autoinstalador en windows/instalador de paquetes en linux). Nos será de gran ayuda tener instalado <a href="http://tortoisehg.bitbucket.org/">tortoiseHG</a> como interface gráfico para manejar los repositorios. Para windows, la instalación de <a href="http://tortoisehg.bitbucket.org/">tortoiseHG</a> incluye todo lo necesario al empotrar un intérprete de python, mercurial y varias extensiones, algunas de ellas necesarias para transformar rutas y nombres de ficheros codificados en <span class="caps">MBCS</span>. Los siguientes pasos a ejecutar con mercurial serán más fáciles de aplicar desde la interface de&nbsp;tortoiseHG.</p>
 <p>En el emplazamiento que queramos, empezamos por clonar un repositorio con <strong>hg-git</strong> desde&nbsp;mercurial:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ hg clone http://bitbucket.org/durin42/hg-git hg-git
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ hg clone http://bitbucket.org/durin42/hg-git hg-git
+</code></pre></div>
 </td></tr></table>
 
 <p>Normalmente, yo suelo usar un mismo directorio para agrupas todos los repositorios clonados. Ése podría ser el lugar adecuado para guardar este&nbsp;repositorio.</p>
 <p>Añadimos esta extensión a la configuración de mercurial. Normalmente, se hace en el fichero <code>mercurial.ini</code> (windows) o en <code>~/.hgrc</code> (linux). Si usamos tortoiseHG, desde las <code>"opciones globales"</code> podemos editar directamente este&nbsp;fichero.</p>
 <p>Para añadir la&nbsp;extensión:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>[extensions]
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[extensions]
 hggit = &lt;ruta-al-repositorio&gt;\hg-git\hggit
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Como anotación, en alguna documentación se recomienda añadir también la extensión <em>opcional</em> <code>bookmarks</code> a la configuración; pero a partir de la versión 1.8 de mercurial, el comando <code>bookmark</code> es parte propia de los comandos de mercurial, por lo tanto este paso ya no es&nbsp;necesario.</p>
@@ -129,24 +129,24 @@ hggit = &lt;ruta-al-repositorio&gt;\hg-git\hggit
 </ul>
 <h2>Utilización</h2>
 <p>Con hg-git instalado ya podemos acceder, por ejemplo, a los repositorios de github directamente desde mercurial. Basta con especificar que se trata de un repositorio&nbsp;git:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ hg clone git://github.com/django/django.git django.git
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ hg clone git://github.com/django/django.git django.git
+</code></pre></div>
 </td></tr></table>
 
 <p>Para realizar un <code>push</code> a github con conexión codificada con <span class="caps">SSH</span>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ hg push git+ssh://user@github.com/user/myrep.git
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ hg push git+ssh://user@github.com/user/myrep.git
+</code></pre></div>
 </td></tr></table>
 
 <p>Así mismo, si partimos de un repositorio mercurial también podemos <em>&#8220;convertirlo&#8221;</em> para su uso en git con el siguiente&nbsp;proceso:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> myrep <span class="c1"># (dentro del repositorio mercurial)</span>
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> myrep <span class="c1"># (dentro del repositorio mercurial)</span>
 $ hg bookmark -r default master <span class="c1"># marcamos &#39;default&#39; como &#39;master&#39;</span>
 $ hg push git+ssh://user@github.com/user/myrep.git
 $ hg push
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Al marcar con el nombre <code>master</code> a <code>default</code> facilitamos la conversión de los datos de mercurial a objetos git. Este proceso sólo es necesario hacerlo la primera&nbsp;vez.</p>

@@ -79,10 +79,10 @@ Los iteradores parecen listas, pero no lo son | Hyperreals *R  </title>
 <p>Por ejemplo, imagina que necesitamos saber cuál es la mayor longitud de línea que tenemos en un&nbsp;fichero:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fichero.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fichero.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">maxlen</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Longitud mayor:&quot;</span><span class="p">,</span> <span class="n">maxlen</span><span class="p">)</span>
-</pre></div>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Longitud mayor:&quot;</span><span class="p">,</span> <span class="n">maxlen</span><span class="p">)</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>No ha hecho falta leer todo el fichero en memoria, ni crear una lista con las longitudes de cada línea. La función <code>max</code> ha sido capaz de operar con la expresión generadora para calcular el máximo valor de línea resultante. La principal ventaja es que no malgastamos recursos de memoria ya que el generador ha leído el fichero línea a línea, según ha ido&nbsp;necesitando.</p>
@@ -91,12 +91,12 @@ Los iteradores parecen listas, pero no lo son | Hyperreals *R  </title>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">mean</span>
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">mean</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fichero.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">meanlen</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Longitud media:&quot;</span><span class="p">,</span> <span class="n">meanlen</span><span class="p">)</span>
-</pre></div>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Longitud media:&quot;</span><span class="p">,</span> <span class="n">meanlen</span><span class="p">)</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>El problema de los iteradores es que se &#8220;agotan&#8221;. Si quisiéramos volverlos a usarlos, tendríamos que recrearlos de nuevo tantas veces como cálculos hiciéramos. En el ejemplo que estamos viendo, necesitaríamos volver a leer el fichero, lo que no es un uso eficiente de&nbsp;recursos.</p>
@@ -120,7 +120,7 @@ Los iteradores parecen listas, pero no lo son | Hyperreals *R  </title>
 17
 18
 19
-20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Calc</span><span class="p">:</span>
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Calc</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iterable</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
@@ -137,10 +137,10 @@ Los iteradores parecen listas, pero no lo son | Hyperreals *R  </title>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fichero.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">calc</span> <span class="o">=</span> <span class="n">Calc</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Longitud mayor:&quot;</span><span class="p">,</span> <span class="n">calc</span><span class="o">.</span><span class="n">maxlen</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Longitud media:&quot;</span><span class="p">,</span> <span class="n">calc</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Total líneas:&quot;</span><span class="p">,</span> <span class="n">calc</span><span class="o">.</span><span class="n">num</span><span class="p">)</span>
-</pre></div>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Longitud mayor:&quot;</span><span class="p">,</span> <span class="n">calc</span><span class="o">.</span><span class="n">maxlen</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Longitud media:&quot;</span><span class="p">,</span> <span class="n">calc</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total líneas:&quot;</span><span class="p">,</span> <span class="n">calc</span><span class="o">.</span><span class="n">num</span><span class="p">)</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Es un código muy mejorable, pero sirve para ilustrar las posibilidades que existen. En general, es posible operar con un iterador empleando métodos similares a los usados con listas. No es algo intituitivo en algunos casos, como veremos a&nbsp;continuación.</p>

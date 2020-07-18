@@ -90,20 +90,20 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
 10
 11
 12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Miclase</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Miclase</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">print</span> <span class="s2">&quot;instance deleted&quot;</span>
+        <span class="nb">print</span> <span class="s2">&quot;instance deleted&quot;</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="n">Miclase</span><span class="p">()</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
 <span class="k">del</span> <span class="n">a</span>
 
-<span class="k">print</span> <span class="n">b</span>
-<span class="k">print</span> <span class="s2">&quot;Come on&quot;</span>
+<span class="nb">print</span> <span class="n">b</span>
+<span class="nb">print</span> <span class="s2">&quot;Come on&quot;</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">print</span> <span class="s2">&quot;END&quot;</span>
-</pre></div>
+<span class="nb">print</span> <span class="s2">&quot;END&quot;</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>De su ejecución, podemos comprobar que el método <code>__del__</code> no se invoca justo en el momento de hacer <code>del a</code>, si no cuando se pierde la última referencia al asignar otro valor a la variable <code>b</code>. La sentencia <code>del a</code> no <em>destruye</em> el objeto, tan sólo desliga el objeto de la etiqueta <code>a</code> que lo referenciaba. Por ese motivo, es inexacto hablar en python de &#8220;variable de memoria&#8221;, como se entiende en otro lenguajes. Tan sólo cambiamos de una referencia de un objeto a otro, sin destruir su valor&nbsp;anterior.</p>
@@ -143,12 +143,12 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
 30
 31
 32
-33</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Desc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+33</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Desc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mul</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mul</span> <span class="o">=</span> <span class="n">mul</span>
 
-    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mul</span>
 
     <span class="k">def</span> <span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
@@ -168,24 +168,24 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
 
 <span class="n">c</span> <span class="o">=</span> <span class="n">Miclase</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="n">c</span><span class="o">.</span><span class="n">a12</span> <span class="c1">#--&gt; 24</span>
+<span class="nb">print</span> <span class="n">c</span><span class="o">.</span><span class="n">a12</span> <span class="c1">#--&gt; 24</span>
 
 <span class="n">c</span><span class="o">.</span><span class="n">a12</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># ERROR: AttributeError</span>
 
 <span class="k">del</span> <span class="n">Miclase</span><span class="o">.</span><span class="n">a12</span>
 <span class="n">c</span><span class="o">.</span><span class="n">a12</span><span class="o">=</span><span class="mi">100</span>
 
-<span class="k">print</span> <span class="n">c</span><span class="o">.</span><span class="n">a12</span>  <span class="c1">#--&gt; 100 (no descriptor)</span>
-</pre></div>
+<span class="nb">print</span> <span class="n">c</span><span class="o">.</span><span class="n">a12</span>  <span class="c1">#--&gt; 100 (no descriptor)</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>La idea era que se pudiera borrar el descriptor de datos para sustuirlo por otro valor. Tal como señalaba Cristian en un comentario al respecto, este ejemplo parece funcionar con o sin el método <code>__delete__</code> en el&nbsp;descriptor.</p>
 <p>Funciona siempre debido a que con <code>'del Miclase.a12'</code> estamos borrando la referencia al descriptor que tiene la clase, sin pasar por el protocolo descriptor. La particularidad de los descriptores es que <em>viven</em> en la clase, pero se invocan desde la instancia. Con <code>'del Miclase.a12'</code> estamos saltándonos el protocolo descriptor para acceder directamente al atributo de la clase<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
 <p>Además, este código no funcionaría&nbsp;nunca:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="fm">__delete__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__delete__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
         <span class="k">del</span> <span class="bp">self</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Si la idea era borrar el objeto <code>self</code>, referencia al descriptor, podemos quitarnos esa idea ya que el comando <code>del</code> borra la referencia del <em>scope</em> local donde se encuentra. <strong>¡No es un destructor!</strong> En realidad, todas las variables locales son borradas al finalizar el método. En este caso en concreto, también la variable local <code>obj</code> será borrada aunque no se indique&nbsp;explícitamente.</p>
@@ -238,14 +238,14 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
 43
 44
 45
-46</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">weakref</span> <span class="kn">import</span> <span class="n">WeakKeyDictionary</span>
+46</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">weakref</span> <span class="kn">import</span> <span class="n">WeakKeyDictionary</span>
 
 <span class="k">class</span> <span class="nc">Desc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">WeakKeyDictionary</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">obj</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">AttributeError</span>
         <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
@@ -270,21 +270,21 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
 <span class="n">a</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">b</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">5</span>
 
-<span class="k">print</span> <span class="n">a</span><span class="o">.</span><span class="n">value</span>  <span class="c1">#--&gt; (2, 7)</span>
-<span class="k">print</span> <span class="n">b</span><span class="o">.</span><span class="n">value</span>  <span class="c1">#--&gt; (5, 7)</span>
+<span class="nb">print</span> <span class="n">a</span><span class="o">.</span><span class="n">value</span>  <span class="c1">#--&gt; (2, 7)</span>
+<span class="nb">print</span> <span class="n">b</span><span class="o">.</span><span class="n">value</span>  <span class="c1">#--&gt; (5, 7)</span>
 
 <span class="n">a</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># ERROR: AttributeError</span>
 
 <span class="k">del</span> <span class="n">a</span><span class="o">.</span><span class="n">value</span>
 <span class="n">a</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">11</span>
 
-<span class="k">print</span> <span class="n">a</span><span class="o">.</span><span class="n">value</span>  <span class="c1">#--&gt; (11, 16)</span>
-<span class="k">print</span> <span class="n">b</span><span class="o">.</span><span class="n">value</span>  <span class="c1">#--&gt; (5, 16)</span>
+<span class="nb">print</span> <span class="n">a</span><span class="o">.</span><span class="n">value</span>  <span class="c1">#--&gt; (11, 16)</span>
+<span class="nb">print</span> <span class="n">b</span><span class="o">.</span><span class="n">value</span>  <span class="c1">#--&gt; (5, 16)</span>
 
 <span class="k">del</span> <span class="n">b</span>
 
-<span class="k">print</span> <span class="n">a</span><span class="o">.</span><span class="n">value</span>  <span class="c1">#--&gt; (11, 11)</span>
-</pre></div>
+<span class="nb">print</span> <span class="n">a</span><span class="o">.</span><span class="n">value</span>  <span class="c1">#--&gt; (11, 11)</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>El descriptor mantiene un diccionario <em>weak</em> con valores asignados para cada instancia de la clase. Usamos para ello un <em>WeakKeyDictionary</em> que tiene la particularidad de relajar la referencia al objeto, de modo que si todas las referencias al objeto son borradas en el programa, también es borrada la referencia que conservaba el&nbsp;diccionario.</p>

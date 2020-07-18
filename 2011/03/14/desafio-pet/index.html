@@ -94,7 +94,7 @@ ejemplos muestran posibles entradas y cómo se espera que sean las&nbsp;salidas.
  8
  9
 10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span>entrada: 11
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>entrada: 11
  salida: 11
 
 entrada: 8
@@ -105,7 +105,7 @@ entrada: 24
 
 entrada: 168
  salida: 2^3 x 3 x 7
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <blockquote>
@@ -126,13 +126,13 @@ aquí va la&nbsp;mía:</p>
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="nb">input</span><span class="p">();</span><span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">r</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">n</span><span class="o">=</span><span class="nb">input</span><span class="p">();</span><span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">r</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
 <span class="k">while</span> <span class="n">d</span><span class="o">&lt;</span><span class="n">n</span><span class="p">:</span>
  <span class="n">d</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span><span class="n">s</span><span class="o">=</span><span class="mi">0</span>
  <span class="k">while</span> <span class="n">n</span><span class="o">%</span><span class="n">d</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="o">/=</span><span class="n">d</span><span class="p">;</span><span class="n">s</span><span class="o">+=</span><span class="mi">1</span>
  <span class="k">if</span> <span class="n">s</span><span class="p">:</span><span class="n">r</span><span class="o">+=</span><span class="s2">&quot; x </span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">d</span><span class="o">+</span><span class="s2">&quot;^</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">s</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">r</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span><span class="ow">or</span> <span class="n">n</span>
-</pre></div>
+<span class="nb">print</span> <span class="n">r</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span><span class="ow">or</span> <span class="n">n</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Para medir bien el número de caracteres, hay tener en cuenta que se

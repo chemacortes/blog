@@ -79,32 +79,32 @@ qtm con markdown_extra | Hyperreals *R  </title>
 <p>Para usar <em>markdown_py</em> en <em>qtm</em>, creamos el pequeño script que active la extensión <code>extra</code> en el&nbsp;parseo:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="nb">exec</span> markdown_py -x extra <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Llamamos a este script <code>markdown_extra</code>, le asignamos permisos de ejecución y lo metemos en algún lugar apropiado como la carpeta <code>bin</code> de nuestro usuario linux. En la configuración de <em>qtm</em>, introducimos como ruta al comando&nbsp;markdown</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>/home/usuario/bin/markdown_extra
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>/home/usuario/bin/markdown_extra
+</code></pre></div>
 </td></tr></table>
 
 <p>A partir de aquí podremos previsualizar nuestro código con <code>markdown extra</code>. También podríamos añadir otras extensiones como, por ejemplo, <code>toc</code> con la que podemos crear tablas de&nbsp;contenidos:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="nb">exec</span> markdown_py -x extra -x toc <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Debemos asegurarnos que nuestro blog posea también esta extensión. Si no la tuviera, siempre tenemos la posibilidad de indicarle a <em>qtm</em> que convierta nuestra entrada a html antes de enviarla al&nbsp;blog.</p>
 <hr>
 <p><strong>Actualización</strong></p>
 <p>Para windows es necesario otro tipo de configuración. Una vez instalado el módulo <code>python-markdown</code> se debe crear un fichero <em>.bat</em> en <code>C:\Python2.7\Scripts</code> con el siguiente&nbsp;contenido:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">@</span><span class="s2">&quot;c:\python27\python.exe&quot;</span> <span class="s2">&quot;</span><span class="nv">%1</span><span class="s2">&quot;</span> -x extra -x toc <span class="s2">&quot;</span><span class="nv">%2</span><span class="s2">&quot;</span>
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">@</span><span class="s2">&quot;c:\python27\python.exe&quot;</span> <span class="s2">&quot;</span><span class="nv">%1</span><span class="s2">&quot;</span> -x extra -x toc <span class="s2">&quot;</span><span class="nv">%2</span><span class="s2">&quot;</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Si llamamos a este fichero <code>markdown_extra.bat</code>, la configuración de <em>qtm</em> quedaría de esta&nbsp;manera:</p>

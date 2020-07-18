@@ -88,8 +88,8 @@ Problemas con los nombres largos en NTFS | Hyperreals *R  </title>
 <h2>Script para listar ficheros de nombres muy&nbsp;largos</h2>
 <p>Por último, sólo queda lo más fácil: codificar el script&nbsp;;-)</p>
 <p>Es común que la codificación que lleva por defecto la cónsola de comandos falle con las cadenas unicode. Si pensamos sacar por cónsola los nombres de ficheros, lo recomendable es cambiar la codificación por una más apropiada, como la <code>cp1252</code>, lo más aproximado a <code>utf-8</code> que podemos&nbsp;encontrar:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    C:\&gt; chcp 1252
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    C:\&gt; chcp 1252
+</code></pre></div>
 </td></tr></table>
 
 <p>Para hacer nuestro script, podríamos haber usado cualquiera de las funciones <code>os.walk</code> de la librería estándar; pero, no sé porqué, fallan a crear la lista de directorios. Ésto nos obliga a crear nuestro propio método para recorrer la jerarquía de&nbsp;directorios.</p>
@@ -131,7 +131,7 @@ Problemas con los nombres largos en NTFS | Hyperreals *R  </title>
 35
 36
 37
-38</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">#-*- coding: utf-8 -*-</span>
+38</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#-*- coding: utf-8 -*-</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 
@@ -141,7 +141,7 @@ Problemas con los nombres largos en NTFS | Hyperreals *R  </title>
     <span class="sd">&quot;&quot;&quot;Iterador que devuelve las rutas largas (&gt;=MAX_PATH)&quot;&quot;&quot;</span>
 
     <span class="c1">#Hay que forzar unicode para evitar el límite MAX_PATH</span>
-    <span class="n">dirpath</span><span class="o">=</span><span class="nb">unicode</span><span class="p">(</span><span class="n">dirpath</span><span class="p">)</span>
+    <span class="n">dirpath</span><span class="o">=</span><span class="n">unicode</span><span class="p">(</span><span class="n">dirpath</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">dirpath</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">):</span>
         <span class="n">dirpath</span><span class="o">+=</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span>
 
@@ -169,7 +169,7 @@ Problemas con los nombres largos en NTFS | Hyperreals *R  </title>
 <span class="sd">    &quot;&quot;&quot;</span>    
     <span class="n">dirpath</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">?\UNC\</span><span class="si">%s</span><span class="s2">\</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">share</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">longnames</span><span class="p">(</span><span class="n">dirpath</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Su uso simple podía&nbsp;ser:</p>
@@ -188,7 +188,7 @@ Problemas con los nombres largos en NTFS | Hyperreals *R  </title>
 13
 14
 15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">#-*- coding: utf-8 -*-</span>
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#-*- coding: utf-8 -*-</span>
 
 <span class="kn">import</span> <span class="nn">codecs</span>
 
@@ -200,11 +200,11 @@ Problemas con los nombres largos en NTFS | Hyperreals *R  </title>
 
 <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">listshare</span><span class="p">(</span><span class="n">SERVER</span><span class="p">,</span><span class="n">SHARE</span><span class="p">):</span>
 
-    <span class="k">print</span> <span class="n">name</span>
-    <span class="k">print</span> <span class="o">&gt;&gt;</span><span class="n">fOut</span><span class="p">,</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">DIRPATH</span><span class="p">,</span><span class="s2">&quot;.</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="n">name</span>
+    <span class="nb">print</span> <span class="o">&gt;&gt;</span><span class="n">fOut</span><span class="p">,</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">DIRPATH</span><span class="p">,</span><span class="s2">&quot;.</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="n">fOut</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
   </div>
   <hr>

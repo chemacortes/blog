@@ -75,13 +75,13 @@ iconv en python | Hyperreals *R  </title>
   </div>
   <div class="article_text">
     <p>Últimamente he necesitado pasar algunos ficheros de una web a codificación <code>utf-8</code>, codificación de caracteres más acorde con lo que se lleva hoy en día. En sistemas linux es una labor que se puede hacer fácilmente con la utilidad <code>iconv</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ iconv -f cp850 -t utf8 &lt;fichero_entrada.txt &gt;fichero_salida.txt
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ iconv -f cp850 -t utf8 &lt;fichero_entrada.txt &gt;fichero_salida.txt
+</code></pre></div>
 </td></tr></table>
 
 <p>Pero hay veces que es necesario realizar esta conversión en windows. Si tenemos instalado <code>python</code>, una forma rápida de hacerlo&nbsp;sería:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ python -c <span class="s2">&quot;import sys,codecs;codecs.EncodedFile(sys.stdout,&#39;latin-1&#39;,&#39;utf-8&#39;).writelines(sys.stdin)&quot;</span> &lt;fichero_entrada.txt &gt;fichero_salida.txt
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ python -c <span class="s2">&quot;import sys,codecs;codecs.EncodedFile(sys.stdout,&#39;latin-1&#39;,&#39;utf-8&#39;).writelines(sys.stdin)&quot;</span> &lt;fichero_entrada.txt &gt;fichero_salida.txt
+</code></pre></div>
 </td></tr></table>
 
 <p>&#8230;¡y todo en una sóla línea!<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>

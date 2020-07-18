@@ -85,7 +85,7 @@ Codificando en binario | Hyperreals *R  </title>
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">array</span> <span class="kn">import</span> <span class="n">array</span>
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">array</span> <span class="kn">import</span> <span class="n">array</span>
 
 <span class="k">def</span> <span class="nf">numpack</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
     <span class="n">a</span><span class="o">=</span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
@@ -93,7 +93,7 @@ Codificando en binario | Hyperreals *R  </title>
     <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="n">tostring</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="n">n</span><span class="o">=</span><span class="n">numpack</span><span class="p">(</span><span class="mh">0xffeeddcc</span><span class="p">)</span>  <span class="c1"># res: \xff\xee\xdd\xcc</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>En el resultado final ha hecho falta invertir el orden de los bytes debido a que nos estaba usando un orden <em>&#8220;little-endian&#8221;</em> para su codificación. El orden puede depender del sistema donde estemos trabajando, con lo que no es nada seguro usar este método. Es preferible el uso más especializado de <code>struct</code> donde tendremos algo más de control sobre éste y muchos otros&nbsp;aspectos:</p>
@@ -102,19 +102,19 @@ Codificando en binario | Hyperreals *R  </title>
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">struct</span> <span class="kn">import</span> <span class="n">pack</span>
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">struct</span> <span class="kn">import</span> <span class="n">pack</span>
 
 <span class="k">def</span> <span class="nf">numpack</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">pack</span><span class="p">(</span><span class="s1">&#39;!L&#39;</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
 
 <span class="n">n</span><span class="o">=</span><span class="n">numpack</span><span class="p">(</span><span class="mh">0xffeeddcc</span><span class="p">)</span>  <span class="c1"># res: \xff\xee\xdd\xcc</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Nota que en la cadena de formato que se pasa a <code>pack()</code> tiene un indicador <code>'!'</code> al principio, con el que indicamos que queremos una ordenación <em>&#8220;network (=big-endian)&#8221;</em>.</p>
 <p>El proceso inverso es tan fácil como usar la función complementaria <code>unpack</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;!L&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;!L&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div>
 </td></tr></table>
 
 <h2>Codificando&nbsp;mensajes</h2>
@@ -123,10 +123,10 @@ Codificando en binario | Hyperreals *R  </title>
 <p>Por ejemplo, nos envían en un mensaje un entero codificado en multibyte. No sabemos si son 2, 4 u 8 bytes, o incluso podrían ser más bytes de tratarse de un <code>BigInt</code> (entero muy largo). Con <code>binascii</code> podríamos resolverlo&nbsp;así:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">binascii</span> <span class="kn">import</span> <span class="n">b2a_hex</span><span class="p">,</span> <span class="n">a2b_hex</span>
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">binascii</span> <span class="kn">import</span> <span class="n">b2a_hex</span><span class="p">,</span> <span class="n">a2b_hex</span>
 
 <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">b2a_hex</span><span class="p">(</span><span class="n">msg</span><span class="p">),</span> <span class="mi">16</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Para el proceso contrario, codificar un entero en una cadena binaria, usaríamos <code>a2b_hex</code>:</p>
@@ -134,12 +134,12 @@ Codificando en binario | Hyperreals *R  </title>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%x</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">num</span>
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">h</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%x</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">num</span>
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
     <span class="n">h</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span> <span class="o">+</span> <span class="n">h</span>
 
 <span class="n">msg</span> <span class="o">=</span> <span class="n">a2b_hex</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Hemos tenido cuidado de que la cadena hexadecimal tenga longitud par ya que <code>a2b_hex</code> codifica siempre cada byte a partir de una pareja de dígitos&nbsp;hexadecimales.</p>
@@ -153,16 +153,16 @@ Codificando en binario | Hyperreals *R  </title>
 6
 7
 8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">#-*- coding: utf-8 -*-</span>
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#-*- coding: utf-8 -*-</span>
 
 <span class="kn">from</span> <span class="nn">binascii</span> <span class="kn">import</span> <span class="n">b2a_hex</span><span class="p">,</span> <span class="n">a2b_hex</span>
 
 <span class="n">cadena</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;Peón </span><span class="se">\N{BLACK CHESS PAWN}</span><span class="s2">&quot;</span>
 
-<span class="k">print</span> <span class="n">b2a_hex</span><span class="p">(</span><span class="n">cadena</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+<span class="nb">print</span> <span class="n">b2a_hex</span><span class="p">(</span><span class="n">cadena</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
 
 <span class="c1">#res: 5065c3b36e20e2999f</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Comparando el resultado obtenido con la cadena unicode, vemos que la <em>ó</em> acentuada se codifica en &#8216;utf-8&#8217; como <code>0xc3b3</code>, o que la figura de peón negro se codifica como <code>0xe2999f</code>.</p>

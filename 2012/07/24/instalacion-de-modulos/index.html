@@ -125,11 +125,11 @@ Instalación de módulos | Hyperreals *R  </title>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ virtualenv --no-site-packages --python<span class="o">=</span>/usr/bin/python3 py3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ virtualenv --no-site-packages --python<span class="o">=</span>/usr/bin/python3 py3
 $ <span class="nb">cd</span> py3
 $ <span class="nb">source</span> bin/activate
 <span class="o">(</span>py3<span class="o">)</span>$ pip install markdown
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Con estas líneas hemos conseguido instalar el módulo <code>markdown</code> en un entorno python3. El intérprete de python3 que ejecutaremos desde aquí estará instalado en la ruta <code>py3/bin/python</code> y el módulo márkdown en <code>py3/lib/python-3.2/site-packages</code>. También se ha instalado en <code>py3/bin/python</code> el script <code>markdown_py</code> que ejecutará el comando. En resumen, de una manera simple tenemos un entorno con lo mínimo donde hacer nuestras pruebas sin trastocar nada del&nbsp;sistema.</p>
@@ -145,7 +145,7 @@ $ <span class="nb">source</span> bin/activate
 10
 11
 12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ virtualenv --python<span class="o">=</span>/usr/local/bin/jython jydjango
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ virtualenv --python<span class="o">=</span>/usr/local/bin/jython jydjango
 $ <span class="nb">cd</span> jydjango
 $ <span class="nb">source</span> bin/activate
 <span class="o">(</span>jydjango<span class="o">)</span>$ pip install django
@@ -158,7 +158,7 @@ Validating models...
 Django version <span class="m">1</span>.4, using settings <span class="s1">&#39;djython.settings&#39;</span>
 Development server is running at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>En este caso, a partir de una instalación local de jython hemos creado un entorno virtual, en el que hemos instalado <code>django</code> y lo hemos ejecutado con jython. De este modo podemos experimentar con django y jython sin que afecte a cualquier otra instalación de django que&nbsp;tengamos.</p>

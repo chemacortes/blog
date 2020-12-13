@@ -7,17 +7,17 @@
   <meta name="author" content="Chema Cortés">
   <meta name="description" content="Estudio función factorial - numpy | Mientras busco tiempo para preparar algunos artículos sobre cómo hacer la programación python más eficiente, he...">
 
-  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.7098921b.min.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ad3d1997.min.css">
+
+  <script src="https://blog.ch3m4.org/theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
   <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
 
 <meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, algorithm, factorial, maths">
 
-  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
-
-  <title>
-Estudio función factorial - numpy | Hyperreals *R  </title>
+  <title>Estudio función factorial - numpy | Hyperreals *R</title>
 
 </head>
 
@@ -25,22 +25,22 @@ Estudio función factorial - numpy | Hyperreals *R  </title>
   <aside>
     <div id="user_meta">
       <a href="https://blog.ch3m4.org">
-        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" id="logo">
       </a>
       <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
       <p>Quarks, bits y otras criaturas infinitesimales</p>
       <div class="social">
-          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
-          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
-          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
-          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
-          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+          <a href="https://twitter.com/chemacortes" title="twitter" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github" target="_blank" rel="noopener noreferrer"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket" target="_blank" rel="noopener noreferrer"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow" target="_blank" rel="noopener noreferrer"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin fa-lg"></i></a>
       </div>
       <ul>
-        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/all.atom.xml" target="_blank" rel="noopener noreferrer">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml" target="_blank" rel="noopener noreferrer">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml" target="_blank" rel="noopener noreferrer">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6" target="_blank" rel="noopener noreferrer">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
       </ul>
     </div>
   </aside>
@@ -49,7 +49,7 @@ Estudio función factorial - numpy | Hyperreals *R  </title>
     <header>
       <p id="header">
       <a href="https://blog.ch3m4.org">Home</a>
-      
+
       &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
       &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
       &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
@@ -62,7 +62,14 @@ Estudio función factorial - numpy | Hyperreals *R  </title>
 </p>    </header>
 
 <article>
-  <div class="article_title">
+<div class="article_meta">
+  <p>Posted <time data-timeago datetime="2013-08-14T14:28:00+02:00">mié 14 agosto 2013</time>
+   by Chema Cortés  </p>
+  <p>
+  Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+&ndash;&ndash;  Tags:
+    <a href="https://blog.ch3m4.org/tag/algorithm/">algorithm</a>,    <a href="https://blog.ch3m4.org/tag/factorial/">factorial</a>,    <a href="https://blog.ch3m4.org/tag/maths/">maths</a>  </p>
+</div>  <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2013/08/14/estudio-funcion-factorial-numpy/" class="nohover">Estudio función factorial -&nbsp;numpy</a></h1>
   </div>
   <div class="article_meta">
@@ -81,7 +88,6 @@ Estudio función factorial - numpy | Hyperreals *R  </title>
     <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">,</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>&#8230;o usando el <code>operator.__mul__</code>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -92,21 +98,18 @@ Estudio función factorial - numpy | Hyperreals *R  </title>
     <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="fm">__mul__</span><span class="p">,</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>También contaba el caso de una compresión de listas <em>&#8220;bizarra&#8221;</em> que evitaba el uso de <code>reduce</code> y <code>lambda</code>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="n">j</span><span class="o">*</span><span class="n">i</span><span class="p">]][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>El problema con esta expresión es que calcula todos los elementos de la lista para quedarse únicamente con el último elemento. Una forma de hacer lo mismo, sabiendo que la función factorial es estrictamente creciente, es obteniendo el máximo con <code>max</code>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="n">j</span><span class="o">*</span><span class="n">i</span><span class="p">])</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Para este tipo de tareas, en las que tenemos un iterador y queremos quedarnos con el último elemento, resulta mucho más eficiente el uso de la colección <code>deque</code> limitando el número de elementos de la&nbsp;lista:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -117,7 +120,6 @@ Estudio función factorial - numpy | Hyperreals *R  </title>
     <span class="k">return</span> <span class="n">deque</span><span class="p">((</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="n">j</span><span class="o">*</span><span class="n">i</span><span class="p">]),</span> <span class="n">maxlen</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Por comparar tiempos, para el cómputo de <code>fact(10000)</code> me salen estos&nbsp;tiempos:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -130,7 +132,6 @@ función max          75.1 ms
 deque                75.5 ms
 </code></pre></div>
 </td></tr></table>
-
 <p>Como se puede apreciar que los tiempos son muy similares (con la excepción de la compresión de listas debido a su gasto de memoria). Es lógico suponer que donde más tiempo se gasta es el cómputo de la multiplicación con la precisión absoluta que tienen los números <em>longs</em> de&nbsp;python. </p>
 <p>De hecho, no se consigue gran cosa usando las librerías de cálculo numérico más conocidas de python. Se hace imposible optimizar nada sin pérdida de precisión o que salgan resultados extraños. Aún así, podemos expresar formas muy compactas para expresar la función factorial en <code>numpy</code> si forzamos en el uso del tipo <code>object</code> para que así no lo&nbsp;optimice:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -142,11 +143,10 @@ deque                75.5 ms
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Tarda <code>70.8 ms.</code> en calcular <code>fact(10000)</code>, que es similar al resto de funciones factoriales que hemos visto. Da una buena idea de lo bien optimizada que está la librería <code>numpy</code> para cualquier cosa, incluso impidiéndole que optimice los tipos de datos que&nbsp;emplea.</p>
   </div>
   <hr>
-  
+
   <ul class="pager">
           <li class="previous">
                <a href="https://blog.ch3m4.org/2013/07/29/la-odisea/" title="Anterior">
@@ -178,20 +178,23 @@ deque                75.5 ms
 
    </ul>
 
-    
+
   <div id="article_comments">
     <div id="disqus_thread">
     </div>
   </div>
 
+  <script id="dsq-count-scr" src="https://hyperreals.disqus.com/count.js" async></script>
   <script type="text/javascript">
-    var disqus_identifier = "2013/08/14/estudio-funcion-factorial-numpy/";
-    loadDisqus = function() {
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//hyperreals.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    var disqus_config = function () {
+        this.page.identifier = "2013/08/14/estudio-funcion-factorial-numpy/";
+        this.page.title = "Estudio función factorial -&nbsp;numpy";
+    };
+    loadDisqus = function(sitename) {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hyperreals.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
     };
     loadDisqus();
   </script>
@@ -204,10 +207,7 @@ deque                75.5 ms
   </main>
 
   <script type="text/javascript">
-    window.addEventListener('load', function(){
-    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
-      window.scroll(0, document.getElementById('main').offsetTop);
-    }})
+    window.addEventListener('load', skipHeader)
   </script>
 
 

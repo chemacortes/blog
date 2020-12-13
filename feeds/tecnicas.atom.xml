@@ -10,12 +10,10 @@
 &lt;span class="nb"&gt;exec&lt;/span&gt; markdown_py -x extra &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;Llamamos a este script &lt;code&gt;markdown_extra&lt;/code&gt;, le asignamos permisos de ejecución y lo metemos en algún lugar apropiado como la carpeta &lt;code&gt;bin&lt;/code&gt; de nuestro usuario linux. En la configuración de &lt;em&gt;qtm&lt;/em&gt;, introducimos como ruta al comando&amp;nbsp;markdown&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/home/usuario/bin/markdown_extra
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;A partir de aquí podremos previsualizar nuestro código con &lt;code&gt;markdown extra&lt;/code&gt;. También podríamos añadir otras extensiones como, por ejemplo, &lt;code&gt;toc&lt;/code&gt; con la que podemos crear tablas de&amp;nbsp;contenidos:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
@@ -24,7 +22,6 @@
 &lt;span class="nb"&gt;exec&lt;/span&gt; markdown_py -x extra -x toc &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;Debemos asegurarnos que nuestro blog posea también esta extensión. Si no la tuviera, siempre tenemos la posibilidad de indicarle a &lt;em&gt;qtm&lt;/em&gt; que convierta nuestra entrada a html antes de enviarla al&amp;nbsp;blog.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Actualización&lt;/strong&gt;&lt;/p&gt;
@@ -32,7 +29,6 @@
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;c:\python27\python.exe&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;%1&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; -x extra -x toc &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;%2&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;Si llamamos a este fichero &lt;code&gt;markdown_extra.bat&lt;/code&gt;, la configuración de &lt;em&gt;qtm&lt;/em&gt; quedaría de esta&amp;nbsp;manera:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Preferencias de QTM" src="/blog/wp-content/uploads/2011/05/Preferencias-qtm.png"&gt;&lt;/p&gt;</content><category term="Técnicas"></category><category term="markdown"></category><category term="tip"></category></entry><entry><title>qtm: un editor para markdown y wordpress</title><link href="https://blog.ch3m4.org/2011/05/22/qtm-editor-markdown-y-wordpress/" rel="alternate"></link><published>2011-05-22T20:34:00+02:00</published><updated>2011-05-22T20:34:00+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2011-05-22:/2011/05/22/qtm-editor-markdown-y-wordpress/</id><summary type="html">&lt;p&gt;Buscando una aplicación para hacer más cómodas mis publicaciones en wordpress que, además, aceptara markdown, he estado a apunto de abandonar. Nigún cliente acepta &lt;em&gt;markdown&lt;/em&gt; y, el único editor de &lt;em&gt;markdown&lt;/em&gt; que he encontrado, &lt;a href="http://sourceforge.net/p/retext/home/"&gt;retext&lt;/a&gt;&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;, no tiene opción para publicar en&amp;nbsp;blogs.&lt;/p&gt;
 &lt;p&gt;Finalmente me he encontrado con esta joya …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Buscando una aplicación para hacer más cómodas mis publicaciones en wordpress que, además, aceptara markdown, he estado a apunto de abandonar. Nigún cliente acepta &lt;em&gt;markdown&lt;/em&gt; y, el único editor de &lt;em&gt;markdown&lt;/em&gt; que he encontrado, &lt;a href="http://sourceforge.net/p/retext/home/"&gt;retext&lt;/a&gt;&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;, no tiene opción para publicar en&amp;nbsp;blogs.&lt;/p&gt;
@@ -45,7 +41,6 @@ $ sudo apt-get update
 $ sudo install qtm
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;div class="footnote"&gt;
 &lt;hr&gt;
 &lt;ol&gt;
@@ -96,7 +91,7 @@ $ sudo install qtm
     var mathjaxscript = document.createElement('script');
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
 
     var configscript = document.createElement('script');
     configscript.type = 'text/x-mathjax-config';
@@ -117,7 +112,8 @@ $ sudo install qtm
         "        preview: 'TeX'," +
         "    }, " +
         "    'HTML-CSS': { " +
-        "        fonts: [['STIX', 'TeX']]," +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
         "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
         "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
         "    }, " +

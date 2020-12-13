@@ -7,17 +7,17 @@
   <meta name="author" content="Chema Cortés">
   <meta name="description" content="Coconut - Primeros pasos | Coconut es un lenguaje funcional completamente pythónico. Otro modo de hacer las cosas en python. Al principio puede...">
 
-  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.7098921b.min.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ad3d1997.min.css">
+
+  <script src="https://blog.ch3m4.org/theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
   <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
 
 <meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, coconut, functional-programming, python">
 
-  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
-
-  <title>
-Coconut - Primeros pasos | Hyperreals *R  </title>
+  <title>Coconut - Primeros pasos | Hyperreals *R</title>
 
 </head>
 
@@ -25,22 +25,22 @@ Coconut - Primeros pasos | Hyperreals *R  </title>
   <aside>
     <div id="user_meta">
       <a href="https://blog.ch3m4.org">
-        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" id="logo">
       </a>
       <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
       <p>Quarks, bits y otras criaturas infinitesimales</p>
       <div class="social">
-          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
-          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
-          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
-          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
-          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+          <a href="https://twitter.com/chemacortes" title="twitter" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github" target="_blank" rel="noopener noreferrer"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket" target="_blank" rel="noopener noreferrer"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow" target="_blank" rel="noopener noreferrer"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin fa-lg"></i></a>
       </div>
       <ul>
-        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/all.atom.xml" target="_blank" rel="noopener noreferrer">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml" target="_blank" rel="noopener noreferrer">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml" target="_blank" rel="noopener noreferrer">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6" target="_blank" rel="noopener noreferrer">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
       </ul>
     </div>
   </aside>
@@ -49,7 +49,7 @@ Coconut - Primeros pasos | Hyperreals *R  </title>
     <header>
       <p id="header">
       <a href="https://blog.ch3m4.org">Home</a>
-      
+
       &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
       &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
       &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
@@ -62,7 +62,15 @@ Coconut - Primeros pasos | Hyperreals *R  </title>
 </p>    </header>
 
 <article>
-  <div class="article_title">
+<div class="article_meta">
+  <p>Posted <time data-timeago datetime="2019-05-02T01:20:16+02:00">jue 02 mayo 2019</time>
+   by Chema Cortés  </p>
+  <p>Last updated <time data-timeago datetime="2019-05-02T23:58:10+02:00">jue 02 mayo 2019</time></p>
+  <p>
+  Category: <a href="https://blog.ch3m4.org/category/coconut/">Coconut</a>
+&ndash;&ndash;  Tags:
+    <a href="https://blog.ch3m4.org/tag/coconut/">coconut</a>,    <a href="https://blog.ch3m4.org/tag/functional-programming/">functional-programming</a>,    <a href="https://blog.ch3m4.org/tag/python/">python</a>  </p>
+</div>  <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2019/05/02/coconut-primeros-pasos/" class="nohover">Coconut - Primeros&nbsp;pasos</a></h1>
   </div>
   <div class="article_meta">
@@ -84,8 +92,7 @@ Coconut - Primeros pasos | Hyperreals *R  </title>
 <p>Para instalar <em>coconut</em> mi forma preferida es usar <code>conda</code> empleando el canal <code>conda-forge</code>. Siempre es recomendable crear un entorno virtual donde aislar las dependencias del resto de nuestra instalación. En concreto, la instalación de <em>coconut</em> incluye varios kernels de jupyter y una configuración de pygments para el coloreado de&nbsp;sintáxis.</p>
 <p>En particular, prefiero crear un fichero de entorno (<code>environment.yml</code>) que determine las dependencias, tanto las que instala conda, como las que se necesite instalar con pip. Podríamos concretar con precisión las versiones que vamos a usar; pero me voy a limitar a las dependencias mínimas para la versión que estoy usando ahora, <em>coconut 1.4.0</em>.</p>
 <figure class='code'>
-<figcaption><span>Entorno virtual &#8216;coco&#8217;</span> <a href='/code/2019Q2/environment.yml'>download</a></figcaption>
-
+<figcaption><span class="liquid-tags-code-title">Entorno virtual &#8216;coco&#8217;</span><a href='/code/2019Q2/environment.yml'>download</a></figcaption>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -119,9 +126,7 @@ Coconut - Primeros pasos | Hyperreals *R  </title>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cpyparsing</span>
 </code></pre></div>
 </td></tr></table>
-
 </figure>
-
 <p>Se fija la versión de <code>python=3.6</code> ya que ésta es la versión superior recomendada para <em>coconut</em>. Posiblemente también funcione correctamente con <code>python=3.7</code>.</p>
 <p>Entre las dependencias&nbsp;encontramos:</p>
 <ul>
@@ -133,8 +138,7 @@ Coconut - Primeros pasos | Hyperreals *R  </title>
 <p>Dado que <em>coconut</em> es un desarrollo muy activo, también recomiendo la instalación de una versión de desarrollo de <em>coconut</em>. Muchas veces, los problemas encontrados pueden estar resueltos en desarrollo. Pero siempre es interesante probar las novedades que se van a añadiendo y nunca está de más animarse a contribuir en posibles&nbsp;mejoras.</p>
 <p>El entorno de desarrollo estará definio&nbsp;así:</p>
 <figure class='code'>
-<figcaption><span>Entorno virtual &#8216;cocodev&#8217;</span> <a href='/code/2019Q2/environment-dev.yml'>download</a></figcaption>
-
+<figcaption><span class="liquid-tags-code-title">Entorno virtual &#8216;cocodev&#8217;</span><a href='/code/2019Q2/environment-dev.yml'>download</a></figcaption>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -154,9 +158,7 @@ Coconut - Primeros pasos | Hyperreals *R  </title>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">coconut-prelude</span>
 </code></pre></div>
 </td></tr></table>
-
 </figure>
-
 <p>La instalación de <em>coconut</em> y sus dependencias para este entorno se delega totalmente en pip. Se añade el módulo <code>coconut-prelude</code> que nos facilita un mecanismo similar al <code>Prelude</code> de haskell para tener un entorno configurado con las funciones más habituales en programación&nbsp;funcional.</p>
 <p>Con estos dos ficheros, se crean los entornos&nbsp;virtuales:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -168,7 +170,6 @@ $ conda env create -f environment-dev.yml
 ...
 </code></pre></div>
 </td></tr></table>
-
 <h2>Primer contacto: Hola&nbsp;Mundo</h2>
 <p>Para ejecutar coconut, se debe activar primero el&nbsp;entorno:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -182,21 +183,18 @@ Coconut Interpreter:
 &gt;&gt;&gt;
 </code></pre></div>
 </td></tr></table>
-
 <p>Sale una interface de línea de comando similar a la que tiene python, incluso se puede introducir código python&nbsp;normal:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&gt;&gt;&gt; print(&quot;¡Hola, Mundo!&quot;)
 ¡Hola, Mundo!
 </code></pre></div>
 </td></tr></table>
-
 <p>En <em>coconut</em>, éste sería nuestro <em>&#8220;Hola Mundo&#8221;</em>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&gt;&gt;&gt; &quot;¡Hola, Mundo!&quot; |&gt; print
 ¡Hola, Mundo!
 </code></pre></div>
 </td></tr></table>
-
 <p>El operador <code>|&gt;</code> puede verse como un <em>pipe</em> que encadena operaciones, una tras otra, que será de uso común. Se puede describir como una <em>&#8220;aplicación del resultado de la izquierda en la expresión de la derecha&#8221;</em>.</p>
 <p>Por poner ejemplos de aplicaciones en&nbsp;cadena:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -214,12 +212,10 @@ Coconut Interpreter:
 None
 </code></pre></div>
 </td></tr></table>
-
 <p>Probemos la ejecución de ficheros. Los ficheros de <em>coconut</em> tienen por extensión <code>.coco</code>. Creemos un fichero <code>hola.coco</code> con una única&nbsp;línea:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&quot;¡Hola, Mundo!&quot; |&gt; print
 </code></pre></div>
 </td></tr></table>
-
 <p>Para&nbsp;ejecutarlo:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -230,14 +226,12 @@ Compiled to       hola.py .
 ¡Hola, Mundo!
 </code></pre></div>
 </td></tr></table>
-
 <p>De la <em>transpilación</em> se obtiene el fichero <code>hola.py</code>, que es el que se usa en la ejecución. Se podría volver a ejecutar sin intervención de <em>coconut</em>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ python hola.py
 ¡Hola, Mundo!
 </code></pre></div>
 </td></tr></table>
-
 <h2>Factorial en&nbsp;coconut</h2>
 <p>Como obsesión de este blog está la comparación de formas de hacer el cálculo del factorial. Recomiendo seguir el <a href="https://coconut.readthedocs.io/en/master/HELP.html" title="Tutorial de coconut">tutorial de coconut</a> donde se detalla, paso a paso, cómo ir cambiando la formulación de factorial desde estructuras imperativas a&nbsp;funcionales.</p>
 <p>Una formulación simple podría ser&nbsp;esta:</p>
@@ -250,7 +244,6 @@ def factorial(n: int) -&gt; int = range(2, n+1) |&gt; product
 10000 |&gt; factorial |&gt; print
 </code></pre></div>
 </td></tr></table>
-
 <p>Aunque las veremos con detalle más adelante, aquí adelantamos varias características de <em>coconut</em>:</p>
 <ul>
 <li>Una función puede devolver una expresión, similar a las funciones <em>lambda</em></li>
@@ -270,7 +263,7 @@ def factorial(n: int) -&gt; int = range(2, n+1) |&gt; product
 </div>
   </div>
   <hr>
-  
+
   <ul class="pager">
           <li class="previous">
                <a href="https://blog.ch3m4.org/2019/04/16/que-es-un-coconut/" title="Anterior">
@@ -302,20 +295,23 @@ def factorial(n: int) -&gt; int = range(2, n+1) |&gt; product
 
    </ul>
 
-    
+
   <div id="article_comments">
     <div id="disqus_thread">
     </div>
   </div>
 
+  <script id="dsq-count-scr" src="https://hyperreals.disqus.com/count.js" async></script>
   <script type="text/javascript">
-    var disqus_identifier = "2019/05/02/coconut-primeros-pasos/";
-    loadDisqus = function() {
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//hyperreals.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    var disqus_config = function () {
+        this.page.identifier = "2019/05/02/coconut-primeros-pasos/";
+        this.page.title = "Coconut - Primeros&nbsp;pasos";
+    };
+    loadDisqus = function(sitename) {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hyperreals.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
     };
     loadDisqus();
   </script>
@@ -328,10 +324,7 @@ def factorial(n: int) -&gt; int = range(2, n+1) |&gt; product
   </main>
 
   <script type="text/javascript">
-    window.addEventListener('load', function(){
-    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
-      window.scroll(0, document.getElementById('main').offsetTop);
-    }})
+    window.addEventListener('load', skipHeader)
   </script>
 
 

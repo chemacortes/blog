@@ -7,17 +7,17 @@
   <meta name="author" content="Chema Cortés">
   <meta name="description" content="Borrado de un descriptor (corrección de errores) | Tengo que hacer algunas correcciones a la serie de artículos sobre descriptores, en concreto...">
 
-  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.7098921b.min.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ad3d1997.min.css">
+
+  <script src="https://blog.ch3m4.org/theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
   <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
 
 <meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, descriptor, técnicas dinámicas">
 
-  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
-
-  <title>
-Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
+  <title>Borrado de un descriptor (corrección de errores) | Hyperreals *R</title>
 
 </head>
 
@@ -25,22 +25,22 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
   <aside>
     <div id="user_meta">
       <a href="https://blog.ch3m4.org">
-        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" id="logo">
       </a>
       <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
       <p>Quarks, bits y otras criaturas infinitesimales</p>
       <div class="social">
-          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
-          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
-          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
-          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
-          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+          <a href="https://twitter.com/chemacortes" title="twitter" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github" target="_blank" rel="noopener noreferrer"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket" target="_blank" rel="noopener noreferrer"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow" target="_blank" rel="noopener noreferrer"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin fa-lg"></i></a>
       </div>
       <ul>
-        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/all.atom.xml" target="_blank" rel="noopener noreferrer">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml" target="_blank" rel="noopener noreferrer">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml" target="_blank" rel="noopener noreferrer">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6" target="_blank" rel="noopener noreferrer">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
       </ul>
     </div>
   </aside>
@@ -49,7 +49,7 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
     <header>
       <p id="header">
       <a href="https://blog.ch3m4.org">Home</a>
-      
+
       &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
       &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
       &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
@@ -62,7 +62,15 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
 </p>    </header>
 
 <article>
-  <div class="article_title">
+<div class="article_meta">
+  <p>Posted <time data-timeago datetime="2013-07-13T14:00:00+02:00">sáb 13 julio 2013</time>
+   by Chema Cortés  </p>
+  <p>Last updated <time data-timeago datetime="2018-07-25T01:30:02+02:00">mié 25 julio 2018</time></p>
+  <p>
+  Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+&ndash;&ndash;  Tags:
+    <a href="https://blog.ch3m4.org/tag/descriptor/">descriptor</a>,    <a href="https://blog.ch3m4.org/tag/tecnicas-dinamicas/">técnicas dinámicas</a>  </p>
+</div>  <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2013/07/13/borrado-de-un-descriptor-correccion-de-errores/" class="nohover">Borrado de un descriptor (corrección de&nbsp;errores)</a></h1>
   </div>
   <div class="article_meta">
@@ -105,7 +113,6 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
 <span class="nb">print</span> <span class="s2">&quot;END&quot;</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>De su ejecución, podemos comprobar que el método <code>__del__</code> no se invoca justo en el momento de hacer <code>del a</code>, si no cuando se pierde la última referencia al asignar otro valor a la variable <code>b</code>. La sentencia <code>del a</code> no <em>destruye</em> el objeto, tan sólo desliga el objeto de la etiqueta <code>a</code> que lo referenciaba. Por ese motivo, es inexacto hablar en python de &#8220;variable de memoria&#8221;, como se entiende en otro lenguajes. Tan sólo cambiamos de una referencia de un objeto a otro, sin destruir su valor&nbsp;anterior.</p>
 <h2>Revisión del protocolo&nbsp;descriptor</h2>
 <p>En un <a href="https://blog.ch3m4.org/2011/06/19/descriptores-parte-1/">anterior artículo</a> distinguía entre descriptores de datos y de no-datos. Hay que aclarar que un descriptor de datos &#8220;es también el que sólo tiene definido un método <code>__delete__</code>, aunque no tenga método <code>__set__</code><span class="dquo">&#8220;</span>. ¿Para qué puede sernos útil tener uno sin el&nbsp;otro?</p>
@@ -178,7 +185,6 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
 <span class="nb">print</span> <span class="n">c</span><span class="o">.</span><span class="n">a12</span>  <span class="c1">#--&gt; 100 (no descriptor)</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>La idea era que se pudiera borrar el descriptor de datos para sustuirlo por otro valor. Tal como señalaba Cristian en un comentario al respecto, este ejemplo parece funcionar con o sin el método <code>__delete__</code> en el&nbsp;descriptor.</p>
 <p>Funciona siempre debido a que con <code>'del Miclase.a12'</code> estamos borrando la referencia al descriptor que tiene la clase, sin pasar por el protocolo descriptor. La particularidad de los descriptores es que <em>viven</em> en la clase, pero se invocan desde la instancia. Con <code>'del Miclase.a12'</code> estamos saltándonos el protocolo descriptor para acceder directamente al atributo de la clase<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
 <p>Además, este código no funcionaría&nbsp;nunca:</p>
@@ -187,7 +193,6 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
         <span class="k">del</span> <span class="bp">self</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Si la idea era borrar el objeto <code>self</code>, referencia al descriptor, podemos quitarnos esa idea ya que el comando <code>del</code> borra la referencia del <em>scope</em> local donde se encuentra. <strong>¡No es un destructor!</strong> En realidad, todas las variables locales son borradas al finalizar el método. En este caso en concreto, también la variable local <code>obj</code> será borrada aunque no se indique&nbsp;explícitamente.</p>
 <p>Otra cuestión a tener en cuenta es que los atributos de clase son compartidos por todas sus instancias. Si en algún momento alteramos un descriptor (por ejemplo, borrándolo), entonces todas las instancias sufririan el mismo cambio. No parece que sea el efecto&nbsp;buscado.</p>
 <p>La gran pregunta es <em>entonces, ¿cómo podemos aprovecharnos del método <code>__delete__</code>?</em></p>
@@ -286,7 +291,6 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
 <span class="nb">print</span> <span class="n">a</span><span class="o">.</span><span class="n">value</span>  <span class="c1">#--&gt; (11, 11)</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>El descriptor mantiene un diccionario <em>weak</em> con valores asignados para cada instancia de la clase. Usamos para ello un <em>WeakKeyDictionary</em> que tiene la particularidad de relajar la referencia al objeto, de modo que si todas las referencias al objeto son borradas en el programa, también es borrada la referencia que conservaba el&nbsp;diccionario.</p>
 <p>En este ejemplo, el método <code>__get__</code> devuelve el valor del atributo si el objeto está en el diccionario, si no da error. El método <code>__set__</code> asigna un valor al atributo sólo si el objeto no existe. Para ver mejor el funcionamiento, el método <code>__get__</code> devuelve una tupla con el valor del atributo y la suma de todos los&nbsp;atributos.</p>
 <p>Ejecuntado el ejemplo, creamos dos instancias y les asignamos un valor al atributo controlado por el descriptor. Una vez asignado un valor, ya no podemos cambiarlo. La única opción será borrar el atributo y volverlo a&nbsp;asignar.</p>
@@ -308,7 +312,7 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
 </div>
   </div>
   <hr>
-  
+
   <ul class="pager">
           <li class="previous">
                <a href="https://blog.ch3m4.org/2013/06/22/balance-y-cierre-de-ejercicio/" title="Anterior">
@@ -340,20 +344,23 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
 
    </ul>
 
-    
+
   <div id="article_comments">
     <div id="disqus_thread">
     </div>
   </div>
 
+  <script id="dsq-count-scr" src="https://hyperreals.disqus.com/count.js" async></script>
   <script type="text/javascript">
-    var disqus_identifier = "2013/07/13/borrado-de-un-descriptor-correccion-de-errores/";
-    loadDisqus = function() {
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//hyperreals.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    var disqus_config = function () {
+        this.page.identifier = "2013/07/13/borrado-de-un-descriptor-correccion-de-errores/";
+        this.page.title = "Borrado de un descriptor (corrección de&nbsp;errores)";
+    };
+    loadDisqus = function(sitename) {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hyperreals.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
     };
     loadDisqus();
   </script>
@@ -366,10 +373,7 @@ Borrado de un descriptor (corrección de errores) | Hyperreals *R  </title>
   </main>
 
   <script type="text/javascript">
-    window.addEventListener('load', function(){
-    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
-      window.scroll(0, document.getElementById('main').offsetTop);
-    }})
+    window.addEventListener('load', skipHeader)
   </script>
 
 

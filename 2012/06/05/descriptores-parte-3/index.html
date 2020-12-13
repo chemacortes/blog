@@ -7,17 +7,17 @@
   <meta name="author" content="Chema Cortés">
   <meta name="description" content="Descriptores - Parte 3 | Hasta ahora hemos visto cómo funcionan los descriptores para acceder a atributos de datos que funcionan como “propiedades”...">
 
-  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.7098921b.min.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ad3d1997.min.css">
+
+  <script src="https://blog.ch3m4.org/theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
   <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
 
 <meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, descriptor, técnicas dinámicas">
 
-  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
-
-  <title>
-Descriptores - Parte 3 | Hyperreals *R  </title>
+  <title>Descriptores - Parte 3 | Hyperreals *R</title>
 
 </head>
 
@@ -25,22 +25,22 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
   <aside>
     <div id="user_meta">
       <a href="https://blog.ch3m4.org">
-        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" id="logo">
       </a>
       <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
       <p>Quarks, bits y otras criaturas infinitesimales</p>
       <div class="social">
-          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
-          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
-          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
-          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
-          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+          <a href="https://twitter.com/chemacortes" title="twitter" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github" target="_blank" rel="noopener noreferrer"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket" target="_blank" rel="noopener noreferrer"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow" target="_blank" rel="noopener noreferrer"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin fa-lg"></i></a>
       </div>
       <ul>
-        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/all.atom.xml" target="_blank" rel="noopener noreferrer">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml" target="_blank" rel="noopener noreferrer">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml" target="_blank" rel="noopener noreferrer">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6" target="_blank" rel="noopener noreferrer">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
       </ul>
     </div>
   </aside>
@@ -49,7 +49,7 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
     <header>
       <p id="header">
       <a href="https://blog.ch3m4.org">Home</a>
-      
+
       &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
       &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
       &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
@@ -62,7 +62,14 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 </p>    </header>
 
 <article>
-  <div class="article_title">
+<div class="article_meta">
+  <p>Posted <time data-timeago datetime="2012-06-05T00:37:00+02:00">mar 05 junio 2012</time>
+   by Chema Cortés  </p>
+  <p>
+  Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+&ndash;&ndash;  Tags:
+    <a href="https://blog.ch3m4.org/tag/descriptor/">descriptor</a>,    <a href="https://blog.ch3m4.org/tag/tecnicas-dinamicas/">técnicas dinámicas</a>  </p>
+</div>  <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2012/06/05/descriptores-parte-3/" class="nohover">Descriptores - Parte&nbsp;3</a></h1>
   </div>
   <div class="article_meta">
@@ -106,7 +113,6 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 <span class="n">func</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>       <span class="c1"># ...dan el mismo resultado</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Esta <em>dualidad</em> entre funciones y métodos va más allá si observamos que, en realidad, las funciones son <em>&#8220;descriptores&#8221;</em>, tal como podemos comprobar mirando su&nbsp;diccionario:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -117,7 +123,6 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 <span class="kc">False</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Concretamente, las funciones son <em>&#8220;descriptores de no-datos&#8221;</em> y como tales se aplicarán las reglas comentadas en artículos previos. En concreto, se buscarán antes los métodos en el diccionario del objeto que entre los atributos de su clase<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, lo que nos va a permitir suplantar métodos en tiempo de&nbsp;ejecución.</p>
 <p>Con añadir funciones a los atributos de clase será suficiente para la mayoría de casos que nos podamos enfrentar. El resto de este artículo va orientado para algunos casos de <em>&#8220;técnicas dinámicas&#8221;</em> que requieren diferenciar el comportamiento de un objeto respecto al resto de las instancias de la misma&nbsp;clase.</p>
 <h2>Invocación de descriptores y sus&nbsp;enlaces</h2>
@@ -145,7 +150,6 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
     <span class="nb">print</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Es una simple función que imprime los argumentos que recibe con el fin de poder analizarlos. Con una clase y una instancia intentaremos ver cómo añadirles métodos&nbsp;dinámicos:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -156,7 +160,6 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 <span class="n">obj</span><span class="o">=</span><span class="n">Cls</span><span class="p">()</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>El caso trivial es añadir el descriptor como atributo de la&nbsp;clase:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -169,7 +172,6 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 <span class="p">(</span><span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Cls</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x8ffd3ac</span><span class="o">&gt;</span><span class="p">,)</span> <span class="p">{}</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Encaja con el funcionamiento estándar de los descriptores, que pasa por establecer primero un enlace del descriptor con la instancia o con la clase para obtener después el método&nbsp;ejecutable.</p>
 <p>Pero a veces necesitamos añadir métodos sobre la instancia y no sobre la clase. Ésto puede ser debido&nbsp;a:</p>
 <ol>
@@ -189,7 +191,6 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 <span class="o">&lt;</span><span class="n">function</span> <span class="n">desc</span> <span class="n">at</span> <span class="mh">0xb76776bc</span><span class="o">&gt;</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Vemos que el funcionamiento es similar a si hubiéramos ejecutado directamente la función. En realidad, actúa como <strong>&#8220;métodos estáticos&#8221;</strong>, descriptores que no están enlazados con&nbsp;nada.</p>
 <p>Para conseguir que el descriptor funcione como un método normal, necesitamos enlazarlo con la&nbsp;instancia:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -203,7 +204,6 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 <span class="o">&lt;</span><span class="n">bound</span> <span class="n">method</span> <span class="n">Cls</span><span class="o">.</span><span class="n">desc</span> <span class="n">of</span> <span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Cls</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb767adec</span><span class="o">&gt;&gt;</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Aquí ya vemos que el método se identifica como un <strong>&#8220;método normal&#8221;</strong> más de la clase <code>Cls</code>.</p>
 <p>De forma parecida, podríamos enlazar el descriptor con la clase, pero vista como instancia, no como clase, con lo que obtenemos un <strong>&#8220;método de clase&#8221;</strong>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -213,7 +213,6 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 <span class="p">(</span><span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">__main__</span><span class="o">.</span><span class="n">Cls</span><span class="s1">&#39;&gt;,) </span><span class="si">{}</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Hemos visto las opciones posibles para realizar diversas técnicas dinámicas. No es habitual verlas en el código que usamos normalmente. Casi puedo asegurar que si necesitas alguna de estas técnicas, es que te has pasado por alto alguna otra forma más sencilla de hacer lo&nbsp;mismo.</p>
 <h2>Pequeño&nbsp;truco</h2>
 <p>Todo lo anteriormente dicho funciona siempre que estemos trabajando con <em>&#8220;descriptores de no-datos&#8221;</em>. Si deseamos que un método de la clase no sea suplantado por un método en la instancia basta con crearlo como <em>&#8220;descriptor de datos&#8221;</em>. Lo más sencillo es usar el decorador <code>@property</code>:</p>
@@ -238,7 +237,6 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 <span class="ne">AttributeError</span><span class="p">:</span> <span class="n">can</span><span class="s1">&#39;t set attribute</span>
 </code></pre></div>
 </td></tr></table>
-
 <h2>Resto de artículos de la&nbsp;serie</h2>
 <ol>
 <li><a href="https://blog.ch3m4.org/2011/06/24/optimizaciones-con-los-metodos-especiales/">Optimizaciones con los Métodos&nbsp;Especiales</a></li>
@@ -262,7 +260,7 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 </div>
   </div>
   <hr>
-  
+
   <ul class="pager">
           <li class="previous">
                <a href="https://blog.ch3m4.org/2012/05/12/lingua-franca/" title="Anterior">
@@ -294,20 +292,23 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
 
    </ul>
 
-    
+
   <div id="article_comments">
     <div id="disqus_thread">
     </div>
   </div>
 
+  <script id="dsq-count-scr" src="https://hyperreals.disqus.com/count.js" async></script>
   <script type="text/javascript">
-    var disqus_identifier = "2012/06/05/descriptores-parte-3/";
-    loadDisqus = function() {
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//hyperreals.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    var disqus_config = function () {
+        this.page.identifier = "2012/06/05/descriptores-parte-3/";
+        this.page.title = "Descriptores - Parte&nbsp;3";
+    };
+    loadDisqus = function(sitename) {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hyperreals.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
     };
     loadDisqus();
   </script>
@@ -320,10 +321,7 @@ Descriptores - Parte 3 | Hyperreals *R  </title>
   </main>
 
   <script type="text/javascript">
-    window.addEventListener('load', function(){
-    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
-      window.scroll(0, document.getElementById('main').offsetTop);
-    }})
+    window.addEventListener('load', skipHeader)
   </script>
 
 

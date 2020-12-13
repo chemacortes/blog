@@ -7,17 +7,17 @@
   <meta name="author" content="Chema Cortés">
   <meta name="description" content="Pruebas básicas de python (y scala) | Como continuación del artículo “Cómo contratar a un programador de python” voy a dar las soluciones a algunas...">
 
-  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.7098921b.min.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ad3d1997.min.css">
+
+  <script src="https://blog.ch3m4.org/theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
   <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
 
 <meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, python, scala, programming">
 
-  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
-
-  <title>
-Pruebas básicas de python (y scala) | Hyperreals *R  </title>
+  <title>Pruebas básicas de python (y scala) | Hyperreals *R</title>
 
 </head>
 
@@ -25,22 +25,22 @@ Pruebas básicas de python (y scala) | Hyperreals *R  </title>
   <aside>
     <div id="user_meta">
       <a href="https://blog.ch3m4.org">
-        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" id="logo">
       </a>
       <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
       <p>Quarks, bits y otras criaturas infinitesimales</p>
       <div class="social">
-          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
-          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
-          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
-          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
-          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+          <a href="https://twitter.com/chemacortes" title="twitter" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github" target="_blank" rel="noopener noreferrer"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket" target="_blank" rel="noopener noreferrer"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow" target="_blank" rel="noopener noreferrer"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin fa-lg"></i></a>
       </div>
       <ul>
-        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/all.atom.xml" target="_blank" rel="noopener noreferrer">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml" target="_blank" rel="noopener noreferrer">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml" target="_blank" rel="noopener noreferrer">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6" target="_blank" rel="noopener noreferrer">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
       </ul>
     </div>
   </aside>
@@ -49,7 +49,7 @@ Pruebas básicas de python (y scala) | Hyperreals *R  </title>
     <header>
       <p id="header">
       <a href="https://blog.ch3m4.org">Home</a>
-      
+
       &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
       &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
       &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
@@ -62,7 +62,14 @@ Pruebas básicas de python (y scala) | Hyperreals *R  </title>
 </p>    </header>
 
 <article>
-  <div class="article_title">
+<div class="article_meta">
+  <p>Posted <time data-timeago datetime="2012-10-25T17:04:00+02:00">jue 25 octubre 2012</time>
+   by Chema Cortés  </p>
+  <p>
+  Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+&ndash;&ndash;  Tags:
+    <a href="https://blog.ch3m4.org/tag/python/">python</a>,    <a href="https://blog.ch3m4.org/tag/scala/">scala</a>,    <a href="https://blog.ch3m4.org/tag/programming/">programming</a>  </p>
+</div>  <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2012/10/25/pruebas-basicas-de-python-y-scala/" class="nohover">Pruebas básicas de python (y&nbsp;scala)</a></h1>
   </div>
   <div class="article_meta">
@@ -80,23 +87,19 @@ Pruebas básicas de python (y scala) | Hyperreals *R  </title>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span> <span class="s2">&quot;¡Hola, Mundo!&quot;</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Lo que hay que saber es que este código no funciona en python3 y será lo primero que te pregunte el seleccionador. En python3, el comando <code>print</code> se convierte en una función, por lo que se debe añadir los&nbsp;paréntesis:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;¡Hola, Mundo!&quot;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Con esta introducción, el seleccionador te puede preguntar alguna cosa más sobre el comando <code>print</code>, como si se puede usar con cualquier objeto o si se puede sacar fácilmente una salida&nbsp;tabulada.</p>
 <p>En scala, la respuesta también es&nbsp;simple:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">println</span><span class="o">(</span><span class="s">&quot;¡Hola, Mundo!&quot;</span><span class="o">)</span>
 </code></pre></div>
 </td></tr></table>
-
 <p><code>println</code> es una función, como es lógico al tratarse de un <em>lenguaje funcional</em>. Un seleccionador te puede preguntar por el sufijo <code>ln</code>, que no es otra cosa que añadir un salto de línea en la salida. Este código es equivalente&nbsp;a:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">print</span><span class="o">(</span><span class="s">&quot;¡Hola, Mundo!\n&quot;</span><span class="o">)</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Se puede ver al final una expresión de escape que representa al salto de línea, universalmente aceptada por un buen número de lenguajes (python&nbsp;incluído).</p>
 <h2>Detector de&nbsp;palíndromos</h2>
 <p>Un palíndromo sería una frase que resulta igual leída del principio al final, que del final al principio. Algunos&nbsp;ejemplos:</p>
@@ -105,7 +108,6 @@ Pruebas básicas de python (y scala) | Hyperreals *R  </title>
 Dábale arroz a la zorra el Abad
 </code></pre></div>
 </td></tr></table>
-
 <p>Para hacer un detector de palíndromos en python tenemos que hacer una función que lo primero que haga sea filtrar todos los espacios en blancos y los signos de puntuación de la frase, convertir todas las letras a minúsculas (o mayúsculas) y comprobar luego si la frase es igual en un sentido y&nbsp;otro:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -114,7 +116,6 @@ Dábale arroz a la zorra el Abad
     <span class="k">return</span> <span class="n">frase_limpia</span><span class="o">==</span><span class="n">frase_limpia</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Como primera aproximación puede valer. Se filtra la frase para que sólo aparezcan letras (<code>c&gt;="A"</code>), quitando espacios y signos de puntuación. También se ha convertido a minúsculas con <code>c.lower()</code> para hacer mejor la comparación. El problema es que no convierte las vocales con tilde a vocales sin tilde, con lo que el palíndromo <em>&#8220;Dábale arroz a la zorra el Abad&#8221;</em> no lo va a detectar bien. El <em>&#8220;candidato&#8221;</em> debe darse cuenta de ello e intentar explicar algún modo de resolverlo (cuya resolución completa quedaría fuera de la prueba real y del presente artículo<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>).</p>
 <p>En scala sería algo&nbsp;así:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -126,7 +127,6 @@ Dábale arroz a la zorra el Abad
 <span class="o">}</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Aquí todas las operaciones se han hecho con el tipo <code>String</code>, sin necesidad de pasar a una lista como en python. La última sentencia de la función será el resultado que devuelve la función. En sí, esta función sería correcta, pero usar una variable intermedia como <code>frase_limpia</code> para guardar un estado intermedio va en contra de la filosofía de la programación funcional. Un programa funcional <em>intenta retrasar todo lo que se pueda la evaluación del resultado con el fin de evitar posibles efectos colaterales</em>. Lo ideal sería que sólo se hiciera la <em>evaluación</em> en la última sentencia de la&nbsp;función.</p>
 <p>Una forma de hacerlo más <em>&#8220;funcional&#8221;</em>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -140,14 +140,12 @@ Dábale arroz a la zorra el Abad
 <span class="o">}</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>&#8230;o todo junto en una&nbsp;línea:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="n">isPalindrome</span><span class="o">(</span><span class="n">frase</span><span class="k">:</span><span class="kt">String</span><span class="o">)</span><span class="k">:</span><span class="kt">Boolean</span><span class="o">=</span>
     <span class="o">((</span><span class="n">s</span><span class="k">:</span><span class="kt">String</span><span class="o">)</span><span class="k">=&gt;</span><span class="n">s</span><span class="o">==</span><span class="n">s</span><span class="o">.</span><span class="n">reverse</span><span class="o">)(</span><span class="n">frase</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="k">_</span><span class="o">&gt;=</span><span class="sc">&#39;A&#39;</span><span class="o">).</span><span class="n">toLowerCase</span><span class="o">)</span>
 </code></pre></div>
 </td></tr></table>
-
 <h2>Expresión regular para encontrar teléfonos en un&nbsp;texto</h2>
 <p>Lo más simple es buscar 9 dígitos seguidos y sin espacios: <code>"\d{9}"</code></p>
 <p>El examinador probablemente quiera que te esfuerces algo más. Te puede decir que esa expresión no sirve para localizar teléfonos como el <code>+34 666 010101</code> y quiere saber cómo se podría hacer. La cosa se complica bastante, aunque no es imposible. En este momento <span class="caps">NUNCA</span> digas que haría falta leerse bien la documentación y que tendrías que investigar un poco, suena muy mal. Lo de <em>investigar</em> da la idea que vas a buscar una solución por internet, que acabarás en un blog como éste y que vas a copiarte la solución sin siquiera leer cómo&nbsp;funciona.</p>
@@ -156,7 +154,6 @@ Dábale arroz a la zorra el Abad
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    &quot;((\+34 )?\d{3} ?\d{6})&quot;
 </code></pre></div>
 </td></tr></table>
-
 <h2>Una conversión de lista de tuplas a&nbsp;diccionario</h2>
 <p>Este es uno de esos casos que cuesta más explicar el problema que su solución. Se pretende ver si el candidato comprende realmente los conceptos que se tratan, si sabe lo que es una tupla y un diccionario, y si tiene claro el concepto de <em>&#8220;mapping&#8221;</em> por el cuál se contruye el&nbsp;diccionario.</p>
 <p>La solución empieza por poner en dependencia el segundo elemento del&nbsp;primero:</p>
@@ -165,21 +162,18 @@ Dábale arroz a la zorra el Abad
 <span class="n">dic</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>En scala es muy&nbsp;parecido:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">val</span> <span class="n">lista</span><span class="k">=</span><span class="nc">List</span><span class="o">((</span><span class="s">&quot;a&quot;</span><span class="o">,</span><span class="mi">1</span><span class="o">),(</span><span class="s">&quot;b&quot;</span><span class="o">,</span><span class="mi">2</span><span class="o">),(</span><span class="s">&quot;c&quot;</span><span class="o">,</span><span class="mi">3</span><span class="o">))</span>
 <span class="k">val</span> <span class="n">dic</span><span class="k">=</span><span class="n">lista</span><span class="o">.</span><span class="n">toMap</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Por complicarlo algo más, se puede pedir que se repita el ejercicio, pero con tuplas de más de dos elementos, con el primero como clave del <em>mapping</em>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">lista</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">),(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">)]</span>
 <span class="n">dic</span><span class="o">=</span><span class="nb">dict</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>En scala es algo más complicado. Lo que en python se entiende por tupla (una secuencia inmutable), en scala son en realidad las listas. Las listas mutables, como se entienden en python, son instancias de la clase <code>MutableList</code>. Las tuplas de scala se usan para paso de parámetros y poco&nbsp;más:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -190,13 +184,11 @@ Dábale arroz a la zorra el Abad
 <span class="k">val</span> <span class="n">dic</span><span class="k">=</span><span class="n">lista</span> <span class="n">map</span> <span class="o">{</span><span class="n">x</span> <span class="k">=&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">.</span><span class="n">tail</span><span class="o">}</span> <span class="n">toMap</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Aquí se ve el uso de los atributos <code>head</code> y <code>tail</code> para manejar listas que son tan característicos de los lenguajes&nbsp;funcionales.</p>
 <p>Las últimas versiones de Scala incorporan la &#8220;comparación de patrones&#8221; (<em>&#8220;pattern matching&#8221;</em>) que consiguen hacer algo más legible el&nbsp;código:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">val</span> <span class="n">dic</span><span class="k">=</span><span class="n">lista</span> <span class="n">map</span> <span class="o">{</span><span class="k">case</span> <span class="n">h</span><span class="o">::</span><span class="n">t</span> <span class="k">=&gt;</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">t</span><span class="o">}</span> <span class="n">toMap</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>No parece que haya variado mucho. La potencia de los patrones está en poder realizar distintas operaciones según el tipo de los parámetros. En otros lenguajes se necesitaría incorporar expresiones condicionales o sobrecarga de&nbsp;operadores.</p>
 <p>Por ejemplo, imagina que la lista tuviera elementos extra como cadenas y&nbsp;números:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -214,7 +206,6 @@ Dábale arroz a la zorra el Abad
    <span class="o">}</span> <span class="n">toMap</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Vemos el&nbsp;resultado:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -229,7 +220,6 @@ Dábale arroz a la zorra el Abad
 (c,List(100, 200, 300))
 </code></pre></div>
 </td></tr></table>
-
 <p>En el primer patrón, <code>h::t</code> (llamado de <em>extracción de lista</em>), sólo encajarán los items que son listas; en el segundo patrón <code>s:String</code> sólo encaja la <code>String "Hola"</code>; mientras que el último elemento de la lista, el <code>double 1.5</code>, no coincide con ningún patrón y será filtrado por el método <code>collect</code>.</p>
 <p>Si intentamos hacer lo mismo con python nos saldría un código bastante menos&nbsp;legible:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -241,7 +231,6 @@ Dábale arroz a la zorra el Abad
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lista</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="n">basestring</span><span class="p">)))</span>
 </code></pre></div>
 </td></tr></table>
-
 <h2>Conclusión</h2>
 <p>Con estos ejemplos tan sólo he querido darte una idea de qué cosas podemos encontrarnos en una prueba de selección. En programación, debería interesar más la capacidad resolutiva del <em>candidato</em> que su nivel de conocimientos. Una solución innovadora o que aporte otro punto de vista no contemplado en un principio suele ser de más valor que dar la solución correcta. Busca distintos ejemplos de resolver los mismos problemas, incluso en lenguajes de programación diferentes, y estarás preparado para todo reto que se te&nbsp;presente.</p>
 <hr>
@@ -259,7 +248,7 @@ Dábale arroz a la zorra el Abad
 </div>
   </div>
   <hr>
-  
+
   <ul class="pager">
           <li class="previous">
                <a href="https://blog.ch3m4.org/2012/10/23/entornos-virtuales-en-python-3-3/" title="Anterior">
@@ -291,20 +280,23 @@ Dábale arroz a la zorra el Abad
 
    </ul>
 
-    
+
   <div id="article_comments">
     <div id="disqus_thread">
     </div>
   </div>
 
+  <script id="dsq-count-scr" src="https://hyperreals.disqus.com/count.js" async></script>
   <script type="text/javascript">
-    var disqus_identifier = "2012/10/25/pruebas-basicas-de-python-y-scala/";
-    loadDisqus = function() {
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//hyperreals.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    var disqus_config = function () {
+        this.page.identifier = "2012/10/25/pruebas-basicas-de-python-y-scala/";
+        this.page.title = "Pruebas básicas de python (y&nbsp;scala)";
+    };
+    loadDisqus = function(sitename) {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hyperreals.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
     };
     loadDisqus();
   </script>
@@ -317,10 +309,7 @@ Dábale arroz a la zorra el Abad
   </main>
 
   <script type="text/javascript">
-    window.addEventListener('load', function(){
-    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
-      window.scroll(0, document.getElementById('main').offsetTop);
-    }})
+    window.addEventListener('load', skipHeader)
   </script>
 
 

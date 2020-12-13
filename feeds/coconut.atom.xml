@@ -41,7 +41,6 @@
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;Como curiosidad, el número &lt;code&gt;10**100&lt;/code&gt; se llama &lt;a href="https://es.wikipedia.org/wiki/Gúgol"&gt;gúgol&lt;/a&gt; y es un número enormemente grande. Crear esto mismo como una lista es imposible con la memoria de los ordenadores actuales y no habría tiempo en este Universo para procesar tal cantidad de&amp;nbsp;elementos.&lt;/p&gt;
 &lt;p&gt;Y sin embargo, podemos trabajar con esta expresión sin mayores problemas. Por ejemplo, para obtener los 10 primeros&amp;nbsp;elementos:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
@@ -51,17 +50,14 @@
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;Incluso podemos usarla como base para crear nuevos&amp;nbsp;iteradores:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;Equivalente a&amp;nbsp;hacer:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;Componer iteradores es bastante eficiente. Se van recorriendo a medida que sea necesario, sin mantener en memoria nada más que los elementos estrictamente necesarios para devolver el siguiente&amp;nbsp;elemento.&lt;/p&gt;
 &lt;h2&gt;map y&amp;nbsp;filter&lt;/h2&gt;
 &lt;p&gt;¿Sabes cuál es la diferencia entre estas dos&amp;nbsp;expresiones?&lt;/p&gt;
@@ -72,7 +68,6 @@
 &lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;Para python, ambas expresiones son equivalentes: iteradores. Pero se considera que tiene más &lt;em&gt;estilo pythónico&lt;/em&gt; el uso de expresiones generadoras, desaconsejándose completamene el uso de las funciones &lt;code&gt;map&lt;/code&gt; y &lt;code&gt;filter&lt;/code&gt; siempre que se&amp;nbsp;pueda.&lt;/p&gt;
 &lt;p&gt;Y sin embargo, para &lt;em&gt;coconut&lt;/em&gt; las funciones &lt;code&gt;map&lt;/code&gt; y &lt;code&gt;filter&lt;/code&gt; son fundamentales como también lo son en &lt;em&gt;programación funcional&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;El iterador que se obtiene con la expresión generadora &lt;code&gt;(x**2 for x in range(10*100))&lt;/code&gt; actúa como si fuera una &lt;em&gt;caja negra&lt;/em&gt;. Se pueden obtener los elemntos uno a uno, pero no ofrece información sobre su estructura interna, ni de su tamaño, ni nada que permita su&amp;nbsp;transfomación.&lt;/p&gt;
@@ -81,7 +76,6 @@
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;map(x -&amp;gt; x**2, range(10*100))[-1]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;Como iterador, debería haber pasado por todos los &lt;code&gt;10**100&lt;/code&gt; elementos hasta llegar al último, cosa que es imposible de hacer en la práctica. Sin embargo, si se prueba en &lt;em&gt;coconut&lt;/em&gt;, se obtiene el último elemento casi al instante. En realidad, &lt;em&gt;coconut&lt;/em&gt; cortocircuita todo el proceso y salta directamente al último elemento de &lt;code&gt;range(10**100)&lt;/code&gt;, que es el único que le hace falta. Es como si hubiera aplicado primero el &lt;code&gt;[-1]&lt;/code&gt; al &lt;code&gt;range(10**100)&lt;/code&gt; y luego hubiera aplicado el &lt;code&gt;map&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Este tipo de encapsulado, tanto de un conjunto de datos como de la función que lo transforma, se conocen por &lt;strong&gt;aplicativo&lt;/strong&gt; (&lt;em&gt;Applicative&lt;/em&gt; en inglés). Y a las transformaciones que podemos encadenar, una tras otra, para diferir el cálculo al final del todo se conoce por &lt;strong&gt;mónadas&lt;/strong&gt; (&lt;em&gt;Monad&lt;/em&gt; en&amp;nbsp;inglés).&lt;/p&gt;
 &lt;p&gt;Más adelante veremos una definición matemática formal, pero podemos considerar &lt;strong&gt;monad&lt;/strong&gt; como la &lt;em&gt;herramienta matemática&lt;/em&gt; más poderosa de un programador funcional y, algunas veces, también la más&amp;nbsp;incomprensible.&lt;/p&gt;</content><category term="Coconut"></category><category term="coconut"></category><category term="functional-programming"></category><category term="python"></category></entry><entry><title>Coconut - Primeros pasos</title><link href="https://blog.ch3m4.org/2019/05/02/coconut-primeros-pasos/" rel="alternate"></link><published>2019-05-02T01:20:16+02:00</published><updated>2019-05-02T23:58:10+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2019-05-02:/2019/05/02/coconut-primeros-pasos/</id><summary type="html">&lt;p&gt;Primera toma de contacto con el lenguaje coconut, su instalación y detalles a tener en cuenta con la compatibilidad con las versiones de python&amp;nbsp;utilizadas.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://coconut-lang.org/" title="Coconut language"&gt;Coconut&lt;/a&gt; es un lenguaje funcional completamente &lt;em&gt;pythónico&lt;/em&gt;. Otro modo de hacer las cosas en python. Al principio puede parecer muy distinto, pero a medida que se conoce te das cuenta de lo útil que es a veces abordar ciertos problemas desde un punto de vista &lt;em&gt;puramente funcional&lt;/em&gt;.&lt;/p&gt;
@@ -93,8 +87,7 @@
 &lt;p&gt;Para instalar &lt;em&gt;coconut&lt;/em&gt; mi forma preferida es usar &lt;code&gt;conda&lt;/code&gt; empleando el canal &lt;code&gt;conda-forge&lt;/code&gt;. Siempre es recomendable crear un entorno virtual donde aislar las dependencias del resto de nuestra instalación. En concreto, la instalación de &lt;em&gt;coconut&lt;/em&gt; incluye varios kernels de jupyter y una configuración de pygments para el coloreado de&amp;nbsp;sintáxis.&lt;/p&gt;
 &lt;p&gt;En particular, prefiero crear un fichero de entorno (&lt;code&gt;environment.yml&lt;/code&gt;) que determine las dependencias, tanto las que instala conda, como las que se necesite instalar con pip. Podríamos concretar con precisión las versiones que vamos a usar; pero me voy a limitar a las dependencias mínimas para la versión que estoy usando ahora, &lt;em&gt;coconut 1.4.0&lt;/em&gt;.&lt;/p&gt;
 &lt;figure class='code'&gt;
-&lt;figcaption&gt;&lt;span&gt;Entorno virtual &amp;#8216;coco&amp;#8217;&lt;/span&gt; &lt;a href='/code/2019Q2/environment.yml'&gt;download&lt;/a&gt;&lt;/figcaption&gt;
-
+&lt;figcaption&gt;&lt;span class="liquid-tags-code-title"&gt;Entorno virtual &amp;#8216;coco&amp;#8217;&lt;/span&gt;&lt;a href='/code/2019Q2/environment.yml'&gt;download&lt;/a&gt;&lt;/figcaption&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
  3
@@ -128,9 +121,7 @@
       &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;cpyparsing&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;/figure&gt;
-
 &lt;p&gt;Se fija la versión de &lt;code&gt;python=3.6&lt;/code&gt; ya que ésta es la versión superior recomendada para &lt;em&gt;coconut&lt;/em&gt;. Posiblemente también funcione correctamente con &lt;code&gt;python=3.7&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Entre las dependencias&amp;nbsp;encontramos:&lt;/p&gt;
 &lt;ul&gt;
@@ -142,8 +133,7 @@
 &lt;p&gt;Dado que &lt;em&gt;coconut&lt;/em&gt; es un desarrollo muy activo, también recomiendo la instalación de una versión de desarrollo de &lt;em&gt;coconut&lt;/em&gt;. Muchas veces, los problemas encontrados pueden estar resueltos en desarrollo. Pero siempre es interesante probar las novedades que se van a añadiendo y nunca está de más animarse a contribuir en posibles&amp;nbsp;mejoras.&lt;/p&gt;
 &lt;p&gt;El entorno de desarrollo estará definio&amp;nbsp;así:&lt;/p&gt;
 &lt;figure class='code'&gt;
-&lt;figcaption&gt;&lt;span&gt;Entorno virtual &amp;#8216;cocodev&amp;#8217;&lt;/span&gt; &lt;a href='/code/2019Q2/environment-dev.yml'&gt;download&lt;/a&gt;&lt;/figcaption&gt;
-
+&lt;figcaption&gt;&lt;span class="liquid-tags-code-title"&gt;Entorno virtual &amp;#8216;cocodev&amp;#8217;&lt;/span&gt;&lt;a href='/code/2019Q2/environment-dev.yml'&gt;download&lt;/a&gt;&lt;/figcaption&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
 3
@@ -163,9 +153,7 @@
       &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;coconut-prelude&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;/figure&gt;
-
 &lt;p&gt;La instalación de &lt;em&gt;coconut&lt;/em&gt; y sus dependencias para este entorno se delega totalmente en pip. Se añade el módulo &lt;code&gt;coconut-prelude&lt;/code&gt; que nos facilita un mecanismo similar al &lt;code&gt;Prelude&lt;/code&gt; de haskell para tener un entorno configurado con las funciones más habituales en programación&amp;nbsp;funcional.&lt;/p&gt;
 &lt;p&gt;Con estos dos ficheros, se crean los entornos&amp;nbsp;virtuales:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
@@ -177,7 +165,6 @@ $ conda env create -f environment-dev.yml
 ...
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;h2&gt;Primer contacto: Hola&amp;nbsp;Mundo&lt;/h2&gt;
 &lt;p&gt;Para ejecutar coconut, se debe activar primero el&amp;nbsp;entorno:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
@@ -191,21 +178,18 @@ Coconut Interpreter:
 &amp;gt;&amp;gt;&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;Sale una interface de línea de comando similar a la que tiene python, incluso se puede introducir código python&amp;nbsp;normal:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; print(&amp;quot;¡Hola, Mundo!&amp;quot;)
 ¡Hola, Mundo!
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;En &lt;em&gt;coconut&lt;/em&gt;, éste sería nuestro &lt;em&gt;&amp;#8220;Hola Mundo&amp;#8221;&lt;/em&gt;:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; &amp;quot;¡Hola, Mundo!&amp;quot; |&amp;gt; print
 ¡Hola, Mundo!
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;El operador &lt;code&gt;|&amp;gt;&lt;/code&gt; puede verse como un &lt;em&gt;pipe&lt;/em&gt; que encadena operaciones, una tras otra, que será de uso común. Se puede describir como una &lt;em&gt;&amp;#8220;aplicación del resultado de la izquierda en la expresión de la derecha&amp;#8221;&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Por poner ejemplos de aplicaciones en&amp;nbsp;cadena:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
@@ -223,12 +207,10 @@ Coconut Interpreter:
 None
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;Probemos la ejecución de ficheros. Los ficheros de &lt;em&gt;coconut&lt;/em&gt; tienen por extensión &lt;code&gt;.coco&lt;/code&gt;. Creemos un fichero &lt;code&gt;hola.coco&lt;/code&gt; con una única&amp;nbsp;línea:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;quot;¡Hola, Mundo!&amp;quot; |&amp;gt; print
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;Para&amp;nbsp;ejecutarlo:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
@@ -239,14 +221,12 @@ Compiled to       hola.py .
 ¡Hola, Mundo!
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;De la &lt;em&gt;transpilación&lt;/em&gt; se obtiene el fichero &lt;code&gt;hola.py&lt;/code&gt;, que es el que se usa en la ejecución. Se podría volver a ejecutar sin intervención de &lt;em&gt;coconut&lt;/em&gt;:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ python hola.py
 ¡Hola, Mundo!
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;h2&gt;Factorial en&amp;nbsp;coconut&lt;/h2&gt;
 &lt;p&gt;Como obsesión de este blog está la comparación de formas de hacer el cálculo del factorial. Recomiendo seguir el &lt;a href="https://coconut.readthedocs.io/en/master/HELP.html" title="Tutorial de coconut"&gt;tutorial de coconut&lt;/a&gt; donde se detalla, paso a paso, cómo ir cambiando la formulación de factorial desde estructuras imperativas a&amp;nbsp;funcionales.&lt;/p&gt;
 &lt;p&gt;Una formulación simple podría ser&amp;nbsp;esta:&lt;/p&gt;
@@ -259,7 +239,6 @@ def factorial(n: int) -&amp;gt; int = range(2, n+1) |&amp;gt; product
 10000 |&amp;gt; factorial |&amp;gt; print
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
 &lt;p&gt;Aunque las veremos con detalle más adelante, aquí adelantamos varias características de &lt;em&gt;coconut&lt;/em&gt;:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Una función puede devolver una expresión, similar a las funciones &lt;em&gt;lambda&lt;/em&gt;&lt;/li&gt;
@@ -291,17 +270,17 @@ def factorial(n: int) -&amp;gt; int = range(2, n+1) |&amp;gt; product
 &lt;p&gt;Me he animado a aprender coconut e ir creando pequeños artículos a medida que vaya aprendiendo. Intentaré hacer comparaciones con otros lenguajes como haskell, scala o typescript, ya que son los otros lenguajes que estoy empleando frecuentemente, además de&amp;nbsp;python.&lt;/p&gt;
 &lt;p&gt;Sobre el nombre de &lt;em&gt;coconut&lt;/em&gt; para un lenguaje &lt;em&gt;pythónico&lt;/em&gt;, hay que recordar que todo lo relativo a &lt;em&gt;python&lt;/em&gt; proviene de las comedias del grupo humorístico &amp;#8220;Monty&amp;nbsp;Python&amp;#8221;:&lt;/p&gt;
 &lt;p&gt;&lt;span class="videobox"&gt;
-                &lt;iframe width="640" height="390"
-                    src='https://www.youtube.com/embed/Fhnjqy8JvEs'
-                    frameborder='0' webkitAllowFullScreen mozallowfullscreen
-                    allowFullScreen&gt;
-                &lt;/iframe&gt;
-            &lt;/span&gt;&lt;/p&gt;
+                    &lt;iframe width="640" height="390"
+                        src='https://www.youtube.com/embed/Fhnjqy8JvEs'
+                        frameborder='0' webkitAllowFullScreen
+                        mozallowfullscreen allowFullScreen&gt;
+                    &lt;/iframe&gt;
+                &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Pero para los que tenemos ya una edad, &lt;em&gt;coconut&lt;/em&gt; siempre &lt;em&gt;serás tú&lt;/em&gt;:&lt;/p&gt;
 &lt;p&gt;&lt;span class="videobox"&gt;
-                &lt;iframe width="640" height="390"
-                    src='https://www.youtube.com/embed/xwFp6THEddE'
-                    frameborder='0' webkitAllowFullScreen mozallowfullscreen
-                    allowFullScreen&gt;
-                &lt;/iframe&gt;
-            &lt;/span&gt;&lt;/p&gt;</content><category term="Coconut"></category><category term="coconut"></category><category term="functional-programming"></category></entry></feed>
+                    &lt;iframe width="640" height="390"
+                        src='https://www.youtube.com/embed/xwFp6THEddE'
+                        frameborder='0' webkitAllowFullScreen
+                        mozallowfullscreen allowFullScreen&gt;
+                    &lt;/iframe&gt;
+                &lt;/span&gt;&lt;/p&gt;</content><category term="Coconut"></category><category term="coconut"></category><category term="functional-programming"></category></entry></feed>

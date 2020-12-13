@@ -7,17 +7,17 @@
   <meta name="author" content="Chema Cortés">
   <meta name="description" content="Dobleces en python | En el último artículo del blog contaba en qué consistía doblar código1: “…un código que se pliega sobre sí mismo. Un código que...">
 
-  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/style.7098921b.min.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ad3d1997.min.css">
+
+  <script src="https://blog.ch3m4.org/theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
   <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
 
 <meta name="keywords" content="functional programming, programming, programación, lambda calculus, math">
 
-  <script src="https://blog.ch3m4.org/theme/js/lw-timeago.25926835.min.js" type="text/javascript"></script>
-
-  <title>
-Dobleces en python | Hyperreals *R  </title>
+  <title>Dobleces en python | Hyperreals *R</title>
 
 </head>
 
@@ -25,22 +25,22 @@ Dobleces en python | Hyperreals *R  </title>
   <aside>
     <div id="user_meta">
       <a href="https://blog.ch3m4.org">
-        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" alt="logo" id="logo">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" id="logo">
       </a>
       <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
       <p>Quarks, bits y otras criaturas infinitesimales</p>
       <div class="social">
-          <a href="https://twitter.com/chemacortes" title="twitter"><i class="fa fa-twitter fa-lg"></i></a>
-          <a href="https://github.com/chemacortes" title="github"><i class="fa fa-github fa-lg"></i></a>
-          <a href="https://bitbucket.org/chemacortes/" title="bitbucket"><i class="fa fa-bitbucket fa-lg"></i></a>
-          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow"><i class="fa fa-stack-overflow fa-lg"></i></a>
-          <a href="https://linkedin.com/in/chemacortes" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+          <a href="https://twitter.com/chemacortes" title="twitter" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github" target="_blank" rel="noopener noreferrer"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket" target="_blank" rel="noopener noreferrer"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow" target="_blank" rel="noopener noreferrer"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin fa-lg"></i></a>
       </div>
       <ul>
-        <li><a href="/feeds/all.atom.xml">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="/feeds/scala.atom.xml">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="/feeds/python.atom.xml">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/all.atom.xml" target="_blank" rel="noopener noreferrer">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml" target="_blank" rel="noopener noreferrer">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml" target="_blank" rel="noopener noreferrer">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6" target="_blank" rel="noopener noreferrer">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
       </ul>
     </div>
   </aside>
@@ -49,7 +49,7 @@ Dobleces en python | Hyperreals *R  </title>
     <header>
       <p id="header">
       <a href="https://blog.ch3m4.org">Home</a>
-      
+
       &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
       &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
       &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
@@ -62,7 +62,12 @@ Dobleces en python | Hyperreals *R  </title>
 </p>    </header>
 
 <article>
-  <div class="article_title">
+<div class="article_meta">
+  <p>Posted <time data-timeago datetime="2013-02-27T21:39:00+01:00">mié 27 febrero 2013</time>
+   by Chema Cortés  </p>
+  <p>
+  Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+</div>  <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2013/02/27/dobleces-en-python/" class="nohover">Dobleces en&nbsp;python</a></h1>
   </div>
   <div class="article_meta">
@@ -102,7 +107,6 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
 <span class="n">listar</span><span class="p">(</span><span class="n">lineas</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Resumen: se define una función para imprimir en pantalla la lista de líneas leídas de un fichero, precedidas con el número de caracteres que tiene la&nbsp;línea.</p>
 <p>Quien tenga algo de experiencia con python seguramente vea raro este código, incluso lo califique como <em>&#8220;poco pythónico&#8221;</em>. Nombrar a la función <code>listar</code>, como verbo, es señal de que el programador proviene de un lenguaje de <em>programación imperativo</em>. El programador ha buscado en python las mismas estructuras de control que tenía en su lenguaje de origen y sólo ha encontrado familiar la estructura <code>while</code>.</p>
 <p>Rebuscando un poco más, tal vez encuentre cómo se usan los bucles <code>for</code> en&nbsp;python:</p>
@@ -117,7 +121,6 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
         <span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot; 5d&quot;</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Un bucle <code>for</code> se caracteriza por concentrar en una sentencia todo el control del bucle, una gran ayuda visual para quien vaya a leer este código. La variable de control solo se modifica en la sentencia <code>for</code>, lo que evita&nbsp;errores.</p>
 <p>Analizando más detenidamente, el bucle <code>for</code> itera sobre una secuencia de enteros dada por <code>range(0,num)</code>, de donde se sacan los índices con los que acceder a cada elemento de la lista <code>args</code>. Ésta sería la visión clásica de cómo operar con <code>arrays</code>.</p>
 <p>Pero esta visión ha evolucionado con el tiempo hasta llegar al concepto de <em>&#8220;Colección&#8221;</em> que ya poseen casi todos los lenguajes, bien en su sintaxis, bien como librería estándar. Una <em>&#8220;Colección&#8221;</em> consiste en un grupo de objetos sobre los que puede iterar. <code>range(0,num)</code> sería una colección ordenada de números. El siguiente paso a dar sería iterar directamente sobre la&nbsp;lista:</p>
@@ -128,7 +131,6 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
         <span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot; 5d&quot;</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Con este código hemos conseguido un doble objetivo, mejorar la legibilidad y darle más robustez al despreocuparnos por los índices de acceso. Los índices de acceso fuera de límites suelen ser origen de multitud de&nbsp;errores.</p>
 <p>Pero tenemos algo más: al no usar índices hemos generalizado el uso de la función por cualquier secuencia, generador o <a href="http://docs.python.org/3/library/stdtypes.html#iterator-types" title="Tipo iterador">iterador</a>. Concretamente, los objetos <code>files</code> cumplen con el protocolo iterador, por lo que sería posible pasarlo directamente a esta función sin necesidad de volcar todas las líneas del fichero a una&nbsp;lista:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -142,7 +144,6 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
 <span class="n">listar</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fichero.txt&quot;</span><span class="p">))</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Con este último doblez hemos ganado concisión. Pero sobre hemos ahorrado recursos ya que no necesitamos leer todo el fichero en memoria. La lectura del fichero se hará progresivamente en el momento que se solicite la siguiente línea, por lo que este código debería funcionar incluso con ficheros enormes, independiente de la cantidad de memoria disponible. Sólo se empleará la memoria suficiente para cachear una pocas líneas para ir renovándolas a medida que se prosiga la lectura del&nbsp;fichero.</p>
 <p>Es un buen momento para comparar esta versión del código con la original de la que hemos&nbsp;partido.</p>
 <h2>Programación&nbsp;Funcional</h2>
@@ -173,7 +174,6 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>La función <code>listar</code> ha pasado a ser el iterador <code>lineas</code> que retorna las líneas ya formateadas. Asimismo, se ha cambiado la función <code>format</code> por el método <code>format</code> de los <code>strings</code> con el que se pueden formatear mejor varios valores a la vez. La impresión de las líneas en pantalla se deja para el último momento, cuando se necesita ver el resultado. Es en este momento cuando se decide cuántas líneas se van a imprimir, que es lo que hace el <code>islice</code> acortando el iterador <code>lineas</code> a 5 iteraciones. También se usa el iterador <code>enumerate</code> para ir enumerando las líneas a medida que las&nbsp;obtenemos.</p>
 <p>Como se ve, una orientación funcional permite encadenar varias operaciones sin necesidad de mantener estados intermedios<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. Además de lo que supone de ahorro de recursos, no tener que mantener un contexto con los estados intermedios hará más sencillo migrar la ejecución de un proceso a otro en programación concurrente (eg: <em>multihilo</em>). Hoy en día, tal como evolucionan los ordenadores, quien no programe pensando en la ejecución concurrente terminará programando dos&nbsp;veces.</p>
 <div class="footnote">
@@ -189,7 +189,7 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
 </div>
   </div>
   <hr>
-  
+
   <ul class="pager">
           <li class="previous">
                <a href="https://blog.ch3m4.org/2013/02/21/collage-vs-origami/" title="Anterior">
@@ -221,20 +221,23 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
 
    </ul>
 
-    
+
   <div id="article_comments">
     <div id="disqus_thread">
     </div>
   </div>
 
+  <script id="dsq-count-scr" src="https://hyperreals.disqus.com/count.js" async></script>
   <script type="text/javascript">
-    var disqus_identifier = "2013/02/27/dobleces-en-python/";
-    loadDisqus = function() {
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//hyperreals.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    var disqus_config = function () {
+        this.page.identifier = "2013/02/27/dobleces-en-python/";
+        this.page.title = "Dobleces en&nbsp;python";
+    };
+    loadDisqus = function(sitename) {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hyperreals.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
     };
     loadDisqus();
   </script>
@@ -247,10 +250,7 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
   </main>
 
   <script type="text/javascript">
-    window.addEventListener('load', function(){
-    if (window.location.pathname != '/' && window.location.pathname != '/index.html'){
-      window.scroll(0, document.getElementById('main').offsetTop);
-    }})
+    window.addEventListener('load', skipHeader)
   </script>
 
 

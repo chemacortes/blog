@@ -107,6 +107,7 @@ PLUGINS = [
     "render_math",
     "sitemap",
     "neighbors",
+    'liquid_tags',
     'liquid_tags.img',
     'liquid_tags.audio',
     'liquid_tags.video',

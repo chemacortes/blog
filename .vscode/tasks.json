@@ -5,14 +5,26 @@
   "tasks": [
     {
       "label": "new article",
+      "detail": "Creación de un artículo para blog.ch3m4.org",
       "type": "process",
       "command": "${config:python.pythonPath}",
       "args": [
         "${workspaceFolder}/scripts/new_article.py",
         "${input:title}",
-        "${input:category}"
+        "${input:category}",
       ],
-      "problemMatcher": []
+      "problemMatcher": {
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern":{
+          "regexp": "^(.*) '([^']*)'.*$",
+          "kind": "file",
+          "message": 1,
+          "file": 2,
+        },
+        "severity": "info"
+      }
+
+
     }
   ],
   "inputs": [

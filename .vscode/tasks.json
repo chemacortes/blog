@@ -1,0 +1,42 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "new article",
+      "type": "process",
+      "command": "${config:python.pythonPath}",
+      "args": [
+        "${workspaceFolder}/scripts/new_article.py",
+        "${input:title}",
+        "${input:category}"
+      ],
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "title",
+      "type": "promptString",
+      "description": "Título del artículo para el blog",
+      "default": "Artículo"
+    },
+    {
+      "id": "category",
+      "type": "pickString",
+      "default": "Pensamientos",
+      "description": "Categoría para el artículo",
+      "options": [
+        "Ciencia",
+        "Coconut",
+        "Desarrollo",
+        "Matemáticas",
+        "Pensamientos",
+        "Python",
+        "Scala",
+        "Técnicas"
+      ]
+    }
+  ]
+}

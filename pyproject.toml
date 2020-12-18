@@ -20,6 +20,7 @@ Jinja2 = "^2.11.2"
 [tool.poetry.dev-dependencies]
 pylama = "^7.7.1"
 black = {version = "^20.8b1", allow-prereleases = true}
+python-slugify = "^4.0.1"
 
 
 [build-system]

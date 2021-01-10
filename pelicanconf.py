@@ -114,6 +114,7 @@ PLUGINS = [
     'liquid_tags.youtube',
     'liquid_tags.vimeo',
     'liquid_tags.include_code',
+    'plantuml'
 ]
 # DIRECT_TEMPLATES = ('index', 'tags', 'categories','archives')
 

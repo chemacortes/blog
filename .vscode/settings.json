@@ -11,4 +11,6 @@
   "lpubsppop01.autoTimeStamp.birthTimeStart": "[dD]ate *:",
   "lpubsppop01.autoTimeStamp.modifiedTimeStart": "[mM]odified *:",
   "lpubsppop01.autoTimeStamp.momentFormat": " YYYY-MM-DD HH:mm:ss",
+  "python.linting.mypyEnabled": false,
+  "python.formatting.provider": "black",
 }

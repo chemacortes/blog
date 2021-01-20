@@ -1,16 +1,17 @@
 {
-  "python.linting.flake8Enabled": false,
-  "python.linting.pylamaEnabled": true,
-  "python.linting.enabled": true,
-  "nixEnvSelector.nixShellConfig": "NOT_MODIFIED_ENV",
-  "python.pythonPath": ".venv/bin/python3.8",
   "[markdown]": {
-    "editor.wordWrap": "on",
-    "editor.quickSuggestions": false
+    "editor.quickSuggestions": false,
+    "editor.wordWrap": "on"
   },
+  "git.detectSubmodules": false,
   "lpubsppop01.autoTimeStamp.birthTimeStart": "[dD]ate *:",
   "lpubsppop01.autoTimeStamp.modifiedTimeStart": "[mM]odified *:",
   "lpubsppop01.autoTimeStamp.momentFormat": " YYYY-MM-DD HH:mm:ss",
-  "python.linting.mypyEnabled": false,
+  "nixEnvSelector.nixShellConfig": "NOT_MODIFIED_ENV",
   "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": false,
+  "python.linting.mypyEnabled": false,
+  "python.linting.pylamaEnabled": true,
+  "python.pythonPath": ".venv/bin/python3.8"
 }

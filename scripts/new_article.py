@@ -15,7 +15,7 @@ def new_article(title: str, category: str) -> None:
     year: str = str(now.year)
     prefix: str = now.strftime("%Y-%m-%d")
     slug = slugify(sys.argv[1])
-    article = Path(".") / "content" / year / f"{prefix}-{slug}.md"
+    article = Path.cwd() / "content" / year / f"{prefix}-{slug}.md"
 
     if article.exists():
         print(f"### ERROR: artículo '{article}' ya existe")

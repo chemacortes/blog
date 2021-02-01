@@ -1,5 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/all.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-01-10T20:03:45+01:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Manejo de rutas con pathlib</title><link href="https://blog.ch3m4.org/2019/09/28/manejo-de-rutas-pathlib/" rel="alternate"></link><published>2019-09-28T17:53:57+02:00</published><updated>2019-09-28T17:56:08+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2019-09-28:/2019/09/28/manejo-de-rutas-pathlib/</id><summary type="html">&lt;p&gt;Es difícil escribir un script de python que no interaccione con el sistema de ficheros de un modo u otro, por lo que python dispone de varios módulos para tal fin. El objeto &lt;code&gt;Path&lt;/code&gt; viene a poner orden entre tantos módulos y funciones para manejo de ficheros. Se puede decir sin duda que usar &lt;code&gt;Path&lt;/code&gt; se ha convertido en la forma más &lt;em&gt;pythónica&lt;/em&gt; de manipular ficheros y&amp;nbsp;directorios.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Es difícil escribir un script de python que no interaccione con el sistema de ficheros de un modo u otro, por lo que python dispone de varios módulos para tal fin: &lt;code&gt;os&lt;/code&gt;, &lt;code&gt;os.path&lt;/code&gt; (&lt;em&gt;submódulo de os&lt;/em&gt;), &lt;code&gt;shutil&lt;/code&gt;, &lt;code&gt;stats&lt;/code&gt;, &lt;code&gt;glob&lt;/code&gt;,&amp;#8230;En la intención estaba ser multiplataforma, lo que ha sido fuente de muchos mayores quebraderos de cabeza con las distintas codificaciones de caracteres y distintas formas de expresar rutas de ficheros que&amp;nbsp;existen.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/all.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-02-01T21:00:00+01:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Reorientando el blog</title><link href="https://blog.ch3m4.org/2021/02/01/reorientando-el-blog/" rel="alternate"></link><published>2021-02-01T21:00:00+01:00</published><updated>2021-02-01T20:54:25+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-01:/2021/02/01/reorientando-el-blog/</id><summary type="html">&lt;p&gt;Sobre este blog, lo último que he estado investigando y a hacia dónde pienso que irá la&amp;nbsp;programación.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introducción&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Año 2020&lt;/strong&gt; Un año en el que parece que han pasado muchas cosas, pero que en
+realidad no han pasado tantas cosas. Todo se quedó suspendido en espera de
+mejores&amp;nbsp;tiempos.&lt;/p&gt;
+&lt;p&gt;He aprovechado este año para descubrir algunos lenguajes de programación y
+tecnologías que, en mi opinión, han de crecer mucho en los próximos años.
+También me ha dado tiempo de reflexionar del modo en que se está programando
+actualmente y convencerme de lo imposible que es que se cambien algunas&amp;nbsp;cosas.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;La programación ha sucumbido al &lt;em&gt;formalismo&lt;/em&gt;&lt;/strong&gt;. Grupos de trabajo
+interdisciplinares se basan en el tradicional modo imperativo de programar, via
+común para compartir conocimientos y proponer nuevas ideas. Las ideas
+&lt;em&gt;funcionales&lt;/em&gt; no tienen cabida y se ven exóticas, incluso contraproducentes para
+espíritu colaborativo. Las optimizaciones se centran en mejorar la ejecución de
+un programa y ningún esfuerzo se emplea en su correcta formulación matemática.
+Como consecuencia, los errores son imprevisibles y difíciles de corregir, algo
+que se asume como normal, sin ningún fundamento matemático que guíe el&amp;nbsp;desarrollo.&lt;/p&gt;
+&lt;p&gt;Las reflexiones que pongo a continuación solo buscan crear algo de curiosidad en
+el lector. Ya no busco convencer a nadie. Dentro de lo posible, ampliaré estos
+temas en próximas entradas en el blog, aunque serán casi más pensamientos
+fugaces que artículos&amp;nbsp;completos.&lt;/p&gt;
+&lt;h2&gt;Principios&lt;/h2&gt;
+&lt;p&gt;Aunque suene a &lt;em&gt;perogrullo&lt;/em&gt;, cuando se produce un fallo en una aplicación es
+casi siempre por una condición que no se tuvo en cuenta. Se tratan de
+excepciones que no son interceptadas, alguna entrada inesperada para la que no
+se escribió un tratamiento, etc, etc. En entornos multitareas, se suma la poca
+previsión que se tiene para compartir recursos entre tareas, faltando capacidad
+para ver la historia completa de la interacción de todas las&amp;nbsp;tareas.&lt;/p&gt;
+&lt;p&gt;Es muy dificil escribir un programa que no falle. Pero sí que se pueden seguir
+pautas que ayuden a minimizar el impacto, sobre todo que ayuden a prever desde
+el primer momento los posibles fallos. Los compiladores son cada vez más
+inteligentes y los entornos de desarrollo ofrecen al instante ayudas para
+corregir posibles fallos en el&amp;nbsp;código.&lt;/p&gt;
+&lt;p&gt;De mi experiencia personal con varios lenguajes de programación, creo que hay
+algunas características que debe tener un lenguaje de programación para evitar
+errores. No son exactamente características que hagan más fácil la programación,
+por lo que costará que un programador las tenga en cuenta. Algunas requierán
+tener bastante disciplina; en cambio otras implica tener que cambiar de lenguaje
+de&amp;nbsp;programación.&lt;/p&gt;
+&lt;h3&gt;Tipado de&amp;nbsp;datos&lt;/h3&gt;
+&lt;p&gt;Es muy pesado expresar siempre el tipo de dato de todos y cada uno de los
+objetos que usamos en un código. Hay veces que incluso no conocemos qué tipos
+van a tener hasta el momento de ejecutar el&amp;nbsp;código.&lt;/p&gt;
+&lt;p&gt;En general, tenemos dos&amp;nbsp;estrategias:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tipado estricto: donde se indica explícitamente el tipo de todos los&amp;nbsp;objetos&lt;/li&gt;
+&lt;li&gt;Tipado gradual: donde se indica el tipo de algunos objetos como&amp;nbsp;anotación&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Hoy en día, algunos lenguajes con tipado estricto (eg: scala) poseen &lt;em&gt;inferencia
+de tipos&lt;/em&gt;, o lo que es lo mismo, son capaces de determinar el tipo de dato a
+partir del contexto, lo que hace más cómodo programar con&amp;nbsp;ellos.&lt;/p&gt;
+&lt;p&gt;Para lenguajes de tipado gradual (eg: python), también existen herramientas de
+desarrollo capaces de inferir el tipo de dato, mostrando opciones para hacerlo&amp;nbsp;explícito.&lt;/p&gt;
+&lt;p&gt;La sensación es que ambas estrategias tienden a coincidir, requiriendo
+únicamente expresar aquellos tipos que sean más importantes o que pueden influir
+significativamente en el resto del&amp;nbsp;programa.&lt;/p&gt;
+&lt;p&gt;Sin embargo, hay una gran ventaja al contar con un sistema de tipos estrictos:
+los &lt;a href="https://en.wikipedia.org/wiki/Algebraic_data_type"&gt;&lt;em&gt;tipos algebraicos&lt;/em&gt;&lt;/a&gt;. Normalmente, los cambios de estado requieren de
+una programación meticulosa para no dejar ningún caso sin cubrir, siendo
+complicados de mantener sin cometer errores. Con los tipos algebraicos se puede
+modelizar la lógica existente en los cambios de estado, asegurando que no queda
+ningún caso sin&amp;nbsp;cubrir.&lt;/p&gt;
+&lt;h3&gt;Programación&amp;nbsp;funcional&lt;/h3&gt;
+&lt;p&gt;He hablado bastante en este blog sobre mi predilección por la &lt;em&gt;programación
+funcional&lt;/em&gt;. Podemos destacar algunas características como el uso para todo de la
+recursividad, no tener variables, todo es inmutable sin efectos colaterales,
+etc. Pero si hay una cosa que la define sobre todas las demás es la capacidad
+para retrasar la evaluación y las excepciones hasta el momento que sea&amp;nbsp;necesario.&lt;/p&gt;
+&lt;p&gt;La capacidad de &lt;em&gt;diferir&lt;/em&gt;, además de ahorrar en cálculos innecesarios, permite
+realizar un mejor seguimiento paso a paso de un código, lo que mejora nuestra
+capacidad de comprender y razonar sobre su&amp;nbsp;funcionamiento.&lt;/p&gt;
+&lt;h3&gt;Concurrencia&lt;/h3&gt;
+&lt;p&gt;Hay muchos mitos alrededor de la concurrencia. El más común es pensar que puedes
+programar igual si hay un hilo de ejecución como si hay muchos. También está el
+que confunde paralelizar la ejecución con paralelizar los datos. Como se suele
+decir, no existe &lt;em&gt;una bala de plata&lt;/em&gt; que sirva para todos los casos. En
+concurrencia, cada problema tiene una solución&amp;nbsp;distinta.&lt;/p&gt;
+&lt;p&gt;Necesitamos poder &lt;em&gt;razonar&lt;/em&gt; sobre el funcionamiento de un código en
+concurrencia, algo muy dífícil si no usas programación&amp;nbsp;funcional.&lt;/p&gt;
+&lt;p&gt;Hay muchos lenguajes que aseguran ser los mejores para programación en
+concurrencia. En mi opinión, ninguno es capaz de dar una solución, aunque
+algunos se aproximan más que otros. Intentaré dar algunas comparativas en
+próximos&amp;nbsp;artículos.&lt;/p&gt;
+&lt;h2&gt;Lenguajes&lt;/h2&gt;
+&lt;h3&gt;Python&lt;/h3&gt;
+&lt;p&gt;Hoy en día, python se ha hecho popular entre iniciados a la programación y
+programadores científicos. Se puede llegar a decir que &lt;strong&gt;&lt;em&gt;&amp;#8220;no has entendido un
+código si no lo puedes explicar con python&amp;#8221;&lt;/em&gt;&lt;/strong&gt;. Es por ello que intentaré
+expresar algunos conceptos en python, a pesar de sus limitaciones para algunas
+tareas. Servirá de comparación con el modo que usan otros lenguajes para ofrecer
+algunas&amp;nbsp;soluciones.&lt;/p&gt;
+&lt;p&gt;De todos modos, me dicen mucho que mi código python no parece código python. En
+realidad, no hago más que aplicar el conocido como &lt;em&gt;&amp;#8220;estilo pythónico&amp;#8221;&lt;/em&gt; y que
+ayuda a crear código más simple y mantenible. Lamentablemente, hay muchos
+programadores python que desconocen toda la potencia que tiene el lenguaje y
+algunos módulos de su librería estándar que simplifican mucho algunas&amp;nbsp;tareas.&lt;/p&gt;
+&lt;h3&gt;Haskellers&lt;/h3&gt;
+&lt;p&gt;Bajo la denominación de &lt;em&gt;&amp;#8220;haskeller&amp;#8221;&lt;/em&gt; me refiero a varios lenguajes basado en
+haskell y su&amp;nbsp;ecosistema.&lt;/p&gt;
+&lt;p&gt;El lenguaje &lt;a href="https://elm-lang.org/"&gt;Elm&lt;/a&gt; surge como &lt;em&gt;framework&lt;/em&gt; para crear aplicaciones webs cliente
+que corran en el navegador (javascript). Su modelo de funcionamiento, llamado
+&lt;strong&gt;&lt;span class="caps"&gt;TEA&lt;/span&gt;&lt;/strong&gt; por &lt;em&gt;&amp;#8220;The Elm Architecture&amp;#8221;&lt;/em&gt;, simplifica la creación de webs dinámicas,
+desacoplando la lógica de la visualización, minimizando la posibilidad de
+cometer&amp;nbsp;errores.&lt;/p&gt;
+&lt;p&gt;Elm es uno de los descubrimientos de este año. Es divertido crear aplicaciones
+con este lenguaje y realmente ayuda a cometer muchos menos errores. Lo único
+malo son &lt;a href="https://lukeplant.me.uk/blog/posts/why-im-leaving-elm/"&gt;algunas dudas&lt;/a&gt; sobre las decisiones que están tomando sus
+diseñadores sobre su futuro, algo que no ayuda mucho para su adopción en
+sistemas en&amp;nbsp;producción.&lt;/p&gt;
+&lt;p&gt;Aún así, Elm es un referente que recomiendo y del que se están inspirando muchos
+frameworks para otros&amp;nbsp;lenguajes.&lt;/p&gt;
+&lt;p&gt;Una alternativa directa a elm sería &lt;a href="https://www.purescript.org/"&gt;purescript&lt;/a&gt;, considerado como el &lt;em&gt;haskell
+para javascript&lt;/em&gt;. Tiene varios frameworks web, algunos inspirados en la
+arquitectura elm. No obstante, la curva de aprendizaje es algo mayor, sin
+conseguir la misma&amp;nbsp;funcionalidad.&lt;/p&gt;
+&lt;p&gt;Otra sorpresa ha sido el framework &lt;a href="https://ihp.digitallyinduced.com/"&gt;&lt;span class="caps"&gt;IHP&lt;/span&gt;&lt;/a&gt;, un &lt;span class="caps"&gt;MVC&lt;/span&gt; programado en haskell. Posee
+un interface administrativo, muy similar al de django, desde el que se puede
+gestionar la base de datos, así como generar código haskell para los distintos
+elementos. Su gestión de dependencias se hace a través de &lt;a href="https://nixos.org/"&gt;nix&lt;/a&gt;, lo que
+garantiza la reproducibilidad y los despliegues&amp;nbsp;seguros.&lt;/p&gt;
+&lt;p&gt;A partir de una serie de artículos sobre la &lt;a href="https://driftercode.com/blog/ihp-with-elm-series/"&gt;creación widgets en elm para
+&lt;span class="caps"&gt;IHP&lt;/span&gt;&lt;/a&gt;, se pueden considerar el dúo &lt;span class="caps"&gt;IHP&lt;/span&gt;/elm como el entorno fullstack ideal
+para programadores&amp;nbsp;haskell.&lt;/p&gt;
+&lt;h3&gt;Elixir&lt;/h3&gt;
+&lt;p&gt;Dentro de las opciones funcionales, también he mirado algo de &lt;a href="https://elixir-lang.org/"&gt;elixir&lt;/a&gt; y su
+framework &lt;a href="https://www.phoenixframework.org/"&gt;phoenix&lt;/a&gt;. Tienen fama de soportar grandes cargas de trabajo y
+seguir ofreciendo alta disponibilidad, aunque estoy convencido que hay
+soluciones similares en otros lenguajes (eg: go). De momento, lo tengo&amp;nbsp;aparcado.&lt;/p&gt;
+&lt;h3&gt;Otros&amp;nbsp;lenguajes&lt;/h3&gt;
+&lt;p&gt;No me olvido de lenguajes como scala o coconut, de los que he hablado mucho en
+este blog. En el caso de scala está a punto de salir la versión 3, cuyo
+compilador se conoce como &lt;em&gt;dotty&lt;/em&gt; y que será un gran avance para este&amp;nbsp;lenguaje.&lt;/p&gt;
+&lt;p&gt;Rust también tiene bastante interés. Su &lt;em&gt;toolchain&lt;/em&gt; para &lt;em&gt;webassembly&lt;/em&gt; (&lt;em&gt;wasm&lt;/em&gt;)
+lo posiciona como el lenguaje para programar componentes web nativos (no
+javascript). Sería posible crear &lt;em&gt;frontend&lt;/em&gt; en el navegador programados con elm
+para manejar el entorno gráfico (árbol &lt;span class="caps"&gt;DOM&lt;/span&gt;) y usar rust/wasm para los módulos
+que requieran cálculo intensivo. De rust también es interesante su sistema de
+&lt;em&gt;préstamo&lt;/em&gt; de variables que evitar errores al compartir variables en
+concurrencia y que hace innecesario un recolector de&amp;nbsp;basura.&lt;/p&gt;
+&lt;p&gt;Otro lenguaje que he retomado es racket. Es un lenguaje funcional tipo lisp o
+scheme. Lo que lo diferencia es que se puede usar para crear nuevos lenguajes.
+Es lo que se conoce por &lt;em&gt;&amp;#8220;Programación orientada al lenguaje&amp;#8221;&lt;/em&gt; (&lt;span class="caps"&gt;LOP&lt;/span&gt; -
+Language-oriented Programming). La idea es crear un lenguaje próximo al usuario
+con el que pueda describir los requisitos que ha de tener una aplicación y que
+podamos usar como &lt;em&gt;&amp;#8220;contrato&amp;#8221;&lt;/em&gt; de lo que tiene que hacer una&amp;nbsp;aplicación.&lt;/p&gt;
+&lt;p&gt;Existe algo similar ofrecido por Jetbrain, el &lt;a href="https://www.jetbrains.com/mps/"&gt;&lt;span class="caps"&gt;MPS&lt;/span&gt;&lt;/a&gt;. Está mejor documentado y
+el entorno &lt;span class="caps"&gt;IDE&lt;/span&gt; es inmejorable. Seguramente empiece por&amp;nbsp;él.&lt;/p&gt;
+&lt;p&gt;También habrá espacio para la &lt;em&gt;metaprogramación&lt;/em&gt;. Lo pongo casi al final puesto
+que será el tema del próximo artículo, que no tardará&amp;nbsp;mucho.&lt;/p&gt;
+&lt;h3&gt;Tiddlywiki&lt;/h3&gt;
+&lt;p&gt;Por último, otra de las locuras en las que estoy metido es en la programación de
+entornos de desarrollo para &lt;a href="https://tiddlywiki.com/"&gt;tiddlywiki&lt;/a&gt;. Lo normal en tiddlywiki es tener un
+fichero html que incluye todo el código javascript junto con los contenidos
+(&lt;em&gt;tiddlers&lt;/em&gt;). Pero también se puede tener un entorno node de trabajo que permite
+realizar algunas tareas y lanzar algunos&amp;nbsp;scripts.&lt;/p&gt;</content><category term="Pensamientos"></category><category term="functional-programming"></category><category term="python"></category><category term="algebraic-data-type"></category><category term="haskell"></category><category term="elm"></category><category term="ihp"></category><category term="nix"></category><category term="purescript"></category><category term="elixir"></category><category term="phoenix"></category><category term="go"></category><category term="racket"></category><category term="lop"></category><category term="mps"></category><category term="tiddlywiki"></category><category term="metaprogramming"></category></entry><entry><title>Manejo de rutas con pathlib</title><link href="https://blog.ch3m4.org/2019/09/28/manejo-de-rutas-pathlib/" rel="alternate"></link><published>2019-09-28T17:53:57+02:00</published><updated>2019-09-28T17:56:08+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2019-09-28:/2019/09/28/manejo-de-rutas-pathlib/</id><summary type="html">&lt;p&gt;Es difícil escribir un script de python que no interaccione con el sistema de ficheros de un modo u otro, por lo que python dispone de varios módulos para tal fin. El objeto &lt;code&gt;Path&lt;/code&gt; viene a poner orden entre tantos módulos y funciones para manejo de ficheros. Se puede decir sin duda que usar &lt;code&gt;Path&lt;/code&gt; se ha convertido en la forma más &lt;em&gt;pythónica&lt;/em&gt; de manipular ficheros y&amp;nbsp;directorios.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Es difícil escribir un script de python que no interaccione con el sistema de ficheros de un modo u otro, por lo que python dispone de varios módulos para tal fin: &lt;code&gt;os&lt;/code&gt;, &lt;code&gt;os.path&lt;/code&gt; (&lt;em&gt;submódulo de os&lt;/em&gt;), &lt;code&gt;shutil&lt;/code&gt;, &lt;code&gt;stats&lt;/code&gt;, &lt;code&gt;glob&lt;/code&gt;,&amp;#8230;En la intención estaba ser multiplataforma, lo que ha sido fuente de muchos mayores quebraderos de cabeza con las distintas codificaciones de caracteres y distintas formas de expresar rutas de ficheros que&amp;nbsp;existen.&lt;/p&gt;
 &lt;p&gt;El objeto &lt;code&gt;Path&lt;/code&gt; viene a poner orden entre tantos módulos y funciones para manejo de ficheros. La librería estándar se ha reescrito para aceptar estos objetos &lt;code&gt;Path&lt;/code&gt;. Se puede decir sin duda que usar &lt;code&gt;Path&lt;/code&gt; se ha convertido en la forma más &lt;em&gt;pythónica&lt;/em&gt; de manipular ficheros y&amp;nbsp;directorios.&lt;/p&gt;
 &lt;p&gt;Empecemos por un ejemplo traído de la &lt;a href="https://docs.python.org/3.7/library/pathlib.html" title="Documentación del módulo pathlib"&gt;documentación oficial&lt;/a&gt;:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
@@ -2434,180 +2587,4 @@ Quit the server with CONTROL-C.
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ python -c &lt;span class="s2"&gt;&amp;quot;import sys,codecs;codecs.EncodedFile(sys.stdout,&amp;#39;utf-16&amp;#39;,&amp;#39;utf-8-sig&amp;#39;).writelines(sys.stdin)&amp;quot;&lt;/span&gt; &amp;lt;fichero_entrada.txt &amp;gt;fichero_salida.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Hay que tener en cuenta que el comando &lt;code&gt;iconv&lt;/code&gt;, normalmente usado para convertir codificaciones de ficheros, no tiene en consideración el &lt;abbr title="Marca de orden de bytes"&gt;&lt;span class="caps"&gt;BOM&lt;/span&gt;&lt;/abbr&gt;. Con python tenemos una solución&amp;nbsp;perfecta.&lt;/p&gt;</content><category term="Python"></category><category term="code"></category><category term="unicode"></category></entry><entry><title>Descriptores - Parte 3</title><link href="https://blog.ch3m4.org/2012/06/05/descriptores-parte-3/" rel="alternate"></link><published>2012-06-05T00:37:00+02:00</published><updated>2012-06-05T00:37:00+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2012-06-05:/2012/06/05/descriptores-parte-3/</id><summary type="html">&lt;p&gt;Hasta ahora hemos visto cómo funcionan los &lt;em&gt;descriptores&lt;/em&gt; para acceder a atributos de datos que funcionan como &lt;em&gt;&amp;#8220;propiedades&amp;#8221;&lt;/em&gt; (&lt;code&gt;property&lt;/code&gt;). Pero al iniciar esta serie de artículos dije que los &lt;em&gt;descriptores&lt;/em&gt; son también &lt;em&gt;&amp;#8220;los responsables del funcionamiento de  métodos, métodos estáticos, métodos de clase y del mecanismo &lt;code&gt;super()&lt;/code&gt; responsable de la …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;Hasta ahora hemos visto cómo funcionan los &lt;em&gt;descriptores&lt;/em&gt; para acceder a atributos de datos que funcionan como &lt;em&gt;&amp;#8220;propiedades&amp;#8221;&lt;/em&gt; (&lt;code&gt;property&lt;/code&gt;). Pero al iniciar esta serie de artículos dije que los &lt;em&gt;descriptores&lt;/em&gt; son también &lt;em&gt;&amp;#8220;los responsables del funcionamiento de  métodos, métodos estáticos, métodos de clase y del mecanismo &lt;code&gt;super()&lt;/code&gt; responsable de la herencia múltiple&amp;#8221;&lt;/em&gt;.  Es el momento de ver cómo lo&amp;nbsp;hacen:&lt;/p&gt;
-&lt;h2&gt;Métodos vistos como&amp;nbsp;funciones&lt;/h2&gt;
-&lt;p&gt;Es común pensar que los métodos y las funciones comparten muchas similitudes. Considerando que en python las funciones son &lt;a href="http://en.wikipedia.org/wiki/First-class_object"&gt;objetos de primera clase&lt;/a&gt;  lo primero que podemos probar es a asignar directamente funciones a atributos de una clase para crear métodos &lt;em&gt;dinámicamente&lt;/em&gt;:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;C&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;pass&lt;/span&gt;
-
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;obj is &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt; &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;
-
-&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;func&lt;/span&gt;
-
-&lt;span class="c1"&gt;#prueba del nuevo método&lt;/span&gt;
-&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-
-&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;    &lt;span class="c1"&gt;# cualquiera de...&lt;/span&gt;
-&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;   &lt;span class="c1"&gt;# ...estas invocaciones...&lt;/span&gt;
-&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;       &lt;span class="c1"&gt;# ...dan el mismo resultado&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Esta &lt;em&gt;dualidad&lt;/em&gt; entre funciones y métodos va más allá si observamos que, en realidad, las funciones son &lt;em&gt;&amp;#8220;descriptores&amp;#8221;&lt;/em&gt;, tal como podemos comprobar mirando su&amp;nbsp;diccionario:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;hasattr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;__get__&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="kc"&gt;True&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;hasattr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;__set__&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="kc"&gt;False&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Concretamente, las funciones son &lt;em&gt;&amp;#8220;descriptores de no-datos&amp;#8221;&lt;/em&gt; y como tales se aplicarán las reglas comentadas en artículos previos. En concreto, se buscarán antes los métodos en el diccionario del objeto que entre los atributos de su clase&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;, lo que nos va a permitir suplantar métodos en tiempo de&amp;nbsp;ejecución.&lt;/p&gt;
-&lt;p&gt;Con añadir funciones a los atributos de clase será suficiente para la mayoría de casos que nos podamos enfrentar. El resto de este artículo va orientado para algunos casos de &lt;em&gt;&amp;#8220;técnicas dinámicas&amp;#8221;&lt;/em&gt; que requieren diferenciar el comportamiento de un objeto respecto al resto de las instancias de la misma&amp;nbsp;clase.&lt;/p&gt;
-&lt;h2&gt;Invocación de descriptores y sus&amp;nbsp;enlaces&lt;/h2&gt;
-&lt;p&gt;Hasta ahora no nos habíamos preocupado por el segundo argumento que se pasa al método &lt;code&gt;__get__&lt;/code&gt; en el interface &amp;#8220;descriptor&amp;#8221;, al que se denomina &amp;#8220;propietario&amp;#8221; (&lt;em&gt;&amp;#8220;owner&amp;#8221;&lt;/em&gt;) y que siempre coincide con la clase de la instancia. A través de la instancia o del propietario, &lt;code&gt;__get__&lt;/code&gt; devolverá el atributo enlazado con la instancia y/o clase según sea el comportamiento&amp;nbsp;buscado.&lt;/p&gt;
-&lt;p&gt;Veamos cómo funciona en detalle: supongamos que tenemos una instancia &lt;code&gt;obj&lt;/code&gt; de una clase &lt;code&gt;Cls&lt;/code&gt; y accedemos a través del descriptor &lt;code&gt;desc&lt;/code&gt;. Tendremos las siguientes formas de establecer el&amp;nbsp;enlace:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Llamada directa&lt;/strong&gt;: &lt;code&gt;__get__(obj)&lt;/code&gt; invocación explícita a partir del descriptor. Es la más simple, aunque infrecuente. (pe: &lt;code&gt;desc.__get__(obj)&lt;/code&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Enlace con la Instancia&lt;/strong&gt;: &lt;code&gt;__get__(obj, Cls)&lt;/code&gt; Se usa en el acceso al atributo &lt;code&gt;obj.desc&lt;/code&gt;, donde se efectúa la llamada implícita &lt;code&gt;Cls.__dict__['desc'].__get__(obj, Cls)&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Enlace con la clase&lt;/strong&gt;: &lt;code&gt;__get__(None, Cls)&lt;/code&gt; Se usa en el acceso al atributo &lt;code&gt;Cls.desc&lt;/code&gt;, donde se efectúa la llamada implícita &lt;code&gt;Cls.__dict__['desc'].__get__(None, Cls)&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Enlace con &lt;em&gt;super&lt;/em&gt;&lt;/strong&gt;:  se da con instancias de la clase &lt;code&gt;super&lt;/code&gt; utilizadas en la herencia múltiple. El acceso al atributo &lt;code&gt;super(Cls, obj).desc&lt;/code&gt; inicia una búsqueda en &lt;code&gt;obj.__class__.__mro__&lt;/code&gt; para encontrar la clase base inmediatamente precedente a la clase &lt;code&gt;Cls&lt;/code&gt; (=&lt;code&gt;SuperCls&lt;/code&gt;) e invoca el descriptor con la llamada &lt;code&gt;SuperCls.__dict__['desc'].__get__(obj,  obj.__class__)&lt;/code&gt; con lo que obtenemos el atributo enlazado con una de las clase  padre según el algoritmo &lt;a href="http://cafepy.com/article/python_attributes_and_methods/ch02s04.html" title="Artículo recomendable sobre el algoritmo MRO"&gt;&lt;span class="caps"&gt;MRO&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Como se puede observar, el método &lt;code&gt;__get__&lt;/code&gt; del descriptor recibe diferentes argumentos según el enlace que se vaya a usar, lo que nos permitirá programar el descriptor según el uso que deseemos&amp;nbsp;darle.&lt;/p&gt;
-&lt;h2&gt;Técnicas&amp;nbsp;dinámicas&lt;/h2&gt;
-&lt;p&gt;Para realizar nuestros experimentos, supongamos que tenemos el siguiente&amp;nbsp;descriptor:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;desc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Es una simple función que imprime los argumentos que recibe con el fin de poder analizarlos. Con una clase y una instancia intentaremos ver cómo añadirles métodos&amp;nbsp;dinámicos:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Cls&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;pass&lt;/span&gt;
-
-&lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Cls&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;El caso trivial es añadir el descriptor como atributo de la&amp;nbsp;clase:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4
-5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Cls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;meth&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;desc&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;meth&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;bound&lt;/span&gt; &lt;span class="n"&gt;method&lt;/span&gt; &lt;span class="n"&gt;Cls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;desc&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;__main__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Cls&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x8ffd3ac&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;meth&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;__main__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Cls&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x8ffd3ac&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,)&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Encaja con el funcionamiento estándar de los descriptores, que pasa por establecer primero un enlace del descriptor con la instancia o con la clase para obtener después el método&amp;nbsp;ejecutable.&lt;/p&gt;
-&lt;p&gt;Pero a veces necesitamos añadir métodos sobre la instancia y no sobre la clase. Ésto puede ser debido&amp;nbsp;a:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Sólo queremos modificar una instancia sin que afecte al&amp;nbsp;resto&lt;/li&gt;
-&lt;li&gt;Queremos &lt;em&gt;&amp;#8220;decorar&amp;#8221;&lt;/em&gt; el método de clase a través de un método de la&amp;nbsp;instancia&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Técnicamente, son los llamados &lt;strong&gt;&amp;#8220;métodos singleton&amp;#8221;&lt;/strong&gt; que lenguajes como &lt;a href="http://www.ruby-doc.org/docs/ruby-doc-bundle/UsersGuide/rg/singletonmethods.html" title="Singleton methods in Ruby"&gt;ruby&lt;/a&gt; incluyen en su sintaxis, pero que en python se implementan hackeando los&amp;nbsp;descriptores.&lt;/p&gt;
-&lt;p&gt;Si añadiésemos un descriptor a una instancia sin establer ningún&amp;nbsp;enlace:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4
-5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;meth&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;desc&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;meth&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;meth&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="n"&gt;desc&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0xb76776bc&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Vemos que el funcionamiento es similar a si hubiéramos ejecutado directamente la función. En realidad, actúa como &lt;strong&gt;&amp;#8220;métodos estáticos&amp;#8221;&lt;/strong&gt;, descriptores que no están enlazados con&amp;nbsp;nada.&lt;/p&gt;
-&lt;p&gt;Para conseguir que el descriptor funcione como un método normal, necesitamos enlazarlo con la&amp;nbsp;instancia:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4
-5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;meth&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;desc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__get__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Cls&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;meth&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;__main__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Cls&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0xb767adec&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,)&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;meth&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;bound&lt;/span&gt; &lt;span class="n"&gt;method&lt;/span&gt; &lt;span class="n"&gt;Cls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;desc&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;__main__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Cls&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0xb767adec&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Aquí ya vemos que el método se identifica como un &lt;strong&gt;&amp;#8220;método normal&amp;#8221;&lt;/strong&gt; más de la clase &lt;code&gt;Cls&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;De forma parecida, podríamos enlazar el descriptor con la clase, pero vista como instancia, no como clase, con lo que obtenemos un &lt;strong&gt;&amp;#8220;método de clase&amp;#8221;&lt;/strong&gt;:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;meth&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;desc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__get__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Cls&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Cls&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;meth&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="nc"&gt;__main__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Cls&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;gt;,) &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Hemos visto las opciones posibles para realizar diversas técnicas dinámicas. No es habitual verlas en el código que usamos normalmente. Casi puedo asegurar que si necesitas alguna de estas técnicas, es que te has pasado por alto alguna otra forma más sencilla de hacer lo&amp;nbsp;mismo.&lt;/p&gt;
-&lt;h2&gt;Pequeño&amp;nbsp;truco&lt;/h2&gt;
-&lt;p&gt;Todo lo anteriormente dicho funciona siempre que estemos trabajando con &lt;em&gt;&amp;#8220;descriptores de no-datos&amp;#8221;&lt;/em&gt;. Si deseamos que un método de la clase no sea suplantado por un método en la instancia basta con crearlo como &lt;em&gt;&amp;#8220;descriptor de datos&amp;#8221;&lt;/em&gt;. Lo más sencillo es usar el decorador &lt;code&gt;@property&lt;/code&gt;:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Cls&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt;  &lt;span class="nd"&gt;@property&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt;  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;meth&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt;    &lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Desde clase&amp;quot;&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt; 
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Cls&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;meth&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;desc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__get__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;Cls&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;recent&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-  &lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="ne"&gt;AttributeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;t set attribute&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;h2&gt;Resto de artículos de la&amp;nbsp;serie&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2011/06/24/optimizaciones-con-los-metodos-especiales/"&gt;Optimizaciones con los Métodos&amp;nbsp;Especiales&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2011/06/26/metodo-__getattribute__/"&gt;Método&amp;nbsp;__getattribute__&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2011/06/19/descriptores-parte-1/"&gt;Descriptores – Parte&amp;nbsp;1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2011/06/21/descriptores-parte-2/"&gt;Descriptores – Parte&amp;nbsp;2&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2&gt;Descriptor&amp;nbsp;Howto&lt;/h2&gt;
-&lt;p&gt;Como referencias en la documentación&amp;nbsp;oficial:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="http://docs.python.org/howto/descriptor.html"&gt;Descriptor HowTo&amp;nbsp;Guide&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://docs.python.org/release/3.1.5/reference/datamodel.html#implementing-descriptors"&gt;Implementing&amp;nbsp;Descriptors&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class="footnote"&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li id="fn:1"&gt;
-&lt;p&gt;Este orden no se respeta con los &lt;em&gt;&amp;#8220;métodos especiales&amp;#8221;&lt;/em&gt; y cuando estamos trabajando con &lt;em&gt;&amp;#8220;descriptores de datos&amp;#8221;&lt;/em&gt;. Revisar el resto de artículos sobre descriptores.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</content><category term="Python"></category><category term="descriptor"></category><category term="técnicas dinámicas"></category></entry></feed>
+&lt;p&gt;Hay que tener en cuenta que el comando &lt;code&gt;iconv&lt;/code&gt;, normalmente usado para convertir codificaciones de ficheros, no tiene en consideración el &lt;abbr title="Marca de orden de bytes"&gt;&lt;span class="caps"&gt;BOM&lt;/span&gt;&lt;/abbr&gt;. Con python tenemos una solución&amp;nbsp;perfecta.&lt;/p&gt;</content><category term="Python"></category><category term="code"></category><category term="unicode"></category></entry></feed>

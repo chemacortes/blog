@@ -15,7 +15,7 @@
 
   <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
 
-<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, functional-programming, python, algebraic-data-type, haskell, elm, ihp, nix, purescript, elixir, phoenix, racket, lop, mps, tiddlywiki">
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, functional-programming, python, algebraic-data-type, haskell, elm, ihp, nix, purescript, elixir, phoenix, go, racket, lop, mps, tiddlywiki, metaprogramming">
 
   <title>Reorientando el blog | Hyperreals *R</title>
 
@@ -63,15 +63,15 @@
 
 <article>
 <div class="article_meta">
-  <p>Posted <time data-timeago datetime="2021-02-01T20:30:00+01:00">lun 01 febrero 2021</time>
+  <p>Posted <time data-timeago datetime="2021-02-01T21:00:00+01:00">lun 01 febrero 2021</time>
    by Chema Cortés  </p>
-  <p>Last updated <time data-timeago datetime="2021-02-01T01:10:31+01:00">lun 01 febrero 2021</time></p>
+  <p>Last updated <time data-timeago datetime="2021-02-01T20:54:25+01:00">lun 01 febrero 2021</time></p>
   <p>
   Category: <a href="https://blog.ch3m4.org/category/pensamientos/">Pensamientos</a>
 &ndash;&ndash;  Tags:
-    <a href="https://blog.ch3m4.org/tag/functional-programming/">functional-programming</a>,    <a href="https://blog.ch3m4.org/tag/python/">python</a>,    <a href="https://blog.ch3m4.org/tag/algebraic-data-type/">algebraic-data-type</a>,    <a href="https://blog.ch3m4.org/tag/haskell/">haskell</a>,    <a href="https://blog.ch3m4.org/tag/elm/">elm</a>,    <a href="https://blog.ch3m4.org/tag/ihp/">ihp</a>,    <a href="https://blog.ch3m4.org/tag/nix/">nix</a>,    <a href="https://blog.ch3m4.org/tag/purescript/">purescript</a>,    <a href="https://blog.ch3m4.org/tag/elixir/">elixir</a>,    <a href="https://blog.ch3m4.org/tag/phoenix/">phoenix</a>,    <a href="https://blog.ch3m4.org/tag/racket/">racket</a>,    <a href="https://blog.ch3m4.org/tag/lop/">lop</a>,    <a href="https://blog.ch3m4.org/tag/mps/">mps</a>,    <a href="https://blog.ch3m4.org/tag/tiddlywiki/">tiddlywiki</a>  </p>
+    <a href="https://blog.ch3m4.org/tag/functional-programming/">functional-programming</a>,    <a href="https://blog.ch3m4.org/tag/python/">python</a>,    <a href="https://blog.ch3m4.org/tag/algebraic-data-type/">algebraic-data-type</a>,    <a href="https://blog.ch3m4.org/tag/haskell/">haskell</a>,    <a href="https://blog.ch3m4.org/tag/elm/">elm</a>,    <a href="https://blog.ch3m4.org/tag/ihp/">ihp</a>,    <a href="https://blog.ch3m4.org/tag/nix/">nix</a>,    <a href="https://blog.ch3m4.org/tag/purescript/">purescript</a>,    <a href="https://blog.ch3m4.org/tag/elixir/">elixir</a>,    <a href="https://blog.ch3m4.org/tag/phoenix/">phoenix</a>,    <a href="https://blog.ch3m4.org/tag/go/">go</a>,    <a href="https://blog.ch3m4.org/tag/racket/">racket</a>,    <a href="https://blog.ch3m4.org/tag/lop/">lop</a>,    <a href="https://blog.ch3m4.org/tag/mps/">mps</a>,    <a href="https://blog.ch3m4.org/tag/tiddlywiki/">tiddlywiki</a>,    <a href="https://blog.ch3m4.org/tag/metaprogramming/">metaprogramming</a>  </p>
 </div>  <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/drafts/2021-02-01-reorientando-el-blog.html" class="nohover">Reorientando el&nbsp;blog</a></h1>
+    <h1><a href="https://blog.ch3m4.org/2021/02/01/reorientando-el-blog/" class="nohover">Reorientando el&nbsp;blog</a></h1>
   </div>
   <div class="article_text">
     <h2>Introducción</h2>
@@ -144,6 +144,19 @@ para retrasar la evaluación y las excepciones hasta el momento que sea&nbsp;nec
 <p>La capacidad de <em>diferir</em>, además de ahorrar en cálculos innecesarios, permite
 realizar un mejor seguimiento paso a paso de un código, lo que mejora nuestra
 capacidad de comprender y razonar sobre su&nbsp;funcionamiento.</p>
+<h3>Concurrencia</h3>
+<p>Hay muchos mitos alrededor de la concurrencia. El más común es pensar que puedes
+programar igual si hay un hilo de ejecución como si hay muchos. También está el
+que confunde paralelizar la ejecución con paralelizar los datos. Como se suele
+decir, no existe <em>una bala de plata</em> que sirva para todos los casos. En
+concurrencia, cada problema tiene una solución&nbsp;distinta.</p>
+<p>Necesitamos poder <em>razonar</em> sobre el funcionamiento de un código en
+concurrencia, algo muy dífícil si no usas programación&nbsp;funcional.</p>
+<p>Hay muchos lenguajes que aseguran ser los mejores para programación en
+concurrencia. En mi opinión, ninguno es capaz de dar una solución, aunque
+algunos se aproximan más que otros. Intentaré dar algunas comparativas en
+próximos&nbsp;artículos.</p>
+<h2>Lenguajes</h2>
 <h3>Python</h3>
 <p>Hoy en día, python se ha hecho popular entre iniciados a la programación y
 programadores científicos. Se puede llegar a decir que <strong><em>&#8220;no has entendido un
@@ -156,14 +169,6 @@ realidad, no hago más que aplicar el conocido como <em>&#8220;estilo pythónico
 ayuda a crear código más simple y mantenible. Lamentablemente, hay muchos
 programadores python que desconocen toda la potencia que tiene el lenguaje y
 algunos módulos de su librería estándar que simplifican mucho algunas&nbsp;tareas.</p>
-<h3>Concurrencia</h3>
-<p>Hay muchos mitos alrededor de la concurrencia. El más común es pensar que puedes
-programar igual si hay un hilo de ejecución como si hay muchos. También está el
-que confunde paralelizar la ejecución con paralelizar los datos. Como se suele
-decir, no existe <em>una bala de plata</em> que sirva para todos los casos. En
-concurrencia, cada problema tiene una solución&nbsp;distinta.</p>
-<p>Necesitamos poder <em>razonar</em> sobre el funcionamiento de un código en
-concurrencia, algo muy dífícil si no usas programación&nbsp;funcional.</p>
 <h3>Haskellers</h3>
 <p>Bajo la denominación de <em>&#8220;haskeller&#8221;</em> me refiero a varios lenguajes basado en
 haskell y su&nbsp;ecosistema.</p>
@@ -195,7 +200,7 @@ para programadores&nbsp;haskell.</p>
 <p>Dentro de las opciones funcionales, también he mirado algo de <a href="https://elixir-lang.org/">elixir</a> y su
 framework <a href="https://www.phoenixframework.org/">phoenix</a>. Tienen fama de soportar grandes cargas de trabajo y
 seguir ofreciendo alta disponibilidad, aunque estoy convencido que hay
-soluciones similares en otros lenguajes. De momento, lo tengo&nbsp;aparcado.</p>
+soluciones similares en otros lenguajes (eg: go). De momento, lo tengo&nbsp;aparcado.</p>
 <h3>Otros&nbsp;lenguajes</h3>
 <p>No me olvido de lenguajes como scala o coconut, de los que he hablado mucho en
 este blog. En el caso de scala está a punto de salir la versión 3, cuyo
@@ -213,18 +218,38 @@ Es lo que se conoce por <em>&#8220;Programación orientada al lenguaje&#8221;</e
 Language-oriented Programming). La idea es crear un lenguaje próximo al usuario
 con el que pueda describir los requisitos que ha de tener una aplicación y que
 podamos usar como <em>&#8220;contrato&#8221;</em> de lo que tiene que hacer una&nbsp;aplicación.</p>
-<p>Existe algo similar ofrecido por Jetbrain, el <span class="caps">MPS</span>. Está mejor documentado y el
-entorno <span class="caps">IDE</span> es inmejorable. Seguramente empiece por&nbsp;él.</p>
+<p>Existe algo similar ofrecido por Jetbrain, el <a href="https://www.jetbrains.com/mps/"><span class="caps">MPS</span></a>. Está mejor documentado y
+el entorno <span class="caps">IDE</span> es inmejorable. Seguramente empiece por&nbsp;él.</p>
+<p>También habrá espacio para la <em>metaprogramación</em>. Lo pongo casi al final puesto
+que será el tema del próximo artículo, que no tardará&nbsp;mucho.</p>
 <h3>Tiddlywiki</h3>
 <p>Por último, otra de las locuras en las que estoy metido es en la programación de
-entornos de desarrollo para <a href="https://tiddlywiki.com/">tiddlywiki</a>. Lo normal en tiddlywiki es tener un fichero html que incluye todo el código javascript junto con los contenidos (<em>tiddlers</em>). Pero también se puede tener un entorno node de trabajo que permite realizar algunas tareas y lanzar algunos&nbsp;scripts.</p>
+entornos de desarrollo para <a href="https://tiddlywiki.com/">tiddlywiki</a>. Lo normal en tiddlywiki es tener un
+fichero html que incluye todo el código javascript junto con los contenidos
+(<em>tiddlers</em>). Pero también se puede tener un entorno node de trabajo que permite
+realizar algunas tareas y lanzar algunos&nbsp;scripts.</p>
   </div>
 
 <ul class="pager">
+  <li class="previous">
+    <a href="https://blog.ch3m4.org/2019/09/28/manejo-de-rutas-pathlib/" title="Anterior">
+      <i class="fa fa-arrow-circle-left"></i>
+      Manejo de rutas con&nbsp;pathlib
+    </a>
+  </li>
  </ul>
 With category
 <a href="https://blog.ch3m4.org/category/pensamientos/">Pensamientos</a>:
 <ul class="pager">
+  <li class="previous">
+    <a
+      href="https://blog.ch3m4.org/2018/07/22/reinicio-2018/"
+      title="Anterior en misma categoría"
+    >
+      <i class="fa fa-arrow-circle-o-left"></i>
+      Reinicio&nbsp;2018
+    </a>
+  </li>
  </ul>
 
   <div id="article_comments">
@@ -235,7 +260,7 @@ With category
   <script id="dsq-count-scr" src="https://hyperreals.disqus.com/count.js" async></script>
   <script type="text/javascript">
     var disqus_config = function () {
-        this.page.identifier = "drafts/2021-02-01-reorientando-el-blog.html";
+        this.page.identifier = "2021/02/01/reorientando-el-blog/";
         this.page.title = "Reorientando el&nbsp;blog";
     };
     loadDisqus = function(sitename) {

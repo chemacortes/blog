@@ -7,7 +7,7 @@
   <meta name="author" content="Chema Cortés">
   <meta name="description" content="Codificando en binario | A raiz de la consulta de un colega, me ha llamado la atención el módulo binascii. Este módulo se encarga de la codificación...">
 
-  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ad3d1997.min.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.d3891358.min.css">
 
   <script src="https://blog.ch3m4.org/theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
 
@@ -71,14 +71,6 @@
     <a href="https://blog.ch3m4.org/tag/tip/">tip</a>,    <a href="https://blog.ch3m4.org/tag/unicode/">unicode</a>  </p>
 </div>  <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2012/01/26/condificando-en-binario/" class="nohover">Codificando en&nbsp;binario</a></h1>
-  </div>
-  <div class="article_meta">
-    <p>Posted <time data-timeago datetime="2012-01-26T20:24:00+01:00">jue 26 enero 2012</time>
-     by Chema Cortés    </p>
-    <p>
-    Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
-&ndash;&ndash;    Tags:
-      <a href="https://blog.ch3m4.org/tag/tip/">tip</a>,      <a href="https://blog.ch3m4.org/tag/unicode/">unicode</a>    </p>
   </div>
   <div class="article_text">
     <p>A raiz de la consulta de un colega, me ha llamado la atención el módulo <code>binascii</code>. Este módulo se encarga de la codificación y decodificación de cadenas binarias para su transmisión en mensajes de texto. Lo habitual es que sea usado por otros módulos como <code>uu</code>, <code>base64</code> o <code>binhex</code>, por lo que no es nada frecuente ver su uso directo en una&nbsp;aplicación.</p>
@@ -170,38 +162,35 @@
 <p>Si cambiamos la codificación por &#8216;utf-16&#8217; obtenermos como resultado <code>fffe50006500f3006e0020005f26</code>. Además de ser más larga, vemos que se añade al principio <code>fffe</code>, que es lo que se denomina <abbr title="Byte Order Mark"><span class="caps">BOM</span></abbr>, y que nos indica qué ordenación de bytes se ha usado en la codificación (<code>'FEFF'</code> para <em>Big Endian</em> / <code>'FFFE'</code> para <em>Little Endian</em>). Con <code>fffe</code> nos indica concretamente que se ha usado la codificación &#8216;<span class="caps">UTF</span>-16 Little Endian&#8217;, con lo que tenemos los bytes invertidos para cada caracter codificado (ver más info en el <a href="http://es.wikipedia.org/wiki/Marca_de_orden_de_bytes_(BOM)">artículo sobre <abbr title="Byte Order Mark"><span class="caps">BOM</span></abbr></a> de la&nbsp;wikipedia).</p>
 <p>De no desear que se nos añada la marca <abbr title="Byte Order Mark"><span class="caps">BOM</span></abbr>, podríamos haber forzado la codificación mediante <code>'utf-16be'</code> ó <code>'utf-16le'</code> para <em>Big Endian</em> y <em>Little Endian</em>,&nbsp;respectivamente.</p>
   </div>
-  <hr>
 
   <ul class="pager">
-          <li class="previous">
-               <a href="https://blog.ch3m4.org/2011/12/01/web2py-con-pilas-incluidas/" title="Anterior">
-                    <i class="fa fa-arrow-circle-left"></i>
-                   web2py, con pilas&nbsp;incluidas
-               </a>
-           </li>
-           <li class="next">
-              <a href="https://blog.ch3m4.org/2012/02/07/estudio-funcion-factorial-en-scala-revision-funcional/" title="Siguiente">
-                   Estudio función factorial en scala - Revisión&nbsp;funcional
-                   <i class="fa fa-arrow-circle-right"></i>
-               </a>
-           </li>
-   </ul>
-   With category <a href="https://blog.ch3m4.org/category/python/">Python</a>:
-   <ul class="pager">
-          <li class="previous">
-             <a href="https://blog.ch3m4.org/2011/12/01/web2py-con-pilas-incluidas/" title="Anterior en misma categoría">
-                <i class="fa fa-arrow-circle-o-left"></i>
-                web2py, con pilas&nbsp;incluidas
+        <li class="previous">
+             <a href="https://blog.ch3m4.org/2011/12/01/web2py-con-pilas-incluidas/" title="Anterior">
+                  <i class="fa fa-arrow-circle-left"></i>
+                 web2py, con pilas&nbsp;incluidas
              </a>
-          </li>
-        <li class="next">
-             <a href="https://blog.ch3m4.org/2012/04/04/problemas-con-los-nombres-largos-en-ntfs/" title="Siguiente en misma categoría">
-                 Problemas con los nombres largos en <span class="caps">NTFS</span>
-                 <i class="fa fa-arrow-circle-o-right"></i>
+         </li>
+         <li class="next">
+            <a href="https://blog.ch3m4.org/2012/02/07/estudio-funcion-factorial-en-scala-revision-funcional/" title="Siguiente">
+                 Estudio función factorial en scala - Revisión&nbsp;funcional
+                 <i class="fa fa-arrow-circle-right"></i>
              </a>
+         </li>
+ </ul>
+ With category <a href="https://blog.ch3m4.org/category/python/">Python</a>:
+ <ul class="pager">
+        <li class="previous">
+           <a href="https://blog.ch3m4.org/2011/12/01/web2py-con-pilas-incluidas/" title="Anterior en misma categoría">
+              <i class="fa fa-arrow-circle-o-left"></i>
+              web2py, con pilas&nbsp;incluidas
+           </a>
         </li>
-
-   </ul>
+      <li class="next">
+           <a href="https://blog.ch3m4.org/2012/04/04/problemas-con-los-nombres-largos-en-ntfs/" title="Siguiente en misma categoría">
+               Problemas con los nombres largos en <span class="caps">NTFS</span>
+               <i class="fa fa-arrow-circle-o-right"></i>
+           </a>
+      </li>
 
 
   <div id="article_comments">

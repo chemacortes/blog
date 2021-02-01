@@ -7,7 +7,7 @@
   <meta name="author" content="Chema Cortés">
   <meta name="description" content="Descriptores - Parte 1 | Cuando accedemos a los atributos de un objeto en python, a veces existen unos intermediarios casi imperceptibles llamados...">
 
-  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ad3d1997.min.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.d3891358.min.css">
 
   <script src="https://blog.ch3m4.org/theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
 
@@ -71,14 +71,6 @@
     <a href="https://blog.ch3m4.org/tag/descriptor/">descriptor</a>,    <a href="https://blog.ch3m4.org/tag/tecnicas-dinamicas/">técnicas dinámicas</a>  </p>
 </div>  <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2011/06/19/descriptores-parte-1/" class="nohover">Descriptores - Parte&nbsp;1</a></h1>
-  </div>
-  <div class="article_meta">
-    <p>Posted <time data-timeago datetime="2011-06-19T16:57:00+02:00">dom 19 junio 2011</time>
-     by Chema Cortés    </p>
-    <p>
-    Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
-&ndash;&ndash;    Tags:
-      <a href="https://blog.ch3m4.org/tag/descriptor/">descriptor</a>,      <a href="https://blog.ch3m4.org/tag/tecnicas-dinamicas/">técnicas dinámicas</a>    </p>
   </div>
   <div class="article_text">
     <p>Cuando accedemos a los atributos de un objeto en python, a veces existen unos intermediarios casi imperceptibles llamados <em>&#8220;descriptores&#8221;</em> que son los responsables últimos del funcionamiento de la programación orientada a objetos. Están detrás de <em>propiedades</em>, métodos, métodos estáticos, métodos de clase y del mecanismo <code>super()</code> responsable de la herencia múltiple. Su labor es imprescindible y, sin embargo, son los grandes desconocidos del&nbsp;lenguaje.</p>
@@ -231,38 +223,35 @@
 </td></tr></table>
 <p>Si lo pruebas, verás que no funciona. Cuando se busca un atributo, primero se busca entre los atributos de la clase antes de mirar en el diccionario de la instancia. Este orden de prioridades lo veremos en el próximo artículo cuando veamos el funcionamiento interno de un&nbsp;descriptor.</p>
   </div>
-  <hr>
 
   <ul class="pager">
-          <li class="previous">
-               <a href="https://blog.ch3m4.org/2011/06/06/ultimo-item-de-un-iterable/" title="Anterior">
-                    <i class="fa fa-arrow-circle-left"></i>
-                   Último item de un&nbsp;iterable
-               </a>
-           </li>
-           <li class="next">
-              <a href="https://blog.ch3m4.org/2011/06/21/descriptores-parte-2/" title="Siguiente">
-                   Descriptores - Parte&nbsp;2
-                   <i class="fa fa-arrow-circle-right"></i>
-               </a>
-           </li>
-   </ul>
-   With category <a href="https://blog.ch3m4.org/category/python/">Python</a>:
-   <ul class="pager">
-          <li class="previous">
-             <a href="https://blog.ch3m4.org/2011/06/06/ultimo-item-de-un-iterable/" title="Anterior en misma categoría">
-                <i class="fa fa-arrow-circle-o-left"></i>
-                Último item de un&nbsp;iterable
+        <li class="previous">
+             <a href="https://blog.ch3m4.org/2011/06/06/ultimo-item-de-un-iterable/" title="Anterior">
+                  <i class="fa fa-arrow-circle-left"></i>
+                 Último item de un&nbsp;iterable
              </a>
-          </li>
-        <li class="next">
-             <a href="https://blog.ch3m4.org/2011/06/21/descriptores-parte-2/" title="Siguiente en misma categoría">
+         </li>
+         <li class="next">
+            <a href="https://blog.ch3m4.org/2011/06/21/descriptores-parte-2/" title="Siguiente">
                  Descriptores - Parte&nbsp;2
-                 <i class="fa fa-arrow-circle-o-right"></i>
+                 <i class="fa fa-arrow-circle-right"></i>
              </a>
+         </li>
+ </ul>
+ With category <a href="https://blog.ch3m4.org/category/python/">Python</a>:
+ <ul class="pager">
+        <li class="previous">
+           <a href="https://blog.ch3m4.org/2011/06/06/ultimo-item-de-un-iterable/" title="Anterior en misma categoría">
+              <i class="fa fa-arrow-circle-o-left"></i>
+              Último item de un&nbsp;iterable
+           </a>
         </li>
-
-   </ul>
+      <li class="next">
+           <a href="https://blog.ch3m4.org/2011/06/21/descriptores-parte-2/" title="Siguiente en misma categoría">
+               Descriptores - Parte&nbsp;2
+               <i class="fa fa-arrow-circle-o-right"></i>
+           </a>
+      </li>
 
 
   <div id="article_comments">

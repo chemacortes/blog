@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R - Python</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/python.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2019-09-28T17:56:08+02:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Manejo de rutas con pathlib</title><link href="https://blog.ch3m4.org/2019/09/28/manejo-de-rutas-pathlib/" rel="alternate"></link><published>2019-09-28T17:53:57+02:00</published><updated>2019-09-28T17:56:08+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2019-09-28:/2019/09/28/manejo-de-rutas-pathlib/</id><summary type="html">&lt;p&gt;Es difícil escribir un script de python que no interaccione con el sistema de ficheros de un modo u otro, por lo que python dispone de varios módulos para tal fin. El objeto &lt;code&gt;Path&lt;/code&gt; viene a poner orden entre tantos módulos y funciones para manejo de ficheros. Se puede decir sin duda que usar &lt;code&gt;Path&lt;/code&gt; se ha convertido en la forma más &lt;em&gt;pythónica&lt;/em&gt; de manipular ficheros y&amp;nbsp;directorios.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Es difícil escribir un script de python que no interaccione con el sistema de ficheros de un modo u otro, por lo que python dispone de varios módulos para tal fin: &lt;code&gt;os&lt;/code&gt;, &lt;code&gt;os.path&lt;/code&gt; (&lt;em&gt;submódulo de os&lt;/em&gt;), &lt;code&gt;shutil&lt;/code&gt;, &lt;code&gt;stats&lt;/code&gt;, &lt;code&gt;glob&lt;/code&gt;,&amp;#8230;En la intención estaba ser multiplataforma, lo que ha sido fuente de muchos mayores quebraderos de cabeza con las distintas codificaciones de caracteres y distintas formas de expresar rutas de ficheros que&amp;nbsp;existen.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R - Python</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/python.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-01-10T20:03:45+01:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Manejo de rutas con pathlib</title><link href="https://blog.ch3m4.org/2019/09/28/manejo-de-rutas-pathlib/" rel="alternate"></link><published>2019-09-28T17:53:57+02:00</published><updated>2019-09-28T17:56:08+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2019-09-28:/2019/09/28/manejo-de-rutas-pathlib/</id><summary type="html">&lt;p&gt;Es difícil escribir un script de python que no interaccione con el sistema de ficheros de un modo u otro, por lo que python dispone de varios módulos para tal fin. El objeto &lt;code&gt;Path&lt;/code&gt; viene a poner orden entre tantos módulos y funciones para manejo de ficheros. Se puede decir sin duda que usar &lt;code&gt;Path&lt;/code&gt; se ha convertido en la forma más &lt;em&gt;pythónica&lt;/em&gt; de manipular ficheros y&amp;nbsp;directorios.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Es difícil escribir un script de python que no interaccione con el sistema de ficheros de un modo u otro, por lo que python dispone de varios módulos para tal fin: &lt;code&gt;os&lt;/code&gt;, &lt;code&gt;os.path&lt;/code&gt; (&lt;em&gt;submódulo de os&lt;/em&gt;), &lt;code&gt;shutil&lt;/code&gt;, &lt;code&gt;stats&lt;/code&gt;, &lt;code&gt;glob&lt;/code&gt;,&amp;#8230;En la intención estaba ser multiplataforma, lo que ha sido fuente de muchos mayores quebraderos de cabeza con las distintas codificaciones de caracteres y distintas formas de expresar rutas de ficheros que&amp;nbsp;existen.&lt;/p&gt;
 &lt;p&gt;El objeto &lt;code&gt;Path&lt;/code&gt; viene a poner orden entre tantos módulos y funciones para manejo de ficheros. La librería estándar se ha reescrito para aceptar estos objetos &lt;code&gt;Path&lt;/code&gt;. Se puede decir sin duda que usar &lt;code&gt;Path&lt;/code&gt; se ha convertido en la forma más &lt;em&gt;pythónica&lt;/em&gt; de manipular ficheros y&amp;nbsp;directorios.&lt;/p&gt;
 &lt;p&gt;Empecemos por un ejemplo traído de la &lt;a href="https://docs.python.org/3.7/library/pathlib.html" title="Documentación del módulo pathlib"&gt;documentación oficial&lt;/a&gt;:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
@@ -212,43 +212,46 @@
 &lt;p&gt;Para lo que nos interesa en python, la visión de retrasar las operaciones hasta el final es la característica de la programación funcional que más nos puede interesar. Nos va a permitir crear código más eficiente, además de enfocar algunos problemas desde un punto completamente diferente, más &lt;em&gt;matemático&lt;/em&gt; si&amp;nbsp;cabe.&lt;/p&gt;
 &lt;p&gt;Podría haber llamado a esta serie de artículos &lt;em&gt;&amp;#8220;Python Funcional&amp;#8221;&lt;/em&gt;, pero es casi seguro que mucha gente hubiera pasado de ellos por considerar esta temática un rollazo, radicalmente distinta de cómo se enseña la programación hoy en día (a mi juicio,&amp;nbsp;equivocada).&lt;/p&gt;
 &lt;p&gt;En cambio, llamándolos &lt;em&gt;&amp;#8220;Python Eficiente&amp;#8221;&lt;/em&gt; seguro que a más de uno le pica la curiosidad. En realidad, mi objetivo no es sólo hablar de programación funcional. También tratará de crear código que consuma menos recursos tales como tiempo de &lt;span class="caps"&gt;CPU&lt;/span&gt; o memoria. En definitiva, que problemas que creíamos fuera de nuestro alcance, podamos resolverlos con nuestros humildes&amp;nbsp;medios.&lt;/p&gt;
-&lt;p&gt;No te pierdas los próximos&amp;nbsp;artículos.&lt;/p&gt;</content><category term="Python"></category><category term="functional programming"></category></entry><entry><title>Clausuras en python - Parte 2</title><link href="https://blog.ch3m4.org/2013/10/26/clausuras-en-python-parte-2/" rel="alternate"></link><published>2013-10-26T04:15:00+02:00</published><updated>2013-10-26T04:15:00+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2013-10-26:/2013/10/26/clausuras-en-python-parte-2/</id><summary type="html">&lt;h2&gt;Ámbitos&amp;nbsp;anidados&lt;/h2&gt;
-&lt;p&gt;La importancia de disponer de &lt;em&gt;clausuras&lt;/em&gt; va más allá de
-saber dónde se evalúa la función. Si fuera posible encapsular una función
-junto con su propio entorno de ejecución, podríamos conseguir que la función tenga
-&lt;em&gt;&amp;#8220;memoria&amp;#8221;&lt;/em&gt; o, dicho de otro modo, que sea capaz de conservar sus propios …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Ámbitos&amp;nbsp;anidados&lt;/h2&gt;
-&lt;p&gt;La importancia de disponer de &lt;em&gt;clausuras&lt;/em&gt; va más allá de
-saber dónde se evalúa la función. Si fuera posible encapsular una función
-junto con su propio entorno de ejecución, podríamos conseguir que la función tenga
-&lt;em&gt;&amp;#8220;memoria&amp;#8221;&lt;/em&gt; o, dicho de otro modo, que sea capaz de conservar sus propios
-estados entre llamadas a la función. Este &lt;em&gt;empaquetado&lt;/em&gt; de función y
-entorno de ejecución se denomina a veces &lt;strong&gt;clausuras verdaderas&lt;/strong&gt; y
-suele ser la principal característica de los llamados &lt;em&gt;Lenguajes Funcionales&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;En python podemos crear estas &lt;em&gt;clausuras verdaderas&lt;/em&gt; con *&lt;em&gt;funciones
-anidadas&lt;/em&gt;, donde una función está definida dentro del ámbito de la&amp;nbsp;otra.&lt;/p&gt;
+&lt;p&gt;No te pierdas los próximos&amp;nbsp;artículos.&lt;/p&gt;</content><category term="Python"></category><category term="functional programming"></category></entry><entry><title>Clausuras en python - Parte 2</title><link href="https://blog.ch3m4.org/2013/10/26/clausuras-en-python-parte-2/" rel="alternate"></link><published>2013-10-26T04:15:00+02:00</published><updated>2021-01-10T20:03:45+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2013-10-26:/2013/10/26/clausuras-en-python-parte-2/</id><summary type="html">&lt;h2&gt;Ámbitos&amp;nbsp;anidados&lt;/h2&gt;
+&lt;p&gt;La importancia de disponer de &lt;em&gt;clausuras&lt;/em&gt; va más allá de saber dónde se evalúa
+la función. Si fuera posible encapsular una función junto con su propio entorno
+de ejecución, podríamos conseguir que la función tenga &lt;em&gt;&amp;#8220;memoria&amp;#8221;&lt;/em&gt; o, dicho de
+otro modo, que sea capaz de conservar sus propios …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Ámbitos&amp;nbsp;anidados&lt;/h2&gt;
+&lt;p&gt;La importancia de disponer de &lt;em&gt;clausuras&lt;/em&gt; va más allá de saber dónde se evalúa
+la función. Si fuera posible encapsular una función junto con su propio entorno
+de ejecución, podríamos conseguir que la función tenga &lt;em&gt;&amp;#8220;memoria&amp;#8221;&lt;/em&gt; o, dicho de
+otro modo, que sea capaz de conservar sus propios estados entre llamadas a la
+función. Este &lt;em&gt;empaquetado&lt;/em&gt; de función y entorno de ejecución se denomina a
+veces &lt;strong&gt;clausuras verdaderas&lt;/strong&gt; y suele ser la principal característica de los
+llamados &lt;em&gt;Lenguajes Funcionales&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;En python podemos crear estas &lt;em&gt;clausuras verdaderas&lt;/em&gt; con *&lt;em&gt;funciones anidadas&lt;/em&gt;,
+donde una función está definida dentro del ámbito de la&amp;nbsp;otra.&lt;/p&gt;
 &lt;p&gt;Un ejemplo&amp;nbsp;sencillo:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;incr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;incr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;aux&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;
+
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;aux&lt;/span&gt;
 
-&lt;span class="n"&gt;inc5&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;incr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="n"&gt;inc5&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;#--&amp;gt;15&lt;/span&gt;
+&lt;span class="n"&gt;inc5&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;incr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;inc5&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt;15&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Como resultado se devuelve la función &lt;code&gt;aux&lt;/code&gt;, definida dentro del
-ámbito de &lt;code&gt;incr&lt;/code&gt; y que emplea de éste la variable &lt;code&gt;n&lt;/code&gt;. Internamente,
-se conserva la referencia a la variable &lt;code&gt;n&lt;/code&gt;, pero no será accesible
-desde fuera de la función &lt;code&gt;aux&lt;/code&gt;. Hemos podido
-empaquetar la función junto con el entorno donde se&amp;nbsp;definió.&lt;/p&gt;
+&lt;p&gt;Como resultado se devuelve la función &lt;code&gt;aux&lt;/code&gt;, definida dentro del ámbito de
+&lt;code&gt;incr&lt;/code&gt; y que emplea de éste la variable &lt;code&gt;n&lt;/code&gt;. Internamente, se conserva la
+referencia a la variable &lt;code&gt;n&lt;/code&gt;, pero no será accesible desde fuera de la función
+&lt;code&gt;aux&lt;/code&gt;. Hemos podido empaquetar la función junto con el entorno donde se&amp;nbsp;definió.&lt;/p&gt;
 &lt;p&gt;Pongamos otro&amp;nbsp;ejemplo:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
@@ -261,66 +264,34 @@ empaquetar la función junto con el entorno donde se&amp;nbsp;definió.&lt;/p&gt
  9
 10
 11
-12&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;count&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-    &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+12
+13
+14
+15&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;count&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;aux&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-        &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="o"&gt;+=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+        &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;
+
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;aux&lt;/span&gt;
 
-&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
-&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;#--&amp;gt; 1&lt;/span&gt;
-&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;#--&amp;gt; 2&lt;/span&gt;
-&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;#--&amp;gt; 3&lt;/span&gt;
+&lt;span class="n"&gt;c1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt; 1&lt;/span&gt;
+&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt; 2&lt;/span&gt;
+&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt; 3&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Si pruebas este código te dará error. La función anidada &lt;code&gt;aux&lt;/code&gt;
-intenta modificar la variable &lt;code&gt;num&lt;/code&gt;. Para este caso, la variable se
-crea dentro del ámbito más interno, en lugar de usar la variable
-disponible. Y como se intenta modificar la variable antes de asignarle
-un valor, entonces se produce el&amp;nbsp;error.&lt;/p&gt;
-&lt;p&gt;Como solución, podríamos hacer la variable &lt;code&gt;num&lt;/code&gt; global para que fuera
-accesible por todos los ámbitos. Pero esta solución no es buena ya que
-nos abriría el empaquetado. Para python3 podríamos declarar la
-variable como &lt;code&gt;nonlocal&lt;/code&gt; para que se busque en los ámbitos&amp;nbsp;superiores:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;count&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-    &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;aux&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-        &lt;span class="k"&gt;nonlocal&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;
-        &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="o"&gt;+=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;aux&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Como solución para salir del paso, se puede evitar la reasignación de
-variables. Por ejemplo, usando una&amp;nbsp;lista:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;count&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-    &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;aux&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-        &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;aux&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Ya sé que no es muy elegante, pero hay otras formas de hacerlo&amp;nbsp;mejor.&lt;/p&gt;
-&lt;h2&gt;Generadores&lt;/h2&gt;
-&lt;p&gt;Una de las formas más comunes de usar clausuras es a través de
-&lt;strong&gt;generadores&lt;/strong&gt;. Básicamente, son funciones que en lugar de usar &lt;code&gt;return&lt;/code&gt;
-utilizan &lt;code&gt;yield&lt;/code&gt; para devolver un valor. Entre invocaciones, se conserva
-el entorno de ejecución y continúan desde el
-punto desde donde estaba. Para el ejemplo&amp;nbsp;anterior:&lt;/p&gt;
+&lt;p&gt;Si pruebas este código te dará error. La función anidada &lt;code&gt;aux&lt;/code&gt; intenta modificar
+la variable &lt;code&gt;num&lt;/code&gt;. Para este caso, la variable se crea dentro del ámbito más
+interno, en lugar de usar la variable disponible. Y como se intenta modificar la
+variable antes de asignarle un valor, entonces se produce el&amp;nbsp;error.&lt;/p&gt;
+&lt;p&gt;Como solución, podríamos hacer la variable &lt;code&gt;num&lt;/code&gt; global para que fuera accesible
+por todos los ámbitos. Pero esta solución no es buena ya que nos abriría el
+empaquetado. Para python3 podríamos declarar la variable como &lt;code&gt;nonlocal&lt;/code&gt; para
+que se busque en los ámbitos&amp;nbsp;superiores:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
 3
@@ -330,20 +301,18 @@ punto desde donde estaba. Para el ejemplo&amp;nbsp;anterior:&lt;/p&gt;
 7
 8
 9&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;count&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-    &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
-    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="o"&gt;+=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
-        &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;
+    &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
 
-&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;#--&amp;gt;1&lt;/span&gt;
-&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;#--&amp;gt;2&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;aux&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="k"&gt;nonlocal&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;
+        &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;aux&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;h2&gt;Objetos&amp;nbsp;funciones&lt;/h2&gt;
-&lt;p&gt;En los ejemplos que hemos visto, podríamos tener varias clausuras de
-una misma función. Si hemos hecho bien las tareas, la ejecución de estas clausuras
-son&amp;nbsp;independientes:&lt;/p&gt;
+&lt;p&gt;Como solución para salir del paso, se puede evitar la reasignación de variables.
+Por ejemplo, usando una&amp;nbsp;lista:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
 3
@@ -351,22 +320,68 @@ son&amp;nbsp;independientes:&lt;/p&gt;
 5
 6
 7
-8&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;c2&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+8&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;count&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
-&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;#--&amp;gt;1&lt;/span&gt;
-&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;#--&amp;gt;2&lt;/span&gt;
-&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;#--&amp;gt;1&lt;/span&gt;
-&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;#--&amp;gt;2&lt;/span&gt;
-&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;#--&amp;gt;3&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;aux&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;aux&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;Ya sé que no es muy elegante, pero hay otras formas de hacerlo&amp;nbsp;mejor.&lt;/p&gt;
+&lt;h2&gt;Generadores&lt;/h2&gt;
+&lt;p&gt;Una de las formas más comunes de usar clausuras es a través de &lt;strong&gt;generadores&lt;/strong&gt;.
+Básicamente, son funciones que en lugar de usar &lt;code&gt;return&lt;/code&gt; utilizan &lt;code&gt;yield&lt;/code&gt; para
+devolver un valor. Entre invocaciones, se conserva el entorno de ejecución y
+continúan desde el punto desde donde estaba. Para el ejemplo&amp;nbsp;anterior:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;count&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+        &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;
+
+
+&lt;span class="n"&gt;c1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt; 1&lt;/span&gt;
+&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt; 2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;h2&gt;Objetos&amp;nbsp;funciones&lt;/h2&gt;
+&lt;p&gt;En los ejemplos que hemos visto, podríamos tener varias clausuras de una misma
+función. Si hemos hecho bien las tareas, la ejecución de estas clausuras son&amp;nbsp;independientes:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;c1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;c2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt;1&lt;/span&gt;
+&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt;2&lt;/span&gt;
+&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt;1&lt;/span&gt;
+&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt;2&lt;/span&gt;
+&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt;3&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;Con ello es posible establecer una analogía con clases y objetos. La definición
 de la función sería la &lt;em&gt;clase&lt;/em&gt; y la clausura la &lt;em&gt;instancia&lt;/em&gt; de la&amp;nbsp;clase.&lt;/p&gt;
 &lt;p&gt;¿Y si lo hacemos posible? En python se denominan &lt;em&gt;callables&lt;/em&gt; a todo objeto que
-tenga un método &lt;code&gt;__call__&lt;/code&gt;, comportándose como si fueran
-funciones (&lt;em&gt;Functores&lt;/em&gt;). Contruyamos una &lt;em&gt;callable&lt;/em&gt; que funcione como una función
-con&amp;nbsp;clausura:&lt;/p&gt;
+tenga un método &lt;code&gt;__call__&lt;/code&gt;, comportándose como si fueran funciones
+(&lt;em&gt;Functores&lt;/em&gt;). Contruyamos una &lt;em&gt;callable&lt;/em&gt; que funcione como una función con&amp;nbsp;clausura:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
  3
@@ -377,25 +392,28 @@ con&amp;nbsp;clausura:&lt;/p&gt;
  8
  9
 10
-11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+11
+12
+13&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__call__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="o"&gt;+=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;num&lt;/span&gt;
 
-&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Count&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="c1"&gt;#--&amp;gt;1&lt;/span&gt;
-&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="c1"&gt;#--&amp;gt;2&lt;/span&gt;
-&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="c1"&gt;#--&amp;gt;3&lt;/span&gt;
+
+&lt;span class="n"&gt;c1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Count&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt;1&lt;/span&gt;
+&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt;2&lt;/span&gt;
+&lt;span class="n"&gt;c1&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt;3&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Sin duda es la manera más elegante de usar clausuras que tenemos en
-python. Evita muchos problemas y nos da una gran potencia a la hora de
-resolver algunos&amp;nbsp;problemas.&lt;/p&gt;
-&lt;p&gt;Por ejemplo: imagina que queremos recorrer una lista de números,
-excluyendo los que sean pares, y siempre que la suma total de los
-números que ya hemos visitado no supere cierto&amp;nbsp;límite.&lt;/p&gt;
+&lt;p&gt;Sin duda es la manera más elegante de usar clausuras que tenemos en python.
+Evita muchos problemas y nos da una gran potencia a la hora de resolver algunos&amp;nbsp;problemas.&lt;/p&gt;
+&lt;p&gt;Por ejemplo: imagina que queremos recorrer una lista de números, excluyendo los
+que sean pares, y siempre que la suma total de los números que ya hemos visitado
+no supere cierto&amp;nbsp;límite.&lt;/p&gt;
 &lt;p&gt;En una primera aproximación se podría crear un&amp;nbsp;generador:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
@@ -407,23 +425,25 @@ números que ya hemos visitado no supere cierto&amp;nbsp;límite.&lt;/p&gt;
  8
  9
 10
-11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;recorr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;maximo&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+11
+12&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;recorr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;maximo&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
     &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;!=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;maximo&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-                &lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="o"&gt;+=&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;maximo&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;
                 &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;
             &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
                 &lt;span class="k"&gt;break&lt;/span&gt;
 
-&lt;span class="n"&gt;recorr&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;#--&amp;gt;[3,7,11]&lt;/span&gt;
+
+&lt;span class="n"&gt;recorr&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;#--&amp;gt;[3,7,11]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Está bien, pero no es fácil de usar. Aunque sólo necesitemos algunos
-elementos, seguramente estemos obligados a crear una lista completa
-con todos los valores&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;. Encima, no tenemos acceso a la variable &lt;code&gt;total&lt;/code&gt;
-para saber cuánto han sumado el&amp;nbsp;resultado.&lt;/p&gt;
+&lt;p&gt;Está bien, pero no es fácil de usar. Aunque sólo necesitemos algunos elementos,
+seguramente estemos obligados a crear una lista completa con todos los
+valores&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;. Encima, no tenemos acceso a la variable &lt;code&gt;total&lt;/code&gt; para saber cuánto
+han sumado el&amp;nbsp;resultado.&lt;/p&gt;
 &lt;p&gt;Una alternativa con objetos funciones, mucho más&amp;nbsp;elegante:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
@@ -439,50 +459,56 @@ para saber cuánto han sumado el&amp;nbsp;resultado.&lt;/p&gt;
 12
 13
 14
-15&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;RecorrFunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+15
+16
+17
+18&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;RecorrFunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;maximo&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;maximo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;maximo&lt;/span&gt;
-    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;maximo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;maximo&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;!=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;maximo&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="o"&gt;+=&lt;/span&gt;&lt;span class="n"&gt;item&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt;
+        &lt;span class="n"&gt;res&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;maximo&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt;
+
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__call__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
 
-&lt;span class="n"&gt;recorr&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;RecorrFunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;recorr&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="c1"&gt;#--&amp;gt;[3,7,11]&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="n"&gt;recorr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="c1"&gt;#--&amp;gt;21&lt;/span&gt;
+
+&lt;span class="n"&gt;recorr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;RecorrFunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;recorr&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt;[3,7,11]&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;recorr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt;21&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Las posibilidades de los objetos función son muchas. Del mismo modo que se devuelve una lista, 
-sería posible devolver un iterador. Empleando las funciones del módulo
- &lt;code&gt;itertools&lt;/code&gt;, y algunos trucos más, podríamos aplicar los principios de
- la programación funcional en python sin&amp;nbsp;problemas.&lt;/p&gt;
+&lt;p&gt;Las posibilidades de los objetos función son muchas. Del mismo modo que se
+devuelve una lista, sería posible devolver un iterador. Empleando las funciones
+del módulo &lt;code&gt;itertools&lt;/code&gt;, y algunos trucos más, podríamos aplicar los principios
+de la programación funcional en python sin&amp;nbsp;problemas.&lt;/p&gt;
 &lt;p&gt;Pero éso lo veremos en próximos&amp;nbsp;artículos.&lt;/p&gt;
 &lt;div class="footnote"&gt;
 &lt;hr&gt;
 &lt;ol&gt;
 &lt;li id="fn:1"&gt;
 &lt;p&gt;No sabemos de antemano cuántos items vamos a obtener. Si, por ejemplo,
-necesitamos sólo los tres primeros, tendremos que iterar elemento a
-elemento hasta llegar a los tres que necesitamos o, bien, hasta que
-quede exhausto el iterador. Con la solución con funtores el proceso es
-mucho más directo y eficiente.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+necesitamos sólo los tres primeros, tendremos que iterar elemento a elemento
+hasta llegar a los tres que necesitamos o, bien, hasta que quede exhausto el
+iterador. Con la solución con funtores el proceso es mucho más directo y
+eficiente.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</content><category term="Python"></category><category term="closures"></category></entry><entry><title>Clausuras en python - Parte 1</title><link href="https://blog.ch3m4.org/2013/10/25/clausuras-en-python-parte-1/" rel="alternate"></link><published>2013-10-25T21:02:00+02:00</published><updated>2013-10-25T21:02:00+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2013-10-25:/2013/10/25/clausuras-en-python-parte-1/</id><summary type="html">&lt;h2&gt;Funciones&amp;nbsp;Lambda&lt;/h2&gt;
-&lt;p&gt;Antes de ver qué son las &lt;strong&gt;clausuras&lt;/strong&gt; (&lt;em&gt;closures&lt;/em&gt;), veamos
-qué tienen las &lt;em&gt;funciones lambda&lt;/em&gt; que las hacen tan polémicas algunas&amp;nbsp;veces.&lt;/p&gt;
-&lt;p&gt;Comencemos con un ejemplo. Te recomiendo que te esfuerces en deducir
-cómo funciona sin ir a probar cómo funciona. A continuación te pondré
-algunos valores para que …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Funciones&amp;nbsp;Lambda&lt;/h2&gt;
-&lt;p&gt;Antes de ver qué son las &lt;strong&gt;clausuras&lt;/strong&gt; (&lt;em&gt;closures&lt;/em&gt;), veamos
-qué tienen las &lt;em&gt;funciones lambda&lt;/em&gt; que las hacen tan polémicas algunas&amp;nbsp;veces.&lt;/p&gt;
-&lt;p&gt;Comencemos con un ejemplo. Te recomiendo que te esfuerces en deducir
-cómo funciona sin ir a probar cómo funciona. A continuación te pondré
-algunos valores para que elijas los valores de las tres&amp;nbsp;listas:&lt;/p&gt;
+&lt;/div&gt;</content><category term="Python"></category><category term="closures"></category></entry><entry><title>Clausuras en python - Parte 1</title><link href="https://blog.ch3m4.org/2013/10/25/clausuras-en-python-parte-1/" rel="alternate"></link><published>2013-10-25T21:02:00+02:00</published><updated>2021-01-10T19:58:16+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2013-10-25:/2013/10/25/clausuras-en-python-parte-1/</id><summary type="html">&lt;h2&gt;Funciones&amp;nbsp;Lambda&lt;/h2&gt;
+&lt;p&gt;Antes de ver qué son las &lt;strong&gt;clausuras&lt;/strong&gt; (&lt;em&gt;closures&lt;/em&gt;), veamos qué tienen las
+&lt;em&gt;funciones lambda&lt;/em&gt; que las hacen tan polémicas algunas&amp;nbsp;veces.&lt;/p&gt;
+&lt;p&gt;Comencemos con un ejemplo. Te recomiendo que te esfuerces en deducir cómo
+funciona sin ir a probar cómo funciona. A continuación te pondré algunos valores
+para que …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Funciones&amp;nbsp;Lambda&lt;/h2&gt;
+&lt;p&gt;Antes de ver qué son las &lt;strong&gt;clausuras&lt;/strong&gt; (&lt;em&gt;closures&lt;/em&gt;), veamos qué tienen las
+&lt;em&gt;funciones lambda&lt;/em&gt; que las hacen tan polémicas algunas&amp;nbsp;veces.&lt;/p&gt;
+&lt;p&gt;Comencemos con un ejemplo. Te recomiendo que te esfuerces en deducir cómo
+funciona sin ir a probar cómo funciona. A continuación te pondré algunos valores
+para que elijas los valores de las tres&amp;nbsp;listas:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
  3
@@ -492,93 +518,93 @@ algunos valores para que elijas los valores de las tres&amp;nbsp;listas:&lt;/p&g
  7
  8
  9
-10&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
-    &lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;
+10&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+    &lt;span class="n"&gt;add_one&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;
 
-    &lt;span class="n"&gt;lista1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+    &lt;span class="n"&gt;lista1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
 
-    &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
-    &lt;span class="n"&gt;lista2&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+    &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="n"&gt;lista2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
 
-    &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
-    &lt;span class="n"&gt;lista3&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+    &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+    &lt;span class="n"&gt;lista3&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;Valores para &lt;code&gt;lista1&lt;/code&gt;:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;code&gt;[0,1,2]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;[1,2,3]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;[0,2,4]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;[1,3,5]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[0, 1, 2]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[1, 2, 3]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[0, 2, 4]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[1, 3, 5]&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Valores para &lt;code&gt;lista2&lt;/code&gt;:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;code&gt;[0,1,2]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;[1,2,3]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;[0,2,4]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;[1,3,5]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[0, 1, 2]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[1, 2, 3]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[0, 2, 4]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[1, 3, 5]&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Valores para &lt;code&gt;lista3&lt;/code&gt;:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;code&gt;[0,1,2]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;[1,2,3]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;[2,3,4]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;[1,3,5]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[0, 1, 2]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[1, 2, 3]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[2, 3, 4]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[1, 3, 5]&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Las soluciones están al final del artículo&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;, pero puedes probarlo
-ahora para que lo veas tú&amp;nbsp;mismo.&lt;/p&gt;
+&lt;p&gt;Las soluciones están al final del artículo&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;, pero puedes probarlo ahora para
+que lo veas tú&amp;nbsp;mismo.&lt;/p&gt;
 &lt;h3&gt;¿Qué es lo que ha&amp;nbsp;pasado?&lt;/h3&gt;
 &lt;p&gt;Contrariamente a lo que estamos acostrumbrados con las funciones normales, la
-evaluación de una &lt;em&gt;función lambda&lt;/em&gt; se hace dentro del entorno donde se
-ejecuta, independiente del entorno donde se ha definido. Así pués, en la &lt;em&gt;función lambda&lt;/em&gt; &lt;code&gt;lambda
-x:x+i&lt;/code&gt;, la variable &lt;code&gt;i&lt;/code&gt; toma el valor de esta variable en el momento
-de evaluar la función. Como se usa esta variable para la compresión de la
-lista, irá cambiando de valor a medida que se recorre la lista
-&lt;code&gt;[0,1,2]&lt;/code&gt;, por lo que la expresión &lt;code&gt;add_one(i)&lt;/code&gt; termina convirtiéndose
-en la expresión &lt;code&gt;i+i&lt;/code&gt;, y la expresión &lt;code&gt;add_one(i+1)&lt;/code&gt; en &lt;code&gt;i+1+i&lt;/code&gt;.&lt;/p&gt;
+evaluación de una &lt;em&gt;función lambda&lt;/em&gt; se hace dentro del entorno donde se ejecuta,
+independiente del entorno donde se ha definido. Así pués, en la &lt;em&gt;función lambda&lt;/em&gt;
+&lt;code&gt;lambda x: x+i&lt;/code&gt;, la variable &lt;code&gt;i&lt;/code&gt; toma el valor de esta variable en el momento de
+evaluar la función. Como se usa esta variable para la compresión de la lista,
+irá cambiando de valor a medida que se recorre la lista &lt;code&gt;[0,1,2]&lt;/code&gt;, por lo que la
+expresión &lt;code&gt;add_one(i)&lt;/code&gt; termina convirtiéndose en la expresión &lt;code&gt;i+i&lt;/code&gt;, y la
+expresión &lt;code&gt;add_one(i+1)&lt;/code&gt; en &lt;code&gt;i+1+i&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Tiene un funcionamiento similar a los &lt;em&gt;macros&lt;/em&gt;, donde se sustituye
-&lt;em&gt;literalmente&lt;/em&gt; la llamada a la función por la expresión equivalente. En
-python3, se hace más evidente al denominarse &lt;em&gt;expresiones lambda&lt;/em&gt; en lugar de &lt;em&gt;funciones lambda&lt;/em&gt;.&lt;/p&gt;
+&lt;em&gt;literalmente&lt;/em&gt; la llamada a la función por la expresión equivalente. En python3,
+se hace más evidente al denominarse &lt;em&gt;expresiones lambda&lt;/em&gt; en lugar de &lt;em&gt;funciones
+lambda&lt;/em&gt;.&lt;/p&gt;
 &lt;h2&gt;Clausuras&lt;/h2&gt;
 &lt;p&gt;En una función podemos distinguir dos&amp;nbsp;partes:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Código&amp;nbsp;ejecutable&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Entorno de evaluación&lt;/strong&gt;, más conocido por &lt;strong&gt;Ámbito&lt;/strong&gt; o &lt;strong&gt;Scope&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Antes de ejecutar el código de la función, se aumenta el entorno de
-evaluación con los &lt;em&gt;argumentos de entrada&lt;/em&gt; de la&amp;nbsp;función.&lt;/p&gt;
+&lt;p&gt;Antes de ejecutar el código de la función, se aumenta el entorno de evaluación
+con los &lt;em&gt;argumentos de entrada&lt;/em&gt; de la&amp;nbsp;función.&lt;/p&gt;
 &lt;p&gt;Según en qué entorno se evalua la función, tenemos dos&amp;nbsp;ámbitos:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Clausura&lt;/strong&gt;, también llamado &lt;strong&gt;Ámbito léxico&lt;/strong&gt; o &lt;strong&gt;Ámbito
   Estático&lt;/strong&gt;, cuando la función se evalua en el entorno donde se ha&amp;nbsp;definido.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Ámbito dinámico&lt;/strong&gt; cuando se evalua en el entorno donde se invoca la&amp;nbsp;función.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Con esta definición, podemos afirmar que en python las funciones
-tienen &lt;em&gt;ámbito léxico&lt;/em&gt;, con excepción de las funciones lambda que tienen
-&lt;em&gt;ámbito dinámico&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;No voy a considerar las ventajas de uno u otro tipo. Por lo general, las &lt;em&gt;clausuras&lt;/em&gt;
-se consideran mejores para desacoplar el código de la
-función del código donde se invoca, lo que ayuda mucho al
-mantenimiento y corrección de errores. Es por ello la manera normal de
-crear funciones en la mayoría de lenguajes de&amp;nbsp;programación.&lt;/p&gt;
+&lt;p&gt;Con esta definición, podemos afirmar que en python las funciones tienen &lt;em&gt;ámbito
+léxico&lt;/em&gt;, con excepción de las funciones lambda que tienen &lt;em&gt;ámbito dinámico&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;No voy a considerar las ventajas de uno u otro tipo. Por lo general, las
+&lt;em&gt;clausuras&lt;/em&gt; se consideran mejores para desacoplar el código de la función del
+código donde se invoca, lo que ayuda mucho al mantenimiento y corrección de
+errores. Es por ello la manera normal de crear funciones en la mayoría de
+lenguajes de&amp;nbsp;programación.&lt;/p&gt;
 &lt;h3&gt;¿Cómo hacer que una función lambda se comporte como si tuviera &lt;em&gt;clausura&lt;/em&gt;?&lt;/h3&gt;
-&lt;p&gt;La forma de hacer que un función lambda se evalue en el entorno donde
-se define consiste en pasar las variables de ese entorno que necesite
-en los argumentos de entrada, casi siempre como argumentos por&amp;nbsp;defecto.&lt;/p&gt;
+&lt;p&gt;La forma de hacer que un función lambda se evalue en el entorno donde se define
+consiste en pasar las variables de ese entorno que necesite en los argumentos de
+entrada, casi siempre como argumentos por&amp;nbsp;defecto.&lt;/p&gt;
 &lt;p&gt;En el ejemplo anterior&amp;nbsp;sería:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
-    &lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;  &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+  &lt;span class="n"&gt;add_one&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;que equivaldrá&amp;nbsp;a&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;  &lt;span class="n"&gt;add_one&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;En este caso &lt;code&gt;i&lt;/code&gt; se toma de los argumentos de la función, y tendrá por
-defecto el valor de &lt;code&gt;i&lt;/code&gt; en el momento de la definición de la función&amp;nbsp;lambda.&lt;/p&gt;
-&lt;p&gt;No es perfecto, pero es lo mejor que tenemos. Lo recomendable es
-evitar las funciones lambda complejas si no queremos llevarnos algunas&amp;nbsp;sorpresas.&lt;/p&gt;
+&lt;p&gt;En este caso &lt;code&gt;i&lt;/code&gt; se toma de los argumentos de la función, y tendrá por defecto
+el valor de &lt;code&gt;i&lt;/code&gt; en el momento de la definición de la función&amp;nbsp;lambda.&lt;/p&gt;
+&lt;p&gt;No es perfecto, pero es lo mejor que tenemos. Lo recomendable es evitar las
+funciones lambda complejas si no queremos llevarnos algunas&amp;nbsp;sorpresas.&lt;/p&gt;
 &lt;div class="footnote"&gt;
 &lt;hr&gt;
 &lt;ol&gt;

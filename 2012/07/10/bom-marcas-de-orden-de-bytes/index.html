@@ -7,7 +7,7 @@
   <meta name="author" content="Chema Cortés">
   <meta name="description" content="BOM - marcas de orden de bytes | Los BOM‘s son marcas que aparecen en ficheros y transmisiones de datos para indicar el...">
 
-  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ad3d1997.min.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.d3891358.min.css">
 
   <script src="https://blog.ch3m4.org/theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
 
@@ -72,14 +72,6 @@
 </div>  <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2012/07/10/bom-marcas-de-orden-de-bytes/" class="nohover"><span class="caps">BOM</span> - marcas de orden de&nbsp;bytes</a></h1>
   </div>
-  <div class="article_meta">
-    <p>Posted <time data-timeago datetime="2012-07-10T13:32:00+02:00">mar 10 julio 2012</time>
-     by Chema Cortés    </p>
-    <p>
-    Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
-&ndash;&ndash;    Tags:
-      <a href="https://blog.ch3m4.org/tag/code/">code</a>,      <a href="https://blog.ch3m4.org/tag/unicode/">unicode</a>    </p>
-  </div>
   <div class="article_text">
     <p>Los <abbr title="Marca de orden de bytes"><span class="caps">BOM</span></abbr>&#8216;s son marcas que aparecen en ficheros y transmisiones de datos para indicar el <em>&#8220;orden de los bytes&#8221;</em> de la codificación empleada. Si pensamos que el tamaño de cada dato transmitido puede ser 2, 4 u 8 bytes (16bits, 32 bits ó 64 bits), el orden de los bytes nos indica cómo se están empaquetando los bytes en cada&nbsp;dato.</p>
 <p>Sin entrar en detalle, cuando usamos las codificaciones para unicode en ficheros, se suele convenir en el uso de una marca <abbr title="Marca de orden de bytes"><span class="caps">BOM</span></abbr> al inicio del fichero para indicar el orden de los bytes del fichero, pero que sirve asimismo para saber la codificación&nbsp;empleada.</p>
@@ -140,38 +132,35 @@
 </td></tr></table>
 <p>Hay que tener en cuenta que el comando <code>iconv</code>, normalmente usado para convertir codificaciones de ficheros, no tiene en consideración el <abbr title="Marca de orden de bytes"><span class="caps">BOM</span></abbr>. Con python tenemos una solución&nbsp;perfecta.</p>
   </div>
-  <hr>
 
   <ul class="pager">
-          <li class="previous">
-               <a href="https://blog.ch3m4.org/2012/06/05/descriptores-parte-3/" title="Anterior">
-                    <i class="fa fa-arrow-circle-left"></i>
-                   Descriptores - Parte&nbsp;3
-               </a>
-           </li>
-           <li class="next">
-              <a href="https://blog.ch3m4.org/2012/07/24/instalacion-de-modulos/" title="Siguiente">
-                   Instalación de&nbsp;módulos
-                   <i class="fa fa-arrow-circle-right"></i>
-               </a>
-           </li>
-   </ul>
-   With category <a href="https://blog.ch3m4.org/category/python/">Python</a>:
-   <ul class="pager">
-          <li class="previous">
-             <a href="https://blog.ch3m4.org/2012/06/05/descriptores-parte-3/" title="Anterior en misma categoría">
-                <i class="fa fa-arrow-circle-o-left"></i>
-                Descriptores - Parte&nbsp;3
+        <li class="previous">
+             <a href="https://blog.ch3m4.org/2012/06/05/descriptores-parte-3/" title="Anterior">
+                  <i class="fa fa-arrow-circle-left"></i>
+                 Descriptores - Parte&nbsp;3
              </a>
-          </li>
-        <li class="next">
-             <a href="https://blog.ch3m4.org/2012/07/24/instalacion-de-modulos/" title="Siguiente en misma categoría">
+         </li>
+         <li class="next">
+            <a href="https://blog.ch3m4.org/2012/07/24/instalacion-de-modulos/" title="Siguiente">
                  Instalación de&nbsp;módulos
-                 <i class="fa fa-arrow-circle-o-right"></i>
+                 <i class="fa fa-arrow-circle-right"></i>
              </a>
+         </li>
+ </ul>
+ With category <a href="https://blog.ch3m4.org/category/python/">Python</a>:
+ <ul class="pager">
+        <li class="previous">
+           <a href="https://blog.ch3m4.org/2012/06/05/descriptores-parte-3/" title="Anterior en misma categoría">
+              <i class="fa fa-arrow-circle-o-left"></i>
+              Descriptores - Parte&nbsp;3
+           </a>
         </li>
-
-   </ul>
+      <li class="next">
+           <a href="https://blog.ch3m4.org/2012/07/24/instalacion-de-modulos/" title="Siguiente en misma categoría">
+               Instalación de&nbsp;módulos
+               <i class="fa fa-arrow-circle-o-right"></i>
+           </a>
+      </li>
 
 
   <div id="article_comments">

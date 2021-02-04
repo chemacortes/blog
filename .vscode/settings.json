@@ -13,5 +13,5 @@
   "python.linting.flake8Enabled": false,
   "python.linting.mypyEnabled": false,
   "python.linting.pylamaEnabled": true,
-  "python.pythonPath": ".venv/bin/python3.8"
+  "python.pythonPath": ".venv/bin/python"
 }

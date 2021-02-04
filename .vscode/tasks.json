@@ -9,7 +9,7 @@
       "type": "process",
       "command": "${config:python.pythonPath}",
       "args": [
-        "${workspaceFolder}/scripts/new_article.py",
+        "${workspaceFolder}/src/blog/new_article.py",
         "${input:title}",
         "${input:category}",
       ],

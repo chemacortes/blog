@@ -1,12 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+Tarea para generar la plantilla de un nuevo artículo para el blog
+
+Se lanza dentro del vscode con F6
+
+"""
+
 
 import sys
 from datetime import datetime
 from pathlib import Path
 
 from slugify import slugify
+
+SCRIPTS_DIR = Path(__file__).parent
 
 
 def new_article(title: str, category: str) -> None:
@@ -29,7 +38,7 @@ def new_article(title: str, category: str) -> None:
         "SLUG": slug,
     }
 
-    template = Path("scripts/template.md").read_text()
+    template = (SCRIPTS_DIR / "template.md").read_text()
     for k, v in vars.items():
         template = template.replace(f"<<{k}>>", v)
 

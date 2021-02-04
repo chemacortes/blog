@@ -29,3 +29,8 @@ coconut = "^1.4.3"
 [build-system]
 requires      = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
+
+
+[tool.poetry.scripts]
+slimit_warning = "blog.scripts:remove_slimit_warning"
+coconut_lexer = "blog.scripts:install_lexer_coconut"

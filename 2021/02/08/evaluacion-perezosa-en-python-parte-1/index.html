@@ -65,7 +65,7 @@
 <div class="article_meta">
   <p>Posted <time data-timeago datetime="2021-02-08T19:17:25+01:00">lun 08 febrero 2021</time>
    by Chema Cortés  </p>
-  <p>Last updated <time data-timeago datetime="2021-02-09T02:56:10+01:00">mar 09 febrero 2021</time></p>
+  <p>Last updated <time data-timeago datetime="2021-02-09T21:50:01+01:00">mar 09 febrero 2021</time></p>
   <p>
   Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
 &ndash;&ndash;  Tags:
@@ -141,7 +141,11 @@ se pueden hacer otras operaciones habituales con&nbsp;listas:</p>
  9
 10
 11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>  <span class="c1"># obtener el tamaño</span>
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>  <span class="c1"># obtener el tamaño</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="mi">33</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span>  <span class="c1"># obtener un rango</span>
 <span class="nb">range</span><span class="p">(</span><span class="mi">62</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -153,6 +157,10 @@ se pueden hacer otras operaciones habituales con&nbsp;listas:</p>
 <span class="nb">range</span><span class="p">(</span><span class="mi">62</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># una nueva secuencia con distinto paso</span>
 <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">3</span> <span class="ow">in</span> <span class="n">r</span>  <span class="c1"># comprobar si contiene un elemento</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">65</span><span class="p">)</span>  <span class="c1"># buscar la posición de un elemento</span>
+<span class="mi">21</span>
 </code></pre></div>
 </td></tr></table>
 <p>Como vemos, de algún modo calcula los nuevos rangos y los pasos según
@@ -205,18 +213,18 @@ esta labor (patrón <em>Delegate</em>):</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">from_range</span><span class="p">(</span><span class="nb">range</span><span class="p">:</span> <span class="nb">range</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;SquaresRange&quot;</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">from_range</span><span class="p">(</span><span class="n">rng</span><span class="p">:</span> <span class="nb">range</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;SquaresRange&quot;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor de SquaresRange a partir de un rango</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">instance</span> <span class="o">=</span> <span class="n">SquaresRange</span><span class="p">()</span>
-        <span class="n">instance</span><span class="o">.</span><span class="n">_range</span> <span class="o">=</span> <span class="nb">range</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">_range</span> <span class="o">=</span> <span class="n">rng</span>
         <span class="k">return</span> <span class="n">instance</span>
 
     <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_range</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;SquaresRange&quot;</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">slice</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;SquaresRange&quot;</span><span class="p">]:</span>
         <span class="n">i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_range</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">i</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="n">SquaresRange</span><span class="o">.</span><span class="n">from_range</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
@@ -236,7 +244,9 @@ esta labor (patrón <em>Delegate</em>):</p>
  8
  9
 10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">SquaresRange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">SquaresRange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
 <span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="o">...</span>
 <span class="mi">100</span>
@@ -247,6 +257,8 @@ esta labor (patrón <em>Delegate</em>):</p>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">529</span><span class="p">,</span> <span class="mi">961</span><span class="p">,</span> <span class="mi">1521</span><span class="p">,</span> <span class="mi">2209</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">SquaresRange</span><span class="p">(</span><span class="mi">100</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">SquaresRange</span><span class="p">(</span><span class="mi">99</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">16</span> <span class="ow">in</span> <span class="n">SquaresRange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="kc">True</span>
 </code></pre></div>
 </td></tr></table>
 <p>Hay que tener en cuenta que, a diferencia de un iterador, este rango no se
@@ -311,18 +323,18 @@ función. Creamos la siguiente <em>clase abstracta</em>:</p>
         <span class="k">return</span> <span class="n">pos</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">from_range</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;GenericRange&quot;</span><span class="p">],</span> <span class="nb">range</span><span class="p">:</span> <span class="nb">range</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;GenericRange&quot;</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">from_range</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;GenericRange&quot;</span><span class="p">],</span> <span class="n">rng</span><span class="p">:</span> <span class="nb">range</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;GenericRange&quot;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor de un GenericRange a partir de un rango</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">instance</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
-        <span class="n">instance</span><span class="o">.</span><span class="n">_range</span> <span class="o">=</span> <span class="nb">range</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">_range</span> <span class="o">=</span> <span class="n">rng</span>
         <span class="k">return</span> <span class="n">instance</span>
 
     <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_range</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;GenericRange&quot;</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">slice</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;GenericRange&quot;</span><span class="p">]:</span>
         <span class="n">i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_range</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getitem</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_range</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
@@ -333,7 +345,7 @@ función. Creamos la siguiente <em>clase abstracta</em>:</p>
 </code></pre></div>
 </td></tr></table>
 <p>Con esta clase abstracta creamos dos clases concretas, definiendo el método
-abstracto <code>.call()</code> con la función&nbsp;genérica:</p>
+abstracto <code>.getitem()</code> con la función&nbsp;genérica:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -367,7 +379,9 @@ abstracto <code>.call()</code> con la función&nbsp;genérica:</p>
 15
 16
 17
-18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">SquaresRange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">SquaresRange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
 <span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="o">...</span>
 <span class="mi">100</span>
@@ -385,6 +399,8 @@ abstracto <code>.call()</code> con la función&nbsp;genérica:</p>
 <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">343</span><span class="p">,</span> <span class="mi">3375</span><span class="p">,</span> <span class="mi">12167</span><span class="p">,</span> <span class="mi">29791</span><span class="p">,</span> <span class="mi">59319</span><span class="p">,</span> <span class="mi">103823</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">SquaresRange</span><span class="p">(</span><span class="mi">100</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">SquaresRange</span><span class="p">(</span><span class="mi">99</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">SquaresRange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">91</span><span class="p">)</span>
+<span class="mi">9</span>
 </code></pre></div>
 </td></tr></table>
 <h2>Resumen</h2>

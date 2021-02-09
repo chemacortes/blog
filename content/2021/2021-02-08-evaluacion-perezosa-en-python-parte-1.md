@@ -1,7 +1,7 @@
 ---
 Title: Evaluación perezosa en python - Parte 1
 Date: 2021-02-08 19:17:25
-Modified: 2021-02-09 02:56:10
+Modified: 2021-02-09 21:50:01
 Category: Python
 Tags: lazy-eval, sequence, range
 Slug: evaluacion-perezosa-en-python-parte-1
@@ -92,6 +92,10 @@ range(98, -1, -3)
 range(62, 92, -3)
 >>> r[::2]  # una nueva secuencia con distinto paso
 range(2, 101, 6)
+>>> 3 in r  # comprobar si contiene un elemento
+False
+>>> r.index(65)  # buscar la posición de un elemento
+21
 ```
 
 Como vemos, de algún modo calcula los nuevos rangos y los pasos según
@@ -121,18 +125,18 @@ class SquaresRange(Sequence):
         self._range = range(start, stop, step)
 
     @staticmethod
-    def from_range(range: range) -> "SquaresRange":
+    def from_range(rng: range) -> "SquaresRange":
         """
         Constructor de SquaresRange a partir de un rango
         """
         instance = SquaresRange()
-        instance._range = range
+        instance._range = rng
         return instance
 
     def __len__(self) -> int:
         return len(self._range)
 
-    def __getitem__(self, idx) -> Union[int, "SquaresRange"]:
+    def __getitem__(self, idx: Union[int, slice]) -> Union[int, "SquaresRange"]:
         i = self._range[idx]
         return i ** 2 if isinstance(i, int) else SquaresRange.from_range(i)
 
@@ -155,6 +159,8 @@ Podemos probar su funcionamiento:
 [1, 49, 225, 529, 961, 1521, 2209]
 >>> SquaresRange(100)[::-1]
 SquaresRange(99, -1, -1)
+>>> 16 in SquaresRange(-10, 1, 3)
+True
 ```
 
 Hay que tener en cuenta que, a diferencia de un iterador, este rango no se
@@ -184,18 +190,18 @@ class GenericRange(Sequence):
         return pos
 
     @classmethod
-    def from_range(cls: Type["GenericRange"], range: range) -> "GenericRange":
+    def from_range(cls: Type["GenericRange"], rng: range) -> "GenericRange":
         """
         Constructor de un GenericRange a partir de un rango
         """
         instance = cls()
-        instance._range = range
+        instance._range = rng
         return instance
 
     def __len__(self) -> int:
         return len(self._range)
 
-    def __getitem__(self, idx) -> Union[int, "GenericRange"]:
+    def __getitem__(self, idx: Union[int, slice]) -> Union[int, "GenericRange"]:
         i = self._range[idx]
         return self.getitem(i) if isinstance(i, int) else self.from_range(i)
 
@@ -206,7 +212,7 @@ class GenericRange(Sequence):
 ```
 
 Con esta clase abstracta creamos dos clases concretas, definiendo el método
-abstracto `.call()` con la función genérica:
+abstracto `.getitem()` con la función genérica:
 
 ```python
 class SquaresRange(GenericRange):
@@ -239,6 +245,8 @@ Que podemos emplear de este modo:
 [-1, 343, 3375, 12167, 29791, 59319, 103823]
 >>> SquaresRange(100)[::-1]
 SquaresRange(99, -1, -1)
+>>> SquaresRange(100).index(91)
+9
 ```
 
 ## Resumen

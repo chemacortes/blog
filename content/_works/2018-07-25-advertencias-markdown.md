@@ -1,7 +1,7 @@
 ---
 Title: Prueba de Advertencias
 Date: 2018-07-24 23:55:53
-Modified: 2019-04-07 21:06:04
+Modified: 2021-01-10 20:34:23
 Category: Técnicas
 Tags: markdown
 Slug:
@@ -14,23 +14,23 @@ Status: draft
 
 El formato general:
 
-~~~ md
+```md
 !!! type "optional explicit title within double quotes"
     Any number of other indented markdown elements.
 
     This is the second paragraph.
-~~~
+```
 
 Por ejemplo, una advertencia sin tipo definido:
 
-~~~ md
+```md
 !!! Advertencia
     Ejemplo de una advertencia sin tipo.
 
     Segundo párrafo.
 
     Tercer párrafo.
-~~~
+```
 
 Quedaría así:
 
@@ -41,7 +41,7 @@ Quedaría así:
 
     Tercer párrafo.
 
-Advertencias de tipo: `update`, `hint`. `important` y `note`:
+Advertencias de tipo: `update`, `hint`, `important` y `note`:
 
 !!! tip
     Un truco...

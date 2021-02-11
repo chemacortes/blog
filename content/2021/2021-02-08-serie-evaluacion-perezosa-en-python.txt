@@ -1,18 +1,19 @@
 ## Serie _Evaluación Perezosa en Python_
 
 - [Parte 1 - Introducción a la _evaluación perezosa_][1]
-- Parte 2 - Secuencias infinitas
+- [Parte 2 - Secuencias infinitas][2]
 - Parte 3 - _Memoización_
 - Parte 4 - _Evaluación perezosa_ avanzada
+- Parte 5 - Ejemplo práctico: potencias de Pauli-Dirac
 
 !!!danger "La serie completa como _Jupyter Notebook_ en:"
-    [2021-02-08-serie-evaluacion-perezosa-en-python.ipynb][99]
+    [serie-evaluacion-perezosa-en-python.ipynb][99]
 
     _INCOMPLETA_
 
 [1]: {filename}2021-02-08-evaluacion-perezosa-en-python-parte-1.md "Introducción a la _evaluación perezosa_"
-[2]: . "Secuencias infinitas"
+[2]: {filename}2021-02-09-evaluacion-perezosa-en-python-parte-2.md "Secuencias infinitas"
 [3]: . "Parte 3 - _Memoización_"
 [4]: . "Clausuras en python - Parte 2"
 
-[99]: {attach}2021-02-08-serie-evaluacion-perezosa-en-python.ipynb "Evaluación perezosa en python"
+[99]: {static}notebook-serie-evaluacion-perezosa-en-python.ipynb "Notebook Evaluación perezosa en python"

@@ -72,46 +72,12 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
-name = "coconut"
-version = "1.4.3"
-description = "Simple, elegant, Pythonic functional programming."
-category = "dev"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-cPyparsing = {version = ">=2.4.5.0.1.1,<2.4.5.0.1.2", markers = "platform_python_implementation == \"CPython\""}
-prompt-toolkit = {version = ">=1", markers = "python_version >= \"3\""}
-pygments = {version = ">=2.3.1", markers = "python_version >= \"2.7\""}
-pyparsing = {version = ">=2.4.5,<2.4.6", markers = "platform_python_implementation != \"CPython\""}
-
-[package.extras]
-all = ["watchdog (>=0.9)", "jupyter-console (>=5.2)", "mypy (>=0.761,<0.762)", "psutil (>=5)", "jupyter (>=1.0)", "ipykernel (>=4.10)", "trollius (>=2.2)", "ipython (>=5.4)", "ipykernel (>=5.1)", "ipython (>=6.5,<7.11)"]
-asyncio = ["trollius (>=2.2)"]
-dev = ["jupyter-console (>=5.2)", "pexpect (>=4)", "requests (>=2)", "jupyter (>=1.0)", "watchdog (>=0.9)", "sphinx (>=1.7.4,<1.7.5)", "mypy (>=0.761,<0.762)", "sphinx-bootstrap-theme (>=0.4,<0.5)", "pygments (>=2.3.1)", "recommonmark (>=0.6)", "pre-commit (>=1)", "vprof (>=0.36)", "psutil (>=5)", "pyparsing (>=2.4.5,<2.4.6)", "pytest (>=3)", "numpy (>=1)", "ipython (>=5.4)", "ipykernel (>=4.10)", "trollius (>=2.2)", "ipython (>=6.5,<7.11)", "ipykernel (>=5.1)", "numpy (>=1)"]
-docs = ["recommonmark (>=0.6)", "sphinx (>=1.7.4,<1.7.5)", "sphinx-bootstrap-theme (>=0.4,<0.5)", "pygments (>=2.3.1)"]
-ipython = ["jupyter (>=1.0)", "jupyter-console (>=5.2)", "ipython (>=5.4)", "ipykernel (>=4.10)", "ipython (>=6.5,<7.11)", "ipykernel (>=5.1)"]
-jobs = ["psutil (>=5)"]
-jupyter = ["jupyter (>=1.0)", "jupyter-console (>=5.2)", "ipython (>=5.4)", "ipykernel (>=4.10)", "ipython (>=6.5,<7.11)", "ipykernel (>=5.1)"]
-mypy = ["mypy (>=0.761,<0.762)"]
-tests = ["jupyter-console (>=5.2)", "pexpect (>=4)", "psutil (>=5)", "pytest (>=3)", "jupyter (>=1.0)", "pyparsing (>=2.4.5,<2.4.6)", "ipykernel (>=4.10)", "numpy (>=1)", "ipython (>=5.4)", "ipykernel (>=5.1)", "ipython (>=6.5,<7.11)", "numpy (>=1)"]
-watch = ["watchdog (>=0.9)"]
-
-[[package]]
 name = "colorama"
 version = "0.4.4"
 description = "Cross-platform colored terminal text."
 category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
-
-[[package]]
-name = "cpyparsing"
-version = "2.4.5.0.1.1"
-description = "Cython implementation of PyParsing for use in Coconut."
-category = "dev"
-optional = false
-python-versions = "*"
 
 [[package]]
 name = "cssmin"
@@ -380,6 +346,18 @@ unidecode = ">=1.1,<2.0"
 markdown = ["markdown (>=3.2.2,<3.3.0)"]
 
 [[package]]
+name = "pelican-webassets"
+version = "1.0.0"
+description = "A Pelican plugin so you can use webassets"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+pelican = "*"
+webassets = "*"
+
+[[package]]
 name = "pexpect"
 version = "4.8.0"
 description = "Pexpect allows easy control of interactive console applications."
@@ -489,14 +467,6 @@ mccabe = ">=0.5.2"
 pycodestyle = ">=2.3.1"
 pydocstyle = ">=2.0.0"
 pyflakes = ">=1.5.0"
-
-[[package]]
-name = "pyparsing"
-version = "2.4.5"
-description = "Python parsing module"
-category = "dev"
-optional = false
-python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "pyscss"
@@ -680,7 +650,7 @@ smartypants = ">=1.8.3"
 
 [[package]]
 name = "unidecode"
-version = "1.1.2"
+version = "1.2.0"
 description = "ASCII transliterations of Unicode text"
 category = "main"
 optional = false
@@ -705,7 +675,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "75b1b6daff9e6f142509e750bfb8dfbaa32ca94966ea4203c3e140d55ae6ce01"
+content-hash = "cb4e0e171682b5f9f64ece67e2f1aade6d94c88972957e41e743799421772c4c"
 
 [metadata.files]
 appdirs = [
@@ -768,16 +738,9 @@ click = [
     {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},
     {file = "click-7.1.2.tar.gz", hash = "sha256:d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a"},
 ]
-coconut = [
-    {file = "coconut-1.4.3-py2.py3-none-any.whl", hash = "sha256:6365ec8b6c3b1eda21ac84952256d21ff97b9580240c5432f02fa0294f510fa2"},
-    {file = "coconut-1.4.3.tar.gz", hash = "sha256:5053e876388faaa792154d3e86c27dcfa721d48a3611a8d9b94e7567e5652c0b"},
-]
 colorama = [
     {file = "colorama-0.4.4-py2.py3-none-any.whl", hash = "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"},
     {file = "colorama-0.4.4.tar.gz", hash = "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"},
-]
-cpyparsing = [
-    {file = "cPyparsing-2.4.5.0.1.1.tar.gz", hash = "sha256:9ef74514ca2359e3458674f1a0ee53632eb3c873361f766c5b90a7eed34699cd"},
 ]
 cssmin = [
     {file = "cssmin-0.2.0.tar.gz", hash = "sha256:e012f0cc8401efcf2620332339011564738ae32be8c84b2e43ce8beaec1067b6"},
@@ -898,6 +861,10 @@ pelican = [
     {file = "pelican-4.5.4-py3-none-any.whl", hash = "sha256:945f3ad61a31c55260d5f762783c7ac2708f331c685c617468f4655bb04abde1"},
     {file = "pelican-4.5.4.tar.gz", hash = "sha256:0e9de7f4c7a2a21784f8aed9c7df6003cebfb39a36d0adbafd303d66649dc3ad"},
 ]
+pelican-webassets = [
+    {file = "pelican-webassets-1.0.0.tar.gz", hash = "sha256:c2234d49ef049807969ecf5bbc011a9d1c7066b23952e7d4a160ebba5bc7c3e9"},
+    {file = "pelican_webassets-1.0.0-py3-none-any.whl", hash = "sha256:58a3322db2c6a74cd2ff230679730a9f3aa3a3ef7fd4016293d136389d39d359"},
+]
 pexpect = [
     {file = "pexpect-4.8.0-py2.py3-none-any.whl", hash = "sha256:0b48a55dcb3c05f3329815901ea4fc1537514d6ba867a152b581d69ae3710937"},
     {file = "pexpect-4.8.0.tar.gz", hash = "sha256:fc65a43959d153d0114afe13997d439c22823a27cefceb5ff35c2178c6784c0c"},
@@ -945,10 +912,6 @@ pygments = [
 pylama = [
     {file = "pylama-7.7.1-py2.py3-none-any.whl", hash = "sha256:fd61c11872d6256b019ef1235be37b77c922ef37ac9797df6bd489996dddeb15"},
     {file = "pylama-7.7.1.tar.gz", hash = "sha256:9bae53ef9c1a431371d6a8dca406816a60d547147b60a4934721898f553b7d8f"},
-]
-pyparsing = [
-    {file = "pyparsing-2.4.5-py2.py3-none-any.whl", hash = "sha256:20f995ecd72f2a1f4bf6b072b63b22e2eb457836601e76d6e5dfcd75436acc1f"},
-    {file = "pyparsing-2.4.5.tar.gz", hash = "sha256:4ca62001be367f01bd3e92ecbb79070272a9d4964dce6a48a82ff0b8bc7e683a"},
 ]
 pyscss = [
     {file = "pyScss-1.3.7.tar.gz", hash = "sha256:f1df571569021a23941a538eb154405dde80bed35dc1ea7c5f3e18e0144746bf"},
@@ -1167,8 +1130,8 @@ typogrify = [
     {file = "typogrify-2.0.7.tar.gz", hash = "sha256:8be4668cda434163ce229d87ca273a11922cb1614cb359970b7dc96eed13cb38"},
 ]
 unidecode = [
-    {file = "Unidecode-1.1.2-py2.py3-none-any.whl", hash = "sha256:4c9d15d2f73eb0d2649a151c566901f80a030da1ccb0a2043352e1dbf647586b"},
-    {file = "Unidecode-1.1.2.tar.gz", hash = "sha256:a039f89014245e0cad8858976293e23501accc9ff5a7bdbc739a14a2b7b85cdc"},
+    {file = "Unidecode-1.2.0-py2.py3-none-any.whl", hash = "sha256:12435ef2fc4cdfd9cf1035a1db7e98b6b047fe591892e81f34e94959591fad00"},
+    {file = "Unidecode-1.2.0.tar.gz", hash = "sha256:8d73a97d387a956922344f6b74243c2c6771594659778744b2dbdaad8f6b727d"},
 ]
 wcwidth = [
     {file = "wcwidth-0.2.5-py2.py3-none-any.whl", hash = "sha256:beb4802a9cebb9144e99086eff703a642a13d6a0052920003a230f3294bbe784"},

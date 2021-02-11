@@ -96,7 +96,8 @@ PLUGIN_PATHS = [
     "pelican-plugins",
 ]
 PLUGINS = [
-    "assets",
+    #    "assets",
+    "pelican_webassets",
     "render_math",
     "sitemap",
     "neighbors",

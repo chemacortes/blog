@@ -1,5 +1,315 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R - Python</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/python.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-02-09T21:50:01+01:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Evaluación perezosa en python - Parte 1</title><link href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" rel="alternate"></link><published>2021-02-08T19:17:25+01:00</published><updated>2021-02-09T21:50:01+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-08:/2021/02/08/evaluacion-perezosa-en-python-parte-1/</id><summary type="html">&lt;p&gt;Primera parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta primera parte se estudia los objetos rango y cómo se pueden generalizar su uso para crear secuencias de la que conocemos cómo calcular un elemento genérico a partir de su&amp;nbsp;posición.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introducción a la &lt;em&gt;Evaluación&amp;nbsp;Perezosa&lt;/em&gt;&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R - Python</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/python.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-02-11T21:30:36+01:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Evaluación perezosa en python - Parte 2</title><link href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" rel="alternate"></link><published>2021-02-09T23:21:13+01:00</published><updated>2021-02-11T21:30:36+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-09:/2021/02/09/evaluacion-perezosa-en-python-parte-2/</id><summary type="html">&lt;p&gt;Segunda parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta parte se estudia las secuencia infintas, algunas implementadas con iteradores, y el modo en que se pueden&amp;nbsp;manejar.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Algunas&amp;nbsp;definiciones&lt;/h2&gt;
+&lt;p&gt;Puede ser interesante dejar claras algunas definiciones para distinguir entre
+iteradores e iterables (se pueden ver las definiciones completas en el
+&lt;a href="https://docs.python.org/3.9/glossary.html"&gt;glosario&lt;/a&gt; de&amp;nbsp;python):&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;&lt;strong&gt;Iterable&lt;/strong&gt;&lt;/dt&gt;
+&lt;dd&gt;cualquier objeto capaz de devolver sus miembros de uno en&amp;nbsp;uno&lt;/dd&gt;
+&lt;dt&gt;&lt;strong&gt;Iterador&lt;/strong&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;em&gt;iterable&lt;/em&gt; que representa un flujo de datos, cuyos elementos&amp;nbsp;se&lt;/dd&gt;
+&lt;dd&gt;obtienen uno detrás de&amp;nbsp;otro&lt;/dd&gt;
+&lt;dt&gt;&lt;strong&gt;Secuencia&lt;/strong&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;em&gt;iterable&lt;/em&gt; con acceso eficiente a sus elementos mediante un índice&amp;nbsp;entero&lt;/dd&gt;
+&lt;dt&gt;&lt;strong&gt;Generador&lt;/strong&gt;&lt;/dt&gt;
+&lt;dd&gt;función que devuelve un &lt;em&gt;iterador&lt;/em&gt;&lt;/dd&gt;
+&lt;dt&gt;&lt;strong&gt;Expresión&amp;nbsp;generadora&lt;/strong&gt;&lt;/dt&gt;
+&lt;dd&gt;expresión que devuelve un &lt;em&gt;iterador&lt;/em&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;Lo importante a tener en cuenta es que tenemos dos grandes &lt;em&gt;grupos de
+iterables&lt;/em&gt;: los &lt;em&gt;iteradores&lt;/em&gt; y las &lt;em&gt;secuencias&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Los elementos de una &lt;em&gt;secuencia&lt;/em&gt; son accesibles por su posición, mientras que
+los elementos de un &lt;em&gt;iterador&lt;/em&gt; sólo se pueden acceder en serie. &lt;em&gt;Iterable&lt;/em&gt; sería
+el concepto más general que englobaría ambos&amp;nbsp;términos.&lt;/p&gt;
+&lt;p&gt;En el resto del artículo hablaremos de &lt;em&gt;&amp;#8220;secuencias&amp;#8221;&lt;/em&gt; como término matemático,
+aunque su implementación podría corresponder con cualquier iterable de los&amp;nbsp;mencionados.&lt;/p&gt;
+&lt;h2&gt;Secuencias&amp;nbsp;infinitas&lt;/h2&gt;
+&lt;p&gt;En python, para crear secuencias infinitas se suelen usar &lt;em&gt;generadores&lt;/em&gt;. Por
+ejemplo, para obtener la secuencia de &lt;em&gt;Números Naturales&lt;/em&gt; se podría hacer&amp;nbsp;así:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;collections.abc&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Iterable&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;ℕ&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Iterable&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+    &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;
+        &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;No podemos tratar las secuencias infinitas del mismo modo que con una lista.
+Necesitamos las funciones del módulo &lt;a href="https://docs.python.org/3.9/library/itertools.html"&gt;itertools&lt;/a&gt; capaces de operar con
+iteradores para pasar a una lista en el momento que realmente la necesitemos. Al
+final de la documentación del módulo se incluyen algunas
+&lt;a href="https://docs.python.org/3.9/library/itertools.html#itertools-recipes"&gt;recetas&lt;/a&gt; que dan idea de lo que pueden&amp;nbsp;hacer.&lt;/p&gt;
+&lt;p&gt;Por ejemplo, podríamos redefinir la secuencia de número naturales con
+&lt;code&gt;itertools.count&lt;/code&gt;:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;
+
+&lt;span class="n"&gt;ℕ&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;Para obtener los primeros 100 números&amp;nbsp;naturales&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;islice&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;islice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ℕ&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;101&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;102&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;103&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;104&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;105&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;106&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;107&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;108&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;109&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;110&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;111&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;112&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;113&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;114&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;115&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;116&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;117&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;118&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;119&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;121&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;122&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;123&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;124&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;125&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;126&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;127&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;128&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;129&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;130&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;131&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;132&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;133&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;134&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;135&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;136&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;137&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;138&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;139&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;140&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;141&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;142&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;143&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;145&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;146&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;147&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;148&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;149&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;150&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;151&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;152&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;153&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;154&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;155&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;156&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;157&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;158&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;159&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;160&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;161&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;162&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;163&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;164&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;165&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;166&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;167&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;169&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;170&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;171&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;172&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;173&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;174&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;175&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;176&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;177&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;178&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;179&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;180&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;181&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;182&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;183&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;184&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;185&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;186&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;187&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;188&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;189&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;190&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;191&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;193&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;194&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;195&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;196&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;197&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;198&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;199&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;Emular la función &lt;code&gt;enumerate&lt;/code&gt;:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;collections.abc&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Iterable&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Iterator&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Iterable&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Iterator&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;ℕ&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;zip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ℕ&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;¿Y si quisiéramos obtener la lista de cuadrados en el intérvalo &lt;code&gt;[100, 200)&lt;/code&gt;.
+Veamos (&lt;span class="caps"&gt;NO&lt;/span&gt; &lt;span class="caps"&gt;PROBAR&lt;/span&gt;):&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;ℕ&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;cuadrados&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;ℕ&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;res&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;cuadrados&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;Si probabos es posible que se quede en un bucle infinito. Necesita comprobar todos los elementos, por lo que se pondrá a calcular todos lo elementos de la sucesión para ver si cumplen la&amp;nbsp;condición.&lt;/p&gt;
+&lt;p&gt;Como sabemos que la sucesión de cuadrados es creciente, podemos pararla en el momento que se salga de&amp;nbsp;límites:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;dropwhile&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;takewhile&lt;/span&gt;
+
+&lt;span class="n"&gt;ℕ&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;cuadrados&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;ℕ&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;mayores_100&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;dropwhile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cuadrados&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;menores_200&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;takewhile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;mayores_100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;res&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;menores_200&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;En definitiva, hemos encadenado varias funciones hasta conseguir el iterador que
+necitábamos. En &lt;em&gt;programación funcional&lt;/em&gt;, a este encadenado de funciones se
+denomina como &lt;em&gt;composición de funciones&lt;/em&gt; y es bastante utilizado.
+Lamentablemente, en python no existe este tipo de&amp;nbsp;operaciones.&lt;/p&gt;
+&lt;h2&gt;Ejemplo: sucesión de&amp;nbsp;Fibonacci&lt;/h2&gt;
+&lt;p&gt;La sucesión de &lt;em&gt;Fibonacci&lt;/em&gt; se define de la siguiente&amp;nbsp;manera:&lt;/p&gt;
+&lt;div class="math"&gt;$$f_0=1$$&lt;/div&gt;
+&lt;div class="math"&gt;$$f_1=1$$&lt;/div&gt;
+&lt;div class="math"&gt;$$f_n = f_{n-1} + f_{n-2}$$&lt;/div&gt;
+&lt;p&gt;Operando, podemos obtener la&amp;nbsp;sencuencia:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;La lista de los 20&amp;nbsp;primeros:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;21&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;34&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;55&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;89&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;233&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;377&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;610&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;987&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1597&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2584&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4181&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6765&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;Un modo simple de construir la serie es usar un&amp;nbsp;generador:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;collections.abc&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Iterator&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;islice&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fib&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Iterator&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+    &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
+        &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;
+
+&lt;span class="c1"&gt;# primeros 20 elementos&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;islice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fib&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;Para obtener un elemento en una posición dada tenemos que &lt;em&gt;consumir&lt;/em&gt; el iterador
+hasta llegar a&amp;nbsp;ella.&lt;/p&gt;
+&lt;p&gt;Por ejemplo, para obtener el elemento de la posición&amp;nbsp;1000:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;islice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fib&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="mi"&gt;70330367711422815821835254877183549770181269836358732742604905087154537118196933&lt;/span&gt;
+&lt;span class="mi"&gt;57974224949456261173348775044924176599108818636326545022364710601205337412127386&lt;/span&gt;
+&lt;span class="mi"&gt;7339111198139373125598767690091902245245323403501&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;Ha sido necesario calcular todos los elementos anteriores hasta llegar al que
+deseamos, algo que hay que repetir para cada uno de los elementos que queramos&amp;nbsp;extraer.&lt;/p&gt;
+&lt;p&gt;Afortunadamente, la sucesión de fibonacci tiene elemento genérico que se expresa
+en función de el &lt;em&gt;número áureo&lt;/em&gt; &lt;span class="math"&gt;\(\varphi\)&lt;/span&gt; y que tiene la siguiente&amp;nbsp;formulación:&lt;/p&gt;
+&lt;div class="math"&gt;$$\varphi ={\frac {1+{\sqrt {5}}}{2}}$$&lt;/div&gt;
+&lt;p&gt;Usando el &lt;em&gt;número áureo&lt;/em&gt;, un elemento de la serie fibonacci se puede calcular
+con la siguiente fórmula de Édouard&amp;nbsp;Lucas,:&lt;/p&gt;
+&lt;div class="math"&gt;$$f_n=\frac{\varphi^n-\left(1-\varphi\right)^{n}}{\sqrt5}$$&lt;/div&gt;
+&lt;p&gt;Que podemos ajustar el redondeo y expresar&amp;nbsp;como:&lt;/p&gt;
+&lt;div class="math"&gt;$$f_{n}=\operatorname {int} \left({\frac {\varphi ^{n}}{\sqrt {5}}}+{\frac {1}{2}}\right)$$&lt;/div&gt;
+&lt;p&gt;Así pues, podemos echar mano de la secuencia &lt;code&gt;GenericRange&lt;/code&gt; que vimos en el
+artículo anterior para definir una secuencia para&amp;nbsp;fibonacci:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;FibRange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;getitem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;sqrt5&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;φ&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;sqrt5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;φ&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sqrt5&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;FibRange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;110&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;354224848179263111168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="mi"&gt;573147844013818970112&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="mi"&gt;927372692193082081280&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="mi"&gt;1500520536206901248000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="mi"&gt;2427893228399983329280&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="mi"&gt;3928413764606884839424&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="mi"&gt;6356306993006868692992&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="mi"&gt;10284720757613753532416&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="mi"&gt;16641027750620622225408&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="mi"&gt;26925748508234379952128&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;Lamentablemente, aunque al final se obtenga un número entero, para hacer el
+cálculo hemos recurrido al cálculo numérico de coma flotante, lo que produce
+desbordamiento cuando trabajamos con números grandes. Tenemos que buscar otros
+métodos para mantenernos en el dominio de los número enteros. Pero lo dejaremos
+ya para el próximo artículo, donde veremos las &lt;em&gt;memoizaciones&lt;/em&gt; o el modo de
+guardar los resultados de un función para evitar repetir el mismo cálculo cuando
+se vuelva a&amp;nbsp;necesitar.&lt;/p&gt;
+&lt;h2&gt;Resumen&lt;/h2&gt;
+&lt;p&gt;Las secuencias numéricas se pueden expresar en forma de &lt;em&gt;iterables&lt;/em&gt;, de las que
+tenemos dos tipos: &lt;code&gt;iteradores&lt;/code&gt; y &lt;code&gt;secuencias&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Normalmente en python, para trabajar con secuencias infinitas se usan
+iteradores. Para poder manejar estos iteradores se usan las funciones del módulo
+&lt;code&gt;itertools&lt;/code&gt; que podemos combinar para obtener como resultado un iterable  que ya
+podemos manejar&amp;nbsp;mejor.&lt;/p&gt;
+&lt;p&gt;Si la secuencia tiene definido un elemento genérico, entonces podemos utilizar
+los rangos que ya habíamos visto anteriormente para crear la secuencia&amp;nbsp;infinita.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Serie &lt;em&gt;Evaluación Perezosa en&amp;nbsp;Python&lt;/em&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_"&gt;Parte 1 - Introducción a la &lt;em&gt;evaluación&amp;nbsp;perezosa&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/li&gt;
+&lt;li&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Pauli-Dirac&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="admonition danger"&gt;
+&lt;p class="admonition-title"&gt;La serie completa como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.ipynb" title="Notebook Evaluación perezosa en python"&gt;serie-evaluacion-perezosa-en-python.ipynb&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Evaluación perezosa en python - Parte 1</title><link href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" rel="alternate"></link><published>2021-02-08T19:17:25+01:00</published><updated>2021-02-09T21:50:01+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-08:/2021/02/08/evaluacion-perezosa-en-python-parte-1/</id><summary type="html">&lt;p&gt;Primera parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta primera parte se estudia los objetos rango y cómo se pueden generalizar su uso para crear secuencias de la que conocemos cómo calcular un elemento genérico a partir de su&amp;nbsp;posición.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introducción a la &lt;em&gt;Evaluación&amp;nbsp;Perezosa&lt;/em&gt;&lt;/h2&gt;
 &lt;p&gt;Podemos definir &lt;em&gt;&amp;#8220;Evaluación Perezosa&amp;#8221;&lt;/em&gt; como aquella evaluación que realiza los
 mínimos cálculos imprecindibles para obtener el resultado&amp;nbsp;final.&lt;/p&gt;
 &lt;p&gt;La evaluación perezosa es una de las característica del languaje haskell, aunque
@@ -344,13 +654,14 @@ con &lt;em&gt;secuencias infinitas&lt;/em&gt; de&amp;nbsp;elementos.&lt;/p&gt;
 &lt;h2&gt;Serie &lt;em&gt;Evaluación Perezosa en&amp;nbsp;Python&lt;/em&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_"&gt;Parte 1 - Introducción a la &lt;em&gt;evaluación&amp;nbsp;perezosa&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/li&gt;
+&lt;li&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Pauli-Dirac&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="admonition danger"&gt;
 &lt;p class="admonition-title"&gt;La serie completa como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/2021-02-08-serie-evaluacion-perezosa-en-python.ipynb" title="Evaluación perezosa en python"&gt;2021-02-08-serie-evaluacion-perezosa-en-python.ipynb&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.ipynb" title="Notebook Evaluación perezosa en python"&gt;serie-evaluacion-perezosa-en-python.ipynb&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Manejo de rutas con pathlib</title><link href="https://blog.ch3m4.org/2019/09/28/manejo-de-rutas-pathlib/" rel="alternate"></link><published>2019-09-28T17:53:57+02:00</published><updated>2019-09-28T17:56:08+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2019-09-28:/2019/09/28/manejo-de-rutas-pathlib/</id><summary type="html">&lt;p&gt;Es difícil escribir un script de python que no interaccione con el sistema de ficheros de un modo u otro, por lo que python dispone de varios módulos para tal fin. El objeto &lt;code&gt;Path&lt;/code&gt; viene a poner orden entre tantos módulos y funciones para manejo de ficheros. Se puede decir sin duda que usar &lt;code&gt;Path&lt;/code&gt; se ha convertido en la forma más &lt;em&gt;pythónica&lt;/em&gt; de manipular ficheros y&amp;nbsp;directorios.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Es difícil escribir un script de python que no interaccione con el sistema de ficheros de un modo u otro, por lo que python dispone de varios módulos para tal fin: &lt;code&gt;os&lt;/code&gt;, &lt;code&gt;os.path&lt;/code&gt; (&lt;em&gt;submódulo de os&lt;/em&gt;), &lt;code&gt;shutil&lt;/code&gt;, &lt;code&gt;stats&lt;/code&gt;, &lt;code&gt;glob&lt;/code&gt;,&amp;#8230;En la intención estaba ser multiplataforma, lo que ha sido fuente de muchos mayores quebraderos de cabeza con las distintas codificaciones de caracteres y distintas formas de expresar rutas de ficheros que&amp;nbsp;existen.&lt;/p&gt;
@@ -3360,57 +3671,4 @@ Type &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, &amp;quot;credits&
 &amp;gt;&amp;gt;&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Con el módulo instalado, lo he probado desde el &lt;em&gt;&amp;#8220;backend&amp;#8221;&lt;/em&gt; de oracle para django y todo funciona a la&amp;nbsp;perfección.&lt;/p&gt;</content><category term="Python"></category><category term="howto"></category><category term="ia64"></category><category term="oracle"></category><category term="tip"></category></entry><entry><title>Porqué uso jython</title><link href="https://blog.ch3m4.org/2011/05/30/porque-uso-jython/" rel="alternate"></link><published>2011-05-30T19:04:00+02:00</published><updated>2011-05-30T19:04:00+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2011-05-30:/2011/05/30/porque-uso-jython/</id><summary type="html">&lt;h1&gt;Python de&amp;nbsp;sabores&lt;/h1&gt;
-&lt;p&gt;Cuando hablamos de &lt;strong&gt;python&lt;/strong&gt;, normalmente nos referimos a su versión &lt;em&gt;canónica&lt;/em&gt; implementada en lenguaje C, también conocida por &lt;em&gt;&amp;#8220;CPython&amp;#8221;&lt;/em&gt;. Toda la evolución del lenguaje se realiza alrededor de esta implementación y pocas veces se piensa en otras implementaciones. Pero una de las características de python es ser …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Python de&amp;nbsp;sabores&lt;/h1&gt;
-&lt;p&gt;Cuando hablamos de &lt;strong&gt;python&lt;/strong&gt;, normalmente nos referimos a su versión &lt;em&gt;canónica&lt;/em&gt; implementada en lenguaje C, también conocida por &lt;em&gt;&amp;#8220;CPython&amp;#8221;&lt;/em&gt;. Toda la evolución del lenguaje se realiza alrededor de esta implementación y pocas veces se piensa en otras implementaciones. Pero una de las características de python es ser multiplaforma, y lo demuestra con implementaciones para varias plataformas. Algunas de las implementaciones más interesantes&amp;nbsp;serían:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="http://jython.org"&gt;Jython&lt;/a&gt;:
-    Implementación para &lt;span class="caps"&gt;JVM&lt;/span&gt; que se integra y hace uso de la numerosísismas
-    librerías Java y entornos &lt;span class="caps"&gt;J2EE&lt;/span&gt;. Combina un entorno robusto que rodea a Java con la programación dinámica de&amp;nbsp;python.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="http://www.codeplex.com/Wiki/View.aspx?ProjectName=IronPython"&gt;IronPython&lt;/a&gt;:
-    Una de las implementaciones para la plataforma .Net y mono. Se integra
-    con el &lt;em&gt;framework&lt;/em&gt; .Net de Microsoft, llegando a una eficiencia bastante 
-    cercana al lenguaje&amp;nbsp;C#.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="http://www.python.org/dev/peps/pep-3146/#pypy"&gt;PyPy&lt;/a&gt;:
-    Un python escrito en python. Su objetivo es librar a python de las
-    limitaciones impuestas por el lenguaje C, dando lugar a una implementación
-    puramente&amp;nbsp;python.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Cada una de estas implementaciones lleva su propio ritmo de desarrollo, siguiendo la estela de &lt;em&gt;CPython&lt;/em&gt;. En estos momentos, el lenguaje python (CPython) está parado debido a la moratoria &lt;a href="http://www.python.org/dev/peps/pep-3003/"&gt;&lt;span class="caps"&gt;PEP&lt;/span&gt;-3003&lt;/a&gt; de dos años, a punto de terminar, que se está aprovechando para acercar a CPython el resto de implementaciones y así unir las distintas comunidades de desarrolladores en el siguiente avance de Python hacia la versión&amp;nbsp;3.&lt;/p&gt;
-&lt;h1&gt;Python con sabor&amp;nbsp;Java&lt;/h1&gt;
-&lt;p&gt;De entre todas la implementaciones de python, la que uso habitualmente en mi trabajo es &lt;a href="http://jython.org"&gt;jython&lt;/a&gt;. Sin entrar en polémicas sobre si un lenguaje es mejor que otro, cuando uno se decide por un lenguaje &lt;em&gt;híbrido&lt;/em&gt; como jython lo hace desde el convencimiento de que la mejor solución consiste en usar lo bueno de ambos mundos. Por un lado, los entornos java ofrecen robustez y librerías bien probadas para cualquier aplicación empresarial; por otro lado, jython ofrece técnicas de programación dinámica que mejoran la&amp;nbsp;productividad.&lt;/p&gt;
-&lt;p&gt;Entrando en detalle, este sería un listado de ventajas e incovenientes de usar jython sobre python y/o&amp;nbsp;java:&lt;/p&gt;
-&lt;h2&gt;Multiplataforma&lt;/h2&gt;
-&lt;p&gt;Aunque python ya venga instalado en prácticamente todo sistema linux o macintosh, o incluso aparezca empotrado en aplicaciones como openoffice/libreoffice, no siempre es posible controlar qué versiones, módulos y librerías hay instalados en el sistema. La disparidad de sistemas y configuraciones hace inviable contar con un entorno homogéno para ejecutar nuestro programa python. Por lo general se desarrolla con una configuración fijada, con la esperanza de que el sistema de producción cuente con la misma&amp;nbsp;configuración.&lt;/p&gt;
-&lt;p&gt;Jython se aprovecha la difusión de la máquina virtual &lt;span class="caps"&gt;JVM&lt;/span&gt; en casi todos los sistemas. Esta máquina virtual nos crea una capa de abstracción que facilita el traslado de la misma configuración de nuestro entorno de desarrollo al sistema de producción, tan fácil como copiar un fichero de un sistema a&amp;nbsp;otro.&lt;/p&gt;
-&lt;p&gt;Además resulta sencillo crear un entorno jython &lt;em&gt;portable&lt;/em&gt;&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt; en un pendrive o un disco duro externo, con lo que podemos llevarnos nuestro entorno de desarrollo con&amp;nbsp;nosotros.&lt;/p&gt;
-&lt;h2&gt;Velocidad y&amp;nbsp;memoria&lt;/h2&gt;
-&lt;p&gt;Existe cierta idea equivocada que los programas java son lentos y consumen mucha memoria. En realidad, java se inventó para sistemas empotrados, como demostraría las aplicaciones y juegos para existen para teléfonos móviles. Hoy en día, una aplicación para java es bastante rápida una vez arrancada la máquina virtual, y el consumo de memoria puede delimitarse para no agobiar al resto del&amp;nbsp;sistema.&lt;/p&gt;
-&lt;p&gt;Así mismo, el aspecto gráfico de las aplicaciones java es muy similar a las aplicaciones nativas, disponiendo de interfaces de bajo nivel para control gráficos y dispositivos de entrada y&amp;nbsp;salida.&lt;/p&gt;
-&lt;h2&gt;Sincronismo&amp;nbsp;multihilo&lt;/h2&gt;
-&lt;p&gt;Con el tiempo, la gestión de los hilos de ejecución en una máquina virtual &lt;span class="caps"&gt;JVM&lt;/span&gt; ha llegado a superar cualquier otra implementación gracias a la capa de abstracción que impone. En C, es una labor del programador realizar esta gestión a mano o, con algo de suerte, disponga de alguna librería que facilite el sistema operativo donde se vaya a ejecutar la aplicación, no consiguiendo toda la estabilidad que sería deseable (un ejemplo sería la inestabilidad de algunas extensiones de apache frente a la robustez de los servidores de aplicaciones web para&amp;nbsp;java).&lt;/p&gt;
-&lt;p&gt;Por ello jython delega esta gestión de hilos delegando en el &lt;span class="caps"&gt;JVM&lt;/span&gt; e, incluso, delega en él la &lt;em&gt;&lt;a href="http://es.wikipedia.org/wiki/Recolecci%C3%B3n_de_basura"&gt;recolección de basura&lt;/a&gt;&lt;/em&gt; (&lt;em&gt;garbage collection&lt;/em&gt;). Como consecuencia directa, en jython no existe el odioso &lt;strong&gt;&lt;a href="http://en.wikipedia.org/wiki/Global_Interpreter_Lock"&gt;&lt;span class="caps"&gt;GIL&lt;/span&gt;&lt;/a&gt;&lt;/strong&gt; de CPython que impide que dos hilos se ejecuten&amp;nbsp;simultáneamente.&lt;/p&gt;
-&lt;h2&gt;Base de&amp;nbsp;datos&lt;/h2&gt;
-&lt;p&gt;La conectividad con bases de datos en Jython se realiza mediante los conectores &lt;a href="http://es.wikipedia.org/wiki/JDBC"&gt;&lt;span class="caps"&gt;JDBC&lt;/span&gt;&lt;/a&gt; de java, que es una especie de estándar en java que toda base de datos ofrece. En jython, gracias al grandioso módulo &lt;code&gt;zxJDBC&lt;/code&gt; podemos usar conexiones &lt;code&gt;jdbc&lt;/code&gt; del modo habitual en python, o sea, mediante la &lt;span class="caps"&gt;DB&lt;/span&gt;-&lt;span class="caps"&gt;API2&lt;/span&gt;. La ventaja es que sólo necesitamos añadir el conector &lt;code&gt;jdbc&lt;/code&gt; (un fichero &lt;code&gt;.jar&lt;/code&gt;) a la ruta de clases del &lt;span class="caps"&gt;JVM&lt;/span&gt;, sin tener que instalar la librería o todo el cliente completo como exigen algunas bases de datos en&amp;nbsp;CPython.&lt;/p&gt;
-&lt;p&gt;En mi caso concreto, necesito conectarme a varios tipos de bases de datos diferentes para interoperar entre ellos. Me resultaba complejo tener que ir instalando las librerías de conexión para el sistema, con algunos pidiendo que te instales el cliente completo con licencia. Además, tenía que instalar los módulos de python, que no siempre estaban actualizados o, simplemente, no existían. Con jython, tengo todos los conectores &lt;code&gt;jdbc&lt;/code&gt; en un directorio y con sólo un módulo, &lt;code&gt;zxJDBC&lt;/code&gt;, tengo todo lo&amp;nbsp;necesario.&lt;/p&gt;
-&lt;p&gt;¿Y sqlite? Python incluye sqlite como base de datos sencilla. Al estar programada en C no aparece con jython. Como alternativa, podríamos usar la &lt;code&gt;javadb&lt;/code&gt; (aka &lt;code&gt;derbydb&lt;/code&gt;) que se suele instalar junto con el java, aunque es algo de lo que no podemos fiarnos. Mi recomendación es usar &lt;a href="http://h2database.com"&gt;h2&lt;/a&gt;. En un fichero de poco más de 1 Mb tenemos una implementación completa de base de datos relacional (&lt;span class="caps"&gt;SQL&lt;/span&gt;-92), tremendamente rápida en comparación con otras, que tiene acceso a través del sistema de ficheros al estilo sqlite o acceder en compartido como servidor &lt;span class="caps"&gt;TCP&lt;/span&gt;/&lt;span class="caps"&gt;IP&lt;/span&gt;, con interface de línea de comandos, con su administrador web,&amp;#8230; Es ideal para hacer de intermediario entre bases de datos, aceptando enlaces &lt;span class="caps"&gt;JDBC&lt;/span&gt; a otras bases de datos e importaciones/exportaciones en formato &lt;span class="caps"&gt;CSV&lt;/span&gt;.&lt;/p&gt;
-&lt;h2&gt;Contendores&amp;nbsp;Java&lt;/h2&gt;
-&lt;p&gt;Otro aspecto interesante son los contendores para aplicaciones java (&lt;span class="caps"&gt;J2EE&lt;/span&gt;). Una aplicación jython puede, del mismo modo que hace java, desplegarse en estos contenedores para aprovechar sus servicios j2ee como sería un pool de conexiones para una base de datos. Impresionante, resulta ver que con la versión 3 de &lt;a href="http://glassfish.java.net/"&gt;glassfish&lt;/a&gt; ya se incluye un contenedor específico para jython, lo que permite desplegar en él aplicaciones desarrolladas en &lt;a href="https://www.djangoproject.com/"&gt;django&lt;/a&gt; ó &lt;a href="http://pylonsproject.org/"&gt;pylons&lt;/a&gt; (éste último todavía en fase de pruebas) sin cambiar una sóla línea de&amp;nbsp;código.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;(CONTINUARÁ)&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Espero haber conseguido interesarte con este artículo. Mi intención es continuar hablando de jython en próximos artículos y mostrar su uso en desarrollos de todo tipo.
-Nos veremos&amp;nbsp;pronto.&lt;/p&gt;
-&lt;div class="footnote"&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li id="fn:1"&gt;
-&lt;p&gt;En próximos artículos veremos cómo usar &lt;code&gt;virtualenv&lt;/code&gt; para crear estos entornos portables.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</content><category term="Python"></category><category term="glassfish"></category><category term="h2"></category><category term="jdbc"></category><category term="jython"></category><category term="zxjdbc"></category></entry></feed>
+&lt;p&gt;Con el módulo instalado, lo he probado desde el &lt;em&gt;&amp;#8220;backend&amp;#8221;&lt;/em&gt; de oracle para django y todo funciona a la&amp;nbsp;perfección.&lt;/p&gt;</content><category term="Python"></category><category term="howto"></category><category term="ia64"></category><category term="oracle"></category><category term="tip"></category></entry></feed>

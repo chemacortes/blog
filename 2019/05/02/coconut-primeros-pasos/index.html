@@ -176,14 +176,14 @@ Coconut Interpreter:
 </td></tr></table>
 <p>Sale una interface de línea de comando similar a la que tiene python, incluso se puede introducir código python&nbsp;normal:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;¡Hola, Mundo!&quot;</span><span class="p">)</span>
-<span class="err">¡</span><span class="n">Hola</span><span class="p">,</span> <span class="n">Mundo</span><span class="err">!</span>
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&gt;&gt;&gt; print(&quot;¡Hola, Mundo!&quot;)
+¡Hola, Mundo!
 </code></pre></div>
 </td></tr></table>
 <p>En <em>coconut</em>, éste sería nuestro <em>&#8220;Hola Mundo&#8221;</em>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;¡Hola, Mundo!&quot;</span> <span class="o">|&gt;</span> <span class="nb">print</span>
-<span class="err">¡</span><span class="n">Hola</span><span class="p">,</span> <span class="n">Mundo</span><span class="err">!</span>
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&gt;&gt;&gt; &quot;¡Hola, Mundo!&quot; |&gt; print
+¡Hola, Mundo!
 </code></pre></div>
 </td></tr></table>
 <p>El operador <code>|&gt;</code> puede verse como un <em>pipe</em> que encadena operaciones, una tras otra, que será de uso común. Se puede describir como una <em>&#8220;aplicación del resultado de la izquierda en la expresión de la derecha&#8221;</em>.</p>
@@ -194,17 +194,17 @@ Coconut Interpreter:
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;¡Hola, Mundo!&quot;</span> <span class="o">|&gt;</span> <span class="nb">len</span> <span class="o">|&gt;</span> <span class="nb">print</span>
-<span class="mi">13</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;¡Hola, Mundo!&quot;</span> <span class="o">|&gt;</span> <span class="nb">list</span> <span class="o">|&gt;</span> <span class="nb">print</span>
-<span class="p">[</span><span class="s1">&#39;¡&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;¡Hola, Mundo!&quot;</span> <span class="o">|&gt;</span> <span class="nb">print</span> <span class="o">|&gt;</span> <span class="nb">print</span>
-<span class="err">¡</span><span class="n">Hola</span><span class="p">,</span> <span class="n">Mundo</span><span class="err">!</span>
-<span class="kc">None</span>
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&gt;&gt;&gt; &quot;¡Hola, Mundo!&quot; |&gt; len |&gt; print
+13
+&gt;&gt;&gt; &quot;¡Hola, Mundo!&quot; |&gt; list |&gt; print
+[&#39;¡&#39;, &#39;H&#39;, &#39;o&#39;, &#39;l&#39;, &#39;a&#39;, &#39;,&#39;, &#39; &#39;, &#39;M&#39;, &#39;u&#39;, &#39;n&#39;, &#39;d&#39;, &#39;o&#39;, &#39;!&#39;]
+&gt;&gt;&gt; &quot;¡Hola, Mundo!&quot; |&gt; print |&gt; print
+¡Hola, Mundo!
+None
 </code></pre></div>
 </td></tr></table>
 <p>Probemos la ejecución de ficheros. Los ficheros de <em>coconut</em> tienen por extensión <code>.coco</code>. Creemos un fichero <code>hola.coco</code> con una única&nbsp;línea:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s2">&quot;¡Hola, Mundo!&quot;</span> <span class="o">|&gt;</span> <span class="nb">print</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&quot;¡Hola, Mundo!&quot; |&gt; print
 </code></pre></div>
 </td></tr></table>
 <p>Para&nbsp;ejecutarlo:</p>
@@ -229,10 +229,10 @@ Compiled to       hola.py .
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">product</span><span class="p">(</span><span class="n">lst</span><span class="p">:</span> <span class="nb">int</span><span class="p">[])</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">((</span><span class="o">*</span><span class="p">),</span> <span class="n">lst</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">product</span>
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def product(lst: int[]) -&gt; int = reduce((*), lst)
+def factorial(n: int) -&gt; int = range(2, n+1) |&gt; product
 
-<span class="mi">10000</span> <span class="o">|&gt;</span> <span class="n">factorial</span> <span class="o">|&gt;</span> <span class="nb">print</span>
+10000 |&gt; factorial |&gt; print
 </code></pre></div>
 </td></tr></table>
 <p>Aunque las veremos con detalle más adelante, aquí adelantamos varias características de <em>coconut</em>:</p>

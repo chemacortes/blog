@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Evaluación perezosa en python - Parte 2 | Algunas definiciones Puede ser interesante dejar claras algunas definiciones para distinguir entre...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ea57ac74.min.css">
+
+  <script src="https://blog.ch3m4.org/theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, lazy-eval, sequence, range">
+
+  <title>Evaluación perezosa en python - Parte 2 | Hyperreals *R</title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github" target="_blank" rel="noopener noreferrer"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket" target="_blank" rel="noopener noreferrer"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow" target="_blank" rel="noopener noreferrer"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml" target="_blank" rel="noopener noreferrer">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml" target="_blank" rel="noopener noreferrer">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml" target="_blank" rel="noopener noreferrer">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6" target="_blank" rel="noopener noreferrer">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+<div class="article_meta">
+  <p>Posted <time data-timeago datetime="2021-02-09T23:21:13+01:00">mar 09 febrero 2021</time>
+   by Chema Cortés  </p>
+  <p>Last updated <time data-timeago datetime="2021-02-11T21:30:36+01:00">jue 11 febrero 2021</time></p>
+  <p>
+  Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+&ndash;&ndash;  Tags:
+    <a href="https://blog.ch3m4.org/tag/lazy-eval/">lazy-eval</a>,    <a href="https://blog.ch3m4.org/tag/sequence/">sequence</a>,    <a href="https://blog.ch3m4.org/tag/range/">range</a>  </p>
+</div>  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" class="nohover">Evaluación perezosa en python - Parte&nbsp;2</a></h1>
+  </div>
+  <div class="article_text">
+    <h2>Algunas&nbsp;definiciones</h2>
+<p>Puede ser interesante dejar claras algunas definiciones para distinguir entre
+iteradores e iterables (se pueden ver las definiciones completas en el
+<a href="https://docs.python.org/3.9/glossary.html">glosario</a> de&nbsp;python):</p>
+<dl>
+<dt><strong>Iterable</strong></dt>
+<dd>cualquier objeto capaz de devolver sus miembros de uno en&nbsp;uno</dd>
+<dt><strong>Iterador</strong></dt>
+<dd><em>iterable</em> que representa un flujo de datos, cuyos elementos&nbsp;se</dd>
+<dd>obtienen uno detrás de&nbsp;otro</dd>
+<dt><strong>Secuencia</strong></dt>
+<dd><em>iterable</em> con acceso eficiente a sus elementos mediante un índice&nbsp;entero</dd>
+<dt><strong>Generador</strong></dt>
+<dd>función que devuelve un <em>iterador</em></dd>
+<dt><strong>Expresión&nbsp;generadora</strong></dt>
+<dd>expresión que devuelve un <em>iterador</em></dd>
+</dl>
+<p>Lo importante a tener en cuenta es que tenemos dos grandes <em>grupos de
+iterables</em>: los <em>iteradores</em> y las <em>secuencias</em>.</p>
+<p>Los elementos de una <em>secuencia</em> son accesibles por su posición, mientras que
+los elementos de un <em>iterador</em> sólo se pueden acceder en serie. <em>Iterable</em> sería
+el concepto más general que englobaría ambos&nbsp;términos.</p>
+<p>En el resto del artículo hablaremos de <em>&#8220;secuencias&#8221;</em> como término matemático,
+aunque su implementación podría corresponder con cualquier iterable de los&nbsp;mencionados.</p>
+<h2>Secuencias&nbsp;infinitas</h2>
+<p>En python, para crear secuencias infinitas se suelen usar <em>generadores</em>. Por
+ejemplo, para obtener la secuencia de <em>Números Naturales</em> se podría hacer&nbsp;así:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterable</span>
+
+<span class="k">def</span> <span class="nf">ℕ</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">n</span>
+        <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+</td></tr></table>
+<p>No podemos tratar las secuencias infinitas del mismo modo que con una lista.
+Necesitamos las funciones del módulo <a href="https://docs.python.org/3.9/library/itertools.html">itertools</a> capaces de operar con
+iteradores para pasar a una lista en el momento que realmente la necesitemos. Al
+final de la documentación del módulo se incluyen algunas
+<a href="https://docs.python.org/3.9/library/itertools.html#itertools-recipes">recetas</a> que dan idea de lo que pueden&nbsp;hacer.</p>
+<p>Por ejemplo, podríamos redefinir la secuencia de número naturales con
+<code>itertools.count</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span>
+
+<span class="n">ℕ</span> <span class="o">=</span> <span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>Para obtener los primeros 100 números&nbsp;naturales</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">islice</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">ℕ</span><span class="p">,</span> <span class="mi">100</span><span class="p">)))</span>
+
+<span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">104</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span> <span class="mi">106</span><span class="p">,</span> <span class="mi">107</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">112</span><span class="p">,</span> <span class="mi">113</span><span class="p">,</span> <span class="mi">114</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="mi">116</span><span class="p">,</span> <span class="mi">117</span><span class="p">,</span> <span class="mi">118</span><span class="p">,</span> <span class="mi">119</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">121</span><span class="p">,</span> <span class="mi">122</span><span class="p">,</span> <span class="mi">123</span><span class="p">,</span> <span class="mi">124</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">126</span><span class="p">,</span> <span class="mi">127</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">129</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">131</span><span class="p">,</span> <span class="mi">132</span><span class="p">,</span> <span class="mi">133</span><span class="p">,</span> <span class="mi">134</span><span class="p">,</span> <span class="mi">135</span><span class="p">,</span> <span class="mi">136</span><span class="p">,</span> <span class="mi">137</span><span class="p">,</span> <span class="mi">138</span><span class="p">,</span> <span class="mi">139</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">141</span><span class="p">,</span> <span class="mi">142</span><span class="p">,</span> <span class="mi">143</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">146</span><span class="p">,</span> <span class="mi">147</span><span class="p">,</span> <span class="mi">148</span><span class="p">,</span> <span class="mi">149</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">151</span><span class="p">,</span> <span class="mi">152</span><span class="p">,</span> <span class="mi">153</span><span class="p">,</span> <span class="mi">154</span><span class="p">,</span> <span class="mi">155</span><span class="p">,</span> <span class="mi">156</span><span class="p">,</span> <span class="mi">157</span><span class="p">,</span> <span class="mi">158</span><span class="p">,</span> <span class="mi">159</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">161</span><span class="p">,</span> <span class="mi">162</span><span class="p">,</span> <span class="mi">163</span><span class="p">,</span> <span class="mi">164</span><span class="p">,</span> <span class="mi">165</span><span class="p">,</span> <span class="mi">166</span><span class="p">,</span> <span class="mi">167</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">169</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">171</span><span class="p">,</span> <span class="mi">172</span><span class="p">,</span> <span class="mi">173</span><span class="p">,</span> <span class="mi">174</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">176</span><span class="p">,</span> <span class="mi">177</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">179</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">181</span><span class="p">,</span> <span class="mi">182</span><span class="p">,</span> <span class="mi">183</span><span class="p">,</span> <span class="mi">184</span><span class="p">,</span> <span class="mi">185</span><span class="p">,</span> <span class="mi">186</span><span class="p">,</span> <span class="mi">187</span><span class="p">,</span> <span class="mi">188</span><span class="p">,</span> <span class="mi">189</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">191</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="mi">193</span><span class="p">,</span> <span class="mi">194</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="mi">196</span><span class="p">,</span> <span class="mi">197</span><span class="p">,</span> <span class="mi">198</span><span class="p">,</span> <span class="mi">199</span><span class="p">]</span>
+</code></pre></div>
+</td></tr></table>
+<p>Emular la función <code>enumerate</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Iterator</span>
+
+<span class="k">def</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">it</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">:</span>
+    <span class="n">ℕ</span> <span class="o">=</span> <span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ℕ</span><span class="p">,</span> <span class="n">it</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>¿Y si quisiéramos obtener la lista de cuadrados en el intérvalo <code>[100, 200)</code>.
+Veamos (<span class="caps">NO</span> <span class="caps">PROBAR</span>):</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ℕ</span> <span class="o">=</span> <span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">cuadrados</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">ℕ</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cuadrados</span> <span class="k">if</span> <span class="mi">100</span><span class="o">&lt;=</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">200</span><span class="p">]</span>
+</code></pre></div>
+</td></tr></table>
+<p>Si probabos es posible que se quede en un bucle infinito. Necesita comprobar todos los elementos, por lo que se pondrá a calcular todos lo elementos de la sucesión para ver si cumplen la&nbsp;condición.</p>
+<p>Como sabemos que la sucesión de cuadrados es creciente, podemos pararla en el momento que se salga de&nbsp;límites:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">dropwhile</span><span class="p">,</span> <span class="n">takewhile</span>
+
+<span class="n">ℕ</span> <span class="o">=</span> <span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">cuadrados</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">ℕ</span><span class="p">)</span>
+<span class="n">mayores_100</span> <span class="o">=</span> <span class="n">dropwhile</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">,</span> <span class="n">cuadrados</span><span class="p">)</span>
+<span class="n">menores_200</span> <span class="o">=</span> <span class="n">takewhile</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">200</span><span class="p">,</span> <span class="n">mayores_100</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">menores_200</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>En definitiva, hemos encadenado varias funciones hasta conseguir el iterador que
+necitábamos. En <em>programación funcional</em>, a este encadenado de funciones se
+denomina como <em>composición de funciones</em> y es bastante utilizado.
+Lamentablemente, en python no existe este tipo de&nbsp;operaciones.</p>
+<h2>Ejemplo: sucesión de&nbsp;Fibonacci</h2>
+<p>La sucesión de <em>Fibonacci</em> se define de la siguiente&nbsp;manera:</p>
+<div class="math">$$f_0=1$$</div>
+<div class="math">$$f_1=1$$</div>
+<div class="math">$$f_n = f_{n-1} + f_{n-2}$$</div>
+<p>Operando, podemos obtener la&nbsp;sencuencia:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">1</span><span class="o">+</span><span class="mi">1</span> <span class="ow">-&gt;</span> <span class="mi">2</span>
+<span class="mi">1</span><span class="o">+</span><span class="mi">2</span> <span class="ow">-&gt;</span> <span class="mi">3</span>
+<span class="mi">2</span><span class="o">+</span><span class="mi">3</span> <span class="ow">-&gt;</span> <span class="mi">5</span>
+<span class="o">...</span>
+</code></pre></div>
+</td></tr></table>
+<p>La lista de los 20&nbsp;primeros:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="mi">377</span><span class="p">,</span> <span class="mi">610</span><span class="p">,</span> <span class="mi">987</span><span class="p">,</span> <span class="mi">1597</span><span class="p">,</span> <span class="mi">2584</span><span class="p">,</span> <span class="mi">4181</span><span class="p">,</span> <span class="mi">6765</span><span class="p">]</span>
+</code></pre></div>
+</td></tr></table>
+<p>Un modo simple de construir la serie es usar un&nbsp;generador:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterator</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">islice</span>
+
+<span class="k">def</span> <span class="nf">fib</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">a</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+
+<span class="c1"># primeros 20 elementos</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">fib</span><span class="p">(),</span> <span class="mi">20</span><span class="p">)))</span>
+</code></pre></div>
+</td></tr></table>
+<p>Para obtener un elemento en una posición dada tenemos que <em>consumir</em> el iterador
+hasta llegar a&nbsp;ella.</p>
+<p>Por ejemplo, para obtener el elemento de la posición&nbsp;1000:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">fib</span><span class="p">(),</span> <span class="mi">1000</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="mi">70330367711422815821835254877183549770181269836358732742604905087154537118196933</span>
+<span class="mi">57974224949456261173348775044924176599108818636326545022364710601205337412127386</span>
+<span class="mi">7339111198139373125598767690091902245245323403501</span>
+</code></pre></div>
+</td></tr></table>
+<p>Ha sido necesario calcular todos los elementos anteriores hasta llegar al que
+deseamos, algo que hay que repetir para cada uno de los elementos que queramos&nbsp;extraer.</p>
+<p>Afortunadamente, la sucesión de fibonacci tiene elemento genérico que se expresa
+en función de el <em>número áureo</em> <span class="math">\(\varphi\)</span> y que tiene la siguiente&nbsp;formulación:</p>
+<div class="math">$$\varphi ={\frac {1+{\sqrt {5}}}{2}}$$</div>
+<p>Usando el <em>número áureo</em>, un elemento de la serie fibonacci se puede calcular
+con la siguiente fórmula de Édouard&nbsp;Lucas,:</p>
+<div class="math">$$f_n=\frac{\varphi^n-\left(1-\varphi\right)^{n}}{\sqrt5}$$</div>
+<p>Que podemos ajustar el redondeo y expresar&nbsp;como:</p>
+<div class="math">$$f_{n}=\operatorname {int} \left({\frac {\varphi ^{n}}{\sqrt {5}}}+{\frac {1}{2}}\right)$$</div>
+<p>Así pues, podemos echar mano de la secuencia <code>GenericRange</code> que vimos en el
+artículo anterior para definir una secuencia para&nbsp;fibonacci:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">FibRange</span><span class="p">(</span><span class="n">GenericRange</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">getitem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">sqrt5</span> <span class="o">=</span> <span class="mi">5</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">φ</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">sqrt5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">φ</span><span class="o">**</span><span class="n">n</span><span class="o">/</span><span class="n">sqrt5</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">FibRange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">110</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">354224848179263111168</span><span class="p">,</span>
+ <span class="mi">573147844013818970112</span><span class="p">,</span>
+ <span class="mi">927372692193082081280</span><span class="p">,</span>
+ <span class="mi">1500520536206901248000</span><span class="p">,</span>
+ <span class="mi">2427893228399983329280</span><span class="p">,</span>
+ <span class="mi">3928413764606884839424</span><span class="p">,</span>
+ <span class="mi">6356306993006868692992</span><span class="p">,</span>
+ <span class="mi">10284720757613753532416</span><span class="p">,</span>
+ <span class="mi">16641027750620622225408</span><span class="p">,</span>
+ <span class="mi">26925748508234379952128</span><span class="p">]</span>
+</code></pre></div>
+</td></tr></table>
+<p>Lamentablemente, aunque al final se obtenga un número entero, para hacer el
+cálculo hemos recurrido al cálculo numérico de coma flotante, lo que produce
+desbordamiento cuando trabajamos con números grandes. Tenemos que buscar otros
+métodos para mantenernos en el dominio de los número enteros. Pero lo dejaremos
+ya para el próximo artículo, donde veremos las <em>memoizaciones</em> o el modo de
+guardar los resultados de un función para evitar repetir el mismo cálculo cuando
+se vuelva a&nbsp;necesitar.</p>
+<h2>Resumen</h2>
+<p>Las secuencias numéricas se pueden expresar en forma de <em>iterables</em>, de las que
+tenemos dos tipos: <code>iteradores</code> y <code>secuencias</code>.</p>
+<p>Normalmente en python, para trabajar con secuencias infinitas se usan
+iteradores. Para poder manejar estos iteradores se usan las funciones del módulo
+<code>itertools</code> que podemos combinar para obtener como resultado un iterable  que ya
+podemos manejar&nbsp;mejor.</p>
+<p>Si la secuencia tiene definido un elemento genérico, entonces podemos utilizar
+los rangos que ya habíamos visto anteriormente para crear la secuencia&nbsp;infinita.</p>
+<hr>
+<h2>Serie <em>Evaluación Perezosa en&nbsp;Python</em></h2>
+<ul>
+<li><a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_">Parte 1 - Introducción a la <em>evaluación&nbsp;perezosa</em></a></li>
+<li><a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas">Parte 2 - Secuencias&nbsp;infinitas</a></li>
+<li>Parte 3 - <em>Memoización</em></li>
+<li>Parte 4 - <em>Evaluación perezosa</em>&nbsp;avanzada</li>
+<li>Parte 5 - Ejemplo práctico: potencias de&nbsp;Pauli-Dirac</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">La serie completa como <em>Jupyter Notebook</em>&nbsp;en:</p>
+<p><a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.ipynb" title="Notebook Evaluación perezosa en python">serie-evaluacion-perezosa-en-python.ipynb</a></p>
+<p><em><span class="caps">INCOMPLETA</span></em></p>
+</div>
+<hr>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+
+<ul class="pager">
+  <li class="previous">
+    <a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Anterior">
+      <i class="fa fa-arrow-circle-left"></i>
+      Evaluación perezosa en python - Parte&nbsp;1
+    </a>
+  </li>
+ </ul>
+With category
+<a href="https://blog.ch3m4.org/category/python/">Python</a>:
+<ul class="pager">
+  <li class="previous">
+    <a
+      href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/"
+      title="Anterior en misma categoría"
+    >
+      <i class="fa fa-arrow-circle-o-left"></i>
+      Evaluación perezosa en python - Parte&nbsp;1
+    </a>
+  </li>
+ </ul>
+
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script id="dsq-count-scr" src="https://hyperreals.disqus.com/count.js" async></script>
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.identifier = "2021/02/09/evaluacion-perezosa-en-python-parte-2/";
+        this.page.title = "Evaluación perezosa en python - Parte&nbsp;2";
+    };
+    loadDisqus = function(sitename) {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hyperreals.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', skipHeader)
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

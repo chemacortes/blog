@@ -1,7 +1,7 @@
 ---
 Title: Evaluación perezosa en python - Parte 2
 Date: 2021-02-09 23:21:13
-Modified: 2021-02-11 21:30:36
+Modified: 2021-02-12 21:08:55
 Category: Python
 Tags: lazy-eval, sequence, range
 Slug: evaluacion-perezosa-en-python-parte-2
@@ -105,9 +105,12 @@ cuadrados = (n**2 for n in ℕ)
 res = [x for x in cuadrados if 100<=x<200]
 ```
 
-Si probabos es posible que se quede en un bucle infinito. Necesita comprobar todos los elementos, por lo que se pondrá a calcular todos lo elementos de la sucesión para ver si cumplen la condición.
+Si probabos es posible que se quede en un bucle infinito. Necesita comprobar
+todos los elementos, por lo que se pondrá a calcular todos lo elementos de la
+sucesión para ver si cumplen la condición.
 
-Como sabemos que la sucesión de cuadrados es creciente, podemos pararla en el momento que se salga de límites:
+Como sabemos que la sucesión de cuadrados es creciente, podemos pararla en el
+momento que se salga de límites:
 
 ```python
 from itertools import dropwhile, takewhile
@@ -120,7 +123,7 @@ res = list(menores_200)
 ```
 
 En definitiva, hemos encadenado varias funciones hasta conseguir el iterador que
-necitábamos. En _programación funcional_, a este encadenado de funciones se
+necesitábamos. En _programación funcional_, a este encadenado de funciones se
 denomina como _composición de funciones_ y es bastante utilizado.
 Lamentablemente, en python no existe este tipo de operaciones.
 
@@ -165,8 +168,8 @@ def fib() -> Iterator[int]:
 print(list(islice(fib(), 20)))
 ```
 
-Para obtener un elemento en una posición dada tenemos que _consumir_ el iterador
-hasta llegar a ella.
+Para obtener un elemento en una posición dada tenemos que _consumir_ el
+iterador, elemento a elemento, hasta llegar a la posición que queremos.
 
 Por ejemplo, para obtener el elemento de la posición 1000:
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/all.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-02-11T21:30:36+01:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Evaluación perezosa en python - Parte 2</title><link href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" rel="alternate"></link><published>2021-02-09T23:21:13+01:00</published><updated>2021-02-11T21:30:36+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-09:/2021/02/09/evaluacion-perezosa-en-python-parte-2/</id><summary type="html">&lt;p&gt;Segunda parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta parte se estudia las secuencia infintas, algunas implementadas con iteradores, y el modo en que se pueden&amp;nbsp;manejar.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Algunas&amp;nbsp;definiciones&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/all.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-02-12T21:08:55+01:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Evaluación perezosa en python - Parte 2</title><link href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" rel="alternate"></link><published>2021-02-09T23:21:13+01:00</published><updated>2021-02-12T21:08:55+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-09:/2021/02/09/evaluacion-perezosa-en-python-parte-2/</id><summary type="html">&lt;p&gt;Segunda parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta parte se estudia las secuencia infintas, algunas implementadas con iteradores, y el modo en que se pueden&amp;nbsp;manejar.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Algunas&amp;nbsp;definiciones&lt;/h2&gt;
 &lt;p&gt;Puede ser interesante dejar claras algunas definiciones para distinguir entre
 iteradores e iterables (se pueden ver las definiciones completas en el
 &lt;a href="https://docs.python.org/3.9/glossary.html"&gt;glosario&lt;/a&gt; de&amp;nbsp;python):&lt;/p&gt;
@@ -88,8 +88,11 @@ Veamos (&lt;span class="caps"&gt;NO&lt;/span&gt; &lt;span class="caps"&gt;PROBAR
 &lt;span class="n"&gt;res&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;cuadrados&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Si probabos es posible que se quede en un bucle infinito. Necesita comprobar todos los elementos, por lo que se pondrá a calcular todos lo elementos de la sucesión para ver si cumplen la&amp;nbsp;condición.&lt;/p&gt;
-&lt;p&gt;Como sabemos que la sucesión de cuadrados es creciente, podemos pararla en el momento que se salga de&amp;nbsp;límites:&lt;/p&gt;
+&lt;p&gt;Si probabos es posible que se quede en un bucle infinito. Necesita comprobar
+todos los elementos, por lo que se pondrá a calcular todos lo elementos de la
+sucesión para ver si cumplen la&amp;nbsp;condición.&lt;/p&gt;
+&lt;p&gt;Como sabemos que la sucesión de cuadrados es creciente, podemos pararla en el
+momento que se salga de&amp;nbsp;límites:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
 3
@@ -106,7 +109,7 @@ Veamos (&lt;span class="caps"&gt;NO&lt;/span&gt; &lt;span class="caps"&gt;PROBAR
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;En definitiva, hemos encadenado varias funciones hasta conseguir el iterador que
-necitábamos. En &lt;em&gt;programación funcional&lt;/em&gt;, a este encadenado de funciones se
+necesitábamos. En &lt;em&gt;programación funcional&lt;/em&gt;, a este encadenado de funciones se
 denomina como &lt;em&gt;composición de funciones&lt;/em&gt; y es bastante utilizado.
 Lamentablemente, en python no existe este tipo de&amp;nbsp;operaciones.&lt;/p&gt;
 &lt;h2&gt;Ejemplo: sucesión de&amp;nbsp;Fibonacci&lt;/h2&gt;
@@ -156,8 +159,8 @@ Lamentablemente, en python no existe este tipo de&amp;nbsp;operaciones.&lt;/p&gt
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;islice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fib&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Para obtener un elemento en una posición dada tenemos que &lt;em&gt;consumir&lt;/em&gt; el iterador
-hasta llegar a&amp;nbsp;ella.&lt;/p&gt;
+&lt;p&gt;Para obtener un elemento en una posición dada tenemos que &lt;em&gt;consumir&lt;/em&gt; el
+iterador, elemento a elemento, hasta llegar a la posición que&amp;nbsp;queremos.&lt;/p&gt;
 &lt;p&gt;Por ejemplo, para obtener el elemento de la posición&amp;nbsp;1000:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
@@ -245,7 +248,7 @@ los rangos que ya habíamos visto anteriormente para crear la secuencia&amp;nbsp
 &lt;div class="admonition danger"&gt;
 &lt;p class="admonition-title"&gt;La serie completa como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.ipynb" title="Notebook Evaluación perezosa en python"&gt;serie-evaluacion-perezosa-en-python.ipynb&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&amp;nbsp;TODAVÍA&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
@@ -662,7 +665,7 @@ con &lt;em&gt;secuencias infinitas&lt;/em&gt; de&amp;nbsp;elementos.&lt;/p&gt;
 &lt;div class="admonition danger"&gt;
 &lt;p class="admonition-title"&gt;La serie completa como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.ipynb" title="Notebook Evaluación perezosa en python"&gt;serie-evaluacion-perezosa-en-python.ipynb&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&amp;nbsp;TODAVÍA&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Reorientando el blog</title><link href="https://blog.ch3m4.org/2021/02/01/reorientando-el-blog/" rel="alternate"></link><published>2021-02-01T21:00:00+01:00</published><updated>2021-02-01T20:54:25+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-01:/2021/02/01/reorientando-el-blog/</id><summary type="html">&lt;p&gt;Sobre este blog, lo último que he estado investigando y a hacia dónde pienso que irá la&amp;nbsp;programación.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introducción&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Año 2020&lt;/strong&gt; Un año en el que parece que han pasado muchas cosas, pero que en

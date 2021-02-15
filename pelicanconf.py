@@ -118,7 +118,7 @@ MARKDOWN = {
         "markdown.extensions.codehilite": {
             "css_class": "highlight",
             "guess_lang": False,
-            "linenums": True,
+            "linenums": False,
         },
         "markdown.extensions.extra": {},
         "markdown.extensions.meta": {},

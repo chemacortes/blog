@@ -1,21 +1,22 @@
 ## Serie _Evaluación Perezosa en Python_
 
-- [Parte 1 - Introducción a la _evaluación perezosa_][1]
-- [Parte 2 - Secuencias infinitas][2]
-- Parte 3 - _Memoización_
-- Parte 4 - _Evaluación perezosa_ avanzada
-- Parte 5 - Ejemplo práctico: potencias de Pauli-Dirac
-- Apéndice: sobre el tipado de datos utilizado
+- [Parte 1 - Introducción a la _evaluación perezosa_][101]
+- [Parte 2 - Secuencias infinitas][102]
+- [Parte 3 - _Memoización_][103]
+- [Parte 4 - _Evaluación perezosa_ avanzada][104]
+- [Parte 5 - Ejemplo práctico: potencias de Pauli-Dirac][105]
+- [Apéndice: sobre el tipado de datos utilizado][106]
 
 !!!danger "La serie completa como _Jupyter Notebook_ en:"
-    [serie-evaluacion-perezosa-en-python.ipynb][99]
+    [serie-evaluacion-perezosa-en-python.ipynb][999]
 
     _INCOMPLETA TODAVÍA_
 
-[1]: {filename}2021-02-08-evaluacion-perezosa-en-python-parte-1.md "Introducción a la _evaluación perezosa_"
-[2]: {filename}2021-02-09-evaluacion-perezosa-en-python-parte-2.md "Secuencias infinitas"
-[3]: . "Parte 3 - _Memoización_"
-[4]: . "Clausuras en python - Parte 2"
-[5]: . "Apéndice: sobre el tipado de datos utilizado"
+[101]: {filename}2021-02-08-evaluacion-perezosa-en-python-parte-1.md "Introducción a la _evaluación perezosa_"
+[102]: {filename}2021-02-09-evaluacion-perezosa-en-python-parte-2.md "Secuencias infinitas"
+[103]: {filename}2021-02-14-evaluacion-perezosa-en-python-parte-3.md "Parte 3 - _Memoización_"
+[104]: {filename}2021-02-15-evaluacion-perezosa-en-python-parte-4.md "Parte 4 - _Evaluación perezosa_ avanzada"
+[105]: {filename}2021-02-15-evaluacion-perezosa-en-python-parte-5.md "Parte 5 - Ejemplo práctico: potencias de Pauli-Dirac"
+[106]: {filename}2021-02-15-evaluacion-perezosa-en-python-apendice.md "Apéndice: sobre el tipado de datos utilizado"
 
-[99]: {static}notebook-serie-evaluacion-perezosa-en-python.ipynb "Notebook Evaluación perezosa en python"
+[999]: {static}notebook-serie-evaluacion-perezosa-en-python.ipynb "Notebook Evaluación perezosa en python"

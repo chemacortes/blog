@@ -1,7 +1,7 @@
 ---
 Title: Evaluación perezosa en python - Parte 2
 Date: 2021-02-09 23:21:13
-Modified: 2021-02-12 21:08:55
+Modified: 2021-02-14 20:11:16
 Category: Python
 Tags: lazy-eval, sequence, range
 Slug: evaluacion-perezosa-en-python-parte-2
@@ -247,8 +247,8 @@ los rangos que ya habíamos visto anteriormente para crear la secuencia infinita
 [itertools]: https://docs.python.org/3.9/library/itertools.html
 [itertools-recipes]: https://docs.python.org/3.9/library/itertools.html#itertools-recipes
 
----
+-----
 
 {! content/2021/2021-02-08-serie-evaluacion-perezosa-en-python.txt !}
 
----
+-----

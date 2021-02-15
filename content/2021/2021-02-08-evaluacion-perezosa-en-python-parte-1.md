@@ -1,7 +1,7 @@
 ---
 Title: Evaluación perezosa en python - Parte 1
 Date: 2021-02-08 19:17:25
-Modified: 2021-02-09 21:50:01
+Modified: 2021-02-14 20:11:07
 Category: Python
 Tags: lazy-eval, sequence, range
 Slug: evaluacion-perezosa-en-python-parte-1
@@ -266,8 +266,8 @@ haríamos con un _rango_, sin necesidad de generar sus elementos.
 En el próximo artículo veremos cómo podemos ir más lejos para crear y trabajar
 con _secuencias infinitas_ de elementos.
 
----
+-----
 
 {! content/2021/2021-02-08-serie-evaluacion-perezosa-en-python.txt !}
 
----
+-----

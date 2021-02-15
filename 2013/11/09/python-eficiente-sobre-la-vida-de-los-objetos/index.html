@@ -86,41 +86,29 @@
 <li>Modificando el <em>enlace</em> para apunte a otro&nbsp;valor</li>
 </ul>
 <p>Nosotros no sabemos, en realidad, cómo se modifican las variables. Lo único que nos tiene que importar es que nuestra variable modificada apuntará al nuevo valor. Así pues, cuando tenemos un&nbsp;código:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">12</span>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">12</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Seguimos diciendo que <em>&#8220;a la variable X le asignamos el valor entero 12&#8221;</em>, pero lo correcto sería decir que <em>&#8220;al entero 12 lo llamaremos X&#8221;</em>. Y en lugar de decir que <em>&#8220;a la variable Y le asignamos la variable X&#8221;</em>, lo correcto sería decir que <em>&#8220;la variable X también se va a llamar Y&#8221;</em>. Pero la costumbre pesa más que la&nbsp;corrección.</p>
 <p>Pensando en un lenguaje de programación como Python, donde todo son objetos, podemos ver nuestro entorno como un gran <em>ecosistema</em> poblado de objetos de todo tipo, que se crean, interaccionan y se destruyen. Al principio de una aplicación, sólo contamos con acceso a unos pocos objetos y nos las tenemos que apañar para acceder al resto de objetos a través de operaciones y llamadas a los distintos módulos disponibles. Nuestro espacio de nombres inicial se irá expandiendo progresivamente con las referencias de los objetos de nuestro mundo&nbsp;conocido.</p>
 <h2>Ciclo de la vida de un&nbsp;objeto</h2>
 <p>Lo primero que hay que tener claro es que en python no tenemos verdadero control sobre la <strong>creación</strong> y <strong>destrucción</strong> de los objetos. Sólo podemos asegurar que un objeto <strong>existe mientras haya una referencia que lo enlace</strong>. Para saber qué pasa, tendremos que indagar en el funcionamiento del intérprete&nbsp;python.</p>
 <h3>Objetos&nbsp;básicos</h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>En esta expresión, el intérprete emplea dos objetos existentes, &#8216;<code>2</code><span class="quo">&#8216;</span> y &#8216;<code>3</code><span class="quo">&#8216;</span>, y obtiene un tercer objeto, &#8216;<code>5</code><span class="quo">&#8216;</span>, al que asigna el nombre de &#8216;<code>x</code><span class="quo">&#8216;</span>. El objeto &#8216;<code>5</code><span class="quo">&#8216;</span> no sabemos si lo ha creado en el momento de evaluar la expresión o si ya&nbsp;existía.</p>
 <p>Como optimización del intérprete, siempre están creados un conjunto de los objetos más comunes. Estos objetos son los números enteros desde -5 a 256 (incluido el 0), los booleanos <code>True</code> y <code>False</code>, <code>None</code> y los conjuntos vacíos inmutables <code>()</code>, <code>frozenset()</code> y <code>""</code>.</p>
 <p>Para saber si dos objetos son el mismo, podemos usar la función <code>id</code>. Podemos decir que dos objetos son el mismo si la función <code>id</code> devuelve el mismo valor. Así, podríamos obtener fácilmente la lista de los números enteros que siempre tiene creados el&nbsp;intérprete:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">),</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">))</span> <span class="k">if</span> <span class="nb">id</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">j</span><span class="p">)]</span>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">),</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">))</span> <span class="k">if</span> <span class="nb">id</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">j</span><span class="p">)]</span>
 </code></pre></div>
-</td></tr></table>
+
 <h3>Internalización de&nbsp;cadenas</h3>
 <p>Más curiosas resultan las <em>&#8220;internalizaciones&#8221;</em> de las cadenas de caracteres. Para acelerar las búsquedas, el intérprete mantiene una tabla global interna con las palabras usadas en nombres de variables, funciones, módulos, etc. Adicionalmente, toda cadena de caracteres que usemos que cumpla con las reglas sintácticas para ser nombres de variables acabarán automácamente dentro de esta tabla&nbsp;interna.</p>
 <p>Además de este funcionamiento automático, podemos forzar a que una cadena entre en esta tabla con la función <code>intern</code> (<code>sys.intern</code> en&nbsp;python3).</p>
 <p>Pues bien, todas las cadenas de caracteres de la tabla interna sólo son creadas una vez durante toda la ejecución del programa y permacerán ahí hasta el&nbsp;final.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">=</span><span class="s2">&quot;hola&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">=</span><span class="s2">&quot;hola&quot;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="o">=</span><span class="s2">&quot;hola&quot;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">==</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 <span class="kc">True</span>
@@ -133,15 +121,9 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">==</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 <span class="kc">True</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>No siempre funciona el mecanismo de <em>internalización</em> y el intérprete crea una nueva cadena de&nbsp;caracteres:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">=</span><span class="s2">&quot;hola&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">=</span><span class="s2">&quot;hola&quot;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;HOLA&quot;</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">==</span><span class="nb">id</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 <span class="kc">False</span>
@@ -149,24 +131,16 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">==</span><span class="nb">id</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 <span class="kc">True</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Por culpa de la <em>internalización</em> nunca podremos estar seguros de cuándo se crea una cadena de caracteres. Más allá de este hecho, nunca nos debería preocupar el internalizar o no las cadenas de caracteres que usemos. Al menos, yo no he encontrado ninguna ventaja concreta de&nbsp;hacerlo.</p>
 <h3>Asignaciones</h3>
 <p>Ya hemos comentado que una asignación directa no crea un objeto nuevo, si no que enlaza una nueva etiqueta con el objeto&nbsp;existente:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>En este caso, el mismo objeto al que apunta &#8216;<code>y</code><span class="quo">&#8216;</span> también será al que apunte &#8216;<code>x</code><span class="quo">&#8216;</span>. Muchas veces no querremos que esto ocurra, sobre todo en el caso de listas. El truco consiste en convertir la asignación directa en una expresión que cree un nuevo objeto, pero de igual valor. Para ello usaremos las operaciones <strong>idempotentes</strong> para cada tipo de&nbsp;dato:</p>
 <p>Para números en general, podemos usar los elementos neutros de las operaciones <code>y*1</code> ó <code>y+0</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="o">=</span><span class="mf">2.0</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="o">=</span><span class="mf">2.0</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">y</span><span class="o">=</span><span class="n">x</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">==</span><span class="nb">id</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="kc">True</span>
@@ -176,7 +150,7 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">y</span><span class="o">==</span><span class="n">x</span>
 <span class="kc">True</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>En el caso de listas, por convenio se suele usar el operador <em>split</em> <code>lista[:]</code>, pero podríamos usar cualquier otro como <code>lista*1</code> o <code>lista+[]</code>.</p>
 <h3>Destrucción de un&nbsp;objeto</h3>
 <p>Saber cuándo acaba la vida de un objeto suele ser la parte que más despista a quienes vienen a python desde otros lenguajes donde se acostumbra a hacer desaparecer un objeto por la&nbsp;fuerza.</p>
@@ -187,17 +161,13 @@
 <p>En próximos artículos veremos técnicas mejores, como son usar <em>&#8220;referencias débiles&#8221;</em> (<em>weakrefs</em>). Las <em>weakrefs</em> vienen a ser referencias a objetos que no obligan a que el objeto esté siempre vivo. Si todas las referencias un objeto son <em>weakrefs</em>, entonces el objeto podrá ser&nbsp;destruído.</p>
 <h3>Referencias&nbsp;circulares</h3>
 <p>Algunas veces, los objetos mantienen referencias entre ellos conocidas por <em>&#8220;referencias circulares&#8221;</em>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">=</span><span class="p">[]</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">=</span><span class="p">[]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="n">a</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
 <span class="p">[[[</span><span class="o">...</span><span class="p">]]]</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>De querer eliminar ambos objetos, no podríamos hacer nada al estar referenciados mutuamente. Para estos casos, el intérprete de python tiene un proceso propio que se dedica a detectar estas referencias circulares llamado <strong>&#8220;Recolector de Basura&#8221;</strong>, más conocido por sus siglas <em><span class="caps">GC</span></em> (<em>Garbage Collector</em>). <span class="caps">GC</span> es un proceso que está permanentemente explorando la memoria para mantenerla limpia de objetos innecesarios, siendo parte vital para el correcto funcionamiento del intérprete. (Más información, en la documentación del <a href="http://docs.python.org/2.7/library/gc.html" title="Módulo gc">módulo <code>gc</code></a>).</p>
   </div>
 

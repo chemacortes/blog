@@ -3,44 +3,38 @@
 &lt;p&gt;Con un pequeño truco, es posible usar &lt;em&gt;markdown_extra&lt;/em&gt; con &lt;em&gt;qtm&lt;/em&gt;. Instalando el módulo &lt;a href="http://www.freewisdom.org/projects/python-markdown/"&gt;markdown …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;Por defecto, &lt;strong&gt;&lt;a href="http://qtm.blogistan.co.uk/" title="QTM The open-source blogging client"&gt;qtm&lt;/a&gt;&lt;/strong&gt; usa el comando &lt;code&gt;markdown&lt;/code&gt; que se instala en linux en la ruta &lt;code&gt;/usr/bin/markdown&lt;/code&gt;. Este comando acepta la sintáxis básica de &lt;em&gt;markdown&lt;/em&gt;, insuficiente cuando estamos acostumbrados a usar la extensión &lt;em&gt;markdown extra&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Con un pequeño truco, es posible usar &lt;em&gt;markdown_extra&lt;/em&gt; con &lt;em&gt;qtm&lt;/em&gt;. Instalando el módulo &lt;a href="http://www.freewisdom.org/projects/python-markdown/"&gt;markdown para python&lt;/a&gt; (paquete &lt;code&gt;python-markdown&lt;/code&gt; en &lt;em&gt;ubuntu&lt;/em&gt;) obtenemos un comando alternativo llamado &lt;code&gt;markdown_py&lt;/code&gt; que acepta numerosas extensiones para &lt;em&gt;markdown&lt;/em&gt;, entre las que se incluye &lt;code&gt;markdown_extra&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Para usar &lt;em&gt;markdown_py&lt;/em&gt; en &lt;em&gt;qtm&lt;/em&gt;, creamos el pequeño script que active la extensión &lt;code&gt;extra&lt;/code&gt; en el&amp;nbsp;parseo:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 
 &lt;span class="nb"&gt;exec&lt;/span&gt; markdown_py -x extra &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 &lt;p&gt;Llamamos a este script &lt;code&gt;markdown_extra&lt;/code&gt;, le asignamos permisos de ejecución y lo metemos en algún lugar apropiado como la carpeta &lt;code&gt;bin&lt;/code&gt; de nuestro usuario linux. En la configuración de &lt;em&gt;qtm&lt;/em&gt;, introducimos como ruta al comando&amp;nbsp;markdown&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/home/usuario/bin/markdown_extra
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/home/usuario/bin/markdown_extra
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 &lt;p&gt;A partir de aquí podremos previsualizar nuestro código con &lt;code&gt;markdown extra&lt;/code&gt;. También podríamos añadir otras extensiones como, por ejemplo, &lt;code&gt;toc&lt;/code&gt; con la que podemos crear tablas de&amp;nbsp;contenidos:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 
 &lt;span class="nb"&gt;exec&lt;/span&gt; markdown_py -x extra -x toc &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 &lt;p&gt;Debemos asegurarnos que nuestro blog posea también esta extensión. Si no la tuviera, siempre tenemos la posibilidad de indicarle a &lt;em&gt;qtm&lt;/em&gt; que convierta nuestra entrada a html antes de enviarla al&amp;nbsp;blog.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Actualización&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Para windows es necesario otro tipo de configuración. Una vez instalado el módulo &lt;code&gt;python-markdown&lt;/code&gt; se debe crear un fichero &lt;em&gt;.bat&lt;/em&gt; en &lt;code&gt;C:\Python2.7\Scripts&lt;/code&gt; con el siguiente&amp;nbsp;contenido:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;c:\python27\python.exe&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;%1&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; -x extra -x toc &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;%2&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;c:\python27\python.exe&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;%1&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; -x extra -x toc &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;%2&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 &lt;p&gt;Si llamamos a este fichero &lt;code&gt;markdown_extra.bat&lt;/code&gt;, la configuración de &lt;em&gt;qtm&lt;/em&gt; quedaría de esta&amp;nbsp;manera:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Preferencias de QTM" src="/blog/wp-content/uploads/2011/05/Preferencias-qtm.png"&gt;&lt;/p&gt;</content><category term="Técnicas"></category><category term="markdown"></category><category term="tip"></category></entry><entry><title>qtm: un editor para markdown y wordpress</title><link href="https://blog.ch3m4.org/2011/05/22/qtm-editor-markdown-y-wordpress/" rel="alternate"></link><published>2011-05-22T20:34:00+02:00</published><updated>2011-05-22T20:34:00+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2011-05-22:/2011/05/22/qtm-editor-markdown-y-wordpress/</id><summary type="html">&lt;p&gt;Buscando una aplicación para hacer más cómodas mis publicaciones en wordpress que, además, aceptara markdown, he estado a apunto de abandonar. Nigún cliente acepta &lt;em&gt;markdown&lt;/em&gt; y, el único editor de &lt;em&gt;markdown&lt;/em&gt; que he encontrado, &lt;a href="http://sourceforge.net/p/retext/home/"&gt;retext&lt;/a&gt;&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;, no tiene opción para publicar en&amp;nbsp;blogs.&lt;/p&gt;
 &lt;p&gt;Finalmente me he encontrado con esta joya …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Buscando una aplicación para hacer más cómodas mis publicaciones en wordpress que, además, aceptara markdown, he estado a apunto de abandonar. Nigún cliente acepta &lt;em&gt;markdown&lt;/em&gt; y, el único editor de &lt;em&gt;markdown&lt;/em&gt; que he encontrado, &lt;a href="http://sourceforge.net/p/retext/home/"&gt;retext&lt;/a&gt;&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;, no tiene opción para publicar en&amp;nbsp;blogs.&lt;/p&gt;
 &lt;p&gt;Finalmente me he encontrado con esta joya llamada &lt;strong&gt;&lt;a href="http://qtm.blogistan.co.uk/" title="QTM The open-source blogging client"&gt;qtm&lt;/a&gt;&lt;/strong&gt; desde la que estoy escribiendo este &lt;em&gt;post&lt;/em&gt;. Es un cliente basado en Qt que permite editar el artículo &lt;em&gt;fuera de línea&lt;/em&gt;. Puede usar &lt;em&gt;markdown&lt;/em&gt; tanto para la previsualización como para la conversión a html antes de enviar a wordpress. En mi caso, como ya tengo activado un plugin en wordpress para markdown, envío el artículo direstamente en markdown sin procesar a&amp;nbsp;html.&lt;/p&gt;
 &lt;p&gt;Es necesario actualizarse a la última versión de &lt;strong&gt;qtm&lt;/strong&gt; ya que con la versión que instala por defecto ubuntu me daba algunos problemas con las categorías y etiquetas. Para instalar la última versión, basta con añadir el repositorio &lt;span class="caps"&gt;PPA&lt;/span&gt;&amp;nbsp;siguiente:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo apt-add-repository ppa:indigojo/ppa
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo apt-add-repository ppa:indigojo/ppa
 $ sudo apt-get update
 $ sudo install qtm
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 &lt;div class="footnote"&gt;
 &lt;hr&gt;
 &lt;ol&gt;

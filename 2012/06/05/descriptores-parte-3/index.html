@@ -76,20 +76,7 @@
     <p>Hasta ahora hemos visto cómo funcionan los <em>descriptores</em> para acceder a atributos de datos que funcionan como <em>&#8220;propiedades&#8221;</em> (<code>property</code>). Pero al iniciar esta serie de artículos dije que los <em>descriptores</em> son también <em>&#8220;los responsables del funcionamiento de  métodos, métodos estáticos, métodos de clase y del mecanismo <code>super()</code> responsable de la herencia múltiple&#8221;</em>.  Es el momento de ver cómo lo&nbsp;hacen:</p>
 <h2>Métodos vistos como&nbsp;funciones</h2>
 <p>Es común pensar que los métodos y las funciones comparten muchas similitudes. Considerando que en python las funciones son <a href="http://en.wikipedia.org/wiki/First-class_object">objetos de primera clase</a>  lo primero que podemos probar es a asignar directamente funciones a atributos de una clase para crear métodos <em>dinámicamente</em>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">pass</span>
 
 <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
@@ -104,17 +91,14 @@
 <span class="n">C</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>   <span class="c1"># ...estas invocaciones...</span>
 <span class="n">func</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>       <span class="c1"># ...dan el mismo resultado</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Esta <em>dualidad</em> entre funciones y métodos va más allá si observamos que, en realidad, las funciones son <em>&#8220;descriptores&#8221;</em>, tal como podemos comprobar mirando su&nbsp;diccionario:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s2">&quot;__get__&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s2">&quot;__get__&quot;</span><span class="p">)</span>
 <span class="kc">True</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="s2">&quot;__set__&quot;</span><span class="p">)</span>
 <span class="kc">False</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Concretamente, las funciones son <em>&#8220;descriptores de no-datos&#8221;</em> y como tales se aplicarán las reglas comentadas en artículos previos. En concreto, se buscarán antes los métodos en el diccionario del objeto que entre los atributos de su clase<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, lo que nos va a permitir suplantar métodos en tiempo de&nbsp;ejecución.</p>
 <p>Con añadir funciones a los atributos de clase será suficiente para la mayoría de casos que nos podamos enfrentar. El resto de este artículo va orientado para algunos casos de <em>&#8220;técnicas dinámicas&#8221;</em> que requieren diferenciar el comportamiento de un objeto respecto al resto de las instancias de la misma&nbsp;clase.</p>
 <h2>Invocación de descriptores y sus&nbsp;enlaces</h2>
@@ -137,33 +121,25 @@
 <p>Como se puede observar, el método <code>__get__</code> del descriptor recibe diferentes argumentos según el enlace que se vaya a usar, lo que nos permitirá programar el descriptor según el uso que deseemos&nbsp;darle.</p>
 <h2>Técnicas&nbsp;dinámicas</h2>
 <p>Para realizar nuestros experimentos, supongamos que tenemos el siguiente&nbsp;descriptor:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">desc</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">desc</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="nb">print</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Es una simple función que imprime los argumentos que recibe con el fin de poder analizarlos. Con una clase y una instancia intentaremos ver cómo añadirles métodos&nbsp;dinámicos:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Cls</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Cls</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">pass</span>
 
 <span class="n">obj</span><span class="o">=</span><span class="n">Cls</span><span class="p">()</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>El caso trivial es añadir el descriptor como atributo de la&nbsp;clase:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">Cls</span><span class="o">.</span><span class="n">meth</span><span class="o">=</span><span class="n">desc</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">Cls</span><span class="o">.</span><span class="n">meth</span><span class="o">=</span><span class="n">desc</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span>
 <span class="o">&lt;</span><span class="n">bound</span> <span class="n">method</span> <span class="n">Cls</span><span class="o">.</span><span class="n">desc</span> <span class="n">of</span> <span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Cls</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x8ffd3ac</span><span class="o">&gt;&gt;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="p">()</span>
 <span class="p">(</span><span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Cls</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x8ffd3ac</span><span class="o">&gt;</span><span class="p">,)</span> <span class="p">{}</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Encaja con el funcionamiento estándar de los descriptores, que pasa por establecer primero un enlace del descriptor con la instancia o con la clase para obtener después el método&nbsp;ejecutable.</p>
 <p>Pero a veces necesitamos añadir métodos sobre la instancia y no sobre la clase. Ésto puede ser debido&nbsp;a:</p>
 <ol>
@@ -172,52 +148,33 @@
 </ol>
 <p>Técnicamente, son los llamados <strong>&#8220;métodos singleton&#8221;</strong> que lenguajes como <a href="http://www.ruby-doc.org/docs/ruby-doc-bundle/UsersGuide/rg/singletonmethods.html" title="Singleton methods in Ruby">ruby</a> incluyen en su sintaxis, pero que en python se implementan hackeando los&nbsp;descriptores.</p>
 <p>Si añadiésemos un descriptor a una instancia sin establer ningún&nbsp;enlace:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="o">=</span><span class="n">desc</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="o">=</span><span class="n">desc</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="p">()</span>
 <span class="p">()</span> <span class="p">{}</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span>
 <span class="o">&lt;</span><span class="n">function</span> <span class="n">desc</span> <span class="n">at</span> <span class="mh">0xb76776bc</span><span class="o">&gt;</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Vemos que el funcionamiento es similar a si hubiéramos ejecutado directamente la función. En realidad, actúa como <strong>&#8220;métodos estáticos&#8221;</strong>, descriptores que no están enlazados con&nbsp;nada.</p>
 <p>Para conseguir que el descriptor funcione como un método normal, necesitamos enlazarlo con la&nbsp;instancia:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="o">=</span><span class="n">desc</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">Cls</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="o">=</span><span class="n">desc</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">Cls</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="p">()</span>
 <span class="p">(</span><span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Cls</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb767adec</span><span class="o">&gt;</span><span class="p">,)</span> <span class="p">{}</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span>
 <span class="o">&lt;</span><span class="n">bound</span> <span class="n">method</span> <span class="n">Cls</span><span class="o">.</span><span class="n">desc</span> <span class="n">of</span> <span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Cls</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb767adec</span><span class="o">&gt;&gt;</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Aquí ya vemos que el método se identifica como un <strong>&#8220;método normal&#8221;</strong> más de la clase <code>Cls</code>.</p>
 <p>De forma parecida, podríamos enlazar el descriptor con la clase, pero vista como instancia, no como clase, con lo que obtenemos un <strong>&#8220;método de clase&#8221;</strong>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="o">=</span><span class="n">desc</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">Cls</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">Cls</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="o">=</span><span class="n">desc</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">Cls</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">Cls</span><span class="p">))</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="n">meth</span><span class="p">()</span>
 <span class="p">(</span><span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">__main__</span><span class="o">.</span><span class="n">Cls</span><span class="s1">&#39;&gt;,) </span><span class="si">{}</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Hemos visto las opciones posibles para realizar diversas técnicas dinámicas. No es habitual verlas en el código que usamos normalmente. Casi puedo asegurar que si necesitas alguna de estas técnicas, es que te has pasado por alto alguna otra forma más sencilla de hacer lo&nbsp;mismo.</p>
 <h2>Pequeño&nbsp;truco</h2>
 <p>Todo lo anteriormente dicho funciona siempre que estemos trabajando con <em>&#8220;descriptores de no-datos&#8221;</em>. Si deseamos que un método de la clase no sea suplantado por un método en la instancia basta con crearlo como <em>&#8220;descriptor de datos&#8221;</em>. Lo más sencillo es usar el decorador <code>@property</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Cls</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Cls</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="o">...</span>  <span class="nd">@property</span>
 <span class="o">...</span>  <span class="k">def</span> <span class="nf">meth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="o">...</span>    <span class="nb">print</span> <span class="s2">&quot;Desde clase&quot;</span>
@@ -228,7 +185,7 @@
   <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">AttributeError</span><span class="p">:</span> <span class="n">can</span><span class="s1">&#39;t set attribute</span>
 </code></pre></div>
-</td></tr></table>
+
 <h2>Resto de artículos de la&nbsp;serie</h2>
 <ol>
 <li><a href="https://blog.ch3m4.org/2011/06/24/optimizaciones-con-los-metodos-especiales/">Optimizaciones con los Métodos&nbsp;Especiales</a></li>

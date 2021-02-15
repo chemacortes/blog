@@ -77,14 +77,7 @@
 <p>Sin embargo, <code>binascii</code> posee algunas funciones que pueden sernos bastante útiles a la hora de simplificar el empaquetado de datos que requieren determinadas APIs, en lugar de usar estructuras más complejas como <code>array</code> o <code>struct</code>. También se revela muy útil a la hora de crear batería de tests donde necesitemos chequear valores&nbsp;binarios.</p>
 <h2>Estructuras array y&nbsp;struct</h2>
 <p>Por ejemplo, imaginemos que nuestra <span class="caps">API</span> nos pide que empaquetemos un número entero como cuatro bytes. Antes de python3 no existía una forma para controlar el tamaño en bytes de un objeto sin tener que recurrir a alguna estructura especializada. Por&nbsp;ejemplo:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">array</span> <span class="kn">import</span> <span class="n">array</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">array</span> <span class="kn">import</span> <span class="n">array</span>
 
 <span class="k">def</span> <span class="nf">numpack</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
     <span class="n">a</span><span class="o">=</span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
@@ -93,61 +86,42 @@
 
 <span class="n">n</span><span class="o">=</span><span class="n">numpack</span><span class="p">(</span><span class="mh">0xffeeddcc</span><span class="p">)</span>  <span class="c1"># res: \xff\xee\xdd\xcc</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>En el resultado final ha hecho falta invertir el orden de los bytes debido a que nos estaba usando un orden <em>&#8220;little-endian&#8221;</em> para su codificación. El orden puede depender del sistema donde estemos trabajando, con lo que no es nada seguro usar este método. Es preferible el uso más especializado de <code>struct</code> donde tendremos algo más de control sobre éste y muchos otros&nbsp;aspectos:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">struct</span> <span class="kn">import</span> <span class="n">pack</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">struct</span> <span class="kn">import</span> <span class="n">pack</span>
 
 <span class="k">def</span> <span class="nf">numpack</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">pack</span><span class="p">(</span><span class="s1">&#39;!L&#39;</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
 
 <span class="n">n</span><span class="o">=</span><span class="n">numpack</span><span class="p">(</span><span class="mh">0xffeeddcc</span><span class="p">)</span>  <span class="c1"># res: \xff\xee\xdd\xcc</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Nota que en la cadena de formato que se pasa a <code>pack()</code> tiene un indicador <code>'!'</code> al principio, con el que indicamos que queremos una ordenación <em>&#8220;network (=big-endian)&#8221;</em>.</p>
 <p>El proceso inverso es tan fácil como usar la función complementaria <code>unpack</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;!L&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;!L&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div>
-</td></tr></table>
+
 <h2>Codificando&nbsp;mensajes</h2>
 <p>Lo visto hasta ahora funciona bien cuando tenemos que interaccionar con una <span class="caps">API</span> que use tamaños fijos para los datos. Pero, ¿qué pasa cuando los datos son de longitud variable, por ejemplo, un mensaje largo de decenas de bytes? En el mejor de los casos, tendríamos que ir byte a byte, tal vez apoyándonos en <code>array</code> o <code>struct</code> para realizar las conversiones, algo a todas luces resulta bastante&nbsp;tedioso.</p>
 <p>Como ya adelanté, el módulo <code>binascii</code> nos va a ayudar en este cometido, en concreto la función <code>b2a_hex</code> y su contraparte <code>a2b_hex</code>.</p>
 <p>Por ejemplo, nos envían en un mensaje un entero codificado en multibyte. No sabemos si son 2, 4 u 8 bytes, o incluso podrían ser más bytes de tratarse de un <code>BigInt</code> (entero muy largo). Con <code>binascii</code> podríamos resolverlo&nbsp;así:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">binascii</span> <span class="kn">import</span> <span class="n">b2a_hex</span><span class="p">,</span> <span class="n">a2b_hex</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">binascii</span> <span class="kn">import</span> <span class="n">b2a_hex</span><span class="p">,</span> <span class="n">a2b_hex</span>
 
 <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">b2a_hex</span><span class="p">(</span><span class="n">msg</span><span class="p">),</span> <span class="mi">16</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Para el proceso contrario, codificar un entero en una cadena binaria, usaríamos <code>a2b_hex</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">h</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%x</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">num</span>
+<div class="highlight"><pre><span></span><code><span class="n">h</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%x</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">num</span>
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
     <span class="n">h</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span> <span class="o">+</span> <span class="n">h</span>
 
 <span class="n">msg</span> <span class="o">=</span> <span class="n">a2b_hex</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Hemos tenido cuidado de que la cadena hexadecimal tenga longitud par ya que <code>a2b_hex</code> codifica siempre cada byte a partir de una pareja de dígitos&nbsp;hexadecimales.</p>
 <h2>Estudio codificaciones&nbsp;unicode</h2>
 <p>También es posible usar <code>binascii</code> para estudiar las codificaciones de cadenas unicode, lo que hace más sencillo crear tests automáticos para funciones que empleen unicode. Sin muchos adornos, haríamos algo&nbsp;así:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#-*- coding: utf-8 -*-</span>
+<div class="highlight"><pre><span></span><code><span class="c1">#-*- coding: utf-8 -*-</span>
 
 <span class="kn">from</span> <span class="nn">binascii</span> <span class="kn">import</span> <span class="n">b2a_hex</span><span class="p">,</span> <span class="n">a2b_hex</span>
 
@@ -157,7 +131,7 @@
 
 <span class="c1">#res: 5065c3b36e20e2999f</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Comparando el resultado obtenido con la cadena unicode, vemos que la <em>ó</em> acentuada se codifica en &#8216;utf-8&#8217; como <code>0xc3b3</code>, o que la figura de peón negro se codifica como <code>0xe2999f</code>.</p>
 <p>Si cambiamos la codificación por &#8216;utf-16&#8217; obtenermos como resultado <code>fffe50006500f3006e0020005f26</code>. Además de ser más larga, vemos que se añade al principio <code>fffe</code>, que es lo que se denomina <abbr title="Byte Order Mark"><span class="caps">BOM</span></abbr>, y que nos indica qué ordenación de bytes se ha usado en la codificación (<code>'FEFF'</code> para <em>Big Endian</em> / <code>'FFFE'</code> para <em>Little Endian</em>). Con <code>fffe</code> nos indica concretamente que se ha usado la codificación &#8216;<span class="caps">UTF</span>-16 Little Endian&#8217;, con lo que tenemos los bytes invertidos para cada caracter codificado (ver más info en el <a href="http://es.wikipedia.org/wiki/Marca_de_orden_de_bytes_(BOM)">artículo sobre <abbr title="Byte Order Mark"><span class="caps">BOM</span></abbr></a> de la&nbsp;wikipedia).</p>
 <p>De no desear que se nos añada la marca <abbr title="Byte Order Mark"><span class="caps">BOM</span></abbr>, podríamos haber forzado la codificación mediante <code>'utf-16be'</code> ó <code>'utf-16le'</code> para <em>Big Endian</em> y <em>Little Endian</em>,&nbsp;respectivamente.</p>

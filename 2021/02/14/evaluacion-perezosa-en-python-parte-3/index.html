@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Evaluación perezosa en python - Parte 3 | Cachés y Memoización En el pasado artículo vimos que para obtener un elemento de la sucesión fibonacci...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ea57ac74.min.css">
+
+  <script src="https://blog.ch3m4.org/theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, lazy-eval, memoize, cache">
+
+  <title>Evaluación perezosa en python - Parte 3 | Hyperreals *R</title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github" target="_blank" rel="noopener noreferrer"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket" target="_blank" rel="noopener noreferrer"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow" target="_blank" rel="noopener noreferrer"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml" target="_blank" rel="noopener noreferrer">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml" target="_blank" rel="noopener noreferrer">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml" target="_blank" rel="noopener noreferrer">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6" target="_blank" rel="noopener noreferrer">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+<div class="article_meta">
+  <p>Posted <time data-timeago datetime="2021-02-14T17:53:58+01:00">dom 14 febrero 2021</time>
+   by Chema Cortés  </p>
+  <p>Last updated <time data-timeago datetime="2021-02-15T20:51:59+01:00">lun 15 febrero 2021</time></p>
+  <p>
+  Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+&ndash;&ndash;  Tags:
+    <a href="https://blog.ch3m4.org/tag/lazy-eval/">lazy-eval</a>,    <a href="https://blog.ch3m4.org/tag/memoize/">memoize</a>,    <a href="https://blog.ch3m4.org/tag/cache/">cache</a>  </p>
+</div>  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" class="nohover">Evaluación perezosa en python - Parte&nbsp;3</a></h1>
+  </div>
+  <div class="article_text">
+    <h2>Cachés y&nbsp;Memoización</h2>
+<p>En el pasado artículo vimos que para obtener un elemento de la sucesión
+fibonacci necesitábamos calcular los anteriores. Veámoslo con más&nbsp;detalle.</p>
+<p>Podemos definir la siguiente función para obtener un elemento de esta&nbsp;sucesión:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Esta función tiene un terrible problema de eficacia, puesto que se llama a sí
+misma demasiadas veces para calcular el mismo elemento. Por ejemplo, para
+calcular <code>fib(10)</code> llama una vez a <code>fib(9)</code> y a <code>fib(8)</code>, pero para calcular
+<code>fib(9)</code> también llama a <code>fib(8)</code>. Si sumamos todas las llamadas, habrá
+necesitado&nbsp;llamar:</p>
+<ul>
+<li><code>fib(9)</code> 1&nbsp;vez</li>
+<li><code>fib(8)</code> 2&nbsp;veces</li>
+<li><code>fib(7)</code> 3&nbsp;veces</li>
+<li><code>fib(6)</code> 5&nbsp;veces</li>
+<li><code>fib(5)</code> 8&nbsp;veces</li>
+<li><code>fib(4)</code> 13&nbsp;veces</li>
+<li><code>fib(3)</code> 21&nbsp;veces</li>
+<li><code>fib(2)</code> 34&nbsp;veces</li>
+<li><code>fib(1)</code> 55&nbsp;veces</li>
+<li><code>fib(0)</code> 34&nbsp;veces</li>
+</ul>
+<p>Para elementos mayores, todavía serán más las llamadas que se habrán&nbsp;repetido.</p>
+<p>Un mejora nos la da la propia documentación de python como aplicación de la
+función <a href="https://docs.python.org/3.9/library/functools.html#functools.lru_cache"><code>functools.lru_cache</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">lru_cache</span>
+
+<span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Básicamente, <code>lru_cache</code> es un <em>decorador</em> que detecta los argumentos que se
+pasa a una función y guarda en un caché el resultado que devuelve. Un <strong>caché
+<span class="caps">LRU</span></strong> (<em>Least Recently Used</em> ) tiene la estrategia de eliminar de la caché los
+elementos que haya sido menos utilizados recientemente. En este caso, con
+<code>maxsize=None</code> no se impone ningún límite de tamaño, por lo que guardará todos
+los elementos de la caché <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<p>A este proceso de guardar los resultados de una evaluación en función de los
+argumentos de entrada se conoce por <strong>&#8220;memoize&#8221;</strong> o <strong>&#8220;memoización&#8221;</strong>, y es
+fundamental para la <em>evaluación perezosa</em>.</p>
+<p>Podemos obtener información de la&nbsp;caché:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">fib</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fib</span><span class="o">.</span><span class="n">cache_info</span><span class="p">()</span>
+<span class="n">CacheInfo</span><span class="p">(</span><span class="n">hits</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">misses</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">currsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Nos dice que la caché tiene 11 elementos (la serie de <code>fib(0)</code> a <code>fib(10)</code>), que
+ha fallado 11 veces, una por elemento de la sucesión, pero sí que ha acertado 8.
+Una importante mejora de como lo teníamos&nbsp;antes.</p>
+<p>Aún así, en python tenemos limitado el número de llamadas recursivas que se
+pueden hacer, que suele estar en torno a unas 3000 llamadas recursivas <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">fib</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="ne">RecursionError</span><span class="p">:</span> <span class="n">maximum</span> <span class="n">recursion</span> <span class="n">depth</span> <span class="n">exceeded</span> <span class="ow">in</span> <span class="n">comparison</span>
+</code></pre></div>
+
+<p>Para no tener este problema, en la documentación hacen el truco de ir visitando
+en orden todos los elementos de la sucesión hasta llegar al que&nbsp;queremos.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">)]</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="mi">377</span><span class="p">,</span> <span class="mi">610</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Con este truco se instruye a la caché con todos los elementos de la sucesión
+hasta llegar al que queremos. De este modo, para el cálculo de un elemento sólo
+se necesitarán los dos elementos anteriores de la sucesión, que ya tendremos en
+la caché, evitando múltiples llamadas&nbsp;recursivas.</p>
+<p>Con este mismo propósito, podemos probar a calcular el elemento 10000 aplicando
+las técnicas ya aprendidas hasta&nbsp;ahora:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span><span class="p">,</span> <span class="n">islice</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">lru_cache</span>
+
+<span class="n">ℕ</span> <span class="o">=</span> <span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">suc_fib</span> <span class="o">=</span> <span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">ℕ</span><span class="p">)</span>
+<span class="n">fib10k</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">suc_fib</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Esta gestión de la caché es totalmente opaca para nosotros. Si pudiéramos
+acceder a ella sería un modo de obtener la sucesión de fibonacci hasta el mayor
+elemento que se haya&nbsp;calculado.</p>
+<p>Vamos a itentar a crear una caché similar capaz de generar automáticamente los
+elementos de la&nbsp;sucesión:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fibcache</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wrap</span><span class="o">.</span><span class="n">cache</span><span class="p">),</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">wrap</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">wrap</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">wrap</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">return</span> <span class="n">wrap</span>
+
+<span class="nd">@fibcache</span>
+<span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Hemos creado el decorador, <code>fibcache</code> que añade una caché a la función que
+decora. Al hacer la llamada <code>fib(n)</code>, este decorador se asegura que todos los
+elementos anteriores de la sucesión estén en la caché. La caché es accesible
+mediante el atributo <code>fib.cache</code>, que no será otra cosa que la sucesión de&nbsp;fibonacci.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">fib</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="mf">3364476487643178326662161200510754331030214846068006390656476997468008144216.</span><span class="o">...</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fib</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="mi">10000</span><span class="p">]</span>
+<span class="mf">3364476487643178326662161200510754331030214846068006390656476997468008144216.</span><span class="o">...</span>
+<span class="o">...</span>
+</code></pre></div>
+
+<p>Lo genial de esta estrategia es que sólo calculamos los mínimos elementos
+necesarios para obtener el resultado buscado, algo que es el fundamento de lo
+que conocemos por <em>evaluación perezosa</em>.</p>
+<h2>Resumen</h2>
+<p>Aplicando técnicas de <em>memoización</em>, hemos conseguido que una función recursiva
+almacene los cálculos que hace para así evitar repetirlos, con lo que es posible
+reducir los niveles de&nbsp;recursividad.</p>
+<p>Con un decorador, hemos asociado una caché a una función que se rellena
+automáticamente, y en orden, con los resultados intermedios hasta llegar al
+resultado solicitado. Esta caché será una sucesión ordenada de resultados, que
+crece a medida que se&nbsp;necesite.</p>
+<p>A este proceso de realizar cálculos según sea necesario es lo que conocemos por
+<em>Evaluación Perezosa</em>.</p>
+<hr>
+<h2>Serie <em>Evaluación Perezosa en&nbsp;Python</em></h2>
+<ul>
+<li><a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_">Parte 1 - Introducción a la <em>evaluación&nbsp;perezosa</em></a></li>
+<li><a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas">Parte 2 - Secuencias&nbsp;infinitas</a></li>
+<li><a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_">Parte 3 - <em>Memoización</em></a></li>
+<li>Parte 4 - <em>Evaluación perezosa</em>&nbsp;avanzada</li>
+<li>Parte 5 - Ejemplo práctico: potencias de&nbsp;Pauli-Dirac</li>
+<li>Apéndice: sobre el tipado de datos&nbsp;utilizado</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">La serie completa como <em>Jupyter Notebook</em>&nbsp;en:</p>
+<p><a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.ipynb" title="Notebook Evaluación perezosa en python">serie-evaluacion-perezosa-en-python.ipynb</a></p>
+<p><em><span class="caps">INCOMPLETA</span>&nbsp;TODAVÍA</em></p>
+</div>
+<hr>
+<p><span class="caps">ANOTACIONES</span>:</p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Existe un decorador equivalente, <code>functools.cache</code>, que también sirve para
+crear cachés sin límite, pero no contabiliza el número de aciertos.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>El límite de llamadas recursivas se obtiene con la función
+<code>sys.getrecursionlimit()</code> y se podría alterar con <code>sys.setrecursionlimit</code>,
+aunque no es recomendable.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+  </div>
+
+<ul class="pager">
+  <li class="previous">
+    <a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Anterior">
+      <i class="fa fa-arrow-circle-left"></i>
+      Evaluación perezosa en python - Parte&nbsp;2
+    </a>
+  </li>
+ </ul>
+With category
+<a href="https://blog.ch3m4.org/category/python/">Python</a>:
+<ul class="pager">
+  <li class="previous">
+    <a
+      href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/"
+      title="Anterior en misma categoría"
+    >
+      <i class="fa fa-arrow-circle-o-left"></i>
+      Evaluación perezosa en python - Parte&nbsp;2
+    </a>
+  </li>
+ </ul>
+
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script id="dsq-count-scr" src="https://hyperreals.disqus.com/count.js" async></script>
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.identifier = "2021/02/14/evaluacion-perezosa-en-python-parte-3/";
+        this.page.title = "Evaluación perezosa en python - Parte&nbsp;3";
+    };
+    loadDisqus = function(sitename) {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hyperreals.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', skipHeader)
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

@@ -76,72 +76,54 @@
     <p>Hace un tiempo me dió por recopilar distintas funciones en python para calcular el <a href="http://es.wikipedia.org/wiki/Factorial">factorial</a>. Aquí van todas, algunas bastante curiosas. Si conoces algún tipo más, no dejes de añadirla en los&nbsp;comentarios.</p>
 <h1>Versión&nbsp;recursiva</h1>
 <p>Todo programador ha tenido que ver esta definición como ejemplo de funciones recursivas&nbsp;:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">n</span><span class="o">*</span><span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Se podría hacer algo más compacta usando el operador&nbsp;ternario:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span> <span class="k">else</span> <span class="n">n</span><span class="o">*</span><span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Como toda función recursiva en python, existe el peligro de que nunca termine la función. Es el motivo por el que python tiene fijado un límite de recursividad dado por <code>sys.getrecursionlimit()</code>, que por defecto es de <code>1000</code> invocaciones recursivas o, lo que es lo mismo, que no podamos calcular factoriales mayores de&nbsp;1000.</p>
 <p>Podemos incrementar el límite con <code>sys.setrecursionlimit(n)</code>, pero seguirá siendo una solución provisional. Lo mejor es pasarnos a una solución <em>&#8220;iterativa&#8221;</em>.</p>
 <h1>Versión&nbsp;iterativa</h1>
 <p>También es una de la funciones más conocidas por todo&nbsp;programador:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">res</span><span class="o">=</span><span class="mi">1</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
         <span class="n">res</span><span class="o">*=</span><span class="n">n</span>
     <span class="k">return</span> <span class="n">res</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Normalmente, todo lenguaje tiene un límite en el tamaño de un entero que hace que esta función no pueda calcular factoriales muy grandes. Pero python tiene la característica de pasar de <em>entero</em> a <em>entero largo</em> cuando así lo requiera la operación, lo que hace que se puede calcular cualquier número factorial, con el único límite de tiempo para calcularlo. Por lo general, con número grandes cuesta menos calcular el factorial que imprimirlos en&nbsp;pantalla.</p>
 <h1>Versión aproximada (función de&nbsp;Stirling)</h1>
 <p>Para número muy grandes, existe una aproximación llamada <a href="http://es.wikipedia.org/wiki/F%C3%B3rmula_de_Stirling">&#8220;Aproximación de Stirling&#8221;</a> que se suele usar en <em>mecánica estadística</em>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
 <span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">e</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Lamentablemente, los números reales (tipo <code>double</code>) son aquí una limitación de tamaño, por lo que no podemos hacer cálculos para números altos (precisamente, para los que teóricamente iba mejor esta&nbsp;función).</p>
 <h1>Versiones&nbsp;one-line</h1>
 <p>Muchas veces, los programadores se toman como reto poder expresar una fórmula compleja en una sóla línea, de modo que se pueda sustituir la llamada a la función por la definición de esta directamente. Son las llamadas <em>funciones &#8220;oneline&#8221;</em>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">,</span><span class="n">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">,</span><span class="n">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Podemos aprovechar que tenemos el operador multiplicación y con ello evitar la función <code>lambda</code> (últimamente, en&nbsp;desuso):</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">operator</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">operator</span>
 <span class="n">reduce</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">mul</span><span class="p">,</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Algo más bizarro, evitando <code>lambda</code> y <code>reduce</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="n">j</span><span class="o">*</span><span class="n">i</span><span class="p">]][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="n">j</span><span class="o">*</span><span class="n">i</span><span class="p">]][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Esta versión es en realidad un <em>&#8220;reduce sin usar reduce&#8221;</em>. Para entender cómo funciona, lo mejor es verlo como varios <code>fors</code> anidados:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="n">j</span><span class="o">*</span><span class="n">i</span><span class="p">]:</span>
@@ -149,18 +131,17 @@
 
 <span class="n">res</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="p">))[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>El primer <code>for</code> tan sólo sirve para dar una valor inicial a la variable <code>j</code>, y el tercer <code>for</code> sería el equivalente <em>&#8220;oneline&#8221;</em> de <code>j=j*i</code>.</p>
 <p>En realidad, esta función no está muy optimizada ya que mantiene en memoria la lista completa de todos los resultados intermedios. Un modo más inteligente de usar esta expresión sería como un iterador, donde los resultados intermedios ya no son&nbsp;almacenados:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="p">(</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="n">j</span><span class="o">*</span><span class="n">i</span><span class="p">]):</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="p">(</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="n">j</span><span class="o">*</span><span class="n">i</span><span class="p">]):</span>
     <span class="k">pass</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Aunque funciona perfectamente, no se puede considerar como función de una sóla línea. Para conseguirlo, tenemos que ir a algo totalmente críptico, incluyendo <code>reduce</code> y <code>lambda</code>, que acabaría siendo el siguiente&nbsp;engendro:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="n">y</span><span class="p">,(</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="n">j</span><span class="o">*</span><span class="n">i</span><span class="p">]))</span>
+<div class="highlight"><pre><span></span><code><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="n">y</span><span class="p">,(</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="n">j</span><span class="o">*</span><span class="n">i</span><span class="p">]))</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>¿Se os ocurren otras formas de expresar el factorial en una sóla&nbsp;línea?</p>
   </div>
 

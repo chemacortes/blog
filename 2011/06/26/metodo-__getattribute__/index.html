@@ -77,9 +77,9 @@
 <p>En el último artículo, donde hablaba de las <a href="https://blog.ch3m4.org/2011/06/24/optimizaciones-con-los-metodos-especiales/" title="Optimizaciones con los Métodos Especiales">optimizaciones de los métodos especiales</a>, también comentaba algunas optimizaciones que tenían qué ver con el método <code>__getattribute__</code> y proponía un&nbsp;ejercicio:</p>
 <blockquote>
 <p>¿Sabrías qué es lo que pasa en el siguiente caso? ¿Se invoca el método <strong>getattribute</strong> en algún momento? ¿Sería una llamada implícita o&nbsp;explícita?</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>   obj.__getattribute__(&quot;__getattribute__&quot;)
+<div class="highlight"><pre><span></span><code>   obj.__getattribute__(&quot;__getattribute__&quot;)
 </code></pre></div>
-</td></tr></table>
+
 </blockquote>
 <p>Quien se enfrenta a este código por primera vez, lo primero que piensa es que se va a producir una <em>autorecursividad</em> puesto que en el acceso al método <code>__getattribute__</code> se debería invocar el propio método <code>__getattribute__</code> y así&nbsp;indefinidamente.</p>
 <p>Si embargo, cuando se prueba se ve que funciona tal y como se espera. Entonces, ¿cómo se evita la&nbsp;recursividad?</p>

@@ -74,34 +74,30 @@
     <p>Con la <a href="http://docs.python.org/3.3/whatsnew/3.3.html" title="What's new in python 3.3?">nueva versión de python 3.3</a> se ha incorporado la propuesta <a href="http://www.python.org/dev/peps/pep-0405" title="PEP-0405 Python Virtual Environments"><span class="caps">PEP</span>-405</a> que añade al repertorio interno de python la posibilidad de crear entornos virtuales de modo parecido a virtualenv (vimos esta herramienta hace poco al hablar de la <a href="https://blog.ch3m4.org/2012/07/24/instalacion-de-modulos/">instalación de módulos</a>.</p>
 <p>Tal como lo define <a href="http://www.python.org/dev/peps/pep-0405" title="PEP-0405 Python Virtual Environments"><span class="caps">PEP</span>-405</a>: <em>&#8220;Los </em>entornos virtuales<em> poseen su propio conjunto de paquetes instalados localmente, segregados del resto de paquetes instalados del sistema&#8221;</em>. Para crear y administrar estos entornos virtuales, se incluye el módulo <code>venv</code>, así como el script <code>pyvenv.py</code>.</p>
 <p>Para crear un entorno virtual se puede utilizar el script <code>pyvenv</code> (con python&nbsp;3.3):</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ pyvenv /ruta/al/nuevo/entorno/virtual
+<div class="highlight"><pre><span></span><code>$ pyvenv /ruta/al/nuevo/entorno/virtual
 </code></pre></div>
-</td></tr></table>
+
 <p>En windows, probablemente haya que ejecutar el script que se encuentra en <code>"C:\&gt; Python33\Tools\Scripts\pyvenv.py"</code>. Posiblemente sea más sencillo ejecutar directamente el módulo <code>venv</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ python -m venv /ruta/al/nuevo/entorno/virtual
+<div class="highlight"><pre><span></span><code>$ python -m venv /ruta/al/nuevo/entorno/virtual
 </code></pre></div>
-</td></tr></table>
+
 <p>Entrando dentro del nuevo directorio, activamos el entorno de modo similar a como hacíamos con <code>virtualenv</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> /ruta/al/nuevo/entorno/virtual
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> /ruta/al/nuevo/entorno/virtual
 $ <span class="nb">source</span> bin/activate
 </code></pre></div>
-</td></tr></table>
+
 <p>Hay que notar que el script <code>activate</code> se debe ejecutar con <code>source</code> ya que necesita cambiar algunas variables del entorno de ejecución&nbsp;actual. </p>
 <p>En windows, se debe ejecutar el script <code>Scripts\activate.bat</code>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">C</span><span class="err">:</span><span class="p">\&gt;</span> <span class="nb">cd </span><span class="n">entorno_virtual</span>
+<div class="highlight"><pre><span></span><code><span class="n">C</span><span class="err">:</span><span class="p">\&gt;</span> <span class="nb">cd </span><span class="n">entorno_virtual</span>
 <span class="n">C</span><span class="err">:</span><span class="p">\&gt;</span> <span class="n">Scripts</span><span class="p">\</span><span class="n">activate</span><span class="p">.</span><span class="n">bat</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Una vez activado el entorno veremos que el prompt de la línea de comandos ha cambiado para indicarnos que estamos dentro. Las variables de entorno han cambiado, como puedes comprobar si miras <code>$PATH</code>. A partir de aquí, la instalación de paquetes con <code>easy_install</code> o <code>pip</code> se realizarán dentro del entorno. A diferencia con <code>virtualenv</code>, el módulo <code>venv</code> no instala en nuestro entorno ninguna de estas herramientas, por lo que lo primero que tendremos que hacer será&nbsp;instalarlas:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">(</span>py3.3<span class="o">)</span> $ curl -O http://python-distribute.org/distribute_setup.py
+<div class="highlight"><pre><span></span><code><span class="o">(</span>py3.3<span class="o">)</span> $ curl -O http://python-distribute.org/distribute_setup.py
 <span class="o">(</span>py3.3<span class="o">)</span> $ python distribute_setup.py
 <span class="o">(</span>py3.3<span class="o">)</span> $ easy_install pip
 </code></pre></div>
-</td></tr></table>
+
 <p>Para desactivar el entorno se ejecuta <code>deactivate</code>.</p>
 <p>Aunque <code>venv</code> sigue el mismo funcionamiento que <code>virtualenv</code>, tiene notables&nbsp;carencias:</p>
 <ul>

@@ -15,7 +15,7 @@
 
   <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
 
-  <meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, lazy-eval, sequence, range, functional-programming, python, algebraic-data-type, haskell, elm, ihp, nix, purescript, elixir, phoenix, go, racket, lop, mps, tiddlywiki, metaprogramming, pathlib, coconut, algorithms, factorial, concurrency, scala, oop, closures, algorithm, maths, descriptor, técnicas dinámicas, lua, programming-languages, PyConES, programming, code, unicode, CompSci, computing science, ntfs, windows, science, engineering, tip, jquery, web2py, webdev, java, jvm, pyday, bitbucket, git, mercurial, github, howto, ia64, oracle, glassfish, h2, jdbc, jython, zxjdbc, humor, restructuredtext, markdown, calibre, pandoc, duck typing, monkey patch, podcast">
+  <meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, lazy-eval, memoize, cache, sequence, range, functional-programming, python, algebraic-data-type, haskell, elm, ihp, nix, purescript, elixir, phoenix, go, racket, lop, mps, tiddlywiki, metaprogramming, pathlib, coconut, algorithms, factorial, concurrency, scala, oop, closures, algorithm, maths, descriptor, técnicas dinámicas, lua, programming-languages, PyConES, programming, code, unicode, CompSci, computing science, ntfs, windows, science, engineering, tip, jquery, web2py, webdev, java, jvm, pyday, bitbucket, git, mercurial, github, howto, ia64, oracle, glassfish, h2, jdbc, jython, zxjdbc, humor, restructuredtext, markdown, calibre, pandoc, duck typing, monkey patch, podcast">
 
   <title>Blog | Hyperreals *R</title>
 
@@ -63,6 +63,15 @@
 
 <article>
   <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/10/17/estudio-funcion-factorial-en-scala/">Estudio función factorial en&nbsp;scala</a></h1>
+  </div>
+  <div class="article_text">
+    <p>Como continuación al artículo que dediqué al <a href="https://blog.ch3m4.org/2011/06/06/estudio-funcion-factorial/">estudio del factorial</a>, voy a explicar cómo se haría este famoso algoritmo usando <a href="http://scala-lang.org" title="Scala programming language">scala</a>. Tengo que añadir que tan sólo llevo una semana con el lenguaje scala, por lo que es muy probable que haya algún aspecto de este lenguaje que me haya …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2011/10/08/rentree-nueva-temporada/">Rentrée (nueva&nbsp;temporada)</a></h1>
   </div>
   <div class="article_text">
@@ -100,7 +109,10 @@ en el …</p>
   </div>
   <div class="article_text">
     <p>Últimamente he necesitado pasar algunos ficheros de una web a codificación <code>utf-8</code>, codificación de caracteres más acorde con lo que se lleva hoy en día. En sistemas linux es una labor que se puede hacer fácilmente con la utilidad <code>iconv</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ iconv -f cp850 -t utf8 &lt;fichero_entrada.txt &gt;fichero_salida.txt …</code></pre></div></td></tr></table>
+<div class="highlight"><pre><span></span><code>$ iconv -f cp850 -t utf8 &lt;fichero_entrada.txt &gt;fichero_salida.txt
+</code></pre></div>
+
+<p>Pero …</p>
   </div>
 </article>
 <hr />
@@ -150,34 +162,18 @@ en el …</p>
   <div class="article_text">
     <p>Algunas veces necesitamos obtener el último item de un iterador. Para
 ello se suele iterar hasta agotar el&nbsp;iterador:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">iterador</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">iterador</span><span class="p">:</span>
      <span class="k">pass</span>
 
 <span class="n">last_item</span> <span class="o">=</span> <span class="n">it</span>  
 </code></pre></div>
-</td></tr></table>
+
 <p>Una alternativa que se ve bastante es convertir previamente el iterable
 en una&nbsp;lista:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">last_item</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">iterador</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">last_item</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">iterador</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div>
-</td></tr></table>
-<p>Tiene …</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/2011/06/06/estudio-funcion-factorial/">Estudio función&nbsp;factorial</a></h1>
-  </div>
-  <div class="article_text">
-    <p>Hace un tiempo me dió por recopilar distintas funciones en python para calcular el <a href="http://es.wikipedia.org/wiki/Factorial">factorial</a>. Aquí van todas, algunas bastante curiosas. Si conoces algún tipo más, no dejes de añadirla en los&nbsp;comentarios.</p>
-<h1>Versión&nbsp;recursiva</h1>
-<p>Todo programador ha tenido que ver esta definición como ejemplo de funciones recursivas&nbsp;:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2 …</pre></div></td></tr></table>
+
+<p>Tiene el incoveniente de gastar recursos …</p>
   </div>
 </article>
 

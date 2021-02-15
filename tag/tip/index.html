@@ -72,7 +72,10 @@
   </div>
   <div class="article_text">
     <p>Últimamente he necesitado pasar algunos ficheros de una web a codificación <code>utf-8</code>, codificación de caracteres más acorde con lo que se lleva hoy en día. En sistemas linux es una labor que se puede hacer fácilmente con la utilidad <code>iconv</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ iconv -f cp850 -t utf8 &lt;fichero_entrada.txt &gt;fichero_salida.txt …</code></pre></div></td></tr></table>
+<div class="highlight"><pre><span></span><code>$ iconv -f cp850 -t utf8 &lt;fichero_entrada.txt &gt;fichero_salida.txt
+</code></pre></div>
+
+<p>Pero …</p>
   </div>
 </article>
 <hr />
@@ -83,21 +86,18 @@
   <div class="article_text">
     <p>Algunas veces necesitamos obtener el último item de un iterador. Para
 ello se suele iterar hasta agotar el&nbsp;iterador:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">iterador</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">iterador</span><span class="p">:</span>
      <span class="k">pass</span>
 
 <span class="n">last_item</span> <span class="o">=</span> <span class="n">it</span>  
 </code></pre></div>
-</td></tr></table>
+
 <p>Una alternativa que se ve bastante es convertir previamente el iterable
 en una&nbsp;lista:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">last_item</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">iterador</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">last_item</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">iterador</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div>
-</td></tr></table>
-<p>Tiene …</p>
+
+<p>Tiene el incoveniente de gastar recursos …</p>
   </div>
 </article>
 <hr />

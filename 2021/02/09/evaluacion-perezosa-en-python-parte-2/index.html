@@ -65,7 +65,7 @@
 <div class="article_meta">
   <p>Posted <time data-timeago datetime="2021-02-09T23:21:13+01:00">mar 09 febrero 2021</time>
    by Chema Cortés  </p>
-  <p>Last updated <time data-timeago datetime="2021-02-12T21:08:55+01:00">vie 12 febrero 2021</time></p>
+  <p>Last updated <time data-timeago datetime="2021-02-14T20:11:16+01:00">dom 14 febrero 2021</time></p>
   <p>
   Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
 &ndash;&ndash;  Tags:
@@ -101,13 +101,7 @@ aunque su implementación podría corresponder con cualquier iterable de los&nbs
 <h2>Secuencias&nbsp;infinitas</h2>
 <p>En python, para crear secuencias infinitas se suelen usar <em>generadores</em>. Por
 ejemplo, para obtener la secuencia de <em>Números Naturales</em> se podría hacer&nbsp;así:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterable</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterable</span>
 
 <span class="k">def</span> <span class="nf">ℕ</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
     <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
@@ -115,7 +109,7 @@ ejemplo, para obtener la secuencia de <em>Números Naturales</em> se podría hac
         <span class="k">yield</span> <span class="n">n</span>
         <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>No podemos tratar las secuencias infinitas del mismo modo que con una lista.
 Necesitamos las funciones del módulo <a href="https://docs.python.org/3.9/library/itertools.html">itertools</a> capaces de operar con
 iteradores para pasar a una lista en el momento que realmente la necesitemos. Al
@@ -123,58 +117,40 @@ final de la documentación del módulo se incluyen algunas
 <a href="https://docs.python.org/3.9/library/itertools.html#itertools-recipes">recetas</a> que dan idea de lo que pueden&nbsp;hacer.</p>
 <p>Por ejemplo, podríamos redefinir la secuencia de número naturales con
 <code>itertools.count</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span>
 
 <span class="n">ℕ</span> <span class="o">=</span> <span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Para obtener los primeros 100 números&nbsp;naturales</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">islice</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">islice</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">ℕ</span><span class="p">,</span> <span class="mi">100</span><span class="p">)))</span>
 
 <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">104</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span> <span class="mi">106</span><span class="p">,</span> <span class="mi">107</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">112</span><span class="p">,</span> <span class="mi">113</span><span class="p">,</span> <span class="mi">114</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="mi">116</span><span class="p">,</span> <span class="mi">117</span><span class="p">,</span> <span class="mi">118</span><span class="p">,</span> <span class="mi">119</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">121</span><span class="p">,</span> <span class="mi">122</span><span class="p">,</span> <span class="mi">123</span><span class="p">,</span> <span class="mi">124</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">126</span><span class="p">,</span> <span class="mi">127</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">129</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">131</span><span class="p">,</span> <span class="mi">132</span><span class="p">,</span> <span class="mi">133</span><span class="p">,</span> <span class="mi">134</span><span class="p">,</span> <span class="mi">135</span><span class="p">,</span> <span class="mi">136</span><span class="p">,</span> <span class="mi">137</span><span class="p">,</span> <span class="mi">138</span><span class="p">,</span> <span class="mi">139</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">141</span><span class="p">,</span> <span class="mi">142</span><span class="p">,</span> <span class="mi">143</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">146</span><span class="p">,</span> <span class="mi">147</span><span class="p">,</span> <span class="mi">148</span><span class="p">,</span> <span class="mi">149</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">151</span><span class="p">,</span> <span class="mi">152</span><span class="p">,</span> <span class="mi">153</span><span class="p">,</span> <span class="mi">154</span><span class="p">,</span> <span class="mi">155</span><span class="p">,</span> <span class="mi">156</span><span class="p">,</span> <span class="mi">157</span><span class="p">,</span> <span class="mi">158</span><span class="p">,</span> <span class="mi">159</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">161</span><span class="p">,</span> <span class="mi">162</span><span class="p">,</span> <span class="mi">163</span><span class="p">,</span> <span class="mi">164</span><span class="p">,</span> <span class="mi">165</span><span class="p">,</span> <span class="mi">166</span><span class="p">,</span> <span class="mi">167</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">169</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">171</span><span class="p">,</span> <span class="mi">172</span><span class="p">,</span> <span class="mi">173</span><span class="p">,</span> <span class="mi">174</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">176</span><span class="p">,</span> <span class="mi">177</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">179</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">181</span><span class="p">,</span> <span class="mi">182</span><span class="p">,</span> <span class="mi">183</span><span class="p">,</span> <span class="mi">184</span><span class="p">,</span> <span class="mi">185</span><span class="p">,</span> <span class="mi">186</span><span class="p">,</span> <span class="mi">187</span><span class="p">,</span> <span class="mi">188</span><span class="p">,</span> <span class="mi">189</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">191</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="mi">193</span><span class="p">,</span> <span class="mi">194</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="mi">196</span><span class="p">,</span> <span class="mi">197</span><span class="p">,</span> <span class="mi">198</span><span class="p">,</span> <span class="mi">199</span><span class="p">]</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Emular la función <code>enumerate</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Iterator</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Iterator</span>
 
 <span class="k">def</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">it</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">:</span>
     <span class="n">ℕ</span> <span class="o">=</span> <span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ℕ</span><span class="p">,</span> <span class="n">it</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>¿Y si quisiéramos obtener la lista de cuadrados en el intérvalo <code>[100, 200)</code>.
 Veamos (<span class="caps">NO</span> <span class="caps">PROBAR</span>):</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ℕ</span> <span class="o">=</span> <span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">ℕ</span> <span class="o">=</span> <span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">cuadrados</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">ℕ</span><span class="p">)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cuadrados</span> <span class="k">if</span> <span class="mi">100</span><span class="o">&lt;=</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">200</span><span class="p">]</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Si probabos es posible que se quede en un bucle infinito. Necesita comprobar
 todos los elementos, por lo que se pondrá a calcular todos lo elementos de la
 sucesión para ver si cumplen la&nbsp;condición.</p>
 <p>Como sabemos que la sucesión de cuadrados es creciente, podemos pararla en el
 momento que se salga de&nbsp;límites:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">dropwhile</span><span class="p">,</span> <span class="n">takewhile</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">dropwhile</span><span class="p">,</span> <span class="n">takewhile</span>
 
 <span class="n">ℕ</span> <span class="o">=</span> <span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">cuadrados</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">ℕ</span><span class="p">)</span>
@@ -182,7 +158,7 @@ momento que se salga de&nbsp;límites:</p>
 <span class="n">menores_200</span> <span class="o">=</span> <span class="n">takewhile</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">200</span><span class="p">,</span> <span class="n">mayores_100</span><span class="p">)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">menores_200</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>En definitiva, hemos encadenado varias funciones hasta conseguir el iterador que
 necesitábamos. En <em>programación funcional</em>, a este encadenado de funciones se
 denomina como <em>composición de funciones</em> y es bastante utilizado.
@@ -193,35 +169,20 @@ Lamentablemente, en python no existe este tipo de&nbsp;operaciones.</p>
 <div class="math">$$f_1=1$$</div>
 <div class="math">$$f_n = f_{n-1} + f_{n-2}$$</div>
 <p>Operando, podemos obtener la&nbsp;sencuencia:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="mi">1</span>
+<div class="highlight"><pre><span></span><code><span class="mi">1</span>
 <span class="mi">1</span>
 <span class="mi">1</span><span class="o">+</span><span class="mi">1</span> <span class="ow">-&gt;</span> <span class="mi">2</span>
 <span class="mi">1</span><span class="o">+</span><span class="mi">2</span> <span class="ow">-&gt;</span> <span class="mi">3</span>
 <span class="mi">2</span><span class="o">+</span><span class="mi">3</span> <span class="ow">-&gt;</span> <span class="mi">5</span>
 <span class="o">...</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>La lista de los 20&nbsp;primeros:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="mi">377</span><span class="p">,</span> <span class="mi">610</span><span class="p">,</span> <span class="mi">987</span><span class="p">,</span> <span class="mi">1597</span><span class="p">,</span> <span class="mi">2584</span><span class="p">,</span> <span class="mi">4181</span><span class="p">,</span> <span class="mi">6765</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="mi">377</span><span class="p">,</span> <span class="mi">610</span><span class="p">,</span> <span class="mi">987</span><span class="p">,</span> <span class="mi">1597</span><span class="p">,</span> <span class="mi">2584</span><span class="p">,</span> <span class="mi">4181</span><span class="p">,</span> <span class="mi">6765</span><span class="p">]</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Un modo simple de construir la serie es usar un&nbsp;generador:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterator</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterator</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">islice</span>
 
 <span class="k">def</span> <span class="nf">fib</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
@@ -233,19 +194,16 @@ Lamentablemente, en python no existe este tipo de&nbsp;operaciones.</p>
 <span class="c1"># primeros 20 elementos</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">fib</span><span class="p">(),</span> <span class="mi">20</span><span class="p">)))</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Para obtener un elemento en una posición dada tenemos que <em>consumir</em> el
 iterador, elemento a elemento, hasta llegar a la posición que&nbsp;queremos.</p>
 <p>Por ejemplo, para obtener el elemento de la posición&nbsp;1000:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">fib</span><span class="p">(),</span> <span class="mi">1000</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">fib</span><span class="p">(),</span> <span class="mi">1000</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
 <span class="mi">70330367711422815821835254877183549770181269836358732742604905087154537118196933</span>
 <span class="mi">57974224949456261173348775044924176599108818636326545022364710601205337412127386</span>
 <span class="mi">7339111198139373125598767690091902245245323403501</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Ha sido necesario calcular todos los elementos anteriores hasta llegar al que
 deseamos, algo que hay que repetir para cada uno de los elementos que queramos&nbsp;extraer.</p>
 <p>Afortunadamente, la sucesión de fibonacci tiene elemento genérico que se expresa
@@ -258,24 +216,7 @@ con la siguiente fórmula de Édouard&nbsp;Lucas,:</p>
 <div class="math">$$f_{n}=\operatorname {int} \left({\frac {\varphi ^{n}}{\sqrt {5}}}+{\frac {1}{2}}\right)$$</div>
 <p>Así pues, podemos echar mano de la secuencia <code>GenericRange</code> que vimos en el
 artículo anterior para definir una secuencia para&nbsp;fibonacci:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">FibRange</span><span class="p">(</span><span class="n">GenericRange</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">FibRange</span><span class="p">(</span><span class="n">GenericRange</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">getitem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="n">sqrt5</span> <span class="o">=</span> <span class="mi">5</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
         <span class="n">φ</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">sqrt5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
@@ -294,7 +235,7 @@ artículo anterior para definir una secuencia para&nbsp;fibonacci:</p>
  <span class="mi">16641027750620622225408</span><span class="p">,</span>
  <span class="mi">26925748508234379952128</span><span class="p">]</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Lamentablemente, aunque al final se obtenga un número entero, para hacer el
 cálculo hemos recurrido al cálculo numérico de coma flotante, lo que produce
 desbordamiento cuando trabajamos con números grandes. Tenemos que buscar otros
@@ -316,9 +257,10 @@ los rangos que ya habíamos visto anteriormente para crear la secuencia&nbsp;inf
 <ul>
 <li><a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_">Parte 1 - Introducción a la <em>evaluación&nbsp;perezosa</em></a></li>
 <li><a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas">Parte 2 - Secuencias&nbsp;infinitas</a></li>
-<li>Parte 3 - <em>Memoización</em></li>
+<li><a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_">Parte 3 - <em>Memoización</em></a></li>
 <li>Parte 4 - <em>Evaluación perezosa</em>&nbsp;avanzada</li>
 <li>Parte 5 - Ejemplo práctico: potencias de&nbsp;Pauli-Dirac</li>
+<li>Apéndice: sobre el tipado de datos&nbsp;utilizado</li>
 </ul>
 <div class="admonition danger">
 <p class="admonition-title">La serie completa como <em>Jupyter Notebook</em>&nbsp;en:</p>
@@ -397,7 +339,13 @@ los rangos que ya habíamos visto anteriormente para crear la secuencia&nbsp;inf
       Evaluación perezosa en python - Parte&nbsp;1
     </a>
   </li>
- </ul>
+   <li class="next">
+    <a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Siguiente">
+      Evaluación perezosa en python - Parte&nbsp;3
+      <i class="fa fa-arrow-circle-right"></i>
+    </a>
+  </li>
+</ul>
 With category
 <a href="https://blog.ch3m4.org/category/python/">Python</a>:
 <ul class="pager">
@@ -410,7 +358,16 @@ With category
       Evaluación perezosa en python - Parte&nbsp;1
     </a>
   </li>
- </ul>
+   <li class="next">
+    <a
+      href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/"
+      title="Siguiente en misma categoría"
+    >
+      Evaluación perezosa en python - Parte&nbsp;3
+      <i class="fa fa-arrow-circle-o-right"></i>
+    </a>
+  </li>
+</ul>
 
   <div id="article_comments">
     <div id="disqus_thread">

@@ -79,20 +79,7 @@
 <p>Mucha gente, cuando se enfrenta por primera vez al lenguaje python, no entiende bien el concepto de <em>&#8220;inmutabilidad&#8221;</em> que tanto repite la documentación al tratar de diferenciar algunos tipos contenedores como tuplas, listas, conjuntos y&nbsp;diccionarios.</p>
 <p>Por lo general, la gente formada en lenguajes de programación clásicos tiene la idea de que las variables son porciones de memoria donde colocar valores. Que una variable no se éso, <em>variable</em>, resulta un contrasentido. Han visto <em>constantes</em>, pero sólo sirven para inicializar variables y poco más. Si en su carrera hubieran sido formados en algún lenguaje funcional se darían cuenta que hay quienes piensan que las variables que cambian de valor son las raras, que lo más natural es que una variable conserve su valor inicial, o sea, que sea&nbsp;inmutable.</p>
 <p>Por poner un ejemplo, el siguiente código está basado en una pregunta reciente en la lista <a href="http://docs.python.org/3.3/library/copy.html" title="Módulo copy">python-es</a>. Tenemos una lista de pares y queremos quitar las parejas repetidas con orden&nbsp;cambiado:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">quitar_dup</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">quitar_dup</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
 
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
 
@@ -107,22 +94,11 @@
 
 <span class="nb">print</span> <span class="n">quitar_dup</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>  <span class="c1">#res: [[1, 3], [3, 1]]</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>A simple vista, el código parece correcto, pero tenemos dos operaciones que pueden mutar listas: <code>.reverse()</code> y <code>.remove()</code>. De hecho, el resultado es incorrecto: <code>[[1, 3], [3, 1]]</code></p>
 <p>A medida que recorremos la lista en el bucle <code>for</code>, la lista se va modificando, lo que da lugar a resultados inesperados. Si no lo ves bien, basta añadir algunos <code>prints</code> en lugares estratégicos para que comprobar lo que pasa. De hecho, sólo existen dos iteraciones para cuatro elementos que tiene la&nbsp;lista.</p>
 <p>Otro tipo de casos son cuando pasamos listas a&nbsp;funciones:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
 <span class="o">...</span>   <span class="k">if</span> <span class="n">a</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
 <span class="o">...</span>     <span class="n">l</span> <span class="o">+=</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span>
 <span class="o">...</span>   <span class="k">return</span> <span class="n">l</span>
@@ -135,21 +111,9 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">L</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Como efecto colateral, la función ha modificado la lista pasada como argumento, algo que no es siempre deseable. El problema se agrava más si empleamos listas en valores por&nbsp;defecto:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="p">[]):</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="p">[]):</span>
 <span class="o">...</span>   <span class="k">if</span> <span class="n">a</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
 <span class="o">...</span>     <span class="n">l</span> <span class="o">+=</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span>
 <span class="o">...</span>   <span class="k">return</span> <span class="n">l</span>
@@ -163,16 +127,10 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Como se puede ver, aunque intentemos <em>resetear</em> el valor por defecto, la función tiene un efecto memoria que es imposible de eliminar. Este efecto es a veces buscado, pero en general debe ser siempre evitado ya que desvirtúa el sentido que tiene dar valores por&nbsp;defecto.</p>
 <p>Estos efectos son todavía más perniciosos con la <em>funciones lambda</em>. Al carecer de una <em>clausura</em> como las funciones, la evaluación de una función lambda depende del <em>scope</em> donde han sido definidas. Por ejemplo, observa esta creación de una lista de&nbsp;funciones:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">fns</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight"><pre><span></span><code><span class="n">fns</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
     <span class="n">fns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span>
@@ -180,18 +138,10 @@
 <span class="nb">print</span> <span class="n">fns</span><span class="p">[</span><span class="mi">1</span><span class="p">](</span><span class="mi">10</span><span class="p">)</span>
 <span class="nb">print</span> <span class="n">fns</span><span class="p">[</span><span class="mi">2</span><span class="p">](</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Siempre añade <code>4</code> al argumento, que es el valor de <code>i</code> al acabar el bucle, independientemente de qué valor tenía esta variable en el momento de crear la función lambda. No es de extrañar que se recomiende dejar de usar estas&nbsp;funciones.</p>
 <p>Por último, otro efecto funesto de la mutabilidad de las listas aparece en la creación de <em>listas multidimensionales</em> (aka <em>matrices</em>). Una forma rápida de crear una matriz de 2x2 es: <code>[[0]*2]*2</code>. El problema aquí está en que cuando clonamos listas, en lugar de copiar los elementos, los enlaza entre sí. Quizás se vea mejor si hacemos alguna&nbsp;operación:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&gt;&gt;&gt; l = [[0]*2]*2
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; l = [[0]*2]*2
 [[0, 0], [0, 0]]
 &gt;&gt;&gt; l[0][0]
 0
@@ -201,35 +151,27 @@
 &gt;&gt;&gt; l[0] is l[1]
 True
 </code></pre></div>
-</td></tr></table>
+
 <p>Los elementos <code>l[0]</code> y <code>l[1]</code> son el mismo elemento. Que los elementos de una lista puedan estar <em>entrelazados</em> resulta muy interante para algunos algoritmos de búsquedas. Pero hay que conocer bien lo que estamos haciendo si no queremos llevarnos alguna&nbsp;sorpresa.</p>
 <h2>Recomendaciones para hacer código&nbsp;funcional</h2>
 <h3>Copia de&nbsp;listas</h3>
 <p>En funciones y métodos, si recibimos una lista como argumento, la primera acción defensiva que deberíamos hacer es copiar la lista en una variable local y trabajar solo con la variable local desde ese momento. Con una asignación directa no se realiza una copia, más bien estaríamos <em>enlazando</em> una nueva referenciasin solucionar&nbsp;nada.</p>
 <p>La forma consensuada entre programadores python de copiar una lista es con la operación de <em>spliting</em> <code>L[:]</code>, aunque sirven otras operaciones idempotentes como <code>L*1</code> ó <code>L+[]</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. Para listas de elementos entrelazados tendremos que acudir a otros mecanismos de copia como los que ofrece el <a href="http://docs.python.org/3.3/library/copy.html" title="Módulo copy">módulo <code>copy</code></a>, aunque no será frecuente que lo&nbsp;necesitemos.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">lista</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">lista</span><span class="p">):</span>
   <span class="n">l</span> <span class="o">=</span> <span class="n">lista</span><span class="p">[:]</span>
   <span class="k">if</span> <span class="n">a</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
     <span class="n">l</span> <span class="o">+=</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span>
   <span class="k">return</span> <span class="n">l</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>En cuanto a los argumentos por defecto, lo mejor es no usar nunca una lista para tal cosa. Una buena estrategia defensiva consiste en usar <code>None</code> de esta&nbsp;forma:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">lista</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">lista</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
   <span class="n">l</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">lista</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">lista</span><span class="p">[:]</span>
   <span class="k">if</span> <span class="n">a</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
     <span class="n">l</span> <span class="o">+=</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span>
   <span class="k">return</span> <span class="n">l</span>
 </code></pre></div>
-</td></tr></table>
+
 <h3>Operaciones inmutables con&nbsp;listas</h3>
 <p>En cuanto a evitar las operaciones que mutan listas, siempre hay alternativas inmutables de todas estas operaciones. El siguiente cuadro puede servir como&nbsp;referencia:</p>
 <table>
@@ -284,27 +226,20 @@ True
 </table>
 <p>A la hora de decidir qué versión usar, la versión inmutable es más apropiada para programación funcional y resulta incluos más intuitiva de interpretar. No es extraño ver errores de código donde se espera resultados de las operaciones <code>.sort()</code> o <code>.reverse()</code>, que siempre devuelven <code>None</code>. Para el intérprete de python no hay error, pero a veces nos será difícil darnos cuenta de estos&nbsp;errores:</p>
 <p><em><span class="caps">MODO</span> ERRÓNEO: machacamos la lista con&nbsp;None</em></p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">l_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">l</span><span class="o">.</span><span class="n">sort</span><span class="p">()]</span>
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">TypeError</span><span class="p">:</span> <span class="s1">&#39;NoneType&#39;</span> <span class="nb">object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">iterable</span>
 </code></pre></div>
-</td></tr></table>
+
 <p><em><span class="caps">MODO</span> <span class="caps">CORRECTO</span></em></p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">l_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">l</span><span class="p">)]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">l_2</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
 </code></pre></div>
-</td></tr></table>
+
 <div class="footnote">
 <hr>
 <ol>

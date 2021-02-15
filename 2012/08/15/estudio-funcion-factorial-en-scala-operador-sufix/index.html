@@ -75,18 +75,12 @@
   <div class="article_text">
     <p>A medida que voy aprendiendo más sobre el lenguaje <strong>scala</strong>, se me ocurren nuevas formas de expresar la función&nbsp;factorial.</p>
 <p>La <em>&#8220;expresividad&#8221;</em> del lenguaje permite usar operadores para crear código más corto. Por ejemplo, la función factorial con <em>&#8220;plegados&#8221;</em> (<em>&#8220;folds</em>&#8220;) que poníamo en un artículo anterior se podría expresar&nbsp;así:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="n">fact</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">)=(</span><span class="nc">BigInt</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="o">/:</span> <span class="o">(</span><span class="mi">1</span> <span class="n">to</span> <span class="n">n</span><span class="o">))(</span><span class="k">_</span><span class="o">*</span><span class="k">_</span><span class="o">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="n">fact</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">)=(</span><span class="nc">BigInt</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="o">/:</span> <span class="o">(</span><span class="mi">1</span> <span class="n">to</span> <span class="n">n</span><span class="o">))(</span><span class="k">_</span><span class="o">*</span><span class="k">_</span><span class="o">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>En esta expresión, hacemos el <em>plegado</em> de la secuencia <code>(1 to n)</code> sobre el valor inicial <code>BigInt(1)</code> con la operación <code>(_*_)</code> (multiplicación). Se ve rara, pero una vez profundizas en scala se ve como algo&nbsp;normal.</p>
 <p>Otra de las opciones de scala es poder usar casi cualquier carácter como indentificador, lo que nos facilita la creación de <span class="caps">DSL</span> (<em>&#8220;Lenguajes Específicos al Dominio&#8221;</em>). Una de estas posibilidades sería crear el operador <em>sufix</em> de la función factorial, de modo que el cálculo de factorial de <code>n</code> se pudiera expresar como <code>n!</code>. Para ello aprovechamos el mecanismo que tiene scala para conversión automática de tipos de&nbsp;datos:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Factorizer</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">){</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Factorizer</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">){</span>
     <span class="k">def</span> <span class="o">!</span> <span class="k">=</span> <span class="o">(</span><span class="nc">BigInt</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="n">to</span> <span class="n">n</span><span class="o">).</span><span class="n">product</span>
 <span class="o">}</span>
 
@@ -94,7 +88,7 @@
 
 <span class="n">println</span><span class="o">(</span><span class="s">&quot;5!=&quot;</span><span class="o">+(</span><span class="mi">5</span><span class="o">!))</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>La explicación es bien sencilla: como no encuentra el método <code>'!'</code> en el tipo <code>Int</code>, busca entre las conversiones otros tipos que lo puedan tener, en este caso <code>Factorizer</code>. Una vez hecha la conversión, ejecuta el&nbsp;operador.</p>
   </div>
 

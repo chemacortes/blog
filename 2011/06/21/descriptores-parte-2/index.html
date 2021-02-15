@@ -120,35 +120,7 @@
 <h1>¿Se puede saltar un descriptor de&nbsp;datos?</h1>
 <p>La prioridad de los descriptores de datos frente al resto de atributos hace prácticamente imposible <em>saltárselos</em> para acceder directamente a un atributo. Todo acceso al atributo pasa por sus manos, regla que se aplica también con el propio descriptor y que da origen a bastantes recursividades sin fin. Por ello es habitual que el descriptor mantenga un atributo auxiliar <em>&#8220;privado&#8221;</em>, ya que de otro modo no tendrá otra forma de acceso&nbsp;directo.</p>
 <p>Algo que sí podemos hacer es cambiar las prioridades con la definición de un método <code>__getattribute__</code> propio. Como ejemplo, se podría priorizar los atributos del diccionario frente a los descriptores de esta&nbsp;manera:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Descrip</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Descrip</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mul</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span>
     <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -178,7 +150,7 @@
 <span class="n">c</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;a12&quot;</span><span class="p">]</span><span class="o">=</span><span class="mi">100</span>
 <span class="nb">print</span> <span class="n">c</span><span class="o">.</span><span class="n">a12</span>  <span class="c1">#--&gt; 100 (valor del diccionario)</span>
 </code></pre></div>
-</td></tr></table>
+
 <div class="footnote">
 <hr>
 <ol>

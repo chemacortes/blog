@@ -113,44 +113,40 @@
 <h2>Composición de&nbsp;Iteradores</h2>
 <p>Una ventaja de usar iteradores en lugar de listas es que sólo necesitan memoria para procesar el elemento que están trabajado, por lo que los hace muy eficientes para procesar grandes cantidades de datos o ficheros enormes que no caben enteros en&nbsp;memoria.</p>
 <p>Por ejemplo, esta expresión&nbsp;generadora:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">100</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">100</span><span class="p">))</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Como curiosidad, el número <code>10**100</code> se llama <a href="https://es.wikipedia.org/wiki/Gúgol">gúgol</a> y es un número enormemente grande. Crear esto mismo como una lista es imposible con la memoria de los ordenadores actuales y no habría tiempo en este Universo para procesar tal cantidad de&nbsp;elementos.</p>
 <p>Y sin embargo, podemos trabajar con esta expresión sin mayores problemas. Por ejemplo, para obtener los 10 primeros&nbsp;elementos:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">100</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">100</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Incluso podemos usarla como base para crear nuevos&nbsp;iteradores:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">100</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">100</span><span class="p">)))</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Equivalente a&nbsp;hacer:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">100</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">100</span><span class="p">))</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Componer iteradores es bastante eficiente. Se van recorriendo a medida que sea necesario, sin mantener en memoria nada más que los elementos estrictamente necesarios para devolver el siguiente&nbsp;elemento.</p>
 <h2>map y&nbsp;filter</h2>
 <p>¿Sabes cuál es la diferencia entre estas dos&nbsp;expresiones?</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
 
 <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Para python, ambas expresiones son equivalentes: iteradores. Pero se considera que tiene más <em>estilo pythónico</em> el uso de expresiones generadoras, desaconsejándose completamene el uso de las funciones <code>map</code> y <code>filter</code> siempre que se&nbsp;pueda.</p>
 <p>Y sin embargo, para <em>coconut</em> las funciones <code>map</code> y <code>filter</code> son fundamentales como también lo son en <em>programación funcional</em>.</p>
 <p>El iterador que se obtiene con la expresión generadora <code>(x**2 for x in range(10*100))</code> actúa como si fuera una <em>caja negra</em>. Se pueden obtener los elemntos uno a uno, pero no ofrece información sobre su estructura interna, ni de su tamaño, ni nada que permita su&nbsp;transfomación.</p>
 <p>En cambio, el <em>iterador map</em> en coconut (extensión de la función <code>map</code> de python) almacena información tanto de la función como de los iterables a los que se aplica, cosa que hace en los atributos <code>func</code> y <code>iters</code>, respectivamente. De este modo, <em>coconut</em> puede encadenar transformaciones de manera más&nbsp;óptima.</p>
 <p>Por ejemplo, para obtener el último elemento del iterador&nbsp;anterior:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>map(x -&gt; x**2, range(10*100))[-1]
+<div class="highlight"><pre><span></span><code>map(x -&gt; x**2, range(10*100))[-1]
 </code></pre></div>
-</td></tr></table>
+
 <p>Como iterador, debería haber pasado por todos los <code>10**100</code> elementos hasta llegar al último, cosa que es imposible de hacer en la práctica. Sin embargo, si se prueba en <em>coconut</em>, se obtiene el último elemento casi al instante. En realidad, <em>coconut</em> cortocircuita todo el proceso y salta directamente al último elemento de <code>range(10**100)</code>, que es el único que le hace falta. Es como si hubiera aplicado primero el <code>[-1]</code> al <code>range(10**100)</code> y luego hubiera aplicado el <code>map</code>.</p>
 <p>Este tipo de encapsulado, tanto de un conjunto de datos como de la función que lo transforma, se conocen por <strong>aplicativo</strong> (<em>Applicative</em> en inglés). Y a las transformaciones que podemos encadenar, una tras otra, para diferir el cálculo al final del todo se conoce por <strong>mónadas</strong> (<em>Monad</em> en&nbsp;inglés).</p>
 <p>Más adelante veremos una definición matemática formal, pero podemos considerar <strong>monad</strong> como la <em>herramienta matemática</em> más poderosa de un programador funcional y, algunas veces, también la más&nbsp;incomprensible.</p>

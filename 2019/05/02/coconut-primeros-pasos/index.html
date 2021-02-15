@@ -84,22 +84,7 @@
 <p>En particular, prefiero crear un fichero de entorno (<code>environment.yml</code>) que determine las dependencias, tanto las que instala conda, como las que se necesite instalar con pip. Podríamos concretar con precisión las versiones que vamos a usar; pero me voy a limitar a las dependencias mínimas para la versión que estoy usando ahora, <em>coconut 1.4.0</em>.</p>
 <figure class='code'>
 <figcaption><span class="liquid-tags-code-title">Entorno virtual &#8216;coco&#8217;</span><a href='/code/2019Q2/environment.yml'>download</a></figcaption>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">coco</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">coco</span>
 <span class="nt">channels</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">defaults</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">conda-forge</span>
@@ -116,7 +101,7 @@
   <span class="p p-Indicator">-</span> <span class="nt">pip</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cpyparsing</span>
 </code></pre></div>
-</td></tr></table>
+
 </figure>
 <p>Se fija la versión de <code>python=3.6</code> ya que ésta es la versión superior recomendada para <em>coconut</em>. Posiblemente también funcione correctamente con <code>python=3.7</code>.</p>
 <p>Entre las dependencias&nbsp;encontramos:</p>
@@ -130,15 +115,7 @@
 <p>El entorno de desarrollo estará definio&nbsp;así:</p>
 <figure class='code'>
 <figcaption><span class="liquid-tags-code-title">Entorno virtual &#8216;cocodev&#8217;</span><a href='/code/2019Q2/environment-dev.yml'>download</a></figcaption>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cocodev</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cocodev</span>
 <span class="nt">channels</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">defaults</span>
 <span class="nt">dependencies</span><span class="p">:</span>
@@ -148,53 +125,38 @@
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">coconut-develop[dev]</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">coconut-prelude</span>
 </code></pre></div>
-</td></tr></table>
+
 </figure>
 <p>La instalación de <em>coconut</em> y sus dependencias para este entorno se delega totalmente en pip. Se añade el módulo <code>coconut-prelude</code> que nos facilita un mecanismo similar al <code>Prelude</code> de haskell para tener un entorno configurado con las funciones más habituales en programación&nbsp;funcional.</p>
 <p>Con estos dos ficheros, se crean los entornos&nbsp;virtuales:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ conda env create -f environment.yml
+<div class="highlight"><pre><span></span><code>$ conda env create -f environment.yml
 ...
 $ conda env create -f environment-dev.yml
 ...
 </code></pre></div>
-</td></tr></table>
+
 <h2>Primer contacto: Hola&nbsp;Mundo</h2>
 <p>Para ejecutar coconut, se debe activar primero el&nbsp;entorno:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ conda activate coco
+<div class="highlight"><pre><span></span><code>$ conda activate coco
 $ coconut
 Coconut Interpreter:
 (type &#39;exit()&#39; or press Ctrl-D to end)
 &gt;&gt;&gt;
 </code></pre></div>
-</td></tr></table>
+
 <p>Sale una interface de línea de comando similar a la que tiene python, incluso se puede introducir código python&nbsp;normal:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&gt;&gt;&gt; print(&quot;¡Hola, Mundo!&quot;)
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; print(&quot;¡Hola, Mundo!&quot;)
 ¡Hola, Mundo!
 </code></pre></div>
-</td></tr></table>
+
 <p>En <em>coconut</em>, éste sería nuestro <em>&#8220;Hola Mundo&#8221;</em>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&gt;&gt;&gt; &quot;¡Hola, Mundo!&quot; |&gt; print
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; &quot;¡Hola, Mundo!&quot; |&gt; print
 ¡Hola, Mundo!
 </code></pre></div>
-</td></tr></table>
+
 <p>El operador <code>|&gt;</code> puede verse como un <em>pipe</em> que encadena operaciones, una tras otra, que será de uso común. Se puede describir como una <em>&#8220;aplicación del resultado de la izquierda en la expresión de la derecha&#8221;</em>.</p>
 <p>Por poner ejemplos de aplicaciones en&nbsp;cadena:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&gt;&gt;&gt; &quot;¡Hola, Mundo!&quot; |&gt; len |&gt; print
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; &quot;¡Hola, Mundo!&quot; |&gt; len |&gt; print
 13
 &gt;&gt;&gt; &quot;¡Hola, Mundo!&quot; |&gt; list |&gt; print
 [&#39;¡&#39;, &#39;H&#39;, &#39;o&#39;, &#39;l&#39;, &#39;a&#39;, &#39;,&#39;, &#39; &#39;, &#39;M&#39;, &#39;u&#39;, &#39;n&#39;, &#39;d&#39;, &#39;o&#39;, &#39;!&#39;]
@@ -202,39 +164,32 @@ Coconut Interpreter:
 ¡Hola, Mundo!
 None
 </code></pre></div>
-</td></tr></table>
+
 <p>Probemos la ejecución de ficheros. Los ficheros de <em>coconut</em> tienen por extensión <code>.coco</code>. Creemos un fichero <code>hola.coco</code> con una única&nbsp;línea:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&quot;¡Hola, Mundo!&quot; |&gt; print
+<div class="highlight"><pre><span></span><code>&quot;¡Hola, Mundo!&quot; |&gt; print
 </code></pre></div>
-</td></tr></table>
+
 <p>Para&nbsp;ejecutarlo:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ coconut --run hola.coco
+<div class="highlight"><pre><span></span><code>$ coconut --run hola.coco
 Compiling         hola.coco ...
 Compiled to       hola.py .
 ¡Hola, Mundo!
 </code></pre></div>
-</td></tr></table>
+
 <p>De la <em>transpilación</em> se obtiene el fichero <code>hola.py</code>, que es el que se usa en la ejecución. Se podría volver a ejecutar sin intervención de <em>coconut</em>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>$ python hola.py
+<div class="highlight"><pre><span></span><code>$ python hola.py
 ¡Hola, Mundo!
 </code></pre></div>
-</td></tr></table>
+
 <h2>Factorial en&nbsp;coconut</h2>
 <p>Como obsesión de este blog está la comparación de formas de hacer el cálculo del factorial. Recomiendo seguir el <a href="https://coconut.readthedocs.io/en/master/HELP.html" title="Tutorial de coconut">tutorial de coconut</a> donde se detalla, paso a paso, cómo ir cambiando la formulación de factorial desde estructuras imperativas a&nbsp;funcionales.</p>
 <p>Una formulación simple podría ser&nbsp;esta:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def product(lst: int[]) -&gt; int = reduce((*), lst)
+<div class="highlight"><pre><span></span><code>def product(lst: int[]) -&gt; int = reduce((*), lst)
 def factorial(n: int) -&gt; int = range(2, n+1) |&gt; product
 
 10000 |&gt; factorial |&gt; print
 </code></pre></div>
-</td></tr></table>
+
 <p>Aunque las veremos con detalle más adelante, aquí adelantamos varias características de <em>coconut</em>:</p>
 <ul>
 <li>Una función puede devolver una expresión, similar a las funciones <em>lambda</em></li>

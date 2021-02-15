@@ -78,17 +78,7 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
 </blockquote>
 <p>Para ilustrar este concepto voy a usar un trozo de código python que se ve frecuentemente entre los programadores recién llegados de otros&nbsp;lenguajes:</p>
 <p><sub><em><span class="caps">NOTA</span>: se usará python 3.x para los siguientes ejemplos</em></sub></p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">listar</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">listar</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">num</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
     <span class="n">i</span><span class="o">=</span><span class="mi">0</span>
     <span class="k">while</span><span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="n">num</span><span class="p">):</span>
@@ -100,44 +90,34 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
 <span class="n">lineas</span><span class="o">=</span><span class="n">fich</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 <span class="n">listar</span><span class="p">(</span><span class="n">lineas</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Resumen: se define una función para imprimir en pantalla la lista de líneas leídas de un fichero, precedidas con el número de caracteres que tiene la&nbsp;línea.</p>
 <p>Quien tenga algo de experiencia con python seguramente vea raro este código, incluso lo califique como <em>&#8220;poco pythónico&#8221;</em>. Nombrar a la función <code>listar</code>, como verbo, es señal de que el programador proviene de un lenguaje de <em>programación imperativo</em>. El programador ha buscado en python las mismas estructuras de control que tenía en su lenguaje de origen y sólo ha encontrado familiar la estructura <code>while</code>.</p>
 <p>Rebuscando un poco más, tal vez encuentre cómo se usan los bucles <code>for</code> en&nbsp;python:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">listar</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">listar</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">num</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">num</span><span class="p">):</span>
         <span class="n">x</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot; 5d&quot;</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Un bucle <code>for</code> se caracteriza por concentrar en una sentencia todo el control del bucle, una gran ayuda visual para quien vaya a leer este código. La variable de control solo se modifica en la sentencia <code>for</code>, lo que evita&nbsp;errores.</p>
 <p>Analizando más detenidamente, el bucle <code>for</code> itera sobre una secuencia de enteros dada por <code>range(0,num)</code>, de donde se sacan los índices con los que acceder a cada elemento de la lista <code>args</code>. Ésta sería la visión clásica de cómo operar con <code>arrays</code>.</p>
 <p>Pero esta visión ha evolucionado con el tiempo hasta llegar al concepto de <em>&#8220;Colección&#8221;</em> que ya poseen casi todos los lenguajes, bien en su sintaxis, bien como librería estándar. Una <em>&#8220;Colección&#8221;</em> consiste en un grupo de objetos sobre los que puede iterar. <code>range(0,num)</code> sería una colección ordenada de números. El siguiente paso a dar sería iterar directamente sobre la&nbsp;lista:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">listar</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">listar</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot; 5d&quot;</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Con este código hemos conseguido un doble objetivo, mejorar la legibilidad y darle más robustez al despreocuparnos por los índices de acceso. Los índices de acceso fuera de límites suelen ser origen de multitud de&nbsp;errores.</p>
 <p>Pero tenemos algo más: al no usar índices hemos generalizado el uso de la función por cualquier secuencia, generador o <a href="http://docs.python.org/3/library/stdtypes.html#iterator-types" title="Tipo iterador">iterador</a>. Concretamente, los objetos <code>files</code> cumplen con el protocolo iterador, por lo que sería posible pasarlo directamente a esta función sin necesidad de volcar todas las líneas del fichero a una&nbsp;lista:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">listar</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">listar</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot; 5d&quot;</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
 
 <span class="n">listar</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fichero.txt&quot;</span><span class="p">))</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Con este último doblez hemos ganado concisión. Pero sobre hemos ahorrado recursos ya que no necesitamos leer todo el fichero en memoria. La lectura del fichero se hará progresivamente en el momento que se solicite la siguiente línea, por lo que este código debería funcionar incluso con ficheros enormes, independiente de la cantidad de memoria disponible. Sólo se empleará la memoria suficiente para cachear una pocas líneas para ir renovándolas a medida que se prosiga la lectura del&nbsp;fichero.</p>
 <p>Es un buen momento para comparar esta versión del código con la original de la que hemos&nbsp;partido.</p>
 <h2>Programación&nbsp;Funcional</h2>
@@ -147,16 +127,7 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
 <p>Este modo de diferir la evaluación es lo que hicimos con el iterador fichero, cuyas líneas no se leían hasta el momento preciso. La pregunta es ¿podemos mejorar la orientación funcional de nuestro&nbsp;código?</p>
 <p>La función <code>listar</code> no devuelve nada, tan sólo busca un efecto colateral. Es lo que se conoce en otros lenguajes como <em>&#8220;procedimiento&#8221;</em> (<em>procedure</em>). En nuestra metáfora de &#8220;pliegues&#8221;, una función que no devuelve nada la podríamos considerar como un &#8220;corte&#8221;, ya que no podemos hacer nada más a partir de&nbsp;aquí.</p>
 <p>¿Qué pasaría si queremos cambiar la línea que se imprime en pantalla? ¿Y si queremos parar después de imprimir un número de líneas? En este punto, lo mejor es &#8220;desdoblar&#8221; el código y darle una orientación más&nbsp;funcional:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">islice</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">islice</span>
 
 <span class="k">def</span> <span class="nf">lineas</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
@@ -167,7 +138,7 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
 <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">it</span><span class="p">,</span><span class="mi">5</span><span class="p">)):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>La función <code>listar</code> ha pasado a ser el iterador <code>lineas</code> que retorna las líneas ya formateadas. Asimismo, se ha cambiado la función <code>format</code> por el método <code>format</code> de los <code>strings</code> con el que se pueden formatear mejor varios valores a la vez. La impresión de las líneas en pantalla se deja para el último momento, cuando se necesita ver el resultado. Es en este momento cuando se decide cuántas líneas se van a imprimir, que es lo que hace el <code>islice</code> acortando el iterador <code>lineas</code> a 5 iteraciones. También se usa el iterador <code>enumerate</code> para ir enumerando las líneas a medida que las&nbsp;obtenemos.</p>
 <p>Como se ve, una orientación funcional permite encadenar varias operaciones sin necesidad de mantener estados intermedios<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. Además de lo que supone de ahorro de recursos, no tener que mantener un contexto con los estados intermedios hará más sencillo migrar la ejecución de un proceso a otro en programación concurrente (eg: <em>multihilo</em>). Hoy en día, tal como evolucionan los ordenadores, quien no programe pensando en la ejecución concurrente terminará programando dos&nbsp;veces.</p>
 <div class="footnote">

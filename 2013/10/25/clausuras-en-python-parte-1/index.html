@@ -80,16 +80,7 @@
 <p>Comencemos con un ejemplo. Te recomiendo que te esfuerces en deducir cómo
 funciona sin ir a probar cómo funciona. A continuación te pondré algunos valores
 para que elijas los valores de las tres&nbsp;listas:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight"><pre><span></span><code>    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">add_one</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">i</span>
 
     <span class="n">lista1</span> <span class="o">=</span> <span class="p">[</span><span class="n">add_one</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
@@ -100,7 +91,7 @@ para que elijas los valores de las tres&nbsp;listas:</p>
     <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
     <span class="n">lista3</span> <span class="o">=</span> <span class="p">[</span><span class="n">add_one</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Valores para <code>lista1</code>:</p>
 <ol>
 <li><code>[0, 1, 2]</code></li>
@@ -163,15 +154,14 @@ lenguajes de&nbsp;programación.</p>
 consiste en pasar las variables de ese entorno que necesite en los argumentos de
 entrada, casi siempre como argumentos por&nbsp;defecto.</p>
 <p>En el ejemplo anterior&nbsp;sería:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight"><pre><span></span><code>  <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
   <span class="n">add_one</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">i</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>que equivaldrá&nbsp;a</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  <span class="n">add_one</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">i</span>
+<div class="highlight"><pre><span></span><code>  <span class="n">add_one</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">i</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>En este caso <code>i</code> se toma de los argumentos de la función, y tendrá por defecto
 el valor de <code>i</code> en el momento de la definición de la función&nbsp;lambda.</p>
 <p>No es perfecto, pero es lo mejor que tenemos. Lo recomendable es evitar las

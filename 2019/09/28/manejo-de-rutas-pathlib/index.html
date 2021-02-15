@@ -77,13 +77,7 @@
     <p>Es difícil escribir un script de python que no interaccione con el sistema de ficheros de un modo u otro, por lo que python dispone de varios módulos para tal fin: <code>os</code>, <code>os.path</code> (<em>submódulo de os</em>), <code>shutil</code>, <code>stats</code>, <code>glob</code>,&#8230;En la intención estaba ser multiplataforma, lo que ha sido fuente de muchos mayores quebraderos de cabeza con las distintas codificaciones de caracteres y distintas formas de expresar rutas de ficheros que&nbsp;existen.</p>
 <p>El objeto <code>Path</code> viene a poner orden entre tantos módulos y funciones para manejo de ficheros. La librería estándar se ha reescrito para aceptar estos objetos <code>Path</code>. Se puede decir sin duda que usar <code>Path</code> se ha convertido en la forma más <em>pythónica</em> de manipular ficheros y&nbsp;directorios.</p>
 <p>Empecemos por un ejemplo traído de la <a href="https://docs.python.org/3.7/library/pathlib.html" title="Documentación del módulo pathlib">documentación oficial</a>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/etc&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="n">p</span> <span class="o">/</span> <span class="s1">&#39;init.d&#39;</span> <span class="o">/</span> <span class="s1">&#39;reboot&#39;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">q</span>
@@ -91,7 +85,7 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">q</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
 <span class="n">PosixPath</span><span class="p">(</span><span class="s1">&#39;/etc/rc.d/init.d/halt&#39;</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Paso por paso: importa el constructor <code>Path</code> del módulo <code>pathlib</code>. Con él construye un objeto con la ruta <code>/etc</code> y, usando el operador <code>/</code>, genera otro objeto que representa la ruta <code>/etc/init.d/reboot</code>. Automáticamente, estos objetos se construyen como instancias de <code>PosixPath</code>, que es una subclase especializada de <code>Path</code> para manejos de ficheros en sistemas Posix. La ruta <code>/etc/init.d/reboot</code> apunta a un <em>enlace simbólico</em>, por lo que se usa el método <code>resolve</code> para obtener la ruta absoluta del fichero al que&nbsp;apunta.</p>
 <div class="admonition nota">
 <p class="admonition-title">Nota</p>
@@ -112,30 +106,20 @@
 <h2>Ejemplos</h2>
 <p>Voy a poner algunos ejemplos de uso de <code>pathlib</code> para que compares con el modo como lo estabas haciendo hasta ahora. Recomiendo revisar la documentación del módulo <a href="https://docs.python.org/3.7/library/pathlib.html" title="Documentación del módulo pathlib">pathlib</a> ante cualquier&nbsp;duda.</p>
 <p>Para escribir en un fichero, usamos el método <code>open</code> de modo similar a como se hacía con la función <code>open</code> del mismo&nbsp;nombre:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.config&#39;</span><span class="p">)</span>
 <span class="k">with</span> <span class="n">path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">config</span><span class="p">:</span>
     <span class="n">config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;# config goes here&#39;</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Si sólo vamos a escribir una línea, también se podría hacer de un modo más&nbsp;directo:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.config&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="s1">&#39;# config goes here&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.config&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="s1">&#39;# config goes here&#39;</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Pongamos un ejemplo más complejo: queremos localizar los scripts de python dentro de la carpeta <code>proyectos</code> que tengan una frase. Lo habitual para recorrer un directorio era usar alguna función como <code>os.walk</code> o <code>os.scandir</code> para ir navegando a través de la jerarquía de directorios e ir leyendo los ficheros python hasta localizar los que&nbsp;buscamos.</p>
 <p>Veamos cómo se hace con <code>Path</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">proyectos</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;proyectos&#39;</span>  <span class="c1"># carpeta en el directorio HOME</span>
 <span class="n">palabra</span> <span class="o">=</span> <span class="s2">&quot;pathlib&quot;</span>
@@ -143,20 +127,17 @@
 <span class="n">ficheros</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">proyectos</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.py&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">palabra</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">read_text</span><span class="p">()]</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Partimos del <code>Path.home()</code>, el directorio de usuario, y creamos la ruta del directorio <code>proyectos</code>. Invocando el método <code>.rglob()</code> obtenemos, recursivamente, todos los ficheros que cumplan con el patrón dado. Bastante&nbsp;simple.</p>
 <p>La lista resultante es una lista de objetos <em>Path</em>, lo que nos facilita cualquier manipulación posterior que deseemos hacer sobre estos ficheros. Por ejemplo, vamos a calcular el tamaño total que&nbsp;ocupan:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">size</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_size</span> <span class="k">for</span> <span class="n">p</span> <span class="n">ficheros</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">size</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_size</span> <span class="k">for</span> <span class="n">p</span> <span class="n">ficheros</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>Si se prefiere, se puede seguir usando el viejo <code>os.path.getsize</code>. Ahora también acepta objetos <code>Path</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os.path</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os.path</span>
 
 <span class="n">size</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="n">ficheros</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table>
   </div>
 
 <ul class="pager">

@@ -65,7 +65,7 @@
 <div class="article_meta">
   <p>Posted <time data-timeago datetime="2021-02-14T17:53:58+01:00">dom 14 febrero 2021</time>
    by Chema Cortés  </p>
-  <p>Last updated <time data-timeago datetime="2021-02-15T20:51:59+01:00">lun 15 febrero 2021</time></p>
+  <p>Last updated <time data-timeago datetime="2021-02-15T20:55:16+01:00">lun 15 febrero 2021</time></p>
   <p>
   Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
 &ndash;&ndash;  Tags:
@@ -164,11 +164,14 @@ elemento que se haya&nbsp;calculado.</p>
 <p>Vamos a itentar a crear una caché similar capaz de generar automáticamente los
 elementos de la&nbsp;sucesión:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fibcache</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="n">cache</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wrap</span><span class="o">.</span><span class="n">cache</span><span class="p">),</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="n">wrap</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">wrap</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
-    <span class="n">wrap</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cache</span><span class="p">),</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">cache</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+    <span class="n">wrap</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="n">cache</span>
+
     <span class="k">return</span> <span class="n">wrap</span>
 
 <span class="nd">@fibcache</span>

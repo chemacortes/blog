@@ -4,7 +4,7 @@
 - [Parte 2 - Secuencias infinitas][102]
 - [Parte 3 - _Memoización_][103]
 - [Parte 4 - _Evaluación perezosa_ avanzada][104]
-- [Parte 5 - Ejemplo práctico: potencias de Pauli-Dirac][105]
+- [Parte 5 - Ejemplo práctico: potencias de Fermi-Dirac][105]
 - [Apéndice: sobre el tipado de datos utilizado][106]
 
 !!!danger "La serie completa como _Jupyter Notebook_ en:"
@@ -16,7 +16,7 @@
 [102]: {filename}2021-02-09-evaluacion-perezosa-en-python-parte-2.md "Secuencias infinitas"
 [103]: {filename}2021-02-14-evaluacion-perezosa-en-python-parte-3.md "Parte 3 - _Memoización_"
 [104]: {filename}2021-02-15-evaluacion-perezosa-en-python-parte-4.md "Parte 4 - _Evaluación perezosa_ avanzada"
-[105]: {filename}2021-02-15-evaluacion-perezosa-en-python-parte-5.md "Parte 5 - Ejemplo práctico: potencias de Pauli-Dirac"
+[105]: {filename}2021-02-15-evaluacion-perezosa-en-python-parte-5.md "Parte 5 - Ejemplo práctico: potencias de Fermi-Dirac"
 [106]: {filename}2021-02-15-evaluacion-perezosa-en-python-apendice.md "Apéndice: sobre el tipado de datos utilizado"
 
 [999]: {static}notebook-serie-evaluacion-perezosa-en-python.ipynb "Notebook Evaluación perezosa en python"

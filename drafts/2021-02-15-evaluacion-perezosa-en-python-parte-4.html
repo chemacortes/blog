@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Evaluación perezosa en python - Parte 4 | Evaluación perezosa avanzada...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ea57ac74.min.css">
+
+  <script src="https://blog.ch3m4.org/theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, lazy-eval, sequence, range">
+
+  <title>Evaluación perezosa en python - Parte 4 | Hyperreals *R</title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github" target="_blank" rel="noopener noreferrer"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket" target="_blank" rel="noopener noreferrer"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow" target="_blank" rel="noopener noreferrer"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml" target="_blank" rel="noopener noreferrer">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml" target="_blank" rel="noopener noreferrer">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml" target="_blank" rel="noopener noreferrer">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6" target="_blank" rel="noopener noreferrer">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+<div class="article_meta">
+  <p>Posted <time data-timeago datetime="2021-02-15T21:20:20+01:00">lun 15 febrero 2021</time>
+   by Chema Cortés  </p>
+  <p>Last updated <time data-timeago datetime="2021-02-16T03:29:02+01:00">mar 16 febrero 2021</time></p>
+  <p>
+  Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+&ndash;&ndash;  Tags:
+    <a href="https://blog.ch3m4.org/tag/lazy-eval/">lazy-eval</a>,    <a href="https://blog.ch3m4.org/tag/sequence/">sequence</a>,    <a href="https://blog.ch3m4.org/tag/range/">range</a>  </p>
+</div>  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-4.html" class="nohover">Evaluación perezosa en python - Parte&nbsp;4</a></h1>
+  </div>
+  <div class="article_text">
+    <h2><em>Evaluación perezosa</em>&nbsp;avanzada</h2>
+<hr>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">29</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">37</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">43</span><span class="p">,</span><span class="mi">47</span><span class="p">,</span><span class="mi">53</span><span class="p">,</span><span class="mi">59</span><span class="p">,</span><span class="mi">61</span><span class="p">,</span><span class="mi">67</span><span class="p">,</span><span class="mi">71</span><span class="p">,</span><span class="mi">73</span><span class="p">,</span><span class="mi">79</span><span class="p">,</span><span class="mi">83</span><span class="p">,</span><span class="mi">89</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">103</span><span class="p">,</span><span class="mi">107</span><span class="p">,</span><span class="mi">109</span><span class="p">,</span><span class="mi">113</span><span class="p">,</span><span class="mi">127</span><span class="p">,</span><span class="mi">131</span><span class="p">,</span><span class="mi">137</span><span class="p">,</span><span class="mi">139</span><span class="p">,</span><span class="mi">149</span><span class="p">,</span><span class="mi">151</span><span class="p">,</span><span class="mi">157</span><span class="p">,</span><span class="mi">163</span><span class="p">,</span><span class="mi">167</span><span class="p">,</span><span class="mi">173</span><span class="p">,</span><span class="mi">179</span><span class="p">,</span><span class="mi">181</span><span class="p">,</span><span class="mi">191</span><span class="p">,</span><span class="mi">193</span><span class="p">,</span><span class="mi">197</span><span class="p">,</span><span class="mi">199</span><span class="p">,</span><span class="mi">211</span><span class="p">,</span><span class="mi">223</span><span class="p">,</span><span class="mi">227</span><span class="p">,</span><span class="mi">229</span><span class="p">,</span><span class="mi">233</span><span class="p">,</span><span class="mi">239</span><span class="p">,</span><span class="mi">241</span><span class="p">,</span><span class="mi">251</span><span class="p">,</span><span class="mi">257</span><span class="p">,</span><span class="mi">263</span><span class="p">,</span><span class="mi">269</span><span class="p">,</span><span class="mi">271</span><span class="p">,</span><span class="mi">277</span><span class="p">,</span><span class="mi">281</span><span class="p">,</span><span class="mi">283</span><span class="p">,</span><span class="mi">293</span><span class="p">,</span><span class="mi">307</span><span class="p">,</span><span class="mi">311</span><span class="p">,</span><span class="mi">313</span><span class="p">,</span><span class="mi">317</span><span class="p">,</span><span class="mi">331</span><span class="p">,</span><span class="mi">337</span><span class="p">,</span><span class="mi">347</span><span class="p">,</span><span class="mi">349</span><span class="p">,</span><span class="mi">353</span><span class="p">,</span><span class="mi">359</span><span class="p">,</span><span class="mi">367</span><span class="p">,</span><span class="mi">373</span><span class="p">,</span><span class="mi">379</span><span class="p">,</span><span class="mi">383</span><span class="p">,</span><span class="mi">389</span><span class="p">,</span><span class="mi">397</span><span class="p">,</span><span class="mi">401</span><span class="p">,</span><span class="mi">409</span><span class="p">,</span><span class="mi">419</span><span class="p">,</span><span class="mi">421</span><span class="p">,</span><span class="mi">431</span><span class="p">,</span><span class="mi">433</span><span class="p">,</span><span class="mi">439</span><span class="p">,</span><span class="mi">443</span><span class="p">,</span><span class="mi">449</span><span class="p">,</span><span class="mi">457</span><span class="p">,</span><span class="mi">461</span><span class="p">,</span><span class="mi">463</span><span class="p">,</span><span class="mi">467</span><span class="p">,</span><span class="mi">479</span><span class="p">,</span><span class="mi">487</span><span class="p">,</span><span class="mi">491</span><span class="p">,</span><span class="mi">499</span><span class="p">,</span><span class="mi">503</span><span class="p">,</span><span class="mi">509</span><span class="p">,</span><span class="mi">521</span><span class="p">,</span><span class="mi">523</span><span class="p">,</span><span class="mi">541</span><span class="p">]</span>
+
+<span class="nf">primes</span><span class="o">!!</span><span class="mi">90000</span>
+<span class="mi">1159531</span>
+</code></pre></div>
+
+<h2>código</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">MutableSequence</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">islice</span>
+
+
+<span class="k">class</span> <span class="nc">Primes</span><span class="p">(</span><span class="n">Iterable</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Lazy eval of primes</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_primes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">yield</span> <span class="mi">2</span>
+        <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primes</span>
+
+        <span class="n">subprimes</span><span class="p">:</span> <span class="n">MutableSequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">ini</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primes</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ini</span><span class="p">,</span> <span class="n">p</span> <span class="o">*</span> <span class="n">p</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+                <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="n">r</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">subprimes</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_primes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                    <span class="k">yield</span> <span class="n">i</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">subprimes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+                <span class="n">ini</span> <span class="o">=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">p</span> <span class="o">+</span> <span class="mi">2</span>
+
+
+<span class="c1"># Iterable of cached primes</span>
+<span class="n">primes</span> <span class="o">=</span> <span class="n">Primes</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">gen_primes</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generator of primes</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">primes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+
+    <span class="k">yield</span> <span class="mi">2</span>
+    <span class="k">yield</span> <span class="mi">3</span>
+
+    <span class="n">subprimes</span><span class="p">:</span> <span class="n">MutableSequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">ini</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">primes</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ini</span><span class="p">,</span> <span class="n">p</span> <span class="o">*</span> <span class="n">p</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="n">r</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">subprimes</span><span class="p">):</span>
+                <span class="n">primes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">i</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">subprimes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+            <span class="n">ini</span> <span class="o">=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">p</span> <span class="o">+</span> <span class="mi">2</span>
+</code></pre></div>
+
+<hr>
+<h2>Resumen</h2>
+<hr>
+<h2>Serie <em>Evaluación Perezosa en&nbsp;Python</em></h2>
+<ul>
+<li><a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_">Parte 1 - Introducción a la <em>evaluación&nbsp;perezosa</em></a></li>
+<li><a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas">Parte 2 - Secuencias&nbsp;infinitas</a></li>
+<li><a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_">Parte 3 - <em>Memoización</em></a></li>
+<li><a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-4.html" title="Parte 4 - _Evaluación perezosa_ avanzada">Parte 4 - <em>Evaluación perezosa</em>&nbsp;avanzada</a></li>
+<li><a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-5.html" title="Parte 5 - Ejemplo práctico: potencias de Fermi-Dirac">Parte 5 - Ejemplo práctico: potencias de&nbsp;Fermi-Dirac</a></li>
+<li><a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado">Apéndice: sobre el tipado de datos&nbsp;utilizado</a></li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">La serie completa como <em>Jupyter Notebook</em>&nbsp;en:</p>
+<p><a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.ipynb" title="Notebook Evaluación perezosa en python">serie-evaluacion-perezosa-en-python.ipynb</a></p>
+<p><em><span class="caps">INCOMPLETA</span>&nbsp;TODAVÍA</em></p>
+</div>
+<hr>
+  </div>
+
+<ul class="pager">
+ </ul>
+With category
+<a href="https://blog.ch3m4.org/category/python/">Python</a>:
+<ul class="pager">
+ </ul>
+
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script id="dsq-count-scr" src="https://hyperreals.disqus.com/count.js" async></script>
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.identifier = "drafts/2021-02-15-evaluacion-perezosa-en-python-parte-4.html";
+        this.page.title = "Evaluación perezosa en python - Parte&nbsp;4";
+    };
+    loadDisqus = function(sitename) {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hyperreals.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', skipHeader)
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

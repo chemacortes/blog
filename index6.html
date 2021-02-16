@@ -15,7 +15,7 @@
 
   <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
 
-  <meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, lazy-eval, memoize, cache, sequence, range, functional-programming, python, algebraic-data-type, haskell, elm, ihp, nix, purescript, elixir, phoenix, go, racket, lop, mps, tiddlywiki, metaprogramming, pathlib, coconut, algorithms, factorial, concurrency, scala, oop, closures, algorithm, maths, descriptor, técnicas dinámicas, lua, programming-languages, PyConES, programming, code, unicode, CompSci, computing science, ntfs, windows, science, engineering, tip, jquery, web2py, webdev, java, jvm, pyday, bitbucket, git, mercurial, github, howto, ia64, oracle, glassfish, h2, jdbc, jython, zxjdbc, humor, restructuredtext, markdown, calibre, pandoc, duck typing, monkey patch, podcast">
+  <meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, lazy-eval, sequence, range, memoize, cache, functional-programming, python, algebraic-data-type, haskell, elm, ihp, nix, purescript, elixir, phoenix, go, racket, lop, mps, tiddlywiki, metaprogramming, pathlib, coconut, algorithms, factorial, concurrency, scala, oop, closures, algorithm, maths, descriptor, técnicas dinámicas, lua, programming-languages, PyConES, programming, code, unicode, CompSci, computing science, ntfs, windows, science, engineering, tip, jquery, web2py, webdev, java, jvm, pyday, bitbucket, git, mercurial, github, howto, ia64, oracle, glassfish, h2, jdbc, jython, zxjdbc, humor, restructuredtext, markdown, calibre, pandoc, duck typing, monkey patch, podcast">
 
   <title>Blog | Hyperreals *R</title>
 
@@ -61,6 +61,28 @@
 &#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
 </p>    </header>
 
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/06/06/ultimo-item-de-un-iterable/">Último item de un&nbsp;iterable</a></h1>
+  </div>
+  <div class="article_text">
+    <p>Algunas veces necesitamos obtener el último item de un iterador. Para
+ello se suele iterar hasta agotar el&nbsp;iterador:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">iterador</span><span class="p">:</span>
+     <span class="k">pass</span>
+
+<span class="n">last_item</span> <span class="o">=</span> <span class="n">it</span>  
+</code></pre></div>
+
+<p>Una alternativa que se ve bastante es convertir previamente el iterable
+en una&nbsp;lista:</p>
+<div class="highlight"><pre><span></span><code><span class="n">last_item</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">iterador</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Tiene el incoveniente de gastar recursos …</p>
+  </div>
+</article>
+<hr />
 <article>
   <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2011/06/06/estudio-funcion-factorial/">Estudio función&nbsp;factorial</a></h1>
@@ -154,19 +176,6 @@ Pablo Lobariñas. En este episodio se tratan diversas técnicas de
 adaptación de código externo aprovechando la particularidades propias de
 lenguajes dinámicos como <a href="http://www.python.org">python</a>. Poniendo un caso real como ejemplo,
 se van tratando los distintos enfoques <em>dinámicos</em> (en …</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/2011/03/21/la-paradoja-de-monty-hall/">La paradoja de Monty&nbsp;Hall</a></h1>
-  </div>
-  <div class="article_text">
-    <p>Este fin de semana me plantearon el conocido como <a href="http://es.wikipedia.org/wiki/Problema_de_Monty_Hall">Problema de &#8220;Monty Hall&#8221;</a>. Que me
-perdonen los matemáticos y estadísticos, pero no estoy de acuerdo con su
-planteamiento ni con sus conclusiones (antes de seguir, recomiendo una
-lectura del&nbsp;problema).</p>
-<p>Supongamos que el presentador actúa de la siguiente forma: cuando …</p>
   </div>
 </article>
 

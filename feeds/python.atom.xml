@@ -1,5 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R - Python</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/python.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-02-15T20:55:16+01:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Evaluación perezosa en python - Parte 3</title><link href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" rel="alternate"></link><published>2021-02-14T17:53:58+01:00</published><updated>2021-02-15T20:55:16+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-14:/2021/02/14/evaluacion-perezosa-en-python-parte-3/</id><summary type="html">&lt;p&gt;Tercera parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta parte veremos la técnica de memoización y cómo puede ayudarnos en la implementación de secuencia de&amp;nbsp;evaluaciones.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Cachés y&amp;nbsp;Memoización&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R - Python</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/python.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-02-17T00:32:31+01:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Evaluación perezosa en python - Apéndice</title><link href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" rel="alternate"></link><published>2021-02-15T21:20:44+01:00</published><updated>2021-02-17T00:32:31+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-15:/2021/02/15/evaluacion-perezosa-en-python-apendice/</id><summary type="html">&lt;p&gt;Una revisión crítica al tipado gradual de datos de python que se ha usado en esta serie de artículos sobre &lt;em&gt;evaluación perezosa&lt;/em&gt;.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/h2&gt;
+&lt;p&gt;Durante esta serie de artículos he procurado usar el &lt;em&gt;tipado gradual&lt;/em&gt; de python,
+no sólo para mejorar la compresión, sino porque lo considero buena práctica para
+detectar algunos problemas en el momento de escribir el código. El intérprete de
+python realmente no realiza ningún chequeo de estas &lt;em&gt;anotaciones&lt;/em&gt; de tipos,
+dejando por completo su comprobación a alguna otra herramienta que pueda estar
+usando el&amp;nbsp;desarrollador.&lt;/p&gt;
+&lt;p&gt;He utilizado las clases abstractas del módulo &lt;code&gt;collections.abc&lt;/code&gt; como base para
+definir los &lt;em&gt;iterables&lt;/em&gt;, &lt;em&gt;secuencias&lt;/em&gt; e &lt;em&gt;iteradores&lt;/em&gt;. He creído que así quedaba
+mejor documentado, además de ser el modo más conocido por programadores de otros
+lenguajes. Por derivar de la clase abstracta &lt;code&gt;Sequence&lt;/code&gt;, sabemos que
+&lt;code&gt;GenericRange&lt;/code&gt; implementa varios métodos abstractos como son &lt;code&gt;__len__&lt;/code&gt; y
+&lt;code&gt;__getitem__&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Sin embargo, en python se considera supérfluo y poco recomendable este uso de
+clases abstractas. El modo &lt;em&gt;pythónico&lt;/em&gt; consiste en implementar esos métodos sin
+más indicación. Sólo por el hecho de contar con estos métodos, nuestra clase ya
+será considerada como &lt;em&gt;secuencia&lt;/em&gt;, se podrá usar donde haga falta una
+&lt;em&gt;secuencia&lt;/em&gt; y, en definitiva, se comportará como si fuera una secuencia. Son los
+llamados &lt;em&gt;duck types&lt;/em&gt; o &lt;em&gt;tipos estructurales&lt;/em&gt; que tanto caracterizan a python y
+que, a partir de ahora, nos vamos a tener que acostumbrar a denominar
+&lt;strong&gt;&lt;em&gt;Protocolos&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Por ejemplo, podíamos haber declarado la clase &lt;code&gt;GenericRange&lt;/code&gt; sin indicar
+ninguna&amp;nbsp;superclase:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="o"&gt;...&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__len__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="o"&gt;...&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__getitem__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Union&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Union&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;GenericRange&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+        &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Al tener el método &lt;code&gt;__len__()&lt;/code&gt; se dice que cumple con el &lt;em&gt;protocolo &lt;code&gt;Sized&lt;/code&gt;&lt;/em&gt;,
+algo que se puede comprobar del mismo modo que si fuera una&amp;nbsp;subclase:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;collections.abc&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Sized&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;issubclass&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Sized&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kc"&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;En cambio, nos puede sorprender que no cumpla con el &lt;em&gt;protocolo &lt;code&gt;Sequence&lt;/code&gt;&lt;/em&gt;, a
+pesar de que se comportaba como&amp;nbsp;tal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;collections.abc&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Sequence&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;issubclass&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Sequence&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kc"&gt;False&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Resulta que para cumplir con el protocolo &lt;code&gt;Sequence&lt;/code&gt;, además de &lt;code&gt;__getitem__()&lt;/code&gt;,
+debe tener implementados los métodos  &lt;code&gt;__iter__()&lt;/code&gt;, &lt;code&gt;__reversed__()&lt;/code&gt; e
+&lt;code&gt;index()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Cuando &lt;code&gt;GenericRange&lt;/code&gt; derivaba de &lt;code&gt;Sequence&lt;/code&gt;, estos métodos se heredaban de la
+superclase como &lt;em&gt;métodos mixin&lt;/em&gt;, para cuya implementación básica utiliza
+únicamente el método &lt;code&gt;__getitem__()&lt;/code&gt;. También implementa otros métodos como
+&lt;code&gt;__contains__()&lt;/code&gt; (&lt;em&gt;Container&lt;/em&gt;) y &lt;code&gt;count()&lt;/code&gt; (&lt;em&gt;Countable&lt;/em&gt;). Ése era el motivo por
+el que sólo hacía falta definir &lt;code&gt;__getitem__()&lt;/code&gt; para que funcionara como&amp;nbsp;secuencia.&lt;/p&gt;
+&lt;p&gt;Como &lt;em&gt;protocolo&lt;/em&gt;, estos métodos no se adquieren por herencia y necesitan una implementación para cumplir con el protocolo &lt;code&gt;Sequence&lt;/code&gt;. No obstante, algunas funciones, como &lt;code&gt;reversed&lt;/code&gt;, admiten objetos con implementaciones parciales del protocolo &lt;code&gt;Sequence&lt;/code&gt;, algo que únicamente sabremos si recurrimos a la documentación de la&amp;nbsp;función.&lt;/p&gt;
+&lt;h2&gt;Secuencia de&amp;nbsp;enteros&lt;/h2&gt;
+&lt;p&gt;He empleado el tipo &lt;code&gt;Sequence&lt;/code&gt; sin indicar de qué tipo son los elementos. Un
+chequeador de tipos asume que se trata de un iterable de elementos de tipo
+&lt;code&gt;Any&lt;/code&gt;, por lo que no debería dar problemas. Pero siempre podemos ser más
+precisos y usar &lt;code&gt;Sequence[int]&lt;/code&gt; como tipo de datos para nuestras secuencias de
+números&amp;nbsp;enteros.&lt;/p&gt;
+&lt;h2&gt;Referencia &lt;em&gt;forward&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;En la anotaciones de tipos, a veces necesitamos referenciar una clase antes de
+que esté definida, las conocidas como &lt;em&gt;referencias forward&lt;/em&gt; de tipos. El modo
+normal de hacer este tipo de referencias es escribir el nombre de la clase entre
+comillas, como una &lt;em&gt;string&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;A partir de python 3.10 no hará falta acudir a este remedio pudiendo usar
+referencias &lt;em&gt;forward&lt;/em&gt; sin mayor problema. Para las versiones anteriores, se
+puede obtener esta funcionalidad del módulo &lt;code&gt;__future__&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;annotations&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Unión de&amp;nbsp;tipos&lt;/h2&gt;
+&lt;p&gt;En el método &lt;code&gt;__getitem__()&lt;/code&gt; de &lt;code&gt;GenericRange&lt;/code&gt; he utilizado dos uniones de&amp;nbsp;tipos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__getitem__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Union&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Union&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;GenericRange&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+        &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getitem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;isinstance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;La unión &lt;code&gt;idx: Union[int, slice]&lt;/code&gt; se puede interpretar como que &lt;code&gt;idx&lt;/code&gt; puede ser
+de tipo &lt;code&gt;int&lt;/code&gt; o de tipo &lt;code&gt;slice&lt;/code&gt;. La notación común de expresar esta unión de
+tipos en varios lenguajes sería &lt;code&gt;idx: int | slice&lt;/code&gt;, nomenclatura que también
+será aceptada en python&amp;nbsp;3.10.&lt;/p&gt;
+&lt;p&gt;La otra unión, &lt;code&gt;Union[int, "GenericRange"]&lt;/code&gt; indica que el resultado será de tipo
+&lt;code&gt;int&lt;/code&gt; o de tipo &lt;code&gt;GenericRange&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;De todos modos, en estas anotaciones no se está reflejando la dependencia que
+hay entre tipos. Si &lt;code&gt;idx&lt;/code&gt; es entero, el resultado siempre será un entero. Si
+&lt;code&gt;idx&lt;/code&gt; es &lt;code&gt;slice&lt;/code&gt;, el resultado siempre será &lt;code&gt;GenericRange&lt;/code&gt;. En lenguajes con
+tipado estático, es normal disponer de varias definiciones del mismo métodos,
+con diferentes signaturas, que se seleccionan según sean los tipos de los
+argumentos y resultados que&amp;nbsp;tengamos.&lt;/p&gt;
+&lt;p&gt;Python tiene una facilidad para hacer algo similar. Con
+&lt;code&gt;functools.singledispathmethod&lt;/code&gt; podemos definir varios métodos que se invocarán
+según el tipo de dato del primer argumento. De este modo, el método
+&lt;code&gt;__getitem__()&lt;/code&gt; lo podríamos expresar&amp;nbsp;así:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;functools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;singledispatchmethod&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Sequence&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@singledispatchmethod&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__getitem__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;NotImplemented&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@__getitem__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getitem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@__getitem__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;GenericRange&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Lamentablemente nos saldrá un error ya que no existe aún la clase &lt;code&gt;GenericRange&lt;/code&gt;
+cuando es aplicado el decorador &lt;code&gt;singledispatchmethod&lt;/code&gt;. Una solución es sacar el
+último registro fuera, una vez que ya se ha definido la&amp;nbsp;clase:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nd"&gt;@GenericRange&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__getitem__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Código&amp;nbsp;final&lt;/h2&gt;
+&lt;p&gt;Con estos cambios, tendríamos nuestro código corregido de esta&amp;nbsp;manera:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;abc&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;abstractmethod&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;collections.abc&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Sequence&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Type&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Union&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;functools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;singledispatchmethod&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;annotations&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Sequence&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@abstractmethod&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;getitem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;        Método abstracto.&lt;/span&gt;
+&lt;span class="sd"&gt;          Función para calcular un elemento a partir de la posición&lt;/span&gt;
+&lt;span class="sd"&gt;        &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;pos&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@classmethod&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;from_range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Type&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;rng&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;        Constructor de un GenericRange a partir de un rango&lt;/span&gt;
+&lt;span class="sd"&gt;        &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+        &lt;span class="n"&gt;instance&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rng&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__len__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@singledispatchmethod&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__getitem__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;NotImplemented&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@__getitem__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getitem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__repr__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;classname&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__name__&lt;/span&gt;
+        &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;classname&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;(&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;, &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stop&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;, &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;)&amp;quot;&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@GenericRange&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__getitem__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Conclusión&lt;/h2&gt;
+&lt;p&gt;Python está realizando un gran esfuerzo en incorporar &lt;em&gt;anotaciones de tipo&lt;/em&gt; sin
+perder con ello sus característicos tipos &lt;em&gt;ducking&lt;/em&gt;. De igual modo, vamos a ver
+cómo se incorporan más elementos de otros lenguajes como las &lt;em&gt;dataclasses&lt;/em&gt;,
+&lt;em&gt;programación asíncrona&lt;/em&gt; o los &lt;em&gt;patrones estructurales&lt;/em&gt;, aunque tardarán en ser
+adoptados por la mayor parte de programadores&amp;nbsp;python.&lt;/p&gt;
+&lt;p&gt;Si algo tiene python es no tener demasiada prisa en que se apliquen sus cambios.
+Como decía un gran sabio: &lt;em&gt;&amp;#8220;Vamos a cambiarlo todo para que todo siga igual&amp;#8221;&lt;/em&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Serie &lt;em&gt;Evaluación Perezosa en&amp;nbsp;Python&lt;/em&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_"&gt;Parte 1 - Introducción a la &lt;em&gt;evaluación&amp;nbsp;perezosa&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-4.html" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-5.html" title="Parte 5 - Ejemplo práctico: potencias de Fermi-Dirac"&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Fermi-Dirac&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="admonition danger"&gt;
+&lt;p class="admonition-title"&gt;La serie completa como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.ipynb" title="Notebook Evaluación perezosa en python"&gt;serie-evaluacion-perezosa-en-python.ipynb&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&amp;nbsp;TODAVÍA&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Evaluación perezosa en python - Parte 3</title><link href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" rel="alternate"></link><published>2021-02-14T17:53:58+01:00</published><updated>2021-02-15T21:16:54+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-14:/2021/02/14/evaluacion-perezosa-en-python-parte-3/</id><summary type="html">&lt;p&gt;Tercera parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta parte veremos la técnica de memoización y cómo puede ayudarnos en la implementación de secuencia de&amp;nbsp;evaluaciones.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Cachés y&amp;nbsp;Memoización&lt;/h2&gt;
 &lt;p&gt;En el pasado artículo vimos que para obtener un elemento de la sucesión
 fibonacci necesitábamos calcular los anteriores. Veámoslo con más&amp;nbsp;detalle.&lt;/p&gt;
 &lt;p&gt;Podemos definir la siguiente función para obtener un elemento de esta&amp;nbsp;sucesión:&lt;/p&gt;
@@ -41,7 +245,7 @@ función &lt;a href="https://docs.python.org/3.9/library/functools.html#functool
 &lt;p&gt;Básicamente, &lt;code&gt;lru_cache&lt;/code&gt; es un &lt;em&gt;decorador&lt;/em&gt; que detecta los argumentos que se
 pasa a una función y guarda en un caché el resultado que devuelve. Un &lt;strong&gt;caché
 &lt;span class="caps"&gt;LRU&lt;/span&gt;&lt;/strong&gt; (&lt;em&gt;Least Recently Used&lt;/em&gt; ) tiene la estrategia de eliminar de la caché los
-elementos que haya sido menos utilizados recientemente. En este caso, con
+elementos que hayan sido menos utilizados recientemente. En este caso, con
 &lt;code&gt;maxsize=None&lt;/code&gt; no se impone ningún límite de tamaño, por lo que guardará todos
 los elementos de la caché &lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 &lt;p&gt;A este proceso de guardar los resultados de una evaluación en función de los
@@ -70,9 +274,9 @@ en orden todos los elementos de la sucesión hasta llegar al que&amp;nbsp;querem
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Con este truco se instruye a la caché con todos los elementos de la sucesión
-hasta llegar al que queremos. De este modo, para el cálculo de un elemento sólo
-se necesitarán los dos elementos anteriores de la sucesión, que ya tendremos en
-la caché, evitando múltiples llamadas&amp;nbsp;recursivas.&lt;/p&gt;
+hasta llegar al que queremos. Para el cálculo de un elemento sólo se necesitarán
+los dos elementos anteriores de la sucesión, que ya tendremos en la caché, lo
+que evita múltiples llamadas&amp;nbsp;recursivas.&lt;/p&gt;
 &lt;p&gt;Con este mismo propósito, podemos probar a calcular el elemento 10000 aplicando
 las técnicas ya aprendidas hasta&amp;nbsp;ahora:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;islice&lt;/span&gt;
@@ -86,7 +290,7 @@ las técnicas ya aprendidas hasta&amp;nbsp;ahora:&lt;/p&gt;
 &lt;p&gt;Esta gestión de la caché es totalmente opaca para nosotros. Si pudiéramos
 acceder a ella sería un modo de obtener la sucesión de fibonacci hasta el mayor
 elemento que se haya&amp;nbsp;calculado.&lt;/p&gt;
-&lt;p&gt;Vamos a itentar a crear una caché similar capaz de generar automáticamente los
+&lt;p&gt;Vamos a itentar crear una caché similar capaz de generar automáticamente los
 elementos de la&amp;nbsp;sucesión:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fibcache&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;cache&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
@@ -137,9 +341,9 @@ crece a medida que se&amp;nbsp;necesite.&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_"&gt;Parte 1 - Introducción a la &lt;em&gt;evaluación&amp;nbsp;perezosa&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/li&gt;
-&lt;li&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Pauli-Dirac&lt;/li&gt;
-&lt;li&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-4.html" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-5.html" title="Parte 5 - Ejemplo práctico: potencias de Fermi-Dirac"&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Fermi-Dirac&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="admonition danger"&gt;
 &lt;p class="admonition-title"&gt;La serie completa como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
@@ -345,9 +549,9 @@ los rangos que ya habíamos visto anteriormente para crear la secuencia&amp;nbsp
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_"&gt;Parte 1 - Introducción a la &lt;em&gt;evaluación&amp;nbsp;perezosa&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/li&gt;
-&lt;li&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Pauli-Dirac&lt;/li&gt;
-&lt;li&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-4.html" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-5.html" title="Parte 5 - Ejemplo práctico: potencias de Fermi-Dirac"&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Fermi-Dirac&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="admonition danger"&gt;
 &lt;p class="admonition-title"&gt;La serie completa como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
@@ -638,9 +842,9 @@ con &lt;em&gt;secuencias infinitas&lt;/em&gt; de&amp;nbsp;elementos.&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_"&gt;Parte 1 - Introducción a la &lt;em&gt;evaluación&amp;nbsp;perezosa&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/li&gt;
-&lt;li&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Pauli-Dirac&lt;/li&gt;
-&lt;li&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-4.html" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-5.html" title="Parte 5 - Ejemplo práctico: potencias de Fermi-Dirac"&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Fermi-Dirac&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="admonition danger"&gt;
 &lt;p class="admonition-title"&gt;La serie completa como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
@@ -2732,76 +2936,4 @@ de la que sólo nos interesa su último&amp;nbsp;elemento.&lt;/p&gt;
 problema, pero ninguna me convence lo&amp;nbsp;suficiente.&lt;/p&gt;
 &lt;p&gt;Aquí pongo mi solución, simple y elegante donde las&amp;nbsp;haya:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;last_item&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterador&lt;/span&gt;&lt;span class="p"&gt;))[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Python"></category><category term="tip"></category></entry><entry><title>Estudio función factorial</title><link href="https://blog.ch3m4.org/2011/06/06/estudio-funcion-factorial/" rel="alternate"></link><published>2011-06-06T01:22:00+02:00</published><updated>2011-06-06T01:22:00+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2011-06-06:/2011/06/06/estudio-funcion-factorial/</id><summary type="html">&lt;p&gt;Hace un tiempo me dió por recopilar distintas funciones en python para calcular el &lt;a href="http://es.wikipedia.org/wiki/Factorial"&gt;factorial&lt;/a&gt;. Aquí van todas, algunas bastante curiosas. Si conoces algún tipo más, no dejes de añadirla en los&amp;nbsp;comentarios.&lt;/p&gt;
-&lt;h1&gt;Versión&amp;nbsp;recursiva&lt;/h1&gt;
-&lt;p&gt;Todo programador ha tenido que ver esta definición como ejemplo de funciones recursivas&amp;nbsp;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fact …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Hace un tiempo me dió por recopilar distintas funciones en python para calcular el &lt;a href="http://es.wikipedia.org/wiki/Factorial"&gt;factorial&lt;/a&gt;. Aquí van todas, algunas bastante curiosas. Si conoces algún tipo más, no dejes de añadirla en los&amp;nbsp;comentarios.&lt;/p&gt;
-&lt;h1&gt;Versión&amp;nbsp;recursiva&lt;/h1&gt;
-&lt;p&gt;Todo programador ha tenido que ver esta definición como ejemplo de funciones recursivas&amp;nbsp;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fact&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;fact&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Se podría hacer algo más compacta usando el operador&amp;nbsp;ternario:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fact&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;fact&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Como toda función recursiva en python, existe el peligro de que nunca termine la función. Es el motivo por el que python tiene fijado un límite de recursividad dado por &lt;code&gt;sys.getrecursionlimit()&lt;/code&gt;, que por defecto es de &lt;code&gt;1000&lt;/code&gt; invocaciones recursivas o, lo que es lo mismo, que no podamos calcular factoriales mayores de&amp;nbsp;1000.&lt;/p&gt;
-&lt;p&gt;Podemos incrementar el límite con &lt;code&gt;sys.setrecursionlimit(n)&lt;/code&gt;, pero seguirá siendo una solución provisional. Lo mejor es pasarnos a una solución &lt;em&gt;&amp;#8220;iterativa&amp;#8221;&lt;/em&gt;.&lt;/p&gt;
-&lt;h1&gt;Versión&amp;nbsp;iterativa&lt;/h1&gt;
-&lt;p&gt;También es una de la funciones más conocidas por todo&amp;nbsp;programador:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fact&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
-    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;xrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;*=&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Normalmente, todo lenguaje tiene un límite en el tamaño de un entero que hace que esta función no pueda calcular factoriales muy grandes. Pero python tiene la característica de pasar de &lt;em&gt;entero&lt;/em&gt; a &lt;em&gt;entero largo&lt;/em&gt; cuando así lo requiera la operación, lo que hace que se puede calcular cualquier número factorial, con el único límite de tiempo para calcularlo. Por lo general, con número grandes cuesta menos calcular el factorial que imprimirlos en&amp;nbsp;pantalla.&lt;/p&gt;
-&lt;h1&gt;Versión aproximada (función de&amp;nbsp;Stirling)&lt;/h1&gt;
-&lt;p&gt;Para número muy grandes, existe una aproximación llamada &lt;a href="http://es.wikipedia.org/wiki/F%C3%B3rmula_de_Stirling"&gt;&amp;#8220;Aproximación de Stirling&amp;#8221;&lt;/a&gt; que se suele usar en &lt;em&gt;mecánica estadística&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;math&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fact&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Lamentablemente, los números reales (tipo &lt;code&gt;double&lt;/code&gt;) son aquí una limitación de tamaño, por lo que no podemos hacer cálculos para números altos (precisamente, para los que teóricamente iba mejor esta&amp;nbsp;función).&lt;/p&gt;
-&lt;h1&gt;Versiones&amp;nbsp;one-line&lt;/h1&gt;
-&lt;p&gt;Muchas veces, los programadores se toman como reto poder expresar una fórmula compleja en una sóla línea, de modo que se pueda sustituir la llamada a la función por la definición de esta directamente. Son las llamadas &lt;em&gt;funciones &amp;#8220;oneline&amp;#8221;&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;xrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Podemos aprovechar que tenemos el operador multiplicación y con ello evitar la función &lt;code&gt;lambda&lt;/code&gt; (últimamente, en&amp;nbsp;desuso):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;operator&lt;/span&gt;
-&lt;span class="n"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;operator&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mul&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;xrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Algo más bizarro, evitando &lt;code&gt;lambda&lt;/code&gt; y &lt;code&gt;reduce&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Esta versión es en realidad un &lt;em&gt;&amp;#8220;reduce sin usar reduce&amp;#8221;&lt;/em&gt;. Para entender cómo funciona, lo mejor es verlo como varios &lt;code&gt;fors&lt;/code&gt; anidados:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fact&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
-        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-            &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
-                &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;
-
-&lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fact&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;))[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;El primer &lt;code&gt;for&lt;/code&gt; tan sólo sirve para dar una valor inicial a la variable &lt;code&gt;j&lt;/code&gt;, y el tercer &lt;code&gt;for&lt;/code&gt; sería el equivalente &lt;em&gt;&amp;#8220;oneline&amp;#8221;&lt;/em&gt; de &lt;code&gt;j=j*i&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;En realidad, esta función no está muy optimizada ya que mantiene en memoria la lista completa de todos los resultados intermedios. Un modo más inteligente de usar esta expresión sería como un iterador, donde los resultados intermedios ya no son&amp;nbsp;almacenados:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;
-    &lt;span class="k"&gt;pass&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Aunque funciona perfectamente, no se puede considerar como función de una sóla línea. Para conseguirlo, tenemos que ir a algo totalmente críptico, incluyendo &lt;code&gt;reduce&lt;/code&gt; y &lt;code&gt;lambda&lt;/code&gt;, que acabaría siendo el siguiente&amp;nbsp;engendro:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,(&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;¿Se os ocurren otras formas de expresar el factorial en una sóla&amp;nbsp;línea?&lt;/p&gt;</content><category term="Python"></category><category term="algorithm"></category><category term="factorial"></category><category term="maths"></category></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Python"></category><category term="tip"></category></entry></feed>

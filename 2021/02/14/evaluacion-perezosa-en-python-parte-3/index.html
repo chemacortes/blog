@@ -65,7 +65,7 @@
 <div class="article_meta">
   <p>Posted <time data-timeago datetime="2021-02-14T17:53:58+01:00">dom 14 febrero 2021</time>
    by Chema Cortés  </p>
-  <p>Last updated <time data-timeago datetime="2021-02-15T20:55:16+01:00">lun 15 febrero 2021</time></p>
+  <p>Last updated <time data-timeago datetime="2021-02-15T21:16:54+01:00">lun 15 febrero 2021</time></p>
   <p>
   Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
 &ndash;&ndash;  Tags:
@@ -116,7 +116,7 @@ función <a href="https://docs.python.org/3.9/library/functools.html#functools.l
 <p>Básicamente, <code>lru_cache</code> es un <em>decorador</em> que detecta los argumentos que se
 pasa a una función y guarda en un caché el resultado que devuelve. Un <strong>caché
 <span class="caps">LRU</span></strong> (<em>Least Recently Used</em> ) tiene la estrategia de eliminar de la caché los
-elementos que haya sido menos utilizados recientemente. En este caso, con
+elementos que hayan sido menos utilizados recientemente. En este caso, con
 <code>maxsize=None</code> no se impone ningún límite de tamaño, por lo que guardará todos
 los elementos de la caché <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
 <p>A este proceso de guardar los resultados de una evaluación en función de los
@@ -145,9 +145,9 @@ en orden todos los elementos de la sucesión hasta llegar al que&nbsp;queremos.<
 </code></pre></div>
 
 <p>Con este truco se instruye a la caché con todos los elementos de la sucesión
-hasta llegar al que queremos. De este modo, para el cálculo de un elemento sólo
-se necesitarán los dos elementos anteriores de la sucesión, que ya tendremos en
-la caché, evitando múltiples llamadas&nbsp;recursivas.</p>
+hasta llegar al que queremos. Para el cálculo de un elemento sólo se necesitarán
+los dos elementos anteriores de la sucesión, que ya tendremos en la caché, lo
+que evita múltiples llamadas&nbsp;recursivas.</p>
 <p>Con este mismo propósito, podemos probar a calcular el elemento 10000 aplicando
 las técnicas ya aprendidas hasta&nbsp;ahora:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span><span class="p">,</span> <span class="n">islice</span>
@@ -161,7 +161,7 @@ las técnicas ya aprendidas hasta&nbsp;ahora:</p>
 <p>Esta gestión de la caché es totalmente opaca para nosotros. Si pudiéramos
 acceder a ella sería un modo de obtener la sucesión de fibonacci hasta el mayor
 elemento que se haya&nbsp;calculado.</p>
-<p>Vamos a itentar a crear una caché similar capaz de generar automáticamente los
+<p>Vamos a itentar crear una caché similar capaz de generar automáticamente los
 elementos de la&nbsp;sucesión:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fibcache</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
     <span class="n">cache</span> <span class="o">=</span> <span class="p">[]</span>
@@ -212,9 +212,9 @@ crece a medida que se&nbsp;necesite.</p>
 <li><a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_">Parte 1 - Introducción a la <em>evaluación&nbsp;perezosa</em></a></li>
 <li><a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas">Parte 2 - Secuencias&nbsp;infinitas</a></li>
 <li><a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_">Parte 3 - <em>Memoización</em></a></li>
-<li>Parte 4 - <em>Evaluación perezosa</em>&nbsp;avanzada</li>
-<li>Parte 5 - Ejemplo práctico: potencias de&nbsp;Pauli-Dirac</li>
-<li>Apéndice: sobre el tipado de datos&nbsp;utilizado</li>
+<li><a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-4.html" title="Parte 4 - _Evaluación perezosa_ avanzada">Parte 4 - <em>Evaluación perezosa</em>&nbsp;avanzada</a></li>
+<li><a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-5.html" title="Parte 5 - Ejemplo práctico: potencias de Fermi-Dirac">Parte 5 - Ejemplo práctico: potencias de&nbsp;Fermi-Dirac</a></li>
+<li><a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado">Apéndice: sobre el tipado de datos&nbsp;utilizado</a></li>
 </ul>
 <div class="admonition danger">
 <p class="admonition-title">La serie completa como <em>Jupyter Notebook</em>&nbsp;en:</p>
@@ -246,7 +246,13 @@ aunque no es recomendable.&#160;<a class="footnote-backref" href="#fnref:2" titl
       Evaluación perezosa en python - Parte&nbsp;2
     </a>
   </li>
- </ul>
+   <li class="next">
+    <a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Siguiente">
+      Evaluación perezosa en python -&nbsp;Apéndice
+      <i class="fa fa-arrow-circle-right"></i>
+    </a>
+  </li>
+</ul>
 With category
 <a href="https://blog.ch3m4.org/category/python/">Python</a>:
 <ul class="pager">
@@ -259,7 +265,16 @@ With category
       Evaluación perezosa en python - Parte&nbsp;2
     </a>
   </li>
- </ul>
+   <li class="next">
+    <a
+      href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/"
+      title="Siguiente en misma categoría"
+    >
+      Evaluación perezosa en python -&nbsp;Apéndice
+      <i class="fa fa-arrow-circle-o-right"></i>
+    </a>
+  </li>
+</ul>
 
   <div id="article_comments">
     <div id="disqus_thread">

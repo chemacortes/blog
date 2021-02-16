@@ -1,5 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/all.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-02-15T20:55:16+01:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Evaluación perezosa en python - Parte 3</title><link href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" rel="alternate"></link><published>2021-02-14T17:53:58+01:00</published><updated>2021-02-15T20:55:16+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-14:/2021/02/14/evaluacion-perezosa-en-python-parte-3/</id><summary type="html">&lt;p&gt;Tercera parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta parte veremos la técnica de memoización y cómo puede ayudarnos en la implementación de secuencia de&amp;nbsp;evaluaciones.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Cachés y&amp;nbsp;Memoización&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/all.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-02-17T00:32:31+01:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Evaluación perezosa en python - Apéndice</title><link href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" rel="alternate"></link><published>2021-02-15T21:20:44+01:00</published><updated>2021-02-17T00:32:31+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-15:/2021/02/15/evaluacion-perezosa-en-python-apendice/</id><summary type="html">&lt;p&gt;Una revisión crítica al tipado gradual de datos de python que se ha usado en esta serie de artículos sobre &lt;em&gt;evaluación perezosa&lt;/em&gt;.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/h2&gt;
+&lt;p&gt;Durante esta serie de artículos he procurado usar el &lt;em&gt;tipado gradual&lt;/em&gt; de python,
+no sólo para mejorar la compresión, sino porque lo considero buena práctica para
+detectar algunos problemas en el momento de escribir el código. El intérprete de
+python realmente no realiza ningún chequeo de estas &lt;em&gt;anotaciones&lt;/em&gt; de tipos,
+dejando por completo su comprobación a alguna otra herramienta que pueda estar
+usando el&amp;nbsp;desarrollador.&lt;/p&gt;
+&lt;p&gt;He utilizado las clases abstractas del módulo &lt;code&gt;collections.abc&lt;/code&gt; como base para
+definir los &lt;em&gt;iterables&lt;/em&gt;, &lt;em&gt;secuencias&lt;/em&gt; e &lt;em&gt;iteradores&lt;/em&gt;. He creído que así quedaba
+mejor documentado, además de ser el modo más conocido por programadores de otros
+lenguajes. Por derivar de la clase abstracta &lt;code&gt;Sequence&lt;/code&gt;, sabemos que
+&lt;code&gt;GenericRange&lt;/code&gt; implementa varios métodos abstractos como son &lt;code&gt;__len__&lt;/code&gt; y
+&lt;code&gt;__getitem__&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Sin embargo, en python se considera supérfluo y poco recomendable este uso de
+clases abstractas. El modo &lt;em&gt;pythónico&lt;/em&gt; consiste en implementar esos métodos sin
+más indicación. Sólo por el hecho de contar con estos métodos, nuestra clase ya
+será considerada como &lt;em&gt;secuencia&lt;/em&gt;, se podrá usar donde haga falta una
+&lt;em&gt;secuencia&lt;/em&gt; y, en definitiva, se comportará como si fuera una secuencia. Son los
+llamados &lt;em&gt;duck types&lt;/em&gt; o &lt;em&gt;tipos estructurales&lt;/em&gt; que tanto caracterizan a python y
+que, a partir de ahora, nos vamos a tener que acostumbrar a denominar
+&lt;strong&gt;&lt;em&gt;Protocolos&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Por ejemplo, podíamos haber declarado la clase &lt;code&gt;GenericRange&lt;/code&gt; sin indicar
+ninguna&amp;nbsp;superclase:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="o"&gt;...&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__len__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="o"&gt;...&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__getitem__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Union&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Union&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;GenericRange&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+        &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Al tener el método &lt;code&gt;__len__()&lt;/code&gt; se dice que cumple con el &lt;em&gt;protocolo &lt;code&gt;Sized&lt;/code&gt;&lt;/em&gt;,
+algo que se puede comprobar del mismo modo que si fuera una&amp;nbsp;subclase:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;collections.abc&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Sized&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;issubclass&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Sized&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kc"&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;En cambio, nos puede sorprender que no cumpla con el &lt;em&gt;protocolo &lt;code&gt;Sequence&lt;/code&gt;&lt;/em&gt;, a
+pesar de que se comportaba como&amp;nbsp;tal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;collections.abc&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Sequence&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;issubclass&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Sequence&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kc"&gt;False&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Resulta que para cumplir con el protocolo &lt;code&gt;Sequence&lt;/code&gt;, además de &lt;code&gt;__getitem__()&lt;/code&gt;,
+debe tener implementados los métodos  &lt;code&gt;__iter__()&lt;/code&gt;, &lt;code&gt;__reversed__()&lt;/code&gt; e
+&lt;code&gt;index()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Cuando &lt;code&gt;GenericRange&lt;/code&gt; derivaba de &lt;code&gt;Sequence&lt;/code&gt;, estos métodos se heredaban de la
+superclase como &lt;em&gt;métodos mixin&lt;/em&gt;, para cuya implementación básica utiliza
+únicamente el método &lt;code&gt;__getitem__()&lt;/code&gt;. También implementa otros métodos como
+&lt;code&gt;__contains__()&lt;/code&gt; (&lt;em&gt;Container&lt;/em&gt;) y &lt;code&gt;count()&lt;/code&gt; (&lt;em&gt;Countable&lt;/em&gt;). Ése era el motivo por
+el que sólo hacía falta definir &lt;code&gt;__getitem__()&lt;/code&gt; para que funcionara como&amp;nbsp;secuencia.&lt;/p&gt;
+&lt;p&gt;Como &lt;em&gt;protocolo&lt;/em&gt;, estos métodos no se adquieren por herencia y necesitan una implementación para cumplir con el protocolo &lt;code&gt;Sequence&lt;/code&gt;. No obstante, algunas funciones, como &lt;code&gt;reversed&lt;/code&gt;, admiten objetos con implementaciones parciales del protocolo &lt;code&gt;Sequence&lt;/code&gt;, algo que únicamente sabremos si recurrimos a la documentación de la&amp;nbsp;función.&lt;/p&gt;
+&lt;h2&gt;Secuencia de&amp;nbsp;enteros&lt;/h2&gt;
+&lt;p&gt;He empleado el tipo &lt;code&gt;Sequence&lt;/code&gt; sin indicar de qué tipo son los elementos. Un
+chequeador de tipos asume que se trata de un iterable de elementos de tipo
+&lt;code&gt;Any&lt;/code&gt;, por lo que no debería dar problemas. Pero siempre podemos ser más
+precisos y usar &lt;code&gt;Sequence[int]&lt;/code&gt; como tipo de datos para nuestras secuencias de
+números&amp;nbsp;enteros.&lt;/p&gt;
+&lt;h2&gt;Referencia &lt;em&gt;forward&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;En la anotaciones de tipos, a veces necesitamos referenciar una clase antes de
+que esté definida, las conocidas como &lt;em&gt;referencias forward&lt;/em&gt; de tipos. El modo
+normal de hacer este tipo de referencias es escribir el nombre de la clase entre
+comillas, como una &lt;em&gt;string&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;A partir de python 3.10 no hará falta acudir a este remedio pudiendo usar
+referencias &lt;em&gt;forward&lt;/em&gt; sin mayor problema. Para las versiones anteriores, se
+puede obtener esta funcionalidad del módulo &lt;code&gt;__future__&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;annotations&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Unión de&amp;nbsp;tipos&lt;/h2&gt;
+&lt;p&gt;En el método &lt;code&gt;__getitem__()&lt;/code&gt; de &lt;code&gt;GenericRange&lt;/code&gt; he utilizado dos uniones de&amp;nbsp;tipos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__getitem__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Union&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Union&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;GenericRange&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+        &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getitem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;isinstance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;La unión &lt;code&gt;idx: Union[int, slice]&lt;/code&gt; se puede interpretar como que &lt;code&gt;idx&lt;/code&gt; puede ser
+de tipo &lt;code&gt;int&lt;/code&gt; o de tipo &lt;code&gt;slice&lt;/code&gt;. La notación común de expresar esta unión de
+tipos en varios lenguajes sería &lt;code&gt;idx: int | slice&lt;/code&gt;, nomenclatura que también
+será aceptada en python&amp;nbsp;3.10.&lt;/p&gt;
+&lt;p&gt;La otra unión, &lt;code&gt;Union[int, "GenericRange"]&lt;/code&gt; indica que el resultado será de tipo
+&lt;code&gt;int&lt;/code&gt; o de tipo &lt;code&gt;GenericRange&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;De todos modos, en estas anotaciones no se está reflejando la dependencia que
+hay entre tipos. Si &lt;code&gt;idx&lt;/code&gt; es entero, el resultado siempre será un entero. Si
+&lt;code&gt;idx&lt;/code&gt; es &lt;code&gt;slice&lt;/code&gt;, el resultado siempre será &lt;code&gt;GenericRange&lt;/code&gt;. En lenguajes con
+tipado estático, es normal disponer de varias definiciones del mismo métodos,
+con diferentes signaturas, que se seleccionan según sean los tipos de los
+argumentos y resultados que&amp;nbsp;tengamos.&lt;/p&gt;
+&lt;p&gt;Python tiene una facilidad para hacer algo similar. Con
+&lt;code&gt;functools.singledispathmethod&lt;/code&gt; podemos definir varios métodos que se invocarán
+según el tipo de dato del primer argumento. De este modo, el método
+&lt;code&gt;__getitem__()&lt;/code&gt; lo podríamos expresar&amp;nbsp;así:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;functools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;singledispatchmethod&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Sequence&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@singledispatchmethod&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__getitem__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;NotImplemented&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@__getitem__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getitem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@__getitem__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;GenericRange&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Lamentablemente nos saldrá un error ya que no existe aún la clase &lt;code&gt;GenericRange&lt;/code&gt;
+cuando es aplicado el decorador &lt;code&gt;singledispatchmethod&lt;/code&gt;. Una solución es sacar el
+último registro fuera, una vez que ya se ha definido la&amp;nbsp;clase:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nd"&gt;@GenericRange&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__getitem__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Código&amp;nbsp;final&lt;/h2&gt;
+&lt;p&gt;Con estos cambios, tendríamos nuestro código corregido de esta&amp;nbsp;manera:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;abc&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;abstractmethod&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;collections.abc&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Sequence&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Type&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Union&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;functools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;singledispatchmethod&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;annotations&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Sequence&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@abstractmethod&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;getitem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;        Método abstracto.&lt;/span&gt;
+&lt;span class="sd"&gt;          Función para calcular un elemento a partir de la posición&lt;/span&gt;
+&lt;span class="sd"&gt;        &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;pos&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@classmethod&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;from_range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Type&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;rng&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;        Constructor de un GenericRange a partir de un rango&lt;/span&gt;
+&lt;span class="sd"&gt;        &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+        &lt;span class="n"&gt;instance&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rng&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__len__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@singledispatchmethod&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__getitem__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;NotImplemented&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@__getitem__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getitem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__repr__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;classname&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__name__&lt;/span&gt;
+        &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;classname&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;(&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;, &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stop&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;, &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;)&amp;quot;&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@GenericRange&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__getitem__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;GenericRange&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_range&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Conclusión&lt;/h2&gt;
+&lt;p&gt;Python está realizando un gran esfuerzo en incorporar &lt;em&gt;anotaciones de tipo&lt;/em&gt; sin
+perder con ello sus característicos tipos &lt;em&gt;ducking&lt;/em&gt;. De igual modo, vamos a ver
+cómo se incorporan más elementos de otros lenguajes como las &lt;em&gt;dataclasses&lt;/em&gt;,
+&lt;em&gt;programación asíncrona&lt;/em&gt; o los &lt;em&gt;patrones estructurales&lt;/em&gt;, aunque tardarán en ser
+adoptados por la mayor parte de programadores&amp;nbsp;python.&lt;/p&gt;
+&lt;p&gt;Si algo tiene python es no tener demasiada prisa en que se apliquen sus cambios.
+Como decía un gran sabio: &lt;em&gt;&amp;#8220;Vamos a cambiarlo todo para que todo siga igual&amp;#8221;&lt;/em&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Serie &lt;em&gt;Evaluación Perezosa en&amp;nbsp;Python&lt;/em&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_"&gt;Parte 1 - Introducción a la &lt;em&gt;evaluación&amp;nbsp;perezosa&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-4.html" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-5.html" title="Parte 5 - Ejemplo práctico: potencias de Fermi-Dirac"&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Fermi-Dirac&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="admonition danger"&gt;
+&lt;p class="admonition-title"&gt;La serie completa como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.ipynb" title="Notebook Evaluación perezosa en python"&gt;serie-evaluacion-perezosa-en-python.ipynb&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&amp;nbsp;TODAVÍA&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Evaluación perezosa en python - Parte 3</title><link href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" rel="alternate"></link><published>2021-02-14T17:53:58+01:00</published><updated>2021-02-15T21:16:54+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-14:/2021/02/14/evaluacion-perezosa-en-python-parte-3/</id><summary type="html">&lt;p&gt;Tercera parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta parte veremos la técnica de memoización y cómo puede ayudarnos en la implementación de secuencia de&amp;nbsp;evaluaciones.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Cachés y&amp;nbsp;Memoización&lt;/h2&gt;
 &lt;p&gt;En el pasado artículo vimos que para obtener un elemento de la sucesión
 fibonacci necesitábamos calcular los anteriores. Veámoslo con más&amp;nbsp;detalle.&lt;/p&gt;
 &lt;p&gt;Podemos definir la siguiente función para obtener un elemento de esta&amp;nbsp;sucesión:&lt;/p&gt;
@@ -41,7 +245,7 @@ función &lt;a href="https://docs.python.org/3.9/library/functools.html#functool
 &lt;p&gt;Básicamente, &lt;code&gt;lru_cache&lt;/code&gt; es un &lt;em&gt;decorador&lt;/em&gt; que detecta los argumentos que se
 pasa a una función y guarda en un caché el resultado que devuelve. Un &lt;strong&gt;caché
 &lt;span class="caps"&gt;LRU&lt;/span&gt;&lt;/strong&gt; (&lt;em&gt;Least Recently Used&lt;/em&gt; ) tiene la estrategia de eliminar de la caché los
-elementos que haya sido menos utilizados recientemente. En este caso, con
+elementos que hayan sido menos utilizados recientemente. En este caso, con
 &lt;code&gt;maxsize=None&lt;/code&gt; no se impone ningún límite de tamaño, por lo que guardará todos
 los elementos de la caché &lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 &lt;p&gt;A este proceso de guardar los resultados de una evaluación en función de los
@@ -70,9 +274,9 @@ en orden todos los elementos de la sucesión hasta llegar al que&amp;nbsp;querem
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Con este truco se instruye a la caché con todos los elementos de la sucesión
-hasta llegar al que queremos. De este modo, para el cálculo de un elemento sólo
-se necesitarán los dos elementos anteriores de la sucesión, que ya tendremos en
-la caché, evitando múltiples llamadas&amp;nbsp;recursivas.&lt;/p&gt;
+hasta llegar al que queremos. Para el cálculo de un elemento sólo se necesitarán
+los dos elementos anteriores de la sucesión, que ya tendremos en la caché, lo
+que evita múltiples llamadas&amp;nbsp;recursivas.&lt;/p&gt;
 &lt;p&gt;Con este mismo propósito, podemos probar a calcular el elemento 10000 aplicando
 las técnicas ya aprendidas hasta&amp;nbsp;ahora:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;islice&lt;/span&gt;
@@ -86,7 +290,7 @@ las técnicas ya aprendidas hasta&amp;nbsp;ahora:&lt;/p&gt;
 &lt;p&gt;Esta gestión de la caché es totalmente opaca para nosotros. Si pudiéramos
 acceder a ella sería un modo de obtener la sucesión de fibonacci hasta el mayor
 elemento que se haya&amp;nbsp;calculado.&lt;/p&gt;
-&lt;p&gt;Vamos a itentar a crear una caché similar capaz de generar automáticamente los
+&lt;p&gt;Vamos a itentar crear una caché similar capaz de generar automáticamente los
 elementos de la&amp;nbsp;sucesión:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fibcache&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;cache&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
@@ -137,9 +341,9 @@ crece a medida que se&amp;nbsp;necesite.&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_"&gt;Parte 1 - Introducción a la &lt;em&gt;evaluación&amp;nbsp;perezosa&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/li&gt;
-&lt;li&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Pauli-Dirac&lt;/li&gt;
-&lt;li&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-4.html" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-5.html" title="Parte 5 - Ejemplo práctico: potencias de Fermi-Dirac"&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Fermi-Dirac&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="admonition danger"&gt;
 &lt;p class="admonition-title"&gt;La serie completa como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
@@ -345,9 +549,9 @@ los rangos que ya habíamos visto anteriormente para crear la secuencia&amp;nbsp
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_"&gt;Parte 1 - Introducción a la &lt;em&gt;evaluación&amp;nbsp;perezosa&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/li&gt;
-&lt;li&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Pauli-Dirac&lt;/li&gt;
-&lt;li&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-4.html" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-5.html" title="Parte 5 - Ejemplo práctico: potencias de Fermi-Dirac"&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Fermi-Dirac&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="admonition danger"&gt;
 &lt;p class="admonition-title"&gt;La serie completa como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
@@ -638,9 +842,9 @@ con &lt;em&gt;secuencias infinitas&lt;/em&gt; de&amp;nbsp;elementos.&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_"&gt;Parte 1 - Introducción a la &lt;em&gt;evaluación&amp;nbsp;perezosa&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/li&gt;
-&lt;li&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Pauli-Dirac&lt;/li&gt;
-&lt;li&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-4.html" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-5.html" title="Parte 5 - Ejemplo práctico: potencias de Fermi-Dirac"&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Fermi-Dirac&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="admonition danger"&gt;
 &lt;p class="admonition-title"&gt;La serie completa como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
@@ -2505,31 +2709,4 @@ $ &lt;span class="nb"&gt;source&lt;/span&gt; bin/activate
 &lt;p&gt;No permite independizar el entorno virtual del la ruta donde se crea (&lt;em&gt;no relocatable&lt;/em&gt;)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;En definitiva, los entornos virtuales creados con &lt;code&gt;venv&lt;/code&gt; no son completamente independientes de la instalación python del sistema como sí puede hacer &lt;code&gt;virtualenv&lt;/code&gt;. Esperemos que se amplien las opciones con nuevas versiones de python. De momento, seguiremos con &lt;code&gt;virtualenv&lt;/code&gt;.&lt;/p&gt;</content><category term="Python"></category></entry><entry><title>Cómo contratar un programador de python</title><link href="https://blog.ch3m4.org/2012/10/17/como-contratar-un-programador-de-python/" rel="alternate"></link><published>2012-10-17T17:30:00+02:00</published><updated>2012-10-17T17:30:00+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2012-10-17:/2012/10/17/como-contratar-un-programador-de-python/</id><summary type="html">&lt;p&gt;En época de &lt;em&gt;crisis&lt;/em&gt; se produce un curioso desequilibrio de las cosas. Por un lado, están los emprendedores que se arriesgan mucho más buscando productos innovadores con los que poder competir mejor, alejados de las tendencias impuestas por las grandes empresas del sector. Son las &lt;em&gt;startups&lt;/em&gt;, surgidas como respuestas del …&lt;/p&gt;</summary><content type="html">&lt;p&gt;En época de &lt;em&gt;crisis&lt;/em&gt; se produce un curioso desequilibrio de las cosas. Por un lado, están los emprendedores que se arriesgan mucho más buscando productos innovadores con los que poder competir mejor, alejados de las tendencias impuestas por las grandes empresas del sector. Son las &lt;em&gt;startups&lt;/em&gt;, surgidas como respuestas del estancamiento de la economía actual. Por contra, la crisis también nos obliga a deshacernos de todo aquello que se salga de la norma, siguiendo el dictado de recortes indiscriminados, persiguiendo no se sabe bién qué fines. Al final se consigue mermar la creatividad, a costa de imponer la mediocridad en todo lo que se&amp;nbsp;hace.&lt;/p&gt;
-&lt;p&gt;Centrándonos en la programación python, es paradójico que en estos momentos la carencia de programadores python esté siendo una de las razones que impida crecer a algunas pequeñas empresas. Empresas que podrían ambicionar a tener un equipo de desarrollo acorde a la demanda que están teniendo, terminan por orientar su negocio a las adaptaciones para uno o dos clientes importantes, abandonando la mejora del producto en manos de la comunidad de software libre que lo crea&amp;nbsp;interesante.&lt;/p&gt;
-&lt;p&gt;Antes de seguir, habría que precisar a qué nos referimos cuando hablamos de &lt;em&gt;programadores python&lt;/em&gt;. No basta con saber la sintáxis del lenguaje, del mismo modo que no es suficiente saber coser para ser cirujano. Se está buscando un perfil concreto de programador, capaz de dar soluciones creativas e ingeniosas, y que sea capaz de expresarlas como código python al resto del equipo de&amp;nbsp;desarrolladores.&lt;/p&gt;
-&lt;p&gt;Si te estás preguntándo si tú encajarías en este perfil, o bien si te preguntas cómo se haría una de estas selecciones de &lt;em&gt;programadores python&lt;/em&gt;, en este artículo pretendo dar una idea de las preguntas de un proceso de selección de este tipo, más pensado como &lt;em&gt;&amp;#8220;filtrado&amp;#8221;&lt;/em&gt; de todo perfil no deseado que en ser una exhaustiva evaluación de conocimientos. En un próximo artículo pondré algunas soluciones a estas preguntas para que así tengas tiempo para&amp;nbsp;reflexionar.&lt;/p&gt;
-&lt;h2&gt;1. Filtrado del simple &amp;#8220;Hello,&amp;nbsp;World!&amp;#8221;&lt;/h2&gt;
-&lt;p&gt;Antes de perder más tiempo, lo primero es preguntar al candidato si realmente sabe de python. No son pocos los que acuden con la idea de que da igual que sea python que cualquiera de los otros lenguajes &amp;#8220;populares&amp;#8221; como &lt;em&gt;java&lt;/em&gt; o &lt;em&gt;visual basic&lt;/em&gt;. Por mucho que se insista en que tiene que ser un programador experimentado en python, muchas veces te encuentras que ni es python lo que sabe, ni tampoco es&amp;nbsp;experimentado.&lt;/p&gt;
-&lt;p&gt;La prueba del &amp;#8220;Hello, World!&amp;#8221; en python debería ser la primera prueba para descartar a los oportunistas. Otra de las preguntas más elementales sería hablar del &lt;em&gt;&amp;#8220;Zen de python&amp;#8221;&lt;/em&gt;, si no recitarlo entero, al menos una explicación de la regla &lt;em&gt;&amp;#8220;Explicit is better than implicit&amp;#8221;&lt;/em&gt;.&lt;/p&gt;
-&lt;h2&gt;2. Preguntar por muestras de sus&amp;nbsp;trabajos&lt;/h2&gt;
-&lt;p&gt;Todo programador que aprecie debe tener una colección de cosas en las que haya trabajado. No tienen que ser cosas asombrosas. Pueden ser simplemente aquellas muestras de saber dejadas por internet como ayuda a los demás, tal vez un perfil de &lt;em&gt;Stack Overflow&lt;/em&gt; o de &lt;em&gt;Python Majibu&lt;/em&gt; donde se pueda ver qué clase de comunicador y resolvedor de problemas eres. Tal vez algún repositorio de código abierto donde participes, un blog profesional,&amp;nbsp;twitter,&amp;#8230;&lt;/p&gt;
-&lt;p&gt;Simplemente, viendo la clase de trabajos que hace la gente resulta de mucha ayuda para saber en qué destaca o no un&amp;nbsp;programador.&lt;/p&gt;
-&lt;h2&gt;3. Afín a la cultura de la&amp;nbsp;empresa&lt;/h2&gt;
-&lt;p&gt;La experiencia dice que ser afín a la cultura de la empresa asegura mejores éxitos que el ser un monstruo programando. Un ejemplo común son las empresas de software libre cuando tienden a adoptar ciertas prácticas éticas entre sus empleados como es la de compartir todo el&amp;nbsp;conocimiento.&lt;/p&gt;
-&lt;p&gt;Tratándose de python, un programador en este lenguaje tiende a adoptar un perfil muy característico. Busca como fin la sencillez y la elegancia del código, antes que la optimización y eficiencia del mismo. Intenta ser &lt;em&gt;&amp;#8220;agnóstico&amp;#8221;&lt;/em&gt; frente a la plataforma, que el código funcione en (casi) cualquier sitio. Sin embargo, es ávido de conocer nuevas librerías que poder emplear en sus desarrollos, siempre con python como lenguaje director de la lógica de la&amp;nbsp;aplicación.&lt;/p&gt;
-&lt;p&gt;Toda esta actividad se ve plasmada en las &amp;#8220;comunidades&amp;#8221; python, donde se proponen y discuten sobre estos temas. Destaca la comunidad de &amp;#8220;python hispano&amp;#8221; como un primer lugar donde buscar perfiles apropiados, pero también se puede acudir a otros foros locales como las comunidades de python en Argentina, Perú, México,&amp;#8230; o a foros más especializados de django o&amp;nbsp;zope.&lt;/p&gt;
-&lt;p&gt;Pero una empresa que se precie, que tenga un buen producto de código abierto que ofrecer, debería ser capaz de formar su propia comunidad como punto de encuentro de los afines al proyecto, que no son sólo programadores. Esta comunidad sirve tanto para difundir la filosofía de la empresa como ser el punto de encuentro del personal afín a ella. Lamentablemente, muchas empresas han creído que una comunidad se monta mediante el bombardeo publicitario y es así como han concebido sus cuentas en las redes sociales como facebook o twitter. De este modo han conseguido consumidores &lt;em&gt;fanáticos&lt;/em&gt;, pero muy pocos&amp;nbsp;colaboradores.&lt;/p&gt;
-&lt;p&gt;A un programador hay que darle código. Las comunidades de programadores se forman alrededor de servicios como los github, bitbucket, sourceforge, launchpad, trac, etc. Si encuentras en tu comunidad un programador que te ha hecho un gran aporte o un hacker que ha dado con una extraña y oculta vulnerabilidad, contrátalo sin más&amp;nbsp;dubitaciones.&lt;/p&gt;
-&lt;h2&gt;4. Prueba de&amp;nbsp;programación&lt;/h2&gt;
-&lt;p&gt;Lo siguiente es pedir la realización de algunos programas sencillos: un detector de palíndromos, crear una expresión regular para encontrar teléfonos en un texto, una conversión de una lista de tuplas a&amp;nbsp;diccionario,&amp;#8230;&lt;/p&gt;
-&lt;p&gt;Con la prueba de programación no se busca, necesariamente, una respuesta perfecta, si no el crear un contexto donde observar al programador en su compresión de los problemas, así cómo su intento de resolverlos. Dentro de las posibilidades, es una prueba que muy bien se podría hacer online, combinando videconferencia y pizarra virtual. Si saltaran demasiadas alarmas, al ser &lt;em&gt;online&lt;/em&gt; se podría dar por terminada la prueba en cualquier momento y así ahorrar tiempo tanto al candidato como al&amp;nbsp;seleccionador.&lt;/p&gt;
-&lt;h2&gt;5. Prueba&amp;nbsp;real&lt;/h2&gt;
-&lt;p&gt;Antes de dar el paso definitivo, se puede probar al candidato sobre un caso real como resolver algún ticket del gestor de bugs o crear una extensión sencilla en un plazo determinado. Por supuesto, no debe ser ninguna parte importante, tan sólo un medio de comprobar si el candidato es capaz de cumplir los plazos establecidos para así no desequilibrar al resto del&amp;nbsp;equipo.&lt;/p&gt;
-&lt;p&gt;Idealmente, sería bueno que esta labor se realizara en las mismas instalaciones de la empresa, con los recursos de la empresa y con un contrato en&amp;nbsp;prácticas.&lt;/p&gt;
-&lt;h2&gt;6. Entrevista&amp;nbsp;personal&lt;/h2&gt;
-&lt;p&gt;Habiendo pasando todos los puntos anteriores, es casi seguro que el candidato es apto para la empresa. La entrevista está orientada más en conocer el perfil comunicativo del candidato con vistas a su integración de un equipo de trabajo. La entrevista empieza por una presentación del candidato sobre su experiencia hasta el momento. A continuación, se le realizan una serie de preguntas encaminadas a conocer del candidato su apasionamiento por lo que hace, su capacidad para comunicarse en grupos pequeños y qué podría aportar dentro de un pequeño equipo de&amp;nbsp;trabajo.&lt;/p&gt;
-&lt;h2&gt;7. Prueba de&amp;nbsp;inglés&lt;/h2&gt;
-&lt;p&gt;Se quiera o no, el inglés es el idioma común del programador, y no sólo porque toda la documentación esté en inglés. Cualquier proyecto de envergadura debe usar el inglés si quiere llamar la atención y conseguir nuevos colaboradores, ya sea en internet como en presentaciones en congresos. También empieza a ser frecuente la creación de equipos multinacionales de desarrollo. El inglés es la &lt;em&gt;lingua franca&lt;/em&gt; de nuestros tiempos y comunicarse en inglés es fundamental para ser programador. Al ser una prueba de comunicación, la prueba de inglés podría formar parte de la entrevista&amp;nbsp;personal. &lt;/p&gt;
-&lt;h2&gt;8.&amp;nbsp;Conclusión&lt;/h2&gt;
-&lt;p&gt;Si has leído hasta aquí, espero no haberte aburrido y/o decepcionado mucho. No espero que todo lo dicho sea tomado al pie de letra. Más que una lista de reglas para buscar candidatos, he pretendido que sirva más como consejos para programadores python que buscan trabajo, sepan cómo hacerlo y, sobre todo, que se animen a buscarlos. Si de paso se amplía el número de programadores profesionales de python, mejor todavía. Ganaremos&amp;nbsp;todos.&lt;/p&gt;</content><category term="Python"></category></entry></feed>
+&lt;p&gt;En definitiva, los entornos virtuales creados con &lt;code&gt;venv&lt;/code&gt; no son completamente independientes de la instalación python del sistema como sí puede hacer &lt;code&gt;virtualenv&lt;/code&gt;. Esperemos que se amplien las opciones con nuevas versiones de python. De momento, seguiremos con &lt;code&gt;virtualenv&lt;/code&gt;.&lt;/p&gt;</content><category term="Python"></category></entry></feed>

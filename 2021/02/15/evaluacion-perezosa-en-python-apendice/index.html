@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Evaluación perezosa en python - Apéndice | Apéndice: sobre el tipado de datos utilizado Durante esta serie de artículos he procurado usar el tipado...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ea57ac74.min.css">
+
+  <script src="https://blog.ch3m4.org/theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, lazy-eval, sequence, range">
+
+  <title>Evaluación perezosa en python - Apéndice | Hyperreals *R</title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github" target="_blank" rel="noopener noreferrer"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket" target="_blank" rel="noopener noreferrer"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow" target="_blank" rel="noopener noreferrer"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml" target="_blank" rel="noopener noreferrer">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml" target="_blank" rel="noopener noreferrer">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml" target="_blank" rel="noopener noreferrer">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6" target="_blank" rel="noopener noreferrer">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+<div class="article_meta">
+  <p>Posted <time data-timeago datetime="2021-02-15T21:20:44+01:00">lun 15 febrero 2021</time>
+   by Chema Cortés  </p>
+  <p>Last updated <time data-timeago datetime="2021-02-17T00:32:31+01:00">mié 17 febrero 2021</time></p>
+  <p>
+  Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+&ndash;&ndash;  Tags:
+    <a href="https://blog.ch3m4.org/tag/lazy-eval/">lazy-eval</a>,    <a href="https://blog.ch3m4.org/tag/sequence/">sequence</a>,    <a href="https://blog.ch3m4.org/tag/range/">range</a>  </p>
+</div>  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" class="nohover">Evaluación perezosa en python -&nbsp;Apéndice</a></h1>
+  </div>
+  <div class="article_text">
+    <h2>Apéndice: sobre el tipado de datos&nbsp;utilizado</h2>
+<p>Durante esta serie de artículos he procurado usar el <em>tipado gradual</em> de python,
+no sólo para mejorar la compresión, sino porque lo considero buena práctica para
+detectar algunos problemas en el momento de escribir el código. El intérprete de
+python realmente no realiza ningún chequeo de estas <em>anotaciones</em> de tipos,
+dejando por completo su comprobación a alguna otra herramienta que pueda estar
+usando el&nbsp;desarrollador.</p>
+<p>He utilizado las clases abstractas del módulo <code>collections.abc</code> como base para
+definir los <em>iterables</em>, <em>secuencias</em> e <em>iteradores</em>. He creído que así quedaba
+mejor documentado, además de ser el modo más conocido por programadores de otros
+lenguajes. Por derivar de la clase abstracta <code>Sequence</code>, sabemos que
+<code>GenericRange</code> implementa varios métodos abstractos como son <code>__len__</code> y
+<code>__getitem__</code>.</p>
+<p>Sin embargo, en python se considera supérfluo y poco recomendable este uso de
+clases abstractas. El modo <em>pythónico</em> consiste en implementar esos métodos sin
+más indicación. Sólo por el hecho de contar con estos métodos, nuestra clase ya
+será considerada como <em>secuencia</em>, se podrá usar donde haga falta una
+<em>secuencia</em> y, en definitiva, se comportará como si fuera una secuencia. Son los
+llamados <em>duck types</em> o <em>tipos estructurales</em> que tanto caracterizan a python y
+que, a partir de ahora, nos vamos a tener que acostumbrar a denominar
+<strong><em>Protocolos</em></strong>.</p>
+<p>Por ejemplo, podíamos haber declarado la clase <code>GenericRange</code> sin indicar
+ninguna&nbsp;superclase:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">GenericRange</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">slice</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;GenericRange&quot;</span><span class="p">]:</span>
+        <span class="o">...</span>
+</code></pre></div>
+
+<p>Al tener el método <code>__len__()</code> se dice que cumple con el <em>protocolo <code>Sized</code></em>,
+algo que se puede comprobar del mismo modo que si fuera una&nbsp;subclase:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Sized</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">GenericRange</span><span class="p">,</span> <span class="n">Sized</span><span class="p">)</span>
+<span class="kc">True</span>
+</code></pre></div>
+
+<p>En cambio, nos puede sorprender que no cumpla con el <em>protocolo <code>Sequence</code></em>, a
+pesar de que se comportaba como&nbsp;tal:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Sequence</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">GenericRange</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">)</span>
+<span class="kc">False</span>
+</code></pre></div>
+
+<p>Resulta que para cumplir con el protocolo <code>Sequence</code>, además de <code>__getitem__()</code>,
+debe tener implementados los métodos  <code>__iter__()</code>, <code>__reversed__()</code> e
+<code>index()</code>.</p>
+<p>Cuando <code>GenericRange</code> derivaba de <code>Sequence</code>, estos métodos se heredaban de la
+superclase como <em>métodos mixin</em>, para cuya implementación básica utiliza
+únicamente el método <code>__getitem__()</code>. También implementa otros métodos como
+<code>__contains__()</code> (<em>Container</em>) y <code>count()</code> (<em>Countable</em>). Ése era el motivo por
+el que sólo hacía falta definir <code>__getitem__()</code> para que funcionara como&nbsp;secuencia.</p>
+<p>Como <em>protocolo</em>, estos métodos no se adquieren por herencia y necesitan una implementación para cumplir con el protocolo <code>Sequence</code>. No obstante, algunas funciones, como <code>reversed</code>, admiten objetos con implementaciones parciales del protocolo <code>Sequence</code>, algo que únicamente sabremos si recurrimos a la documentación de la&nbsp;función.</p>
+<h2>Secuencia de&nbsp;enteros</h2>
+<p>He empleado el tipo <code>Sequence</code> sin indicar de qué tipo son los elementos. Un
+chequeador de tipos asume que se trata de un iterable de elementos de tipo
+<code>Any</code>, por lo que no debería dar problemas. Pero siempre podemos ser más
+precisos y usar <code>Sequence[int]</code> como tipo de datos para nuestras secuencias de
+números&nbsp;enteros.</p>
+<h2>Referencia <em>forward</em></h2>
+<p>En la anotaciones de tipos, a veces necesitamos referenciar una clase antes de
+que esté definida, las conocidas como <em>referencias forward</em> de tipos. El modo
+normal de hacer este tipo de referencias es escribir el nombre de la clase entre
+comillas, como una <em>string</em>.</p>
+<p>A partir de python 3.10 no hará falta acudir a este remedio pudiendo usar
+referencias <em>forward</em> sin mayor problema. Para las versiones anteriores, se
+puede obtener esta funcionalidad del módulo <code>__future__</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+</code></pre></div>
+
+<h2>Unión de&nbsp;tipos</h2>
+<p>En el método <code>__getitem__()</code> de <code>GenericRange</code> he utilizado dos uniones de&nbsp;tipos:</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">slice</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;GenericRange&quot;</span><span class="p">]:</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_range</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getitem</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_range</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<p>La unión <code>idx: Union[int, slice]</code> se puede interpretar como que <code>idx</code> puede ser
+de tipo <code>int</code> o de tipo <code>slice</code>. La notación común de expresar esta unión de
+tipos en varios lenguajes sería <code>idx: int | slice</code>, nomenclatura que también
+será aceptada en python&nbsp;3.10.</p>
+<p>La otra unión, <code>Union[int, "GenericRange"]</code> indica que el resultado será de tipo
+<code>int</code> o de tipo <code>GenericRange</code>.</p>
+<p>De todos modos, en estas anotaciones no se está reflejando la dependencia que
+hay entre tipos. Si <code>idx</code> es entero, el resultado siempre será un entero. Si
+<code>idx</code> es <code>slice</code>, el resultado siempre será <code>GenericRange</code>. En lenguajes con
+tipado estático, es normal disponer de varias definiciones del mismo métodos,
+con diferentes signaturas, que se seleccionan según sean los tipos de los
+argumentos y resultados que&nbsp;tengamos.</p>
+<p>Python tiene una facilidad para hacer algo similar. Con
+<code>functools.singledispathmethod</code> podemos definir varios métodos que se invocarán
+según el tipo de dato del primer argumento. De este modo, el método
+<code>__getitem__()</code> lo podríamos expresar&nbsp;así:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">singledispatchmethod</span>
+
+<span class="k">class</span> <span class="nc">GenericRange</span><span class="p">(</span><span class="n">Sequence</span><span class="p">):</span>
+    <span class="o">...</span>
+
+    <span class="nd">@singledispatchmethod</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+    <span class="nd">@__getitem__</span><span class="o">.</span><span class="n">register</span>
+    <span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_range</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getitem</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="nd">@__getitem__</span><span class="o">.</span><span class="n">register</span>
+    <span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">slice</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;GenericRange&quot;</span><span class="p">:</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_range</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_range</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Lamentablemente nos saldrá un error ya que no existe aún la clase <code>GenericRange</code>
+cuando es aplicado el decorador <code>singledispatchmethod</code>. Una solución es sacar el
+último registro fuera, una vez que ya se ha definido la&nbsp;clase:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@GenericRange</span><span class="o">.</span><span class="fm">__getitem__</span><span class="o">.</span><span class="n">register</span>
+<span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">slice</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GenericRange</span><span class="p">:</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_range</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_range</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Código&nbsp;final</h2>
+<p>Con estos cambios, tendríamos nuestro código corregido de esta&nbsp;manera:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Sequence</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Type</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">singledispatchmethod</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="k">class</span> <span class="nc">GenericRange</span><span class="p">(</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">stop</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">start</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">getitem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Método abstracto.</span>
+<span class="sd">          Función para calcular un elemento a partir de la posición</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pos</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_range</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">GenericRange</span><span class="p">],</span> <span class="n">rng</span><span class="p">:</span> <span class="nb">range</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GenericRange</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor de un GenericRange a partir de un rango</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">instance</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">_range</span> <span class="o">=</span> <span class="n">rng</span>
+        <span class="k">return</span> <span class="n">instance</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_range</span><span class="p">)</span>
+
+    <span class="nd">@singledispatchmethod</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+    <span class="nd">@__getitem__</span><span class="o">.</span><span class="n">register</span>
+    <span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_range</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getitem</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">classname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_range</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">classname</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">stop</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">step</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+
+<span class="nd">@GenericRange</span><span class="o">.</span><span class="fm">__getitem__</span><span class="o">.</span><span class="n">register</span>
+<span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">slice</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GenericRange</span><span class="p">:</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_range</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_range</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Conclusión</h2>
+<p>Python está realizando un gran esfuerzo en incorporar <em>anotaciones de tipo</em> sin
+perder con ello sus característicos tipos <em>ducking</em>. De igual modo, vamos a ver
+cómo se incorporan más elementos de otros lenguajes como las <em>dataclasses</em>,
+<em>programación asíncrona</em> o los <em>patrones estructurales</em>, aunque tardarán en ser
+adoptados por la mayor parte de programadores&nbsp;python.</p>
+<p>Si algo tiene python es no tener demasiada prisa en que se apliquen sus cambios.
+Como decía un gran sabio: <em>&#8220;Vamos a cambiarlo todo para que todo siga igual&#8221;</em>.</p>
+<hr>
+<h2>Serie <em>Evaluación Perezosa en&nbsp;Python</em></h2>
+<ul>
+<li><a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_">Parte 1 - Introducción a la <em>evaluación&nbsp;perezosa</em></a></li>
+<li><a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas">Parte 2 - Secuencias&nbsp;infinitas</a></li>
+<li><a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_">Parte 3 - <em>Memoización</em></a></li>
+<li><a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-4.html" title="Parte 4 - _Evaluación perezosa_ avanzada">Parte 4 - <em>Evaluación perezosa</em>&nbsp;avanzada</a></li>
+<li><a href="https://blog.ch3m4.org/drafts/2021-02-15-evaluacion-perezosa-en-python-parte-5.html" title="Parte 5 - Ejemplo práctico: potencias de Fermi-Dirac">Parte 5 - Ejemplo práctico: potencias de&nbsp;Fermi-Dirac</a></li>
+<li><a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado">Apéndice: sobre el tipado de datos&nbsp;utilizado</a></li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">La serie completa como <em>Jupyter Notebook</em>&nbsp;en:</p>
+<p><a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.ipynb" title="Notebook Evaluación perezosa en python">serie-evaluacion-perezosa-en-python.ipynb</a></p>
+<p><em><span class="caps">INCOMPLETA</span>&nbsp;TODAVÍA</em></p>
+</div>
+<hr>
+  </div>
+
+<ul class="pager">
+  <li class="previous">
+    <a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Anterior">
+      <i class="fa fa-arrow-circle-left"></i>
+      Evaluación perezosa en python - Parte&nbsp;3
+    </a>
+  </li>
+ </ul>
+With category
+<a href="https://blog.ch3m4.org/category/python/">Python</a>:
+<ul class="pager">
+  <li class="previous">
+    <a
+      href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/"
+      title="Anterior en misma categoría"
+    >
+      <i class="fa fa-arrow-circle-o-left"></i>
+      Evaluación perezosa en python - Parte&nbsp;3
+    </a>
+  </li>
+ </ul>
+
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script id="dsq-count-scr" src="https://hyperreals.disqus.com/count.js" async></script>
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.identifier = "2021/02/15/evaluacion-perezosa-en-python-apendice/";
+        this.page.title = "Evaluación perezosa en python -&nbsp;Apéndice";
+    };
+    loadDisqus = function(sitename) {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hyperreals.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', skipHeader)
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

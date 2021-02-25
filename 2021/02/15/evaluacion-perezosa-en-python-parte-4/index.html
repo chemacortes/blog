@@ -65,7 +65,7 @@
 <div class="article_meta">
   <p>Posted <time data-timeago datetime="2021-02-15T21:20:20+01:00">lun 15 febrero 2021</time>
    by Chema Cortés  </p>
-  <p>Last updated <time data-timeago datetime="2021-02-25T20:15:11+01:00">jue 25 febrero 2021</time></p>
+  <p>Last updated <time data-timeago datetime="2021-02-25T20:31:00+01:00">jue 25 febrero 2021</time></p>
   <p>
   Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
 &ndash;&ndash;  Tags:
@@ -318,10 +318,11 @@ tenemos el módulo <code>bisect</code> (<span class="math">\(O(\log{n})\)</span>
 <p>En el generador de números primos podemos observar que se están comprobando los
 cuadrados de los divisores más veces de las necesarias. Podemos delimitar rangos
 en los que se van a usar los mismos divisores. Por ejemplo, si tenemos la
-secuencia <code>[2, 3]</code> como divisores podemos chequear números hasta el <code>9</code>, que es
-el cuadrado del último divisor. Para seguir con el <code>11</code> tenemos que añadir un
-primo más, <code>[2, 3, 5]</code> con los que ya podemos chequear hasta el <code>25</code>.
-Y así sucesivamente. El rango <code>range(start, INFINITE, 2)</code> lo podemos fraccionar según el grupo de primos que emplearemos como&nbsp;divisores.</p>
+secuencia <code>[2, 3]</code> como divisores podemos chequear números hasta el <code>23</code>. Para
+seguir con el <code>25</code> tenemos que añadir un primo más, <code>[2, 3, 5]</code> con los que ya
+podemos chequear hasta el <code>47</code>. Y así sucesivamente. El rango <code>range(start,
+INFINITE, 2)</code> lo podemos fraccionar según el grupo de primos que emplearemos
+como&nbsp;divisores.</p>
 <p>La <em>programación dinámica</em> tiene sus riesgos y es bastante fácil que no funcione
 bien a la primera, pero mejoran mucho la eficiencia de un&nbsp;algoritmo.</p>
 <h3>Multiproceso</h3>

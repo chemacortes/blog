@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/all.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-02-17T00:32:31+01:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Evaluación perezosa en python - Apéndice</title><link href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" rel="alternate"></link><published>2021-02-15T21:20:44+01:00</published><updated>2021-02-17T00:32:31+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-15:/2021/02/15/evaluacion-perezosa-en-python-apendice/</id><summary type="html">&lt;p&gt;Una revisión crítica al tipado gradual de datos de python que se ha usado en esta serie de artículos sobre &lt;em&gt;evaluación perezosa&lt;/em&gt;.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/all.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-02-25T20:15:11+01:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Evaluación perezosa en python - Apéndice</title><link href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" rel="alternate"></link><published>2021-02-15T21:20:44+01:00</published><updated>2021-02-17T00:32:31+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-15:/2021/02/15/evaluacion-perezosa-en-python-apendice/</id><summary type="html">&lt;p&gt;Una revisión crítica al tipado gradual de datos de python que se ha usado en esta serie de artículos sobre &lt;em&gt;evaluación perezosa&lt;/em&gt;.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/h2&gt;
 &lt;p&gt;Durante esta serie de artículos he procurado usar el &lt;em&gt;tipado gradual&lt;/em&gt; de python,
 no sólo para mejorar la compresión, sino porque lo considero buena práctica para
 detectar algunos problemas en el momento de escribir el código. El intérprete de
@@ -194,7 +194,7 @@ Como decía un gran sabio: &lt;em&gt;&amp;#8220;Vamos a cambiarlo todo para que 
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_"&gt;Parte 1 - Introducción a la &lt;em&gt;evaluación&amp;nbsp;perezosa&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -203,7 +203,390 @@ Como decía un gran sabio: &lt;em&gt;&amp;#8220;Vamos a cambiarlo todo para que 
 &lt;p&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.ipynb" title="Notebook Evaluación perezosa en python"&gt;serie-evaluacion-perezosa-en-python.ipynb&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&amp;nbsp;TODAVÍA&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;hr&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Evaluación perezosa en python - Parte 3</title><link href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" rel="alternate"></link><published>2021-02-14T17:53:58+01:00</published><updated>2021-02-15T21:16:54+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-14:/2021/02/14/evaluacion-perezosa-en-python-parte-3/</id><summary type="html">&lt;p&gt;Tercera parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta parte veremos la técnica de memoización y cómo puede ayudarnos en la implementación de secuencia de&amp;nbsp;evaluaciones.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Cachés y&amp;nbsp;Memoización&lt;/h2&gt;
+&lt;hr&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Evaluación perezosa en python - Parte 4</title><link href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" rel="alternate"></link><published>2021-02-15T21:20:20+01:00</published><updated>2021-02-25T20:15:11+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-15:/2021/02/15/evaluacion-perezosa-en-python-parte-4/</id><summary type="html">&lt;p&gt;Partiendo del algoritmo para la obtención de números primos crearemos una secuencia infinita mediante técnicas de evaluación perezosa que crezca a medida que se necesite. Al final, aplicaremos algunas optimizaciones para el cálculo de números&amp;nbsp;primos.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;&lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/h2&gt;
+&lt;p&gt;Haskell tiene una librería, &lt;code&gt;Data.Numbers.Primes&lt;/code&gt;, que ofrece tanto una
+secuencia con todos los números primos, &lt;code&gt;primes&lt;/code&gt;, como la función &lt;code&gt;isprime&lt;/code&gt; con
+la que chequear si un número es primo. Gracias a la &lt;em&gt;evaluación perezosa&lt;/em&gt;,
+haskell sólo calcula los elementos de &lt;code&gt;primes&lt;/code&gt; que&amp;nbsp;necesite.&lt;/p&gt;
+&lt;p&gt;Vamos a intentar hacer en python lo que hace sencillo&amp;nbsp;haskell:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;take&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;31&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;37&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;41&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;43&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;47&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;53&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;59&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;61&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;67&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;71&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;73&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;79&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;83&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;89&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;97&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;101&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;103&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="mi"&gt;107&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;109&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;113&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;127&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;131&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;137&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;139&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;149&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;151&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;157&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;163&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;167&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;173&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;179&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;181&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;191&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;193&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;197&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;199&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;211&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="mi"&gt;223&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;227&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;229&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;233&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;239&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;241&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;251&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;257&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;263&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;269&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;271&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;277&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;281&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;283&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;293&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;307&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;311&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;313&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;317&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;331&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="mi"&gt;337&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;347&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;349&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;353&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;359&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;367&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;373&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;379&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;383&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;389&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;397&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;401&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;409&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;419&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;421&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;431&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;433&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;439&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;443&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;449&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="mi"&gt;457&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;461&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;463&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;467&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;479&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;487&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;491&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;499&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;503&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;509&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;521&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;523&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;541&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="o"&gt;!!&lt;/span&gt;&lt;span class="mi"&gt;90000&lt;/span&gt;
+&lt;span class="mi"&gt;1159531&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;isPrime&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mi"&gt;31&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kt"&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Calculo de números&amp;nbsp;primos&lt;/h2&gt;
+&lt;p&gt;Por definición, un número primo sólo es divisible por &lt;code&gt;1&lt;/code&gt; y por sí&amp;nbsp;mismo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Prime&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;  &lt;span class="c1"&gt;# un alias para números primos&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;isprime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;bool&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="nb"&gt;any&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;primes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Prime&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;isprime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Podemos aplicar algunas optimizaciones a estos&amp;nbsp;cálculos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Excepto el 2, podemos descartar como primos todos los números&amp;nbsp;pares&lt;/li&gt;
+&lt;li&gt;Al comprobar divisores de &lt;span class="math"&gt;\(n\)&lt;/span&gt;, basta con probar hasta &lt;span class="math"&gt;\(\sqrt{n}\)&lt;/span&gt;, y únicamente
+  con aquellos que sean&amp;nbsp;primos&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Con estas premisas, podemos ir ya diseñando una estrategia para obtener una
+secuencia de primos por evaluación&amp;nbsp;perezosa:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;collections.abc&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Generator&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Iterable&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;islice&lt;/span&gt;
+
+&lt;span class="n"&gt;INFINITE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;maxsize&lt;/span&gt;  &lt;span class="c1"&gt;# una aproximación &amp;#39;mala&amp;#39; para infinito&lt;/span&gt;
+&lt;span class="n"&gt;Prime&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;  &lt;span class="c1"&gt;# un alias para números primos&lt;/span&gt;
+
+&lt;span class="c1"&gt;# lista de números primos que vayamos obteniendo&lt;/span&gt;
+&lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Prime&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;isdivisible&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;divisors&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Iterable&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;bool&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    Comprobar si &amp;#39;n&amp;#39; es divisible por&lt;/span&gt;
+&lt;span class="sd"&gt;    los elementos de un iterable ordenado&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+    &lt;span class="n"&gt;divisible&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;divisors&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;divisible&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+            &lt;span class="k"&gt;break&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;break&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;divisible&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;isprime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;bool&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Comprobar si &amp;#39;n&amp;#39; es un número primo&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# probando primos como divisores&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;isdivisible&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# seguir con el resto de números impares&lt;/span&gt;
+    &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;isdivisible&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;genprimes&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Generator&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Prime&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Generador de números primos&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+    &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;INFINITE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;isdivisible&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;El generador &lt;code&gt;genprimes&lt;/code&gt; nos dará un iterador con el que ir obteniendo los
+números primos siguientes al último de la lista. A medida que obtiene un primo,
+se añade a la lista &lt;code&gt;primes&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;La lista &lt;code&gt;primes&lt;/code&gt; actua como &lt;em&gt;caché&lt;/em&gt; de los números primos obtenidos y la
+empleará &lt;code&gt;isprime&lt;/code&gt; para sus comprobaciones. Si &lt;code&gt;isprime&lt;/code&gt; se queda sin primos,
+continua con los siguientes números impares hasta obtener un resultado, sin
+pararse a calcular los primos&amp;nbsp;intermedios.&lt;/p&gt;
+&lt;h2&gt;Secuencia de números&amp;nbsp;primos&lt;/h2&gt;
+&lt;p&gt;Vistas estas funciones vamos a armar con ellas la estructura de una clase
+&lt;em&gt;secuencia&lt;/em&gt;. &lt;code&gt;isprime&lt;/code&gt; pasará a ser el método &lt;code&gt;__contains__&lt;/code&gt; y el generador
+&lt;code&gt;genprimes&lt;/code&gt; lo usaremos para ampliar automáticamente la lista de números primos
+según sea&amp;nbsp;necesario:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;collections.abc&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Generator&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Iterable&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;islice&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Union&lt;/span&gt;
+
+&lt;span class="n"&gt;INFINITE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;maxsize&lt;/span&gt;  &lt;span class="c1"&gt;# una mala aproximación de infinito&lt;/span&gt;
+&lt;span class="n"&gt;Prime&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;  &lt;span class="c1"&gt;# un alias para los primos&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;isdivisible&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;divisors&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Iterable&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;bool&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    Comprobar si &amp;#39;n&amp;#39; es divisible por&lt;/span&gt;
+&lt;span class="sd"&gt;    los elementos de un iterable ordenado&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+    &lt;span class="n"&gt;divisible&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;divisors&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;divisible&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+            &lt;span class="k"&gt;break&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;break&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;divisible&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;nth&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Iterable&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Obtener de un iterable el elemento en la posición &amp;#39;n&amp;#39;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;islice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Primes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    Collection of primes numbers&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_primes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Prime&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@property&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;last&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Prime&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_primes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@property&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;size&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_primes&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__len__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;INFINITE&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__contains__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;bool&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Comprobar si &amp;#39;n&amp;#39; es un número primo&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_primes&lt;/span&gt;
+
+        &lt;span class="c1"&gt;# probando primos como divisores&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;isdivisible&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_primes&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;
+
+        &lt;span class="c1"&gt;# seguir con el resto de números impares&lt;/span&gt;
+        &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;last&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;isdivisible&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;genprimes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Generator&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Prime&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+        &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Generador de números primos&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+        &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;last&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;INFINITE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;isdivisible&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_primes&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+                &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_primes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__getitem__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Union&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Prime&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;isinstance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;OverflowError&lt;/span&gt;
+
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_primes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+                &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;
+                &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="n"&gt;nth&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;genprimes&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;rng&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;INFINITE&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;rng&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Secuencia de los números primos&lt;/span&gt;
+&lt;span class="n"&gt;primes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Primes&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;isprime&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__contains__&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Como &lt;em&gt;infinito&lt;/em&gt; se usa &lt;code&gt;sys.maxsize&lt;/code&gt; que es el mayor tamaño que puede tener una
+lista para la versión &lt;code&gt;CPython&lt;/code&gt;. Si tratamos de usar índices mayores para una
+lista nos dará&amp;nbsp;error.&lt;/p&gt;
+&lt;p&gt;Cuando se solicita un número primo que no está en la lista, el método
+&lt;code&gt;__getitem__&lt;/code&gt; invoca automáticamente al iterador que devuelve &lt;code&gt;genprimes&lt;/code&gt; hasta
+alcanzarlo. A medida que se descubren números primos, se val almacenando para su
+posterior&amp;nbsp;uso.&lt;/p&gt;
+&lt;p&gt;Pruebas de&amp;nbsp;uso:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;primes&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;isprime&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;31&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;37&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;41&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;43&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;47&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;53&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;59&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;61&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;67&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;71&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;73&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="mi"&gt;79&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;83&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;89&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;97&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;101&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;103&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;107&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;109&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;113&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;127&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;131&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;137&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;139&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;149&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;151&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;157&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="mi"&gt;163&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;167&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;173&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;179&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;181&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;191&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;193&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;197&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;199&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;211&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;223&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;227&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;229&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;233&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;239&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;241&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="mi"&gt;251&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;257&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;263&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;269&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;271&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;277&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;281&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;283&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;293&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;307&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;311&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;313&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;317&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;331&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;337&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;347&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="mi"&gt;349&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;353&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;359&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;367&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;373&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;379&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;383&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;389&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;397&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;401&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;409&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;419&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;421&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;431&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;433&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;439&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="mi"&gt;443&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;449&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;457&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;461&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;463&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;467&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;479&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;487&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;491&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;499&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;503&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;509&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;521&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;523&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;541&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;90000&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="mi"&gt;1159531&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;isprime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;31&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kc"&gt;True&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;31&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_primes&lt;/span&gt;
+&lt;span class="kc"&gt;False&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;last&lt;/span&gt;
+&lt;span class="mi"&gt;1159531&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para cumplir con el protocolo &lt;code&gt;Sequence&lt;/code&gt; podemos añadir los métodos que nos
+faltan, cosa que animo hacer al lector. El método &lt;code&gt;count()&lt;/code&gt; es trivial: si es
+primo, habrá 1 ocurrencia; si no es primo, 0 ocurrencias. El método &lt;code&gt;index()&lt;/code&gt; es
+algo más complicado. En cambio el &lt;code&gt;_reversed__()&lt;/code&gt; es imposible ya que no se
+puede invertir una secuencia infinta. A pesar de ello, la clase &lt;code&gt;Prime&lt;/code&gt; se
+comportará casi como una secuencia siempre y cuando no itentemos acceder a la
+secuencia por el&amp;nbsp;final.&lt;/p&gt;
+&lt;h2&gt;Más&amp;nbsp;optimizaciones&lt;/h2&gt;
+&lt;h3&gt;Bisecciones&lt;/h3&gt;
+&lt;p&gt;La lista de primos que vamos generando siempre será una &lt;em&gt;lista ordenada&lt;/em&gt;, por lo
+que se pueden optimizar mucho las búsquedas usando &lt;em&gt;bisecciones&lt;/em&gt;, para lo que
+tenemos el módulo &lt;code&gt;bisect&lt;/code&gt; (&lt;span class="math"&gt;\(O(\log{n})\)&lt;/span&gt; en lugar de &lt;span class="math"&gt;\(O(n)\)&lt;/span&gt;).&lt;/p&gt;
+&lt;p&gt;Por ejemplo, para comprobar si un elemento está en una lista&amp;nbsp;ordenada:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bisect&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;bisect_left&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;bs_contains&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;bool&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;bisect_left&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Programación&amp;nbsp;dinámica&lt;/h3&gt;
+&lt;p&gt;En el generador de números primos podemos observar que se están comprobando los
+cuadrados de los divisores más veces de las necesarias. Podemos delimitar rangos
+en los que se van a usar los mismos divisores. Por ejemplo, si tenemos la
+secuencia &lt;code&gt;[2, 3]&lt;/code&gt; como divisores podemos chequear números hasta el &lt;code&gt;9&lt;/code&gt;, que es
+el cuadrado del último divisor. Para seguir con el &lt;code&gt;11&lt;/code&gt; tenemos que añadir un
+primo más, &lt;code&gt;[2, 3, 5]&lt;/code&gt; con los que ya podemos chequear hasta el &lt;code&gt;25&lt;/code&gt;.
+Y así sucesivamente. El rango &lt;code&gt;range(start, INFINITE, 2)&lt;/code&gt; lo podemos fraccionar según el grupo de primos que emplearemos como&amp;nbsp;divisores.&lt;/p&gt;
+&lt;p&gt;La &lt;em&gt;programación dinámica&lt;/em&gt; tiene sus riesgos y es bastante fácil que no funcione
+bien a la primera, pero mejoran mucho la eficiencia de un&amp;nbsp;algoritmo.&lt;/p&gt;
+&lt;h3&gt;Multiproceso&lt;/h3&gt;
+&lt;p&gt;Como opción de mejora está el uso de técnicas de concurrencia y multiproceso.
+Como primera medida que podemos pensar sería crear varios &lt;em&gt;workers&lt;/em&gt; que chequeen
+en paralelo la divisibilidad para chequear varios números a la vez. El problema
+es que estos workers tendrían que tener su copia de la lista de primos y
+actualizarla conforme se obtenien, algo que es sumamente costoso y poco&amp;nbsp;eficiente.&lt;/p&gt;
+&lt;p&gt;Una estrategia mejor sería especializar cada &lt;em&gt;worker&lt;/em&gt; en un subconjunto de
+números primos de modo que todos los &lt;em&gt;workers&lt;/em&gt; intervengan colaborativamente en
+el chequeo del mismo&amp;nbsp;número.&lt;/p&gt;
+&lt;p&gt;En concurrencia, hay muchas estrategias posibles y ninguna mejor. Al final, cada
+problema tiene su solución particular que no sirve como solución&amp;nbsp;general.&lt;/p&gt;
+&lt;h3&gt;Código final&amp;nbsp;optimizado&lt;/h3&gt;
+&lt;p&gt;El código final optimizado, sin usar concurrencia, se puede obtener del
+siguiente&amp;nbsp;enlace:&lt;/p&gt;
+&lt;div class="admonition descarga"&gt;
+&lt;p class="admonition-title"&gt;Descarga&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/primes.py"&gt;primes.py&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Por hacernos una idea, esta sería la comparativa de tiempos de la versiones haskell y&amp;nbsp;python:&lt;/p&gt;
+&lt;!-- markdownlint-disable MD033 --&gt;
+&lt;style&gt;
+table, th, td { border: 1px solid grey;}
+table {border-collapse: collapse;}
+&lt;/style&gt;
+&lt;!-- markdownlint-enable MD033 --&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="left"&gt;operación&lt;/th&gt;
+&lt;th align="right"&gt;haskell&lt;/th&gt;
+&lt;th align="right"&gt;python&lt;/th&gt;
+&lt;th align="right"&gt;python opt&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;primo 90000&lt;/td&gt;
+&lt;td align="right"&gt;310ms&lt;/td&gt;
+&lt;td align="right"&gt;1450ms&lt;/td&gt;
+&lt;td align="right"&gt;860ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;es primo &lt;span class="math"&gt;\(2^{31}-1\)&lt;/span&gt;&lt;/td&gt;
+&lt;td align="right"&gt;20ms&lt;/td&gt;
+&lt;td align="right"&gt;10ms&lt;/td&gt;
+&lt;td align="right"&gt;3ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;index 1159531&lt;/td&gt;
+&lt;td align="right"&gt;240ms&lt;/td&gt;
+&lt;td align="right"&gt;N/A&lt;/td&gt;
+&lt;td align="right"&gt;820ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2&gt;Serie &lt;em&gt;Evaluación Perezosa en&amp;nbsp;Python&lt;/em&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_"&gt;Parte 1 - Introducción a la &lt;em&gt;evaluación&amp;nbsp;perezosa&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="admonition danger"&gt;
+&lt;p class="admonition-title"&gt;La serie completa como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.ipynb" title="Notebook Evaluación perezosa en python"&gt;serie-evaluacion-perezosa-en-python.ipynb&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&amp;nbsp;TODAVÍA&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Evaluación perezosa en python - Parte 3</title><link href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" rel="alternate"></link><published>2021-02-14T17:53:58+01:00</published><updated>2021-02-15T21:16:54+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-14:/2021/02/14/evaluacion-perezosa-en-python-parte-3/</id><summary type="html">&lt;p&gt;Tercera parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta parte veremos la técnica de memoización y cómo puede ayudarnos en la implementación de secuencia de&amp;nbsp;evaluaciones.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Cachés y&amp;nbsp;Memoización&lt;/h2&gt;
 &lt;p&gt;En el pasado artículo vimos que para obtener un elemento de la sucesión
 fibonacci necesitábamos calcular los anteriores. Veámoslo con más&amp;nbsp;detalle.&lt;/p&gt;
 &lt;p&gt;Podemos definir la siguiente función para obtener un elemento de esta&amp;nbsp;sucesión:&lt;/p&gt;
@@ -341,7 +724,7 @@ crece a medida que se&amp;nbsp;necesite.&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_"&gt;Parte 1 - Introducción a la &lt;em&gt;evaluación&amp;nbsp;perezosa&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -549,7 +932,7 @@ los rangos que ya habíamos visto anteriormente para crear la secuencia&amp;nbsp
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_"&gt;Parte 1 - Introducción a la &lt;em&gt;evaluación&amp;nbsp;perezosa&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -842,7 +1225,7 @@ con &lt;em&gt;secuencias infinitas&lt;/em&gt; de&amp;nbsp;elementos.&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_"&gt;Parte 1 - Introducción a la &lt;em&gt;evaluación&amp;nbsp;perezosa&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -2668,45 +3051,4 @@ Dábale arroz a la zorra el Abad
 &lt;p&gt;Busca en la lista &lt;a href="http://mail.python.org/mailman/listinfo/python-es"&gt;python-es&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</content><category term="Python"></category><category term="python"></category><category term="scala"></category><category term="programming"></category></entry><entry><title>Entornos virtuales en python 3.3</title><link href="https://blog.ch3m4.org/2012/10/23/entornos-virtuales-en-python-3-3/" rel="alternate"></link><published>2012-10-23T20:58:00+02:00</published><updated>2012-10-23T20:58:00+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2012-10-23:/2012/10/23/entornos-virtuales-en-python-3-3/</id><summary type="html">&lt;p&gt;Con la &lt;a href="http://docs.python.org/3.3/whatsnew/3.3.html" title="What's new in python 3.3?"&gt;nueva versión de python 3.3&lt;/a&gt; se ha incorporado la propuesta &lt;a href="http://www.python.org/dev/peps/pep-0405" title="PEP-0405 Python Virtual Environments"&gt;&lt;span class="caps"&gt;PEP&lt;/span&gt;-405&lt;/a&gt; que añade al repertorio interno de python la posibilidad de crear entornos virtuales de modo parecido a virtualenv (vimos esta herramienta hace poco al hablar de la &lt;a href="https://blog.ch3m4.org/2012/07/24/instalacion-de-modulos/"&gt;instalación de módulos&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Tal como lo define &lt;a href="http://www.python.org/dev/peps/pep-0405" title="PEP-0405 Python Virtual Environments"&gt;&lt;span class="caps"&gt;PEP …&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;Con la &lt;a href="http://docs.python.org/3.3/whatsnew/3.3.html" title="What's new in python 3.3?"&gt;nueva versión de python 3.3&lt;/a&gt; se ha incorporado la propuesta &lt;a href="http://www.python.org/dev/peps/pep-0405" title="PEP-0405 Python Virtual Environments"&gt;&lt;span class="caps"&gt;PEP&lt;/span&gt;-405&lt;/a&gt; que añade al repertorio interno de python la posibilidad de crear entornos virtuales de modo parecido a virtualenv (vimos esta herramienta hace poco al hablar de la &lt;a href="https://blog.ch3m4.org/2012/07/24/instalacion-de-modulos/"&gt;instalación de módulos&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Tal como lo define &lt;a href="http://www.python.org/dev/peps/pep-0405" title="PEP-0405 Python Virtual Environments"&gt;&lt;span class="caps"&gt;PEP&lt;/span&gt;-405&lt;/a&gt;: &lt;em&gt;&amp;#8220;Los &lt;/em&gt;entornos virtuales&lt;em&gt; poseen su propio conjunto de paquetes instalados localmente, segregados del resto de paquetes instalados del sistema&amp;#8221;&lt;/em&gt;. Para crear y administrar estos entornos virtuales, se incluye el módulo &lt;code&gt;venv&lt;/code&gt;, así como el script &lt;code&gt;pyvenv.py&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Para crear un entorno virtual se puede utilizar el script &lt;code&gt;pyvenv&lt;/code&gt; (con python&amp;nbsp;3.3):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ pyvenv /ruta/al/nuevo/entorno/virtual
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;En windows, probablemente haya que ejecutar el script que se encuentra en &lt;code&gt;"C:\&amp;gt; Python33\Tools\Scripts\pyvenv.py"&lt;/code&gt;. Posiblemente sea más sencillo ejecutar directamente el módulo &lt;code&gt;venv&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ python -m venv /ruta/al/nuevo/entorno/virtual
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Entrando dentro del nuevo directorio, activamos el entorno de modo similar a como hacíamos con &lt;code&gt;virtualenv&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; /ruta/al/nuevo/entorno/virtual
-$ &lt;span class="nb"&gt;source&lt;/span&gt; bin/activate
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Hay que notar que el script &lt;code&gt;activate&lt;/code&gt; se debe ejecutar con &lt;code&gt;source&lt;/code&gt; ya que necesita cambiar algunas variables del entorno de ejecución&amp;nbsp;actual. &lt;/p&gt;
-&lt;p&gt;En windows, se debe ejecutar el script &lt;code&gt;Scripts\activate.bat&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="p"&gt;\&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;cd &lt;/span&gt;&lt;span class="n"&gt;entorno_virtual&lt;/span&gt;
-&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="p"&gt;\&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Scripts&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bat&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Una vez activado el entorno veremos que el prompt de la línea de comandos ha cambiado para indicarnos que estamos dentro. Las variables de entorno han cambiado, como puedes comprobar si miras &lt;code&gt;$PATH&lt;/code&gt;. A partir de aquí, la instalación de paquetes con &lt;code&gt;easy_install&lt;/code&gt; o &lt;code&gt;pip&lt;/code&gt; se realizarán dentro del entorno. A diferencia con &lt;code&gt;virtualenv&lt;/code&gt;, el módulo &lt;code&gt;venv&lt;/code&gt; no instala en nuestro entorno ninguna de estas herramientas, por lo que lo primero que tendremos que hacer será&amp;nbsp;instalarlas:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;(&lt;/span&gt;py3.3&lt;span class="o"&gt;)&lt;/span&gt; $ curl -O http://python-distribute.org/distribute_setup.py
-&lt;span class="o"&gt;(&lt;/span&gt;py3.3&lt;span class="o"&gt;)&lt;/span&gt; $ python distribute_setup.py
-&lt;span class="o"&gt;(&lt;/span&gt;py3.3&lt;span class="o"&gt;)&lt;/span&gt; $ easy_install pip
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Para desactivar el entorno se ejecuta &lt;code&gt;deactivate&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Aunque &lt;code&gt;venv&lt;/code&gt; sigue el mismo funcionamiento que &lt;code&gt;virtualenv&lt;/code&gt;, tiene notables&amp;nbsp;carencias:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;No permite configurar versiones distintas de&amp;nbsp;python&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;No replica la instalación python del sistema en la copia&amp;nbsp;local&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;No permite independizar el entorno virtual del la ruta donde se crea (&lt;em&gt;no relocatable&lt;/em&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;En definitiva, los entornos virtuales creados con &lt;code&gt;venv&lt;/code&gt; no son completamente independientes de la instalación python del sistema como sí puede hacer &lt;code&gt;virtualenv&lt;/code&gt;. Esperemos que se amplien las opciones con nuevas versiones de python. De momento, seguiremos con &lt;code&gt;virtualenv&lt;/code&gt;.&lt;/p&gt;</content><category term="Python"></category></entry></feed>
+&lt;/div&gt;</content><category term="Python"></category><category term="python"></category><category term="scala"></category><category term="programming"></category></entry></feed>

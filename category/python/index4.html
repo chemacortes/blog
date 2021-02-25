@@ -61,6 +61,28 @@
 
 <article>
   <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/06/06/ultimo-item-de-un-iterable/">Último item de un&nbsp;iterable</a></h1>
+  </div>
+  <div class="article_text">
+    <p>Algunas veces necesitamos obtener el último item de un iterador. Para
+ello se suele iterar hasta agotar el&nbsp;iterador:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">iterador</span><span class="p">:</span>
+     <span class="k">pass</span>
+
+<span class="n">last_item</span> <span class="o">=</span> <span class="n">it</span>  
+</code></pre></div>
+
+<p>Una alternativa que se ve bastante es convertir previamente el iterable
+en una&nbsp;lista:</p>
+<div class="highlight"><pre><span></span><code><span class="n">last_item</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">iterador</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Tiene el incoveniente de gastar recursos …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2011/06/06/estudio-funcion-factorial/">Estudio función&nbsp;factorial</a></h1>
   </div>
   <div class="article_text">

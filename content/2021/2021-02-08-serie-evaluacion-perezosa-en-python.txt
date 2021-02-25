@@ -4,7 +4,7 @@
 - [Parte 2 - Secuencias infinitas][102]
 - [Parte 3 - _Memoización_][103]
 - [Parte 4 - _Evaluación perezosa_ avanzada][104]
-- [Parte 5 - Ejemplo práctico: potencias de Fermi-Dirac][105]
+- Parte 5 - Ejemplo práctico: potencias de Fermi-Dirac
 - [Apéndice: sobre el tipado de datos utilizado][106]
 
 !!!danger "La serie completa como _Jupyter Notebook_ en:"

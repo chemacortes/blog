@@ -1,7 +1,7 @@
 ---
 Title: Evaluación perezosa en python - Apéndice
-Date: 2021-02-15 21:20:44
-Modified: 2021-02-17 00:32:31
+Date: 2021-03-07 23:55:43
+Modified: 2021-03-07 23:55:51
 Category: Python
 Tags: lazy-eval, sequence, range
 Slug: evaluacion-perezosa-en-python-apendice

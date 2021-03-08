@@ -1,7 +1,7 @@
 ---
-Title: Evaluación perezosa en python - Parte 1
+Title: Introducción a la "Evaluación Perezosa" - Evaluación perezosa en python - Parte 1
 Date: 2021-02-08 19:17:25
-Modified: 2021-02-14 20:11:07
+Modified: 2021-03-08 00:04:34
 Category: Python
 Tags: lazy-eval, sequence, range
 Slug: evaluacion-perezosa-en-python-parte-1

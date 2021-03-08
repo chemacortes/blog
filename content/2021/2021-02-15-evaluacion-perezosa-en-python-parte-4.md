@@ -1,9 +1,9 @@
 ---
-Title: Evaluación perezosa en python - Parte 4
+Title: Evaluación perezosa avanzada - Evaluación perezosa en python - Parte 4
 Date: 2021-02-15 21:20:20
-Modified: 2021-02-25 20:42:57
+Modified: 2021-03-08 00:05:14
 Category: Python
-Tags: lazy-eval, sequence, range
+Tags: lazy-eval, sequence, range, primes
 Slug: evaluacion-perezosa-en-python-parte-4
 Authors: Chema Cortés
 Summary: Partiendo del algoritmo para la obtención de números primos crearemos una secuencia infinita mediante técnicas de evaluación perezosa que crezca a medida que se necesite. Al final, aplicaremos algunas optimizaciones para el cálculo de números primos.

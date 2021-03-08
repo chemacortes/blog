@@ -130,6 +130,9 @@ class Primes:
     def count(self, n: int) -> int:
         return 1 if n in self else 0
 
+    def __iter__(self) -> Iterator[Prime]:
+        yield from (self[i] for i in range(0, INFINITE))
+
 
 primes = Primes()
 isprime = primes.__contains__

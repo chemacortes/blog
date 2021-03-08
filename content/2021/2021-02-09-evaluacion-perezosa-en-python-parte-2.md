@@ -1,7 +1,7 @@
 ---
-Title: Evaluación perezosa en python - Parte 2
+Title: Secuencias infinitas - Evaluación perezosa en python - Parte 2
 Date: 2021-02-09 23:21:13
-Modified: 2021-02-14 20:11:16
+Modified: 2021-03-08 00:05:21
 Category: Python
 Tags: lazy-eval, sequence, range
 Slug: evaluacion-perezosa-en-python-parte-2

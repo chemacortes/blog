@@ -1,3 +1,19 @@
+"""
+Secuencia perezosa de números primos
+
+>>> isprime(2 ** 31 - 1)
+True
+>>> primes[90000]
+1159531
+>>> primes.index(1159531)
+90000
+>>> primes.size
+90001
+>>> primes.last
+1159531
+"""
+
+
 from collections.abc import Iterator
 from itertools import islice
 from math import isqrt
@@ -52,8 +68,3 @@ class Primes(LazySortedSequence[Prime]):
 
 primes = Primes()
 isprime = primes.__contains__
-
-if __name__ == "__main__":
-    assert isprime(2 ** 31 - 1)
-    assert primes[90000] == 1159531
-    assert primes.index(1159531) == 90000

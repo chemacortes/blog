@@ -1,7 +1,7 @@
 ---
 Title: Evaluación perezosa avanzada - Evaluación perezosa en python - Parte 4
 Date: 2021-02-15 21:20:20
-Modified: 2021-03-08 00:05:14
+Modified: 2021-03-09 02:44:37
 Category: Python
 Tags: lazy-eval, sequence, range, primes
 Slug: evaluacion-perezosa-en-python-parte-4
@@ -312,7 +312,7 @@ El código final optimizado, sin usar concurrencia, se puede obtener del
 siguiente enlace:
 
 !!! Descarga
-    [primes.py]({attach}/code/2021Q1/primes.py)
+    [primes.py]({attach}/code/2021Q1/old/primes.py)
 
 Por hacernos una idea, esta sería la comparativa de tiempos de la versiones haskell y python:
 

@@ -11,20 +11,34 @@
       "args": [
         "${workspaceFolder}/src/blog/new_article.py",
         "${input:title}",
-        "${input:category}",
+        "${input:category}"
       ],
       "problemMatcher": {
-        "fileLocation": ["relative", "${workspaceFolder}"],
-        "pattern":{
+        "fileLocation": [
+          "relative",
+          "${workspaceFolder}"
+        ],
+        "pattern": {
           "regexp": "^(.*) '([^']*)'.*$",
           "kind": "file",
           "message": 1,
-          "file": 2,
+          "file": 2
         },
         "severity": "info"
       }
-
-
+    },
+    {
+      "label": "run doctest",
+      "detail": "Ejecuta doctest sobre el fichero actual",
+      "type": "process",
+      "command": "${config:python.pythonPath}",
+      "args": [
+        "-m",
+        "doctest",
+        "-v",
+        "${file}"
+      ],
+      "problemMatcher": []
     }
   ],
   "inputs": [

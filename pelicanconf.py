@@ -28,7 +28,10 @@ LINKS = (
     ("Scala Feeds", "/feeds/scala.atom.xml"),
     ("Python Feeds", "/feeds/python.atom.xml"),
     # ('Haskell Feeds','/feeds/haskell.atom.xml'),
-    ("my coursera", "https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6"),
+    (
+        "my coursera",
+        "https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6",
+    ),
 )
 
 # Social widget
@@ -58,9 +61,17 @@ EXTRA_PATH_METADATA = {
     "extra/favicon.ico": {"path": "favicon.ico"},
     "extra/README.md": {"path": "README.md"},
     "extra/CNAME": {"path": "CNAME"},
-    "extra/google989145ab610d7f0b.html": {"path": "google989145ab610d7f0b.html"},
+    "extra/google989145ab610d7f0b.html": {
+        "path": "google989145ab610d7f0b.html"
+    },
 }
-IGNORE_FILES = ["extra"]
+IGNORE_FILES = [
+    ".git",
+    "extra",
+    "__pycache__",
+    ".ipynb_checkpoints",
+    "*.sync.md",
+]
 
 INDEX_SAVE_AS = "index.html"
 ARCHIVES_URL = "archives.html"
@@ -131,7 +142,11 @@ MARKDOWN = {
 SITEMAP = {
     "format": "xml",
     "priorities": {"articles": 0.9, "indexes": 0.5, "pages": 0.3},
-    "changefreqs": {"articles": "monthly", "indexes": "weekly", "pages": "yearly"},
+    "changefreqs": {
+        "articles": "monthly",
+        "indexes": "weekly",
+        "pages": "yearly",
+    },
 }
 
 MATH_JAX = {
@@ -142,7 +157,9 @@ MATH_JAX = {
 DISPLAY_META_ABOVE_ARTICLE = True
 FUZZY_DATES = True
 TAGLINE = "Quarks, bits y otras criaturas infinitesimales"
-USER_LOGO_URL = "https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80"
+USER_LOGO_URL = (
+    "https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80"
+)
 # DISQUS_SITENAME = "hyperreals"
 # DISQUS_COLLAPSED = True
 GLOBAL_KEYWORDS = [

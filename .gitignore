@@ -6,3 +6,5 @@ __pycache__/
 .idea/
 .venv/
 content/_works
+.ipynb_checkpoints/
+*.sync.ipynb

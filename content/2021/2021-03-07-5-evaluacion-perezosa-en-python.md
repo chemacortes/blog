@@ -1,7 +1,7 @@
 ---
 Title: Formalización de la Secuencia Perezosa - Evaluación perezosa en python - Parte 5
 Date: 2021-03-07 23:57:55
-Modified: 2021-03-08 01:53:59
+Modified: 2021-03-15 21:18:53
 Category: Python
 Tags: lazy-eval, sequence, primes
 Slug: evaluacion-perezosa-en-python-parte-5
@@ -15,12 +15,14 @@ Status:
 ## Refactorización
 
 Hasta ahora hemos visto cómo crear una _secuencia perezosa_ que va guardando en
-una caché los resultado de una operación (proceso de _memoización_). Así mismo,
-hemos visto con la secuencia de números primos que podemos optimizar algunas
-búsquedas si la secuencia es una _secuencia ordenada_. Vamos a intentar
-formalizar todo esto con las clases `LazySequence` y `LazySortedSequence`.
+una caché los resultados de una operación (proceso de _memoización_). Así mismo,
+cuando la secuencia es una _secuencia ordenada_ podemos optimizar algunas
+búsquedas, tal como vimos con la secuencia de números primos.
 
-Descargas del código refactorizado:
+Vamos a intentar darle una forma a todo esto creando las clases `LazySequence` y
+`LazySortedSequence`.
+
+El código refactorizado final se puede descargar a continuación:
 
 - [genericrange.py][]
 - [lazyseq.py][]
@@ -28,8 +30,8 @@ Descargas del código refactorizado:
 
 ### LazySequence
 
-La clase `LazySequence` creará una _secuencia perezosa_ a partir de un iterador.
-A medida que obtenga elementos del iterador, los irá almacenando en una caché:
+La clase `LazySequence` crea una _secuencia perezosa_ a partir de un iterador.
+A medida que obtenga elementos del iterador, los va almacenando en una caché:
 
 ```python
 T = TypeVar("T", covariant=True)
@@ -70,7 +72,7 @@ Para que funcione como secuencia, se implementan los métodos `__getitem__`:
         return [self[i] for i in rng]
 ```
 
-Y añadimos el método `__iter__` para que cumpla con el protocolo _iterador_:
+Y añadimos el método `__iter__` para cumplir con el protocolo _iterator_:
 
 ```python
     def __iter__(self) -> Iterator[T]:
@@ -82,12 +84,13 @@ Y añadimos el método `__iter__` para que cumpla con el protocolo _iterador_:
 
 Derivando de `LazySequence`, se crea la clase `LazySortedSequence` para cuando
 el iterador produzca una secuencia ordenada. Tal como hemos visto, cuando la
-secuencia está ordenada podemos realizar búsquedas por _bisecciones_ que resulta
-bastante eficiente.
+secuencia está ordenada podemos realizar búsquedas por _bisecciones_ que
+resultan bastante eficiente.
 
 La operación principal será el método `insertpos()` que nos indica la posición
-en la que se insertaría un elemento en la secuencia, siempre manteniendo el
-orden. Si no son suficientes con los elementos de la caché, se extraerán más mediante `next()`, lo que irá añadiéndose a la caché:
+en la que se insertaría un elemento en la secuencia, manteniendo el orden de los
+elementos. Si no son suficientes con los elementos de la caché, se extraerán más
+del iterador mediante `next()`, que irán añadiéndose progresivamente a la caché:
 
 ```python
 Ord = TypeVar("Ord", bound=int, covariant=True)
@@ -104,7 +107,8 @@ class LazySortedSequence(LazySequence[Ord]):
         return idx
 ```
 
-Con el método `insertpos()` ya podemos definir los métodos `__contains__()` e `index()` típicos de la secuencias:
+Con el método `insertpos()` ya podemos definir los métodos `__contains__()` e
+`index()` típicos de la secuencias:
 
 ```python
     def __contains__(self, x: int) -> bool:
@@ -118,15 +122,15 @@ Con el método `insertpos()` ya podemos definir los métodos `__contains__()` e 
         raise ValueError(f"{x} is not in {self.__class__.__name__}")
 ```
 
-No existe un protocolo para elementos _ordenables_ (`Sortable` u `Ordered`).
-Para ordenar elementos se usan los métodos de comparación `__eq__`, `__ne__`,
+No existe un protocolo para elementos _ordenables_ (`Sortable`, `Ordered`). Para
+ordenar elementos se usan los métodos de comparación `__eq__`, `__ne__`,
 `__lt__`, `__le__`, `__gt__` y `__ge__`. Pero se suele considerar estos métodos
 redundantes ya que basta con definir sólo dos (eg: `__eq__` y `__lt__`) para
 establecer una ordenación.
 
-Como no hay una forma mejor, se ha enlazado el tipo genérico `Ord` con `int`
-para que el chequeador de tipos no se queje en la comparaciónes, aunque no tiene
-porqué limitarse a los números enteros.
+Como no hay una forma mejor, hemos creado el tipo genérico `Ord` enlazado con
+`int` para que al menos el chequeador de tipos no se queje en la comparaciónes,
+aunque no tiene porqué limitarse su aplicación a números enteros.
 
 ### Números primos
 
@@ -156,8 +160,12 @@ class Primes(LazySortedSequence[Prime]):
             top += 1
 ```
 
-En la implementación que teníamos de la clase `Primes`, el método
-`__contains__()` estaba optimizado para limitarse a comprobar la pertencia de un
+Si dejamos así la codificación, la clase `Primes` usará el método `__contains__`
+de `LazySortedSequence`. Este método añadirá primos a la caché hasta alcanzar el
+argumento solicitado.
+
+Si recordamos de la implementación anterior que teníamos de la clase `Primes`,
+el método `__contains__()` estaba optimizado para comprobar la pertencia de un
 número, sin añadir más elementos a la caché. Vamos a recuperar esta
 codificación:
 
@@ -184,7 +192,7 @@ codificación:
 
 -----
 
-{! content/2021/2021-02-08-serie-evaluacion-perezosa-en-python.txt !}
+{! content/2021/2021-02-08-0-serie-evaluacion-perezosa-en-python.txt !}
 
 -----
 

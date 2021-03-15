@@ -1,7 +1,7 @@
 ---
 Title: Evaluación perezosa avanzada - Evaluación perezosa en python - Parte 4
 Date: 2021-02-15 21:20:20
-Modified: 2021-03-09 02:44:37
+Modified: 2021-03-15 20:54:35
 Category: Python
 Tags: lazy-eval, sequence, range, primes
 Slug: evaluacion-perezosa-en-python-parte-4
@@ -331,6 +331,6 @@ table {border-collapse: collapse;}
 
 -----
 
-{! content/2021/2021-02-08-serie-evaluacion-perezosa-en-python.txt !}
+{! content/2021/2021-02-08-0-serie-evaluacion-perezosa-en-python.txt !}
 
 -----

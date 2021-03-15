@@ -1,7 +1,7 @@
 ---
 Title: Secuencias infinitas - Evaluación perezosa en python - Parte 2
 Date: 2021-02-09 23:21:13
-Modified: 2021-03-08 00:05:21
+Modified: 2021-03-15 20:54:16
 Category: Python
 Tags: lazy-eval, sequence, range
 Slug: evaluacion-perezosa-en-python-parte-2
@@ -249,6 +249,6 @@ los rangos que ya habíamos visto anteriormente para crear la secuencia infinita
 
 -----
 
-{! content/2021/2021-02-08-serie-evaluacion-perezosa-en-python.txt !}
+{! content/2021/2021-02-08-0-serie-evaluacion-perezosa-en-python.txt !}
 
 -----

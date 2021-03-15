@@ -1,7 +1,7 @@
 ---
 Title: Memoización - Evaluación perezosa en python - Parte 3
 Date: 2021-02-14 17:53:58
-Modified: 2021-03-08 00:05:00
+Modified: 2021-03-15 20:54:28
 Category: Python
 Tags: lazy-eval, memoize, cache
 Slug: evaluacion-perezosa-en-python-parte-3
@@ -176,7 +176,7 @@ _Evaluación Perezosa_.
 
 -----
 
-{! content/2021/2021-02-08-serie-evaluacion-perezosa-en-python.txt !}
+{! content/2021/2021-02-08-0-serie-evaluacion-perezosa-en-python.txt !}
 
 -----
 

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Chema Cortés">
-  <meta name="description" content="Evaluación perezosa en python - Parte 1 | Introducción a la Evaluación Perezosa Podemos definir “Evaluación Perezosa” como aquella evaluación que...">
+  <meta name="description" content="Introducción a la “Evaluación Perezosa” - Evaluación perezosa en python - Parte 1 | Introducción a la Evaluación Perezosa Podemos...">
 
   <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ea57ac74.min.css">
 
@@ -17,7 +17,7 @@
 
 <meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, lazy-eval, sequence, range">
 
-  <title>Evaluación perezosa en python - Parte 1 | Hyperreals *R</title>
+  <title>Introducción a la “Evaluación Perezosa” - Evaluación perezosa en python - Parte 1 | Hyperreals *R</title>
 
 </head>
 
@@ -65,13 +65,13 @@
 <div class="article_meta">
   <p>Posted <time data-timeago datetime="2021-02-08T19:17:25+01:00">lun 08 febrero 2021</time>
    by Chema Cortés  </p>
-  <p>Last updated <time data-timeago datetime="2021-02-14T20:11:07+01:00">dom 14 febrero 2021</time></p>
+  <p>Last updated <time data-timeago datetime="2021-03-15T20:54:06+01:00">lun 15 marzo 2021</time></p>
   <p>
   Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
 &ndash;&ndash;  Tags:
     <a href="https://blog.ch3m4.org/tag/lazy-eval/">lazy-eval</a>,    <a href="https://blog.ch3m4.org/tag/sequence/">sequence</a>,    <a href="https://blog.ch3m4.org/tag/range/">range</a>  </p>
 </div>  <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" class="nohover">Evaluación perezosa en python - Parte&nbsp;1</a></h1>
+    <h1><a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" class="nohover">Introducción a la &#8220;Evaluación Perezosa&#8221; - Evaluación perezosa en python - Parte&nbsp;1</a></h1>
   </div>
   <div class="article_text">
     <h2>Introducción a la <em>Evaluación&nbsp;Perezosa</em></h2>
@@ -297,12 +297,16 @@ con <em>secuencias infinitas</em> de&nbsp;elementos.</p>
 <li><a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas">Parte 2 - Secuencias&nbsp;infinitas</a></li>
 <li><a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_">Parte 3 - <em>Memoización</em></a></li>
 <li><a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada">Parte 4 - <em>Evaluación perezosa</em>&nbsp;avanzada</a></li>
-<li>Parte 5 - Ejemplo práctico: potencias de&nbsp;Fermi-Dirac</li>
-<li><a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado">Apéndice: sobre el tipado de datos&nbsp;utilizado</a></li>
+<li><a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" title="Parte 5 - Formalización de la Secuencia Perezosa">Parte 5 - Formalización de la Secuencia&nbsp;Perezosa</a></li>
+<li>Parte 6 - Ejemplo práctico: Potencias de&nbsp;Fermi-Dirac</li>
+<li><a href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado">Apéndice: sobre el tipado de datos&nbsp;utilizado</a></li>
 </ul>
 <div class="admonition danger">
-<p class="admonition-title">La serie completa como <em>Jupyter Notebook</em>&nbsp;en:</p>
-<p><a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.ipynb" title="Notebook Evaluación perezosa en python">serie-evaluacion-perezosa-en-python.ipynb</a></p>
+<p class="admonition-title">La serie unificada como <em>Jupyter Notebook</em>&nbsp;en:</p>
+<ul>
+<li><a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.ipynb" title="Notebook - Evaluación perezosa en python">formato notebook&nbsp;(.ipynb)</a></li>
+<li><a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.md" title="Jupytext - Evaluación perezosa en python">formato jupytext&nbsp;(.md)</a></li>
+</ul>
 <p><em><span class="caps">INCOMPLETA</span>&nbsp;TODAVÍA</em></p>
 </div>
 <hr>
@@ -317,7 +321,7 @@ con <em>secuencias infinitas</em> de&nbsp;elementos.</p>
   </li>
    <li class="next">
     <a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Siguiente">
-      Evaluación perezosa en python - Parte&nbsp;2
+      Secuencias infinitas - Evaluación perezosa en python - Parte&nbsp;2
       <i class="fa fa-arrow-circle-right"></i>
     </a>
   </li>
@@ -339,7 +343,7 @@ With category
       href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/"
       title="Siguiente en misma categoría"
     >
-      Evaluación perezosa en python - Parte&nbsp;2
+      Secuencias infinitas - Evaluación perezosa en python - Parte&nbsp;2
       <i class="fa fa-arrow-circle-o-right"></i>
     </a>
   </li>
@@ -354,7 +358,7 @@ With category
   <script type="text/javascript">
     var disqus_config = function () {
         this.page.identifier = "2021/02/08/evaluacion-perezosa-en-python-parte-1/";
-        this.page.title = "Evaluación perezosa en python - Parte&nbsp;1";
+        this.page.title = "Introducción a la &#8220;Evaluación Perezosa&#8221; - Evaluación perezosa en python - Parte&nbsp;1";
     };
     loadDisqus = function(sitename) {
       var d = document, s = d.createElement('script');

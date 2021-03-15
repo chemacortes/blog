@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Formalización de la Secuencia Perezosa - Evaluación perezosa en python - Parte 5 | Refactorización Hasta ahora hemos visto cómo crear una secuencia...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ea57ac74.min.css">
+
+  <script src="https://blog.ch3m4.org/theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, lazy-eval, sequence, primes">
+
+  <title>Formalización de la Secuencia Perezosa - Evaluación perezosa en python - Parte 5 | Hyperreals *R</title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github" target="_blank" rel="noopener noreferrer"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket" target="_blank" rel="noopener noreferrer"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow" target="_blank" rel="noopener noreferrer"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml" target="_blank" rel="noopener noreferrer">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml" target="_blank" rel="noopener noreferrer">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml" target="_blank" rel="noopener noreferrer">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6" target="_blank" rel="noopener noreferrer">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+<div class="article_meta">
+  <p>Posted <time data-timeago datetime="2021-03-07T23:57:55+01:00">dom 07 marzo 2021</time>
+   by Chema Cortés  </p>
+  <p>Last updated <time data-timeago datetime="2021-03-15T21:18:53+01:00">lun 15 marzo 2021</time></p>
+  <p>
+  Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+&ndash;&ndash;  Tags:
+    <a href="https://blog.ch3m4.org/tag/lazy-eval/">lazy-eval</a>,    <a href="https://blog.ch3m4.org/tag/sequence/">sequence</a>,    <a href="https://blog.ch3m4.org/tag/primes/">primes</a>  </p>
+</div>  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" class="nohover">Formalización de la Secuencia Perezosa - Evaluación perezosa en python - Parte&nbsp;5</a></h1>
+  </div>
+  <div class="article_text">
+    <h2>Refactorización</h2>
+<p>Hasta ahora hemos visto cómo crear una <em>secuencia perezosa</em> que va guardando en
+una caché los resultados de una operación (proceso de <em>memoización</em>). Así mismo,
+cuando la secuencia es una <em>secuencia ordenada</em> podemos optimizar algunas
+búsquedas, tal como vimos con la secuencia de números&nbsp;primos.</p>
+<p>Vamos a intentar darle una forma a todo esto creando las clases <code>LazySequence</code> y
+<code>LazySortedSequence</code>.</p>
+<p>El código refactorizado final se puede descargar a&nbsp;continuación:</p>
+<ul>
+<li><a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/genericrange.py" title="GenericRange class">genericrange.py</a></li>
+<li><a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/lazyseq.py" title="LazySequence class">lazyseq.py</a></li>
+<li><a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/primes.py" title="Primes class">primes.py</a></li>
+</ul>
+<h3>LazySequence</h3>
+<p>La clase <code>LazySequence</code> crea una <em>secuencia perezosa</em> a partir de un iterador.
+A medida que obtenga elementos del iterador, los va almacenando en una&nbsp;caché:</p>
+<div class="highlight"><pre><span></span><code><span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">covariant</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">LazySequence</span><span class="p">(</span><span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iterator</span><span class="p">:</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterator</span> <span class="o">=</span> <span class="n">iterator</span>
+
+    <span class="k">def</span> <span class="fm">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iterator</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+</code></pre></div>
+
+<p>Cada vez que se calcule un nuevo elemento a través de <code>next()</code>, éste se añadirá
+a la&nbsp;caché.</p>
+<p>Para que funcione como secuencia, se implementan los métodos <code>__getitem__</code>:</p>
+<div class="highlight"><pre><span></span><code>    <span class="nd">@singledispatchmethod</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+    <span class="nd">@__getitem__</span><span class="o">.</span><span class="n">register</span>
+    <span class="k">def</span> <span class="nf">__getitem_int__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">OverflowError</span>
+        <span class="k">elif</span> <span class="n">idx</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iterator</span><span class="p">,</span> <span class="n">idx</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+    <span class="nd">@__getitem__</span><span class="o">.</span><span class="n">register</span>
+    <span class="k">def</span> <span class="nf">__getitem_slice__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sl</span><span class="p">:</span> <span class="nb">slice</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+        <span class="n">rng</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">INFINITE</span><span class="p">)[</span><span class="n">sl</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rng</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Y añadimos el método <code>__iter__</code> para cumplir con el protocolo <em>iterator</em>:</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+        <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span>
+        <span class="k">yield from</span> <span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">),</span> <span class="n">INFINITE</span><span class="p">))</span>
+</code></pre></div>
+
+<h3>LazySortedSequence</h3>
+<p>Derivando de <code>LazySequence</code>, se crea la clase <code>LazySortedSequence</code> para cuando
+el iterador produzca una secuencia ordenada. Tal como hemos visto, cuando la
+secuencia está ordenada podemos realizar búsquedas por <em>bisecciones</em> que
+resultan bastante&nbsp;eficiente.</p>
+<p>La operación principal será el método <code>insertpos()</code> que nos indica la posición
+en la que se insertaría un elemento en la secuencia, manteniendo el orden de los
+elementos. Si no son suficientes con los elementos de la caché, se extraerán más
+del iterador mediante <code>next()</code>, que irán añadiéndose progresivamente a la&nbsp;caché:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Ord</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;Ord&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">covariant</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">LazySortedSequence</span><span class="p">(</span><span class="n">LazySequence</span><span class="p">[</span><span class="n">Ord</span><span class="p">]):</span>
+    <span class="k">def</span> <span class="nf">insertpos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">last</span><span class="p">:</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">bisect_left</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">while</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">pass</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">idx</span>
+</code></pre></div>
+
+<p>Con el método <code>insertpos()</code> ya podemos definir los métodos <code>__contains__()</code> e
+<code>index()</code> típicos de la&nbsp;secuencias:</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">insertpos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">insertpos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">idx</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">idx</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> is not in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>No existe un protocolo para elementos <em>ordenables</em> (<code>Sortable</code>, <code>Ordered</code>). Para
+ordenar elementos se usan los métodos de comparación <code>__eq__</code>, <code>__ne__</code>,
+<code>__lt__</code>, <code>__le__</code>, <code>__gt__</code> y <code>__ge__</code>. Pero se suele considerar estos métodos
+redundantes ya que basta con definir sólo dos (eg: <code>__eq__</code> y <code>__lt__</code>) para
+establecer una&nbsp;ordenación.</p>
+<p>Como no hay una forma mejor, hemos creado el tipo genérico <code>Ord</code> enlazado con
+<code>int</code> para que al menos el chequeador de tipos no se queje en la comparaciónes,
+aunque no tiene porqué limitarse su aplicación a números&nbsp;enteros.</p>
+<h3>Números&nbsp;primos</h3>
+<p>Como caso práctico, veamos cómo se puede redefinir la clase <code>Primes</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@final</span>
+<span class="k">class</span> <span class="nc">Primes</span><span class="p">(</span><span class="n">LazySortedSequence</span><span class="p">[</span><span class="n">Prime</span><span class="p">]):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__genprimes</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">__genprimes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Prime</span><span class="p">]:</span>
+        <span class="n">_primes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="n">top</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">stop</span> <span class="o">=</span> <span class="n">_primes</span><span class="p">[</span><span class="n">top</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">islice</span><span class="p">(</span><span class="n">_primes</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">top</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">n</span>
+
+            <span class="n">start</span> <span class="o">=</span> <span class="n">stop</span> <span class="o">+</span> <span class="mi">2</span>
+            <span class="n">top</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+
+<p>Si dejamos así la codificación, la clase <code>Primes</code> usará el método <code>__contains__</code>
+de <code>LazySortedSequence</code>. Este método añadirá primos a la caché hasta alcanzar el
+argumento&nbsp;solicitado.</p>
+<p>Si recordamos de la implementación anterior que teníamos de la clase <code>Primes</code>,
+el método <code>__contains__()</code> estaba optimizado para comprobar la pertencia de un
+número, sin añadir más elementos a la caché. Vamos a recuperar esta&nbsp;codificación:</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">last</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+        <span class="n">root</span> <span class="o">=</span> <span class="n">isqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">_primes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span>
+
+        <span class="n">top</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="k">if</span> <span class="n">root</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">last</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">insertpos</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="n">prime</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">prime</span> <span class="ow">in</span> <span class="n">islice</span><span class="p">(</span><span class="n">_primes</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">top</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># &quot;one-shot&quot; check</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">last</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">root</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+
+<hr>
+<h2>Serie <em>Evaluación Perezosa en&nbsp;Python</em></h2>
+<ul>
+<li><a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_">Parte 1 - Introducción a la <em>evaluación&nbsp;perezosa</em></a></li>
+<li><a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas">Parte 2 - Secuencias&nbsp;infinitas</a></li>
+<li><a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_">Parte 3 - <em>Memoización</em></a></li>
+<li><a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada">Parte 4 - <em>Evaluación perezosa</em>&nbsp;avanzada</a></li>
+<li><a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" title="Parte 5 - Formalización de la Secuencia Perezosa">Parte 5 - Formalización de la Secuencia&nbsp;Perezosa</a></li>
+<li>Parte 6 - Ejemplo práctico: Potencias de&nbsp;Fermi-Dirac</li>
+<li><a href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado">Apéndice: sobre el tipado de datos&nbsp;utilizado</a></li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">La serie unificada como <em>Jupyter Notebook</em>&nbsp;en:</p>
+<ul>
+<li><a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.ipynb" title="Notebook - Evaluación perezosa en python">formato notebook&nbsp;(.ipynb)</a></li>
+<li><a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.md" title="Jupytext - Evaluación perezosa en python">formato jupytext&nbsp;(.md)</a></li>
+</ul>
+<p><em><span class="caps">INCOMPLETA</span>&nbsp;TODAVÍA</em></p>
+</div>
+<hr>
+  </div>
+
+<ul class="pager">
+  <li class="previous">
+    <a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Anterior">
+      <i class="fa fa-arrow-circle-left"></i>
+      Evaluación perezosa avanzada - Evaluación perezosa en python - Parte&nbsp;4
+    </a>
+  </li>
+   <li class="next">
+    <a href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" title="Siguiente">
+      Evaluación perezosa en python -&nbsp;Apéndice
+      <i class="fa fa-arrow-circle-right"></i>
+    </a>
+  </li>
+</ul>
+With category
+<a href="https://blog.ch3m4.org/category/python/">Python</a>:
+<ul class="pager">
+  <li class="previous">
+    <a
+      href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/"
+      title="Anterior en misma categoría"
+    >
+      <i class="fa fa-arrow-circle-o-left"></i>
+      Evaluación perezosa avanzada - Evaluación perezosa en python - Parte&nbsp;4
+    </a>
+  </li>
+   <li class="next">
+    <a
+      href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/"
+      title="Siguiente en misma categoría"
+    >
+      Evaluación perezosa en python -&nbsp;Apéndice
+      <i class="fa fa-arrow-circle-o-right"></i>
+    </a>
+  </li>
+</ul>
+
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script id="dsq-count-scr" src="https://hyperreals.disqus.com/count.js" async></script>
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.identifier = "2021/03/07/evaluacion-perezosa-en-python-parte-5/";
+        this.page.title = "Formalización de la Secuencia Perezosa - Evaluación perezosa en python - Parte&nbsp;5";
+    };
+    loadDisqus = function(sitename) {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hyperreals.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', skipHeader)
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

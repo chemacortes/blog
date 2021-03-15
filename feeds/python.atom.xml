@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R - Python</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/python.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-02-25T20:42:57+01:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Evaluación perezosa en python - Apéndice</title><link href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" rel="alternate"></link><published>2021-02-15T21:20:44+01:00</published><updated>2021-02-17T00:32:31+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-15:/2021/02/15/evaluacion-perezosa-en-python-apendice/</id><summary type="html">&lt;p&gt;Una revisión crítica al tipado gradual de datos de python que se ha usado en esta serie de artículos sobre &lt;em&gt;evaluación perezosa&lt;/em&gt;.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R - Python</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/python.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-03-15T21:18:53+01:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Evaluación perezosa en python - Apéndice</title><link href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" rel="alternate"></link><published>2021-03-10T23:55:43+01:00</published><updated>2021-03-15T20:55:00+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-03-10:/2021/03/10/evaluacion-perezosa-en-python-apendice/</id><summary type="html">&lt;p&gt;Una revisión crítica al tipado gradual de datos de python que se ha usado en esta serie de artículos sobre &lt;em&gt;evaluación perezosa&lt;/em&gt;.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/h2&gt;
 &lt;p&gt;Durante esta serie de artículos he procurado usar el &lt;em&gt;tipado gradual&lt;/em&gt; de python,
 no sólo para mejorar la compresión, sino porque lo considero buena práctica para
 detectar algunos problemas en el momento de escribir el código. El intérprete de
@@ -195,15 +195,190 @@ Como decía un gran sabio: &lt;em&gt;&amp;#8220;Vamos a cambiarlo todo para que 
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" title="Parte 5 - Formalización de la Secuencia Perezosa"&gt;Parte 5 - Formalización de la Secuencia&amp;nbsp;Perezosa&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="admonition danger"&gt;
-&lt;p class="admonition-title"&gt;La serie completa como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.ipynb" title="Notebook Evaluación perezosa en python"&gt;serie-evaluacion-perezosa-en-python.ipynb&lt;/a&gt;&lt;/p&gt;
+&lt;p class="admonition-title"&gt;La serie unificada como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.ipynb" title="Notebook - Evaluación perezosa en python"&gt;formato notebook&amp;nbsp;(.ipynb)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.md" title="Jupytext - Evaluación perezosa en python"&gt;formato jupytext&amp;nbsp;(.md)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&amp;nbsp;TODAVÍA&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;hr&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Evaluación perezosa en python - Parte 4</title><link href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" rel="alternate"></link><published>2021-02-15T21:20:20+01:00</published><updated>2021-02-25T20:42:57+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-15:/2021/02/15/evaluacion-perezosa-en-python-parte-4/</id><summary type="html">&lt;p&gt;Partiendo del algoritmo para la obtención de números primos crearemos una secuencia infinita mediante técnicas de evaluación perezosa que crezca a medida que se necesite. Al final, aplicaremos algunas optimizaciones para el cálculo de números&amp;nbsp;primos.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;&lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/h2&gt;
+&lt;hr&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Formalización de la Secuencia Perezosa - Evaluación perezosa en python - Parte 5</title><link href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" rel="alternate"></link><published>2021-03-07T23:57:55+01:00</published><updated>2021-03-15T21:18:53+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-03-07:/2021/03/07/evaluacion-perezosa-en-python-parte-5/</id><summary type="html">&lt;p&gt;Refactorización del código creado hasta ahora para formalizar las clases &lt;code&gt;LazySequence&lt;/code&gt; y &lt;code&gt;LazySortedSequence&lt;/code&gt; para uso&amp;nbsp;general.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Refactorización&lt;/h2&gt;
+&lt;p&gt;Hasta ahora hemos visto cómo crear una &lt;em&gt;secuencia perezosa&lt;/em&gt; que va guardando en
+una caché los resultados de una operación (proceso de &lt;em&gt;memoización&lt;/em&gt;). Así mismo,
+cuando la secuencia es una &lt;em&gt;secuencia ordenada&lt;/em&gt; podemos optimizar algunas
+búsquedas, tal como vimos con la secuencia de números&amp;nbsp;primos.&lt;/p&gt;
+&lt;p&gt;Vamos a intentar darle una forma a todo esto creando las clases &lt;code&gt;LazySequence&lt;/code&gt; y
+&lt;code&gt;LazySortedSequence&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;El código refactorizado final se puede descargar a&amp;nbsp;continuación:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/genericrange.py" title="GenericRange class"&gt;genericrange.py&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/lazyseq.py" title="LazySequence class"&gt;lazyseq.py&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/primes.py" title="Primes class"&gt;primes.py&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;LazySequence&lt;/h3&gt;
+&lt;p&gt;La clase &lt;code&gt;LazySequence&lt;/code&gt; crea una &lt;em&gt;secuencia perezosa&lt;/em&gt; a partir de un iterador.
+A medida que obtenga elementos del iterador, los va almacenando en una&amp;nbsp;caché:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;T&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;T&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;covariant&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;LazySequence&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Iterator&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;iterator&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Iterator&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_cache&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iterator&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;iterator&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__next__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iterator&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_cache&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Cada vez que se calcule un nuevo elemento a través de &lt;code&gt;next()&lt;/code&gt;, éste se añadirá
+a la&amp;nbsp;caché.&lt;/p&gt;
+&lt;p&gt;Para que funcione como secuencia, se implementan los métodos &lt;code&gt;__getitem__&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="nd"&gt;@singledispatchmethod&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__getitem__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;NotImplemented&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@__getitem__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__getitem_int__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;OverflowError&lt;/span&gt;
+        &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_cache&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extend&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;islice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iterator&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_cache&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@__getitem__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__getitem_slice__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sl&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+        &lt;span class="n"&gt;rng&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;INFINITE&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="n"&gt;sl&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;rng&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Y añadimos el método &lt;code&gt;__iter__&lt;/code&gt; para cumplir con el protocolo &lt;em&gt;iterator&lt;/em&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__iter__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Iterator&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+        &lt;span class="k"&gt;yield from&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_cache&lt;/span&gt;
+        &lt;span class="k"&gt;yield from&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_cache&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;INFINITE&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;LazySortedSequence&lt;/h3&gt;
+&lt;p&gt;Derivando de &lt;code&gt;LazySequence&lt;/code&gt;, se crea la clase &lt;code&gt;LazySortedSequence&lt;/code&gt; para cuando
+el iterador produzca una secuencia ordenada. Tal como hemos visto, cuando la
+secuencia está ordenada podemos realizar búsquedas por &lt;em&gt;bisecciones&lt;/em&gt; que
+resultan bastante&amp;nbsp;eficiente.&lt;/p&gt;
+&lt;p&gt;La operación principal será el método &lt;code&gt;insertpos()&lt;/code&gt; que nos indica la posición
+en la que se insertaría un elemento en la secuencia, manteniendo el orden de los
+elementos. Si no son suficientes con los elementos de la caché, se extraerán más
+del iterador mediante &lt;code&gt;next()&lt;/code&gt;, que irán añadiéndose progresivamente a la&amp;nbsp;caché:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Ord&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Ord&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bound&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;covariant&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;LazySortedSequence&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LazySequence&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Ord&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;insertpos&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;bisect_left&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_cache&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+                &lt;span class="k"&gt;pass&lt;/span&gt;
+            &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Con el método &lt;code&gt;insertpos()&lt;/code&gt; ya podemos definir los métodos &lt;code&gt;__contains__()&lt;/code&gt; e
+&lt;code&gt;index()&lt;/code&gt; típicos de la&amp;nbsp;secuencias:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__contains__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;bool&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insertpos&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_cache&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insertpos&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_cache&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;
+        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;ValueError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; is not in &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__name__&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;No existe un protocolo para elementos &lt;em&gt;ordenables&lt;/em&gt; (&lt;code&gt;Sortable&lt;/code&gt;, &lt;code&gt;Ordered&lt;/code&gt;). Para
+ordenar elementos se usan los métodos de comparación &lt;code&gt;__eq__&lt;/code&gt;, &lt;code&gt;__ne__&lt;/code&gt;,
+&lt;code&gt;__lt__&lt;/code&gt;, &lt;code&gt;__le__&lt;/code&gt;, &lt;code&gt;__gt__&lt;/code&gt; y &lt;code&gt;__ge__&lt;/code&gt;. Pero se suele considerar estos métodos
+redundantes ya que basta con definir sólo dos (eg: &lt;code&gt;__eq__&lt;/code&gt; y &lt;code&gt;__lt__&lt;/code&gt;) para
+establecer una&amp;nbsp;ordenación.&lt;/p&gt;
+&lt;p&gt;Como no hay una forma mejor, hemos creado el tipo genérico &lt;code&gt;Ord&lt;/code&gt; enlazado con
+&lt;code&gt;int&lt;/code&gt; para que al menos el chequeador de tipos no se queje en la comparaciónes,
+aunque no tiene porqué limitarse su aplicación a números&amp;nbsp;enteros.&lt;/p&gt;
+&lt;h3&gt;Números&amp;nbsp;primos&lt;/h3&gt;
+&lt;p&gt;Como caso práctico, veamos cómo se puede redefinir la clase &lt;code&gt;Primes&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nd"&gt;@final&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Primes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LazySortedSequence&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Prime&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__genprimes&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_cache&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extend&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__genprimes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Iterator&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Prime&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+        &lt;span class="n"&gt;_primes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_cache&lt;/span&gt;
+        &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+        &lt;span class="n"&gt;top&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+        &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;stop&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;_primes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+            &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+                &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;islice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_primes&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+                    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                        &lt;span class="k"&gt;break&lt;/span&gt;
+                &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                    &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;
+
+            &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+            &lt;span class="n"&gt;top&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Si dejamos así la codificación, la clase &lt;code&gt;Primes&lt;/code&gt; usará el método &lt;code&gt;__contains__&lt;/code&gt;
+de &lt;code&gt;LazySortedSequence&lt;/code&gt;. Este método añadirá primos a la caché hasta alcanzar el
+argumento&amp;nbsp;solicitado.&lt;/p&gt;
+&lt;p&gt;Si recordamos de la implementación anterior que teníamos de la clase &lt;code&gt;Primes&lt;/code&gt;,
+el método &lt;code&gt;__contains__()&lt;/code&gt; estaba optimizado para comprobar la pertencia de un
+número, sin añadir más elementos a la caché. Vamos a recuperar esta&amp;nbsp;codificación:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__contains__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;bool&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__contains__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;isqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;_primes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_cache&lt;/span&gt;
+
+        &lt;span class="n"&gt;top&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;last&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insertpos&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;any&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;prime&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;prime&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;islice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_primes&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;
+
+        &lt;span class="c1"&gt;# &amp;quot;one-shot&amp;quot; check&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;any&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;last&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;
+
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;h2&gt;Serie &lt;em&gt;Evaluación Perezosa en&amp;nbsp;Python&lt;/em&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_"&gt;Parte 1 - Introducción a la &lt;em&gt;evaluación&amp;nbsp;perezosa&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" title="Parte 5 - Formalización de la Secuencia Perezosa"&gt;Parte 5 - Formalización de la Secuencia&amp;nbsp;Perezosa&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="admonition danger"&gt;
+&lt;p class="admonition-title"&gt;La serie unificada como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.ipynb" title="Notebook - Evaluación perezosa en python"&gt;formato notebook&amp;nbsp;(.ipynb)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.md" title="Jupytext - Evaluación perezosa en python"&gt;formato jupytext&amp;nbsp;(.md)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&amp;nbsp;TODAVÍA&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="primes"></category></entry><entry><title>Evaluación perezosa avanzada - Evaluación perezosa en python - Parte 4</title><link href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" rel="alternate"></link><published>2021-02-15T21:20:20+01:00</published><updated>2021-03-15T20:54:35+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-15:/2021/02/15/evaluacion-perezosa-en-python-parte-4/</id><summary type="html">&lt;p&gt;Partiendo del algoritmo para la obtención de números primos crearemos una secuencia infinita mediante técnicas de evaluación perezosa que crezca a medida que se necesite. Al final, aplicaremos algunas optimizaciones para el cálculo de números&amp;nbsp;primos.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;&lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/h2&gt;
 &lt;p&gt;Haskell tiene una librería, &lt;code&gt;Data.Numbers.Primes&lt;/code&gt;, que ofrece tanto una
 secuencia con todos los números primos, &lt;code&gt;primes&lt;/code&gt;, como la función &lt;code&gt;isprime&lt;/code&gt; con
 la que chequear si un número es primo. Gracias a la &lt;em&gt;evaluación perezosa&lt;/em&gt;,
@@ -517,12 +692,16 @@ table {border-collapse: collapse;}
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" title="Parte 5 - Formalización de la Secuencia Perezosa"&gt;Parte 5 - Formalización de la Secuencia&amp;nbsp;Perezosa&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="admonition danger"&gt;
-&lt;p class="admonition-title"&gt;La serie completa como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.ipynb" title="Notebook Evaluación perezosa en python"&gt;serie-evaluacion-perezosa-en-python.ipynb&lt;/a&gt;&lt;/p&gt;
+&lt;p class="admonition-title"&gt;La serie unificada como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.ipynb" title="Notebook - Evaluación perezosa en python"&gt;formato notebook&amp;nbsp;(.ipynb)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.md" title="Jupytext - Evaluación perezosa en python"&gt;formato jupytext&amp;nbsp;(.md)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&amp;nbsp;TODAVÍA&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;
@@ -587,7 +766,7 @@ table {border-collapse: collapse;}
     (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Evaluación perezosa en python - Parte 3</title><link href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" rel="alternate"></link><published>2021-02-14T17:53:58+01:00</published><updated>2021-02-15T21:16:54+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-14:/2021/02/14/evaluacion-perezosa-en-python-parte-3/</id><summary type="html">&lt;p&gt;Tercera parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta parte veremos la técnica de memoización y cómo puede ayudarnos en la implementación de secuencia de&amp;nbsp;evaluaciones.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Cachés y&amp;nbsp;Memoización&lt;/h2&gt;
+&lt;/script&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category><category term="primes"></category></entry><entry><title>Memoización - Evaluación perezosa en python - Parte 3</title><link href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" rel="alternate"></link><published>2021-02-14T17:53:58+01:00</published><updated>2021-03-15T20:54:28+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-14:/2021/02/14/evaluacion-perezosa-en-python-parte-3/</id><summary type="html">&lt;p&gt;Tercera parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta parte veremos la técnica de memoización y cómo puede ayudarnos en la implementación de secuencia de&amp;nbsp;evaluaciones.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Cachés y&amp;nbsp;Memoización&lt;/h2&gt;
 &lt;p&gt;En el pasado artículo vimos que para obtener un elemento de la sucesión
 fibonacci necesitábamos calcular los anteriores. Veámoslo con más&amp;nbsp;detalle.&lt;/p&gt;
 &lt;p&gt;Podemos definir la siguiente función para obtener un elemento de esta&amp;nbsp;sucesión:&lt;/p&gt;
@@ -726,12 +905,16 @@ crece a medida que se&amp;nbsp;necesite.&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" title="Parte 5 - Formalización de la Secuencia Perezosa"&gt;Parte 5 - Formalización de la Secuencia&amp;nbsp;Perezosa&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="admonition danger"&gt;
-&lt;p class="admonition-title"&gt;La serie completa como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.ipynb" title="Notebook Evaluación perezosa en python"&gt;serie-evaluacion-perezosa-en-python.ipynb&lt;/a&gt;&lt;/p&gt;
+&lt;p class="admonition-title"&gt;La serie unificada como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.ipynb" title="Notebook - Evaluación perezosa en python"&gt;formato notebook&amp;nbsp;(.ipynb)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.md" title="Jupytext - Evaluación perezosa en python"&gt;formato jupytext&amp;nbsp;(.md)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&amp;nbsp;TODAVÍA&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;
@@ -749,7 +932,7 @@ crear cachés sin límite, pero no contabiliza el número de aciertos.&amp;#160;
 aunque no es recomendable.&amp;#160;&lt;a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="memoize"></category><category term="cache"></category></entry><entry><title>Evaluación perezosa en python - Parte 2</title><link href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" rel="alternate"></link><published>2021-02-09T23:21:13+01:00</published><updated>2021-02-14T20:11:16+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-09:/2021/02/09/evaluacion-perezosa-en-python-parte-2/</id><summary type="html">&lt;p&gt;Segunda parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta parte se estudia las secuencia infintas, algunas implementadas con iteradores, y el modo en que se pueden&amp;nbsp;manejar.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Algunas&amp;nbsp;definiciones&lt;/h2&gt;
+&lt;/div&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="memoize"></category><category term="cache"></category></entry><entry><title>Secuencias infinitas - Evaluación perezosa en python - Parte 2</title><link href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" rel="alternate"></link><published>2021-02-09T23:21:13+01:00</published><updated>2021-03-15T20:54:16+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-09:/2021/02/09/evaluacion-perezosa-en-python-parte-2/</id><summary type="html">&lt;p&gt;Segunda parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta parte se estudia las secuencia infintas, algunas implementadas con iteradores, y el modo en que se pueden&amp;nbsp;manejar.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Algunas&amp;nbsp;definiciones&lt;/h2&gt;
 &lt;p&gt;Puede ser interesante dejar claras algunas definiciones para distinguir entre
 iteradores e iterables (se pueden ver las definiciones completas en el
 &lt;a href="https://docs.python.org/3.9/glossary.html"&gt;glosario&lt;/a&gt; de&amp;nbsp;python):&lt;/p&gt;
@@ -934,12 +1117,16 @@ los rangos que ya habíamos visto anteriormente para crear la secuencia&amp;nbsp
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" title="Parte 5 - Formalización de la Secuencia Perezosa"&gt;Parte 5 - Formalización de la Secuencia&amp;nbsp;Perezosa&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="admonition danger"&gt;
-&lt;p class="admonition-title"&gt;La serie completa como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.ipynb" title="Notebook Evaluación perezosa en python"&gt;serie-evaluacion-perezosa-en-python.ipynb&lt;/a&gt;&lt;/p&gt;
+&lt;p class="admonition-title"&gt;La serie unificada como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.ipynb" title="Notebook - Evaluación perezosa en python"&gt;formato notebook&amp;nbsp;(.ipynb)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.md" title="Jupytext - Evaluación perezosa en python"&gt;formato jupytext&amp;nbsp;(.md)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&amp;nbsp;TODAVÍA&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;
@@ -1004,7 +1191,7 @@ los rangos que ya habíamos visto anteriormente para crear la secuencia&amp;nbsp
     (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Evaluación perezosa en python - Parte 1</title><link href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" rel="alternate"></link><published>2021-02-08T19:17:25+01:00</published><updated>2021-02-14T20:11:07+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-08:/2021/02/08/evaluacion-perezosa-en-python-parte-1/</id><summary type="html">&lt;p&gt;Primera parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta primera parte se estudia los objetos rango y cómo se pueden generalizar su uso para crear secuencias de la que conocemos cómo calcular un elemento genérico a partir de su&amp;nbsp;posición.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introducción a la &lt;em&gt;Evaluación&amp;nbsp;Perezosa&lt;/em&gt;&lt;/h2&gt;
+&lt;/script&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Introducción a la “Evaluación Perezosa” - Evaluación perezosa en python - Parte 1</title><link href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" rel="alternate"></link><published>2021-02-08T19:17:25+01:00</published><updated>2021-03-15T20:54:06+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-08:/2021/02/08/evaluacion-perezosa-en-python-parte-1/</id><summary type="html">&lt;p&gt;Primera parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta primera parte se estudia los objetos rango y cómo se pueden generalizar su uso para crear secuencias de la que conocemos cómo calcular un elemento genérico a partir de su&amp;nbsp;posición.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introducción a la &lt;em&gt;Evaluación&amp;nbsp;Perezosa&lt;/em&gt;&lt;/h2&gt;
 &lt;p&gt;Podemos definir &lt;em&gt;&amp;#8220;Evaluación Perezosa&amp;#8221;&lt;/em&gt; como aquella evaluación que realiza los
 mínimos cálculos imprecindibles para obtener el resultado&amp;nbsp;final.&lt;/p&gt;
 &lt;p&gt;La evaluación perezosa es una de las característica del languaje haskell, aunque
@@ -1227,12 +1414,16 @@ con &lt;em&gt;secuencias infinitas&lt;/em&gt; de&amp;nbsp;elementos.&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 5 - Ejemplo práctico: potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" title="Parte 5 - Formalización de la Secuencia Perezosa"&gt;Parte 5 - Formalización de la Secuencia&amp;nbsp;Perezosa&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="admonition danger"&gt;
-&lt;p class="admonition-title"&gt;La serie completa como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.ipynb" title="Notebook Evaluación perezosa en python"&gt;serie-evaluacion-perezosa-en-python.ipynb&lt;/a&gt;&lt;/p&gt;
+&lt;p class="admonition-title"&gt;La serie unificada como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.ipynb" title="Notebook - Evaluación perezosa en python"&gt;formato notebook&amp;nbsp;(.ipynb)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.md" title="Jupytext - Evaluación perezosa en python"&gt;formato jupytext&amp;nbsp;(.md)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&amp;nbsp;TODAVÍA&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Manejo de rutas con pathlib</title><link href="https://blog.ch3m4.org/2019/09/28/manejo-de-rutas-pathlib/" rel="alternate"></link><published>2019-09-28T17:53:57+02:00</published><updated>2019-09-28T17:56:08+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2019-09-28:/2019/09/28/manejo-de-rutas-pathlib/</id><summary type="html">&lt;p&gt;Es difícil escribir un script de python que no interaccione con el sistema de ficheros de un modo u otro, por lo que python dispone de varios módulos para tal fin. El objeto &lt;code&gt;Path&lt;/code&gt; viene a poner orden entre tantos módulos y funciones para manejo de ficheros. Se puede decir sin duda que usar &lt;code&gt;Path&lt;/code&gt; se ha convertido en la forma más &lt;em&gt;pythónica&lt;/em&gt; de manipular ficheros y&amp;nbsp;directorios.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Es difícil escribir un script de python que no interaccione con el sistema de ficheros de un modo u otro, por lo que python dispone de varios módulos para tal fin: &lt;code&gt;os&lt;/code&gt;, &lt;code&gt;os.path&lt;/code&gt; (&lt;em&gt;submódulo de os&lt;/em&gt;), &lt;code&gt;shutil&lt;/code&gt;, &lt;code&gt;stats&lt;/code&gt;, &lt;code&gt;glob&lt;/code&gt;,&amp;#8230;En la intención estaba ser multiplataforma, lo que ha sido fuente de muchos mayores quebraderos de cabeza con las distintas codificaciones de caracteres y distintas formas de expresar rutas de ficheros que&amp;nbsp;existen.&lt;/p&gt;
@@ -3189,103 +3380,4 @@ Desde C # &amp;#39;&amp;lt;__main__.C object at 0xb77d4b2c&amp;gt;&amp;#39;.&amp
 &lt;p&gt;En python 2.x, a las clases que derivan de &lt;code&gt;object&lt;/code&gt; se las denomina &lt;em&gt;&amp;#8220;nuevas clases&amp;#8221;&lt;/em&gt; por contraste con las clases que había hasta ese momento. En python 3.x, todas las clases derivarán por defecto de &lt;code&gt;object&lt;/code&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</content><category term="Python"></category><category term="descriptor"></category><category term="técnicas dinámicas"></category></entry><entry><title>Descriptores - Parte 1</title><link href="https://blog.ch3m4.org/2011/06/19/descriptores-parte-1/" rel="alternate"></link><published>2011-06-19T16:57:00+02:00</published><updated>2011-06-19T16:57:00+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2011-06-19:/2011/06/19/descriptores-parte-1/</id><summary type="html">&lt;p&gt;Cuando accedemos a los atributos de un objeto en python, a veces existen unos intermediarios casi imperceptibles llamados &lt;em&gt;&amp;#8220;descriptores&amp;#8221;&lt;/em&gt; que son los responsables últimos del funcionamiento de la programación orientada a objetos. Están detrás de &lt;em&gt;propiedades&lt;/em&gt;, métodos, métodos estáticos, métodos de clase y del mecanismo &lt;code&gt;super()&lt;/code&gt; responsable de la herencia …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Cuando accedemos a los atributos de un objeto en python, a veces existen unos intermediarios casi imperceptibles llamados &lt;em&gt;&amp;#8220;descriptores&amp;#8221;&lt;/em&gt; que son los responsables últimos del funcionamiento de la programación orientada a objetos. Están detrás de &lt;em&gt;propiedades&lt;/em&gt;, métodos, métodos estáticos, métodos de clase y del mecanismo &lt;code&gt;super()&lt;/code&gt; responsable de la herencia múltiple. Su labor es imprescindible y, sin embargo, son los grandes desconocidos del&amp;nbsp;lenguaje.&lt;/p&gt;
-&lt;h1&gt;Protocolo&amp;nbsp;&amp;#8220;descriptor&amp;#8221;&lt;/h1&gt;
-&lt;p&gt;Por protocolo &lt;em&gt;&amp;#8220;descriptor&amp;#8221;&lt;/em&gt; se entiende la sustitución de un atributo por un objeto que intermedia en los accesos a ese atributo. Tal vez, las &lt;em&gt;propiedades&lt;/em&gt; (&lt;code&gt;property&lt;/code&gt;) puedan ser el ejemplo más visible de los descriptores, pero veremos que los descriptores están más presentes de lo podemos&amp;nbsp;pensar.&lt;/p&gt;
-&lt;p&gt;Como descripción formal del protocolo descriptor, podemos decir que un descriptor es todo objeto que tenga definido al menos uno de estos tres&amp;nbsp;métodos:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;descr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__get__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;--&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;
-
-&lt;span class="n"&gt;descr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__set__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;--&amp;gt;&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
-
-&lt;span class="n"&gt;descr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__delete__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;--&amp;gt;&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Respectivamente, serían los métodos para obtener, asignar y borrar un atributo del objeto &lt;code&gt;obj&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Podemos distinguir dos tipos de&amp;nbsp;descriptores:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Descriptor de datos&lt;/strong&gt; (&lt;em&gt;data descriptor&lt;/em&gt;): cuando tiene definidos los métodos &lt;code&gt;__get__&lt;/code&gt; y &lt;code&gt;__set__&lt;/code&gt;. Es el que usaremos para acceder y cambiar el valor de un&amp;nbsp;atributo.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Descriptor de no-datos&lt;/strong&gt; (&lt;em&gt;non-data descriptor&lt;/em&gt;): cuando sólo tiene definido el método &lt;code&gt;__get__&lt;/code&gt;. Su uso será casi exclusivo para acceso a los métodos de un&amp;nbsp;objeto.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Como veremos más adelante, distinguir entre estos dos tipos de descriptores es muy importante, ya que cada uno tiene distinto orden de preferencia cuando se buscan atributos en una jerarquía de&amp;nbsp;clases.&lt;/p&gt;
-&lt;h1&gt;Implementación de los &amp;#8220;Descriptores de&amp;nbsp;Datos&amp;#8221;&lt;/h1&gt;
-&lt;p&gt;Empecemos por un&amp;nbsp;ejemplo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Desc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;mul&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mul&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;mul&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__get__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mul&lt;/span&gt;
-
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;C&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;a12&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Desc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;a200&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Desc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;
-
-&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;a12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;a200&lt;/span&gt;  &lt;span class="c1"&gt;#--&amp;gt; 2 24 400&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Los atributos &lt;code&gt;a12&lt;/code&gt; y &lt;code&gt;a200&lt;/code&gt; están definidos por instancias del descriptor &lt;code&gt;Desc()&lt;/code&gt;. Cuando accedemos a estos atributos, en lugar de devolvernos el descriptor, nos devuelve el valor resultante del método &lt;code&gt;__get__&lt;/code&gt; del&amp;nbsp;descriptor.&lt;/p&gt;
-&lt;p&gt;De modo más explícito,&amp;nbsp;sería:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;a12&lt;/span&gt; &lt;span class="o"&gt;--&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;a12&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__get__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Al no estar definido el método &lt;code&gt;__set__&lt;/code&gt;, se pueden reasignar estos atributos sin mayor problema, aunque dejarían así de estar controlado por el&amp;nbsp;descriptor:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;a12&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Para completar el protocolo de &lt;em&gt;descriptor de datos&lt;/em&gt; basta añadir un método &lt;code&gt;__set__&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Descrip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;mul&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mul&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;mul&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__get__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mul&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__set__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;La asignación anterior, se nos convertiría&amp;nbsp;en:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;a12&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt; &lt;span class="o"&gt;--&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;a12&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__set__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Como se intuye, el descriptor tiene aquí total control sobre el valor final que se guardará como atributo. Como posible utilización, se pueden crear atributos de sólo lectura, para lo que bastaría con que el método &lt;code&gt;__set__&lt;/code&gt; genere un error &lt;code&gt;AttributeError&lt;/code&gt; si se intenta modificar el&amp;nbsp;atributo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Descrip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;mul&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mul&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;mul&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__get__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mul&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__set__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;AttributeError&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Tan sólo falta añadir el método &lt;code&gt;__delete__&lt;/code&gt; para completar el protocolo. No hay que olvidarse de este método si queremos que un atributo de sólo lectura aún pueda ser modificado mediante un borrado previo a su&amp;nbsp;reasignación:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Descrip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;mul&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mul&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;mul&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__get__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mul&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__set__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;AttributeError&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__delete__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;del&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;
-
-&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;a12&lt;/span&gt; &lt;span class="c1"&gt;#--&amp;gt; 24&lt;/span&gt;
-
-&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;a12&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="c1"&gt;#ERROR: AttributeError&lt;/span&gt;
-
-&lt;span class="k"&gt;del&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;a12&lt;/span&gt;
-&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;a12&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;
-
-&lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;a12&lt;/span&gt;  &lt;span class="c1"&gt;#--&amp;gt; 100 (no descriptor)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h1&gt;Saltarse al&amp;nbsp;descriptor&lt;/h1&gt;
-&lt;p&gt;Llegados aquí, se nos plantea una pregunta: ¿hay algún modo de acceder a los atributos sin pasar por su&amp;nbsp;descriptor?&lt;/p&gt;
-&lt;p&gt;Y no es para nada una pregunta caprichosa. El descriptor necesita algún modo de acceder a los atributos que está gestionando sin tener que pasar por sí mismo. Tal vez, se podría hacer a través del diccionario del objeto, accesible como &lt;code&gt;__dict__&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__dict__&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;a12&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;  &lt;span class="c1"&gt;#equivalente a c.a12=100&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Si lo pruebas, verás que no funciona. Cuando se busca un atributo, primero se busca entre los atributos de la clase antes de mirar en el diccionario de la instancia. Este orden de prioridades lo veremos en el próximo artículo cuando veamos el funcionamiento interno de un&amp;nbsp;descriptor.&lt;/p&gt;</content><category term="Python"></category><category term="descriptor"></category><category term="técnicas dinámicas"></category></entry></feed>
+&lt;/div&gt;</content><category term="Python"></category><category term="descriptor"></category><category term="técnicas dinámicas"></category></entry></feed>

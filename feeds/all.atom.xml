@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/all.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-03-15T21:18:53+01:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Evaluación perezosa en python - Apéndice</title><link href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" rel="alternate"></link><published>2021-03-10T23:55:43+01:00</published><updated>2021-03-15T20:55:00+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-03-10:/2021/03/10/evaluacion-perezosa-en-python-apendice/</id><summary type="html">&lt;p&gt;Una revisión crítica al tipado gradual de datos de python que se ha usado en esta serie de artículos sobre &lt;em&gt;evaluación perezosa&lt;/em&gt;.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/all.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-03-22T00:19:38+01:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Evaluación perezosa en python - Apéndice</title><link href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" rel="alternate"></link><published>2021-03-10T23:55:43+01:00</published><updated>2021-03-15T20:55:00+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-03-10:/2021/03/10/evaluacion-perezosa-en-python-apendice/</id><summary type="html">&lt;p&gt;Una revisión crítica al tipado gradual de datos de python que se ha usado en esta serie de artículos sobre &lt;em&gt;evaluación perezosa&lt;/em&gt;.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/h2&gt;
 &lt;p&gt;Durante esta serie de artículos he procurado usar el &lt;em&gt;tipado gradual&lt;/em&gt; de python,
 no sólo para mejorar la compresión, sino porque lo considero buena práctica para
 detectar algunos problemas en el momento de escribir el código. El intérprete de
@@ -196,7 +196,7 @@ Como decía un gran sabio: &lt;em&gt;&amp;#8220;Vamos a cambiarlo todo para que 
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" title="Parte 5 - Formalización de la Secuencia Perezosa"&gt;Parte 5 - Formalización de la Secuencia&amp;nbsp;Perezosa&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-6/" title="Parte 6 - Ejemplo práctico: Potencias de Fermi-Dirac"&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="admonition danger"&gt;
@@ -205,9 +205,276 @@ Como decía un gran sabio: &lt;em&gt;&amp;#8220;Vamos a cambiarlo todo para que 
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.ipynb" title="Notebook - Evaluación perezosa en python"&gt;formato notebook&amp;nbsp;(.ipynb)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.md" title="Jupytext - Evaluación perezosa en python"&gt;formato jupytext&amp;nbsp;(.md)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&amp;nbsp;TODAVÍA&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;hr&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Formalización de la Secuencia Perezosa - Evaluación perezosa en python - Parte 5</title><link href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" rel="alternate"></link><published>2021-03-07T23:57:55+01:00</published><updated>2021-03-15T21:18:53+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-03-07:/2021/03/07/evaluacion-perezosa-en-python-parte-5/</id><summary type="html">&lt;p&gt;Refactorización del código creado hasta ahora para formalizar las clases &lt;code&gt;LazySequence&lt;/code&gt; y &lt;code&gt;LazySortedSequence&lt;/code&gt; para uso&amp;nbsp;general.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Refactorización&lt;/h2&gt;
+&lt;hr&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Ejemplo práctico. Potencias de Fermi-Dirac - Evaluación perezosa en python - Parte 6</title><link href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-6/" rel="alternate"></link><published>2021-03-07T23:58:43+01:00</published><updated>2021-03-22T00:19:38+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-03-07:/2021/03/07/evaluacion-perezosa-en-python-parte-6/</id><summary type="html">&lt;p&gt;Visto cómo conseguir secuencias con evaluación perezosa, ya sólo nos falta conocer en qué poder emplearlas. En este artículo veremos las potencias de Fermi-Dirac y cómo las secuencias de evaluación perezosa nos ayudarán a plantear una solución&amp;nbsp;manejable.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Se llaman &lt;strong&gt;potencias de Fermi-Dirac&lt;/strong&gt; a los números de la forma &lt;span class="math"&gt;\(p^{2^k}\)&lt;/span&gt;,
+ordenados de menor a mayor, donde &lt;code&gt;p&lt;/code&gt; es un número primo y &lt;code&gt;k&lt;/code&gt; es un número&amp;nbsp;natural.&lt;/p&gt;
+&lt;p&gt;Vamos a ver cómo crear la sucesión de &lt;code&gt;potencias&lt;/code&gt; Fermi-Dirac. Realizaremos las
+siguientes&amp;nbsp;comprobaciones:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;potencias&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="n"&gt;potencias&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;    &lt;span class="o"&gt;==&lt;/span&gt;  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;potencias&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;60&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;     &lt;span class="o"&gt;==&lt;/span&gt;  &lt;span class="mi"&gt;241&lt;/span&gt;
+&lt;span class="n"&gt;potencias&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  &lt;span class="o"&gt;==&lt;/span&gt;  &lt;span class="mi"&gt;15476303&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Estudio&amp;nbsp;previo&lt;/h2&gt;
+&lt;p&gt;Si sacamos la lista de potencias en función del exponente &lt;code&gt;k&lt;/code&gt; tendríamos las
+siguientes&amp;nbsp;sucesiones:&lt;/p&gt;
+&lt;div class="math"&gt;$$
+\begin{align*}
+P_0 &amp;amp;= 2,3,5,7,11,...\\
+P_1 &amp;amp;= 4,9,25,49,121,..\\
+P_2 &amp;amp;= 16,81,625,2401,14641,...\\
+P_3 &amp;amp;= 256,6561,390625,5764801,214358881,815730721,...
+\end{align*}
+$$&lt;/div&gt;
+&lt;p&gt;Necesitamos combinar estas sucesiones en una sola. A priori, no sabemos cuántos
+elementos vamos a necesitar de cada sucesión. Como máximo, para sacar las
+primeras 14 potencias nos basta con los primeros 14 números primos y crear 14
+secuencias, de &lt;span class="math"&gt;\(P_0\)&lt;/span&gt; a &lt;span class="math"&gt;\(P_{13}\)&lt;/span&gt;, ordenarlos sus elementos en una única lista y
+escoger los primeros 14 elementos. Con este proceso habremos calculado 196
+potencias para sólo 14 elementos que necesitamos al&amp;nbsp;final.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;primes&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;
+
+&lt;span class="n"&gt;potencias&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;potencias&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Aún en el caso de que tuviéramos algún medio de reducir el número de elementos a
+usar de cada secuencia, seguimos sin saber cuántos números primos serán
+necesarios. Para sacar los 14 primeros elementos de las potencias de Fermi-Dirac
+sólo se necesitaban los 10 primeros números&amp;nbsp;primos.&lt;/p&gt;
+&lt;p&gt;Es evidente que una estrategia por &lt;em&gt;fuerza bruta&lt;/em&gt; es complicada y termina por
+hacer muchos cálculos innecesarios, una complejidad del &lt;span class="math"&gt;\(O({n^2})\)&lt;/span&gt; no resoluble
+con un ordenador normal. Veamos cómo nos puede ayudar la &lt;em&gt;evaluación perezosa&lt;/em&gt;.&lt;/p&gt;
+&lt;h2&gt;Modelos&lt;/h2&gt;
+&lt;p&gt;Por intentar crear un modelo, intentemos ver las sucesiones como un iterador de&amp;nbsp;iteradores:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;primes&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;
+
+&lt;span class="n"&gt;potencias&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Pero el problema con las &lt;em&gt;expresiones generadora&lt;/em&gt; es similar al que tienen las
+expresiones lambda: carecen de su propia clausura y cualquier &lt;em&gt;variable libre&lt;/em&gt;
+queda alterada por el entorno donde se&amp;nbsp;evalúan.&lt;/p&gt;
+&lt;p&gt;Se puede comprobar el fallo si intentamos extraer dos&amp;nbsp;iteradores:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;p0&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;potencias&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;p1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;potencias&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt; 4&lt;/span&gt;
+&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt; 4&lt;/span&gt;
+&lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# --&amp;gt; 9&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;El exponente &lt;code&gt;k&lt;/code&gt; ha cambiado de valor con el segundo iterador, lo que afecta a
+las potencias del primero. Tenemos que dotar a los iteradores de su propia&amp;nbsp;clausura:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;collections.abc&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Iterator&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;primes&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;potencias_gen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Iterator&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+    &lt;span class="k"&gt;yield from&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;potencias&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;potencias_gen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para obtener una única secuencia a partir de este &lt;em&gt;iterador de iteradores&lt;/em&gt; en un
+único iterador, operación que se conoce como &lt;em&gt;&amp;#8220;aplanar la secuencia&amp;#8221;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Definimos la siguiente función para mezclar dos listas&amp;nbsp;ordenadas:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# tipo para secuencias ordenadas&lt;/span&gt;
+&lt;span class="n"&gt;SortedIterator&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Iterator&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;zipsort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;SortedIterator&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;s2&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;SortedIterator&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;SortedIterator&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;
+            &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;
+            &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;La función &lt;code&gt;zipsort&lt;/code&gt; combina dos listas ordenadas &lt;code&gt;SortedIterator&lt;/code&gt; para devolver
+otra lista ordenada &lt;code&gt;SortedIterator&lt;/code&gt;. Si quisiéramos combinar tres listas,
+bastaría con volver repetir con &lt;code&gt;zipsort&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;zipsort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;zipsort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;s2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;s3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;En general, podríamos combinar todas las listas de esta&amp;nbsp;manera:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;flat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterators&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Iterator&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;SortedIterator&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;SortedIterator&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;it1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterators&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;it2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;flat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterators&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;yield from&lt;/span&gt; &lt;span class="n"&gt;zipsort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;it1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;it2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;potencias&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;flat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;potencias_gen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;El problema es que se entra en un bucle infinito de llamadas recursivas a &lt;code&gt;flat&lt;/code&gt;
+que habrá que&amp;nbsp;evitar.&lt;/p&gt;
+&lt;p&gt;Si observamos las sucesiones &lt;span class="math"&gt;\(P_0\)&lt;/span&gt;, &lt;span class="math"&gt;\(P_1\)&lt;/span&gt;, &lt;span class="math"&gt;\(P_2\)&lt;/span&gt;,&amp;#8230;, el primer elemento de una
+sucesión es siempre inferior a cualquier elemento de sucesiones posteriores.
+Usando esta propiedad, podemos redefinir nuestra función&amp;nbsp;aplanadora:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;flat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterators&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Iterator&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;SortedIterator&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;SortedIterator&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;it1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterators&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;it1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;yield from&lt;/span&gt; &lt;span class="n"&gt;zipsort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;it1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;flat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterators&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="n"&gt;potencias&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;flat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;potencias_gen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;La función &lt;code&gt;flat&lt;/code&gt; devuelve siempre un elemento antes de invocarse por
+recursividad, suficiente para frenar la cadena de llamadas recursivas. Visto de
+otro modo, se ha convertido la función en &lt;em&gt;perezosa&lt;/em&gt;, devolviendo elementos a
+medida que sean necesarios. De todos modos, seguimos limitados por el nivel de
+recursividad en python (~3000 niveles en CPython), aunque no vamos a superar
+este límite en las pruebas&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;h2&gt;Código&amp;nbsp;final&lt;/h2&gt;
+&lt;p&gt;Descarga: &lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-6/potencias.py" title="Potencias de Fermi-Dirac"&gt;potencias.py&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;collections.abc&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Iterator&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;lazyseq&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;LazySortedSequence&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;primes&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;
+
+
+&lt;span class="n"&gt;SortedIterator&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Iterator&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;SortedIterator&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;s2&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;SortedIterator&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;SortedIterator&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;
+            &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;
+            &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;flat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Iterator&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;SortedIterator&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;SortedIterator&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;s1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;yield from&lt;/span&gt; &lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;flat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;mkiter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;yield from&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;potencias&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;LazySortedSequence&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;flat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mkiter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;()))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para las&amp;nbsp;comprobaciones:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;potencias&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;potencias&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;60&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="mi"&gt;241&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;potencias&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="mi"&gt;15476303&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;primes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;
+&lt;span class="mi"&gt;999432&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para obtener el elemento &lt;span class="math"&gt;\(10^6\)&lt;/span&gt; tarda bastante al necesitar obtener casi un
+millón de números primos. Una vez obtenidos, el cálculo es bastante&amp;nbsp;rápido.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Serie &lt;em&gt;Evaluación Perezosa en&amp;nbsp;Python&lt;/em&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" title="Introducción a la _evaluación perezosa_"&gt;Parte 1 - Introducción a la &lt;em&gt;evaluación&amp;nbsp;perezosa&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/09/evaluacion-perezosa-en-python-parte-2/" title="Secuencias infinitas"&gt;Parte 2 - Secuencias&amp;nbsp;infinitas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" title="Parte 5 - Formalización de la Secuencia Perezosa"&gt;Parte 5 - Formalización de la Secuencia&amp;nbsp;Perezosa&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-6/" title="Parte 6 - Ejemplo práctico: Potencias de Fermi-Dirac"&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="admonition danger"&gt;
+&lt;p class="admonition-title"&gt;La serie unificada como &lt;em&gt;Jupyter Notebook&lt;/em&gt;&amp;nbsp;en:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.ipynb" title="Notebook - Evaluación perezosa en python"&gt;formato notebook&amp;nbsp;(.ipynb)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.md" title="Jupytext - Evaluación perezosa en python"&gt;formato jupytext&amp;nbsp;(.md)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;span class="caps"&gt;ANOTACIONES&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;Es posible que en posteriores artículos veamos técnicas para superar las
+limitaciones de la recursivad en python.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category><category term="primes"></category><category term="fermi"></category><category term="dirac"></category></entry><entry><title>Formalización de la Secuencia Perezosa - Evaluación perezosa en python - Parte 5</title><link href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" rel="alternate"></link><published>2021-03-07T23:57:55+01:00</published><updated>2021-03-15T21:18:53+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-03-07:/2021/03/07/evaluacion-perezosa-en-python-parte-5/</id><summary type="html">&lt;p&gt;Refactorización del código creado hasta ahora para formalizar las clases &lt;code&gt;LazySequence&lt;/code&gt; y &lt;code&gt;LazySortedSequence&lt;/code&gt; para uso&amp;nbsp;general.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Refactorización&lt;/h2&gt;
 &lt;p&gt;Hasta ahora hemos visto cómo crear una &lt;em&gt;secuencia perezosa&lt;/em&gt; que va guardando en
 una caché los resultados de una operación (proceso de &lt;em&gt;memoización&lt;/em&gt;). Así mismo,
 cuando la secuencia es una &lt;em&gt;secuencia ordenada&lt;/em&gt; podemos optimizar algunas
@@ -367,7 +634,7 @@ número, sin añadir más elementos a la caché. Vamos a recuperar esta&amp;nbsp
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" title="Parte 5 - Formalización de la Secuencia Perezosa"&gt;Parte 5 - Formalización de la Secuencia&amp;nbsp;Perezosa&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-6/" title="Parte 6 - Ejemplo práctico: Potencias de Fermi-Dirac"&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="admonition danger"&gt;
@@ -376,7 +643,6 @@ número, sin añadir más elementos a la caché. Vamos a recuperar esta&amp;nbsp
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.ipynb" title="Notebook - Evaluación perezosa en python"&gt;formato notebook&amp;nbsp;(.ipynb)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.md" title="Jupytext - Evaluación perezosa en python"&gt;formato jupytext&amp;nbsp;(.md)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&amp;nbsp;TODAVÍA&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="primes"></category></entry><entry><title>Evaluación perezosa avanzada - Evaluación perezosa en python - Parte 4</title><link href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" rel="alternate"></link><published>2021-02-15T21:20:20+01:00</published><updated>2021-03-15T20:54:35+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-15:/2021/02/15/evaluacion-perezosa-en-python-parte-4/</id><summary type="html">&lt;p&gt;Partiendo del algoritmo para la obtención de números primos crearemos una secuencia infinita mediante técnicas de evaluación perezosa que crezca a medida que se necesite. Al final, aplicaremos algunas optimizaciones para el cálculo de números&amp;nbsp;primos.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;&lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/h2&gt;
 &lt;p&gt;Haskell tiene una librería, &lt;code&gt;Data.Numbers.Primes&lt;/code&gt;, que ofrece tanto una
@@ -693,7 +959,7 @@ table {border-collapse: collapse;}
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" title="Parte 5 - Formalización de la Secuencia Perezosa"&gt;Parte 5 - Formalización de la Secuencia&amp;nbsp;Perezosa&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-6/" title="Parte 6 - Ejemplo práctico: Potencias de Fermi-Dirac"&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="admonition danger"&gt;
@@ -702,7 +968,6 @@ table {border-collapse: collapse;}
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.ipynb" title="Notebook - Evaluación perezosa en python"&gt;formato notebook&amp;nbsp;(.ipynb)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.md" title="Jupytext - Evaluación perezosa en python"&gt;formato jupytext&amp;nbsp;(.md)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&amp;nbsp;TODAVÍA&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
@@ -906,7 +1171,7 @@ crece a medida que se&amp;nbsp;necesite.&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" title="Parte 5 - Formalización de la Secuencia Perezosa"&gt;Parte 5 - Formalización de la Secuencia&amp;nbsp;Perezosa&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-6/" title="Parte 6 - Ejemplo práctico: Potencias de Fermi-Dirac"&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="admonition danger"&gt;
@@ -915,7 +1180,6 @@ crece a medida que se&amp;nbsp;necesite.&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.ipynb" title="Notebook - Evaluación perezosa en python"&gt;formato notebook&amp;nbsp;(.ipynb)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.md" title="Jupytext - Evaluación perezosa en python"&gt;formato jupytext&amp;nbsp;(.md)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&amp;nbsp;TODAVÍA&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;span class="caps"&gt;ANOTACIONES&lt;/span&gt;:&lt;/p&gt;
@@ -1118,7 +1382,7 @@ los rangos que ya habíamos visto anteriormente para crear la secuencia&amp;nbsp
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" title="Parte 5 - Formalización de la Secuencia Perezosa"&gt;Parte 5 - Formalización de la Secuencia&amp;nbsp;Perezosa&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-6/" title="Parte 6 - Ejemplo práctico: Potencias de Fermi-Dirac"&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="admonition danger"&gt;
@@ -1127,7 +1391,6 @@ los rangos que ya habíamos visto anteriormente para crear la secuencia&amp;nbsp
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.ipynb" title="Notebook - Evaluación perezosa en python"&gt;formato notebook&amp;nbsp;(.ipynb)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.md" title="Jupytext - Evaluación perezosa en python"&gt;formato jupytext&amp;nbsp;(.md)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&amp;nbsp;TODAVÍA&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
@@ -1191,7 +1454,7 @@ los rangos que ya habíamos visto anteriormente para crear la secuencia&amp;nbsp
     (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Introducción a la “Evaluación Perezosa” - Evaluación perezosa en python - Parte 1</title><link href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" rel="alternate"></link><published>2021-02-08T19:17:25+01:00</published><updated>2021-03-15T20:54:06+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-08:/2021/02/08/evaluacion-perezosa-en-python-parte-1/</id><summary type="html">&lt;p&gt;Primera parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta primera parte se estudia los objetos rango y cómo se pueden generalizar su uso para crear secuencias de la que conocemos cómo calcular un elemento genérico a partir de su&amp;nbsp;posición.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introducción a la &lt;em&gt;Evaluación&amp;nbsp;Perezosa&lt;/em&gt;&lt;/h2&gt;
+&lt;/script&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Introducción a la “Evaluación Perezosa” - Evaluación perezosa en python - Parte 1</title><link href="https://blog.ch3m4.org/2021/02/08/evaluacion-perezosa-en-python-parte-1/" rel="alternate"></link><published>2021-02-08T19:17:25+01:00</published><updated>2021-03-21T23:29:26+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-08:/2021/02/08/evaluacion-perezosa-en-python-parte-1/</id><summary type="html">&lt;p&gt;Primera parte de una serie de artículos dedicados al estudio de la evaluación perezosa en python. En esta primera parte se estudia los objetos rango y cómo se pueden generalizar su uso para crear secuencias de la que conocemos cómo calcular un elemento genérico a partir de su&amp;nbsp;posición.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introducción a la &lt;em&gt;Evaluación&amp;nbsp;Perezosa&lt;/em&gt;&lt;/h2&gt;
 &lt;p&gt;Podemos definir &lt;em&gt;&amp;#8220;Evaluación Perezosa&amp;#8221;&lt;/em&gt; como aquella evaluación que realiza los
 mínimos cálculos imprecindibles para obtener el resultado&amp;nbsp;final.&lt;/p&gt;
 &lt;p&gt;La evaluación perezosa es una de las característica del languaje haskell, aunque
@@ -1241,7 +1504,7 @@ a los mismos métodos que una lista, permitiendo obtener un elemento de cualquie
 posición de la secuencia sin necesidad de generar la secuencia completa. También
 se pueden hacer otras operaciones habituales con&amp;nbsp;listas:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# obtener el tamaño&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;33&lt;/span&gt;
+&lt;span class="mi"&gt;33&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  &lt;span class="c1"&gt;# obtener un rango&lt;/span&gt;
 &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;62&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;92&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  &lt;span class="c1"&gt;# obtener un rango inverso&lt;/span&gt;
@@ -1391,7 +1654,7 @@ abstracto &lt;code&gt;.getitem()&lt;/code&gt; con la función&amp;nbsp;genérica
 &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;343&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3375&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;12167&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;29791&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;59319&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;103823&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;SquaresRange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)[::&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="n"&gt;SquaresRange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;99&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;SquaresRange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;91&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;SquaresRange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;81&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="mi"&gt;9&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -1415,7 +1678,7 @@ con &lt;em&gt;secuencias infinitas&lt;/em&gt; de&amp;nbsp;elementos.&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_"&gt;Parte 3 - &lt;em&gt;Memoización&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada"&gt;Parte 4 - &lt;em&gt;Evaluación perezosa&lt;/em&gt;&amp;nbsp;avanzada&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" title="Parte 5 - Formalización de la Secuencia Perezosa"&gt;Parte 5 - Formalización de la Secuencia&amp;nbsp;Perezosa&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-6/" title="Parte 6 - Ejemplo práctico: Potencias de Fermi-Dirac"&gt;Parte 6 - Ejemplo práctico: Potencias de&amp;nbsp;Fermi-Dirac&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado"&gt;Apéndice: sobre el tipado de datos&amp;nbsp;utilizado&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="admonition danger"&gt;
@@ -1424,7 +1687,6 @@ con &lt;em&gt;secuencias infinitas&lt;/em&gt; de&amp;nbsp;elementos.&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.ipynb" title="Notebook - Evaluación perezosa en python"&gt;formato notebook&amp;nbsp;(.ipynb)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.md" title="Jupytext - Evaluación perezosa en python"&gt;formato jupytext&amp;nbsp;(.md)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;INCOMPLETA&lt;/span&gt;&amp;nbsp;TODAVÍA&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;</content><category term="Python"></category><category term="lazy-eval"></category><category term="sequence"></category><category term="range"></category></entry><entry><title>Reorientando el blog</title><link href="https://blog.ch3m4.org/2021/02/01/reorientando-el-blog/" rel="alternate"></link><published>2021-02-01T21:00:00+01:00</published><updated>2021-02-01T20:54:25+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-02-01:/2021/02/01/reorientando-el-blog/</id><summary type="html">&lt;p&gt;Sobre este blog, lo último que he estado investigando y a hacia dónde pienso que irá la&amp;nbsp;programación.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introducción&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Año 2020&lt;/strong&gt; Un año en el que parece que han pasado muchas cosas, pero que en
@@ -3101,11 +3363,4 @@ lleva desde un principio a un final por el camino más&amp;nbsp;corto.&amp;#8221
 &lt;p&gt;Al igual que el origami, la creación de código requiere muchas veces pararse a pensar qué parte del código se complicó demasiado y actuar sobre esa parte. Si no se entiende bien, una repetición consistente en teclear decenas de veces ese código ayuda a entender mejor lo que hace y el motivo que hacía que fuera tan complicado. Es muy similar a repetir los mismos dobleces de una figura de papel hasta lograr su doblado&amp;nbsp;perfecto. &lt;/p&gt;
 &lt;p&gt;Como parte de tribunales de selección para puestos informáticos, me he sentido muchas veces molesto por tener que redactar tediosos cuestionarios de preguntas técnicas que nada valoraban la capacidad real del candidato para el futuro trabajo que iba a realizar. El objeto era realizar una fuerte criba entre los candidatos y, sobre todo, ordenarlos por puntos para hacer más sencilla su selección&amp;nbsp;posterior.&lt;/p&gt;
 &lt;p&gt;Pero era en la posterior prueba práctica donde mejor podía apreciar la valía de un candidato. Una visión del código fuente y la documentación asociada permitía apreciar claramente quiénes eran los adecuados para el puesto. Pero ¿cómo valorar con una puntuación esta&amp;nbsp;percepción?&lt;/p&gt;
-&lt;p&gt;Puede que para la próxima vez empiece por pedir al candidato que doble el papel de los enunciados de la prueba. Seguramente consiga saber más de él que de las respuestas que pueda&amp;nbsp;darme.&lt;/p&gt;</content><category term="Pensamientos"></category></entry><entry><title>Estado de situación</title><link href="https://blog.ch3m4.org/2013/02/19/estado-de-situacion/" rel="alternate"></link><published>2013-02-19T21:39:00+01:00</published><updated>2013-02-19T21:39:00+01:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2013-02-19:/2013/02/19/estado-de-situacion/</id><summary type="html">&lt;p&gt;Hacía mucho que no actualizaba mi blog y creo que ya es momento de contar algunas cosillas. Me gustaría no tener que hablar de la crisis por la que estamos pasando, al menos en España, pero resulta imposible abstraerse de su&amp;nbsp;influencia.&lt;/p&gt;
-&lt;p&gt;En mi trabajo como informático en una administración …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Hacía mucho que no actualizaba mi blog y creo que ya es momento de contar algunas cosillas. Me gustaría no tener que hablar de la crisis por la que estamos pasando, al menos en España, pero resulta imposible abstraerse de su&amp;nbsp;influencia.&lt;/p&gt;
-&lt;p&gt;En mi trabajo como informático en una administración pública, soy testigo de cómo se están aplicando medidas de austeridad sin contramedidas que eviten el colapso del sistema. Sin duda alguna, el objetivo de estas medidas no puede ser otro que liquidar el sistema público para su sustitución por otro basado en el libre mercado, menos solidario y más&amp;nbsp;injusto.&lt;/p&gt;
-&lt;p&gt;Pero no quiero hablar de la crisis en general. Hay otros muchos blogs que lo hacen mucho mejor que yo y con mayor profundidad. Solo quisiera hablar ahora de los cambios que estoy viviendo en mi entorno de&amp;nbsp;trabajo.&lt;/p&gt;
-&lt;p&gt;Por un lado, todos aquellos proyectos innovadores en los que estaba implicado han sido cancelados o aminorados por los nuevos gestores. Como primera consecuencia de ello, han quedado sin uso todos mis programas hechos en python con los que extraía la información que necesitaba la dirección para la toma de decisiones (&lt;abbr title="&amp;quot;Management Information System&amp;quot; - &amp;quot;Sistema de información gerencial (SIG)&amp;quot;"&gt;&lt;span class="caps"&gt;MIS&lt;/span&gt;&lt;/abbr&gt;). Confío que algún día vuelva a interesar el &lt;em&gt;estado real&lt;/em&gt; de la administración donde trabajo, aunque sospecho que para entonces será demasiado&amp;nbsp;tarde.&lt;/p&gt;
-&lt;p&gt;Se puede afirmar que ahora mismo ya no programo en python. Por si fuera poco, a ésto hay que añadir la cantidad de proyectos que se nos están quedando huérfanos por no poder renovar su mantenimiento o, simplemente, por quebrar y desaparecer las empresas que los llevaban. Todos estos proyectos están cayendo en mi bandeja de tareas pendientes, con lo que ahora he tenido que volver a programar en lenguajes que creía olvidados como Visual Basic, &lt;span class="caps"&gt;TSQL&lt;/span&gt; o &lt;span class="caps"&gt;PHP&lt;/span&gt;. Un gran paso atrás del que no veo que podamos salir en bastantes&amp;nbsp;años.&lt;/p&gt;
-&lt;p&gt;Por este motivo, cuando un grupo de entusiastas programadores españoles de python unieron esfuerzos para crear una &lt;a href="http://www.es.pycon.org/" title="PyCon España"&gt;asociación&lt;/a&gt; con la que montar la primera &lt;a href="http://www.es.pycon.org/" title="PyCon España"&gt;&lt;strong&gt;PyCon&lt;/strong&gt; española&lt;/a&gt;, no he podido dejar de pensar lo lejos que estoy en estos momentos de considerarme &lt;em&gt;&amp;#8220;programador python&amp;#8221;&lt;/em&gt;. Se me incluyó en un principio entre los &lt;em&gt;&amp;#8220;socios fundadores&amp;#8221;&lt;/em&gt; de la asociación, supongo que debido a mi labor en la lista de &lt;a href="http://mail.python.org/mailman/listinfo/python-es"&gt;python-es&lt;/a&gt; todos estos años. Pero pienso que un socio fundador debe ser una especie de socio &lt;em&gt;&amp;#8220;compromisario&amp;#8221;&lt;/em&gt; que trabaje duro para hacer viable la asociación, sobre todo en sus inicios más difíciles. En estos momentos, no me veo capaz de algo así, ni siquiera de mostrar el más mínimo entusiasmo. Por éso mismo, he preferido declinar el ofrecimiento y figurar como un socio más, a pesar de haber podido disgustar a más de&amp;nbsp;uno.&lt;/p&gt;
-&lt;p&gt;Como puntilla a lo dicho, últimamente estoy dedicando todo mi tiempo disponible al estudio del lenguaje &lt;a href="http://www.scala-lang.org/"&gt;scala&lt;/a&gt;. Además de reconciliarme con la programación funcional, me ha hecho férreo defensor del tipado estático frente al tipado dinámico que usa python. No quiero decir de ninguna manera que abandone python, pero preveo que este año lo dedicaré a convertirme en experto programador de scala. Definitivamente, no encajo preparando la PyCon. Mis disculpas por&amp;nbsp;ello.&lt;/p&gt;</content><category term="Pensamientos"></category><category term="PyConES"></category></entry></feed>
+&lt;p&gt;Puede que para la próxima vez empiece por pedir al candidato que doble el papel de los enunciados de la prueba. Seguramente consiga saber más de él que de las respuestas que pueda&amp;nbsp;darme.&lt;/p&gt;</content><category term="Pensamientos"></category></entry></feed>

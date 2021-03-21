@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Chema Cortés">
-  <meta name="description" content="Ejemplo práctico. Potencias de Fermi-Dirac - Evaluación perezosa en python - Parte 6 | Ejemplo práctico: potencias de Fermi-Dirac Se llaman...">
+  <meta name="description" content="Ejemplo práctico. Potencias de Fermi-Dirac - Evaluación perezosa en python - Parte 6 | Se llaman potencias de Fermi-Dirac a los números de la forma...">
 
   <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ea57ac74.min.css">
 
@@ -65,20 +65,19 @@
 <div class="article_meta">
   <p>Posted <time data-timeago datetime="2021-03-07T23:58:43+01:00">dom 07 marzo 2021</time>
    by Chema Cortés  </p>
-  <p>Last updated <time data-timeago datetime="2021-03-15T21:03:23+01:00">lun 15 marzo 2021</time></p>
+  <p>Last updated <time data-timeago datetime="2021-03-22T00:19:38+01:00">lun 22 marzo 2021</time></p>
   <p>
   Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
 &ndash;&ndash;  Tags:
     <a href="https://blog.ch3m4.org/tag/lazy-eval/">lazy-eval</a>,    <a href="https://blog.ch3m4.org/tag/sequence/">sequence</a>,    <a href="https://blog.ch3m4.org/tag/range/">range</a>,    <a href="https://blog.ch3m4.org/tag/primes/">primes</a>,    <a href="https://blog.ch3m4.org/tag/fermi/">fermi</a>,    <a href="https://blog.ch3m4.org/tag/dirac/">dirac</a>  </p>
 </div>  <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/drafts/2021-03-07-evaluacion-perezosa-en-python-parte-6.html" class="nohover">Ejemplo práctico. Potencias de Fermi-Dirac - Evaluación perezosa en python - Parte&nbsp;6</a></h1>
+    <h1><a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-6/" class="nohover">Ejemplo práctico. Potencias de Fermi-Dirac - Evaluación perezosa en python - Parte&nbsp;6</a></h1>
   </div>
   <div class="article_text">
-    <h2>Ejemplo práctico: potencias de&nbsp;Fermi-Dirac</h2>
-<p>Se llaman <strong>potencias de Fermi-Dirac</strong> a los números de la forma <span class="math">\(p^{2^k}\)</span>,
+    <p>Se llaman <strong>potencias de Fermi-Dirac</strong> a los números de la forma <span class="math">\(p^{2^k}\)</span>,
 ordenados de menor a mayor, donde <code>p</code> es un número primo y <code>k</code> es un número&nbsp;natural.</p>
-<p>Vamos a ver cómo crear la sucesión de <code>potencias</code> Fermi-Dirac ordenadas de menor
-a mayor, y hacer las siguientes&nbsp;comprobaciones:</p>
+<p>Vamos a ver cómo crear la sucesión de <code>potencias</code> Fermi-Dirac. Realizaremos las
+siguientes&nbsp;comprobaciones:</p>
 <div class="highlight"><pre><span></span><code><span class="n">potencias</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
 
 <span class="n">potencias</span><span class="p">[:</span><span class="mi">14</span><span class="p">]</span>    <span class="o">==</span>  <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">29</span><span class="p">]</span>
@@ -87,9 +86,8 @@ a mayor, y hacer las siguientes&nbsp;comprobaciones:</p>
 </code></pre></div>
 
 <h2>Estudio&nbsp;previo</h2>
-<p>Para la primera de las comprobaciones necesitaremos obtener los primeros 14
-elementos de <code>potencias</code>. Podemos empezar sacando las potencias en función del
-exponente <code>k</code>:</p>
+<p>Si sacamos la lista de potencias en función del exponente <code>k</code> tendríamos las
+siguientes&nbsp;sucesiones:</p>
 <div class="math">$$
 \begin{align*}
 P_0 &amp;= 2,3,5,7,11,...\\
@@ -98,25 +96,27 @@ P_2 &amp;= 16,81,625,2401,14641,...\\
 P_3 &amp;= 256,6561,390625,5764801,214358881,815730721,...
 \end{align*}
 $$</div>
-<p>A priori, no sabemos cuántos elementos vamos a necesitar de cada sucesión. Como
-mucho necesitaremos los primeros 14 números primos y crear 14 secuencias, de
-<span class="math">\(P_0\)</span> a <span class="math">\(P_13\)</span>, ordenarlos sus elementos en una lista y escoger los primeros 14
-elementos. Con este proceso habremos calculado 196 potencias para sólo 14
-elementos que necesitamos al&nbsp;final.</p>
+<p>Necesitamos combinar estas sucesiones en una sola. A priori, no sabemos cuántos
+elementos vamos a necesitar de cada sucesión. Como máximo, para sacar las
+primeras 14 potencias nos basta con los primeros 14 números primos y crear 14
+secuencias, de <span class="math">\(P_0\)</span> a <span class="math">\(P_{13}\)</span>, ordenarlos sus elementos en una única lista y
+escoger los primeros 14 elementos. Con este proceso habremos calculado 196
+potencias para sólo 14 elementos que necesitamos al&nbsp;final.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">primes</span> <span class="kn">import</span> <span class="n">primes</span>
 
 <span class="n">potencias</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">p</span><span class="o">**</span><span class="mi">2</span><span class="o">**</span><span class="n">k</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">primes</span><span class="p">[:</span><span class="mi">14</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">potencias</span><span class="p">[:</span><span class="mi">14</span><span class="p">])</span>
+
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">29</span><span class="p">]</span>
 </code></pre></div>
 
-<p>Aún en el caso de que consiguiésemos reducir el número de elementos a usar de
-cada secuencia, seguimos sin saber cuántos números primos vamos a emplear. Para
-sacar los 14 primeros elementos de las potencias de Fermi-Dirac sólo se
-necesitaban los 10 primeros números&nbsp;primos.</p>
-<p>Es evidente que una estrategia por <em>fuerza bruta</em> puede ser complicada y
-terminar por hacer muchos cálculos innecesarios, una complejidad del <span class="math">\(O({n^2})\)</span>
-no resoluble con un ordenador normal. Veamos cómo nos ayuda la <em>evaluación
-perezosa</em>.</p>
+<p>Aún en el caso de que tuviéramos algún medio de reducir el número de elementos a
+usar de cada secuencia, seguimos sin saber cuántos números primos serán
+necesarios. Para sacar los 14 primeros elementos de las potencias de Fermi-Dirac
+sólo se necesitaban los 10 primeros números&nbsp;primos.</p>
+<p>Es evidente que una estrategia por <em>fuerza bruta</em> es complicada y termina por
+hacer muchos cálculos innecesarios, una complejidad del <span class="math">\(O({n^2})\)</span> no resoluble
+con un ordenador normal. Veamos cómo nos puede ayudar la <em>evaluación perezosa</em>.</p>
 <h2>Modelos</h2>
 <p>Por intentar crear un modelo, intentemos ver las sucesiones como un iterador de&nbsp;iteradores:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span>
@@ -127,8 +127,8 @@ perezosa</em>.</p>
 </code></pre></div>
 
 <p>Pero el problema con las <em>expresiones generadora</em> es similar al que tienen las
-expresiones lambda, que carecen de su propia clausura y cualquier <em>variable
-libre</em> queda alterada por el entorno donde se&nbsp;evalúan.</p>
+expresiones lambda: carecen de su propia clausura y cualquier <em>variable libre</em>
+queda alterada por el entorno donde se&nbsp;evalúan.</p>
 <p>Se puede comprobar el fallo si intentamos extraer dos&nbsp;iteradores:</p>
 <div class="highlight"><pre><span></span><code><span class="n">p0</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">potencias</span><span class="p">)</span>
 <span class="n">p1</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">potencias</span><span class="p">)</span>
@@ -137,7 +137,8 @@ libre</em> queda alterada por el entorno donde se&nbsp;evalúan.</p>
 <span class="nb">next</span><span class="p">(</span><span class="n">p0</span><span class="p">)</span>  <span class="c1"># --&gt; 9</span>
 </code></pre></div>
 
-<p>El exponente <code>k</code> ha cambiado de valor con el segundo iterador, lo que afecta a las potencias del primero. Tenemos que dotar a los iteradores de su propia&nbsp;clausura:</p>
+<p>El exponente <code>k</code> ha cambiado de valor con el segundo iterador, lo que afecta a
+las potencias del primero. Tenemos que dotar a los iteradores de su propia&nbsp;clausura:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterator</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span>
 
@@ -149,15 +150,13 @@ libre</em> queda alterada por el entorno donde se&nbsp;evalúan.</p>
 <span class="n">potencias</span> <span class="o">=</span> <span class="p">(</span><span class="n">potencias_gen</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">count</span><span class="p">())</span>
 </code></pre></div>
 
-<p>Es necesario combinar este iterador de iteradores en un único iterador,
-operación que se conoce como <em>&#8220;aplanar el iterador&#8221;</em> o <em>&#8220;aplanar la secuencia&#8221;</em>.</p>
-<p>Vamos a definir algunos tipos y&nbsp;operaciones:</p>
+<p>Para obtener una única secuencia a partir de este <em>iterador de iteradores</em> en un
+único iterador, operación que se conoce como <em>&#8220;aplanar la secuencia&#8221;</em>.</p>
+<p>Definimos la siguiente función para mezclar dos listas&nbsp;ordenadas:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># tipo para secuencias ordenadas</span>
 <span class="n">SortedIterator</span> <span class="o">=</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-</code></pre></div>
 
-<p>Definimos la siguiente función para mezclar dos listas&nbsp;ordenadas:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">zipsort</span><span class="p">(</span><span class="n">s1</span><span class="p">:</span> <span class="n">SortedIterator</span><span class="p">,</span> <span class="n">s2</span><span class="p">:</span> <span class="n">SortedIterator</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SortedIterator</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">zipsort</span><span class="p">(</span><span class="n">s1</span><span class="p">:</span> <span class="n">SortedIterator</span><span class="p">,</span> <span class="n">s2</span><span class="p">:</span> <span class="n">SortedIterator</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SortedIterator</span><span class="p">:</span>
     <span class="n">x</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -171,11 +170,11 @@ operación que se conoce como <em>&#8220;aplanar el iterador&#8221;</em> o <em>&
 
 <p>La función <code>zipsort</code> combina dos listas ordenadas <code>SortedIterator</code> para devolver
 otra lista ordenada <code>SortedIterator</code>. Si quisiéramos combinar tres listas,
-bastaría con volver a&nbsp;combinar:</p>
+bastaría con volver repetir con <code>zipsort</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">zipsort</span><span class="p">(</span><span class="n">zipsort</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">),</span> <span class="n">s3</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Y en general, podríamos combinar todas las listas de esta&nbsp;manera:</p>
+<p>En general, podríamos combinar todas las listas de esta&nbsp;manera:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">flat</span><span class="p">(</span><span class="n">iterators</span><span class="p">:</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">SortedIterator</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">SortedIterator</span><span class="p">:</span>
     <span class="n">it1</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">iterators</span><span class="p">)</span>
     <span class="n">it2</span> <span class="o">=</span> <span class="n">flat</span><span class="p">(</span><span class="n">iterators</span><span class="p">)</span>
@@ -184,10 +183,10 @@ bastaría con volver a&nbsp;combinar:</p>
 <span class="n">potencias</span> <span class="o">=</span> <span class="n">flat</span><span class="p">(</span><span class="n">potencias_gen</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">count</span><span class="p">())</span>
 </code></pre></div>
 
-<p>El problema es que se entra en un bucle infinito de llamadas recursivas a <code>flat</code> que
-habrá que&nbsp;evitar.</p>
-<p>Si observamos las sucesiones <span class="math">\(P_0\)</span>, <span class="math">\(P_1\)</span>, <span class="math">\(P_2\)</span>,&#8230;,  todo primer elemento de
-una sucesión será inferior a cualquier elemento de sucesiones posteriores.
+<p>El problema es que se entra en un bucle infinito de llamadas recursivas a <code>flat</code>
+que habrá que&nbsp;evitar.</p>
+<p>Si observamos las sucesiones <span class="math">\(P_0\)</span>, <span class="math">\(P_1\)</span>, <span class="math">\(P_2\)</span>,&#8230;, el primer elemento de una
+sucesión es siempre inferior a cualquier elemento de sucesiones posteriores.
 Usando esta propiedad, podemos redefinir nuestra función&nbsp;aplanadora:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">flat</span><span class="p">(</span><span class="n">iterators</span><span class="p">:</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">SortedIterator</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">SortedIterator</span><span class="p">:</span>
     <span class="n">it1</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">iterators</span><span class="p">)</span>
@@ -199,16 +198,19 @@ Usando esta propiedad, podemos redefinir nuestra función&nbsp;aplanadora:</p>
 
 <p>La función <code>flat</code> devuelve siempre un elemento antes de invocarse por
 recursividad, suficiente para frenar la cadena de llamadas recursivas. Visto de
-otro modo, se ha convertido en <em>perezosa</em>, devolviendo elementos a medida que
-sean necesarios. De todos modos, ya sabemos que el nivel de recursividad está
-limitado en python (~3000 niveles en CPython), aunque esperemos no superar este
-límite<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
-<h2>código&nbsp;final</h2>
+otro modo, se ha convertido la función en <em>perezosa</em>, devolviendo elementos a
+medida que sean necesarios. De todos modos, seguimos limitados por el nivel de
+recursividad en python (~3000 niveles en CPython), aunque no vamos a superar
+este límite en las pruebas<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<h2>Código&nbsp;final</h2>
+<p>Descarga: <a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-6/potencias.py" title="Potencias de Fermi-Dirac">potencias.py</a></p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterator</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span><span class="p">,</span> <span class="n">islice</span><span class="p">,</span> <span class="n">tee</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">TypeVar</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span>
 
+<span class="kn">from</span> <span class="nn">lazyseq</span> <span class="kn">import</span> <span class="n">LazySortedSequence</span>
 <span class="kn">from</span> <span class="nn">primes</span> <span class="kn">import</span> <span class="n">primes</span>
+
 
 <span class="n">SortedIterator</span> <span class="o">=</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
 
@@ -234,25 +236,22 @@ límite<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
 <span class="k">def</span> <span class="nf">mkiter</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
     <span class="k">yield from</span> <span class="p">(</span><span class="n">p</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">k</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">primes</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">potencias</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">SortedIterator</span><span class="p">:</span>
-    <span class="k">yield from</span> <span class="n">flat</span><span class="p">(</span><span class="n">mkiter</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">count</span><span class="p">())</span>
+<span class="n">potencias</span> <span class="o">=</span> <span class="n">LazySortedSequence</span><span class="p">(</span><span class="n">flat</span><span class="p">(</span><span class="n">mkiter</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">count</span><span class="p">()))</span>
 </code></pre></div>
 
 <p>Para las&nbsp;comprobaciones:</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">potencias</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">potencias</span><span class="p">[:</span><span class="mi">14</span><span class="p">]</span>
 <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">29</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">potencias</span><span class="p">(),</span> <span class="mi">60</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">potencias</span><span class="p">[</span><span class="mi">60</span><span class="p">]</span>
 <span class="mi">241</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">potencias</span><span class="p">(),</span> <span class="mi">10</span> <span class="o">**</span> <span class="mi">6</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">potencias</span><span class="p">[</span><span class="mi">10</span> <span class="o">**</span> <span class="mi">6</span><span class="p">]</span>
 <span class="mi">15476303</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">primes</span><span class="o">.</span><span class="n">size</span>
 <span class="mi">999432</span>
 </code></pre></div>
 
-<p>Para obtener el elemento <span class="math">\(10⁶\)</span> tarda bastante al necesitar obtener casi un
-millón de números primos. Una vez que los ha obtenido, si se vuelve a calcular
-tarda mucho&nbsp;menos.</p>
-<h2>Resumen</h2>
+<p>Para obtener el elemento <span class="math">\(10^6\)</span> tarda bastante al necesitar obtener casi un
+millón de números primos. Una vez obtenidos, el cálculo es bastante&nbsp;rápido.</p>
 <hr>
 <h2>Serie <em>Evaluación Perezosa en&nbsp;Python</em></h2>
 <ul>
@@ -261,7 +260,7 @@ tarda mucho&nbsp;menos.</p>
 <li><a href="https://blog.ch3m4.org/2021/02/14/evaluacion-perezosa-en-python-parte-3/" title="Parte 3 - _Memoización_">Parte 3 - <em>Memoización</em></a></li>
 <li><a href="https://blog.ch3m4.org/2021/02/15/evaluacion-perezosa-en-python-parte-4/" title="Parte 4 - _Evaluación perezosa_ avanzada">Parte 4 - <em>Evaluación perezosa</em>&nbsp;avanzada</a></li>
 <li><a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" title="Parte 5 - Formalización de la Secuencia Perezosa">Parte 5 - Formalización de la Secuencia&nbsp;Perezosa</a></li>
-<li>Parte 6 - Ejemplo práctico: Potencias de&nbsp;Fermi-Dirac</li>
+<li><a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-6/" title="Parte 6 - Ejemplo práctico: Potencias de Fermi-Dirac">Parte 6 - Ejemplo práctico: Potencias de&nbsp;Fermi-Dirac</a></li>
 <li><a href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" title="Apéndice: sobre el tipado de datos utilizado">Apéndice: sobre el tipado de datos&nbsp;utilizado</a></li>
 </ul>
 <div class="admonition danger">
@@ -270,7 +269,6 @@ tarda mucho&nbsp;menos.</p>
 <li><a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.ipynb" title="Notebook - Evaluación perezosa en python">formato notebook&nbsp;(.ipynb)</a></li>
 <li><a href="https://blog.ch3m4.org/2021/notebook-serie-evaluacion-perezosa-en-python.sync.md" title="Jupytext - Evaluación perezosa en python">formato jupytext&nbsp;(.md)</a></li>
 </ul>
-<p><em><span class="caps">INCOMPLETA</span>&nbsp;TODAVÍA</em></p>
 </div>
 <hr>
 <p><span class="caps">ANOTACIONES</span>:</p>
@@ -348,11 +346,41 @@ limitaciones de la recursivad en python.&#160;<a class="footnote-backref" href="
   </div>
 
 <ul class="pager">
- </ul>
+  <li class="previous">
+    <a href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/" title="Anterior">
+      <i class="fa fa-arrow-circle-left"></i>
+      Formalización de la Secuencia Perezosa - Evaluación perezosa en python - Parte&nbsp;5
+    </a>
+  </li>
+   <li class="next">
+    <a href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/" title="Siguiente">
+      Evaluación perezosa en python -&nbsp;Apéndice
+      <i class="fa fa-arrow-circle-right"></i>
+    </a>
+  </li>
+</ul>
 With category
 <a href="https://blog.ch3m4.org/category/python/">Python</a>:
 <ul class="pager">
- </ul>
+  <li class="previous">
+    <a
+      href="https://blog.ch3m4.org/2021/03/07/evaluacion-perezosa-en-python-parte-5/"
+      title="Anterior en misma categoría"
+    >
+      <i class="fa fa-arrow-circle-o-left"></i>
+      Formalización de la Secuencia Perezosa - Evaluación perezosa en python - Parte&nbsp;5
+    </a>
+  </li>
+   <li class="next">
+    <a
+      href="https://blog.ch3m4.org/2021/03/10/evaluacion-perezosa-en-python-apendice/"
+      title="Siguiente en misma categoría"
+    >
+      Evaluación perezosa en python -&nbsp;Apéndice
+      <i class="fa fa-arrow-circle-o-right"></i>
+    </a>
+  </li>
+</ul>
 
   <div id="article_comments">
     <div id="disqus_thread">
@@ -362,7 +390,7 @@ With category
   <script id="dsq-count-scr" src="https://hyperreals.disqus.com/count.js" async></script>
   <script type="text/javascript">
     var disqus_config = function () {
-        this.page.identifier = "drafts/2021-03-07-evaluacion-perezosa-en-python-parte-6.html";
+        this.page.identifier = "2021/03/07/evaluacion-perezosa-en-python-parte-6/";
         this.page.title = "Ejemplo práctico. Potencias de Fermi-Dirac - Evaluación perezosa en python - Parte&nbsp;6";
     };
     loadDisqus = function(sitename) {

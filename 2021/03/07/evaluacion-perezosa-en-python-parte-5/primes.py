@@ -1,6 +1,11 @@
+# %% [markdown]
 """
 Secuencia perezosa de números primos
+====================================
 
+## Doctests
+
+```python
 >>> isprime(2 ** 31 - 1)
 True
 >>> primes[90000]
@@ -11,8 +16,11 @@ True
 90001
 >>> primes.last
 1159531
+
+```
 """
 
+# %%
 
 from collections.abc import Iterator
 from itertools import islice

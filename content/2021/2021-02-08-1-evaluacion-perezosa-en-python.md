@@ -1,7 +1,7 @@
 ---
 Title: Introducción a la "Evaluación Perezosa" - Evaluación perezosa en python - Parte 1
 Date: 2021-02-08 19:17:25
-Modified: 2021-03-15 20:54:06
+Modified: 2021-03-21 23:29:26
 Category: Python
 Tags: lazy-eval, sequence, range
 Slug: evaluacion-perezosa-en-python-parte-1
@@ -81,7 +81,7 @@ se pueden hacer otras operaciones habituales con listas:
 
 ```python
 >>> len(r)  # obtener el tamaño
->>> 33
+33
 >>> r[20:30]  # obtener un rango
 range(62, 92, 3)
 >>> r[30:20:-1]  # obtener un rango inverso
@@ -245,7 +245,7 @@ Que podemos emplear de este modo:
 [-1, 343, 3375, 12167, 29791, 59319, 103823]
 >>> SquaresRange(100)[::-1]
 SquaresRange(99, -1, -1)
->>> SquaresRange(100).index(91)
+>>> SquaresRange(100).index(81)
 9
 ```
 

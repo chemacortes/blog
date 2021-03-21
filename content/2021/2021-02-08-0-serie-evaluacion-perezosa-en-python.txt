@@ -5,14 +5,12 @@
 - [Parte 3 - _Memoización_][103]
 - [Parte 4 - _Evaluación perezosa_ avanzada][104]
 - [Parte 5 - Formalización de la Secuencia Perezosa][105]
-- Parte 6 - Ejemplo práctico: Potencias de Fermi-Dirac
+- [Parte 6 - Ejemplo práctico: Potencias de Fermi-Dirac][106]
 - [Apéndice: sobre el tipado de datos utilizado][107]
 
 !!!danger "La serie unificada como _Jupyter Notebook_ en:"
     - [formato notebook (.ipynb)][999]
     - [formato jupytext (.md)][998]
-
-    _INCOMPLETA TODAVÍA_
 
 [101]: {filename}2021-02-08-1-evaluacion-perezosa-en-python.md "Introducción a la _evaluación perezosa_"
 [102]: {filename}2021-02-09-2-evaluacion-perezosa-en-python.md "Secuencias infinitas"

@@ -25,6 +25,10 @@
           "file": 2
         },
         "severity": "info"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
       }
     },
     {

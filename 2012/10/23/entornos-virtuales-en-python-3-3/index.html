@@ -88,8 +88,8 @@ $ <span class="nb">source</span> bin/activate
 
 <p>Hay que notar que el script <code>activate</code> se debe ejecutar con <code>source</code> ya que necesita cambiar algunas variables del entorno de ejecución&nbsp;actual. </p>
 <p>En windows, se debe ejecutar el script <code>Scripts\activate.bat</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="n">C</span><span class="err">:</span><span class="p">\&gt;</span> <span class="nb">cd </span><span class="n">entorno_virtual</span>
-<span class="n">C</span><span class="err">:</span><span class="p">\&gt;</span> <span class="n">Scripts</span><span class="p">\</span><span class="n">activate</span><span class="p">.</span><span class="n">bat</span>
+<div class="highlight"><pre><span></span><code><span class="n">C</span><span class="p">:\&gt;</span> <span class="nb">cd </span><span class="n">entorno_virtual</span>
+<span class="n">C</span><span class="p">:\&gt;</span> <span class="n">Scripts</span><span class="p">\</span><span class="n">activate</span><span class="p">.</span><span class="n">bat</span>
 </code></pre></div>
 
 <p>Una vez activado el entorno veremos que el prompt de la línea de comandos ha cambiado para indicarnos que estamos dentro. Las variables de entorno han cambiado, como puedes comprobar si miras <code>$PATH</code>. A partir de aquí, la instalación de paquetes con <code>easy_install</code> o <code>pip</code> se realizarán dentro del entorno. A diferencia con <code>virtualenv</code>, el módulo <code>venv</code> no instala en nuestro entorno ninguna de estas herramientas, por lo que lo primero que tendremos que hacer será&nbsp;instalarlas:</p>

@@ -76,56 +76,56 @@
     <p>Como continuación al artículo que dediqué al <a href="https://blog.ch3m4.org/2011/06/06/estudio-funcion-factorial/">estudio del factorial</a>, voy a explicar cómo se haría este famoso algoritmo usando <a href="http://scala-lang.org" title="Scala programming language">scala</a>. Tengo que añadir que tan sólo llevo una semana con el lenguaje scala, por lo que es muy probable que haya algún aspecto de este lenguaje que me haya dejado por el&nbsp;camino.</p>
 <h2>Versión recursiva (y <em>one-line</em>)</h2>
 <p>La forma básica de la función&nbsp;sería:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="n">fact</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span><span class="k">:</span><span class="kt">BigInt</span> <span class="o">=</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="mi">1</span>
-    <span class="k">else</span> <span class="n">n</span><span class="o">*</span><span class="n">fact</span><span class="o">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="nc">Int</span><span class="p">):</span><span class="nc">BigInt</span> <span class="o">=</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="mi">1</span>
+    <span class="k">else</span> <span class="n">n</span><span class="o">*</span><span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 
 <p>Si se compara con la función recursiva en python, no parece que haya mucha diferencia, con excepción de que en scala existe el tipado de&nbsp;datos.</p>
 <p>Esta función es en realidad una sóla línea, por lo que podíamos haberla escrito de esta&nbsp;manera:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="n">fact</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span><span class="k">:</span><span class="kt">BigInt</span> <span class="o">=</span> <span class="k">if</span> <span class="o">(</span><span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">n</span><span class="o">*</span><span class="n">fact</span><span class="o">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="nc">Int</span><span class="p">):</span><span class="nc">BigInt</span> <span class="o">=</span> <span class="k">if</span> <span class="p">(</span><span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">n</span><span class="o">*</span><span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 
 <p>Es una clara señal de la orientación funcional que tiene&nbsp;scala.</p>
 <p>Al igual que python, esta función recursiva se corta cuando se sobrepasa un cierto límite de llamadas recursivas para proteger la memoria del&nbsp;sistema.</p>
 <p>El compilador de Scala posee una optimización especial denominda de <em>&#8220;LLamada Terminal&#8221;</em> (<a href="http://en.wikipedia.org/wiki/Tail_call" title="Tail Call">Tail Call</a>)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> (optimización que no existe en <span class="caps">JVM</span>). Este tipo de optimizaciones son posibles cuando la última línea a ejecutar de la función es únicamente la llamada recursiva a sí misma, con lo cuál hace innecesario guardar el stack de ejecución puesto que no quedarían más líneas para&nbsp;ejecutar.</p>
 <p>Para que sea posible aplicar esta optimización de &#8220;llamada terminal&#8221;, tenemos que reescribir nuestra función de modo que la última línea sea una llamada a sí misma. Para ello usaremos una función acumuladora que se encargue de realizar la multiplicación previamente a la llamada. Casi mejor si vemos el&nbsp;código:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="n">fact</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span><span class="k">:</span><span class="kt">BigInt</span> <span class="o">=</span> <span class="o">{</span>
-    <span class="k">def</span> <span class="n">factAcc</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">,</span> <span class="n">acc</span><span class="k">:</span><span class="kt">BigInt</span><span class="o">)</span><span class="k">:</span><span class="kt">BigInt</span> <span class="o">=</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">n</span><span class="o">&lt;=</span><span class="mi">1</span><span class="o">)</span> <span class="n">acc</span> <span class="k">else</span> <span class="n">factAcc</span><span class="o">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">n</span><span class="o">*</span><span class="n">acc</span><span class="o">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="nc">Int</span><span class="p">):</span><span class="nc">BigInt</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="k">def</span> <span class="nf">factAcc</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="nc">Int</span><span class="p">,</span> <span class="n">acc</span><span class="p">:</span><span class="nc">BigInt</span><span class="p">):</span><span class="nc">BigInt</span> <span class="o">=</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">n</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">)</span> <span class="n">acc</span> <span class="k">else</span> <span class="n">factAcc</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">*</span><span class="n">acc</span><span class="p">)</span>
 
-    <span class="n">factAcc</span><span class="o">(</span><span class="n">n</span><span class="o">,</span><span class="mi">1</span><span class="o">)</span>
-<span class="o">}</span>
+    <span class="n">factAcc</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
 </code></pre></div>
 
 <p>En las últimas versiones de scala existe una <em>&#8220;anotación&#8221;</em> especial para indicar al compilador de scala que intente aplicar la optimización de &#8220;LLamada Terminal&#8221;, o que nos dé un aviso de no poder hacerlo. Finalmente, así quedaría el código de nuestra función&nbsp;recursiva:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nn">scala.annotation.tailrec</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nn">scala</span><span class="p">.</span><span class="nn">annotation</span><span class="p">.</span><span class="n">tailrec</span>
 
-<span class="k">def</span> <span class="n">fact</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span><span class="k">:</span><span class="kt">BigInt</span> <span class="o">=</span> <span class="o">{</span>
+<span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="nc">Int</span><span class="p">):</span><span class="nc">BigInt</span> <span class="o">=</span> <span class="p">{</span>
     <span class="nd">@tailrec</span>
-    <span class="k">def</span> <span class="n">factAcc</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">,</span> <span class="n">acc</span><span class="k">:</span><span class="kt">BigInt</span><span class="o">)</span><span class="k">:</span><span class="kt">BigInt</span><span class="o">=</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">n</span><span class="o">&lt;=</span><span class="mi">1</span><span class="o">)</span> <span class="n">acc</span> <span class="k">else</span> <span class="n">factAcc</span><span class="o">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">n</span><span class="o">*</span><span class="n">acc</span><span class="o">)</span>
+    <span class="k">def</span> <span class="nf">factAcc</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="nc">Int</span><span class="p">,</span> <span class="n">acc</span><span class="p">:</span><span class="nc">BigInt</span><span class="p">):</span><span class="nc">BigInt</span><span class="o">=</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">n</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">)</span> <span class="n">acc</span> <span class="k">else</span> <span class="n">factAcc</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">*</span><span class="n">acc</span><span class="p">)</span>
 
-    <span class="n">factAcc</span><span class="o">(</span><span class="n">n</span><span class="o">,</span><span class="mi">1</span><span class="o">)</span>
-<span class="o">}</span>
+    <span class="n">factAcc</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
 </code></pre></div>
 
 <h2>Versión&nbsp;iterativa</h2>
 <p>Es la versión más&nbsp;sencilla:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="n">fact</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span><span class="k">:</span><span class="kt">BigInt</span> <span class="o">=</span> <span class="o">{</span>
-    <span class="k">var</span> <span class="n">res</span><span class="k">=</span><span class="nc">BigInt</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
-    <span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="k">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">n</span><span class="o">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="nc">Int</span><span class="p">):</span><span class="nc">BigInt</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="n">res</span><span class="o">=</span><span class="nc">BigInt</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">n</span><span class="p">)</span>
         <span class="n">res</span><span class="o">*=</span><span class="n">i</span>
     <span class="n">res</span>
-<span class="o">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
 <h2>Fórmula de&nbsp;Stirling</h2>
 <p>Para completar el estudio, podemos ver cómo sería la función de Stiling en Scala, bastante similar, como puede verse, a su versión en&nbsp;python:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nn">math._</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nn">math</span><span class="p">.</span><span class="n">_</span>
 
-<span class="k">def</span> <span class="n">fact</span><span class="o">(</span><span class="n">n</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span><span class="k">:</span><span class="kt">Double</span> <span class="o">=</span>
-    <span class="n">sqrt</span><span class="o">(</span><span class="mi">2</span><span class="o">*</span><span class="nc">Pi</span><span class="o">*</span><span class="n">n</span><span class="o">)*</span><span class="n">pow</span><span class="o">(</span><span class="n">n</span><span class="o">/</span><span class="n">E</span><span class="o">,</span><span class="n">n</span><span class="o">)</span>
+<span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="nc">Int</span><span class="p">):</span><span class="nc">Double</span> <span class="o">=</span>
+    <span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nc">Pi</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">pow</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="nc">E</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
 </code></pre></div>
 
 <div class="footnote">

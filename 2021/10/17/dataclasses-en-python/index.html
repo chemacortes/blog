@@ -65,7 +65,7 @@
 <div class="article_meta">
   <p>Posted <time data-timeago datetime="2021-10-17T12:00:00+02:00">dom 17 octubre 2021</time>
    by Chema Cortés  </p>
-  <p>Last updated <time data-timeago datetime="2021-10-17T12:40:03+02:00">dom 17 octubre 2021</time></p>
+  <p>Last updated <time data-timeago datetime="2021-10-19T21:03:44+02:00">mar 19 octubre 2021</time></p>
   <p>
   Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
 &ndash;&ndash;  Tags:
@@ -118,7 +118,8 @@ puntos en el&nbsp;plano:</p>
 <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Para poder comparar si dos puntos son iguales tenemos que añadir el método <code>__eq__</code>:</p>
+<p>Para poder comparar si dos puntos son iguales tenemos que añadir el método
+<code>__eq__</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
@@ -244,8 +245,8 @@ de un&nbsp;diccionario.</p>
 puede usar perfectamente como índices de&nbsp;diccionarios.</p>
 <h3>Descomposición</h3>
 <p>Tal vez sea la <em>descomposición</em> o <em>desestructuración</em> de una <em>dataclase</em> la
-característica que más se echa en falta en esta implementación de&nbsp;python.</p>
-<p>Si funcionara, podríamos hacer cosas tales&nbsp;como:</p>
+característica más interesante. Si funcionara directamente podríamos hacer cosas
+tales&nbsp;como:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># OJO: ESTE CÓDIGO NO FUNCIONA</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">Point</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">=</span> <span class="n">p</span>
@@ -253,18 +254,6 @@ característica que más se echa en falta en esta implementación de&nbsp;python
 <span class="mi">1</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
 <span class="mi">2</span>
-</code></pre></div>
-
-<p>Pero donde mejor se ve su potencial sería en combinación con la sentencia
-<code>match</code> (<em>python 3.10</em>):</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># OJO: ESTE CÓDIGO NO FUNCIONA</span>
-<span class="n">match</span> <span class="n">p</span><span class="p">:</span>
-    <span class="n">case</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Eje de coordenadas: </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">case</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Eje de abcisas: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">case</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fuera de ejes: (</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <p>Para tener algo &#8220;parecido&#8221;, se puede transformar la instancia <em>dataclass</em> en una
@@ -304,6 +293,18 @@ tupla o un diccionario usando las funciones <code>dataclasses.astuple</code> o
 <span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Pero esto mejora mucho a partir de <em>python 3.10</em>. Gracias a la nueva sentencia
+<code>match</code> se pueden hacer <em>desestructuraciones</em> como&nbsp;éstas:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># OJO: ESTE CÓDIGO SÓLO FUNCIONA A PARTIR DE PYTHON 3.10</span>
+<span class="n">match</span> <span class="n">p</span><span class="p">:</span>
+    <span class="n">case</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Eje de coordenadas: </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">case</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Eje de abcisas: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">case</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fuera de ejes: (</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <h3>Optimización</h3>

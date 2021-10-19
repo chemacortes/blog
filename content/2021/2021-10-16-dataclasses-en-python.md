@@ -1,7 +1,7 @@
 ---
 Title: Dataclasses en python
 Date: 2021-10-17 12:00:00
-Modified: 2021-10-17 12:40:03
+Modified: 2021-10-19 21:03:44
 Category: Python
 Tags: dataclass
 Slug: dataclasses-en-python
@@ -68,7 +68,8 @@ Probamos:
 Point(x=1.0, y=2.0)
 ```
 
-Para poder comparar si dos puntos son iguales tenemos que añadir el método `__eq__`:
+Para poder comparar si dos puntos son iguales tenemos que añadir el método
+`__eq__`:
 
 ```python
 class Point:
@@ -226,9 +227,8 @@ puede usar perfectamente como índices de diccionarios.
 ### Descomposición
 
 Tal vez sea la _descomposición_ o _desestructuración_ de una _dataclase_ la
-característica que más se echa en falta en esta implementación de python.
-
-Si funcionara, podríamos hacer cosas tales como:
+característica más interesante. Si funcionara directamente podríamos hacer cosas
+tales como:
 
 ```python
 # OJO: ESTE CÓDIGO NO FUNCIONA
@@ -238,20 +238,6 @@ Si funcionara, podríamos hacer cosas tales como:
 1
 >>> b
 2
-```
-
-Pero donde mejor se ve su potencial sería en combinación con la sentencia
-`match` (_python 3.10_):
-
-```python
-# OJO: ESTE CÓDIGO NO FUNCIONA
-match p:
-    case Point(0, y):
-        print(f"Eje de coordenadas: {y}")
-    case Point(x, 0):
-        print(f"Eje de abcisas: {x}")
-    case Point(x, y):
-        print(f"Fuera de ejes: ({x}, {y})")
 ```
 
 Para tener algo "parecido", se puede transformar la instancia _dataclass_ en una
@@ -297,6 +283,20 @@ Probamos:
 >>> (x, y) = p["x", "y"]
 >>> (x, y)
 (1, 2)
+```
+
+Pero esto mejora mucho a partir de _python 3.10_. Gracias a la nueva sentencia
+`match` se pueden hacer _desestructuraciones_ como éstas:
+
+```python
+# OJO: ESTE CÓDIGO SÓLO FUNCIONA A PARTIR DE PYTHON 3.10
+match p:
+    case Point(0, y):
+        print(f"Eje de coordenadas: {y}")
+    case Point(x, 0):
+        print(f"Eje de abcisas: {x}")
+    case Point(x, y):
+        print(f"Fuera de ejes: ({x}, {y})")
 ```
 
 ### Optimización

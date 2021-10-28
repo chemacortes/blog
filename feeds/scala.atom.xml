@@ -1,5 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R - Scala</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/scala.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2018-08-14T01:00:09+02:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Factorial en scala en paralelo</title><link href="https://blog.ch3m4.org/2018/07/25/factorial-en-scala-en-paralelo/" rel="alternate"></link><published>2018-07-25T20:49:57+02:00</published><updated>2018-08-14T01:00:09+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2018-07-25:/2018/07/25/factorial-en-scala-en-paralelo/</id><summary type="html">&lt;p&gt;Una nueva versión del factorial en scala, ahora en&amp;nbsp;paralelo&lt;/p&gt;</summary><content type="html">&lt;p&gt;Una obsesión de este blog siempre ha sido crear cálculos de la función &lt;em&gt;factorial&lt;/em&gt; con diversos algoritmos y con cualquier&amp;nbsp;lenguaje.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R - Scala</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/scala.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-10-28T19:49:26+02:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Build Server Protocol</title><link href="https://blog.ch3m4.org/2021/10/24/bsp/" rel="alternate"></link><published>2021-10-24T18:06:48+02:00</published><updated>2021-10-28T19:49:26+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-10-24:/2021/10/24/bsp/</id><summary type="html">&lt;p&gt;Mediante el protocolo &lt;span class="caps"&gt;BSP&lt;/span&gt;, la intereacción de un editor o &lt;span class="caps"&gt;IDE&lt;/span&gt; con las herramientas de desarrollo se ha llevado a una arquitectura cliente-servidor que mejora la experiencia de usuario con sus herramientas de desarrollo habituales, sin renunciar a la comodidad de usar una entorno&amp;nbsp;gráfico.&lt;/p&gt;</summary><content type="html">&lt;p&gt;La elección de un editor, un &lt;span class="caps"&gt;IDE&lt;/span&gt; o cualquier otra herramienta de desarrollo se
+acaba convirtiendo en una decisión personal del programador. Todos tenemos
+nuestras herramientas favoritas que variamos según sea la naturaleza del
+proyecto o el lenguaje de programación que&amp;nbsp;usemos.&lt;/p&gt;
+&lt;p&gt;Las herramientas de desarrollo más importantes son las que controlan el ciclo de
+&lt;strong&gt;compilación, test y ejecución&lt;/strong&gt;, como pueden ser &lt;code&gt;maven&lt;/code&gt;, &lt;code&gt;gradle&lt;/code&gt;, &lt;code&gt;sbt&lt;/code&gt; o
+&lt;code&gt;mill&lt;/code&gt;, por sólo citar algunas de las usadas normalmente en scala. Estas
+herramientas condicionan cómo se estructura nuestro proyecto y cómo realizar las
+tareas más habituales durante el&amp;nbsp;desarrollo.&lt;/p&gt;
+&lt;p&gt;Cada &lt;span class="caps"&gt;IDE&lt;/span&gt; se las ingenia para extraer de un proyecto toda la información
+necesaria para la compilación, detectando los directorios con código que
+presenta presentar como &lt;em&gt;espacio de trabajo&lt;/em&gt; (&lt;em&gt;workspace&lt;/em&gt;) donde el programador
+pueda trabajar, ver, escribir y compilar el código. Si puede, extraer esta
+información de las herramientas de desarrollo, aunque no siempre es&amp;nbsp;posible.&lt;/p&gt;
+&lt;p&gt;Muchas veces, el soporte que da un &lt;span class="caps"&gt;IDE&lt;/span&gt; a un determinado lenguaje, a una librería
+o a una plataforma no es todo lo completo posible. Muchas veces el soporte era
+parcial, sólo el coloreado de sintáxis y poco más. En otras, la detección de
+errores se quedaba corta y había que acudir a una compilación manual para
+detectar los errores más arcanos. Era casi imposible tener un &lt;span class="caps"&gt;IDE&lt;/span&gt; completo que
+se pudiera usar con cualquier lenguaje y librería, por lo que era obligando el
+cambio entre editores, IDEs y herramientas buscando el mejor&amp;nbsp;soporte.&lt;/p&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;LSP&lt;/span&gt; - Language Server&amp;nbsp;Protocol&lt;/h2&gt;
+&lt;p&gt;Para racionalizar esta situación, Microsoft sacó el &lt;a href="https://microsoft.github.io/language-server-protocol/" title="Language Server Protocol"&gt;Language Server Protocol
+(&lt;span class="caps"&gt;LSP&lt;/span&gt;)&lt;/a&gt;. Basado en una arquitectura cliente-servidor, los editores e IDEs
+pasan a ser &lt;em&gt;clientes&lt;/em&gt; de servidores &lt;span class="caps"&gt;LSP&lt;/span&gt;, uno para cada lenguaje, comunicándose
+con ellos a través de un protocolo común. Gracias a los servidores &lt;span class="caps"&gt;LSP&lt;/span&gt; se hacen
+tareas tan comunes como el resaltado de sintáxis, autocompletado, localización
+de errores de sintáxis, formateo de código, búsqueda de referencias, etc.
+Además, los propios creadores de los lenguajes vigilan la calidad de estos
+servidores, lo que aporta mayor&amp;nbsp;fiabilidad.&lt;/p&gt;
+&lt;p&gt;Existen &lt;a href="https://microsoft.github.io/language-server-protocol/implementors/servers/" title="Implementaciones LSP"&gt;implementaciones&lt;/a&gt; para muchos lenguajes. IDEs como Visual Code
+instalan estos servidores &lt;span class="caps"&gt;LSP&lt;/span&gt; junto al instalar la extensión del lenguaje que
+vayamos a usar, por lo que no requiere instalarlos manualmente. Lo importante es
+saber que podemos usar el mismo servidor en cualquier editor e &lt;span class="caps"&gt;IDE&lt;/span&gt; que soporte
+el protocolo &lt;span class="caps"&gt;LSP&lt;/span&gt;.&lt;/p&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;BSP&lt;/span&gt; - Build Server&amp;nbsp;Protocol&lt;/h2&gt;
+&lt;p&gt;Desarrollando la idea de &lt;span class="caps"&gt;LSP&lt;/span&gt;, surge el &lt;a href="https://build-server-protocol.github.io" title="Build Server Protocol"&gt;Build Server Protocol (&lt;span class="caps"&gt;BSP&lt;/span&gt;)&lt;/a&gt; como
+colaboración entre el &lt;strong&gt;Scala Center&lt;/strong&gt; y &lt;strong&gt;JetBrain&lt;/strong&gt;. La interacción entre el
+&lt;span class="caps"&gt;IDE&lt;/span&gt; y las herramientas de desarrollo se llevan a una arquitectura
+cliente-servidor. El servidor &lt;span class="caps"&gt;BSP&lt;/span&gt; siempre está corriendo de fondo y será quien
+se encargue de informar al &lt;span class="caps"&gt;IDE&lt;/span&gt; sobre la estructura del proyecto, dónde están los
+errores de compilación o enlazado, del resultado de los test,&amp;nbsp;etc.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/pictures/bsp.png" width="400" title="Interacción cliente-servidor BSP" alt="Build Server Protocol"&gt;&lt;/p&gt;
+&lt;h2&gt;Metals&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Metals&lt;/strong&gt; es un servidor &lt;span class="caps"&gt;LSP&lt;/span&gt; para &lt;em&gt;scala&lt;/em&gt; y es, además, un cliente &lt;span class="caps"&gt;BSP&lt;/span&gt;.
+Controla todo el ciclo de desarrollo, desde la creación de un proyecto usando
+una plantilla, su compilación, prueba y ejecución, y su&amp;nbsp;depurado.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;metals&lt;/em&gt; puede usar como servidores &lt;span class="caps"&gt;BSP&lt;/span&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://scalacenter.github.io/bloop/"&gt;&lt;strong&gt;bloop&lt;/strong&gt;&lt;/a&gt;, el servidor &lt;span class="caps"&gt;BSP&lt;/span&gt; por defecto en &lt;em&gt;metals&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;sbt server (&lt;em&gt;sbtn&lt;/em&gt;)&lt;/strong&gt;, incluído con la herramienta &lt;code&gt;sbt&lt;/code&gt; (aunque tiene
+  algunos fallos aún en su última versión &lt;code&gt;1.5,5&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Si usas &lt;code&gt;sbt&lt;/code&gt; regularmente, igual te conviene usar su servidor para evitar
+incoherencias en la compilación. Pero &lt;code&gt;bloop&lt;/code&gt; es algo más rápido, más fiable y
+se puede usar también con más herramientas como &lt;em&gt;maven&lt;/em&gt;, &lt;em&gt;gradle&lt;/em&gt; y &lt;em&gt;mill&lt;/em&gt;. Mi
+recomendación es dejar que &lt;em&gt;metals&lt;/em&gt; te recomiende qué&amp;nbsp;usar.&lt;/p&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;DAP&lt;/span&gt; - Debug Adaptar&amp;nbsp;Protocol&lt;/h2&gt;
+&lt;p&gt;Todavía hay algo más. Se está trabajando en un protocolo denominado &lt;a href="https://microsoft.github.io/debug-adapter-protocol/" title="Debug Adapter Protocol"&gt;Debug
+Adaptar Protocol (&lt;span class="caps"&gt;DAP&lt;/span&gt;)&lt;/a&gt; que estandariza las tareas de ejecución, testing y
+depurado. Basta añadir un &lt;em&gt;adaptador &lt;span class="caps"&gt;DAP&lt;/span&gt;&lt;/em&gt; para que podamos usar nuestro &lt;span class="caps"&gt;IDE&lt;/span&gt; en
+tareas de depurado para ese&amp;nbsp;lenguaje.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;bloop&lt;/em&gt; implementa por defecto el protocolo &lt;span class="caps"&gt;DAP&lt;/span&gt;. Esta implementación ha sido
+sacada como &lt;em&gt;plugin&lt;/em&gt; de sbt, &lt;a href="https://github.com/scalacenter/scala-debug-adapter"&gt;sbt-debug-adapter&lt;/a&gt;, que ahora se puede usar con
+otras herramientas scala. En concreto, se puede usar con el &lt;em&gt;servidor sbt&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Usando &lt;em&gt;metals&lt;/em&gt;, la configuración para &lt;span class="caps"&gt;DAP&lt;/span&gt; es automática, uses &lt;em&gt;bloop&lt;/em&gt; o &lt;em&gt;sbtn&lt;/em&gt;,
+por lo que no tienes que preocuparte de configurar&amp;nbsp;nada.&lt;/p&gt;</content><category term="Scala"></category><category term="devtools"></category></entry><entry><title>Factorial en scala en paralelo</title><link href="https://blog.ch3m4.org/2018/07/25/factorial-en-scala-en-paralelo/" rel="alternate"></link><published>2018-07-25T20:49:57+02:00</published><updated>2018-08-14T01:00:09+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2018-07-25:/2018/07/25/factorial-en-scala-en-paralelo/</id><summary type="html">&lt;p&gt;Una nueva versión del factorial en scala, ahora en&amp;nbsp;paralelo&lt;/p&gt;</summary><content type="html">&lt;p&gt;Una obsesión de este blog siempre ha sido crear cálculos de la función &lt;em&gt;factorial&lt;/em&gt; con diversos algoritmos y con cualquier&amp;nbsp;lenguaje.&lt;/p&gt;
 &lt;p&gt;Para no perder la costumbre, veamos una de las formas más rápidas de calcular un factorial aprovechando las CPUs multicores que equipan los equipos&amp;nbsp;modernos.&lt;/p&gt;
 &lt;p&gt;Teníamos en scala una definición de este&amp;nbsp;estilo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nc"&gt;Int&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="nc"&gt;BigInt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nc"&gt;BigInt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;product&lt;/span&gt;

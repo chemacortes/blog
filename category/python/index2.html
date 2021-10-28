@@ -33,7 +33,7 @@
           <a href="https://twitter.com/chemacortes" title="twitter" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter fa-lg"></i></a>
           <a href="https://github.com/chemacortes" title="github" target="_blank" rel="noopener noreferrer"><i class="fa fa-github fa-lg"></i></a>
           <a href="https://bitbucket.org/chemacortes/" title="bitbucket" target="_blank" rel="noopener noreferrer"><i class="fa fa-bitbucket fa-lg"></i></a>
-          <a href="http://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow" target="_blank" rel="noopener noreferrer"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow" target="_blank" rel="noopener noreferrer"><i class="fa fa-stack-overflow fa-lg"></i></a>
           <a href="https://linkedin.com/in/chemacortes" title="linkedin" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin fa-lg"></i></a>
       </div>
       <ul>
@@ -61,118 +61,182 @@
 
 <article>
   <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/2013/10/26/python-eficiente-hacia-la-programacion-funcional/">Python Eficiente - Hacia la programación&nbsp;funcional</a></h1>
+    <h1><a href="https://blog.ch3m4.org/2012/01/26/condificando-en-binario/">Codificando en&nbsp;binario</a></h1>
   </div>
   <div class="article_text">
-    <p>Existen muchas definiciones de <strong>Programación Funcional</strong>, así como comparativas con otros <em>paradigmas</em> de la programación que más parece una cuestión de gustos que una visión razonada de ventajas e incovenientes. No voy a entrar en definiciones tediosas que necesitan demasiadas explicaciones. Prefiero verlo más como si se tratara de una …</p>
+    <p>A raiz de la consulta de un colega, me ha llamado la atención el módulo <code>binascii</code>. Este módulo se encarga de la codificación y decodificación de cadenas binarias para su transmisión en mensajes de texto. Lo habitual es que sea usado por otros módulos como <code>uu</code>, <code>base64</code> o <code>binhex</code>, por …</p>
   </div>
 </article>
 <hr />
 <article>
   <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/2013/10/26/clausuras-en-python-parte-2/">Clausuras en python - Parte&nbsp;2</a></h1>
+    <h1><a href="https://blog.ch3m4.org/2011/12/01/web2py-con-pilas-incluidas/">web2py, con pilas&nbsp;incluidas</a></h1>
   </div>
   <div class="article_text">
-    <h2>Ámbitos&nbsp;anidados</h2>
-<p>La importancia de disponer de <em>clausuras</em> va más allá de saber dónde se evalúa
-la función. Si fuera posible encapsular una función junto con su propio entorno
-de ejecución, podríamos conseguir que la función tenga <em>&#8220;memoria&#8221;</em> o, dicho de
-otro modo, que sea capaz de conservar sus propios …</p>
+    <p>He estado últimamente trabajando en varios proyectos que me han hecho descuidar un poco el blog. En próximos días espero publicar algunos artículos relacionados que creo serán de&nbsp;interés.</p>
+<p>Lo último que estoy haciendo es un desarrollo de aplicación de escritorio con <a href="http://www.web2py.com">web2py</a>, a pesar de tratarse de un framework …</p>
   </div>
 </article>
 <hr />
 <article>
   <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/2013/10/25/clausuras-en-python-parte-1/">Clausuras en python - Parte&nbsp;1</a></h1>
+    <h1><a href="https://blog.ch3m4.org/2011/08/30/mercurial-como-cliente-dcvs-universal/">Mercurial como cliente <span class="caps">DCVS</span>&nbsp;universal</a></h1>
   </div>
   <div class="article_text">
-    <h2>Funciones&nbsp;Lambda</h2>
-<p>Antes de ver qué son las <strong>clausuras</strong> (<em>closures</em>), veamos qué tienen las
-<em>funciones lambda</em> que las hacen tan polémicas algunas&nbsp;veces.</p>
-<p>Comencemos con un ejemplo. Te recomiendo que te esfuerces en deducir cómo
-funciona sin ir a probar cómo funciona. A continuación te pondré algunos valores
-para que …</p>
+    <h2>Introducción</h2>
+<p>Con la llegada de los <a href="http://en.wikipedia.org/wiki/Distributed_Concurrent_Versions_System" title="Distributed Concurrent Versions System"><span class="caps">DCVS</span></a> (<em>Distributed Concurrent Versions System</em>), se ha convertido en habitual el uso de un sistema de control de versiones en todo desarrollo. La popularización de sitios webs basados en estos sistemas como <a href="http://github.com">github</a>, <a href="http://gitorious.org/">gitorious</a>, <a href="http://bitbucket.org">bitbucket</a> o <a href="http://code.google.com/">googlecode</a> como foros públicos donde compartir código entre …</p>
   </div>
 </article>
 <hr />
 <article>
   <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/2013/08/14/estudio-funcion-factorial-numpy/">Estudio función factorial -&nbsp;numpy</a></h1>
+    <h1><a href="https://blog.ch3m4.org/2011/08/04/iconv-en-python/">iconv en&nbsp;python</a></h1>
   </div>
   <div class="article_text">
-    <p>Mientras busco tiempo para preparar algunos artículos sobre cómo hacer la programación python <em>más eficiente</em>, he estado revisando nuevos métodos de programar la función factorial en python aplicando los nuevos conocimientos&nbsp;adquiridos.</p>
-<p>Como puse en un <a href="https://blog.ch3m4.org/2011/06/06/estudio-funcion-factorial/">artículo anterior</a>, la implementación más compacta de la función factorial sería aplicando la función …</p>
+    <p>Últimamente he necesitado pasar algunos ficheros de una web a codificación <code>utf-8</code>, codificación de caracteres más acorde con lo que se lleva hoy en día. En sistemas linux es una labor que se puede hacer fácilmente con la utilidad <code>iconv</code>:</p>
+<div class="highlight"><pre><span></span><code>$ iconv -f cp850 -t utf8 &lt;fichero_entrada.txt &gt;fichero_salida …</code></pre></div>
   </div>
 </article>
 <hr />
 <article>
   <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/2013/07/13/borrado-de-un-descriptor-correccion-de-errores/">Borrado de un descriptor (corrección de&nbsp;errores)</a></h1>
+    <h1><a href="https://blog.ch3m4.org/2011/06/26/metodo-__getattribute__/">Método&nbsp;__getattribute__</a></h1>
   </div>
   <div class="article_text">
-    <p>Tengo que hacer algunas correcciones a la serie de artículos sobre <em>descriptores</em>, en concreto sobre el método <code>__delete__</code> del protocolo <em>descriptor</em>.</p>
-<p>Primero, aclaremos cómo funciona el método <code>__delete__</code> y en qué se diferencia de <code>__del__</code>. No se trata de métodos <em>destructores</em> tal y como se entiende en otros lenguajes de …</p>
+    <p>Si has seguido hasta ahora la serie de <a href="https://blog.ch3m4.org/tag/descriptor/" title="Artículos sobre descriptores">artículos sobre descriptores</a>, habrás visto que buena parte de la <em>magia</em> de los objetos en python se debe al método <code>__getattribute__</code> que todo objeto adquiere de su antecesor común, la clase <code>object</code>.</p>
+<p>En el último artículo, donde hablaba de las <a href="https://blog.ch3m4.org/2011/06/24/optimizaciones-con-los-metodos-especiales/" title="Optimizaciones con los Métodos Especiales">optimizaciones de …</a></p>
   </div>
 </article>
 <hr />
 <article>
   <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/2013/03/22/mutable-o-inmutable-he-ahi-el-dilema/">Mutable o inmutable, he ahí el&nbsp;dilema</a></h1>
+    <h1><a href="https://blog.ch3m4.org/2011/06/24/optimizaciones-con-los-metodos-especiales/">Optimizaciones con los Métodos&nbsp;Especiales</a></h1>
   </div>
   <div class="article_text">
-    <div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Disponible también como <a href="http://nbviewer.jupyter.org/5224623">ipynb</a></p>
-</div>
-<p>Quien se enfrenta a la documentación de python por primera vez se pregunta porqué esa insistencia en mantener tipos de datos duplicados en versiones mutables e inmutables. Tenemos listas y tuplas que casi hacen lo mismo. En python3, tenemos el tipo inmutable <code>bytes</code> y el …</p>
+    <h1>Métodos&nbsp;Especiales</h1>
+<p>Dentro del llamado <a href="http://www.python.org/doc//current/reference/datamodel.html" title="Modelo de datos">&#8220;modelo de datos&#8221;</a> de python, la <a href="http://es.wikipedia.org/wiki/Sobrecarga" title="Sobrecarga de operadores"><em>sobrecarga de operadores</em></a>, tan característica de la programación orientada a objetos, se realiza mediante la definición de algunos métodos de <a href="http://www.python.org/doc//current/reference/datamodel.html#special-method-names" title="Nombres especiales de métodos">nombre especial</a>. A través de esta técnica se define cómo se comportará una clase frente a los operadores del …</p>
   </div>
 </article>
 <hr />
 <article>
   <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/2013/03/16/mutabilidad-de-listas/">Mutabilidad de&nbsp;Listas</a></h1>
+    <h1><a href="https://blog.ch3m4.org/2011/06/21/descriptores-parte-2/">Descriptores - Parte&nbsp;2</a></h1>
   </div>
   <div class="article_text">
-    <div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Puedes visionar este artículo y descargártelo como notebook ipython en <a href="http://nbviewer.jupyter.org/5177340">http://nbviewer.jupyter.org/5177340</a></p>
-</div>
-<p>Mucha gente, cuando se enfrenta por primera vez al lenguaje python, no entiende bien el concepto de <em>&#8220;inmutabilidad&#8221;</em> que tanto repite la documentación al tratar de diferenciar algunos tipos contenedores como tuplas, listas, conjuntos …</p>
+    <h1>¿Cómo funciona un&nbsp;descriptor?</h1>
+<p>Todos los objetos y todas las clases que derivan de <code>object</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> adquieren de él un método llamado <code>__getattribute__</code>. Siempre a través de este método se accede a los atributos, y es en este método donde se hace toda la <em>magia</em> de los descriptores, de modo …</p>
   </div>
 </article>
 <hr />
 <article>
   <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/2013/02/27/dobleces-en-python/">Dobleces en&nbsp;python</a></h1>
+    <h1><a href="https://blog.ch3m4.org/2011/06/19/descriptores-parte-1/">Descriptores - Parte&nbsp;1</a></h1>
   </div>
   <div class="article_text">
-    <p>En el <a href="https://blog.ch3m4.org/2013/02/21/collage-vs-origami/" title="Collage vs. Origami">último artículo</a> del blog contaba en qué consistía <em>doblar código</em><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>:</p>
+    <p>Cuando accedemos a los atributos de un objeto en python, a veces existen unos intermediarios casi imperceptibles llamados <em>&#8220;descriptores&#8221;</em> que son los responsables últimos del funcionamiento de la programación orientada a objetos. Están detrás de <em>propiedades</em>, métodos, métodos estáticos, métodos de clase y del mecanismo <code>super()</code> responsable de la herencia …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/06/06/ultimo-item-de-un-iterable/">Último item de un&nbsp;iterable</a></h1>
+  </div>
+  <div class="article_text">
+    <p>Algunas veces necesitamos obtener el último item de un iterador. Para
+ello se suele iterar hasta agotar el&nbsp;iterador:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">iterador</span><span class="p">:</span>
+     <span class="k">pass</span>
+
+<span class="n">last_item</span> <span class="o">=</span> <span class="n">it</span>  
+</code></pre></div>
+
+<p>Una alternativa que se ve bastante es convertir previamente el iterable
+en una&nbsp;lista:</p>
+<div class="highlight"><pre><span></span><code><span class="n">last_item</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">iterador</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Tiene el incoveniente de …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/06/06/estudio-funcion-factorial/">Estudio función&nbsp;factorial</a></h1>
+  </div>
+  <div class="article_text">
+    <p>Hace un tiempo me dió por recopilar distintas funciones en python para calcular el <a href="http://es.wikipedia.org/wiki/Factorial">factorial</a>. Aquí van todas, algunas bastante curiosas. Si conoces algún tipo más, no dejes de añadirla en los&nbsp;comentarios.</p>
+<h1>Versión&nbsp;recursiva</h1>
+<p>Todo programador ha tenido que ver esta definición como ejemplo de funciones recursivas&nbsp;:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fact …</span></code></pre></div>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/06/04/instalacion-cx_oracle-para-ia64/">Instalación cx_Oracle para&nbsp;ia64</a></h1>
+  </div>
+  <div class="article_text">
+    <h1>Itanium, un sistema&nbsp;¿obsoleto?</h1>
+<p>Últimamente, algunos <em>grandes</em> de la informática como Microsoft, Oracle y RedHat han determinado que los sistemas Itanium han quedado obsoletos con lo que dejarán de darles soporte, aunque hace sólo unos pocos años estos sistemas de 64bits se ofertaban al mercado como el futuro de los …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/05/30/porque-uso-jython/">Porqué uso&nbsp;jython</a></h1>
+  </div>
+  <div class="article_text">
+    <h1>Python de&nbsp;sabores</h1>
+<p>Cuando hablamos de <strong>python</strong>, normalmente nos referimos a su versión <em>canónica</em> implementada en lenguaje C, también conocida por <em>&#8220;CPython&#8221;</em>. Toda la evolución del lenguaje se realiza alrededor de esta implementación y pocas veces se piensa en otras implementaciones. Pero una de las características de python es ser …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/05/24/python-in-tasca/">Python in&nbsp;tasca</a></h1>
+  </div>
+  <div class="article_text">
+    <p>Es curioso lo que se parece python a php en este libro&nbsp;:-))</p>
+<p><img alt="Python in Tasca" src="https://blog.ch3m4.org/pictures/python_in_tasca.jpeg"></p>
+<p>Supongo que se trata de la <a href="http://hpe.pearson.it/scheda_opera.php?tab=&amp;ID=2408" title="Python in Tasca">versión italiana</a> del libro &#8220;<a href="http://www.pearsonhighered.com/educator/product/Python-Phrasebook/9780672329104.page" title="Python Phrasebook">Python Phrasebook</a>&#8221; de Brad&nbsp;Dayley</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/05/24/qtm-con-restructuredtext/">qtm con&nbsp;reStructuredText</a></h1>
+  </div>
+  <div class="article_text">
+    <p>Puestos a explotar todas las posibilidades de la utilidad <a href="http://qtm.blogistan.co.uk/" title="QTM The open-source blogging client">qtm</a>, también es posible emplear esta utilidad para previsualizar y subir al blog artículos escritos en <strong><a href="http://docutils.sourceforge.net/rst.html" title="reStructuredText">reStructuredText</a></strong> (abreviadamente <abbr title="reStructuredText">ReST</abbr>) en lugar de <em>markdown</em> que viene por&nbsp;defecto.</p>
+<p>De la instalación de <strong><a href="http://docutils.sourceforge.net" title="docutils">docutils</a></strong> obtendremos las herramientas básicas con la que crear documentación …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/03/24/podcast-z-2-animalario-con-lenguajes-dinamicos/">Podcast Z #2: Animalario con lenguajes&nbsp;dinámicos</a></h1>
+  </div>
+  <div class="article_text">
+    <p>Acaba de salir el <a href="http://podcast.jcea.es/podcastz/2" title="Animalario con lenguajes dinámicos">número 2</a> de <strong><a href="http://podcast.jcea.es/podcastz">Podcast Z</a></strong> de Jesús Cea y
+Pablo Lobariñas. En este episodio se tratan diversas técnicas de
+adaptación de código externo aprovechando la particularidades propias de
+lenguajes dinámicos como <a href="http://www.python.org">python</a>. Poniendo un caso real como ejemplo,
+se van tratando los distintos enfoques <em>dinámicos</em> (en …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2011/03/14/desafio-pet/">Desafío <span class="caps">PET1</span></a></h1>
+  </div>
+  <div class="article_text">
+    <p>Hace mucho tiempo, el grupo de programadores <a href="http://python.org.ar">Python de
+Argentina</a> publicaron el primer número de la
+revista <a href="http://revista.python.org.ar"><span class="caps">PET</span>: Python Entre&nbsp;Todos</a></p>
+<p>En ese primer número se proponía el siguiente desafío <span class="caps">PET</span>:</p>
 <blockquote>
-<p><span class="dquo">&#8220;</span>&#8230;un código que se pliega sobre sí mismo. Un código que te
-lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
-</blockquote>
-<p>Para ilustrar este concepto voy a usar un trozo de código python que …</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/2012/10/25/pruebas-basicas-de-python-y-scala/">Pruebas básicas de python (y&nbsp;scala)</a></h1>
-  </div>
-  <div class="article_text">
-    <p>Como continuación del artículo <a href="https://blog.ch3m4.org/2012/10/17/como-contratar-un-programador-de-python/" title="Cómo contratar un programador de python">&#8220;Cómo contratar a un programador de python&#8221;</a> voy a dar las soluciones a algunas de las pruebas básicas que comentaba del proceso de selección. Añado también las soluciones sobre cómo sería con <em>scala</em> y de paso comparamos ambos lenguajes<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
-<h2>Prueba del &#8220;Hello,&nbsp;World!&#8221;</h2>
-<p>Desde que …</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/2012/10/23/entornos-virtuales-en-python-3-3/">Entornos virtuales en python&nbsp;3.3</a></h1>
-  </div>
-  <div class="article_text">
-    <p>Con la <a href="http://docs.python.org/3.3/whatsnew/3.3.html" title="What's new in python 3.3?">nueva versión de python 3.3</a> se ha incorporado la propuesta <a href="http://www.python.org/dev/peps/pep-0405" title="PEP-0405 Python Virtual Environments"><span class="caps">PEP</span>-405</a> que añade al repertorio interno de python la posibilidad de crear entornos virtuales de modo parecido a virtualenv (vimos esta herramienta hace poco al hablar de la <a href="https://blog.ch3m4.org/2012/07/24/instalacion-de-modulos/">instalación de módulos</a>.</p>
-<p>Tal como lo define <a href="http://www.python.org/dev/peps/pep-0405" title="PEP-0405 Python Virtual Environments"><span class="caps">PEP …</span></a></p>
+<p>Escribir un programa que reciba un número en la entrada estándar e
+imprima por pantalla la factorización del número …</p></blockquote>
   </div>
 </article>
 
@@ -182,14 +246,10 @@ lleva desde un principio a un final por el camino más&nbsp;corto.&#8221;</p>
       <a href="https://blog.ch3m4.org/category/python/.html"><i class="fa fa-arrow-circle-left"></i> Prev</a>
   </span>
   <span id="right">
-      <a href="https://blog.ch3m4.org/category/python/3.html">Next <i class="fa fa-arrow-circle-right"></i></a>
   </span>
   <div>
       <a href="https://blog.ch3m4.org/category/python/.html"> 1 </a>
       <a href="https://blog.ch3m4.org/category/python/2.html">[2]</a>
-      <a href="https://blog.ch3m4.org/category/python/3.html"> 3 </a>
-      <a href="https://blog.ch3m4.org/category/python/4.html"> 4 </a>
-      <a href="https://blog.ch3m4.org/category/python/5.html"> 5 </a>
   </div>
 </div>
 </footer>

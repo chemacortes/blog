@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Build Server Protocol | La elección de un editor, un IDE o cualquier otra herramienta de desarrollo se acaba convirtiendo en una decisión personal...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ea57ac74.min.css">
+
+  <script src="https://blog.ch3m4.org/theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, devtools">
+
+  <title>Build Server Protocol | Hyperreals *R</title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github" target="_blank" rel="noopener noreferrer"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket" target="_blank" rel="noopener noreferrer"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="https://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow" target="_blank" rel="noopener noreferrer"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml" target="_blank" rel="noopener noreferrer">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml" target="_blank" rel="noopener noreferrer">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml" target="_blank" rel="noopener noreferrer">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6" target="_blank" rel="noopener noreferrer">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+<div class="article_meta">
+  <p>Posted <time data-timeago datetime="2021-10-24T18:06:48+02:00">dom 24 octubre 2021</time>
+   by Chema Cortés  </p>
+  <p>Last updated <time data-timeago datetime="2021-10-28T19:49:26+02:00">jue 28 octubre 2021</time></p>
+  <p>
+  Category: <a href="https://blog.ch3m4.org/category/scala/">Scala</a>
+&ndash;&ndash;  Tags:
+    <a href="https://blog.ch3m4.org/tag/devtools/">devtools</a>  </p>
+</div>  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/2021/10/24/bsp/" class="nohover">Build Server&nbsp;Protocol</a></h1>
+  </div>
+  <div class="article_text">
+    <p>La elección de un editor, un <span class="caps">IDE</span> o cualquier otra herramienta de desarrollo se
+acaba convirtiendo en una decisión personal del programador. Todos tenemos
+nuestras herramientas favoritas que variamos según sea la naturaleza del
+proyecto o el lenguaje de programación que&nbsp;usemos.</p>
+<p>Las herramientas de desarrollo más importantes son las que controlan el ciclo de
+<strong>compilación, test y ejecución</strong>, como pueden ser <code>maven</code>, <code>gradle</code>, <code>sbt</code> o
+<code>mill</code>, por sólo citar algunas de las usadas normalmente en scala. Estas
+herramientas condicionan cómo se estructura nuestro proyecto y cómo realizar las
+tareas más habituales durante el&nbsp;desarrollo.</p>
+<p>Cada <span class="caps">IDE</span> se las ingenia para extraer de un proyecto toda la información
+necesaria para la compilación, detectando los directorios con código que
+presenta presentar como <em>espacio de trabajo</em> (<em>workspace</em>) donde el programador
+pueda trabajar, ver, escribir y compilar el código. Si puede, extraer esta
+información de las herramientas de desarrollo, aunque no siempre es&nbsp;posible.</p>
+<p>Muchas veces, el soporte que da un <span class="caps">IDE</span> a un determinado lenguaje, a una librería
+o a una plataforma no es todo lo completo posible. Muchas veces el soporte era
+parcial, sólo el coloreado de sintáxis y poco más. En otras, la detección de
+errores se quedaba corta y había que acudir a una compilación manual para
+detectar los errores más arcanos. Era casi imposible tener un <span class="caps">IDE</span> completo que
+se pudiera usar con cualquier lenguaje y librería, por lo que era obligando el
+cambio entre editores, IDEs y herramientas buscando el mejor&nbsp;soporte.</p>
+<h2><span class="caps">LSP</span> - Language Server&nbsp;Protocol</h2>
+<p>Para racionalizar esta situación, Microsoft sacó el <a href="https://microsoft.github.io/language-server-protocol/" title="Language Server Protocol">Language Server Protocol
+(<span class="caps">LSP</span>)</a>. Basado en una arquitectura cliente-servidor, los editores e IDEs
+pasan a ser <em>clientes</em> de servidores <span class="caps">LSP</span>, uno para cada lenguaje, comunicándose
+con ellos a través de un protocolo común. Gracias a los servidores <span class="caps">LSP</span> se hacen
+tareas tan comunes como el resaltado de sintáxis, autocompletado, localización
+de errores de sintáxis, formateo de código, búsqueda de referencias, etc.
+Además, los propios creadores de los lenguajes vigilan la calidad de estos
+servidores, lo que aporta mayor&nbsp;fiabilidad.</p>
+<p>Existen <a href="https://microsoft.github.io/language-server-protocol/implementors/servers/" title="Implementaciones LSP">implementaciones</a> para muchos lenguajes. IDEs como Visual Code
+instalan estos servidores <span class="caps">LSP</span> junto al instalar la extensión del lenguaje que
+vayamos a usar, por lo que no requiere instalarlos manualmente. Lo importante es
+saber que podemos usar el mismo servidor en cualquier editor e <span class="caps">IDE</span> que soporte
+el protocolo <span class="caps">LSP</span>.</p>
+<h2><span class="caps">BSP</span> - Build Server&nbsp;Protocol</h2>
+<p>Desarrollando la idea de <span class="caps">LSP</span>, surge el <a href="https://build-server-protocol.github.io" title="Build Server Protocol">Build Server Protocol (<span class="caps">BSP</span>)</a> como
+colaboración entre el <strong>Scala Center</strong> y <strong>JetBrain</strong>. La interacción entre el
+<span class="caps">IDE</span> y las herramientas de desarrollo se llevan a una arquitectura
+cliente-servidor. El servidor <span class="caps">BSP</span> siempre está corriendo de fondo y será quien
+se encargue de informar al <span class="caps">IDE</span> sobre la estructura del proyecto, dónde están los
+errores de compilación o enlazado, del resultado de los test,&nbsp;etc.</p>
+<p><img src="/pictures/bsp.png" width="400" title="Interacción cliente-servidor BSP" alt="Build Server Protocol"></p>
+<h2>Metals</h2>
+<p><strong>Metals</strong> es un servidor <span class="caps">LSP</span> para <em>scala</em> y es, además, un cliente <span class="caps">BSP</span>.
+Controla todo el ciclo de desarrollo, desde la creación de un proyecto usando
+una plantilla, su compilación, prueba y ejecución, y su&nbsp;depurado.</p>
+<p><em>metals</em> puede usar como servidores <span class="caps">BSP</span>:</p>
+<ul>
+<li><a href="https://scalacenter.github.io/bloop/"><strong>bloop</strong></a>, el servidor <span class="caps">BSP</span> por defecto en <em>metals</em></li>
+<li><strong>sbt server (<em>sbtn</em>)</strong>, incluído con la herramienta <code>sbt</code> (aunque tiene
+  algunos fallos aún en su última versión <code>1.5,5</code>)</li>
+</ul>
+<p>Si usas <code>sbt</code> regularmente, igual te conviene usar su servidor para evitar
+incoherencias en la compilación. Pero <code>bloop</code> es algo más rápido, más fiable y
+se puede usar también con más herramientas como <em>maven</em>, <em>gradle</em> y <em>mill</em>. Mi
+recomendación es dejar que <em>metals</em> te recomiende qué&nbsp;usar.</p>
+<h2><span class="caps">DAP</span> - Debug Adaptar&nbsp;Protocol</h2>
+<p>Todavía hay algo más. Se está trabajando en un protocolo denominado <a href="https://microsoft.github.io/debug-adapter-protocol/" title="Debug Adapter Protocol">Debug
+Adaptar Protocol (<span class="caps">DAP</span>)</a> que estandariza las tareas de ejecución, testing y
+depurado. Basta añadir un <em>adaptador <span class="caps">DAP</span></em> para que podamos usar nuestro <span class="caps">IDE</span> en
+tareas de depurado para ese&nbsp;lenguaje.</p>
+<p><em>bloop</em> implementa por defecto el protocolo <span class="caps">DAP</span>. Esta implementación ha sido
+sacada como <em>plugin</em> de sbt, <a href="https://github.com/scalacenter/scala-debug-adapter">sbt-debug-adapter</a>, que ahora se puede usar con
+otras herramientas scala. En concreto, se puede usar con el <em>servidor sbt</em>.</p>
+<p>Usando <em>metals</em>, la configuración para <span class="caps">DAP</span> es automática, uses <em>bloop</em> o <em>sbtn</em>,
+por lo que no tienes que preocuparte de configurar&nbsp;nada.</p>
+  </div>
+
+<ul class="pager">
+  <li class="previous">
+    <a href="https://blog.ch3m4.org/2021/10/17/scripting-para-scala/" title="Anterior">
+      <i class="fa fa-arrow-circle-left"></i>
+      Scripting para&nbsp;scala
+    </a>
+  </li>
+ </ul>
+With category
+<a href="https://blog.ch3m4.org/category/scala/">Scala</a>:
+<ul class="pager">
+  <li class="previous">
+    <a
+      href="https://blog.ch3m4.org/2018/07/25/factorial-en-scala-en-paralelo/"
+      title="Anterior en misma categoría"
+    >
+      <i class="fa fa-arrow-circle-o-left"></i>
+      Factorial en scala en&nbsp;paralelo
+    </a>
+  </li>
+ </ul>
+
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script id="dsq-count-scr" src="https://hyperreals.disqus.com/count.js" async></script>
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.identifier = "2021/10/24/bsp/";
+        this.page.title = "Build Server&nbsp;Protocol";
+    };
+    loadDisqus = function(sitename) {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hyperreals.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', skipHeader)
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

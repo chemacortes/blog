@@ -47,7 +47,7 @@ SOCIAL = (
     # ('flickr', 'https://www.flickr.com/photos/chemacortes'),
 )
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 25
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True

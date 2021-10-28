@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/all.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-10-28T19:49:26+02:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Build Server Protocol</title><link href="https://blog.ch3m4.org/2021/10/24/bsp/" rel="alternate"></link><published>2021-10-24T18:06:48+02:00</published><updated>2021-10-28T19:49:26+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-10-24:/2021/10/24/bsp/</id><summary type="html">&lt;p&gt;Mediante el protocolo &lt;span class="caps"&gt;BSP&lt;/span&gt;, la intereacción de un editor o &lt;span class="caps"&gt;IDE&lt;/span&gt; con las herramientas de desarrollo se ha llevado a una arquitectura cliente-servidor que mejora la experiencia de usuario con sus herramientas de desarrollo habituales, sin renunciar a la comodidad de usar una entorno&amp;nbsp;gráfico.&lt;/p&gt;</summary><content type="html">&lt;p&gt;La elección de un editor, un &lt;span class="caps"&gt;IDE&lt;/span&gt; o cualquier otra herramienta de desarrollo se
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/all.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2021-10-28T19:55:18+02:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Build Server Protocol</title><link href="https://blog.ch3m4.org/2021/10/24/bsp/" rel="alternate"></link><published>2021-10-24T18:06:48+02:00</published><updated>2021-10-28T19:55:18+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-10-24:/2021/10/24/bsp/</id><summary type="html">&lt;p&gt;Mediante el protocolo &lt;span class="caps"&gt;BSP&lt;/span&gt;, la intereacción de un editor o &lt;span class="caps"&gt;IDE&lt;/span&gt; con las herramientas de desarrollo se ha llevado a una arquitectura cliente-servidor que mejora la experiencia de usuario con sus herramientas de desarrollo habituales, sin renunciar a la comodidad de usar una entorno&amp;nbsp;gráfico.&lt;/p&gt;</summary><content type="html">&lt;p&gt;La elección de un editor, un &lt;span class="caps"&gt;IDE&lt;/span&gt; o cualquier otra herramienta de desarrollo se
 acaba convirtiendo en una decisión personal del programador. Todos tenemos
 nuestras herramientas favoritas que variamos según sea la naturaleza del
 proyecto o el lenguaje de programación que&amp;nbsp;usemos.&lt;/p&gt;
@@ -10,9 +10,9 @@ herramientas condicionan cómo se estructura nuestro proyecto y cómo realizar l
 tareas más habituales durante el&amp;nbsp;desarrollo.&lt;/p&gt;
 &lt;p&gt;Cada &lt;span class="caps"&gt;IDE&lt;/span&gt; se las ingenia para extraer de un proyecto toda la información
 necesaria para la compilación, detectando los directorios con código que
-presenta presentar como &lt;em&gt;espacio de trabajo&lt;/em&gt; (&lt;em&gt;workspace&lt;/em&gt;) donde el programador
-pueda trabajar, ver, escribir y compilar el código. Si puede, extraer esta
-información de las herramientas de desarrollo, aunque no siempre es&amp;nbsp;posible.&lt;/p&gt;
+presenta como &lt;em&gt;espacio de trabajo&lt;/em&gt; (&lt;em&gt;workspace&lt;/em&gt;) donde el programador pueda
+trabajar, ver, escribir y compilar el código. Si puede, extraer esta información
+de las herramientas de desarrollo, aunque no siempre es&amp;nbsp;posible.&lt;/p&gt;
 &lt;p&gt;Muchas veces, el soporte que da un &lt;span class="caps"&gt;IDE&lt;/span&gt; a un determinado lenguaje, a una librería
 o a una plataforma no es todo lo completo posible. Muchas veces el soporte era
 parcial, sólo el coloreado de sintáxis y poco más. En otras, la detección de

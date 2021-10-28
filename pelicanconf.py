@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = "Chema Cortés"
 SITENAME = "Hyperreals *R"
 SITESUBTITLE = "Quarks, bits y otras criaturas infinitesimales"
-GITHUB_URL = "http://github.com/chemacortes/blog"
+GITHUB_URL = "https://github.com/chemacortes/blog"
 SITEURL = ""
 
 PATH = "content"
@@ -39,7 +39,7 @@ SOCIAL = (
     ("twitter", "https://twitter.com/chemacortes"),
     ("github", "https://github.com/chemacortes"),
     ("bitbucket", "https://bitbucket.org/chemacortes/"),
-    ("stackoverflow", "http://stackoverflow.com/users/1243400/chemacortes"),
+    ("stackoverflow", "https://stackoverflow.com/users/1243400/chemacortes"),
     # ('delicious', 'https://delicious.com/chemacortes'),
     # ('google+', 'https://plus.google.com/+ChemaCortés'),
     ("linkedin", "https://linkedin.com/in/chemacortes"),

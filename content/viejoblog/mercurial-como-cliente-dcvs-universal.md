@@ -1,9 +1,13 @@
+---
 Title: Mercurial como cliente DCVS universal
 Date: 2011-08-30 13:14
+Modified: 2022-07-19 21:12:19
 Author: Chema Cortés
 Category: Python
 Tags: bitbucket, git, github, mercurial
 Slug: mercurial-como-cliente-dcvs-universal
+Status: hidden
+---
 
 ##Introducción
 

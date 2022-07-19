@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Nueva sintáxis en scala3, pero opcional | Nueva sintáxis en scala3 La nueva versión de Scala3 viene con dos cambios en la sintáxis que han sido...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ea57ac74.min.css">
+
+  <script src="https://blog.ch3m4.org/theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math">
+
+  <title>Nueva sintáxis en scala3, pero opcional | Hyperreals *R</title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github" target="_blank" rel="noopener noreferrer"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket" target="_blank" rel="noopener noreferrer"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="https://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow" target="_blank" rel="noopener noreferrer"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml" target="_blank" rel="noopener noreferrer">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml" target="_blank" rel="noopener noreferrer">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml" target="_blank" rel="noopener noreferrer">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6" target="_blank" rel="noopener noreferrer">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+<div class="article_meta">
+  <p>Posted <time data-timeago datetime="2021-12-09T23:41:56+01:00">jue 09 diciembre 2021</time>
+   by Chema Cortés  </p>
+  <p>Last updated <time data-timeago datetime="2021-12-10T00:59:46+01:00">vie 10 diciembre 2021</time></p>
+  <p>
+  Category: <a href="https://blog.ch3m4.org/category/scala/">Scala</a>
+</div>  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/drafts/2021-12-09-nueva-sintaxis-en-scala3-pero-opcional.html" class="nohover">Nueva sintáxis en scala3, pero&nbsp;opcional</a></h1>
+  </div>
+  <div class="article_text">
+    <h2>Nueva sintáxis en&nbsp;scala3</h2>
+<p>La nueva versión de Scala3 viene con dos cambios en la sintáxis que han sido bastante&nbsp;controvertidos:</p>
+<ul>
+<li>Paréntesis&nbsp;opcionales</li>
+<li>Sintáxis de Control&nbsp;opcional</li>
+</ul>
+<p>Scala empezó teniendo una sintáxis muy cercana a java. Con estos cambios, se aproxima mucho más a la sintáxis de Python. La intención es que un estudiante que aprenda a programar en Python, tenga menos reparos en usar Scala si se pone a trabajar en un proyecto más avanzado. Bastantes <em>proyectos de datos</em> mezclan <em>ciencia de datos</em>, basada en Python, con <em>ingeniería de datos</em>, basada en Scala, por lo que resulta atractivo que Scala tenga cierto parecido con&nbsp;Python.</p>
+<h3>Paréntesis&nbsp;opcionales</h3>
+<p>La nueva sintáxis permite reemplazar los paréntesis por una identación significativa, igual que en python o&nbsp;haskell.</p>
+<p>Por ejemplo, aquí sería la misma declaración con la sintáxis vieja y con la&nbsp;nueva:</p>
+<p><span class="dquo">&#8220;</span>`scala
+// With braces
+trait Monoid2[A] {
+  def add(a1: A, a2: A): A
+  def zero: A&nbsp;}</p>
+<p>// Without braces
+trait Monoid3[A]:
+  def add(a1: A, a2: A): A
+  def zero: A&nbsp;&#8220;</p>
+<p>The new syntax is very similar to Python, although when things are so similar, yet not exactly the same, it can be confusing if you switch back and forth between&nbsp;languages.</p>
+<p>You can mix and match these styles. Both definitions will compile fine with the Dotty compiler and <span class="caps">REPL</span> (soon to be renamed Scala&nbsp;3).</p>
+<p>Here are method declarations, but note that = is used instead of : to mark the start of the&nbsp;body.</p>
+<p>Python developers will type : until they get used to Scala! Compared to the older syntax, this looks like you can now drop braces for methods that have more than one expression, but there is an important difference. The indentation has be consistent at each level, using tabs or&nbsp;spaces.</p>
+<p>Even partial functions, match expressions, and try-catch-finally clauses (not shown) can be written this&nbsp;way:</p>
+<p>Historically, Scala has stayed close to Java syntax, so why such a dramatic change? It’s not uncommon today for people who know Python to find themselves learning Scala. Perhaps they learned Python in school, but their employer uses Scala. Many data-oriented projects mix Python-based data science with Scala-based data engineering. For these reasons, having Scala look closer to Python can be&nbsp;appealing.</p>
+<p>However, this change is controversial. You could argue that the old syntax works fine and adding a second syntax just feeds perceptions that Scala is complex. There’s another small drawback, illustrated&nbsp;next:</p>
+<p>A cool feature of the curly brace syntax is the ability to define your own “control” structures. Here, loop looks like the built-in while loop. However, the attempt shown to use a braceless alternative doesn’t work. (This might be possible in a future&nbsp;release.)</p>
+<p>When I first started working on the third edition of Programming Scala, I was opposed to this new syntax and planned to only mention it, sticking with the original syntax. However, since the book is focused on Scala 3, I later decided to use the new syntax almost exclusively. Now that I’m accustomed to it, I like it. It makes Scala code that much more concise. Besides, we really shouldn’t ignore industry trends. If this syntax makes Scala more appealing to Python (and Haskell) programmers, that’s a good thing.
+New, Optional Control&nbsp;Syntax</p>
+<p>Finally, there is also an optional new control syntax for if , for, and while expressions. Again, you can mix and&nbsp;match:</p>
+<p>For for loops and while loops, you can remove parentheses and curly braces, then mark the end of the expressions with the do keyword. For for comprehensions, you end the expressions with the yield keyword. Similarly, for if expressions, you remove parentheses and use then after the&nbsp;condition.</p>
+<p>You can mix forms or require the new syntax only with the compiler flag —new-syntax. If you prefer to require the old syntax, use —old-syntax. There is also an interesting new -rewrite flag. Combine it with one of the others to have the compiler convert your code to the new syntax or back to the old syntax.
+Final&nbsp;Thoughts</p>
+<p>There are lots of details and examples I’ve omitted to keep this reasonably short. See the links to the documentation above for more&nbsp;details.</p>
+<p>If you have an existing Scala 2 code base, there is no requirement to adopt any of these new conventions. I certainly wouldn’t recommend mixing them in your code. Pick one or the other. It seems unlikely that the older Java-like syntax will be deprecated, but time will&nbsp;tell.</p>
+<p>That said, these changes have grown on me, now that I’ve worked with them a bit. I’ll use them with any new personal projects I&nbsp;do.</p>
+  </div>
+
+<ul class="pager">
+ </ul>
+With category
+<a href="https://blog.ch3m4.org/category/scala/">Scala</a>:
+<ul class="pager">
+ </ul>
+
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script id="dsq-count-scr" src="https://hyperreals.disqus.com/count.js" async></script>
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.identifier = "drafts/2021-12-09-nueva-sintaxis-en-scala3-pero-opcional.html";
+        this.page.title = "Nueva sintáxis en scala3, pero&nbsp;opcional";
+    };
+    loadDisqus = function(sitename) {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hyperreals.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', skipHeader)
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

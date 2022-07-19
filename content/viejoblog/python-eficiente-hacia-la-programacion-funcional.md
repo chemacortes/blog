@@ -1,9 +1,13 @@
+---
 Title: Python Eficiente - Hacia la programación funcional
 Date: 2013-10-26 13:03
+Modified: 2022-07-19 20:59:38
 Author: Chema Cortés
 Category: Python
 Tags: functional programming
 Slug: python-eficiente-hacia-la-programacion-funcional
+Status: hidden
+---
 
 Existen muchas definiciones de **Programación Funcional**, así como comparativas con otros *paradigmas* de la programación que más parece una cuestión de gustos que una visión razonada de ventajas e incovenientes. No voy a entrar en definiciones tediosas que necesitan demasiadas explicaciones. Prefiero verlo más como si se tratara de una confrontación entre ingenieros y matemáticos.
 

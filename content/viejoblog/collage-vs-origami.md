@@ -1,8 +1,12 @@
+---
 Title: Collage vs. Origami
 Date: 2013-02-21 22:09
+Modified: 2022-07-19 20:48:53
 Author: Chema Cortés
 Category: Pensamientos
 Slug: collage-vs-origami
+Status: hidden
+---
 
 En mis años como programador he visto mucho código. Lo suficiente como para saber qué estilo tiene el programador que lo escribe, cuáles son sus vicios y cuáles son sus errores de concepto.
 
@@ -16,7 +20,7 @@ En este mundo de *versus*, podemos hacer una similitud de la programación de c�
 
 -   Un **código origami** sería un código que se pliega sobre sí mismo. Un código que te lleva desde un principio a un final por el camino más corto. Si algo no funciona, se vuelve atrás, se "desdobla" y se hace un doblez nuevo.
 
-Al igual que el origami, la creación de código requiere muchas veces pararse a pensar qué parte del código se complicó demasiado y actuar sobre esa parte. Si no se entiende bien, una repetición consistente en teclear decenas de veces ese código ayuda a entender mejor lo que hace y el motivo que hacía que fuera tan complicado. Es muy similar a repetir los mismos dobleces de una figura de papel hasta lograr su doblado perfecto. 
+Al igual que el origami, la creación de código requiere muchas veces pararse a pensar qué parte del código se complicó demasiado y actuar sobre esa parte. Si no se entiende bien, una repetición consistente en teclear decenas de veces ese código ayuda a entender mejor lo que hace y el motivo que hacía que fuera tan complicado. Es muy similar a repetir los mismos dobleces de una figura de papel hasta lograr su doblado perfecto.
 
 Como parte de tribunales de selección para puestos informáticos, me he sentido muchas veces molesto por tener que redactar tediosos cuestionarios de preguntas técnicas que nada valoraban la capacidad real del candidato para el futuro trabajo que iba a realizar. El objeto era realizar una fuerte criba entre los candidatos y, sobre todo, ordenarlos por puntos para hacer más sencilla su selección posterior.
 

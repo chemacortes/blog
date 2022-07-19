@@ -1,8 +1,12 @@
+---
 Title: Nuevos planteamientos, nueva etapa
 Date: 2013-10-07 14:45
+Modified: 2022-07-19 20:55:57
 Author: Chema Cortés
 Category: Pensamientos
 Slug: nuevos-planteamientos-nueva-etapa
+Status: hidden
+---
 
 Si me sigues por twitter, sabrás que he cambiado de trabajo. Aunque sigo
 siendo "informático" a todos los efectos, para mi "core" interno ha

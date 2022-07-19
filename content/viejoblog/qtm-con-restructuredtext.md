@@ -1,10 +1,12 @@
 ---
 Title: qtm con reStructuredText
 Date: 2011-05-24 01:49
+Modified: 2022-07-19 21:01:17
 Author: Chema Cortés
 Category: Python
 Tags: restructuredtext, tip
 Slug: qtm-con-restructuredtext
+Status: hidden
 ---
 
 Puestos a explotar todas las posibilidades de la utilidad [qtm][], también es posible emplear esta utilidad para previsualizar y subir al blog artículos escritos en **[reStructuredText][2]** (abreviadamente ReST) en lugar de *markdown* que viene por defecto.

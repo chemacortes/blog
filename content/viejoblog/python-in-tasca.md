@@ -1,10 +1,12 @@
 ---
 Title: Python in tasca
 Date: 2011-05-24 11:48
+Modified: 2022-07-19 21:00:27
 Author: Chema Cortés
 Category: Python
 Tags: humor
 Slug: python-in-tasca
+Status: hidden
 ---
 
 Es curioso lo que se parece python a php en este libro :-))

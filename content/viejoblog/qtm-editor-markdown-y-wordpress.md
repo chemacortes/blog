@@ -1,9 +1,13 @@
+---
 Title: qtm: un editor para markdown y wordpress
 Date: 2011-05-22 20:34
+Modified: 2022-07-19 21:01:36
 Author: Chema Cortés
 Category: Técnicas
 Tags: markdown
 Slug: qtm-editor-markdown-y-wordpress
+Status: hidden
+---
 
 Buscando una aplicación para hacer más cómodas mis publicaciones en wordpress que, además, aceptara markdown, he estado a apunto de abandonar. Nigún cliente acepta *markdown* y, el único editor de *markdown* que he encontrado, [retext][][^1], no tiene opción para publicar en blogs.
 

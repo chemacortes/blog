@@ -1,9 +1,13 @@
+---
 Title: qtm con markdown_extra
 Date: 2011-05-23 00:00
+Modified: 2022-07-19 21:01:00
 Author: Chema Cortés
 Category: Técnicas
 Tags: markdown, tip
 Slug: qtm-con-markdown_extra
+Status: hidden
+---
 
 Por defecto, **[qtm][]** usa el comando `markdown` que se instala en linux en la ruta `/usr/bin/markdown`. Este comando acepta la sintáxis básica de *markdown*, insuficiente cuando estamos acostumbrados a usar la extensión *markdown extra*.
 

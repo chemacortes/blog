@@ -1,15 +1,19 @@
+---
 Title: web2py, con pilas incluidas
 Date: 2011-12-01 19:34
+Modified: 2022-07-19 21:03:04
 Author: Chema Cortés
 Category: Python
 Tags: jquery, web2py, webdev
 Slug: web2py-con-pilas-incluidas
+Status: hidden
+---
 
 He estado últimamente trabajando en varios proyectos que me han hecho descuidar un poco el blog. En próximos días espero publicar algunos artículos relacionados que creo serán de interés.
 
 Lo último que estoy haciendo es un desarrollo de aplicación de escritorio con [web2py][], a pesar de tratarse de un framework para crear aplicaciones web. Corre desde un navegador cualquiera, interaccionando con [jQuery] para la presentación, y con python corriendo por debajo para dar soporte a la capas de datos y lógica de negocio.
 
-##¿Por qué web2py?
+## ¿Por qué web2py?
 
 Como indico en el título, web2py lleva las _"pilas incluidas"_, que tratándose de python significa que incluye todo lo puedas necesitar. ¡Y no exagero! La selección de [librerías][3] que incluye es extensa, permitiendo desarrollar casi cualquier aplicación web que necesites, con herramientas administrativas tanto para el modelo de datos como para editar los ficheros vistas y controladores. Vamos, que con descomprimir el fichero con web2py y un navegador ya tienes todo lo necesario para desarrollar la aplicación, desde una simple aplicación estática, hasta una completa aplicación que funcione en el Google AppEngine. Además posee un sistema de plugins que permite cambiar fácilmente el diseño de la web o añadir funcionalidades.
 

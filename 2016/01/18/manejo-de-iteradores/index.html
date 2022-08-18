@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Chema Cortés">
-  <meta name="description" content="Los iteradores parecen listas, pero no lo son | En python existe cierta dualidad entre listas e iteradores. Bastantes métodos de la librería...">
+  <meta name="description" content="Manejo de iteradores | Artículo viejo Este artículo lo he rescatado de un borrador que tenía desde 2016. Está sin terminar, pero creo puede...">
 
   <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.ea57ac74.min.css">
 
@@ -17,7 +17,7 @@
 
 <meta name="keywords" content="functional programming, programming, programación, lambda calculus, math, tips, iteradores">
 
-  <title>Los iteradores parecen listas, pero no lo son | Hyperreals *R</title>
+  <title>Manejo de iteradores | Hyperreals *R</title>
 
 </head>
 
@@ -65,32 +65,38 @@
 <div class="article_meta">
   <p>Posted <time data-timeago datetime="2016-01-18T19:55:48.102280+01:00">lun 18 enero 2016</time>
    by Chema Cortés  </p>
-  <p>Last updated <time data-timeago datetime="2021-01-10T20:16:09+01:00">dom 10 enero 2021</time></p>
+  <p>Last updated <time data-timeago datetime="2022-07-19T21:35:55+02:00">mar 19 julio 2022</time></p>
   <p>
   Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
 &ndash;&ndash;  Tags:
     <a href="https://blog.ch3m4.org/tag/tips/">tips</a>,    <a href="https://blog.ch3m4.org/tag/iteradores/">iteradores</a>  </p>
 </div>  <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/drafts/2016-01-18-los-iteradores-parecen-listas-pero-no-lo-son.html" class="nohover">Los iteradores parecen listas, pero no lo&nbsp;son</a></h1>
+    <h1><a href="https://blog.ch3m4.org/2016/01/18/manejo-de-iteradores/" class="nohover">Manejo de&nbsp;iteradores</a></h1>
   </div>
   <div class="article_text">
-    <p>En python existe cierta dualidad entre listas e iteradores. Bastantes métodos de
-la librería estándar que utilizan listas también suelen aceptar iteradores, no
-siendo necesario convertir previamente el iterador en lista para invocarlos. Es
-incluso posible sustituir la lista por una expresión generadora contruida a
-propósito para la&nbsp;llamada.</p>
-<p>Por ejemplo, imagina que necesitamos saber cuál es la mayor longitud de línea
-que tenemos en un&nbsp;fichero:</p>
+    <div class="admonition note">
+<p class="admonition-title">Artículo&nbsp;viejo</p>
+<p>Este artículo lo he rescatado de un borrador que tenía desde 2016. Está sin
+terminar, pero creo puede interesar tal como&nbsp;está.</p>
+</div>
+<p>En python existe cierta dualidad entre listas e iteradores. Bastantes métodos de
+la librería estándar que utilizan listas también suelen aceptar iteradores, por
+lo que no es necesario convertir el iterador en lista para invocar algunas
+funciones. Incluso es posible sustituir la lista por una expresión generadora
+contruida a propósito para la&nbsp;llamada.</p>
+<p>Por ejemplo, imagina que necesitamos saber cuál es la mayor longitud de las
+líneas de un&nbsp;fichero:</p>
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fichero.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">maxlen</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Longitud mayor:&quot;</span><span class="p">,</span> <span class="n">maxlen</span><span class="p">)</span>
 </code></pre></div>
 
-<p>No ha hecho falta leer todo el fichero en memoria, ni crear una lista con las
-longitudes de cada línea. La función <code>max</code> ha sido capaz de operar con la
-expresión generadora para calcular el máximo valor de línea resultante. La
-principal ventaja es que no malgastamos recursos de memoria ya que el generador
-ha leído el fichero línea a línea, según ha ido&nbsp;necesitando.</p>
+<p>Hemos procesado todo el fichero, línea a línea, sin necesidad de leer todo el
+fichero completo en memoria, ni crear una lista auxiliar con las longitudes de
+cada línea. La función <code>max</code> ha sido capaz de operar con la expresión generadora
+para calcular el máximo valor de línea resultante. La principal ventaja es que
+no malgastamos recursos de memoria ya que el generador ha leído el fichero línea
+a línea, según ha ido&nbsp;necesitando.</p>
 <p>Imagina ahora que necesitamos saber la longitud media de línea que tiene un
 fichero. Podemos aprovechar el módulo <code>statistics</code> y hacer algo&nbsp;parecido:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">mean</span>
@@ -100,12 +106,12 @@ fichero. Podemos aprovechar el módulo <code>statistics</code> y hacer algo&nbsp
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Longitud media:&quot;</span><span class="p">,</span> <span class="n">meanlen</span><span class="p">)</span>
 </code></pre></div>
 
-<p>El problema de los iteradores es que se &#8220;agotan&#8221;. Si quisiéramos volverlos a
+<p>El problema de los iteradores es que se <em>&#8220;agotan&#8221;</em>. Si quisiéramos volverlos a
 usarlos, tendríamos que recrearlos de nuevo tantas veces como cálculos
 hiciéramos. En el ejemplo que estamos viendo, necesitaríamos volver a leer el
 fichero, lo que no es un uso eficiente de&nbsp;recursos.</p>
 <p>Una técnica que podemos aplicar es una similar a las que vimos en un anterior
-<a href="https://blog.ch3m4.org/2013/10/26/clausuras-en-python-parte-2/" title="Clausuras en python - Parte 2">artículo sobre clausuras</a>. Consiste en crear una clase que se encargue de
+<a href="https://blog.ch3m4.org/2013/10/26/clausuras-en-python-parte-2/" title="Clausuras en python - Parte 2">artículo sobre clausuras</a> consistente en crear una clase que se encargue de
 realizar los cálculos en cada&nbsp;iteración:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Calc</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iterable</span><span class="p">):</span>
@@ -129,27 +135,52 @@ realizar los cálculos en cada&nbsp;iteración:</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total líneas:&quot;</span><span class="p">,</span> <span class="n">calc</span><span class="o">.</span><span class="n">num</span><span class="p">)</span>
 </code></pre></div>
 
+<p>En el parámetro <code>key</code> de <code>max()</code> hemos pasado el método <code>Calc.interation()</code>.
+Este método devuelve el mismo valor que se le pasa como argumento (la longitud
+de línea), lo único que hace es incrementar el número de líneas y actualizar el&nbsp;total.</p>
 <p>Es un código muy mejorable, pero sirve para ilustrar las posibilidades que
 existen. En general, es posible operar con un iterador empleando métodos
-similares a los usados con listas. No es algo intituitivo en algunos casos, como
-veremos a&nbsp;continuación.</p>
+similares a los usados con&nbsp;listas.</p>
 <p>En la documentación del módulo <code>itertools</code> se ven algunas recetas&nbsp;interesantes:</p>
-<h2>Obtener un elemento&nbsp;arbitrario</h2>
-<p>&#8230;</p>
-<h2>consumir un&nbsp;iterador</h2>
-<p>&#8230;</p>
-<h2>conversión</h2>
-<p>&#8230;</p>
-<h2>split&nbsp;(tee)</h2>
 <p>&#8230;</p>
   </div>
 
 <ul class="pager">
- </ul>
+  <li class="previous">
+    <a href="https://blog.ch3m4.org/2016/01/10/renacimiento/" title="Anterior">
+      <i class="fa fa-arrow-circle-left"></i>
+      Renacimiento
+    </a>
+  </li>
+   <li class="next">
+    <a href="https://blog.ch3m4.org/2018/07/22/reinicio-2018/" title="Siguiente">
+      Reinicio&nbsp;2018
+      <i class="fa fa-arrow-circle-right"></i>
+    </a>
+  </li>
+</ul>
 With category
 <a href="https://blog.ch3m4.org/category/python/">Python</a>:
 <ul class="pager">
- </ul>
+  <li class="previous">
+    <a
+      href="https://blog.ch3m4.org/2013/11/09/python-eficiente-sobre-la-vida-de-los-objetos/"
+      title="Anterior en misma categoría"
+    >
+      <i class="fa fa-arrow-circle-o-left"></i>
+      Python Eficiente - Sobre la vida de los&nbsp;objetos
+    </a>
+  </li>
+   <li class="next">
+    <a
+      href="https://blog.ch3m4.org/2019/09/28/manejo-de-rutas-pathlib/"
+      title="Siguiente en misma categoría"
+    >
+      Manejo de rutas con&nbsp;pathlib
+      <i class="fa fa-arrow-circle-o-right"></i>
+    </a>
+  </li>
+</ul>
 
   <div id="article_comments">
     <div id="disqus_thread">
@@ -159,8 +190,8 @@ With category
   <script id="dsq-count-scr" src="https://hyperreals.disqus.com/count.js" async></script>
   <script type="text/javascript">
     var disqus_config = function () {
-        this.page.identifier = "drafts/2016-01-18-los-iteradores-parecen-listas-pero-no-lo-son.html";
-        this.page.title = "Los iteradores parecen listas, pero no lo&nbsp;son";
+        this.page.identifier = "2016/01/18/manejo-de-iteradores/";
+        this.page.title = "Manejo de&nbsp;iteradores";
     };
     loadDisqus = function(sitename) {
       var d = document, s = d.createElement('script');

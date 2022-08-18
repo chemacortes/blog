@@ -61,11 +61,10 @@
 
 <article>
   <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/2011/08/30/mercurial-como-cliente-dcvs-universal/">Mercurial como cliente <span class="caps">DCVS</span>&nbsp;universal</a></h1>
+    <h1><a href="https://blog.ch3m4.org/2012/01/26/condificando-en-binario/">Codificando en&nbsp;binario</a></h1>
   </div>
   <div class="article_text">
-    <h2>Introducción</h2>
-<p>Con la llegada de los <a href="http://en.wikipedia.org/wiki/Distributed_Concurrent_Versions_System" title="Distributed Concurrent Versions System"><span class="caps">DCVS</span></a> (<em>Distributed Concurrent Versions System</em>), se ha convertido en habitual el uso de un sistema de control de versiones en todo desarrollo. La popularización de sitios webs basados en estos sistemas como <a href="http://github.com">github</a>, <a href="http://gitorious.org/">gitorious</a>, <a href="http://bitbucket.org">bitbucket</a> o <a href="http://code.google.com/">googlecode</a> como foros públicos donde compartir código entre …</p>
+    <p>A raiz de la consulta de un colega, me ha llamado la atención el módulo <code>binascii</code>. Este módulo se encarga de la codificación y decodificación de cadenas binarias para su transmisión en mensajes de texto. Lo habitual es que sea usado por otros módulos como <code>uu</code>, <code>base64</code> o <code>binhex</code>, por …</p>
   </div>
 </article>
 <hr />
@@ -75,7 +74,10 @@
   </div>
   <div class="article_text">
     <p>Últimamente he necesitado pasar algunos ficheros de una web a codificación <code>utf-8</code>, codificación de caracteres más acorde con lo que se lleva hoy en día. En sistemas linux es una labor que se puede hacer fácilmente con la utilidad <code>iconv</code>:</p>
-<div class="highlight"><pre><span></span><code>$ iconv -f cp850 -t utf8 &lt;fichero_entrada.txt &gt;fichero_salida …</code></pre></div>
+<div class="highlight"><pre><span></span><code>$ iconv -f cp850 -t utf8 &lt;fichero_entrada.txt &gt;fichero_salida.txt
+</code></pre></div>
+
+<p>Pero …</p>
   </div>
 </article>
 <hr />
@@ -136,7 +138,7 @@ en una&nbsp;lista:</p>
 <div class="highlight"><pre><span></span><code><span class="n">last_item</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">iterador</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div>
 
-<p>Tiene el incoveniente de …</p>
+<p>Tiene el incoveniente de gastar recursos …</p>
   </div>
 </article>
 <hr />

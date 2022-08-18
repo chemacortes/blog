@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.ch3m4.org/</loc>
-<lastmod>2022-07-19T21:08:49-00:00</lastmod>
+<lastmod>2022-08-18T20:51:40-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/</loc>
-<lastmod>2022-07-19T21:08:49-00:00</lastmod>
+<lastmod>2022-08-18T20:51:40-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/category/</loc>
-<lastmod>2022-07-19T21:08:49-00:00</lastmod>
+<lastmod>2022-08-18T20:51:40-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/archives.html</loc>
-<lastmod>2022-07-19T21:08:49-00:00</lastmod>
+<lastmod>2022-08-18T20:51:40-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -160,6 +160,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://blog.ch3m4.org/2018/07/22/reinicio-2018/</loc>
 <lastmod>2018-07-25T20:41:54+02:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
+</url>
+
+<url>
+<loc>https://blog.ch3m4.org/2016/01/18/manejo-de-iteradores/</loc>
+<lastmod>2022-07-19T21:35:55+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
@@ -361,13 +368,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://blog.ch3m4.org/2011/08/30/mercurial-como-cliente-dcvs-universal/</loc>
-<lastmod>2011-08-30T13:14:00+02:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.9</priority>
-</url>
-
-<url>
 <loc>https://blog.ch3m4.org/2011/08/04/iconv-en-python/</loc>
 <lastmod>2011-08-04T18:38:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -488,7 +488,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.ch3m4.org/category/python/</loc>
-<lastmod>2021-10-19T21:03:44+00:09</lastmod>
+<lastmod>2022-07-19T21:35:55+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -739,6 +739,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://blog.ch3m4.org/tag/tips/</loc>
+<lastmod>2022-07-19T21:35:55+00:09</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://blog.ch3m4.org/tag/iteradores/</loc>
+<lastmod>2022-07-19T21:35:55+00:09</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://blog.ch3m4.org/tag/oop/</loc>
 <lastmod>2013-11-09T09:56:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
@@ -895,13 +909,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://blog.ch3m4.org/tag/mercurial/</loc>
 <lastmod>2011-10-04T02:38:00+00:09</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://blog.ch3m4.org/tag/github/</loc>
-<lastmod>2011-08-30T13:14:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>

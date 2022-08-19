@@ -158,6 +158,7 @@ main {
     padding: 10px $horiz_pad 10px $horiz_pad;
     max-width: $content_size;
     margin: auto;
+    text-align: justify;
 
     // div.article_title {
     // }
@@ -177,7 +178,7 @@ main {
       code {
         @include codeformat;
         padding: 1px 3px;
-        background: $light-grey;
+        //background: $light-grey;
       }
 
       pre {

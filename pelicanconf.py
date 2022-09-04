@@ -19,7 +19,6 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
-
 FEED_MAX_ITEMS = 30
 
 # Blogroll
@@ -27,11 +26,12 @@ LINKS = (
     ("All Feeds", "/feeds/all.atom.xml"),
     ("Scala Feeds", "/feeds/scala.atom.xml"),
     ("Python Feeds", "/feeds/python.atom.xml"),
+    ("Notas Feeds", "/feeds/notas.atom.xml"),
     # ('Haskell Feeds','/feeds/haskell.atom.xml'),
-    (
-        "my coursera",
-        "https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6",
-    ),
+    # (
+    #     "my coursera",
+    #     "https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6",
+    # ),
 )
 
 # Social widget
@@ -92,6 +92,7 @@ CATEGORIES_URL = "category/"
 CATEGORIES_SAVE_AS = "category/index.html"
 CATEGORY_URL = "category/{slug}/"
 CATEGORY_SAVE_AS = "category/{slug}/index.html"
+NOTES_URL = "category/notas/"
 
 AUTHORS_URL = ""  # 'blog/authors/'
 AUTHORS_SAVE_AS = ""  # 'blog/authors/index.html'
@@ -101,6 +102,8 @@ AUTHOR_SAVE_AS = ""  # 'blog/authors/{slug}.html'
 
 THEME = "pelican-subtle-mod"
 TWITTER_USERNAME = "chemacortes"
+SUMMARY_MAX_LENGTH = 50
+FORMATTED_FIELDS = ["summary"]
 
 PLUGIN_PATHS = [
     "plugins",

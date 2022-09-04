@@ -40,7 +40,7 @@
         <li><a href="/feeds/all.atom.xml" target="_blank" rel="noopener noreferrer">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
         <li><a href="/feeds/scala.atom.xml" target="_blank" rel="noopener noreferrer">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
         <li><a href="/feeds/python.atom.xml" target="_blank" rel="noopener noreferrer">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
-        <li><a href="https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6" target="_blank" rel="noopener noreferrer">my coursera<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/notas.atom.xml" target="_blank" rel="noopener noreferrer">Notas Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
       </ul>
     </div>
   </aside>
@@ -63,6 +63,9 @@
   <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2012/01/26/condificando-en-binario/">Codificando en&nbsp;binario</a></h1>
   </div>
+  <div class="article_meta">
+    <p>Publicado: <time data-timeago datetime="2012-01-26T20:24:00+01:00">jue 26 enero 2012</time></p>
+  </div>
   <div class="article_text">
     <p>A raiz de la consulta de un colega, me ha llamado la atención el módulo <code>binascii</code>. Este módulo se encarga de la codificación y decodificación de cadenas binarias para su transmisión en mensajes de texto. Lo habitual es que sea usado por otros módulos como <code>uu</code>, <code>base64</code> o <code>binhex</code>, por …</p>
   </div>
@@ -71,6 +74,9 @@
 <article>
   <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2011/08/04/iconv-en-python/">iconv en&nbsp;python</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Publicado: <time data-timeago datetime="2011-08-04T18:38:00+02:00">jue 04 agosto 2011</time></p>
   </div>
   <div class="article_text">
     <p>Últimamente he necesitado pasar algunos ficheros de una web a codificación <code>utf-8</code>, codificación de caracteres más acorde con lo que se lleva hoy en día. En sistemas linux es una labor que se puede hacer fácilmente con la utilidad <code>iconv</code>:</p>
@@ -85,6 +91,9 @@
   <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2011/06/26/metodo-__getattribute__/">Método&nbsp;__getattribute__</a></h1>
   </div>
+  <div class="article_meta">
+    <p>Publicado: <time data-timeago datetime="2011-06-26T18:59:00+02:00">dom 26 junio 2011</time></p>
+  </div>
   <div class="article_text">
     <p>Si has seguido hasta ahora la serie de <a href="https://blog.ch3m4.org/tag/descriptor/" title="Artículos sobre descriptores">artículos sobre descriptores</a>, habrás visto que buena parte de la <em>magia</em> de los objetos en python se debe al método <code>__getattribute__</code> que todo objeto adquiere de su antecesor común, la clase <code>object</code>.</p>
 <p>En el último artículo, donde hablaba de las <a href="https://blog.ch3m4.org/2011/06/24/optimizaciones-con-los-metodos-especiales/" title="Optimizaciones con los Métodos Especiales">optimizaciones de …</a></p>
@@ -94,6 +103,9 @@
 <article>
   <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2011/06/24/optimizaciones-con-los-metodos-especiales/">Optimizaciones con los Métodos&nbsp;Especiales</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Publicado: <time data-timeago datetime="2011-06-24T00:51:00+02:00">vie 24 junio 2011</time></p>
   </div>
   <div class="article_text">
     <h1>Métodos&nbsp;Especiales</h1>
@@ -105,6 +117,9 @@
   <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2011/06/21/descriptores-parte-2/">Descriptores - Parte&nbsp;2</a></h1>
   </div>
+  <div class="article_meta">
+    <p>Publicado: <time data-timeago datetime="2011-06-21T01:26:00+02:00">mar 21 junio 2011</time></p>
+  </div>
   <div class="article_text">
     <h1>¿Cómo funciona un&nbsp;descriptor?</h1>
 <p>Todos los objetos y todas las clases que derivan de <code>object</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> adquieren de él un método llamado <code>__getattribute__</code>. Siempre a través de este método se accede a los atributos, y es en este método donde se hace toda la <em>magia</em> de los descriptores, de modo …</p>
@@ -115,6 +130,9 @@
   <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2011/06/19/descriptores-parte-1/">Descriptores - Parte&nbsp;1</a></h1>
   </div>
+  <div class="article_meta">
+    <p>Publicado: <time data-timeago datetime="2011-06-19T16:57:00+02:00">dom 19 junio 2011</time></p>
+  </div>
   <div class="article_text">
     <p>Cuando accedemos a los atributos de un objeto en python, a veces existen unos intermediarios casi imperceptibles llamados <em>&#8220;descriptores&#8221;</em> que son los responsables últimos del funcionamiento de la programación orientada a objetos. Están detrás de <em>propiedades</em>, métodos, métodos estáticos, métodos de clase y del mecanismo <code>super()</code> responsable de la herencia …</p>
   </div>
@@ -123,6 +141,9 @@
 <article>
   <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2011/06/06/ultimo-item-de-un-iterable/">Último item de un&nbsp;iterable</a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Publicado: <time data-timeago datetime="2011-06-06T11:36:00+02:00">lun 06 junio 2011</time></p>
   </div>
   <div class="article_text">
     <p>Algunas veces necesitamos obtener el último item de un iterador. Para
@@ -146,6 +167,9 @@ en una&nbsp;lista:</p>
   <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2011/06/06/estudio-funcion-factorial/">Estudio función&nbsp;factorial</a></h1>
   </div>
+  <div class="article_meta">
+    <p>Publicado: <time data-timeago datetime="2011-06-06T01:22:00+02:00">lun 06 junio 2011</time></p>
+  </div>
   <div class="article_text">
     <p>Hace un tiempo me dió por recopilar distintas funciones en python para calcular el <a href="http://es.wikipedia.org/wiki/Factorial">factorial</a>. Aquí van todas, algunas bastante curiosas. Si conoces algún tipo más, no dejes de añadirla en los&nbsp;comentarios.</p>
 <h1>Versión&nbsp;recursiva</h1>
@@ -158,6 +182,9 @@ en una&nbsp;lista:</p>
   <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2011/06/04/instalacion-cx_oracle-para-ia64/">Instalación cx_Oracle para&nbsp;ia64</a></h1>
   </div>
+  <div class="article_meta">
+    <p>Publicado: <time data-timeago datetime="2011-06-04T13:47:00+02:00">sáb 04 junio 2011</time></p>
+  </div>
   <div class="article_text">
     <h1>Itanium, un sistema&nbsp;¿obsoleto?</h1>
 <p>Últimamente, algunos <em>grandes</em> de la informática como Microsoft, Oracle y RedHat han determinado que los sistemas Itanium han quedado obsoletos con lo que dejarán de darles soporte, aunque hace sólo unos pocos años estos sistemas de 64bits se ofertaban al mercado como el futuro de los …</p>
@@ -167,6 +194,9 @@ en una&nbsp;lista:</p>
 <article>
   <div class="article_title">
     <h1><a href="https://blog.ch3m4.org/2011/03/14/desafio-pet/">Desafío <span class="caps">PET1</span></a></h1>
+  </div>
+  <div class="article_meta">
+    <p>Publicado: <time data-timeago datetime="2011-03-14T22:33:00+01:00">lun 14 marzo 2011</time></p>
   </div>
   <div class="article_text">
     <p>Hace mucho tiempo, el grupo de programadores <a href="http://python.org.ar">Python de

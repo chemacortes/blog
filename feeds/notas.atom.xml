@@ -1,5 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R - Notas</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/notas.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2022-09-04T10:37:28+02:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Scripting para scala</title><link href="https://blog.ch3m4.org/2021/10/17/scripting-para-scala/" rel="alternate"></link><published>2021-10-17T12:52:28+02:00</published><updated>2022-09-04T10:37:28+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-10-17:/2021/10/17/scripting-para-scala/</id><summary type="html">&lt;p&gt;Unos pensamientos sobre mi actual decepción con python y porqué empiezo a usar más scala para tareas de &lt;em&gt;scripting&lt;/em&gt;.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Mi decepción con&amp;nbsp;python&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R - Notas</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/notas.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2022-09-04T21:07:36+02:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Notas del blog</title><link href="https://blog.ch3m4.org/2022/09/04/notas-del-blog/" rel="alternate"></link><published>2022-09-04T10:49:59+02:00</published><updated>2022-09-04T21:07:36+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2022-09-04:/2022/09/04/notas-del-blog/</id><summary type="html">&lt;p&gt;Añadida categoría &lt;a href="/category/notas/"&gt;&lt;strong&gt;Notas&lt;/strong&gt;&lt;/a&gt;
+para seguimiento de la evolución de este&amp;nbsp;blog&lt;/p&gt;</summary><content type="html">&lt;p&gt;Quiero dar algo más de dinamismo a este blog. Tengo muchos temas pendientes para
+tratar, pero no consigo tiempo para poder redactar un artículo completo sobre
+ello, así que muchos de estos temas se quedan en el cajón por tiempo&amp;nbsp;indefinido.&lt;/p&gt;
+&lt;p&gt;Siguiendo como modelo algunos de los blogs que leo regularmente, me he decido a
+añadir una nueva categoría llamada &amp;#8220;Notas&amp;#8221; donde ir añadiendo pequeñas cosas
+como ideas que se me vayan ocurriendo, pequeños proyectos que vaya haciendo, así
+como todas esas cosas que me hayan sido interesante de las que vea por ahí. Con
+el tiempo, la idea es que estas notas vayan conformando artículos completos que
+las sustituyan, por lo que será una categoría dinámica de la que aparezcan y
+desaparezcan entradas, un buen medio de tantear la evolución de este&amp;nbsp;blog.&lt;/p&gt;
+&lt;p&gt;También será un modo de anunciar aquellos tema que estoy investigando por si
+quieres participar con preguntas o sugerencias. Ya sabes que puedes usar
+&lt;a href="https://disqus.com/"&gt;disqus&lt;/a&gt; para comentar las entradas de este blog, así como usar cualquiera de
+las redes donde estoy presente y que puedes ver en el lateral&amp;nbsp;izquierdo.&lt;/p&gt;
+&lt;p&gt;Si lo prefieres, te puedes subscribir al &lt;em&gt;feed&lt;/em&gt; de
+&lt;a href="/feeds/notas.atom.xml"&gt;Notas&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Algunos temas&amp;nbsp;interesantes&lt;/h2&gt;
+&lt;p&gt;Como adelanto de los temas que quiero tratar en el&amp;nbsp;blog:&lt;/p&gt;
+&lt;h3&gt;Concurrencia&lt;/h3&gt;
+&lt;p&gt;La &lt;strong&gt;concurrencia&lt;/strong&gt; es un tema muy amplio, a la vez que muy mal enfocado por la
+programación tradicional. Suele ser origen de confusión y de muchos fallos de
+ejecución que se podrían remediar usando algunas de los patrones existentes
+según el uso que se quiera dar al&amp;nbsp;código.&lt;/p&gt;
+&lt;p&gt;Quiero tratar aspectos desde el &lt;code&gt;asyncio&lt;/code&gt; de python y su sintaxis &lt;code&gt;async/await&lt;/code&gt;,
+hasta frameworks populares como el &lt;span class="caps"&gt;ZIO&lt;/span&gt; para&amp;nbsp;scala.&lt;/p&gt;
+&lt;h3&gt;Tooling&lt;/h3&gt;
+&lt;p&gt;Existe una tendencia a la simplificación. Los lenguajes intentan reducir su
+curva de aprendizaje para no desanimar a los principiantes, así como a disponer
+de herramientas sencillas que permitan la instalación y actualización de
+dependencias. Ello ha llevado a la aparición de las &lt;em&gt;toolings&lt;/em&gt;, conjunto de
+utilidades sencillas capaces de acompañar al proceso de desarrollo desde la
+creación del proyecto, la instalación de las librerías necesarias, depuración
+del código y la generación del aplicativo final para su&amp;nbsp;distribución.&lt;/p&gt;
+&lt;h3&gt;&lt;span class="caps"&gt;WASM&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;WASM&lt;/span&gt;&lt;/strong&gt; o &lt;em&gt;webassembly&lt;/em&gt; es un modo de ejecutar código en un navegador más allá
+del intérprete javascript. Alrededor de wasm se ha creado un ecosistema de
+compiladores, intérpretes y librerías que dan idea del futuro de esta
+tecnología. Una de las prometedoras es &lt;a href="https://pyscript.net/"&gt;pyscript&lt;/a&gt;, la posibilidad de ejecutar
+python en un navegador y algunos de sus paquetes de cálculo numérico más&amp;nbsp;conocidos.&lt;/p&gt;
+&lt;h3&gt;MicroOS&lt;/h3&gt;
+&lt;p&gt;En sistemas, me interesa bastante los basado en contendores. Uno de los que
+quiero probar es &lt;a href="https://microos.opensuse.org"&gt;openSuSE MicroOS&lt;/a&gt; y su idea de ser &lt;em&gt;&amp;#8220;inmutable&amp;#8221;&lt;/em&gt;. Me
+recuerda mucho a otros sistemas como NixOS o&amp;nbsp;RancherOS.&lt;/p&gt;
+&lt;h3&gt;Novedades en&amp;nbsp;lenguajes&lt;/h3&gt;
+&lt;p&gt;También quiero comentar las novedades de scala 3, pero sin olvidar otros
+lenguajes que estoy siguiendo como Python, Elm, Haskell o&amp;nbsp;Rust.&lt;/p&gt;</content><category term="Notas"></category></entry><entry><title>Scripting para scala</title><link href="https://blog.ch3m4.org/2021/10/17/scripting-para-scala/" rel="alternate"></link><published>2021-10-17T12:52:28+02:00</published><updated>2022-09-04T10:37:28+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-10-17:/2021/10/17/scripting-para-scala/</id><summary type="html">&lt;p&gt;Unos pensamientos sobre mi actual decepción con python y porqué empiezo a usar más scala para tareas de &lt;em&gt;scripting&lt;/em&gt;.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Mi decepción con&amp;nbsp;python&lt;/h2&gt;
 &lt;p&gt;Llevo mucho tiempo usando python como lenguaje de &lt;em&gt;scripting&lt;/em&gt;. Python se ha convertido para mí en un lenguaje imprescindible gracias a su completa librería estándar, así como a la infinidad de módulos para hacer cualquier&amp;nbsp;cosa.&lt;/p&gt;
 &lt;p&gt;Voy siguiendo su evolución, las nuevas incorporaciones en su sintáxis, así como la evolución de sus herramientas emblemáticas como &lt;em&gt;jupyter&lt;/em&gt; o &lt;em&gt;pandas&lt;/em&gt;, y herramientas de desarrollo como &lt;em&gt;pyenv&lt;/em&gt; o &lt;em&gt;poetry&lt;/em&gt;. No es extraño que se haya convertido en el lenguaje de programación más popular en estos momentos, algo que nadie me creía hace algunos años cuando decía que iba a desbancar a Perl, Ruby y &lt;span class="caps"&gt;PHP&lt;/span&gt;, e incluso a Java o&amp;nbsp;C/C++.&lt;/p&gt;
 &lt;p&gt;A pesar de esta popularidad de python, y de que cuento en mi arsenal con bastante código que uso a diario, me canso de ver lo mal que se está programando en general con python. De acuerdo que no es un &lt;em&gt;lenguaje funcional&lt;/em&gt;, como me gustaría que fuera, pero es no se están usando muchas características del lenguaje que harían un código python más expresivo y&amp;nbsp;mantenible.&lt;/p&gt;

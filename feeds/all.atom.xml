@@ -1,5 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/all.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2022-09-04T10:37:28+02:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Build Server Protocol</title><link href="https://blog.ch3m4.org/2021/10/24/bsp/" rel="alternate"></link><published>2021-10-24T18:06:48+02:00</published><updated>2021-10-28T19:55:46+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-10-24:/2021/10/24/bsp/</id><summary type="html">&lt;p&gt;Mediante el protocolo &lt;span class="caps"&gt;BSP&lt;/span&gt;, la intereacción de un editor o &lt;span class="caps"&gt;IDE&lt;/span&gt; con las herramientas de desarrollo se ha llevado a una arquitectura cliente-servidor que mejora la experiencia de usuario con sus herramientas de desarrollo habituales, sin renunciar a la comodidad de usar una entorno&amp;nbsp;gráfico.&lt;/p&gt;</summary><content type="html">&lt;p&gt;La elección de un editor, un &lt;span class="caps"&gt;IDE&lt;/span&gt; o cualquier otra herramienta de desarrollo se
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/all.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2022-09-04T21:07:36+02:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Notas del blog</title><link href="https://blog.ch3m4.org/2022/09/04/notas-del-blog/" rel="alternate"></link><published>2022-09-04T10:49:59+02:00</published><updated>2022-09-04T21:07:36+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2022-09-04:/2022/09/04/notas-del-blog/</id><summary type="html">&lt;p&gt;Añadida categoría &lt;a href="/category/notas/"&gt;&lt;strong&gt;Notas&lt;/strong&gt;&lt;/a&gt;
+para seguimiento de la evolución de este&amp;nbsp;blog&lt;/p&gt;</summary><content type="html">&lt;p&gt;Quiero dar algo más de dinamismo a este blog. Tengo muchos temas pendientes para
+tratar, pero no consigo tiempo para poder redactar un artículo completo sobre
+ello, así que muchos de estos temas se quedan en el cajón por tiempo&amp;nbsp;indefinido.&lt;/p&gt;
+&lt;p&gt;Siguiendo como modelo algunos de los blogs que leo regularmente, me he decido a
+añadir una nueva categoría llamada &amp;#8220;Notas&amp;#8221; donde ir añadiendo pequeñas cosas
+como ideas que se me vayan ocurriendo, pequeños proyectos que vaya haciendo, así
+como todas esas cosas que me hayan sido interesante de las que vea por ahí. Con
+el tiempo, la idea es que estas notas vayan conformando artículos completos que
+las sustituyan, por lo que será una categoría dinámica de la que aparezcan y
+desaparezcan entradas, un buen medio de tantear la evolución de este&amp;nbsp;blog.&lt;/p&gt;
+&lt;p&gt;También será un modo de anunciar aquellos tema que estoy investigando por si
+quieres participar con preguntas o sugerencias. Ya sabes que puedes usar
+&lt;a href="https://disqus.com/"&gt;disqus&lt;/a&gt; para comentar las entradas de este blog, así como usar cualquiera de
+las redes donde estoy presente y que puedes ver en el lateral&amp;nbsp;izquierdo.&lt;/p&gt;
+&lt;p&gt;Si lo prefieres, te puedes subscribir al &lt;em&gt;feed&lt;/em&gt; de
+&lt;a href="/feeds/notas.atom.xml"&gt;Notas&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Algunos temas&amp;nbsp;interesantes&lt;/h2&gt;
+&lt;p&gt;Como adelanto de los temas que quiero tratar en el&amp;nbsp;blog:&lt;/p&gt;
+&lt;h3&gt;Concurrencia&lt;/h3&gt;
+&lt;p&gt;La &lt;strong&gt;concurrencia&lt;/strong&gt; es un tema muy amplio, a la vez que muy mal enfocado por la
+programación tradicional. Suele ser origen de confusión y de muchos fallos de
+ejecución que se podrían remediar usando algunas de los patrones existentes
+según el uso que se quiera dar al&amp;nbsp;código.&lt;/p&gt;
+&lt;p&gt;Quiero tratar aspectos desde el &lt;code&gt;asyncio&lt;/code&gt; de python y su sintaxis &lt;code&gt;async/await&lt;/code&gt;,
+hasta frameworks populares como el &lt;span class="caps"&gt;ZIO&lt;/span&gt; para&amp;nbsp;scala.&lt;/p&gt;
+&lt;h3&gt;Tooling&lt;/h3&gt;
+&lt;p&gt;Existe una tendencia a la simplificación. Los lenguajes intentan reducir su
+curva de aprendizaje para no desanimar a los principiantes, así como a disponer
+de herramientas sencillas que permitan la instalación y actualización de
+dependencias. Ello ha llevado a la aparición de las &lt;em&gt;toolings&lt;/em&gt;, conjunto de
+utilidades sencillas capaces de acompañar al proceso de desarrollo desde la
+creación del proyecto, la instalación de las librerías necesarias, depuración
+del código y la generación del aplicativo final para su&amp;nbsp;distribución.&lt;/p&gt;
+&lt;h3&gt;&lt;span class="caps"&gt;WASM&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;WASM&lt;/span&gt;&lt;/strong&gt; o &lt;em&gt;webassembly&lt;/em&gt; es un modo de ejecutar código en un navegador más allá
+del intérprete javascript. Alrededor de wasm se ha creado un ecosistema de
+compiladores, intérpretes y librerías que dan idea del futuro de esta
+tecnología. Una de las prometedoras es &lt;a href="https://pyscript.net/"&gt;pyscript&lt;/a&gt;, la posibilidad de ejecutar
+python en un navegador y algunos de sus paquetes de cálculo numérico más&amp;nbsp;conocidos.&lt;/p&gt;
+&lt;h3&gt;MicroOS&lt;/h3&gt;
+&lt;p&gt;En sistemas, me interesa bastante los basado en contendores. Uno de los que
+quiero probar es &lt;a href="https://microos.opensuse.org"&gt;openSuSE MicroOS&lt;/a&gt; y su idea de ser &lt;em&gt;&amp;#8220;inmutable&amp;#8221;&lt;/em&gt;. Me
+recuerda mucho a otros sistemas como NixOS o&amp;nbsp;RancherOS.&lt;/p&gt;
+&lt;h3&gt;Novedades en&amp;nbsp;lenguajes&lt;/h3&gt;
+&lt;p&gt;También quiero comentar las novedades de scala 3, pero sin olvidar otros
+lenguajes que estoy siguiendo como Python, Elm, Haskell o&amp;nbsp;Rust.&lt;/p&gt;</content><category term="Notas"></category></entry><entry><title>Build Server Protocol</title><link href="https://blog.ch3m4.org/2021/10/24/bsp/" rel="alternate"></link><published>2021-10-24T18:06:48+02:00</published><updated>2021-10-28T19:55:46+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2021-10-24:/2021/10/24/bsp/</id><summary type="html">&lt;p&gt;Mediante el protocolo &lt;span class="caps"&gt;BSP&lt;/span&gt;, la intereacción de un editor o &lt;span class="caps"&gt;IDE&lt;/span&gt; con las herramientas de desarrollo se ha llevado a una arquitectura cliente-servidor que mejora la experiencia de usuario con sus herramientas de desarrollo habituales, sin renunciar a la comodidad de usar una entorno&amp;nbsp;gráfico.&lt;/p&gt;</summary><content type="html">&lt;p&gt;La elección de un editor, un &lt;span class="caps"&gt;IDE&lt;/span&gt; o cualquier otra herramienta de desarrollo se
 acaba convirtiendo en una decisión personal del programador. Todos tenemos
 nuestras herramientas favoritas que variamos según sea la naturaleza del
 proyecto o el lenguaje de programación que&amp;nbsp;usemos.&lt;/p&gt;
@@ -3464,183 +3510,4 @@ historia de España. Sirva este artículo como callado homenaje a esta
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Siendo perfeccionistas, deberíamos blindar mejor los atributos de la clase para hacerlos de &lt;em&gt;sólo lectura&lt;/em&gt; mediante &lt;code&gt;properties&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;En este ejemplo hemos podido ver los resultados imprevisibles que podemos tener si abusamos de la mutabilidad. Estos problemas se ven incrementados si hubiera varios hilos de ejecución y cada hilo estuviera modificando las mismas variables comunes. Lamentablemente, es un caso bastante común debido a una mala previsión a la hora de iniciar un proyecto de desarrollo. Pero ésto lo veremos en un próximo&amp;nbsp;artículo.&lt;/p&gt;</content><category term="Python"></category></entry><entry><title>Mutabilidad de Listas</title><link href="https://blog.ch3m4.org/2013/03/16/mutabilidad-de-listas/" rel="alternate"></link><published>2013-03-16T15:53:00+01:00</published><updated>2019-04-07T21:14:30+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2013-03-16:/2013/03/16/mutabilidad-de-listas/</id><summary type="html">&lt;div class="admonition info"&gt;
-&lt;p class="admonition-title"&gt;Info&lt;/p&gt;
-&lt;p&gt;Puedes visionar este artículo y descargártelo como notebook ipython en &lt;a href="http://nbviewer.jupyter.org/5177340"&gt;http://nbviewer.jupyter.org/5177340&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;Mucha gente, cuando se enfrenta por primera vez al lenguaje python, no entiende bien el concepto de &lt;em&gt;&amp;#8220;inmutabilidad&amp;#8221;&lt;/em&gt; que tanto repite la documentación al tratar de diferenciar algunos tipos contenedores como tuplas, listas, conjuntos …&lt;/p&gt;</summary><content type="html">&lt;div class="admonition info"&gt;
-&lt;p class="admonition-title"&gt;Info&lt;/p&gt;
-&lt;p&gt;Puedes visionar este artículo y descargártelo como notebook ipython en &lt;a href="http://nbviewer.jupyter.org/5177340"&gt;http://nbviewer.jupyter.org/5177340&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;Mucha gente, cuando se enfrenta por primera vez al lenguaje python, no entiende bien el concepto de &lt;em&gt;&amp;#8220;inmutabilidad&amp;#8221;&lt;/em&gt; que tanto repite la documentación al tratar de diferenciar algunos tipos contenedores como tuplas, listas, conjuntos y&amp;nbsp;diccionarios.&lt;/p&gt;
-&lt;p&gt;Por lo general, la gente formada en lenguajes de programación clásicos tiene la idea de que las variables son porciones de memoria donde colocar valores. Que una variable no se éso, &lt;em&gt;variable&lt;/em&gt;, resulta un contrasentido. Han visto &lt;em&gt;constantes&lt;/em&gt;, pero sólo sirven para inicializar variables y poco más. Si en su carrera hubieran sido formados en algún lenguaje funcional se darían cuenta que hay quienes piensan que las variables que cambian de valor son las raras, que lo más natural es que una variable conserve su valor inicial, o sea, que sea&amp;nbsp;inmutable.&lt;/p&gt;
-&lt;p&gt;Por poner un ejemplo, el siguiente código está basado en una pregunta reciente en la lista &lt;a href="http://docs.python.org/3.3/library/copy.html" title="Módulo copy"&gt;python-es&lt;/a&gt;. Tenemos una lista de pares y queremos quitar las parejas repetidas con orden&amp;nbsp;cambiado:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;quitar_dup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-
-    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-
-        &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-
-        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;remove&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt;
-
-&lt;span class="n"&gt;L&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
-
-&lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="n"&gt;quitar_dup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;L&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;#res: [[1, 3], [3, 1]]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;A simple vista, el código parece correcto, pero tenemos dos operaciones que pueden mutar listas: &lt;code&gt;.reverse()&lt;/code&gt; y &lt;code&gt;.remove()&lt;/code&gt;. De hecho, el resultado es incorrecto: &lt;code&gt;[[1, 3], [3, 1]]&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;A medida que recorremos la lista en el bucle &lt;code&gt;for&lt;/code&gt;, la lista se va modificando, lo que da lugar a resultados inesperados. Si no lo ves bien, basta añadir algunos &lt;code&gt;prints&lt;/code&gt; en lugares estratégicos para que comprobar lo que pasa. De hecho, sólo existen dos iteraciones para cuatro elementos que tiene la&amp;nbsp;lista.&lt;/p&gt;
-&lt;p&gt;Otro tipo de casos son cuando pasamos listas a&amp;nbsp;funciones:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;L&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;L&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;L&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;L&lt;/span&gt;
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Como efecto colateral, la función ha modificado la lista pasada como argumento, algo que no es siempre deseable. El problema se agrava más si empleamos listas en valores por&amp;nbsp;defecto:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[]):&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;
-&lt;span class="o"&gt;...&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[])&lt;/span&gt;
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Como se puede ver, aunque intentemos &lt;em&gt;resetear&lt;/em&gt; el valor por defecto, la función tiene un efecto memoria que es imposible de eliminar. Este efecto es a veces buscado, pero en general debe ser siempre evitado ya que desvirtúa el sentido que tiene dar valores por&amp;nbsp;defecto.&lt;/p&gt;
-&lt;p&gt;Estos efectos son todavía más perniciosos con la &lt;em&gt;funciones lambda&lt;/em&gt;. Al carecer de una &lt;em&gt;clausura&lt;/em&gt; como las funciones, la evaluación de una función lambda depende del &lt;em&gt;scope&lt;/em&gt; donde han sido definidas. Por ejemplo, observa esta creación de una lista de&amp;nbsp;funciones:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;fns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
-
-&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;fns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="n"&gt;fns&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="n"&gt;fns&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Siempre añade &lt;code&gt;4&lt;/code&gt; al argumento, que es el valor de &lt;code&gt;i&lt;/code&gt; al acabar el bucle, independientemente de qué valor tenía esta variable en el momento de crear la función lambda. No es de extrañar que se recomiende dejar de usar estas&amp;nbsp;funciones.&lt;/p&gt;
-&lt;p&gt;Por último, otro efecto funesto de la mutabilidad de las listas aparece en la creación de &lt;em&gt;listas multidimensionales&lt;/em&gt; (aka &lt;em&gt;matrices&lt;/em&gt;). Una forma rápida de crear una matriz de 2x2 es: &lt;code&gt;[[0]*2]*2&lt;/code&gt;. El problema aquí está en que cuando clonamos listas, en lugar de copiar los elementos, los enlaza entre sí. Quizás se vea mejor si hacemos alguna&amp;nbsp;operación:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; l = [[0]*2]*2
-[[0, 0], [0, 0]]
-&amp;gt;&amp;gt;&amp;gt; l[0][0]
-0
-&amp;gt;&amp;gt;&amp;gt; l[0][0] = 1
-&amp;gt;&amp;gt;&amp;gt; l
-[[1, 0], [1, 0]]
-&amp;gt;&amp;gt;&amp;gt; l[0] is l[1]
-True
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Los elementos &lt;code&gt;l[0]&lt;/code&gt; y &lt;code&gt;l[1]&lt;/code&gt; son el mismo elemento. Que los elementos de una lista puedan estar &lt;em&gt;entrelazados&lt;/em&gt; resulta muy interante para algunos algoritmos de búsquedas. Pero hay que conocer bien lo que estamos haciendo si no queremos llevarnos alguna&amp;nbsp;sorpresa.&lt;/p&gt;
-&lt;h2&gt;Recomendaciones para hacer código&amp;nbsp;funcional&lt;/h2&gt;
-&lt;h3&gt;Copia de&amp;nbsp;listas&lt;/h3&gt;
-&lt;p&gt;En funciones y métodos, si recibimos una lista como argumento, la primera acción defensiva que deberíamos hacer es copiar la lista en una variable local y trabajar solo con la variable local desde ese momento. Con una asignación directa no se realiza una copia, más bien estaríamos &lt;em&gt;enlazando&lt;/em&gt; una nueva referenciasin solucionar&amp;nbsp;nada.&lt;/p&gt;
-&lt;p&gt;La forma consensuada entre programadores python de copiar una lista es con la operación de &lt;em&gt;spliting&lt;/em&gt; &lt;code&gt;L[:]&lt;/code&gt;, aunque sirven otras operaciones idempotentes como &lt;code&gt;L*1&lt;/code&gt; ó &lt;code&gt;L+[]&lt;/code&gt;&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;. Para listas de elementos entrelazados tendremos que acudir a otros mecanismos de copia como los que ofrece el &lt;a href="http://docs.python.org/3.3/library/copy.html" title="Módulo copy"&gt;módulo &lt;code&gt;copy&lt;/code&gt;&lt;/a&gt;, aunque no será frecuente que lo&amp;nbsp;necesitemos.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-  &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;[:]&lt;/span&gt;
-  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;En cuanto a los argumentos por defecto, lo mejor es no usar nunca una lista para tal cosa. Una buena estrategia defensiva consiste en usar &lt;code&gt;None&lt;/code&gt; de esta&amp;nbsp;forma:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-  &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;[:]&lt;/span&gt;
-  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h3&gt;Operaciones inmutables con&amp;nbsp;listas&lt;/h3&gt;
-&lt;p&gt;En cuanto a evitar las operaciones que mutan listas, siempre hay alternativas inmutables de todas estas operaciones. El siguiente cuadro puede servir como&amp;nbsp;referencia:&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Mutable&lt;/th&gt;
-&lt;th&gt;Inmutable&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;L.append(item)&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;L+[item]&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;L.extend(sequence)&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;L + list(sequence)&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;L.insert(index, item)&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;L[:index] + [item] + L[index:]&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;L.reverse()&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;L[::-1]&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;L.sort()&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;sorted(L)&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;item = L.pop()&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;item,L = L[-1],L[:-1]&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;item = L.pop(0)&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;item,L = L[0],L[1:]&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;item = L.pop(index)&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;item, L = L[item], L[:item]+L[item+1:]&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;L.remove(item)&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;L=L[:item]+L[item+1:]&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;L[i:j] = K&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;L[:i] + K + L[j:]&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;A la hora de decidir qué versión usar, la versión inmutable es más apropiada para programación funcional y resulta incluos más intuitiva de interpretar. No es extraño ver errores de código donde se espera resultados de las operaciones &lt;code&gt;.sort()&lt;/code&gt; o &lt;code&gt;.reverse()&lt;/code&gt;, que siempre devuelven &lt;code&gt;None&lt;/code&gt;. Para el intérprete de python no hay error, pero a veces nos será difícil darnos cuenta de estos&amp;nbsp;errores:&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;MODO&lt;/span&gt; ERRÓNEO: machacamos la lista con&amp;nbsp;None&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;l_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sort&lt;/span&gt;&lt;span class="p"&gt;()]&lt;/span&gt;
-&lt;span class="n"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;recent&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-  &lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="ne"&gt;TypeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;NoneType&amp;#39;&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;iterable&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;MODO&lt;/span&gt; &lt;span class="caps"&gt;CORRECTO&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;l_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;l_2&lt;/span&gt;
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class="footnote"&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li id="fn:1"&gt;
-&lt;p&gt;De hecho, la operación &lt;code&gt;L*1&lt;/code&gt; es más eficiente que &lt;code&gt;L[:]&lt;/code&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</content><category term="Python"></category></entry></feed>
+&lt;p&gt;En este ejemplo hemos podido ver los resultados imprevisibles que podemos tener si abusamos de la mutabilidad. Estos problemas se ven incrementados si hubiera varios hilos de ejecución y cada hilo estuviera modificando las mismas variables comunes. Lamentablemente, es un caso bastante común debido a una mala previsión a la hora de iniciar un proyecto de desarrollo. Pero ésto lo veremos en un próximo&amp;nbsp;artículo.&lt;/p&gt;</content><category term="Python"></category></entry></feed>

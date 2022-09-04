@@ -1,8 +1,8 @@
 ---
 Title: Reorientando el blog
 Date: 2021-02-01 21:00:00
-Modified: 2021-02-01 20:54:25
-Category: Pensamientos
+Modified: 2022-09-04 10:37:28
+Category: Notas
 Tags: functional-programming, python, algebraic-data-type, haskell, elm, ihp, nix, purescript, elixir, phoenix, go, racket, lop, mps, tiddlywiki, metaprogramming
 Slug: reorientando-el-blog
 Authors: Chema Cortés

@@ -2,7 +2,7 @@
 Title: Renacimiento
 Date: 2016-01-10 15:51:06
 Author: Chema Cortés
-Category: Pensamientos
+Category: Notas
 Tags: python, haskell, scala
 Slug: renacimiento
 Summary: Pensamientos de lo hecho estos años y qué espero del futuro

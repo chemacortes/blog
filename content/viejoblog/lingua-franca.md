@@ -1,7 +1,7 @@
 Title: Lingua Franca
 Date: 2012-05-12 17:11
 Author: Chema Cortés
-Category: Pensamientos
+Category: Notas
 Tags: CompSci, computing science
 Slug: lingua-franca
 

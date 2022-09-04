@@ -1,7 +1,7 @@
 Title: Scala vs. Python vs. Lua
 Date: 2013-04-09 20:55
 Author: Chema Cortés
-Category: Pensamientos
+Category: Notas
 Tags: python, scala, lua, programming-languages
 Slug: scala-vs-python-vs-lua
 

@@ -1,9 +1,9 @@
 ---
 Title: Rentrée (nueva temporada)
 Date: 2011-10-08 18:22
-Modified: 2022-07-19 21:02:27
+Modified: 2022-09-04 10:37:28
 Author: Chema Cortés
-Category: Pensamientos
+Category: Notas
 Tags: python, java, jvm, pyday, scala
 Slug: rentree-nueva-temporada
 ---

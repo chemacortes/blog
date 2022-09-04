@@ -1,7 +1,7 @@
 Title: De Generaciones Perdidas
 Date: 2013-03-31 15:15
 Author: Chema Cortés
-Category: Pensamientos
+Category: Notas
 Slug: de-generaciones-perdidas
 
 Allá por los 80, en Zaragoza, cuando internet era tan sólo la `i` del
@@ -35,9 +35,9 @@ En este país nunca aprenderemos. Ya sea por guerras, conflictos
 políticos o por la avarienta corrupción, seguimos quemando generaciones
 en la gran pira de calamidades inevitables en la que se ha convertido la
 historia de España. Sirva este artículo como callado homenaje a esta
-*De-Generación Perdida* junto con el que [escribió Gaudi en su bitácora][1] hace ya un año.  
+*De-Generación Perdida* junto con el que [escribió Gaudi en su bitácora][1] hace ya un año.
 
-[1]: http://qlio.blogspot.com.es/2012/01/jakers-finales-de-los-80s-en-zaragoza.html  
+[1]: http://qlio.blogspot.com.es/2012/01/jakers-finales-de-los-80s-en-zaragoza.html
 [2]: http://www.casadellibro.com/libro-suenos-electronicos-emprendedores-en-la-red/9788483241172/817995
 
 [^1]: Extraer conocimientos a través de la tecnología.

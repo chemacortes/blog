@@ -1,9 +1,9 @@
 ---
 Title: Programación. ¿Ciencia o Ingeniería?
 Date: 2012-03-09 22:21
-Modified: 2022-07-19 20:59:47
+Modified: 2022-09-04 10:37:28
 Author: Chema Cortés
-Category: Pensamientos
+Category: Notas
 Tags: science, engineering, programming
 Slug: programacion-ciencia-o-ingenieria-2
 Status: hidden

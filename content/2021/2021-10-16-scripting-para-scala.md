@@ -1,8 +1,8 @@
 ---
 Title: Scripting para scala
 Date: 2021-10-17 12:52:28
-Modified: 2021-10-17 12:58:13
-Category: Pensamientos
+Modified: 2022-09-04 10:37:28
+Category: Notas
 Tags: python, scala, scripting
 Slug: scripting-para-scala
 Authors: Chema Cortés

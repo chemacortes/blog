@@ -1,9 +1,9 @@
 ---
 Title: Nuevos planteamientos, nueva etapa
 Date: 2013-10-07 14:45
-Modified: 2022-07-19 20:55:57
+Modified: 2022-09-04 10:37:29
 Author: Chema Cortés
-Category: Pensamientos
+Category: Notas
 Slug: nuevos-planteamientos-nueva-etapa
 Status: hidden
 ---

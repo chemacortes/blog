@@ -1,9 +1,9 @@
 ---
 Title: Collage vs. Origami
 Date: 2013-02-21 22:09
-Modified: 2022-07-19 20:48:53
+Modified: 2022-09-04 10:37:29
 Author: Chema Cortés
-Category: Pensamientos
+Category: Notas
 Slug: collage-vs-origami
 Status: hidden
 ---

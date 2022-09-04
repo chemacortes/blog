@@ -1,7 +1,7 @@
 Title: 30 años no es nada o cómo soy como soy
 Date: 2011-03-14 21:47
 Author: Chema Cortés
-Category: Pensamientos
+Category: Notas
 Slug: 30-no-es-nada
 
 Estreno este blog con una pequeña reflexión: hace aproximadamente 30

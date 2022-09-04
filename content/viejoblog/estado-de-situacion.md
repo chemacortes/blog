@@ -1,7 +1,7 @@
 Title: Estado de situación
 Date: 2013-02-19 21:39
 Author: Chema Cortés
-Category: Pensamientos
+Category: Notas
 Tags: PyConES
 Slug: estado-de-situacion
 

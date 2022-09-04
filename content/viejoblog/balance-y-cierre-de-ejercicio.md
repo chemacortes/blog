@@ -1,7 +1,7 @@
 Title: Balance y cierre de ejercicio
 Date: 2013-06-22 14:51
 Author: Chema Cortés
-Category: Pensamientos
+Category: Notas
 Slug: balance-y-cierre-de-ejercicio
 
 Ya sé que parece extraño cerrar un periodo en mitad de año, pero los que me siguen de aquí a unos años sabrán que suelo hacer un breve resumen de situación comentando qué he estado haciendo y qué proyectos futuros estoy ideando.

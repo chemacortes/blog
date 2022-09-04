@@ -100,6 +100,7 @@ AUTHOR_SAVE_AS = ""  # 'blog/authors/{slug}.html'
 
 
 THEME = "pelican-subtle-mod"
+TWITTER_USERNAME = "chemacortes"
 
 PLUGIN_PATHS = [
     "plugins",

@@ -761,14 +761,11 @@ vulture = ["vulture"]
 
 [[package]]
 name = "pyparsing"
-version = "3.0.9"
-description = "pyparsing module - Classes and methods to define and execute parsing grammars"
+version = "2.4.7"
+description = "Python parsing module"
 category = "dev"
 optional = false
-python-versions = ">=3.6.8"
-
-[package.extras]
-diagrams = ["jinja2", "railroad-diagrams"]
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "pyscss"
@@ -1051,7 +1048,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "a4e3685af2009b81dd000a78a3e2311343f450a2cefbc6de789ae8ba5af246f3"
+content-hash = "28d4a302e586aba02427c4784fd42341c8812e88428267b68c6bb9c2029937c3"
 
 [metadata.files]
 appnope = []

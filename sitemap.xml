@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.ch3m4.org/</loc>
-<lastmod>2022-08-19T03:23:52-00:00</lastmod>
+<lastmod>2022-09-04T10:43:10-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/</loc>
-<lastmod>2022-08-19T03:23:52-00:00</lastmod>
+<lastmod>2022-09-04T10:43:10-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/category/</loc>
-<lastmod>2022-08-19T03:23:52-00:00</lastmod>
+<lastmod>2022-09-04T10:43:10-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/archives.html</loc>
-<lastmod>2022-08-19T03:23:52-00:00</lastmod>
+<lastmod>2022-09-04T10:43:10-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -54,7 +54,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.ch3m4.org/2021/10/17/scripting-para-scala/</loc>
-<lastmod>2021-10-17T12:58:13+02:00</lastmod>
+<lastmod>2022-09-04T10:37:28+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
@@ -117,7 +117,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.ch3m4.org/2021/02/01/reorientando-el-blog/</loc>
-<lastmod>2021-02-01T20:54:25+01:00</lastmod>
+<lastmod>2022-09-04T10:37:28+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
@@ -159,7 +159,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.ch3m4.org/2018/07/22/reinicio-2018/</loc>
-<lastmod>2018-07-25T20:41:54+02:00</lastmod>
+<lastmod>2022-09-04T10:37:28+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
@@ -355,14 +355,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.ch3m4.org/2011/10/08/rentree-nueva-temporada/</loc>
-<lastmod>2022-07-19T21:02:27+02:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.9</priority>
-</url>
-
-<url>
-<loc>https://blog.ch3m4.org/2011/10/04/bitbucket-soporta-tambien-git/</loc>
-<lastmod>2011-10-04T02:38:00+02:00</lastmod>
+<lastmod>2022-09-04T10:37:28+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
@@ -466,13 +459,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://blog.ch3m4.org/category/desarrollo/</loc>
-<lastmod>2011-10-04T02:38:00+00:09</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>https://blog.ch3m4.org/category/matematicas/</loc>
 <lastmod>2011-03-21T18:31:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
@@ -480,8 +466,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://blog.ch3m4.org/category/pensamientos/</loc>
-<lastmod>2022-07-19T21:02:27+00:09</lastmod>
+<loc>https://blog.ch3m4.org/category/notas/</loc>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -516,21 +502,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.ch3m4.org/tag/python/</loc>
-<lastmod>2022-07-19T21:02:27+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/scala/</loc>
-<lastmod>2022-07-19T21:02:27+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/scripting/</loc>
-<lastmod>2021-10-17T12:58:13+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -600,105 +586,105 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.ch3m4.org/tag/functional-programming/</loc>
-<lastmod>2021-02-01T21:00:00+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/algebraic-data-type/</loc>
-<lastmod>2021-02-01T21:00:00+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/haskell/</loc>
-<lastmod>2021-02-01T21:00:00+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/elm/</loc>
-<lastmod>2021-02-01T21:00:00+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/ihp/</loc>
-<lastmod>2021-02-01T21:00:00+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/nix/</loc>
-<lastmod>2021-02-01T21:00:00+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/purescript/</loc>
-<lastmod>2021-02-01T21:00:00+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/elixir/</loc>
-<lastmod>2021-02-01T21:00:00+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/phoenix/</loc>
-<lastmod>2021-02-01T21:00:00+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/go/</loc>
-<lastmod>2021-02-01T21:00:00+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/racket/</loc>
-<lastmod>2021-02-01T21:00:00+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/lop/</loc>
-<lastmod>2021-02-01T21:00:00+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/mps/</loc>
-<lastmod>2021-02-01T21:00:00+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/tiddlywiki/</loc>
-<lastmod>2021-02-01T21:00:00+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/metaprogramming/</loc>
-<lastmod>2021-02-01T21:00:00+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -733,7 +719,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.ch3m4.org/tag/concurrency/</loc>
-<lastmod>2018-07-25T20:41:54+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -873,42 +859,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.ch3m4.org/tag/java/</loc>
-<lastmod>2022-07-19T21:02:27+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/jvm/</loc>
-<lastmod>2022-07-19T21:02:27+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.ch3m4.org/tag/pyday/</loc>
-<lastmod>2022-07-19T21:02:27+00:09</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://blog.ch3m4.org/tag/bitbucket/</loc>
-<lastmod>2011-10-04T02:38:00+00:09</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://blog.ch3m4.org/tag/git/</loc>
-<lastmod>2011-10-04T02:38:00+00:09</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://blog.ch3m4.org/tag/mercurial/</loc>
-<lastmod>2011-10-04T02:38:00+00:09</lastmod>
+<lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>

@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R - Notas</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/notas.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2022-09-04T21:07:36+02:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Notas del blog</title><link href="https://blog.ch3m4.org/2022/09/04/notas-del-blog/" rel="alternate"></link><published>2022-09-04T10:49:59+02:00</published><updated>2022-09-04T21:07:36+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2022-09-04:/2022/09/04/notas-del-blog/</id><summary type="html">&lt;p&gt;Añadida categoría &lt;a href="/category/notas/"&gt;&lt;strong&gt;Notas&lt;/strong&gt;&lt;/a&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperreals *R - Notas</title><link href="https://blog.ch3m4.org/" rel="alternate"></link><link href="https://blog.ch3m4.org/feeds/notas.atom.xml" rel="self"></link><id>https://blog.ch3m4.org/</id><updated>2022-09-16T20:45:57+02:00</updated><subtitle>Quarks, bits y otras criaturas infinitesimales</subtitle><entry><title>Algoritmos y lenguaje</title><link href="https://blog.ch3m4.org/2022/09/16/algoritmos-y-lenguaje/" rel="alternate"></link><published>2022-09-16T20:45:57+02:00</published><updated>2022-09-04T13:22:24+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2022-09-16:/2022/09/16/algoritmos-y-lenguaje/</id><summary type="html">&lt;p&gt;Hoy he leído que &amp;#8220;para entender un algoritmo lo mejor que se puede
+hacer es abstraerse del lenguaje de programación todo lo posible&amp;#8221;. Aunque
+entiendo que pueda ser un modo de aproximarse al algoritmo, no comparto del
+todo esa&amp;nbsp;afirmación.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Los lenguajes de programación no son únicamente un medio de expresar un
+algoritmo, que conociendo un lenguaje los conoces todos, que eres capaz de
+programar en cualquier cosa. Así piensa quien no se ha molestado en salir de su
+zona de comfort para aprender nuevos&amp;nbsp;lenguajes.&lt;/p&gt;
+&lt;p&gt;Es como decir que para ser matemático te sobra con aprender Aritmética ya que el
+resto de las matemáticas se pueden deducir por &amp;#8220;equivalencia&amp;#8221;. Aparte de
+perderte gran parte del universo de las Matemáticas, estarías ignorando nuevos
+enfoques para resolver&amp;nbsp;problemas.&lt;/p&gt;
+&lt;p&gt;La realidad es que un lenguaje de programación es fruto de la experiencia
+acumulada de todos los programadores que han ayudado en su diseño, en sus
+librerías y en su colección de modismos (&lt;em&gt;idiomatics&lt;/em&gt;). Características
+funcionales como la inmutabilidad, evaluación perezosa o propagación de efectos
+influyen (y mucho) en la viabilidad de un algoritmo para llegar a su resolución.
+De acuerdo que siempre es posible hacer todo en tu lenguaje preferido, pero
+estarías ignorando nuevos enfoques para resolver problemas de gente más experta
+que tú, además de perderte gran parte de ese universo que es la&amp;nbsp;programación.&lt;/p&gt;</content><category term="Notas"></category></entry><entry><title>Notas del blog</title><link href="https://blog.ch3m4.org/2022/09/04/notas-del-blog/" rel="alternate"></link><published>2022-09-04T10:49:59+02:00</published><updated>2022-09-04T21:07:36+02:00</updated><author><name>Chema Cortés</name></author><id>tag:blog.ch3m4.org,2022-09-04:/2022/09/04/notas-del-blog/</id><summary type="html">&lt;p&gt;Añadida categoría &lt;a href="/category/notas/"&gt;&lt;strong&gt;Notas&lt;/strong&gt;&lt;/a&gt;
 para seguimiento de la evolución de este&amp;nbsp;blog&lt;/p&gt;</summary><content type="html">&lt;p&gt;Quiero dar algo más de dinamismo a este blog. Tengo muchos temas pendientes para
 tratar, pero no consigo tiempo para poder redactar un artículo completo sobre
 ello, así que muchos de estos temas se quedan en el cajón por tiempo&amp;nbsp;indefinido.&lt;/p&gt;

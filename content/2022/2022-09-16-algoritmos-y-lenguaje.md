@@ -12,7 +12,7 @@ Summary: Hoy he leído que "para entender un algoritmo lo mejor que se puede
     todo esa afirmación.
 Lang: es
 Translation: false
-Status: draft
+Status:
 ---
 
 

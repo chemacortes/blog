@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Chema Cortés">
+  <meta name="description" content="Mantenimiento, obsolescencia y reproducibilidad | El mantenimiento del software suele ser una tarea de la que se no dice mucho, pero es sin duda la...">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.78787593.min.css">
+
+  <script src="https://blog.ch3m4.org/theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+
+<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math">
+
+  <title>Mantenimiento, obsolescencia y reproducibilidad | Hyperreals *R</title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://blog.ch3m4.org">
+        <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" id="logo">
+      </a>
+      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <p>Quarks, bits y otras criaturas infinitesimales</p>
+      <div class="social">
+          <a href="https://twitter.com/chemacortes" title="twitter" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://github.com/chemacortes" title="github" target="_blank" rel="noopener noreferrer"><i class="fa fa-github fa-lg"></i></a>
+          <a href="https://bitbucket.org/chemacortes/" title="bitbucket" target="_blank" rel="noopener noreferrer"><i class="fa fa-bitbucket fa-lg"></i></a>
+          <a href="https://stackoverflow.com/users/1243400/chemacortes" title="stackoverflow" target="_blank" rel="noopener noreferrer"><i class="fa fa-stack-overflow fa-lg"></i></a>
+          <a href="https://linkedin.com/in/chemacortes" title="linkedin" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+      <ul>
+        <li><a href="/feeds/all.atom.xml" target="_blank" rel="noopener noreferrer">All Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/scala.atom.xml" target="_blank" rel="noopener noreferrer">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/python.atom.xml" target="_blank" rel="noopener noreferrer">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="/feeds/notas.atom.xml" target="_blank" rel="noopener noreferrer">Notas Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="https://blog.ch3m4.org">Home</a>
+
+      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      </p>
+<p>
+<a href="https://blog.ch3m4.org/index.html">Posts</a>
+&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
+&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
+&#124; <a href="https://blog.ch3m4.org/category/notas/">Notes</a>
+&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+<div class="article_meta">
+  <p>Posted <time data-timeago datetime="2022-09-11T13:06:39+02:00">dom 11 septiembre 2022</time>
+   by Chema Cortés  </p>
+  <p>Last updated <time data-timeago datetime="2022-09-04T13:22:24+02:00">dom 04 septiembre 2022</time></p>
+  <p>
+  Category: <a href="https://blog.ch3m4.org/category/desarrollo/">Desarrollo</a>
+</div>  <div class="article_title">
+    <h1><a href="https://blog.ch3m4.org/drafts/2022-09-11-mantenimiento-obsolescencia-y-reproducibilidad.html" class="nohover">Mantenimiento, obsolescencia y&nbsp;reproducibilidad</a></h1>
+  </div>
+  <div class="article_text">
+    <p>El mantenimiento del software suele ser una tarea de la que se no dice mucho,
+pero es sin duda la tarea a la que se acaba invirtiendo más tiempo y recursos
+por parte de una empresa. Tal vez por eso, las metodologías de desarrollo se
+centran más en mejorar las fases iniciales del desarrollo con el fin de
+minimizar el mantenimiento&nbsp;posterior.</p>
+<p>Sin embargo, aún existe código y sistemas en funcionamiento que fueron
+programados hace décadas y que requieren de mantenimiento periódico. Quizás el
+caso más paradigmático sean los programas en Cobol que se usaban, sobre todo, en
+entidades bancarias. Algunas empresas se han especialidazo en dar mantenimiento
+a estos programas y parece que les va muy&nbsp;bien.</p>
+<p>Pero no son los únicos. Ha habido casos de empresas que tuvieron que volver,
+después de 15 años, a reclutar a sus programadores jubilidados para corregir
+errores en el código que ya no había nadie de la empresa capaz de&nbsp;entender.</p>
+<h2>Obsolescencia</h2>
+<p>Hablar de la informática es hablar de versiones que se suceden, unas a otras,
+dejando por el camino aplicaciones y sistemas que dejan de funcionar o que
+presentan numerosos fallos de seguridad y de todo&nbsp;tipo.</p>
+<p>A esto hay que añadir que de algunas librerías o sistemas operativos solo se
+ofrece mantenimiento de las últimas versiones y por tiempo limitado. Es el caso,
+por ejemplo, del Java, que deja obsoleta una versión a los pocos meses de salir
+la&nbsp;siguiente.</p>
+<p>No obstante, existe muchísimo software creado con versiones antiguas de java y
+que siguen en desarrollo activo. En estos desarrollos no se contempla la
+migración a versiones más modernas, sobre todo porque dependen de librerías que
+ya dejaron de actualizarse y que son imprescindibles. Para estos casos existen
+versiones <em>comunitarias</em> de java que siguen teniendo parches de seguridad o
+especializadas para usos concretos como <em>sistemas cloud</em>. También existe, para
+los que puedan costearlo, mantemiento por parte de la propia Oracle de estas
+versiones obsoletas, aunque no están disponibles para uso&nbsp;abierto.</p>
+<p>Con los proyectos opensource, lo que suele pasar es que no se cuenta con
+suficientes desarrolladores para dar mantenimiento de las versiones viejas de
+las librerías. Por lo general, los colaboradores quieren dedicarse a las
+novedades del proyecto en vez de la tediosa tarea de revisar la lista de
+incidencias para corregir software que hace mucho que ya no debería usarse. Los
+proyectos potentes como puede ser Python (<span class="caps">PSF</span>) es capaz de tener gente encargada
+exclusivamente de mantener versiones antiguas y darle largos <em>tiempos de vida</em> a
+estas versiones. En cambio, hay otros proyectos, piento en Qt o gtk, que sólo se
+centran en la última versión, dejando de mantener todas versiones las
+anteriores, dejando de funcionar aplicaciones e, incluso, escritorios que quedan
+definitivamente&nbsp;abandonados.</p>
+<p>A veces esta <em>&#8220;huida hacia adelante&#8221;</em> se debe más bien a modas. Siempre cuento
+la anécdota de cuando estuve presente en la toma de decisiones para emprender
+una nuevo proyecto web. Se decidió usar mongodb porque era lo más nuevo y lo que
+mejor había para webs modernas. Pero lo que querían era una web que mostrara
+diferentes vistas de los datos de unas tablas entre las que se pudiera &#8220;navegar&#8221;
+según las relaciones entre diferentes campos de esas tablas. &#8220;¿Y por qué no lo
+hacéis con una base de datos relacional, entonces?&#8221;, les pregunté. &#8220;Porque están
+obsoletas&#8221;, me respondieron. La verdad es que no pude hacer otra cosa que
+dejarlos estar con sus divagaciones y desearles mucha suerte. Nunca supe de si
+llegaron a avanzar algo con ese&nbsp;proyecto.</p>
+  </div>
+
+<ul class="pager">
+ </ul>
+With category
+<a href="https://blog.ch3m4.org/category/desarrollo/">Desarrollo</a>:
+<ul class="pager">
+ </ul>
+
+  <div id="article_comments">
+    <div id="disqus_thread">
+    </div>
+  </div>
+
+  <script id="dsq-count-scr" src="https://hyperreals.disqus.com/count.js" async></script>
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.identifier = "drafts/2022-09-11-mantenimiento-obsolescencia-y-reproducibilidad.html";
+        this.page.title = "Mantenimiento, obsolescencia y&nbsp;reproducibilidad";
+    };
+    loadDisqus = function(sitename) {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hyperreals.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    };
+    loadDisqus();
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Chema Cortés. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', skipHeader)
+  </script>
+
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>

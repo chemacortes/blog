@@ -41,6 +41,7 @@
         <li><a href="/feeds/scala.atom.xml" target="_blank" rel="noopener noreferrer">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
         <li><a href="/feeds/python.atom.xml" target="_blank" rel="noopener noreferrer">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
         <li><a href="/feeds/notas.atom.xml" target="_blank" rel="noopener noreferrer">Notas Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://mathstodon.xyz/@chemacortes" target="_blank" rel="noopener noreferrer">Mastodon<i class="fa fa-external-link-square fa-lg"></i></a></li>
       </ul>
     </div>
   </aside>
@@ -122,26 +123,26 @@
 <h2>Virtualenv</h2>
 <p>Otra gran característica de <strong>pip</strong> es que funciona tremendamente bien con <a href="http://www.virtualenv.org" title="Virtuaenv">virtualenv</a>. No en vano, son del mismo autor, <a href="http://blog.ianbicking.org/" title="blog de Ian Bicking">Ian Bicking</a>. Virtualenv nos permitirá crear entornos de desarrollo aislados del resto de instalaciones python, controlando tanto las versiones de los módulos instalados como la versión de python que usaremos en&nbsp;él.</p>
 <p>Pero creo que será mejor poner algunos ejemplos de las aplicaciones de&nbsp;virtualenv:</p>
-<div class="highlight"><pre><span></span><code>$ virtualenv --no-site-packages --python<span class="o">=</span>/usr/bin/python3 py3
-$ <span class="nb">cd</span> py3
-$ <span class="nb">source</span> bin/activate
-<span class="o">(</span>py3<span class="o">)</span>$ pip install markdown
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>virtualenv<span class="w"> </span>--no-site-packages<span class="w"> </span>--python<span class="o">=</span>/usr/bin/python3<span class="w"> </span>py3
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>py3
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>bin/activate
+<span class="o">(</span>py3<span class="o">)</span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>markdown
 </code></pre></div>
 
 <p>Con estas líneas hemos conseguido instalar el módulo <code>markdown</code> en un entorno python3. El intérprete de python3 que ejecutaremos desde aquí estará instalado en la ruta <code>py3/bin/python</code> y el módulo márkdown en <code>py3/lib/python-3.2/site-packages</code>. También se ha instalado en <code>py3/bin/python</code> el script <code>markdown_py</code> que ejecutará el comando. En resumen, de una manera simple tenemos un entorno con lo mínimo donde hacer nuestras pruebas sin trastocar nada del&nbsp;sistema.</p>
-<div class="highlight"><pre><span></span><code>$ virtualenv --python<span class="o">=</span>/usr/local/bin/jython jydjango
-$ <span class="nb">cd</span> jydjango
-$ <span class="nb">source</span> bin/activate
-<span class="o">(</span>jydjango<span class="o">)</span>$ pip install django
-<span class="o">(</span>jydjango<span class="o">)</span>$ django-admin.py startproject djython
-<span class="o">(</span>jydjango<span class="o">)</span>$ <span class="nb">cd</span> djython/
-<span class="o">(</span>jydjango<span class="o">)</span>$ jython manage.py runserver
-Validating models...
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>virtualenv<span class="w"> </span>--python<span class="o">=</span>/usr/local/bin/jython<span class="w"> </span>jydjango
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>jydjango
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>bin/activate
+<span class="o">(</span>jydjango<span class="o">)</span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>django
+<span class="o">(</span>jydjango<span class="o">)</span>$<span class="w"> </span>django-admin.py<span class="w"> </span>startproject<span class="w"> </span>djython
+<span class="o">(</span>jydjango<span class="o">)</span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>djython/
+<span class="o">(</span>jydjango<span class="o">)</span>$<span class="w"> </span>jython<span class="w"> </span>manage.py<span class="w"> </span>runserver
+Validating<span class="w"> </span>models...
 
-<span class="m">0</span> errors found
-Django version <span class="m">1</span>.4, using settings <span class="s1">&#39;djython.settings&#39;</span>
-Development server is running at http://127.0.0.1:8000/
-Quit the server with CONTROL-C.
+<span class="m">0</span><span class="w"> </span>errors<span class="w"> </span>found
+Django<span class="w"> </span>version<span class="w"> </span><span class="m">1</span>.4,<span class="w"> </span>using<span class="w"> </span>settings<span class="w"> </span><span class="s1">&#39;djython.settings&#39;</span>
+Development<span class="w"> </span>server<span class="w"> </span>is<span class="w"> </span>running<span class="w"> </span>at<span class="w"> </span>http://127.0.0.1:8000/
+Quit<span class="w"> </span>the<span class="w"> </span>server<span class="w"> </span>with<span class="w"> </span>CONTROL-C.
 </code></pre></div>
 
 <p>En este caso, a partir de una instalación local de jython hemos creado un entorno virtual, en el que hemos instalado <code>django</code> y lo hemos ejecutado con jython. De este modo podemos experimentar con django y jython sin que afecte a cualquier otra instalación de django que&nbsp;tengamos.</p>

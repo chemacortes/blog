@@ -41,6 +41,7 @@
         <li><a href="/feeds/scala.atom.xml" target="_blank" rel="noopener noreferrer">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
         <li><a href="/feeds/python.atom.xml" target="_blank" rel="noopener noreferrer">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
         <li><a href="/feeds/notas.atom.xml" target="_blank" rel="noopener noreferrer">Notas Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://mathstodon.xyz/@chemacortes" target="_blank" rel="noopener noreferrer">Mastodon<i class="fa fa-external-link-square fa-lg"></i></a></li>
       </ul>
     </div>
   </aside>
@@ -111,7 +112,7 @@
 </code></pre></div>
 
 <p>O, completando <a href="https://blog.ch3m4.org/2011/08/04/iconv-en-python/">otro articulo</a>, se podría hacer todo en una sóla&nbsp;línea:</p>
-<div class="highlight"><pre><span></span><code>$ python -c <span class="s2">&quot;import sys,codecs;codecs.EncodedFile(sys.stdout,&#39;utf-16&#39;,&#39;utf-8-sig&#39;).writelines(sys.stdin)&quot;</span> &lt;fichero_entrada.txt &gt;fichero_salida.txt
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sys,codecs;codecs.EncodedFile(sys.stdout,&#39;utf-16&#39;,&#39;utf-8-sig&#39;).writelines(sys.stdin)&quot;</span><span class="w"> </span>&lt;fichero_entrada.txt<span class="w"> </span>&gt;fichero_salida.txt
 </code></pre></div>
 
 <p>Hay que tener en cuenta que el comando <code>iconv</code>, normalmente usado para convertir codificaciones de ficheros, no tiene en consideración el <abbr title="Marca de orden de bytes"><span class="caps">BOM</span></abbr>. Con python tenemos una solución&nbsp;perfecta.</p>

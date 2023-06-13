@@ -41,6 +41,7 @@
         <li><a href="/feeds/scala.atom.xml" target="_blank" rel="noopener noreferrer">Scala Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
         <li><a href="/feeds/python.atom.xml" target="_blank" rel="noopener noreferrer">Python Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
         <li><a href="/feeds/notas.atom.xml" target="_blank" rel="noopener noreferrer">Notas Feeds<i class="fa fa-external-link-square fa-lg"></i></a></li>
+        <li><a href="https://mathstodon.xyz/@chemacortes" target="_blank" rel="noopener noreferrer">Mastodon<i class="fa fa-external-link-square fa-lg"></i></a></li>
       </ul>
     </div>
   </aside>
@@ -75,16 +76,16 @@
     <p>Con la <a href="http://docs.python.org/3.3/whatsnew/3.3.html" title="What's new in python 3.3?">nueva versión de python 3.3</a> se ha incorporado la propuesta <a href="http://www.python.org/dev/peps/pep-0405" title="PEP-0405 Python Virtual Environments"><span class="caps">PEP</span>-405</a> que añade al repertorio interno de python la posibilidad de crear entornos virtuales de modo parecido a virtualenv (vimos esta herramienta hace poco al hablar de la <a href="https://blog.ch3m4.org/2012/07/24/instalacion-de-modulos/">instalación de módulos</a>.</p>
 <p>Tal como lo define <a href="http://www.python.org/dev/peps/pep-0405" title="PEP-0405 Python Virtual Environments"><span class="caps">PEP</span>-405</a>: <em>&#8220;Los </em>entornos virtuales<em> poseen su propio conjunto de paquetes instalados localmente, segregados del resto de paquetes instalados del sistema&#8221;</em>. Para crear y administrar estos entornos virtuales, se incluye el módulo <code>venv</code>, así como el script <code>pyvenv.py</code>.</p>
 <p>Para crear un entorno virtual se puede utilizar el script <code>pyvenv</code> (con python&nbsp;3.3):</p>
-<div class="highlight"><pre><span></span><code>$ pyvenv /ruta/al/nuevo/entorno/virtual
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pyvenv<span class="w"> </span>/ruta/al/nuevo/entorno/virtual
 </code></pre></div>
 
 <p>En windows, probablemente haya que ejecutar el script que se encuentra en <code>"C:\&gt; Python33\Tools\Scripts\pyvenv.py"</code>. Posiblemente sea más sencillo ejecutar directamente el módulo <code>venv</code>:</p>
-<div class="highlight"><pre><span></span><code>$ python -m venv /ruta/al/nuevo/entorno/virtual
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>/ruta/al/nuevo/entorno/virtual
 </code></pre></div>
 
 <p>Entrando dentro del nuevo directorio, activamos el entorno de modo similar a como hacíamos con <code>virtualenv</code>:</p>
-<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> /ruta/al/nuevo/entorno/virtual
-$ <span class="nb">source</span> bin/activate
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/ruta/al/nuevo/entorno/virtual
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>bin/activate
 </code></pre></div>
 
 <p>Hay que notar que el script <code>activate</code> se debe ejecutar con <code>source</code> ya que necesita cambiar algunas variables del entorno de ejecución&nbsp;actual. </p>
@@ -94,9 +95,9 @@ $ <span class="nb">source</span> bin/activate
 </code></pre></div>
 
 <p>Una vez activado el entorno veremos que el prompt de la línea de comandos ha cambiado para indicarnos que estamos dentro. Las variables de entorno han cambiado, como puedes comprobar si miras <code>$PATH</code>. A partir de aquí, la instalación de paquetes con <code>easy_install</code> o <code>pip</code> se realizarán dentro del entorno. A diferencia con <code>virtualenv</code>, el módulo <code>venv</code> no instala en nuestro entorno ninguna de estas herramientas, por lo que lo primero que tendremos que hacer será&nbsp;instalarlas:</p>
-<div class="highlight"><pre><span></span><code><span class="o">(</span>py3.3<span class="o">)</span> $ curl -O http://python-distribute.org/distribute_setup.py
-<span class="o">(</span>py3.3<span class="o">)</span> $ python distribute_setup.py
-<span class="o">(</span>py3.3<span class="o">)</span> $ easy_install pip
+<div class="highlight"><pre><span></span><code><span class="o">(</span>py3.3<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>-O<span class="w"> </span>http://python-distribute.org/distribute_setup.py
+<span class="o">(</span>py3.3<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>python<span class="w"> </span>distribute_setup.py
+<span class="o">(</span>py3.3<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>easy_install<span class="w"> </span>pip
 </code></pre></div>
 
 <p>Para desactivar el entorno se ejecuta <code>deactivate</code>.</p>

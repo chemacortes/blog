@@ -1,6 +1,6 @@
 [tool.poetry]
 name        = "blog"
-version     = "1.0.1"
+version     = "1.0.3"
 description = "Hyperreals *R"
 authors     = ["chemacortes <devxtrem@gmail.com>"]
 
@@ -10,23 +10,23 @@ pelican     = "^4.7"
 typogrify   = "^2.0.7"
 cssmin      = "^0.2.0"
 ghp-import2 = "^1.0.1"
-slimit      = "^0.8.1"
 pyscss      = "^1.3.7"
 Jinja2      = "^3.1.2"
 mdx-include = "^1.4.1"
 ply         = "^3.11"
 webassets   = "^2.0"
+slimit      = {git = "https://github.com/rspivak/slimit.git", rev = "3533eba9ad5b39f3a015ae6269670022ab310847"}
 
 [tool.poetry.dev-dependencies]
-pylama         = "^8.3.8"
-black          = "^22.6.0"
+pylama         = "^8.4.1"
+black          = "^23.3.0"
 python-slugify = "^6.1.2"
 invoke         = "^1.5.0"
 ipykernel      = "^5.5"
 pandas         = "^1.2.2"
-mypy           = "^0.961"
-bandit         = "^1.7.4"
-pytest         = "^7.1.2"
+mypy           = "^1.3.0"
+bandit         = "^1.7.5"
+pytest         = "^7.3.2"
 livereload     = "^2.6.3"
 Markdown       = "~3.3.7"
 

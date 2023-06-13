@@ -12,10 +12,14 @@
   "lpubsppop01.autoTimeStamp.modifiedTimeStart": "[mM]odified *:",
   "lpubsppop01.autoTimeStamp.momentFormat": " YYYY-MM-DD HH:mm:ss",
   "nixEnvSelector.nixShellConfig": "NOT_MODIFIED_ENV",
-  "python.formatting.provider": "black",
+  "python.formatting.provider": "none",
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": false,
   "python.linting.mypyEnabled": false,
   "python.linting.pylamaEnabled": true,
-  "python.pythonPath": ".venv/bin/python"
+  "python.pythonPath": ".venv/bin/python",
+  "esbonio.sphinx.confDir": "",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  }
 }

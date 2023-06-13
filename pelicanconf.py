@@ -32,6 +32,7 @@ LINKS = (
     #     "my coursera",
     #     "https://www.coursera.org/user/9408450118c4cfeddff015451ed358b6",
     # ),
+    ("Mastodon", "https://mathstodon.xyz/@chemacortes"),
 )
 
 # Social widget
@@ -45,6 +46,9 @@ SOCIAL = (
     ("linkedin", "https://linkedin.com/in/chemacortes"),
     # ('facebook', 'https://facebook.com/pych3m4'),
     # ('flickr', 'https://www.flickr.com/photos/chemacortes'),
+    # ("mastodon", "https://mathstodon.xyz/@chemacortes"),
+    # ("mastodon", "https://types.pl/@chemacortes"),
+    # ("mastodon", "https://functional.cafe/@chemacortes"),
 )
 
 DEFAULT_PAGINATION = 25

@@ -7,13 +7,13 @@
   <meta name="author" content="Chema Cortés">
   <meta name="description" content="Python Eficiente - Sobre la vida de los objetos | Antes de seguir adelante, necesitamos aclarar qué les pasa a los objetos que creamos en una...">
 
-  <link rel="stylesheet" type="text/css" href="../../../../theme/css/styles.425931e9.min.css">
+  <link rel="stylesheet" type="text/css" href="https://chemacortes.github.io/blog/theme/css/styles.425931e9.min.css">
 
-  <script src="../../../../theme/js/scripts.7db5858b.min.js" type="text/javascript"></script>
+  <script src="https://chemacortes.github.io/blog/theme/js/scripts.7db5858b.min.js" type="text/javascript"></script>
 
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
-  <link href="https://chemacortes.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+  <link href="https://chemacortes.github.io/blog/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
 
 <meta name="keywords" content="functional programming, lambda calculus, math, programación, programming, oop">
 
@@ -24,10 +24,10 @@
 <body>
   <aside>
     <div id="user_meta">
-      <a href="../../../..">
+      <a href="https://chemacortes.github.io/blog">
         <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" id="logo">
       </a>
-      <h2><a href="../../../.." class="nohover">Hyperreals *R</a></h2>
+      <h2><a href="https://chemacortes.github.io/blog" class="nohover">Hyperreals *R</a></h2>
       <p>Quarks, bits y otras criaturas infinitesimales</p>
       <div class="social">
           <a href="https://twitter.com/chemacortes" title="twitter" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter fa-lg"></i></a>
@@ -49,17 +49,17 @@
   <main id="main">
     <header>
       <p id="header">
-      <a href="../../../..">Home</a>
+      <a href="https://chemacortes.github.io/blog">Home</a>
 
-      &#124; <a href="../../../../pages/aboutme/">Quién&nbsp;soy</a>
-      &#124; <a href="../../../../pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
-      &#124; <a href="https://chemacortes.github.io/blog/feeds/all.atom.xml">Atom Feed</a>
+      &#124; <a href="https://chemacortes.github.io/blog/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://chemacortes.github.io/blog/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://chemacortes.github.io/blog/blog/feeds/all.atom.xml">Atom Feed</a>
       </p>
 <p>
-<a href="../../../../index.html">Posts</a>
-&#124; <a href="../../../../tag/">Tags</a>
-&#124; <a href="../../../../category/">Categories</a>
-&#124; <a href="../../../../archives.html">Archive</a>
+<a href="https://chemacortes.github.io/blog/index.html">Posts</a>
+&#124; <a href="https://chemacortes.github.io/blog/tag/">Tags</a>
+&#124; <a href="https://chemacortes.github.io/blog/category/">Categories</a>
+&#124; <a href="https://chemacortes.github.io/blog/archives.html">Archive</a>
 </p>    </header>
 
 <article>
@@ -67,20 +67,20 @@
   <p>Posted <time data-reltime datetime="2013-11-09T09:56:00+01:00">sáb 09 noviembre 2013</time>
    by Chema Cortés  </p>
   <p>
-  Category: <a href="../../../../category/python/">Python</a>
+  Category: <a href="https://chemacortes.github.io/blog/category/python/">Python</a>
 &ndash;&ndash;  Tags:
-    <a href="../../../../tag/oop/">oop</a>  </p>
+    <a href="https://chemacortes.github.io/blog/tag/oop/">oop</a>  </p>
 </div>  <div class="article_title">
-    <h1><a href="../../../../2013/11/09/python-eficiente-sobre-la-vida-de-los-objetos/" class="nohover">Python Eficiente - Sobre la vida de los&nbsp;objetos</a></h1>
+    <h1><a href="https://chemacortes.github.io/blog/2013/11/09/python-eficiente-sobre-la-vida-de-los-objetos/" class="nohover">Python Eficiente - Sobre la vida de los&nbsp;objetos</a></h1>
   </div>
   <div class="article_text">
     <p>Antes de seguir adelante, necesitamos aclarar qué les pasa a los objetos que creamos en una aplicación. Cuándo se crean, dónde se almacenan y cómo se destruyen. En definitiva, necesitamos conocer mejor la <em>vida de los objetos</em>.</p>
 <p>El término de <strong>variable</strong> que usamos en programación tiene su origen en el Álgebra Matemática. Una variable representa cada uno de los <em>grados de libertad</em> que tenemos, de forma que cambiando su valor obtendríamos diferentes resultados de una&nbsp;expresión.</p>
 <p>Los primeros <em>lenguajes imperativos</em>, sobre todo <span class="caps">BASIC</span>, definieron las <em>variables</em> como espacios de memoria donde almacenar los distintos valores que necesitaba la <em><span class="caps">CPU</span></em> en sus operaciones. Cada variable se <em>marcaba</em> con un nombre único y se le asignaba un espacio en memoria. Con el fin de reducir el consumo de memoria, estas variables eran reutilizadas una y otra vez a lo largo del&nbsp;programa.</p>
-<p><img alt="Variables de memoria" src="../../../../pictures/memvar.jpg"></p>
+<p><img alt="Variables de memoria" src="https://chemacortes.github.io/blog/pictures/memvar.jpg"></p>
 <p>Con los lenguajes procedurales y lenguajes orientados a objetos se cambió este concepto. Los nombres de variables ya no eran únicos. Dos variables podían tener el mismo nombre en distintos ámbitos (<em>scopes</em>), así como dos variables podían representar el mismo dato. El nombre de la variable dejó de representar el espacio físico en memoria para convertirse en un alias con el que nombrar a la variable. El proceso de enlazar un nombre con un valor se llamó <em>binding</em> (<em>enlace</em>) y se hizo fundamental para el funcionamiento de las <em>clausuras</em>.</p>
 <p>Se puede definir una variable como la <strong><em>&#8220;unión de un nombre y un valor a través de un enlace&#8221;</em></strong>.</p>
-<p><img alt="Enlaces de nombres y objetos" src="../../../../pictures/etiquetas.jpg"></p>
+<p><img alt="Enlaces de nombres y objetos" src="https://chemacortes.github.io/blog/pictures/etiquetas.jpg"></p>
 <p>Con este punto de vista, cuando hablamos de <em>&#8220;modificar&#8221;</em> una variable tenemos dos modos de&nbsp;hacerlo:</p>
 <ul>
 <li>Modificando el <em>valor</em> al que&nbsp;apunta</li>

@@ -4,938 +4,938 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>https://chemacortes.github.io/</loc>
-<lastmod>2023-09-16T19:20:27-00:00</lastmod>
+<loc>https://chemacortes.github.io/blog/</loc>
+<lastmod>2023-09-16T19:23:31-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/</loc>
-<lastmod>2023-09-16T19:20:27-00:00</lastmod>
+<loc>https://chemacortes.github.io/blog/tag/</loc>
+<lastmod>2023-09-16T19:23:31-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/category/</loc>
-<lastmod>2023-09-16T19:20:27-00:00</lastmod>
+<loc>https://chemacortes.github.io/blog/category/</loc>
+<lastmod>2023-09-16T19:23:31-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/archives.html</loc>
-<lastmod>2023-09-16T19:20:27-00:00</lastmod>
+<loc>https://chemacortes.github.io/blog/archives.html</loc>
+<lastmod>2023-09-16T19:23:31-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/pages/aboutme/</loc>
+<loc>https://chemacortes.github.io/blog/pages/aboutme/</loc>
 <lastmod>2018-08-02T00:46:06+02:00</lastmod>
 <changefreq>yearly</changefreq>
 <priority>0.3</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/pages/busqueda-python-es/</loc>
+<loc>https://chemacortes.github.io/blog/pages/busqueda-python-es/</loc>
 <lastmod>2012-12-20T03:50:00+01:00</lastmod>
 <changefreq>yearly</changefreq>
 <priority>0.3</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2022/09/16/algoritmos-y-lenguaje/</loc>
+<loc>https://chemacortes.github.io/blog/2022/09/16/algoritmos-y-lenguaje/</loc>
 <lastmod>2022-09-04T13:22:24+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2022/09/04/notas-del-blog/</loc>
+<loc>https://chemacortes.github.io/blog/2022/09/04/notas-del-blog/</loc>
 <lastmod>2022-09-04T21:07:36+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2021/10/24/bsp/</loc>
+<loc>https://chemacortes.github.io/blog/2021/10/24/bsp/</loc>
 <lastmod>2021-10-28T19:55:46+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2021/10/17/scripting-para-scala/</loc>
+<loc>https://chemacortes.github.io/blog/2021/10/17/scripting-para-scala/</loc>
 <lastmod>2022-09-04T10:37:28+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2021/10/17/dataclasses-en-python/</loc>
+<loc>https://chemacortes.github.io/blog/2021/10/17/dataclasses-en-python/</loc>
 <lastmod>2021-10-19T21:03:44+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2021/03/10/evaluacion-perezosa-en-python-apendice/</loc>
+<loc>https://chemacortes.github.io/blog/2021/03/10/evaluacion-perezosa-en-python-apendice/</loc>
 <lastmod>2021-03-15T20:55:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2021/03/07/evaluacion-perezosa-en-python-parte-6/</loc>
+<loc>https://chemacortes.github.io/blog/2021/03/07/evaluacion-perezosa-en-python-parte-6/</loc>
 <lastmod>2021-03-22T00:19:38+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2021/03/07/evaluacion-perezosa-en-python-parte-5/</loc>
+<loc>https://chemacortes.github.io/blog/2021/03/07/evaluacion-perezosa-en-python-parte-5/</loc>
 <lastmod>2021-03-15T21:18:53+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2021/02/15/evaluacion-perezosa-en-python-parte-4/</loc>
+<loc>https://chemacortes.github.io/blog/2021/02/15/evaluacion-perezosa-en-python-parte-4/</loc>
 <lastmod>2021-03-15T20:54:35+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2021/02/14/evaluacion-perezosa-en-python-parte-3/</loc>
+<loc>https://chemacortes.github.io/blog/2021/02/14/evaluacion-perezosa-en-python-parte-3/</loc>
 <lastmod>2021-03-15T20:54:28+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2021/02/09/evaluacion-perezosa-en-python-parte-2/</loc>
+<loc>https://chemacortes.github.io/blog/2021/02/09/evaluacion-perezosa-en-python-parte-2/</loc>
 <lastmod>2021-03-15T20:54:16+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2021/02/08/evaluacion-perezosa-en-python-parte-1/</loc>
+<loc>https://chemacortes.github.io/blog/2021/02/08/evaluacion-perezosa-en-python-parte-1/</loc>
 <lastmod>2021-03-21T23:29:26+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2021/02/01/reorientando-el-blog/</loc>
+<loc>https://chemacortes.github.io/blog/2021/02/01/reorientando-el-blog/</loc>
 <lastmod>2022-09-04T10:37:28+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2019/09/28/manejo-de-rutas-pathlib/</loc>
+<loc>https://chemacortes.github.io/blog/2019/09/28/manejo-de-rutas-pathlib/</loc>
 <lastmod>2019-09-28T17:56:08+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2019/05/07/monadas-con-coco/</loc>
+<loc>https://chemacortes.github.io/blog/2019/05/07/monadas-con-coco/</loc>
 <lastmod>2019-05-07T19:47:56+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2019/05/02/coconut-primeros-pasos/</loc>
+<loc>https://chemacortes.github.io/blog/2019/05/02/coconut-primeros-pasos/</loc>
 <lastmod>2019-05-02T23:58:10+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2019/04/16/que-es-un-coconut/</loc>
+<loc>https://chemacortes.github.io/blog/2019/04/16/que-es-un-coconut/</loc>
 <lastmod>2019-04-16T00:51:57+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2018/07/25/factorial-en-scala-en-paralelo/</loc>
+<loc>https://chemacortes.github.io/blog/2018/07/25/factorial-en-scala-en-paralelo/</loc>
 <lastmod>2018-08-14T01:00:09+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2018/07/22/reinicio-2018/</loc>
+<loc>https://chemacortes.github.io/blog/2018/07/22/reinicio-2018/</loc>
 <lastmod>2022-09-04T10:37:28+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2016/01/18/manejo-de-iteradores/</loc>
+<loc>https://chemacortes.github.io/blog/2016/01/18/manejo-de-iteradores/</loc>
 <lastmod>2022-07-19T21:35:55+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2016/01/10/renacimiento/</loc>
+<loc>https://chemacortes.github.io/blog/2016/01/10/renacimiento/</loc>
 <lastmod>2016-01-10T15:51:06+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2013/11/09/python-eficiente-sobre-la-vida-de-los-objetos/</loc>
+<loc>https://chemacortes.github.io/blog/2013/11/09/python-eficiente-sobre-la-vida-de-los-objetos/</loc>
 <lastmod>2013-11-09T09:56:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2013/10/26/clausuras-en-python-parte-2/</loc>
+<loc>https://chemacortes.github.io/blog/2013/10/26/clausuras-en-python-parte-2/</loc>
 <lastmod>2021-01-10T20:03:45+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2013/10/25/clausuras-en-python-parte-1/</loc>
+<loc>https://chemacortes.github.io/blog/2013/10/25/clausuras-en-python-parte-1/</loc>
 <lastmod>2021-01-10T19:58:16+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2013/08/14/estudio-funcion-factorial-numpy/</loc>
+<loc>https://chemacortes.github.io/blog/2013/08/14/estudio-funcion-factorial-numpy/</loc>
 <lastmod>2013-08-14T14:28:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2013/07/29/la-odisea/</loc>
+<loc>https://chemacortes.github.io/blog/2013/07/29/la-odisea/</loc>
 <lastmod>2013-07-29T16:35:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2013/07/13/borrado-de-un-descriptor-correccion-de-errores/</loc>
+<loc>https://chemacortes.github.io/blog/2013/07/13/borrado-de-un-descriptor-correccion-de-errores/</loc>
 <lastmod>2018-07-25T01:30:02+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2013/06/22/balance-y-cierre-de-ejercicio/</loc>
+<loc>https://chemacortes.github.io/blog/2013/06/22/balance-y-cierre-de-ejercicio/</loc>
 <lastmod>2013-06-22T14:51:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2013/04/09/scala-vs-python-vs-lua/</loc>
+<loc>https://chemacortes.github.io/blog/2013/04/09/scala-vs-python-vs-lua/</loc>
 <lastmod>2013-04-09T20:55:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2013/03/31/de-generaciones-perdidas/</loc>
+<loc>https://chemacortes.github.io/blog/2013/03/31/de-generaciones-perdidas/</loc>
 <lastmod>2013-03-31T15:15:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2013/03/22/mutable-o-inmutable-he-ahi-el-dilema/</loc>
+<loc>https://chemacortes.github.io/blog/2013/03/22/mutable-o-inmutable-he-ahi-el-dilema/</loc>
 <lastmod>2018-07-25T01:09:30+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2013/03/16/mutabilidad-de-listas/</loc>
+<loc>https://chemacortes.github.io/blog/2013/03/16/mutabilidad-de-listas/</loc>
 <lastmod>2019-04-07T21:14:30+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2013/02/27/dobleces-en-python/</loc>
+<loc>https://chemacortes.github.io/blog/2013/02/27/dobleces-en-python/</loc>
 <lastmod>2013-02-27T21:39:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2013/02/19/estado-de-situacion/</loc>
+<loc>https://chemacortes.github.io/blog/2013/02/19/estado-de-situacion/</loc>
 <lastmod>2013-02-19T21:39:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2012/10/25/pruebas-basicas-de-python-y-scala/</loc>
+<loc>https://chemacortes.github.io/blog/2012/10/25/pruebas-basicas-de-python-y-scala/</loc>
 <lastmod>2012-10-25T17:04:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2012/10/23/entornos-virtuales-en-python-3-3/</loc>
+<loc>https://chemacortes.github.io/blog/2012/10/23/entornos-virtuales-en-python-3-3/</loc>
 <lastmod>2012-10-23T20:58:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2012/10/17/como-contratar-un-programador-de-python/</loc>
+<loc>https://chemacortes.github.io/blog/2012/10/17/como-contratar-un-programador-de-python/</loc>
 <lastmod>2012-10-17T17:30:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2012/08/15/estudio-funcion-factorial-en-scala-operador-sufix/</loc>
+<loc>https://chemacortes.github.io/blog/2012/08/15/estudio-funcion-factorial-en-scala-operador-sufix/</loc>
 <lastmod>2012-08-15T09:30:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2012/07/24/instalacion-de-modulos/</loc>
+<loc>https://chemacortes.github.io/blog/2012/07/24/instalacion-de-modulos/</loc>
 <lastmod>2012-07-24T22:02:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2012/07/10/bom-marcas-de-orden-de-bytes/</loc>
+<loc>https://chemacortes.github.io/blog/2012/07/10/bom-marcas-de-orden-de-bytes/</loc>
 <lastmod>2012-07-10T13:32:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2012/06/05/descriptores-parte-3/</loc>
+<loc>https://chemacortes.github.io/blog/2012/06/05/descriptores-parte-3/</loc>
 <lastmod>2012-06-05T00:37:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2012/05/12/lingua-franca/</loc>
+<loc>https://chemacortes.github.io/blog/2012/05/12/lingua-franca/</loc>
 <lastmod>2012-05-12T17:11:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2012/04/04/problemas-con-los-nombres-largos-en-ntfs/</loc>
+<loc>https://chemacortes.github.io/blog/2012/04/04/problemas-con-los-nombres-largos-en-ntfs/</loc>
 <lastmod>2012-04-04T13:07:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2012/02/07/estudio-funcion-factorial-en-scala-revision-funcional/</loc>
+<loc>https://chemacortes.github.io/blog/2012/02/07/estudio-funcion-factorial-en-scala-revision-funcional/</loc>
 <lastmod>2012-02-07T13:41:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2012/01/26/condificando-en-binario/</loc>
+<loc>https://chemacortes.github.io/blog/2012/01/26/condificando-en-binario/</loc>
 <lastmod>2012-01-26T20:24:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2011/10/17/estudio-funcion-factorial-en-scala/</loc>
+<loc>https://chemacortes.github.io/blog/2011/10/17/estudio-funcion-factorial-en-scala/</loc>
 <lastmod>2011-10-17T20:49:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2011/10/08/rentree-nueva-temporada/</loc>
+<loc>https://chemacortes.github.io/blog/2011/10/08/rentree-nueva-temporada/</loc>
 <lastmod>2022-09-04T10:37:28+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2011/08/04/iconv-en-python/</loc>
+<loc>https://chemacortes.github.io/blog/2011/08/04/iconv-en-python/</loc>
 <lastmod>2011-08-04T18:38:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2011/06/26/metodo-__getattribute__/</loc>
+<loc>https://chemacortes.github.io/blog/2011/06/26/metodo-__getattribute__/</loc>
 <lastmod>2011-06-26T18:59:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2011/06/24/optimizaciones-con-los-metodos-especiales/</loc>
+<loc>https://chemacortes.github.io/blog/2011/06/24/optimizaciones-con-los-metodos-especiales/</loc>
 <lastmod>2011-06-24T00:51:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2011/06/21/descriptores-parte-2/</loc>
+<loc>https://chemacortes.github.io/blog/2011/06/21/descriptores-parte-2/</loc>
 <lastmod>2011-06-21T01:26:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2011/06/19/descriptores-parte-1/</loc>
+<loc>https://chemacortes.github.io/blog/2011/06/19/descriptores-parte-1/</loc>
 <lastmod>2011-06-19T16:57:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2011/06/06/ultimo-item-de-un-iterable/</loc>
+<loc>https://chemacortes.github.io/blog/2011/06/06/ultimo-item-de-un-iterable/</loc>
 <lastmod>2011-06-06T11:36:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2011/06/06/estudio-funcion-factorial/</loc>
+<loc>https://chemacortes.github.io/blog/2011/06/06/estudio-funcion-factorial/</loc>
 <lastmod>2011-06-06T01:22:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2011/06/04/instalacion-cx_oracle-para-ia64/</loc>
+<loc>https://chemacortes.github.io/blog/2011/06/04/instalacion-cx_oracle-para-ia64/</loc>
 <lastmod>2011-06-04T13:47:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2011/05/17/lenguajes-de-marcas-ligeras/</loc>
+<loc>https://chemacortes.github.io/blog/2011/05/17/lenguajes-de-marcas-ligeras/</loc>
 <lastmod>2011-05-17T02:13:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2011/03/21/la-paradoja-de-monty-hall/</loc>
+<loc>https://chemacortes.github.io/blog/2011/03/21/la-paradoja-de-monty-hall/</loc>
 <lastmod>2011-03-21T18:31:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2011/03/14/desafio-pet/</loc>
+<loc>https://chemacortes.github.io/blog/2011/03/14/desafio-pet/</loc>
 <lastmod>2019-04-08T02:03:01+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/2011/03/14/30-no-es-nada/</loc>
+<loc>https://chemacortes.github.io/blog/2011/03/14/30-no-es-nada/</loc>
 <lastmod>2011-03-14T21:47:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/category/ciencia/</loc>
+<loc>https://chemacortes.github.io/blog/category/ciencia/</loc>
 <lastmod>2013-07-29T16:35:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/category/coconut/</loc>
+<loc>https://chemacortes.github.io/blog/category/coconut/</loc>
 <lastmod>2019-05-07T19:47:56+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/category/matematicas/</loc>
+<loc>https://chemacortes.github.io/blog/category/matematicas/</loc>
 <lastmod>2011-03-21T18:31:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/category/notas/</loc>
+<loc>https://chemacortes.github.io/blog/category/notas/</loc>
 <lastmod>2022-09-16T20:45:57+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/category/python/</loc>
+<loc>https://chemacortes.github.io/blog/category/python/</loc>
 <lastmod>2022-07-19T21:35:55+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/category/scala/</loc>
+<loc>https://chemacortes.github.io/blog/category/scala/</loc>
 <lastmod>2021-10-28T19:55:46+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/category/tecnicas/</loc>
+<loc>https://chemacortes.github.io/blog/category/tecnicas/</loc>
 <lastmod>2011-05-17T02:13:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/devtools/</loc>
+<loc>https://chemacortes.github.io/blog/tag/devtools/</loc>
 <lastmod>2021-10-28T19:55:46+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/python/</loc>
+<loc>https://chemacortes.github.io/blog/tag/python/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/scala/</loc>
+<loc>https://chemacortes.github.io/blog/tag/scala/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/scripting/</loc>
+<loc>https://chemacortes.github.io/blog/tag/scripting/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/dataclass/</loc>
+<loc>https://chemacortes.github.io/blog/tag/dataclass/</loc>
 <lastmod>2021-10-19T21:03:44+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/lazy-eval/</loc>
+<loc>https://chemacortes.github.io/blog/tag/lazy-eval/</loc>
 <lastmod>2021-03-22T00:19:38+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/sequence/</loc>
+<loc>https://chemacortes.github.io/blog/tag/sequence/</loc>
 <lastmod>2021-03-22T00:19:38+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/range/</loc>
+<loc>https://chemacortes.github.io/blog/tag/range/</loc>
 <lastmod>2021-03-22T00:19:38+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/primes/</loc>
+<loc>https://chemacortes.github.io/blog/tag/primes/</loc>
 <lastmod>2021-03-22T00:19:38+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/fermi/</loc>
+<loc>https://chemacortes.github.io/blog/tag/fermi/</loc>
 <lastmod>2021-03-22T00:19:38+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/dirac/</loc>
+<loc>https://chemacortes.github.io/blog/tag/dirac/</loc>
 <lastmod>2021-03-22T00:19:38+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/memoize/</loc>
+<loc>https://chemacortes.github.io/blog/tag/memoize/</loc>
 <lastmod>2021-03-15T20:54:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/cache/</loc>
+<loc>https://chemacortes.github.io/blog/tag/cache/</loc>
 <lastmod>2021-03-15T20:54:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/functional-programming/</loc>
+<loc>https://chemacortes.github.io/blog/tag/functional-programming/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/algebraic-data-type/</loc>
+<loc>https://chemacortes.github.io/blog/tag/algebraic-data-type/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/haskell/</loc>
+<loc>https://chemacortes.github.io/blog/tag/haskell/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/elm/</loc>
+<loc>https://chemacortes.github.io/blog/tag/elm/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/ihp/</loc>
+<loc>https://chemacortes.github.io/blog/tag/ihp/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/nix/</loc>
+<loc>https://chemacortes.github.io/blog/tag/nix/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/purescript/</loc>
+<loc>https://chemacortes.github.io/blog/tag/purescript/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/elixir/</loc>
+<loc>https://chemacortes.github.io/blog/tag/elixir/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/phoenix/</loc>
+<loc>https://chemacortes.github.io/blog/tag/phoenix/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/go/</loc>
+<loc>https://chemacortes.github.io/blog/tag/go/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/racket/</loc>
+<loc>https://chemacortes.github.io/blog/tag/racket/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/lop/</loc>
+<loc>https://chemacortes.github.io/blog/tag/lop/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/mps/</loc>
+<loc>https://chemacortes.github.io/blog/tag/mps/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/tiddlywiki/</loc>
+<loc>https://chemacortes.github.io/blog/tag/tiddlywiki/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/metaprogramming/</loc>
+<loc>https://chemacortes.github.io/blog/tag/metaprogramming/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/pathlib/</loc>
+<loc>https://chemacortes.github.io/blog/tag/pathlib/</loc>
 <lastmod>2019-09-28T17:56:08+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/coconut/</loc>
+<loc>https://chemacortes.github.io/blog/tag/coconut/</loc>
 <lastmod>2019-05-07T19:47:56+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/algorithms/</loc>
+<loc>https://chemacortes.github.io/blog/tag/algorithms/</loc>
 <lastmod>2018-08-14T01:00:09+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/factorial/</loc>
+<loc>https://chemacortes.github.io/blog/tag/factorial/</loc>
 <lastmod>2018-08-14T01:00:09+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/concurrency/</loc>
+<loc>https://chemacortes.github.io/blog/tag/concurrency/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/tips/</loc>
+<loc>https://chemacortes.github.io/blog/tag/tips/</loc>
 <lastmod>2022-07-19T21:35:55+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/iteradores/</loc>
+<loc>https://chemacortes.github.io/blog/tag/iteradores/</loc>
 <lastmod>2022-07-19T21:35:55+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/oop/</loc>
+<loc>https://chemacortes.github.io/blog/tag/oop/</loc>
 <lastmod>2013-11-09T09:56:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/closures/</loc>
+<loc>https://chemacortes.github.io/blog/tag/closures/</loc>
 <lastmod>2021-01-10T20:03:45+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/algorithm/</loc>
+<loc>https://chemacortes.github.io/blog/tag/algorithm/</loc>
 <lastmod>2013-08-14T14:28:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/maths/</loc>
+<loc>https://chemacortes.github.io/blog/tag/maths/</loc>
 <lastmod>2013-08-14T14:28:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/descriptor/</loc>
+<loc>https://chemacortes.github.io/blog/tag/descriptor/</loc>
 <lastmod>2018-07-25T01:30:02+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/tecnicas-dinamicas/</loc>
+<loc>https://chemacortes.github.io/blog/tag/tecnicas-dinamicas/</loc>
 <lastmod>2018-07-25T01:30:02+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/lua/</loc>
+<loc>https://chemacortes.github.io/blog/tag/lua/</loc>
 <lastmod>2013-04-09T20:55:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/programming-languages/</loc>
+<loc>https://chemacortes.github.io/blog/tag/programming-languages/</loc>
 <lastmod>2013-04-09T20:55:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/pycones/</loc>
+<loc>https://chemacortes.github.io/blog/tag/pycones/</loc>
 <lastmod>2013-02-19T21:39:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/programming/</loc>
+<loc>https://chemacortes.github.io/blog/tag/programming/</loc>
 <lastmod>2012-10-25T17:04:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/code/</loc>
+<loc>https://chemacortes.github.io/blog/tag/code/</loc>
 <lastmod>2019-04-08T02:03:01+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/unicode/</loc>
+<loc>https://chemacortes.github.io/blog/tag/unicode/</loc>
 <lastmod>2012-07-10T13:32:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/compsci/</loc>
+<loc>https://chemacortes.github.io/blog/tag/compsci/</loc>
 <lastmod>2012-05-12T17:11:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/computing-science/</loc>
+<loc>https://chemacortes.github.io/blog/tag/computing-science/</loc>
 <lastmod>2012-05-12T17:11:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/ntfs/</loc>
+<loc>https://chemacortes.github.io/blog/tag/ntfs/</loc>
 <lastmod>2012-04-04T13:07:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/windows/</loc>
+<loc>https://chemacortes.github.io/blog/tag/windows/</loc>
 <lastmod>2012-04-04T13:07:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/tip/</loc>
+<loc>https://chemacortes.github.io/blog/tag/tip/</loc>
 <lastmod>2012-01-26T20:24:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/java/</loc>
+<loc>https://chemacortes.github.io/blog/tag/java/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/jvm/</loc>
+<loc>https://chemacortes.github.io/blog/tag/jvm/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/pyday/</loc>
+<loc>https://chemacortes.github.io/blog/tag/pyday/</loc>
 <lastmod>2022-09-04T10:37:28+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/howto/</loc>
+<loc>https://chemacortes.github.io/blog/tag/howto/</loc>
 <lastmod>2011-06-04T13:47:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/ia64/</loc>
+<loc>https://chemacortes.github.io/blog/tag/ia64/</loc>
 <lastmod>2011-06-04T13:47:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/oracle/</loc>
+<loc>https://chemacortes.github.io/blog/tag/oracle/</loc>
 <lastmod>2011-06-04T13:47:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/calibre/</loc>
+<loc>https://chemacortes.github.io/blog/tag/calibre/</loc>
 <lastmod>2011-05-17T02:13:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/markdown/</loc>
+<loc>https://chemacortes.github.io/blog/tag/markdown/</loc>
 <lastmod>2011-05-17T02:13:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/pandoc/</loc>
+<loc>https://chemacortes.github.io/blog/tag/pandoc/</loc>
 <lastmod>2011-05-17T02:13:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://chemacortes.github.io/tag/restructuredtext/</loc>
+<loc>https://chemacortes.github.io/blog/tag/restructuredtext/</loc>
 <lastmod>2011-05-17T02:13:00+00:09</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>

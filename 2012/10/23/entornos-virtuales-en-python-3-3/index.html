@@ -7,15 +7,15 @@
   <meta name="author" content="Chema Cortés">
   <meta name="description" content="Entornos virtuales en python 3.3 | Con la nueva versión de python 3.3 se ha incorporado la propuesta PEP-405 que añade al repertorio interno de...">
 
-  <link rel="stylesheet" type="text/css" href="https://blog.ch3m4.org/theme/css/styles.78787593.min.css">
+  <link rel="stylesheet" type="text/css" href="https://chemacortes.github.io/blog/theme/css/styles.425931e9.min.css">
 
-  <script src="https://blog.ch3m4.org/theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
+  <script src="https://chemacortes.github.io/blog/theme/js/scripts.7db5858b.min.js" type="text/javascript"></script>
 
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
-  <link href="https://blog.ch3m4.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
+  <link href="https://chemacortes.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Hyperreals *R Full Atom Feed" />
 
-<meta name="keywords" content="functional programming, programming, programación, lambda calculus, math">
+<meta name="keywords" content="functional programming, lambda calculus, math, programación, programming">
 
   <title>Entornos virtuales en python 3.3 | Hyperreals *R</title>
 
@@ -24,10 +24,10 @@
 <body>
   <aside>
     <div id="user_meta">
-      <a href="https://blog.ch3m4.org">
+      <a href="https://chemacortes.github.io/blog">
         <img src="https://s.gravatar.com/avatar/b20d114964d6d77c209aadbe9a152e87?s=80" id="logo">
       </a>
-      <h2><a href="https://blog.ch3m4.org" class="nohover">Hyperreals *R</a></h2>
+      <h2><a href="https://chemacortes.github.io/blog" class="nohover">Hyperreals *R</a></h2>
       <p>Quarks, bits y otras criaturas infinitesimales</p>
       <div class="social">
           <a href="https://twitter.com/chemacortes" title="twitter" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter fa-lg"></i></a>
@@ -49,31 +49,30 @@
   <main id="main">
     <header>
       <p id="header">
-      <a href="https://blog.ch3m4.org">Home</a>
+      <a href="https://chemacortes.github.io/blog">Home</a>
 
-      &#124; <a href="https://blog.ch3m4.org/pages/aboutme/">Quién&nbsp;soy</a>
-      &#124; <a href="https://blog.ch3m4.org/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
-      &#124; <a href="https://blog.ch3m4.org/feeds/all.atom.xml">Atom Feed</a>
+      &#124; <a href="https://chemacortes.github.io/blog/pages/aboutme/">Quién&nbsp;soy</a>
+      &#124; <a href="https://chemacortes.github.io/blog/pages/busqueda-python-es/">Búsqueda&nbsp;python-es</a>
+      &#124; <a href="https://chemacortes.github.io/blog/feeds/all.atom.xml">Atom Feed</a>
       </p>
 <p>
-<a href="https://blog.ch3m4.org/index.html">Posts</a>
-&#124; <a href="https://blog.ch3m4.org/tag/">Tags</a>
-&#124; <a href="https://blog.ch3m4.org/category/">Categories</a>
-&#124; <a href="https://blog.ch3m4.org/category/notas/">Notes</a>
-&#124; <a href="https://blog.ch3m4.org/archives.html">Archive</a>
+<a href="https://chemacortes.github.io/blog/index.html">Posts</a>
+&#124; <a href="https://chemacortes.github.io/blog/tag/">Tags</a>
+&#124; <a href="https://chemacortes.github.io/blog/category/">Categories</a>
+&#124; <a href="https://chemacortes.github.io/blog/archives.html">Archive</a>
 </p>    </header>
 
 <article>
 <div class="article_meta">
-  <p>Posted <time data-timeago datetime="2012-10-23T20:58:00+02:00">mar 23 octubre 2012</time>
+  <p>Posted <time data-reltime datetime="2012-10-23T20:58:00+02:00">mar 23 octubre 2012</time>
    by Chema Cortés  </p>
   <p>
-  Category: <a href="https://blog.ch3m4.org/category/python/">Python</a>
+  Category: <a href="https://chemacortes.github.io/blog/category/python/">Python</a>
 </div>  <div class="article_title">
-    <h1><a href="https://blog.ch3m4.org/2012/10/23/entornos-virtuales-en-python-3-3/" class="nohover">Entornos virtuales en python&nbsp;3.3</a></h1>
+    <h1><a href="https://chemacortes.github.io/blog/2012/10/23/entornos-virtuales-en-python-3-3/" class="nohover">Entornos virtuales en python&nbsp;3.3</a></h1>
   </div>
   <div class="article_text">
-    <p>Con la <a href="http://docs.python.org/3.3/whatsnew/3.3.html" title="What's new in python 3.3?">nueva versión de python 3.3</a> se ha incorporado la propuesta <a href="http://www.python.org/dev/peps/pep-0405" title="PEP-0405 Python Virtual Environments"><span class="caps">PEP</span>-405</a> que añade al repertorio interno de python la posibilidad de crear entornos virtuales de modo parecido a virtualenv (vimos esta herramienta hace poco al hablar de la <a href="https://blog.ch3m4.org/2012/07/24/instalacion-de-modulos/">instalación de módulos</a>.</p>
+    <p>Con la <a href="http://docs.python.org/3.3/whatsnew/3.3.html" title="What's new in python 3.3?">nueva versión de python 3.3</a> se ha incorporado la propuesta <a href="http://www.python.org/dev/peps/pep-0405" title="PEP-0405 Python Virtual Environments"><span class="caps">PEP</span>-405</a> que añade al repertorio interno de python la posibilidad de crear entornos virtuales de modo parecido a virtualenv (vimos esta herramienta hace poco al hablar de la <a href="https://chemacortes.github.io/blog/2012/07/24/instalacion-de-modulos/">instalación de módulos</a>.</p>
 <p>Tal como lo define <a href="http://www.python.org/dev/peps/pep-0405" title="PEP-0405 Python Virtual Environments"><span class="caps">PEP</span>-405</a>: <em>&#8220;Los </em>entornos virtuales<em> poseen su propio conjunto de paquetes instalados localmente, segregados del resto de paquetes instalados del sistema&#8221;</em>. Para crear y administrar estos entornos virtuales, se incluye el módulo <code>venv</code>, así como el script <code>pyvenv.py</code>.</p>
 <p>Para crear un entorno virtual se puede utilizar el script <code>pyvenv</code> (con python&nbsp;3.3):</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pyvenv<span class="w"> </span>/ruta/al/nuevo/entorno/virtual
@@ -116,43 +115,6 @@ $<span class="w"> </span><span class="nb">source</span><span class="w"> </span>b
 <p>En definitiva, los entornos virtuales creados con <code>venv</code> no son completamente independientes de la instalación python del sistema como sí puede hacer <code>virtualenv</code>. Esperemos que se amplien las opciones con nuevas versiones de python. De momento, seguiremos con <code>virtualenv</code>.</p>
   </div>
 
-<ul class="pager">
-  <li class="previous">
-    <a href="https://blog.ch3m4.org/2012/10/17/como-contratar-un-programador-de-python/" title="Anterior">
-      <i class="fa fa-arrow-circle-left"></i>
-      Cómo contratar un programador de&nbsp;python
-    </a>
-  </li>
-   <li class="next">
-    <a href="https://blog.ch3m4.org/2012/10/25/pruebas-basicas-de-python-y-scala/" title="Siguiente">
-      Pruebas básicas de python (y&nbsp;scala)
-      <i class="fa fa-arrow-circle-right"></i>
-    </a>
-  </li>
-</ul>
-With category
-<a href="https://blog.ch3m4.org/category/python/">Python</a>:
-<ul class="pager">
-  <li class="previous">
-    <a
-      href="https://blog.ch3m4.org/2012/10/17/como-contratar-un-programador-de-python/"
-      title="Anterior en misma categoría"
-    >
-      <i class="fa fa-arrow-circle-o-left"></i>
-      Cómo contratar un programador de&nbsp;python
-    </a>
-  </li>
-   <li class="next">
-    <a
-      href="https://blog.ch3m4.org/2012/10/25/pruebas-basicas-de-python-y-scala/"
-      title="Siguiente en misma categoría"
-    >
-      Pruebas básicas de python (y&nbsp;scala)
-      <i class="fa fa-arrow-circle-o-right"></i>
-    </a>
-  </li>
-</ul>
-
   <div id="article_comments">
     <div id="disqus_thread">
     </div>
@@ -185,6 +147,5 @@ With category
   </script>
 
 
-<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
 </body>
 </html>
